@@ -13,7 +13,7 @@
 @interface Upgrade : NSObject
 
 - (instancetype) initWithUpgradeType:(UpgradeType)upgradeType;
-//test commit
+
 @property (nonatomic) NSString * storeKitIdentifier;
 @property (nonatomic) UpgradeType upgradeType;
 @property (nonatomic) NSString * title;
