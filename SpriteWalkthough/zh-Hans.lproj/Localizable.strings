@@ -1,0 +1,144 @@
+//ship names
+"Abdul_Kadir" = "基隆";
+"Babenberg" = "蘇澳";
+"Caiman" = "左營";
+"Dandolo" = "馬公";
+"Edinburgh" = "鄭和";
+"Flandre" = "班超";
+"Gascogne" = "田單";
+"Habsburg" = "子儀";
+
+"damage" = "攻击力";
+"armor" = "盔甲";
+"speed" = "速度";
+
+/* No comment provided by engineer. */
+"Available Points" = "可用积分";
+
+/* No comment provided by engineer. */
+"Bigger Laser" = "更大的激光";
+
+/* No comment provided by engineer. */
+"Blowing up aliens without taking damage makes your multiplier go up!" = "在毫发无损的情况下炸掉外星人，会让提升你的倍增系数！";
+
+/* No comment provided by engineer. */
+"Disable Tips" = "禁用小贴士";
+
+/* No comment provided by engineer. */
+"Electricity Chain" = "电链";
+
+/* No comment provided by engineer. */
+"Energy Booster" = "能量增强器";
+
+/* No comment provided by engineer. */
+"Ermahgerd!" = "噢，天啊！";
+
+/* No comment provided by engineer. */
+"Four Weapons" = "四个武器";
+
+/* No comment provided by engineer. */
+"Got It" = "明白";
+
+/* No comment provided by engineer. */
+"How to Move:" = "如何移动：";
+
+/* No comment provided by engineer. */
+"Increases Photon Targeting IQ" = "增加光子瞄准 IQ";
+
+/* No comment provided by engineer. */
+"Increases rate of fire for the Machine Gun" = "增加机枪射击速率";
+
+/* No comment provided by engineer. */
+"Increases the size of Photon Cannon Beams" = "增加激光炮光束尺寸";
+
+/* No comment provided by engineer. */
+"More Bullets" = "更多子弹";
+
+/* No comment provided by engineer. */
+"Ouch!" = "哎哟！";
+
+/* No comment provided by engineer. */
+"points" = "积分";
+
+/* No comment provided by engineer. */
+"Powers up the Electrical Generator to send volts through to a second target" = "加速发电机，向第二目标输送电压";
+
+/* No comment provided by engineer. */
+"Shield" = "防御盾";
+
+/* No comment provided by engineer. */
+"Smart Photons" = "智能光子";
+
+/* No comment provided by engineer. */
+"Tilt the screen to move your ship" = "倾斜屏幕";
+//"Tilt the screen to move your ship" = "倾斜屏幕可移动飞船";
+
+/* No comment provided by engineer. */
+"to Unlock" = "即可解锁";
+
+/* No comment provided by engineer. */
+"Try to avoid objects like these:" = "尽量避开下列物体：";
+
+/* No comment provided by engineer. */
+"Two Weapons" = "两个武器";
+
+/* No comment provided by engineer. */
+"Unavailable" = "不可用";
+
+/* No comment provided by engineer. */
+"Unlock Now" = "立即解锁";
+
+/* No comment provided by engineer. */
+"Unlocks the Energy Booster Power Up. Doubles Points and Damage for 30 seconds" = "解锁能量增强器。30 秒内可获得双倍积分和双倍攻击力";
+//"Unlocks the Energy Booster Power Up. Doubles Points and Damage for 30 seconds" = "解锁能量增强器加速器。可获得双倍积分和 30 秒的损伤";
+
+/* No comment provided by engineer. */
+"Unlocks the Shield Power Up" = "解锁防御盾";
+
+/* No comment provided by engineer. */
+"Weapon PowerUp!" = "武器加速！";
+
+/* No comment provided by engineer. */
+"You just blew up an alien spaceship! The more stuff you blow up, The more points you score!" = "你刚刚炸掉了一个外星人太空船！你炸的越多，积分就越高！";
+
+/* No comment provided by engineer. */
+"You just picked up a weapon! Pick up the same weapon again to upgrade it" = "你刚刚获得了一个武器！如再次的装备同一种武器，即可将其升级";
+//"You just picked up a weapon! Pick up the same weapon again to upgrade it" = "你刚刚挑选了一个武器！再次挑选同一种武器，可将其升级";
+
+/* No comment provided by engineer. */
+"Your spaceships will be able to equip four different weapons!" = "你的太空船将能装载四种不同的武器！";
+//"Your spaceships will be able to equip four different weapons!" = "你的太空飞船将能装载四种不同的武器！";
+
+/* No comment provided by engineer. */
+"Your spaceships will be able to equip two different weapons!" = "你的太空飞船将能装载两种不同的武器！";
+
+//achievement bonus points descriptions
+"kAchievementMaxLevelMachineGun" = "最高机枪";
+"kAchievementMaxLevelPhotonCannon" = "最高光子炮";
+"kAchievementMaxLevelElectricalGenerator" = "最高发电机";
+"kAchievementMaxLevelLaserCannon" = "最高激光炮";
+"kAchievementBulletsFired100" = "发射了100多发子弹";
+"kAchievementBulletsFired1000" = "发射了1000多发子弹";
+"kAchievementBulletsFired10000" = "发射了10000多发子弹";
+"kAchievementBulletsFired100000" = "发射了100000多发子弹";
+"kAchievementPhotonsFired25" = "发射了25多光子";
+"kAchievementPhotonsFired250" = "发射了250多光子";
+"kAchievementPhotonsFired2500" = "发射了2500多光子";
+"kAchievementPhotonsFired25000" = "发射了25000多光子";
+"kAchievementLasersFired15" = "发射了15多激光器";
+"kAchievementLasersFired150" = "发射了150多激光器";
+"kAchievementLasersFired1500" = "发射了1500多激光器";
+"kAchievementLasersFired15000" = "发射了15000多激光器";
+"kAchievementElectricityFired20" = "发射了20电力";
+"kAchievementElectricityFired200" = "发射了200电力";
+"kAchievementElectricityFired2000" = "发射了2000电力";
+"kAchievementElectricityFired20000" = "发射了20000电力";
+"kAchievementEnemiesDestroyed50" = "摧毁50外星人";
+"kAchievementEnemiesDestroyed500" = "摧毁500外星人";
+"kAchievementEnemiesDestroyed5000" = "摧毁5000外星人";
+"kAchievementEnemiesDestroyed50000" = "摧毁50000外星人";
+"kAchievementPowerUpsCollected3" = "收集3不间断电源";
+"kAchievementPowerUpsCollected30" = "收集30不间断电源";
+"kAchievementPowerUpsCollected300" = "收集300不间断电源";
+"kAchievementPowerUpsCollected3000" = "收集3000不间断电源";
+"kAchievementAllAchievements" = "空间传奇";

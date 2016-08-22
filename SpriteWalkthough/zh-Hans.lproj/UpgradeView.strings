@@ -1,0 +1,19 @@
+
+/* Class = "UILabel"; text = "PURCHASED"; ObjectID = "Unb-GX-0Lu"; */
+"Unb-GX-0Lu.text" = "已购买";
+//"Unb-GX-0Lu.text" = "自己的";
+
+/* Class = "UILabel"; text = "Upgrade description. This is where the description of the upgrade will go. Test four lines"; ObjectID = "hot-8M-Itk"; */
+"hot-8M-Itk.text" = "Upgrade description. This is where the description of the upgrade will go. Test four lines";
+
+/* Class = "UIButton"; normalTitle = "Unlock Now!\n15k Points"; ObjectID = "lCq-au-xvD"; */
+"lCq-au-xvD.normalTitle" = "Unlock Now!\n15k Points";
+
+/* Class = "UIButton"; normalTitle = "x"; ObjectID = "rbG-Qr-CPU"; */
+"rbG-Qr-CPU.normalTitle" = "x";
+
+/* Class = "UIButton"; normalTitle = "Unlock Now!\n$ .99"; ObjectID = "szL-86-hDS"; */
+"szL-86-hDS.normalTitle" = "Unlock Now!\n$ .99";
+
+/* Class = "UILabel"; text = "Upgrade Title"; ObjectID = "xkC-fg-sq5"; */
+"xkC-fg-sq5.text" = "Upgrade Title";

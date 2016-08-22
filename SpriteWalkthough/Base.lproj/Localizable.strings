@@ -1,0 +1,138 @@
+//ship names
+"Abdul_Kadir" = "Abdul Kadir";
+"Babenberg" = "Babenberg";
+"Caiman" = "Caiman";
+"Dandolo" = "Dandolo";
+"Edinburgh" = "Emory";
+"Flandre" = "Flandre";
+"Gascogne" = "Gatun";
+"Habsburg" = "Hasley";
+
+/* No comment provided by engineer. */
+"Available Points" = "Available Points";
+
+/* No comment provided by engineer. */
+"Bigger Laser" = "Bigger Laser";
+
+/* No comment provided by engineer. */
+"Blowing up aliens\nwithout taking damage\nmakes your multiplier go up!" = "Blowing up aliens\nwithout taking damage\nmakes your multiplier go up!";
+
+/* No comment provided by engineer. */
+"Disable Tips" = "Disable Tips";
+
+/* No comment provided by engineer. */
+"Electricity Chain" = "Electricity Chain";
+
+/* No comment provided by engineer. */
+"Energy Booster" = "Energy Booster";
+
+/* No comment provided by engineer. */
+"Ermahgerd!" = "Ermahgerd!";
+
+/* No comment provided by engineer. */
+"Four Weapons" = "Four Weapons";
+
+/* No comment provided by engineer. */
+"Got It" = "Got It";
+
+/* No comment provided by engineer. */
+"How to Move:" = "How to Move:";
+
+/* No comment provided by engineer. */
+"Increases Photon\nTargeting IQ" = "Increases Photon\nTargeting IQ";
+
+/* No comment provided by engineer. */
+"Increases rate of fire\nfor the Machine Gun" = "Increases rate of fire\nfor the Machine Gun";
+
+/* No comment provided by engineer. */
+"Increases the size of\nPhoton Cannon Beams" = "Increases the size of\nPhoton Cannon Beams";
+
+/* No comment provided by engineer. */
+"More Bullets" = "More Bullets";
+
+/* No comment provided by engineer. */
+"Ouch!" = "Ouch!";
+
+/* No comment provided by engineer. */
+"points" = "Points";
+
+/* No comment provided by engineer. */
+"Powers up the Electrical\nGenerator to send volts\nthrough to a second target" = "Powers up the Electrical\nGenerator to send volts\nthrough to a second target";
+
+/* No comment provided by engineer. */
+"Shield" = "Shield";
+
+/* No comment provided by engineer. */
+"Smart Photons" = "Smart Photons";
+
+/* No comment provided by engineer. */
+"Tilt the screen to move your ship" = "Tilt the screen to move your ship";
+
+/* No comment provided by engineer. */
+"to Unlock" = "to Unlock";
+
+/* No comment provided by engineer. */
+"Try to avoid objects like these:" = "Try to avoid objects like these:";
+
+/* No comment provided by engineer. */
+"Two Weapons" = "Two Weapons";
+
+/* No comment provided by engineer. */
+"Unavailable" = "Unavailable";
+
+/* No comment provided by engineer. */
+"Unlock Now" = "Unlock Now";
+
+/* No comment provided by engineer. */
+"Unlocks the Energy\nBooster Power Up.\nDoubles Points and\nDamage for 30 seconds" = "Unlocks the Energy\nBooster Power Up.\nDoubles Points and\nDamage for 30 seconds";
+
+/* No comment provided by engineer. */
+"Unlocks the\nShield Power Up" = "Unlocks the\nShield Power Up";
+
+/* No comment provided by engineer. */
+"Weapon PowerUp!" = "Weapon PowerUp!";
+
+/* No comment provided by engineer. */
+"You just blew up an alien spaceship!\nThe more stuff you blow up,\nThe more points you score!" = "You just blew up an alien spaceship!\nThe more stuff you blow up,\nThe more points you score!";
+
+/* No comment provided by engineer. */
+"You just picked up a weapon!\nPick up the same weapon again to upgrade it" = "You just picked up a weapon!\nPick up the same weapon again to upgrade it";
+
+/* No comment provided by engineer. */
+"Your spaceships will be able to equip four different weapons!" = "Your spaceships will be able to equip four different weapons!";
+
+/* No comment provided by engineer. */
+"Your spaceships will be able to equip two different weapons!" = "Your spaceships will be able to equip two different weapons!";
+
+
+//achievement bonus points descriptions
+"kAchievementMaxLevelMachineGun" = "Maxed Machine Gun";
+"kAchievementMaxLevelPhotonCannon" = "Maxed Photon Cannon";
+"kAchievementMaxLevelElectricalGenerator" = "Mazed Electricity";
+"kAchievementMaxLevelLaserCannon" = "Maxed Laser Cannon";
+"kAchievementBulletsFired100" = "Fired 100 Bullets";
+"kAchievementBulletsFired1000" = "Fired 1000 Bullets";
+"kAchievementBulletsFired10000" = "Fired 10000 Bullets";
+"kAchievementBulletsFired100000" = "Fired 100000 Bullets";
+"kAchievementPhotonsFired25" = "Fired 25 Photons";
+"kAchievementPhotonsFired250" = "Fired 250 Photons";
+"kAchievementPhotonsFired2500" = "Fired 2500 Photons";
+"kAchievementPhotonsFired25000" = "Fired 25000 Photons";
+"kAchievementLasersFired15" = "Fired 15 Lasers";
+"kAchievementLasersFired150" = "Fired 150 Lasers";
+"kAchievementLasersFired1500" = "Fired 1500 Lasers";
+"kAchievementLasersFired15000" = "Fired 15000 Lasers";
+"kAchievementElectricityFired20" = "Fired 20 Electricity";
+"kAchievementElectricityFired200" = "Fired 200 Electricity";
+"kAchievementElectricityFired2000" = "Fired 2000 Electricity";
+"kAchievementElectricityFired20000" = "Fired 20000 Electricity";
+"kAchievementEnemiesDestroyed50" = "Destroyed 50 Enemies";
+"kAchievementEnemiesDestroyed500" = "Destroyed 500 Enemies";
+"kAchievementEnemiesDestroyed5000" = "Destroyed 5000 Enemies";
+"kAchievementEnemiesDestroyed50000" = "Destroyed 50000 Enemies";
+"kAchievementPowerUpsCollected3" = "Collected 3 Power Ups";
+"kAchievementPowerUpsCollected30" = "Collected 30 Power Ups";
+"kAchievementPowerUpsCollected300" = "Collected 300 Power Ups";
+"kAchievementPowerUpsCollected3000" = "Collected 3000 Power Ups";
+"kAchievementAllAchievements" = "SPACE LEGEND";
+

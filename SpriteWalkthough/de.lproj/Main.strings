@@ -1,0 +1,57 @@
+
+/* Class = "UIButton"; normalTitle = "Engage"; ObjectID = "1FT-Qe-tOr"; */
+"1FT-Qe-tOr.normalTitle" = "Spielen";
+
+/* Class = "UIButton"; normalTitle = "Main Menu"; ObjectID = "4cm-SU-7h4"; */
+"4cm-SU-7h4.normalTitle" = "Hauptmenü";
+
+/* Class = "UILabel"; text = "Speed"; ObjectID = "8FS-7C-EpA"; */
+"8FS-7C-EpA.text" = "Geschwindigkeit";
+
+/* Class = "UILabel"; text = "Armor"; ObjectID = "ASx-QS-dmi"; */
+"ASx-QS-dmi.text" = "Rüstung";
+
+/* Class = "UIButton"; normalTitle = ">"; ObjectID = "BWJ-My-Ohu"; */
+"BWJ-My-Ohu.normalTitle" = ">";
+
+/* Class = "UILabel"; text = "Available Points : 4444"; ObjectID = "EEd-wv-ArI"; */
+"EEd-wv-ArI.text" = "Verfügbare Punkte: 4444";
+
+/* Class = "UILabel"; text = "Music"; ObjectID = "G9W-eZ-eNc"; */
+"G9W-eZ-eNc.text" = "Musik";
+
+/* Class = "UILabel"; text = "Points 496"; ObjectID = "JVM-ek-Jer"; */
+"JVM-ek-Jer.text" = "496 Punkte";
+
+/* Class = "UIButton"; normalTitle = "Unlock Now! (100 Points)"; ObjectID = "Ny0-u0-xym"; */
+"Ny0-u0-xym.normalTitle" = "Freischalten! (100 Punkte)";
+
+/* Class = "UIButton"; normalTitle = "< Back"; ObjectID = "PnG-8I-kEO"; */
+"PnG-8I-kEO.normalTitle" = "< Zurück";
+
+/* Class = "UIButton"; normalTitle = "< Back"; ObjectID = "TRZ-b6-3Uk"; */
+"TRZ-b6-3Uk.normalTitle" = "< Zurück";
+
+/* Class = "UILabel"; text = "Game Over"; ObjectID = "bVb-4F-HPl"; */
+"bVb-4F-HPl.text" = "Spiel vorbei!";
+
+/* Class = "UILabel"; text = "Abdul Kadir"; ObjectID = "isE-uf-He3"; */
+"isE-uf-He3.text" = "Abdul Kadir";
+
+/* Class = "UILabel"; text = "Available Points : 4444"; ObjectID = "m9d-E1-y8w"; */
+"m9d-E1-y8w.text" = "Verfügbare Punkte";
+
+/* Class = "UILabel"; text = "Sound Effects"; ObjectID = "rWG-hw-Xm7"; */
+"rWG-hw-Xm7.text" = "Klangeffekte";
+
+/* Class = "UILabel"; text = "Vibrate"; ObjectID = "yfZ-e7-vgQ"; */
+"yfZ-e7-vgQ.text" = "Vibrieren";
+
+/* Class = "UILabel"; text = "Damage"; ObjectID = "td9-bn-b8U"; */
+"td9-bn-b8U.text" = "Schaden";
+
+/* Class = "UIButton"; normalTitle = "<"; ObjectID = "tvf-k4-d5B"; */
+"tvf-k4-d5B.normalTitle" = "<";
+
+/* Class = "UILabel"; text = "Earn 100 Points to Unlock"; ObjectID = "zfF-1d-zRA"; */
+"zfF-1d-zRA.text" = "Zum Freischalten benötigt du 100 Punkte.";

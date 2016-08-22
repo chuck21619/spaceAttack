@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="MoonBold.otf">
+            <string>Moon-Bold</string>
+            <string>Moon-Bold</string>
+            <string>Moon-Bold</string>
+            <string>Moon-Bold</string>
+        </mutableArray>
+        <mutableArray key="MoonLight.otf">
+            <string>Moon-Light</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UpgradeView">
+            <connections>
+                <outlet property="borderImageView" destination="aXj-MI-4pi" id="QKG-yt-utI"/>
+                <outlet property="constraintBottomBorderImage" destination="r1l-Ba-N82" id="wXi-27-sK5"/>
+                <outlet property="descriptionLabel" destination="hot-8M-Itk" id="eXE-lq-je2"/>
+                <outlet property="minimizedIcon" destination="JCe-iY-yl5" id="Wdi-DQ-Vbf"/>
+                <outlet property="myTopConstraint" destination="zVM-Iu-9Uc" id="8fi-xw-zpp"/>
+                <outlet property="myView" destination="iN0-l3-epB" id="6Wu-Td-NoK"/>
+                <outlet property="purchasedLabel" destination="Unb-GX-0Lu" id="dK7-bM-6Ix"/>
+                <outlet property="titleLabel" destination="xkC-fg-sq5" id="ggK-Ke-HyH"/>
+                <outlet property="unlockWithMoneyButton" destination="szL-86-hDS" id="BkX-Ov-LUp"/>
+                <outlet property="unlockWithPointsButton" destination="lCq-au-xvD" id="SHY-33-Sol"/>
+                <outlet property="view" destination="ER5-uX-ulP" id="zu2-9b-Eo8"/>
+                <outlet property="viewForSKView" destination="Sy7-wX-XI2" id="lP6-nx-BfZ"/>
+                <outletCollection property="constraints1" destination="vnB-an-Yxs" id="KyX-dY-eOJ"/>
+                <outletCollection property="constraints2" destination="OnF-fR-S1s" id="oDB-wH-xed"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="ER5-uX-ulP">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upgrade Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="xkC-fg-sq5">
+                            <rect key="frame" x="8" y="8" width="304" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="hme-vt-0Qe"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Moon-Bold" family="Moon" pointSize="19"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upgrade description. This is where the description of the upgrade will go. Test four lines" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hot-8M-Itk">
+                            <rect key="frame" x="8" y="249" width="304" height="81"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="81" id="Igd-en-yTk"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Moon-Light" family="Moon" pointSize="15"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PURCHASED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Unb-GX-0Lu">
+                            <rect key="frame" x="0.0" y="340" width="320" height="70"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="70" id="IIK-2T-0Ab"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Moon-Bold" family="Moon" pointSize="35"/>
+                            <color key="textColor" red="1" green="0.79947056719999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="lCq-au-xvD">
+                            <rect key="frame" x="8" y="327" width="145" height="75"/>
+                            <color key="backgroundColor" white="0.33333333329999998" alpha="0.5" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="lCq-au-xvD" secondAttribute="height" multiplier="110:57" id="ZQ6-km-Ksx"/>
+                                <constraint firstAttribute="width" secondItem="lCq-au-xvD" secondAttribute="height" multiplier="110:57" id="qBb-Y0-NXu"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Moon-Bold" family="Moon" pointSize="15"/>
+                            <state key="normal">
+                                <string key="title">Unlock Now!
+15k Points</string>
+                                <color key="titleColor" red="0.0" green="0.82952572599999996" blue="0.053326201509999997" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="qBb-Y0-NXu"/>
+                                </mask>
+                            </variation>
+                            <connections>
+                                <action selector="unlockWithPointsAction:" destination="-1" eventType="touchUpInside" id="KYl-k3-ZBK"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="szL-86-hDS">
+                            <rect key="frame" x="167" y="327" width="145" height="75"/>
+                            <color key="backgroundColor" white="0.33333333329999998" alpha="0.75" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="szL-86-hDS" secondAttribute="height" multiplier="110:57" id="T0R-PR-Ei8"/>
+                                <constraint firstAttribute="width" secondItem="szL-86-hDS" secondAttribute="height" multiplier="110:57" id="hu4-32-rbJ"/>
+                                <constraint firstAttribute="width" secondItem="szL-86-hDS" secondAttribute="height" multiplier="110:57" id="tAs-qp-0zF"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Moon-Bold" family="Moon" pointSize="15"/>
+                            <state key="normal">
+                                <string key="title">Unlock Now!
+$ .99</string>
+                                <color key="titleColor" red="0.0" green="0.82952572599999996" blue="0.053326201509999997" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="T0R-PR-Ei8"/>
+                                    <exclude reference="tAs-qp-0zF"/>
+                                </mask>
+                            </variation>
+                            <connections>
+                                <action selector="unlockWithMoneyAction:" destination="-1" eventType="touchUpInside" id="UG6-q3-4bw"/>
+                            </connections>
+                        </button>
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sy7-wX-XI2">
+                            <rect key="frame" x="8" y="56" width="304" height="185"/>
+                            <color key="backgroundColor" red="1" green="0.0" blue="0.87751084930000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="missile.png" translatesAutoresizingMaskIntoConstraints="NO" id="JCe-iY-yl5">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="lCq-au-xvD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="2EI-SM-wIm"/>
+                        <constraint firstAttribute="trailing" secondItem="xkC-fg-sq5" secondAttribute="trailing" constant="8" id="2GE-Oi-nes"/>
+                        <constraint firstAttribute="bottom" secondItem="szL-86-hDS" secondAttribute="bottom" constant="8" id="4Tv-9l-B5x"/>
+                        <constraint firstAttribute="bottom" secondItem="Unb-GX-0Lu" secondAttribute="bottom" id="5di-4a-uwz"/>
+                        <constraint firstItem="lCq-au-xvD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="6HY-Ex-db8"/>
+                        <constraint firstItem="lCq-au-xvD" firstAttribute="width" secondItem="szL-86-hDS" secondAttribute="width" id="BSJ-1h-mEd"/>
+                        <constraint firstItem="szL-86-hDS" firstAttribute="leading" secondItem="lCq-au-xvD" secondAttribute="trailing" constant="14" id="CfW-bH-vfu"/>
+                        <constraint firstAttribute="bottom" secondItem="JCe-iY-yl5" secondAttribute="bottom" id="EAa-GW-rZt"/>
+                        <constraint firstAttribute="trailing" secondItem="hot-8M-Itk" secondAttribute="trailing" constant="8" id="Eec-a9-YIr"/>
+                        <constraint firstAttribute="bottom" secondItem="szL-86-hDS" secondAttribute="bottom" constant="8" id="MWl-Is-2Xx"/>
+                        <constraint firstItem="xkC-fg-sq5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="NV9-T2-OLu"/>
+                        <constraint firstItem="JCe-iY-yl5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="QWZ-eM-bPQ"/>
+                        <constraint firstItem="Sy7-wX-XI2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="RNk-kd-Sl1"/>
+                        <constraint firstAttribute="trailing" secondItem="Sy7-wX-XI2" secondAttribute="trailing" constant="8" id="RaR-Mi-BzO"/>
+                        <constraint firstItem="Unb-GX-0Lu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="XUn-F8-CP6"/>
+                        <constraint firstAttribute="bottom" secondItem="hot-8M-Itk" secondAttribute="bottom" constant="80" id="ajq-sV-q3n"/>
+                        <constraint firstAttribute="trailing" secondItem="szL-86-hDS" secondAttribute="trailing" constant="8" id="av8-v1-Ylf"/>
+                        <constraint firstAttribute="trailing" secondItem="Unb-GX-0Lu" secondAttribute="trailing" id="cZd-bH-382"/>
+                        <constraint firstItem="Sy7-wX-XI2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="56" id="jRZ-BJ-LHz"/>
+                        <constraint firstItem="hot-8M-Itk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="lYy-vK-09f"/>
+                        <constraint firstAttribute="bottom" secondItem="Sy7-wX-XI2" secondAttribute="bottom" constant="169" id="mK4-7T-O9r"/>
+                        <constraint firstAttribute="bottom" secondItem="lCq-au-xvD" secondAttribute="bottom" constant="8" id="omL-Fx-EJT"/>
+                        <constraint firstAttribute="trailing" secondItem="JCe-iY-yl5" secondAttribute="trailing" id="pY4-Hj-BTt"/>
+                        <constraint firstItem="xkC-fg-sq5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="rGh-x3-Faq"/>
+                        <constraint firstAttribute="bottom" secondItem="lCq-au-xvD" secondAttribute="bottom" constant="8" id="rRA-lR-ID3"/>
+                        <constraint firstItem="szL-86-hDS" firstAttribute="leading" secondItem="lCq-au-xvD" secondAttribute="trailing" constant="14" id="tzB-CQ-epv"/>
+                        <constraint firstAttribute="trailing" secondItem="szL-86-hDS" secondAttribute="trailing" constant="8" id="vnB-an-Yxs"/>
+                        <constraint firstItem="JCe-iY-yl5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="zVM-Iu-9Uc"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="2EI-SM-wIm"/>
+                            <exclude reference="omL-Fx-EJT"/>
+                            <exclude reference="4Tv-9l-B5x"/>
+                            <exclude reference="av8-v1-Ylf"/>
+                            <exclude reference="tzB-CQ-epv"/>
+                        </mask>
+                    </variation>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aXj-MI-4pi">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="aXj-MI-4pi" secondAttribute="trailing" id="60i-Vg-mag"/>
+                <constraint firstItem="aXj-MI-4pi" firstAttribute="leading" secondItem="ER5-uX-ulP" secondAttribute="leading" id="EyM-Ff-lx8"/>
+                <constraint firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="OnF-fR-S1s"/>
+                <constraint firstItem="iN0-l3-epB" firstAttribute="top" secondItem="ER5-uX-ulP" secondAttribute="top" id="QaH-db-b2K"/>
+                <constraint firstItem="aXj-MI-4pi" firstAttribute="top" secondItem="ER5-uX-ulP" secondAttribute="top" id="Xjw-qX-FSW"/>
+                <constraint firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="hjr-bJ-sTS"/>
+                <constraint firstItem="iN0-l3-epB" firstAttribute="leading" secondItem="ER5-uX-ulP" secondAttribute="leading" id="j4z-pT-cfh"/>
+                <constraint firstAttribute="bottom" secondItem="aXj-MI-4pi" secondAttribute="bottom" id="r1l-Ba-N82"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="missile.png" width="20" height="70"/>
+    </resources>
+</document>

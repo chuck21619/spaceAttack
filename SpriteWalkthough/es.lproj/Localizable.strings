@@ -1,0 +1,140 @@
+//ship names
+"Abdul_Kadir" = "Azueta";
+"Babenberg" = "Baranda";
+"Caiman" = "Monasterio";
+"Dandolo" = "Uribe";
+"Edinburgh" = "Prierto";
+"Flandre" = "Godínez";
+"Gascogne" = "De la Vega";
+"Habsburg" = "Romero";
+
+"damage" = "DAÑOS";
+"armor" = "BLINDAJE";
+"speed" = "VELOCIDAD";
+
+/* No comment provided by engineer. */
+"Available Points" = "Puntos disponibles";
+
+/* No comment provided by engineer. */
+"Bigger Laser" = "Láser más grande";
+
+/* No comment provided by engineer. */
+"Blowing up aliens without taking damage makes your multiplier go up!" = "Si destruyes a los alienígenas sin sufrir daños el multiplicador irá aumentando.";
+
+/* No comment provided by engineer. */
+"Disable Tips" = "Desactivar consejos";
+
+/* No comment provided by engineer. */
+"Electricity Chain" = "Cadena de electricidad";
+
+/* No comment provided by engineer. */
+"Energy Booster" = "Potenciador de energía";
+
+/* No comment provided by engineer. */
+"Ermahgerd!" = "¡Ermahgerd!";
+
+/* No comment provided by engineer. */
+"Four Weapons" = "Cuatro armas";
+
+/* No comment provided by engineer. */
+"Got It" = "Vale";
+
+/* No comment provided by engineer. */
+"How to Move:" = "Cómo moverse:";
+
+/* No comment provided by engineer. */
+"Increases Photon Targeting IQ" = "Mejora la selección de objetivo inteligente del cañón de fotones";
+
+/* No comment provided by engineer. */
+"Increases rate of fire for the Machine Gun" = "Aumenta la velocidad de disparo de la ametralladora";
+
+/* No comment provided by engineer. */
+"Increases the size of Photon Cannon Beams" = "Aumenta el tamaño de los haces del cañón de fotones";
+
+/* No comment provided by engineer. */
+"More Bullets" = "Más balas";
+
+/* No comment provided by engineer. */
+"Ouch!" = "¡Huy!";
+
+/* No comment provided by engineer. */
+"points" = "Puntos";
+
+/* No comment provided by engineer. */
+"Powers up the Electrical Generator to send volts through to a second target" = "Activa el generador eléctrico para enviar una descarga a un segundo objetivo";
+
+/* No comment provided by engineer. */
+"Shield" = "Escudo";
+
+/* No comment provided by engineer. */
+"Smart Photons" = "Fotones inteligentes";
+
+/* No comment provided by engineer. */
+"Tilt the screen to move your ship" = "Inclina la pantalla para mover la nave";
+
+/* No comment provided by engineer. */
+"to Unlock" = "para desbloquear";
+
+/* No comment provided by engineer. */
+"Try to avoid objects like these:" = "Intenta evitar los objetos como estos:";
+
+/* No comment provided by engineer. */
+"Two Weapons" = "Dos armas";
+
+/* No comment provided by engineer. */
+"Unavailable" = "No disponible";
+
+/* No comment provided by engineer. */
+"Unlock Now" = "Desbloquear ahora";
+
+/* No comment provided by engineer. */
+"Unlocks the Energy Booster Power Up. Doubles Points and Damage for 30 seconds" = "Desbloquea el poder especial de potenciador de energía. Doble de puntos y daños durante 30 segundos.";
+
+/* No comment provided by engineer. */
+"Unlocks the Shield Power Up" = "Desbloquea el poder especial de escudo.";
+
+/* No comment provided by engineer. */
+"Weapon PowerUp!" = "¡Poder especial de arma!";
+
+/* No comment provided by engineer. */
+"You just blew up an alien spaceship! The more stuff you blow up, The more points you score!" = "¡Acabas de destruir una nave alienígena! Cuanto más destruyas, más puntos irás acumulando.";
+
+/* No comment provided by engineer. */
+"You just picked up a weapon! Pick up the same weapon again to upgrade it" = "¡Acabas de recoger un arma! Vuelve a recoger la misma arma para mejorarla.";
+
+/* No comment provided by engineer. */
+"Your spaceships will be able to equip four different weapons!" = "Podrás equipar cuatro armas distintas en tus naves.";
+
+/* No comment provided by engineer. */
+"Your spaceships will be able to equip two different weapons!" = "Podrás equipar dos armas distintas en tus naves.";
+
+//achievement bonus points descriptions
+"kAchievementMaxLevelMachineGun" = "Máximo Ametralladora";
+"kAchievementMaxLevelPhotonCannon" = "Máximo Fotones";
+"kAchievementMaxLevelElectricalGenerator" = "Máximo Eléctrico";
+"kAchievementMaxLevelLaserCannon" = "Máximo Cañón Láser";
+"kAchievementBulletsFired100" = "Disparó 100 Balas";
+"kAchievementBulletsFired1000" = "Disparó 1000 Balas";
+"kAchievementBulletsFired10000" = "Disparó 10000 Balas";
+"kAchievementBulletsFired100000" = "Disparó 100000 Balas";
+"kAchievementPhotonsFired25" = "Disparó 25 Fotones";
+"kAchievementPhotonsFired250" = "Disparó 250 Fotones";
+"kAchievementPhotonsFired2500" = "Disparó 2500 Fotones";
+"kAchievementPhotonsFired25000" = "Disparó 25000 Fotones";
+"kAchievementLasersFired15" = "Disparó 15 Láseres";
+"kAchievementLasersFired150" = "Disparó 150 Láseres";
+"kAchievementLasersFired1500" = "Disparó 1500 Láseres";
+"kAchievementLasersFired15000" = "Disparó 15000 Láseres";
+"kAchievementElectricityFired20" = "Disparó 20 Electricidad";
+"kAchievementElectricityFired200" = "Disparó 200 Electricidad";
+"kAchievementElectricityFired2000" = "Disparó 2000 Electricidad";
+"kAchievementElectricityFired20000" = "Disparó 20000 Electricidad";
+"kAchievementEnemiesDestroyed50" = "Destruido 50 Alienígenas";
+"kAchievementEnemiesDestroyed500" = "Destruido 500 Alienígenas";
+"kAchievementEnemiesDestroyed5000" = "Destruido 5000 Alienígenas";
+"kAchievementEnemiesDestroyed50000" = "Destruido 50000 Alienígenas";
+"kAchievementPowerUpsCollected3" = "Recogido 3 Poder Especial";
+"kAchievementPowerUpsCollected30" = "Recogido 30 Poder Especial";
+"kAchievementPowerUpsCollected300" = "Recogido 300 Poder Especial";
+"kAchievementPowerUpsCollected3000" = "Recogido 3 Poder Especial";
+"kAchievementAllAchievements" = "La Leyenda Del Cosmos";

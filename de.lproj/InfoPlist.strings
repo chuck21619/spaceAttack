@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  SpaceAttack
+
+  Created by charles johnston on 7/24/16.
+  Copyright © 2016 chuck. All rights reserved.
+*/
+
+//app name
+"CFBundleDisplayName" = "Platzangriff";

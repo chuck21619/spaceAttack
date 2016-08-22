@@ -1,0 +1,140 @@
+//ship names
+"Abdul_Kadir" = "甲鉄";
+"Babenberg" = "扶桑";
+"Caiman" = "鎮遠";
+"Dandolo" = "朝日";
+"Edinburgh" = "香取";
+"Flandre" = "伊勢";
+"Gascogne" = "長門";
+"Habsburg" = "大和";
+
+"damage" = "ダメージ";
+"armor" = "アーマー";
+"speed" = "スピード";
+
+/* No comment provided by engineer. */
+"Available Points" = "利用可能ポイント";
+
+/* No comment provided by engineer. */
+"Bigger Laser" = "ビッグレーザー";
+
+/* No comment provided by engineer. */
+"Blowing up aliens without taking damage makes your multiplier go up!" = "ダメージを受けずにエイリアンを倒し続けると、スコアボーナスがどんどんアップ！";
+
+/* No comment provided by engineer. */
+"Disable Tips" = "ヒントをオフ";
+
+/* No comment provided by engineer. */
+"Electricity Chain" = "電気チェーン";
+
+/* No comment provided by engineer. */
+"Energy Booster" = "エネルギーブースター";
+
+/* No comment provided by engineer. */
+"Ermahgerd!" = "オーマイガーッ！";
+
+/* No comment provided by engineer. */
+"Four Weapons" = "4種の武器";
+
+/* No comment provided by engineer. */
+"Got It" = "OK";
+
+/* No comment provided by engineer. */
+"How to Move:" = "操縦方法";
+
+/* No comment provided by engineer. */
+"Increases Photon Targeting IQ" = "フォトン追尾IQを上昇";
+
+/* No comment provided by engineer. */
+"Increases rate of fire for the Machine Gun" = "マシンガンの発射速度アップ";
+
+/* No comment provided by engineer. */
+"Increases the size of Photon Cannon Beams" = "フォトンキャノンビームのサイズ増";
+
+/* No comment provided by engineer. */
+"More Bullets" = "弾丸増加";
+
+/* No comment provided by engineer. */
+"Ouch!" = "ドカン！";
+
+/* No comment provided by engineer. */
+"points" = "ポイント";
+
+/* No comment provided by engineer. */
+"Powers up the Electrical Generator to send volts through to a second target" = "電気ジェネレーターをパワーアップして2つ目のターゲットに電撃";
+
+/* No comment provided by engineer. */
+"Shield" = "シールド";
+
+/* No comment provided by engineer. */
+"Smart Photons" = "スマートフォトン";
+
+/* No comment provided by engineer. */
+"Tilt the screen to move your ship" = "画面をティルト（傾け）するとシップが移動";
+
+/* No comment provided by engineer. */
+"to Unlock" = "アンロック";
+
+/* No comment provided by engineer. */
+"Try to avoid objects like these:" = "以下のようなオブジェクトは避ける";
+
+/* No comment provided by engineer. */
+"Two Weapons" = "2種類の武器";
+
+/* No comment provided by engineer. */
+"Unavailable" = "利用不可";
+
+/* No comment provided by engineer. */
+"Unlock Now" = "今すぐアンロック";
+
+/* No comment provided by engineer. */
+"Unlocks the Energy Booster Power Up. Doubles Points and Damage for 30 seconds" = "エネルギーブースターをアンロック。ポイントとダメージが30秒間2倍";
+
+/* No comment provided by engineer. */
+"Unlocks the Shield Power Up" = "シールドをアンロック";
+
+/* No comment provided by engineer. */
+"Weapon PowerUp!" = "武器パワーアップ！";
+
+/* No comment provided by engineer. */
+"You just blew up an alien spaceship! The more stuff you blow up, The more points you score!" = "エイリアンのシップを破壊した！その調子で、敵を倒すほどスコアはアップするぞ！";
+
+/* No comment provided by engineer. */
+"You just picked up a weapon! Pick up the same weapon again to upgrade it" = "武器をゲットした！同じ武器をもう一度ゲットするとアップグレードだ";
+
+/* No comment provided by engineer. */
+"Your spaceships will be able to equip four different weapons!" = "スペースシップは4種類の武器を使用できるぞ！";
+
+/* No comment provided by engineer. */
+"Your spaceships will be able to equip two different weapons!" = "スペースシップは2種類の武器を使用できるぞ！";
+
+//achievement bonus points descriptions
+"kAchievementMaxLevelMachineGun" = "最大マシンガン";
+"kAchievementMaxLevelPhotonCannon" = "最大フォトンキャノン";
+"kAchievementMaxLevelElectricalGenerator" = "最大電気ジェネレーター";
+"kAchievementMaxLevelLaserCannon" = "最大レーザーキャノン";
+"kAchievementBulletsFired100" = "100弾丸を発射";
+"kAchievementBulletsFired1000" = "1000弾丸を発射";
+"kAchievementBulletsFired10000" = "10000弾丸を発射";
+"kAchievementBulletsFired100000" = "100000弾丸を発射";
+"kAchievementPhotonsFired25" = "25光子を発射";
+"kAchievementPhotonsFired250" = "250光子を発射";
+"kAchievementPhotonsFired2500" = "2500光子を発射";
+"kAchievementPhotonsFired25000" = "25000光子を発射";
+"kAchievementLasersFired15" = "15レーザーを発射";
+"kAchievementLasersFired150" = "150レーザーを発射";
+"kAchievementLasersFired1500" = "1500レーザーを発射";
+"kAchievementLasersFired15000" = "15000レーザーを発射";
+"kAchievementElectricityFired20" = "20電気を解雇";
+"kAchievementElectricityFired200" = "200電気を解雇";
+"kAchievementElectricityFired2000" = "2000電気を解雇";
+"kAchievementElectricityFired20000" = "20000電気を解雇";
+"kAchievementEnemiesDestroyed50" = "50エイリアンを破壊しました";
+"kAchievementEnemiesDestroyed500" = "500エイリアンを破壊しました";
+"kAchievementEnemiesDestroyed5000" = "5000エイリアンを破壊しました";
+"kAchievementEnemiesDestroyed50000" = "50000エイリアンを破壊しました";
+"kAchievementPowerUpsCollected3" = "3パワーアップを集めます";
+"kAchievementPowerUpsCollected30" = "30パワーアップを集めます";
+"kAchievementPowerUpsCollected300" = "300パワーアップを集めます";
+"kAchievementPowerUpsCollected3000" = "3000パワーアップを集めます";
+"kAchievementAllAchievements" = "スペースレジェンド";
