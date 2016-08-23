@@ -375,6 +375,7 @@
 		A3AEDFB51C6AF808009966FE /* joystick.png in Resources */ = {isa = PBXBuildFile; fileRef = A3AEDFB21C6AF808009966FE /* joystick.png */; };
 		A3AEDFB61C6AF808009966FE /* sledgehammer.png in Resources */ = {isa = PBXBuildFile; fileRef = A3AEDFB31C6AF808009966FE /* sledgehammer.png */; };
 		A3B4008F1D445C2800E0AFDF /* UpgradeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3B400911D445C2800E0AFDF /* UpgradeView.xib */; };
+		A3B7F2421D6C012100DB27FA /* UpgradeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B7F2411D6C012100DB27FA /* UpgradeCell.m */; };
 		A3C615C51C4CCE5000566AF2 /* DQAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C615C41C4CCE5000566AF2 /* DQAlertView.m */; };
 		A3C8279B1B76A93F007F7E64 /* pellet.png in Resources */ = {isa = PBXBuildFile; fileRef = A3C8279A1B76A93F007F7E64 /* pellet.png */; };
 		A3CE27561C4B66B20082D2AC /* Clouds.sks in Resources */ = {isa = PBXBuildFile; fileRef = A3CE27551C4B66B20082D2AC /* Clouds.sks */; };
@@ -930,6 +931,8 @@
 		A3B400951D445C3500E0AFDF /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/UpgradeView.strings; sourceTree = "<group>"; };
 		A3B400971D445C3700E0AFDF /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/UpgradeView.strings; sourceTree = "<group>"; };
 		A3B400991D445C3800E0AFDF /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/UpgradeView.strings; sourceTree = "<group>"; };
+		A3B7F2401D6C012100DB27FA /* UpgradeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpgradeCell.h; sourceTree = "<group>"; };
+		A3B7F2411D6C012100DB27FA /* UpgradeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpgradeCell.m; sourceTree = "<group>"; };
 		A3C615C31C4CCE5000566AF2 /* DQAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQAlertView.h; sourceTree = "<group>"; };
 		A3C615C41C4CCE5000566AF2 /* DQAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQAlertView.m; sourceTree = "<group>"; };
 		A3C8279A1B76A93F007F7E64 /* pellet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pellet.png; sourceTree = "<group>"; };
@@ -1530,6 +1533,8 @@
 				A301127D1D5FE9EE00E133F2 /* ShipSelectMeter.h */,
 				A301127E1D5FE9EE00E133F2 /* ShipSelectMeter.m */,
 				A301127B1D5FE9AC00E133F2 /* upgrade */,
+				A3B7F2401D6C012100DB27FA /* UpgradeCell.h */,
+				A3B7F2411D6C012100DB27FA /* UpgradeCell.m */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -2725,6 +2730,7 @@
 				A34F35241D56F8BE007A1191 /* Reachability.m in Sources */,
 				A331D6811C72DCB20054124F /* DGActivityIndicatorLineScalePulseOutRapidAnimation.m in Sources */,
 				A39CEF621D317D7E00C01870 /* OALAudioSession.m in Sources */,
+				A3B7F2421D6C012100DB27FA /* UpgradeCell.m in Sources */,
 				6E49CEE51A91C74D00FC48CC /* Gascogne.m in Sources */,
 				135BEDB91975B43100892311 /* EnemyWeaponsKit.m in Sources */,
 				135BEDBC1975B46D00892311 /* EnemyWeapon.m in Sources */,

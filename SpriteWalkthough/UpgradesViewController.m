@@ -10,11 +10,15 @@
 #import "DQAlertView.h"
 #import "AccountManager.h"
 #import "AudioManager.h"
-#import "MenuBackgroundScene.h"
 #import <Crashlytics/Crashlytics.h>
 #import "SpriteAppDelegate.h"
+#import "MenuBackgroundScene.h"
+#import "UpgradeCell.h"
 
 @implementation UpgradesViewController
+{
+    CAGradientLayer * _gradientLayer;
+}
 
 - (void) viewDidLoad
 {
@@ -24,64 +28,33 @@
     
     self.upgrades = [[AccountManager sharedInstance] upgrades];
     
-    [self validateProductIdentifiers];
+    //[self validateProductIdentifiers];
     
-    self.shadingView.alpha = 0;
-    UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(shadingViewPressed)];
-    [self.shadingView addGestureRecognizer:tapGesture];
     
-    for ( UIView * tmpUIView in self.view.subviews )
-    {
-        if ( [tmpUIView class] == [UpgradeView class] )
-            [(UpgradeView *)tmpUIView setDelegate:self];
-    }
     
-    [self.upgradeView1 setupForUpgrade:[self.upgrades objectAtIndex:0]];
-    [self.upgradeView2 setupForUpgrade:[self.upgrades objectAtIndex:1]];
-    [self.upgradeView3 setupForUpgrade:[self.upgrades objectAtIndex:2]];
-    [self.upgradeView4 setupForUpgrade:[self.upgrades objectAtIndex:3]];
-    [self.upgradeView5 setupForUpgrade:[self.upgrades objectAtIndex:4]];
-    [self.upgradeView6 setupForUpgrade:[self.upgrades objectAtIndex:5]];
-    [self.upgradeView7 setupForUpgrade:[self.upgrades objectAtIndex:6]];
-    [self.upgradeView8 setupForUpgrade:[self.upgrades objectAtIndex:7]];
     
-    [_AppDelegate addGlowToLayer:self.upgradeTitleLabel.layer withColor:[self.upgradeTitleLabel.textColor CGColor]];
-    [_AppDelegate addGlowToLayer:self.availablePointsLabel.layer withColor:[self.availablePointsLabel.textColor CGColor]];
-    [_AppDelegate addGlowToLayer:self.backButton.titleLabel.layer withColor:[self.backButton.titleLabel.textColor CGColor]];
+    self.myTable.rowHeight = UITableViewAutomaticDimension;
+    self.myTable.estimatedRowHeight = 80;
     
-    CGRect screenBound = [[UIScreen mainScreen] bounds];
+    
+//    _gradientLayer = [CAGradientLayer layer];
+//    _gradientLayer.frame = self.view.frame;
+//    _gradientLayer.colors = @[(id)self.myTable.backgroundColor.CGColor, (id)[UIColor clearColor].CGColor];
+//    _gradientLayer.endPoint = CGPointMake(1.0f, 0.07f);
+//    _gradientLayer.startPoint = CGPointMake(1.0f, .2f);
+//    self.tableAlphaMaskView.layer.mask = _gradientLayer;
+    
     MenuBackgroundScene * backgroundScene = [MenuBackgroundScene sharedInstance];
-    self.animatedBackgroundSKView = [[SKView alloc] initWithFrame:screenBound];
-    [self.view insertSubview:self.animatedBackgroundSKView belowSubview:self.upgradeView1];
-    [self.animatedBackgroundSKView presentScene:backgroundScene];
-}
-
-- (void) adjust4WeaponsView
-{
-    int numberofUnlockedUpgrades = 0;
-    for ( Upgrade * upgrade in self.upgrades )
-    {
-        if ( upgrade.isUnlocked == YES )
-            numberofUnlockedUpgrades++;
-    }
+    SKView * spriteView = (SKView *)self.view;
+    [spriteView presentScene:backgroundScene];
     
-    
-    if ( numberofUnlockedUpgrades < 7 )
-    {
-        self.upgradeView8.upgrade.icon = [UIImage imageNamed:@"locked.png"];
-        self.upgradeView8.userInteractionEnabled = NO;
-    }
-    else
-    {
-        self.upgradeView8.upgrade.icon = [[Upgrade alloc] initWithUpgradeType:kUpgrade4Weapons].icon;
-        self.upgradeView8.userInteractionEnabled = YES;
-    }
-    [self.upgradeView8 refreshView];
+//    [_AppDelegate addGlowToLayer:self.upgradeTitleLabel.layer withColor:[self.upgradeTitleLabel.textColor CGColor]];
+//    [_AppDelegate addGlowToLayer:self.availablePointsLabel.layer withColor:[self.availablePointsLabel.textColor CGColor]];
+//    [_AppDelegate addGlowToLayer:self.backButton.titleLabel.layer withColor:[self.backButton.titleLabel.textColor CGColor]];
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    [self adjust4WeaponsView];
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
     NSString *numberString = [numberFormatter stringFromNumber:@([AccountManager availablePoints])];
@@ -93,53 +66,12 @@
         self.view.alpha = 1;
     }];
     
-    
-//    for ( UIView * subview in [self.view subviews] )
-//        subview.alpha = 0;
-//    [UIView animateWithDuration:.2 animations:^
-//    {
-//        for ( UIView * subview in [self.view subviews] )
-//            subview.alpha = 1;
-//    }];
-    
-    for ( UpgradeView * upgradeView in [self.view subviews] )
-    {
-        if ( [upgradeView class] == [UpgradeView class] )
-            upgradeView.minimizedFrame = upgradeView.frame;
-    }
 }
 
-- (void) viewDidLayoutSubviews
-{
-    //GD autolayout - autolayout is recalculating the upgradeView frame once the [upgradeView addSubview] is called
-    //addSubview is necessary becuase i have to Nil out the skView when minimizing the upgradeView to get rid of the skScene
-    //i have to get rid of the skScene becuase i cant have multiple skScenes at the same time
-
-    for ( UpgradeView * upgradeView in [self.view subviews] )
-    {
-        if ( [upgradeView class] == [UpgradeView class] )
-        {
-            if ( ! upgradeView.isMinimizing )
-            {
-                if ( ! upgradeView.isMinimized )
-                    upgradeView.frame = upgradeView.maximizedFrame;
-                else
-                    [upgradeView minimizeViewAnimated:NO];
-            }
-        }
-    }
-    
-}
 
 - (void) refreshUpgradeViews
 {
-    for ( UIView * tmpUIView in self.view.subviews )
-    {
-        if ( [tmpUIView class] == [UpgradeView class] )
-            [(UpgradeView *)tmpUIView refreshView];
-    }
-    
-    [self adjust4WeaponsView];
+    [self.myTable reloadData];
 }
 
 - (void) dealloc
@@ -148,11 +80,6 @@
     [self.productsRequest cancel];
     self.productsRequest = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void) achievementsLoaded
-{
-    [self refreshUpgradeViews];
 }
 
 - (IBAction)backAction:(id)sender
@@ -167,6 +94,7 @@
         [self dismissViewControllerAnimated:NO completion:nil];
     }];
 }
+
 
 - (void) showProgressHud
 {
@@ -203,39 +131,7 @@
     }];
 }
 
-- (void) fadeOutShadingViewIfNeeded
-{
-    BOOL shouldFadeOut = YES;
-    for ( UpgradeView * upgradeView in [self.view subviews] )
-    {
-        if ( [upgradeView class] == [UpgradeView class] )
-        {
-            if ( !upgradeView.isMinimized && !upgradeView.isMinimizing)
-                shouldFadeOut = NO;
-        }
-    }
-    
-    if ( shouldFadeOut )
-    {
-        [UIView animateWithDuration:.5 animations:^
-         {
-             self.shadingView.alpha = 0;
-         }];
-    }
-}
-
-- (void) shadingViewPressed
-{
-    for ( UpgradeView * upgradeView in [self.view subviews] )
-    {
-        if ( [upgradeView class] == [UpgradeView class] )
-        {
-            if ( ! upgradeView.isMinimized )
-                [upgradeView minimizeViewAnimated:YES];
-        }
-    }
-}
-
+/*
 - (void) animateAvailablePoints:(NSNumber *)pointsToSubtractNumber
 {
     int pointsToSubtract = [pointsToSubtractNumber intValue];
@@ -256,6 +152,71 @@
     
     if ( pointsToSubtract != 500 )
         [self performSelector:@selector(animateAvailablePoints:) withObject:[NSNumber numberWithInt:pointsToSubtract-500] afterDelay:.05];
+}*/
+
+
+#pragma mark - table view
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 35;
+}
+
+- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UpgradeCell * cell = (UpgradeCell*)[tableView dequeueReusableCellWithIdentifier:@"upgradeCell"];
+    
+    if ( indexPath.row == 0 )
+    {
+        cell.heightConstraint.constant = 100;
+        for ( UIView * subview in [cell subviews] )
+            [subview removeFromSuperview];
+        cell.backgroundColor = [UIColor clearColor];
+    }
+    else
+    {
+        cell.heightConstraint.constant = 80;
+        cell.backgroundColor = [UIColor lightGrayColor];
+    }
+    
+    return cell;
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UpgradeCell * cell = (UpgradeCell*)[tableView cellForRowAtIndexPath:indexPath];
+
+    NSArray * colors;
+    
+    if ( cell.heightConstraint.constant == self.view.frame.size.height )
+    {
+        cell.heightConstraint.constant = 80;
+        tableView.scrollEnabled = YES;
+        colors = @[(id)self.myTable.backgroundColor.CGColor, (id)[UIColor clearColor].CGColor];
+    }
+    else
+    {
+        cell.heightConstraint.constant = self.view.frame.size.height;
+        tableView.scrollEnabled = NO;
+        colors = [NSArray arrayWithObjects:(id)[UIColor blackColor].CGColor, (id)[UIColor blackColor].CGColor, nil];
+    }
+    
+    [UIView animateWithDuration:.3 animations:^
+     {
+         //table/cell
+         [cell.contentView layoutIfNeeded];
+         [tableView beginUpdates];
+         [tableView endUpdates];
+         [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+         
+         //top gradient
+         //_gradientLayer.colors = colors;
+     }];
+}
+
+#pragma mark - game center
+- (void) achievementsLoaded
+{
+    [self refreshUpgradeViews];
 }
 
 #pragma mark - store kit
@@ -342,42 +303,7 @@
     [self refreshUpgradeViews];
 }
 
-#pragma mark - upgrade view delegate
-- (void) willMaximizeUpgradeView:(UpgradeView *)upgradeView
-{
-    self.animatingUpgradeView = YES;
-    [self.view bringSubviewToFront:self.shadingView];
-    [self.view bringSubviewToFront:upgradeView];
-    [UIView animateWithDuration:.5 animations:^
-    {
-        [self.view layoutSubviews];
-    }];
-    
-    
-    [UIView animateWithDuration:.5 animations:^
-    {
-        self.shadingView.alpha = .8;
-    }];
-}
-
-- (void) didMaximizeUpgradeView:(UpgradeView *)upgradeView
-{
-    self.animatingUpgradeView = NO;
-    self.activeUpgrade = upgradeView.upgrade;
-}
-
-- (void) willMinimizeUpgradeView:(UpgradeView *)upgradeView
-{
-    self.animatingUpgradeView = YES;
-    [self fadeOutShadingViewIfNeeded];
-}
-
-- (void) didMinimizeUpgradeView:(UpgradeView *)upgradeView
-{
-    self.animatingUpgradeView = NO;
-    self.activeUpgrade = nil;
-}
-
+/*
 - (void) unlockWithPointsPressed:(UpgradeView *)upgradeView
 {
     [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuUnlock];
@@ -414,7 +340,7 @@
     };
     [unlockAlert show];
 }
-
+ 
 - (void) unlockWithMoneyPressed:(UpgradeView *)upgradeView
 {
     [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuUnlock];
@@ -454,5 +380,5 @@
         }
     };
     [unlockAlert show];
-}
+}*/
 @end
