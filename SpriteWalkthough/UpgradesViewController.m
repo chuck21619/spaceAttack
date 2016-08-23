@@ -44,9 +44,9 @@
     _gradientLayer.startPoint = CGPointMake(1.0f, .2f);
     self.tableAlphaMaskView.layer.mask = _gradientLayer;
     
-    MenuBackgroundScene * backgroundScene = [MenuBackgroundScene sharedInstance];
-    SKView * spriteView = (SKView *)self.view;
-    [spriteView presentScene:backgroundScene];
+//    MenuBackgroundScene * backgroundScene = [MenuBackgroundScene sharedInstance];
+//    SKView * spriteView = (SKView *)self.view;
+//    [spriteView presentScene:backgroundScene];
     
     [_AppDelegate addGlowToLayer:self.upgradeTitleLabel.layer withColor:[self.upgradeTitleLabel.textColor CGColor]];
     [_AppDelegate addGlowToLayer:self.availablePointsLabel.layer withColor:[self.availablePointsLabel.textColor CGColor]];

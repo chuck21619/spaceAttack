@@ -764,7 +764,7 @@ Firead 100 Bullets + 100 points</string>
                         <viewControllerLayoutGuide type="top" id="bcS-pB-vE8"/>
                         <viewControllerLayoutGuide type="bottom" id="6zT-Rt-WEQ"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="JHo-OB-i3G" customClass="SKView">
+                    <view key="view" contentMode="scaleToFill" id="JHo-OB-i3G">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
