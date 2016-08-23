@@ -84,7 +84,7 @@
 {
     [self addGlowToLayer:layer withColor:color size:4.0];
 }
-//
+
 - (void) addGlowToLayer:(CALayer *)layer withColor:(CGColorRef)color size:(float)size
 {
     layer.shadowColor = color;
