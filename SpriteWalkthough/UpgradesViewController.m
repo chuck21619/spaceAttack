@@ -37,20 +37,20 @@
     self.myTable.estimatedRowHeight = 80;
     
     
-//    _gradientLayer = [CAGradientLayer layer];
-//    _gradientLayer.frame = self.view.frame;
-//    _gradientLayer.colors = @[(id)self.myTable.backgroundColor.CGColor, (id)[UIColor clearColor].CGColor];
-//    _gradientLayer.endPoint = CGPointMake(1.0f, 0.07f);
-//    _gradientLayer.startPoint = CGPointMake(1.0f, .2f);
-//    self.tableAlphaMaskView.layer.mask = _gradientLayer;
+    _gradientLayer = [CAGradientLayer layer];
+    _gradientLayer.frame = self.view.frame;
+    _gradientLayer.colors = @[(id)self.myTable.backgroundColor.CGColor, (id)[UIColor clearColor].CGColor];
+    _gradientLayer.endPoint = CGPointMake(1.0f, 0.07f);
+    _gradientLayer.startPoint = CGPointMake(1.0f, .2f);
+    self.tableAlphaMaskView.layer.mask = _gradientLayer;
     
     MenuBackgroundScene * backgroundScene = [MenuBackgroundScene sharedInstance];
     SKView * spriteView = (SKView *)self.view;
     [spriteView presentScene:backgroundScene];
     
-//    [_AppDelegate addGlowToLayer:self.upgradeTitleLabel.layer withColor:[self.upgradeTitleLabel.textColor CGColor]];
-//    [_AppDelegate addGlowToLayer:self.availablePointsLabel.layer withColor:[self.availablePointsLabel.textColor CGColor]];
-//    [_AppDelegate addGlowToLayer:self.backButton.titleLabel.layer withColor:[self.backButton.titleLabel.textColor CGColor]];
+    [_AppDelegate addGlowToLayer:self.upgradeTitleLabel.layer withColor:[self.upgradeTitleLabel.textColor CGColor]];
+    [_AppDelegate addGlowToLayer:self.availablePointsLabel.layer withColor:[self.availablePointsLabel.textColor CGColor]];
+    [_AppDelegate addGlowToLayer:self.backButton.titleLabel.layer withColor:[self.backButton.titleLabel.textColor CGColor]];
 }
 
 - (void) viewWillAppear:(BOOL)animated

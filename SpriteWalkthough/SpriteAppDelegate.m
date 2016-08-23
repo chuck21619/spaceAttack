@@ -87,6 +87,8 @@
     layer.shadowOpacity = 1;
     layer.shadowOffset = CGSizeZero;
     layer.masksToBounds = NO;
+    layer.shouldRasterize = YES;
+    layer.rasterizationScale = UIScreen.mainScreen.scale;
 }
 
 - (void) addGlowToLayer:(CALayer *)layer withColor:(CGColorRef)color size:(float)size
