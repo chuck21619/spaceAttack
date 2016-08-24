@@ -1,12 +1,8 @@
 
 *.xcuserstate
 
-*.xcuserstate
+*.xcscheme
 
-SpaceAttack.xcodeproj/project.xcworkspace/xcuserdata/charlesjohnston.xcuserdatad/UserInterfaceState.xcuserstate
-
-SpaceAttack.xcodeproj/xcuserdata/517758.xcuserdatad/xcschemes/SpaceAttack.xcscheme
-
-SpaceAttack.xcodeproj/xcuserdata/517758.xcuserdatad/xcschemes/xcschememanagement.plist
+*xcschememanagement.plist
 
 *.xcbkptlist
