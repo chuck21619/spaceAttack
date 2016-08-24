@@ -19,7 +19,7 @@
 
 @implementation UpgradesViewController
 {
-    CAGradientLayer * _gradientLayer;
+    //CAGradientLayer * _gradientLayer;
     int _defaultRowHeight;
 }
 
@@ -40,12 +40,12 @@
     self.myTable.estimatedRowHeight = _defaultRowHeight;
     
     
-    _gradientLayer = [CAGradientLayer layer];
-    _gradientLayer.frame = self.view.frame;
-    _gradientLayer.colors = @[(id)self.myTable.backgroundColor.CGColor, (id)[UIColor clearColor].CGColor];
-    _gradientLayer.endPoint = CGPointMake(1.0f, 0.07f);
-    _gradientLayer.startPoint = CGPointMake(1.0f, .2f);
-    self.tableAlphaMaskView.layer.mask = _gradientLayer;
+//    _gradientLayer = [CAGradientLayer layer];
+//    _gradientLayer.frame = self.view.frame;
+//    _gradientLayer.colors = @[(id)self.myTable.backgroundColor.CGColor, (id)[UIColor clearColor].CGColor];
+//    _gradientLayer.endPoint = CGPointMake(1.0f, 0.07f);
+//    _gradientLayer.startPoint = CGPointMake(1.0f, .2f);
+//    self.tableAlphaMaskView.layer.mask = _gradientLayer;
     
 //    MenuBackgroundScene * backgroundScene = [MenuBackgroundScene sharedInstance];
 //    SKView * spriteView = (SKView *)self.view;
@@ -173,12 +173,10 @@
         cell.heightConstraint.constant = 100;
         for ( UIView * subview in [cell subviews] )
             [subview removeFromSuperview];
-        cell.backgroundColor = [UIColor clearColor];
     }
     else
     {
         cell.heightConstraint.constant = _defaultRowHeight;
-        cell.backgroundColor = [UIColor lightGrayColor];
     }
     
     return cell;
@@ -192,12 +190,24 @@
     
     if ( cell.heightConstraint.constant == self.view.frame.size.height )
     {
+        [UIView animateWithDuration:.3 animations:^
+        {
+            self.upgradeTitleLabel.alpha = 1;
+            self.availablePointsLabel.alpha = 1;
+        }];
+        
         cell.heightConstraint.constant = _defaultRowHeight;
         tableView.scrollEnabled = YES;
         colors = @[(id)self.myTable.backgroundColor.CGColor, (id)[UIColor clearColor].CGColor];
     }
     else
     {
+        [UIView animateWithDuration:.3 animations:^
+        {
+            self.upgradeTitleLabel.alpha = 0;
+            self.availablePointsLabel.alpha = 0;
+        }];
+        
         cell.heightConstraint.constant = self.view.frame.size.height;
         tableView.scrollEnabled = NO;
         colors = [NSArray arrayWithObjects:(id)[UIColor blackColor].CGColor, (id)[UIColor blackColor].CGColor, nil];
@@ -212,7 +222,7 @@
          [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
          
          //top gradient
-         _gradientLayer.colors = colors;
+         //_gradientLayer.colors = colors;
      }];
 }
 

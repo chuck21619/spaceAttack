@@ -1532,9 +1532,9 @@
 				A3DB9EEC1D618E61006A8AEB /* GlowingButton.m */,
 				A301127D1D5FE9EE00E133F2 /* ShipSelectMeter.h */,
 				A301127E1D5FE9EE00E133F2 /* ShipSelectMeter.m */,
-				A301127B1D5FE9AC00E133F2 /* upgrade */,
 				A3B7F2401D6C012100DB27FA /* UpgradeCell.h */,
 				A3B7F2411D6C012100DB27FA /* UpgradeCell.m */,
+				A301127B1D5FE9AC00E133F2 /* upgradeOld */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -1553,14 +1553,14 @@
 			name = "ship select";
 			sourceTree = "<group>";
 		};
-		A301127B1D5FE9AC00E133F2 /* upgrade */ = {
+		A301127B1D5FE9AC00E133F2 /* upgradeOld */ = {
 			isa = PBXGroup;
 			children = (
 				A3328C021C6FBCF800E18FF4 /* UpgradeView.h */,
 				A3328C031C6FBCF800E18FF4 /* UpgradeView.m */,
 				A3B400911D445C2800E0AFDF /* UpgradeView.xib */,
 			);
-			name = upgrade;
+			name = upgradeOld;
 			sourceTree = "<group>";
 		};
 		A3170E691CC46C640098C24E /* shield */ = {

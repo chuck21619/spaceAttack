@@ -88,7 +88,7 @@
 - (void) addGlowToLayer:(CALayer *)layer withColor:(CGColorRef)color size:(float)size
 {
     layer.shadowColor = color;
-    layer.shadowRadius = 0;
+    layer.shadowRadius = size;
     layer.shadowOpacity = 1;
     layer.shadowOffset = CGSizeZero;
     layer.masksToBounds = NO;
