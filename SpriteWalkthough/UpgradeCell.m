@@ -12,7 +12,10 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    
+    self.layer.cornerRadius = self.frame.size.height/3;
+    self.layer.borderWidth = 1.5;
+    self.layer.borderColor = [UIColor whiteColor].CGColor;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
