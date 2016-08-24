@@ -15,9 +15,12 @@
 #import "MenuBackgroundScene.h"
 #import "UpgradeCell.h"
 
+
+
 @implementation UpgradesViewController
 {
     CAGradientLayer * _gradientLayer;
+    int _defaultRowHeight;
 }
 
 - (void) viewDidLoad
@@ -32,9 +35,9 @@
     
     
     
-    
+    _defaultRowHeight = self.myTable.rowHeight;
     self.myTable.rowHeight = UITableViewAutomaticDimension;
-    self.myTable.estimatedRowHeight = 80;
+    self.myTable.estimatedRowHeight = _defaultRowHeight;
     
     
     _gradientLayer = [CAGradientLayer layer];
@@ -158,7 +161,7 @@
 #pragma mark - table view
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 35;
+    return self.upgrades.count+1;
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -174,7 +177,7 @@
     }
     else
     {
-        cell.heightConstraint.constant = 80;
+        cell.heightConstraint.constant = _defaultRowHeight;
         cell.backgroundColor = [UIColor lightGrayColor];
     }
     
@@ -189,7 +192,7 @@
     
     if ( cell.heightConstraint.constant == self.view.frame.size.height )
     {
-        cell.heightConstraint.constant = 80;
+        cell.heightConstraint.constant = _defaultRowHeight;
         tableView.scrollEnabled = YES;
         colors = @[(id)self.myTable.backgroundColor.CGColor, (id)[UIColor clearColor].CGColor];
     }
@@ -209,7 +212,7 @@
          [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
          
          //top gradient
-         //_gradientLayer.colors = colors;
+         _gradientLayer.colors = colors;
      }];
 }
 
