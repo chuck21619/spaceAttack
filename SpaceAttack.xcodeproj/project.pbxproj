@@ -1512,6 +1512,27 @@
 			name = spaceshipKit;
 			sourceTree = "<group>";
 		};
+		9CA0D0271D6FB891005E6FB7 /* shipSelect */ = {
+			isa = PBXGroup;
+			children = (
+				A30112751D5FDF1600E133F2 /* ShipSelectionButton.h */,
+				A30112761D5FDF1600E133F2 /* ShipSelectionButton.m */,
+				A301127D1D5FE9EE00E133F2 /* ShipSelectMeter.h */,
+				A301127E1D5FE9EE00E133F2 /* ShipSelectMeter.m */,
+			);
+			name = shipSelect;
+			sourceTree = "<group>";
+		};
+		9CA0D0281D6FB8D0005E6FB7 /* upgrade */ = {
+			isa = PBXGroup;
+			children = (
+				A3B7F2401D6C012100DB27FA /* UpgradeCell.h */,
+				A3B7F2411D6C012100DB27FA /* UpgradeCell.m */,
+				A301127B1D5FE9AC00E133F2 /* upgradeOld */,
+			);
+			name = upgrade;
+			sourceTree = "<group>";
+		};
 		A30112711D5FC80E00E133F2 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -1526,15 +1547,10 @@
 			children = (
 				A3E3E6581D4DFCB100EEF2C3 /* SAAlertView.h */,
 				A3E3E6591D4DFCB100EEF2C3 /* SAAlertView.m */,
-				A30112751D5FDF1600E133F2 /* ShipSelectionButton.h */,
-				A30112761D5FDF1600E133F2 /* ShipSelectionButton.m */,
 				A3DB9EEB1D618E61006A8AEB /* GlowingButton.h */,
 				A3DB9EEC1D618E61006A8AEB /* GlowingButton.m */,
-				A301127D1D5FE9EE00E133F2 /* ShipSelectMeter.h */,
-				A301127E1D5FE9EE00E133F2 /* ShipSelectMeter.m */,
-				A3B7F2401D6C012100DB27FA /* UpgradeCell.h */,
-				A3B7F2411D6C012100DB27FA /* UpgradeCell.m */,
-				A301127B1D5FE9AC00E133F2 /* upgradeOld */,
+				9CA0D0281D6FB8D0005E6FB7 /* upgrade */,
+				9CA0D0271D6FB891005E6FB7 /* shipSelect */,
 			);
 			name = views;
 			sourceTree = "<group>";

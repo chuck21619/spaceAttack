@@ -7,15 +7,20 @@
 //
 
 #import "UpgradeCell.h"
+#import "SpriteAppDelegate.h"
 
 @implementation UpgradeCell
+{
+    BOOL _contentCreated;
+}
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.layer.cornerRadius = self.frame.size.height/3;
-    self.layer.borderWidth = 1.5;
-    self.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.heightConstraintView.layer.cornerRadius = self.frame.size.height/3;
+    self.heightConstraintView.layer.borderWidth = 1.5;
+    self.heightConstraintView.layer.borderColor = [UIColor whiteColor].CGColor;
+    [_AppDelegate addGlowToLayer:self.heightConstraintView.layer withColor:[UIColor whiteColor].CGColor];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -34,7 +39,7 @@
     
     if ( animated )
     {
-        [UIView animateWithDuration:.3 animations:^
+        [UIView animateWithDuration:.15 animations:^
         {
             [self setMinimizedAlphas:alpha];
         }
@@ -54,7 +59,7 @@
 
 - (void) setMinimizedAlphas:(float)alpha
 {
-    self.upgradeTitleLabel.alpha = alpha;
+    //self.upgradeTitleLabel.alpha = alpha;
 }
 
 - (void) showMaximizedContent:(BOOL)show animated:(BOOL)animated completion:(void (^)())completion
@@ -67,7 +72,7 @@
     
     if ( animated )
     {
-        [UIView animateWithDuration:.3 animations:^
+        [UIView animateWithDuration:.15 animations:^
         {
             [self setMaximizedAlphas:alpha];
         }
@@ -88,6 +93,22 @@
 - (void) setMaximizedAlphas:(float)alpha
 {
     //self.demoScene.alpha = alpha;
+}
+
+- (void) createContentFromUpgrade:(Upgrade *)upgrade
+{
+    if ( ! _contentCreated )
+    {
+        UILabel * titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        titleLabel.textColor = [UIColor whiteColor];
+        titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:20];
+        titleLabel.text = upgrade.title;
+        titleLabel.textAlignment = NSTextAlignmentCenter;
+        [self.contentView addSubview:titleLabel];
+        [_AppDelegate addGlowToLayer:titleLabel.layer withColor:titleLabel.textColor.CGColor];
+        
+        _contentCreated = YES;
+    }
 }
 
 @end

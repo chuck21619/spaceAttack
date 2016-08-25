@@ -18,8 +18,10 @@
 
 @implementation UpgradesViewController
 {
-    int _defaultRowHeight;
+    int _defaultRowHeightMinmized;
+    int _defaultRowHeightMaximized;
     int _defaultConstraintTopMyTable;
+    float _cellSpacing;
 }
 
 - (void) viewDidLoad
@@ -32,11 +34,14 @@
     
     //[self validateProductIdentifiers];
     
+    _cellSpacing = 5;
+    
     _defaultConstraintTopMyTable = self.constraintTopMyTable.constant;
     
-    _defaultRowHeight = self.myTable.rowHeight;
+    _defaultRowHeightMaximized = self.view.frame.size.height;
+    _defaultRowHeightMinmized = (self.myTable.frame.size.height/self.upgrades.count) - _cellSpacing;
     self.myTable.rowHeight = UITableViewAutomaticDimension;
-    self.myTable.estimatedRowHeight = _defaultRowHeight;
+    self.myTable.estimatedRowHeight = _defaultRowHeightMinmized;
     
     [_AppDelegate addGlowToLayer:self.upgradeTitleLabel.layer withColor:[self.upgradeTitleLabel.textColor CGColor]];
     [_AppDelegate addGlowToLayer:self.availablePointsLabel.layer withColor:[self.availablePointsLabel.textColor CGColor]];
@@ -120,6 +125,13 @@
     }];
 }
 
+- (void) setMainScreenViewsAlpha:(float)alpha
+{
+    self.upgradeTitleLabel.alpha = alpha;
+    self.backButton.alpha = alpha;
+    self.availablePointsLabel.alpha = alpha;
+}
+
 /*
 - (void) animateAvailablePoints:(NSNumber *)pointsToSubtractNumber
 {
@@ -145,15 +157,36 @@
 
 
 #pragma mark - table view
-- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return _cellSpacing;
+}
+
+- (UIView*) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView * emptyView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, _cellSpacing)];
+    return emptyView;
+}
+
+- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
     return self.upgrades.count;
+}
+
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UpgradeCell * cell = (UpgradeCell*)[tableView dequeueReusableCellWithIdentifier:@"upgradeCell"];
     
+    if ( cell.heightConstraint.constant != _defaultRowHeightMinmized && cell.heightConstraint.constant != _defaultRowHeightMaximized )
+        cell.heightConstraint.constant = _defaultRowHeightMinmized;
+    
+    Upgrade * tmpUpgrade = [self.upgrades objectAtIndex:indexPath.section];
+    [cell createContentFromUpgrade:tmpUpgrade];
     
     return cell;
 }
@@ -162,49 +195,47 @@
 {
     UpgradeCell * cell = (UpgradeCell*)[tableView cellForRowAtIndexPath:indexPath];
     
+    NSMutableArray * allOtherCells = [[tableView visibleCells] mutableCopy];
+    [allOtherCells removeObject:cell];
+    
+    float mainScreenViewsAlpha;
+    
     //if minimized
-    if ( cell.heightConstraint.constant == _defaultRowHeight )
+    if ( cell.heightConstraint.constant == _defaultRowHeightMinmized )
     {
-        [UIView animateWithDuration:.3 animations:^
-        {
-            self.upgradeTitleLabel.alpha = 0;
-            self.availablePointsLabel.alpha = 0;
-        }];
+        mainScreenViewsAlpha = 0;
         
         [cell showMinimizedContent:NO animated:YES completion:^
         {
             [cell showMaximizedContent:YES animated:YES completion:nil];
         }];
         
-        cell.heightConstraint.constant = self.view.frame.size.height;
+        cell.heightConstraint.constant = _defaultRowHeightMaximized;
         self.constraintTopMyTable.constant = 0;
         tableView.scrollEnabled = NO;
     }
     else
     {
-        [UIView animateWithDuration:.3 animations:^
-        {
-            self.upgradeTitleLabel.alpha = 1;
-            self.availablePointsLabel.alpha = 1;
-        }];
+        mainScreenViewsAlpha = 1;
         
         [cell showMaximizedContent:NO animated:YES completion:^
         {
             [cell showMinimizedContent:YES animated:YES completion:nil];
         }];
         
-        cell.heightConstraint.constant = _defaultRowHeight;
+        cell.heightConstraint.constant = _defaultRowHeightMinmized;
         self.constraintTopMyTable.constant = _defaultConstraintTopMyTable;
         tableView.scrollEnabled = YES;
     }
     
-    [UIView animateWithDuration:.3 animations:^
+    [UIView animateWithDuration:.2 animations:^
     {
+        [self setMainScreenViewsAlpha:mainScreenViewsAlpha];
         [self.view layoutIfNeeded];
         [cell.contentView layoutIfNeeded];
         [tableView beginUpdates];
         [tableView endUpdates];
-        [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+        [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
     }];
 }
 
