@@ -7,15 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Upgrade.h"
 
 @interface UpgradeCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightConstraint;
-
-@property (weak, nonatomic) IBOutlet UILabel *upgradeTitleLabel;
+@property (weak, nonatomic) IBOutlet UIView *heightConstraintView;
 
 - (void) showMinimizedContent:(BOOL)show animated:(BOOL)animated completion:(void (^)())completion;
 - (void) showMaximizedContent:(BOOL)show animated:(BOOL)animated completion:(void (^)())completion;
+
+- (void) createContentFromUpgrade:(Upgrade *)upgrade;
 
 @end

@@ -656,7 +656,7 @@ Over</string>
 Firead 100 Bullets + 100 points</string>
                                         <attributes>
                                             <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <font key="NSFont" size="11" name="MesquiteStd"/>
+                                            <font key="NSFont" metaFont="smallSystem"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.1000000000000001" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -771,38 +771,36 @@ Firead 100 Bullets + 100 points</string>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="InG-Qn-Tsn">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HxO-R2-jYh">
-                                <rect key="frame" x="0.0" y="80" width="320" height="488"/>
+                            <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HxO-R2-jYh">
+                                <rect key="frame" x="7" y="80" width="306" height="481"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="upgradeCell" id="8in-wq-Kzl" customClass="UpgradeCell">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="60"/>
+                                        <rect key="frame" x="0.0" y="28" width="306" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8in-wq-Kzl" id="CKa-lu-L4s">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="306" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3I8-Q3-SWG" userLabel="Label - height constraint">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y3t-O5-hCs" userLabel="View - heightConstraintView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="306" height="60"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" priority="750" constant="60" id="Yoy-Sp-neI"/>
+                                                        <constraint firstAttribute="height" priority="750" constant="60" id="88l-Hk-5gn"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="3I8-Q3-SWG" secondAttribute="bottom" id="Elu-oe-Sy8"/>
-                                                <constraint firstAttribute="trailing" secondItem="3I8-Q3-SWG" secondAttribute="trailing" id="aJx-EF-Ufg"/>
-                                                <constraint firstItem="3I8-Q3-SWG" firstAttribute="top" secondItem="CKa-lu-L4s" secondAttribute="top" id="dTR-Rk-9pb"/>
-                                                <constraint firstItem="3I8-Q3-SWG" firstAttribute="leading" secondItem="CKa-lu-L4s" secondAttribute="leading" id="qoB-ZX-RNj"/>
+                                                <constraint firstItem="y3t-O5-hCs" firstAttribute="leading" secondItem="CKa-lu-L4s" secondAttribute="leading" id="48z-V5-jkv"/>
+                                                <constraint firstAttribute="trailing" secondItem="y3t-O5-hCs" secondAttribute="trailing" id="LRx-ll-87q"/>
+                                                <constraint firstItem="y3t-O5-hCs" firstAttribute="top" secondItem="CKa-lu-L4s" secondAttribute="top" id="xLr-wv-1zX"/>
+                                                <constraint firstAttribute="bottom" secondItem="y3t-O5-hCs" secondAttribute="bottom" id="xno-ej-oKa"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <outlet property="heightConstraint" destination="Yoy-Sp-neI" id="K9X-hy-3OI"/>
-                                            <outlet property="upgradeTitleLabel" destination="3I8-Q3-SWG" id="0tI-bU-ZF9"/>
+                                            <outlet property="heightConstraint" destination="88l-Hk-5gn" id="M60-Q3-J2i"/>
+                                            <outlet property="heightConstraintView" destination="y3t-O5-hCs" id="lCo-jB-scn"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -849,7 +847,7 @@ Firead 100 Bullets + 100 points</string>
                         <constraints>
                             <constraint firstItem="EfH-lL-bT5" firstAttribute="leading" secondItem="JHo-OB-i3G" secondAttribute="leading" id="2ch-PS-jnM"/>
                             <constraint firstItem="InG-Qn-Tsn" firstAttribute="top" secondItem="JHo-OB-i3G" secondAttribute="top" id="3Gc-rG-l1M"/>
-                            <constraint firstItem="HxO-R2-jYh" firstAttribute="leading" secondItem="JHo-OB-i3G" secondAttribute="leading" id="7yN-kS-yiv"/>
+                            <constraint firstItem="HxO-R2-jYh" firstAttribute="leading" secondItem="JHo-OB-i3G" secondAttribute="leading" constant="7" id="7yN-kS-yiv"/>
                             <constraint firstAttribute="trailing" secondItem="Vk6-dJ-1Dg" secondAttribute="trailing" id="IKM-i2-zKH"/>
                             <constraint firstAttribute="trailing" secondItem="InG-Qn-Tsn" secondAttribute="trailing" id="LNA-Jo-NEW"/>
                             <constraint firstItem="Vk6-dJ-1Dg" firstAttribute="leading" secondItem="JHo-OB-i3G" secondAttribute="leading" id="LQ9-AM-NZD"/>
@@ -859,9 +857,9 @@ Firead 100 Bullets + 100 points</string>
                             <constraint firstItem="InG-Qn-Tsn" firstAttribute="leading" secondItem="JHo-OB-i3G" secondAttribute="leading" id="Z2P-Bj-D4p"/>
                             <constraint firstItem="Vk6-dJ-1Dg" firstAttribute="top" secondItem="JHo-OB-i3G" secondAttribute="top" constant="15" id="h6u-Db-TIv"/>
                             <constraint firstAttribute="bottom" secondItem="InG-Qn-Tsn" secondAttribute="bottom" id="ias-K7-Vza"/>
-                            <constraint firstItem="6zT-Rt-WEQ" firstAttribute="top" secondItem="HxO-R2-jYh" secondAttribute="bottom" id="jWT-gO-vj5"/>
+                            <constraint firstItem="6zT-Rt-WEQ" firstAttribute="top" secondItem="HxO-R2-jYh" secondAttribute="bottom" constant="7" id="jWT-gO-vj5"/>
                             <constraint firstAttribute="trailing" secondItem="EfH-lL-bT5" secondAttribute="trailing" id="kAY-nf-qpn"/>
-                            <constraint firstAttribute="trailing" secondItem="HxO-R2-jYh" secondAttribute="trailing" id="ro8-4h-YsK"/>
+                            <constraint firstAttribute="trailing" secondItem="HxO-R2-jYh" secondAttribute="trailing" constant="7" id="ro8-4h-YsK"/>
                             <constraint firstItem="EfH-lL-bT5" firstAttribute="top" secondItem="Vk6-dJ-1Dg" secondAttribute="bottom" id="zKv-v6-q4T"/>
                         </constraints>
                     </view>
