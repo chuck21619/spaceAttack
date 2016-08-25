@@ -168,16 +168,6 @@
 {
     UpgradeCell * cell = (UpgradeCell*)[tableView dequeueReusableCellWithIdentifier:@"upgradeCell"];
     
-    if ( indexPath.row == 0 )
-    {
-        cell.heightConstraint.constant = 100;
-        for ( UIView * subview in [cell subviews] )
-            [subview removeFromSuperview];
-    }
-    else
-    {
-        cell.heightConstraint.constant = _defaultRowHeight;
-    }
     
     return cell;
 }
@@ -185,45 +175,22 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UpgradeCell * cell = (UpgradeCell*)[tableView cellForRowAtIndexPath:indexPath];
-
-    NSArray * colors;
     
-    if ( cell.heightConstraint.constant == self.view.frame.size.height )
     {
         [UIView animateWithDuration:.3 animations:^
         {
-            self.upgradeTitleLabel.alpha = 1;
-            self.availablePointsLabel.alpha = 1;
         }];
         
-        cell.heightConstraint.constant = _defaultRowHeight;
-        tableView.scrollEnabled = YES;
-        colors = @[(id)self.myTable.backgroundColor.CGColor, (id)[UIColor clearColor].CGColor];
     }
     else
     {
         [UIView animateWithDuration:.3 animations:^
         {
-            self.upgradeTitleLabel.alpha = 0;
-            self.availablePointsLabel.alpha = 0;
         }];
         
-        cell.heightConstraint.constant = self.view.frame.size.height;
-        tableView.scrollEnabled = NO;
-        colors = [NSArray arrayWithObjects:(id)[UIColor blackColor].CGColor, (id)[UIColor blackColor].CGColor, nil];
     }
     
     [UIView animateWithDuration:.3 animations:^
-     {
-         //table/cell
-         [cell.contentView layoutIfNeeded];
-         [tableView beginUpdates];
-         [tableView endUpdates];
-         [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
-         
-         //top gradient
-         //_gradientLayer.colors = colors;
-     }];
 }
 
 #pragma mark - game center
