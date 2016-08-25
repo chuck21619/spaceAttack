@@ -18,7 +18,7 @@
 @property Upgrade * activeUpgrade;
 
 @property (weak, nonatomic) IBOutlet UITableView *myTable;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTopMyTable;
+@property (weak, nonatomic) IBOutlet UIView *tableAlphaMaskView;
 
 @property (weak, nonatomic) IBOutlet UILabel *upgradeTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *availablePointsLabel;

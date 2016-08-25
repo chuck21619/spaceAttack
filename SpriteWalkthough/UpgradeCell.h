@@ -8,14 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-
 @interface UpgradeCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightConstraint;
-
-@property (weak, nonatomic) IBOutlet UILabel *upgradeTitleLabel;
-
-- (void) showMinimizedContent:(BOOL)show animated:(BOOL)animated completion:(void (^)())completion;
-- (void) showMaximizedContent:(BOOL)show animated:(BOOL)animated completion:(void (^)())completion;
 
 @end

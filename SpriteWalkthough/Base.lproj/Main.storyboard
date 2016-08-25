@@ -771,46 +771,56 @@ Firead 100 Bullets + 100 points</string>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="InG-Qn-Tsn">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HxO-R2-jYh">
-                                <rect key="frame" x="0.0" y="80" width="320" height="488"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="upgradeCell" id="8in-wq-Kzl" customClass="UpgradeCell">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="60"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8in-wq-Kzl" id="CKa-lu-L4s">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3I8-Q3-SWG" userLabel="Label - height constraint">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" priority="750" constant="60" id="Yoy-Sp-neI"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="3I8-Q3-SWG" secondAttribute="bottom" id="Elu-oe-Sy8"/>
-                                                <constraint firstAttribute="trailing" secondItem="3I8-Q3-SWG" secondAttribute="trailing" id="aJx-EF-Ufg"/>
-                                                <constraint firstItem="3I8-Q3-SWG" firstAttribute="top" secondItem="CKa-lu-L4s" secondAttribute="top" id="dTR-Rk-9pb"/>
-                                                <constraint firstItem="3I8-Q3-SWG" firstAttribute="leading" secondItem="CKa-lu-L4s" secondAttribute="leading" id="qoB-ZX-RNj"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xiR-qi-NRB" userLabel="View - alpha mask for table">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HxO-R2-jYh">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="upgradeCell" id="8in-wq-Kzl" customClass="UpgradeCell">
+                                                <rect key="frame" x="0.0" y="28" width="320" height="60"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8in-wq-Kzl" id="CKa-lu-L4s">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3I8-Q3-SWG" userLabel="Label - height constraint">
+                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" priority="750" constant="80" id="Yoy-Sp-neI"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="3I8-Q3-SWG" secondAttribute="bottom" id="Elu-oe-Sy8"/>
+                                                        <constraint firstAttribute="trailing" secondItem="3I8-Q3-SWG" secondAttribute="trailing" id="aJx-EF-Ufg"/>
+                                                        <constraint firstItem="3I8-Q3-SWG" firstAttribute="top" secondItem="CKa-lu-L4s" secondAttribute="top" id="dTR-Rk-9pb"/>
+                                                        <constraint firstItem="3I8-Q3-SWG" firstAttribute="leading" secondItem="CKa-lu-L4s" secondAttribute="leading" id="qoB-ZX-RNj"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <outlet property="heightConstraint" destination="Yoy-Sp-neI" id="K9X-hy-3OI"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
                                         <connections>
-                                            <outlet property="heightConstraint" destination="Yoy-Sp-neI" id="K9X-hy-3OI"/>
-                                            <outlet property="upgradeTitleLabel" destination="3I8-Q3-SWG" id="0tI-bU-ZF9"/>
+                                            <outlet property="dataSource" destination="DDr-u1-vQw" id="Hbq-zi-hRU"/>
+                                            <outlet property="delegate" destination="DDr-u1-vQw" id="AZZ-09-0oO"/>
                                         </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="DDr-u1-vQw" id="Hbq-zi-hRU"/>
-                                    <outlet property="delegate" destination="DDr-u1-vQw" id="AZZ-09-0oO"/>
-                                </connections>
-                            </tableView>
+                                    </tableView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="HxO-R2-jYh" secondAttribute="bottom" id="FdB-gp-Zfa"/>
+                                    <constraint firstItem="HxO-R2-jYh" firstAttribute="leading" secondItem="xiR-qi-NRB" secondAttribute="leading" id="Que-p2-nVQ"/>
+                                    <constraint firstItem="HxO-R2-jYh" firstAttribute="top" secondItem="xiR-qi-NRB" secondAttribute="top" id="R8E-TV-MRW"/>
+                                    <constraint firstAttribute="trailing" secondItem="HxO-R2-jYh" secondAttribute="trailing" id="by0-MD-8ai"/>
+                                </constraints>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UPGRADES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vk6-dJ-1Dg">
                                 <rect key="frame" x="0.0" y="15" width="320" height="45"/>
                                 <constraints>
@@ -849,19 +859,19 @@ Firead 100 Bullets + 100 points</string>
                         <constraints>
                             <constraint firstItem="EfH-lL-bT5" firstAttribute="leading" secondItem="JHo-OB-i3G" secondAttribute="leading" id="2ch-PS-jnM"/>
                             <constraint firstItem="InG-Qn-Tsn" firstAttribute="top" secondItem="JHo-OB-i3G" secondAttribute="top" id="3Gc-rG-l1M"/>
-                            <constraint firstItem="HxO-R2-jYh" firstAttribute="leading" secondItem="JHo-OB-i3G" secondAttribute="leading" id="7yN-kS-yiv"/>
+                            <constraint firstItem="xiR-qi-NRB" firstAttribute="top" secondItem="JHo-OB-i3G" secondAttribute="top" id="Arg-DF-RfD"/>
+                            <constraint firstAttribute="trailing" secondItem="xiR-qi-NRB" secondAttribute="trailing" id="Ce8-Ht-lGM"/>
                             <constraint firstAttribute="trailing" secondItem="Vk6-dJ-1Dg" secondAttribute="trailing" id="IKM-i2-zKH"/>
                             <constraint firstAttribute="trailing" secondItem="InG-Qn-Tsn" secondAttribute="trailing" id="LNA-Jo-NEW"/>
                             <constraint firstItem="Vk6-dJ-1Dg" firstAttribute="leading" secondItem="JHo-OB-i3G" secondAttribute="leading" id="LQ9-AM-NZD"/>
                             <constraint firstItem="Qqh-sQ-Qqa" firstAttribute="leading" secondItem="JHo-OB-i3G" secondAttribute="leading" id="NKJ-DC-wJp"/>
-                            <constraint firstItem="HxO-R2-jYh" firstAttribute="top" secondItem="JHo-OB-i3G" secondAttribute="top" constant="80" id="TB5-9I-lWQ"/>
+                            <constraint firstItem="xiR-qi-NRB" firstAttribute="leading" secondItem="JHo-OB-i3G" secondAttribute="leading" id="OBK-uX-aJ0"/>
                             <constraint firstItem="Qqh-sQ-Qqa" firstAttribute="top" secondItem="JHo-OB-i3G" secondAttribute="top" id="Vg8-3I-wke"/>
                             <constraint firstItem="InG-Qn-Tsn" firstAttribute="leading" secondItem="JHo-OB-i3G" secondAttribute="leading" id="Z2P-Bj-D4p"/>
                             <constraint firstItem="Vk6-dJ-1Dg" firstAttribute="top" secondItem="JHo-OB-i3G" secondAttribute="top" constant="15" id="h6u-Db-TIv"/>
                             <constraint firstAttribute="bottom" secondItem="InG-Qn-Tsn" secondAttribute="bottom" id="ias-K7-Vza"/>
-                            <constraint firstItem="6zT-Rt-WEQ" firstAttribute="top" secondItem="HxO-R2-jYh" secondAttribute="bottom" id="jWT-gO-vj5"/>
                             <constraint firstAttribute="trailing" secondItem="EfH-lL-bT5" secondAttribute="trailing" id="kAY-nf-qpn"/>
-                            <constraint firstAttribute="trailing" secondItem="HxO-R2-jYh" secondAttribute="trailing" id="ro8-4h-YsK"/>
+                            <constraint firstAttribute="bottom" secondItem="xiR-qi-NRB" secondAttribute="bottom" id="tCA-kY-Tqv"/>
                             <constraint firstItem="EfH-lL-bT5" firstAttribute="top" secondItem="Vk6-dJ-1Dg" secondAttribute="bottom" id="zKv-v6-q4T"/>
                         </constraints>
                     </view>
@@ -869,8 +879,8 @@ Firead 100 Bullets + 100 points</string>
                     <connections>
                         <outlet property="availablePointsLabel" destination="EfH-lL-bT5" id="MFJ-TZ-dff"/>
                         <outlet property="backButton" destination="Qqh-sQ-Qqa" id="rOv-R3-zF8"/>
-                        <outlet property="constraintTopMyTable" destination="TB5-9I-lWQ" id="ukz-it-mHR"/>
                         <outlet property="myTable" destination="HxO-R2-jYh" id="vcp-32-NLf"/>
+                        <outlet property="tableAlphaMaskView" destination="xiR-qi-NRB" id="PWF-r7-iOd"/>
                         <outlet property="upgradeTitleLabel" destination="Vk6-dJ-1Dg" id="Gk7-Im-zti"/>
                     </connections>
                 </viewController>
