@@ -16,11 +16,10 @@
 #import "UpgradeCell.h"
 
 
-
 @implementation UpgradesViewController
 {
-    //CAGradientLayer * _gradientLayer;
     int _defaultRowHeight;
+    int _defaultConstraintTopMyTable;
 }
 
 - (void) viewDidLoad
@@ -33,23 +32,11 @@
     
     //[self validateProductIdentifiers];
     
-    
+    _defaultConstraintTopMyTable = self.constraintTopMyTable.constant;
     
     _defaultRowHeight = self.myTable.rowHeight;
     self.myTable.rowHeight = UITableViewAutomaticDimension;
     self.myTable.estimatedRowHeight = _defaultRowHeight;
-    
-    
-//    _gradientLayer = [CAGradientLayer layer];
-//    _gradientLayer.frame = self.view.frame;
-//    _gradientLayer.colors = @[(id)self.myTable.backgroundColor.CGColor, (id)[UIColor clearColor].CGColor];
-//    _gradientLayer.endPoint = CGPointMake(1.0f, 0.07f);
-//    _gradientLayer.startPoint = CGPointMake(1.0f, .2f);
-//    self.tableAlphaMaskView.layer.mask = _gradientLayer;
-    
-//    MenuBackgroundScene * backgroundScene = [MenuBackgroundScene sharedInstance];
-//    SKView * spriteView = (SKView *)self.view;
-//    [spriteView presentScene:backgroundScene];
     
     [_AppDelegate addGlowToLayer:self.upgradeTitleLabel.layer withColor:[self.upgradeTitleLabel.textColor CGColor]];
     [_AppDelegate addGlowToLayer:self.availablePointsLabel.layer withColor:[self.availablePointsLabel.textColor CGColor]];
@@ -68,13 +55,12 @@
     {
         self.view.alpha = 1;
     }];
-    
 }
 
 
 - (void) refreshUpgradeViews
 {
-    [self.myTable reloadData];
+    //[self.myTable reloadData];
 }
 
 - (void) dealloc
@@ -161,7 +147,7 @@
 #pragma mark - table view
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.upgrades.count+1;
+    return self.upgrades.count;
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -176,21 +162,50 @@
 {
     UpgradeCell * cell = (UpgradeCell*)[tableView cellForRowAtIndexPath:indexPath];
     
+    //if minimized
+    if ( cell.heightConstraint.constant == _defaultRowHeight )
     {
         [UIView animateWithDuration:.3 animations:^
         {
+            self.upgradeTitleLabel.alpha = 0;
+            self.availablePointsLabel.alpha = 0;
         }];
         
+        [cell showMinimizedContent:NO animated:YES completion:^
+        {
+            [cell showMaximizedContent:YES animated:YES completion:nil];
+        }];
+        
+        cell.heightConstraint.constant = self.view.frame.size.height;
+        self.constraintTopMyTable.constant = 0;
+        tableView.scrollEnabled = NO;
     }
     else
     {
         [UIView animateWithDuration:.3 animations:^
         {
+            self.upgradeTitleLabel.alpha = 1;
+            self.availablePointsLabel.alpha = 1;
         }];
         
+        [cell showMaximizedContent:NO animated:YES completion:^
+        {
+            [cell showMinimizedContent:YES animated:YES completion:nil];
+        }];
+        
+        cell.heightConstraint.constant = _defaultRowHeight;
+        self.constraintTopMyTable.constant = _defaultConstraintTopMyTable;
+        tableView.scrollEnabled = YES;
     }
     
     [UIView animateWithDuration:.3 animations:^
+    {
+        [self.view layoutIfNeeded];
+        [cell.contentView layoutIfNeeded];
+        [tableView beginUpdates];
+        [tableView endUpdates];
+        [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }];
 }
 
 #pragma mark - game center
