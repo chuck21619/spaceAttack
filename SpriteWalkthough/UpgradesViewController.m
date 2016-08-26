@@ -167,7 +167,7 @@
     UIView * emptyView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, _cellSpacing)];
     return emptyView;
 }
-
+//
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
     return self.upgrades.count;
