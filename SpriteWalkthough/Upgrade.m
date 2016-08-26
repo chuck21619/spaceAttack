@@ -77,7 +77,7 @@
                 [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(unlockUpgrade) name:@"unlocked_kAchievementBiggerLaser" object:nil];
                 self.storeKitIdentifier = @"BiggerLaser";
                 self.title = NSLocalizedString(@"Bigger Laser", nil);
-                self.upgradeDescription = NSLocalizedString(@"Increases the size of Photon Cannon Beams", nil);
+                self.upgradeDescription = NSLocalizedString(@"Increases the size of Laser Cannon Beams", nil);
                 self.icon = [[UIImage imageNamed:@"laserCannonUpgrade.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
                 self.pointsToUnlock = 12500;
                 self.priceToUnlock = .99;

@@ -42,10 +42,10 @@
 "Increases Photon\nTargeting IQ" = "Increases Photon\nTargeting IQ";
 
 /* No comment provided by engineer. */
-"Increases rate of fire\nfor the Machine Gun" = "Increases rate of fire\nfor the Machine Gun";
+"Increases rate of fire for the Machine Gun" = "Increases rate of fire for the Machine Gun";
 
 /* No comment provided by engineer. */
-"Increases the size of\nPhoton Cannon Beams" = "Increases the size of\nPhoton Cannon Beams";
+"Increases the size of Laser Cannon Beams" = "Increases the size of Laser Cannon Beams";
 
 /* No comment provided by engineer. */
 "More Bullets" = "More Bullets";
@@ -57,7 +57,7 @@
 "points" = "Points";
 
 /* No comment provided by engineer. */
-"Powers up the Electrical\nGenerator to send volts\nthrough to a second target" = "Powers up the Electrical\nGenerator to send volts\nthrough to a second target";
+"Powers up the Electrical Generator to send volts through to a second target" = "Powers up the Electrical Generator to send volts through to a second target";
 
 /* No comment provided by engineer. */
 "Shield" = "Shield";

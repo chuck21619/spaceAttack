@@ -8,11 +8,12 @@
 
 #import "DGActivityIndicatorView.h"
 #import "Upgrade.h"
+#import "UpgradeCell.h"
 #import <UIKit/UIKit.h>
 @import StoreKit;
 
 
-@interface UpgradesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, SKProductsRequestDelegate>
+@interface UpgradesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, SKProductsRequestDelegate, UpgradeCellDelegate>
 
 @property NSArray * upgrades;
 @property Upgrade * activeUpgrade;

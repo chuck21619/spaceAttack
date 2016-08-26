@@ -9,8 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "Upgrade.h"
 
+@class UpgradeCell;
+@protocol UpgradeCellDelegate <NSObject>
+- (void) minimizePressed:(UpgradeCell *)upgradeCell;
+@end
+
+
 @interface UpgradeCell : UITableViewCell
 
+@property (weak, nonatomic) id <UpgradeCellDelegate>delegate;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightConstraint;
 @property (weak, nonatomic) IBOutlet UIView *heightConstraintView;
 

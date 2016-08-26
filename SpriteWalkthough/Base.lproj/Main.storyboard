@@ -771,14 +771,14 @@ Firead 100 Bullets + 100 points</string>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="InG-Qn-Tsn">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HxO-R2-jYh">
+                            <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HxO-R2-jYh">
                                 <rect key="frame" x="7" y="80" width="306" height="481"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="upgradeCell" id="8in-wq-Kzl" customClass="UpgradeCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="upgradeCell" id="8in-wq-Kzl" customClass="UpgradeCell">
                                         <rect key="frame" x="0.0" y="28" width="306" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8in-wq-Kzl" id="CKa-lu-L4s">
+                                        <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8in-wq-Kzl" id="CKa-lu-L4s">
                                             <rect key="frame" x="0.0" y="0.0" width="306" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>

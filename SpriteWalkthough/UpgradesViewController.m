@@ -13,7 +13,6 @@
 #import <Crashlytics/Crashlytics.h>
 #import "SpriteAppDelegate.h"
 #import "MenuBackgroundScene.h"
-#import "UpgradeCell.h"
 
 
 @implementation UpgradesViewController
@@ -167,7 +166,7 @@
     UIView * emptyView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, _cellSpacing)];
     return emptyView;
 }
-//
+
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
     return self.upgrades.count;
@@ -194,6 +193,7 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UpgradeCell * cell = (UpgradeCell*)[tableView cellForRowAtIndexPath:indexPath];
+    cell.delegate = self;
     
     NSMutableArray * allOtherCells = [[tableView visibleCells] mutableCopy];
     [allOtherCells removeObject:cell];
@@ -212,7 +212,7 @@
         
         cell.heightConstraint.constant = _defaultRowHeightMaximized;
         self.constraintTopMyTable.constant = 0;
-        tableView.scrollEnabled = NO;
+        tableView.allowsSelection = NO;
     }
     else
     {
@@ -225,11 +225,13 @@
         
         cell.heightConstraint.constant = _defaultRowHeightMinmized;
         self.constraintTopMyTable.constant = _defaultConstraintTopMyTable;
-        tableView.scrollEnabled = YES;
+        tableView.allowsSelection = YES;
     }
     
-    [UIView animateWithDuration:.2 animations:^
+    [UIView animateWithDuration:.3 animations:^
     {
+        for ( UpgradeCell * tmpCell in allOtherCells )
+            [tmpCell setAlpha:mainScreenViewsAlpha];
         [self setMainScreenViewsAlpha:mainScreenViewsAlpha];
         [self.view layoutIfNeeded];
         [cell.contentView layoutIfNeeded];
@@ -237,6 +239,13 @@
         [tableView endUpdates];
         [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
     }];
+}
+
+#pragma mark upgrade cell delegate
+- (void) minimizePressed:(UpgradeCell *)upgradeCell
+{
+    NSIndexPath * indexPath = [self.myTable indexPathForCell:upgradeCell];
+    [self tableView:self.myTable didSelectRowAtIndexPath:indexPath];
 }
 
 #pragma mark - game center
