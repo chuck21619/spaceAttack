@@ -39,7 +39,7 @@
     
     if ( animated )
     {
-        [UIView animateWithDuration:.15 animations:^
+        [UIView animateWithDuration:.2 animations:^
         {
             [self setMinimizedAlphas:alpha];
         }
@@ -72,7 +72,7 @@
     
     if ( animated )
     {
-        [UIView animateWithDuration:.15 animations:^
+        [UIView animateWithDuration:.2 animations:^
         {
             [self setMaximizedAlphas:alpha];
         }
@@ -99,7 +99,7 @@
 {
     if ( ! _contentCreated )
     {
-        UILabel * titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        UILabel * titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.heightConstraint.constant)];
         titleLabel.textColor = [UIColor whiteColor];
         titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:20];
         titleLabel.text = upgrade.title;
