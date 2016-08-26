@@ -62,7 +62,7 @@
         _contentCreated = YES;
     }
 }
-
+//
 - (void) showMinimizedContent:(BOOL)show animated:(BOOL)animated completion:(void (^)())completion
 {
     float alpha;
