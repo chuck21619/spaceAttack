@@ -23,4 +23,7 @@
 - (void) addGlowToLayer:(CALayer *)layer withColor:(CGColorRef)color;
 - (void) addGlowToLayer:(CALayer *)layer withColor:(CGColorRef)color size:(float)size;
 
+- (void) addGlowToView:(UIView*)view withColor:(CGColorRef)color;
+- (void) addGlowToView:(UIView*)view withColor:(CGColorRef)color size:(float)size;
+
 @end

@@ -771,36 +771,32 @@ Firead 100 Bullets + 100 points</string>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="InG-Qn-Tsn">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HxO-R2-jYh">
+                            <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HxO-R2-jYh">
                                 <rect key="frame" x="7" y="80" width="306" height="481"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="upgradeCell" id="8in-wq-Kzl" customClass="UpgradeCell">
-                                        <rect key="frame" x="0.0" y="28" width="306" height="60"/>
+                                        <rect key="frame" x="0.0" y="28" width="306" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8in-wq-Kzl" id="CKa-lu-L4s">
-                                            <rect key="frame" x="0.0" y="0.0" width="306" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="306" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y3t-O5-hCs" userLabel="View - heightConstraintView">
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j1r-lL-vZt">
                                                     <rect key="frame" x="0.0" y="0.0" width="306" height="60"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" priority="750" constant="60" id="88l-Hk-5gn"/>
-                                                    </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="y3t-O5-hCs" firstAttribute="leading" secondItem="CKa-lu-L4s" secondAttribute="leading" id="48z-V5-jkv"/>
-                                                <constraint firstAttribute="trailing" secondItem="y3t-O5-hCs" secondAttribute="trailing" id="LRx-ll-87q"/>
-                                                <constraint firstItem="y3t-O5-hCs" firstAttribute="top" secondItem="CKa-lu-L4s" secondAttribute="top" id="xLr-wv-1zX"/>
-                                                <constraint firstAttribute="bottom" secondItem="y3t-O5-hCs" secondAttribute="bottom" id="xno-ej-oKa"/>
+                                                <constraint firstAttribute="trailing" secondItem="j1r-lL-vZt" secondAttribute="trailing" id="Y88-0c-TMs"/>
+                                                <constraint firstAttribute="bottom" secondItem="j1r-lL-vZt" secondAttribute="bottom" id="bLY-s5-Pce"/>
+                                                <constraint firstItem="j1r-lL-vZt" firstAttribute="top" secondItem="CKa-lu-L4s" secondAttribute="top" id="hSq-Zf-VJh"/>
+                                                <constraint firstItem="j1r-lL-vZt" firstAttribute="leading" secondItem="CKa-lu-L4s" secondAttribute="leading" id="zqU-Yi-W20"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <outlet property="heightConstraint" destination="88l-Hk-5gn" id="M60-Q3-J2i"/>
-                                            <outlet property="heightConstraintView" destination="y3t-O5-hCs" id="lCo-jB-scn"/>
+                                            <outlet property="borderView" destination="j1r-lL-vZt" id="QT1-uA-yhg"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -17,9 +17,8 @@
 
 @implementation UpgradesViewController
 {
-    int _defaultRowHeightMinmized;
-    int _defaultRowHeightMaximized;
     int _defaultConstraintTopMyTable;
+    float _minimizedCellHeight;
     float _cellSpacing;
 }
 
@@ -34,13 +33,8 @@
     //[self validateProductIdentifiers];
     
     _cellSpacing = 5;
-    
+    _minimizedCellHeight = (self.myTable.frame.size.height/8) - _cellSpacing;
     _defaultConstraintTopMyTable = self.constraintTopMyTable.constant;
-    
-    _defaultRowHeightMaximized = self.view.frame.size.height;
-    _defaultRowHeightMinmized = (self.myTable.frame.size.height/self.upgrades.count) - _cellSpacing;
-    self.myTable.rowHeight = UITableViewAutomaticDimension;
-    self.myTable.estimatedRowHeight = _defaultRowHeightMinmized;
     
     [_AppDelegate addGlowToLayer:self.upgradeTitleLabel.layer withColor:[self.upgradeTitleLabel.textColor CGColor]];
     [_AppDelegate addGlowToLayer:self.availablePointsLabel.layer withColor:[self.availablePointsLabel.textColor CGColor]];
@@ -177,12 +171,30 @@
     return 1;
 }
 
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Upgrade * tmpUpgrade = [self.upgrades objectAtIndex:indexPath.section];
+    
+    if ( tmpUpgrade.isMaximized )
+        return self.view.frame.size.height;
+    
+    
+    return _minimizedCellHeight;
+        
+        
+        
+//    testCell * cell = (testCell *)[self tableView:tableView cellForRowAtIndexPath:indexPath];
+//    UILabel * testLabel = cell.myLabel;
+//    
+//    if ( [testLabel.text isEqualToString:@"pressed"] )
+//        return self.myTable.frame.size.height;
+    
+    //return 44;
+}
+
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UpgradeCell * cell = (UpgradeCell*)[tableView dequeueReusableCellWithIdentifier:@"upgradeCell"];
-    
-    if ( cell.heightConstraint.constant != _defaultRowHeightMinmized && cell.heightConstraint.constant != _defaultRowHeightMaximized )
-        cell.heightConstraint.constant = _defaultRowHeightMinmized;
     
     Upgrade * tmpUpgrade = [self.upgrades objectAtIndex:indexPath.section];
     [cell createContentFromUpgrade:tmpUpgrade];
@@ -195,50 +207,44 @@
     UpgradeCell * cell = (UpgradeCell*)[tableView cellForRowAtIndexPath:indexPath];
     cell.delegate = self;
     
-    NSMutableArray * allOtherCells = [[tableView visibleCells] mutableCopy];
-    [allOtherCells removeObject:cell];
+    Upgrade * tmpUpgrade = [self.upgrades objectAtIndex:indexPath.section];
     
     float mainScreenViewsAlpha;
     
     //if minimized
-    if ( cell.heightConstraint.constant == _defaultRowHeightMinmized )
+    if ( ! tmpUpgrade.isMaximized )//cell.heightConstraint.constant == _defaultRowHeightMinmized )
     {
         mainScreenViewsAlpha = 0;
-        
         [cell showMinimizedContent:NO animated:YES completion:^
         {
             [cell showMaximizedContent:YES animated:YES completion:nil];
         }];
-        
-        cell.heightConstraint.constant = _defaultRowHeightMaximized;
         self.constraintTopMyTable.constant = 0;
         tableView.allowsSelection = NO;
+        tmpUpgrade.isMaximized = YES;
     }
     else
     {
         mainScreenViewsAlpha = 1;
-        
         [cell showMaximizedContent:NO animated:YES completion:^
         {
             [cell showMinimizedContent:YES animated:YES completion:nil];
         }];
-        
-        cell.heightConstraint.constant = _defaultRowHeightMinmized;
         self.constraintTopMyTable.constant = _defaultConstraintTopMyTable;
         tableView.allowsSelection = YES;
+        tmpUpgrade.isMaximized = NO;
     }
     
     [UIView animateWithDuration:.3 animations:^
     {
-        for ( UpgradeCell * tmpCell in allOtherCells )
-            [tmpCell setAlpha:mainScreenViewsAlpha];
-        [self setMainScreenViewsAlpha:mainScreenViewsAlpha];
         [self.view layoutIfNeeded];
-        [cell.contentView layoutIfNeeded];
-        [tableView beginUpdates];
-        [tableView endUpdates];
-        [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        [self setMainScreenViewsAlpha:mainScreenViewsAlpha];
     }];
+    
+    [tableView beginUpdates];
+    [tableView endUpdates];
+    [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+
 }
 
 #pragma mark upgrade cell delegate

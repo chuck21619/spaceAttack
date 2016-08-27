@@ -18,8 +18,8 @@
 @interface UpgradeCell : UITableViewCell
 
 @property (weak, nonatomic) id <UpgradeCellDelegate>delegate;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightConstraint;
-@property (weak, nonatomic) IBOutlet UIView *heightConstraintView;
+
+@property (weak, nonatomic) IBOutlet UIView *borderView;
 
 - (void) showMinimizedContent:(BOOL)show animated:(BOOL)animated completion:(void (^)())completion;
 - (void) showMaximizedContent:(BOOL)show animated:(BOOL)animated completion:(void (^)())completion;

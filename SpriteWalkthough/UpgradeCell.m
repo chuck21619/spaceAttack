@@ -11,8 +11,6 @@
 
 @implementation UpgradeCell
 {
-    BOOL _contentCreated;
-    
     UILabel * _upgradeTitleLabel;
     float _defaultBorderWidth;
     
@@ -31,55 +29,54 @@
 {
     [super awakeFromNib];
     
-    self.heightConstraintView.layer.cornerRadius = self.frame.size.height/3;
     _defaultBorderWidth = 1.5;
-    self.heightConstraintView.layer.borderWidth = _defaultBorderWidth;
-    self.heightConstraintView.layer.borderColor = [UIColor whiteColor].CGColor;
-    [_AppDelegate addGlowToLayer:self.heightConstraintView.layer withColor:[UIColor whiteColor].CGColor];
+    
+    self.borderView.layer.borderWidth = _defaultBorderWidth;
+    self.borderView.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.borderView.layer.cornerRadius = self.frame.size.height/3.0;
+    [_AppDelegate addGlowToLayer:self.borderView.layer withColor:self.borderView.layer.borderColor];
+    //[_AppDelegate addGlowToView:self.borderView withColor:self.borderView.layer.borderColor];
+    
+    
+    _upgradeTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 44)];
+    _upgradeTitleLabel.textColor = [UIColor whiteColor];
+    _upgradeTitleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:20];
+    _upgradeTitleLabel.textAlignment = NSTextAlignmentCenter;
+    [self.contentView addSubview:_upgradeTitleLabel];
+    [_AppDelegate addGlowToLayer:_upgradeTitleLabel.layer withColor:_upgradeTitleLabel.textColor.CGColor];
+    
+    
+    _minimizeButton = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width - 73, 0, 80, 55)];
+    [_minimizeButton setContentVerticalAlignment:UIControlContentVerticalAlignmentTop];
+    [_minimizeButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
+    [_minimizeButton setContentEdgeInsets:UIEdgeInsetsMake(10, 0, 0, 17)];
+    [_minimizeButton.titleLabel setFont:[UIFont fontWithName:@"Moon-Bold" size:17]];
+    [_minimizeButton setTitle:@"X" forState:UIControlStateNormal];
+    [_minimizeButton addTarget:self action:@selector(minimizePressed) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:_minimizeButton];
+    [_AppDelegate addGlowToLayer:_minimizeButton.titleLabel.layer withColor:_minimizeButton.currentTitleColor.CGColor];
+    
+    _upgradeDescription = [[UILabel alloc] initWithFrame:CGRectMake(0, 400, self.frame.size.width, 100)];
+    _upgradeDescription.textColor = [UIColor whiteColor];
+    _upgradeDescription.font = [UIFont fontWithName:@"Moon-Bold" size:14];
+    _upgradeDescription.textAlignment = NSTextAlignmentCenter;
+    _upgradeDescription.numberOfLines = 0;
+    [self.contentView addSubview:_upgradeDescription];
+    [_AppDelegate addGlowToLayer:_upgradeDescription.layer withColor:_upgradeDescription.textColor.CGColor];
+    
+    
+    [self setMaximizedAlphas:0]; //initial cell will be minimized
 }
 
 
 - (void) createContentFromUpgrade:(Upgrade *)upgrade
 {
-    if ( ! _contentCreated )
-    {
-        UILabel * titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.heightConstraint.constant)];
-        titleLabel.textColor = [UIColor whiteColor];
-        titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:20];
-        titleLabel.textAlignment = NSTextAlignmentCenter;
-        titleLabel.text = upgrade.title;
-        [self.contentView addSubview:titleLabel];
-        [_AppDelegate addGlowToLayer:titleLabel.layer withColor:titleLabel.textColor.CGColor];
-        
-        
-        //minimized content
-        
-        
-        //maximized content
-        _minimizeButton = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width - 73, 0, 80, 55)];
-        [_minimizeButton setContentVerticalAlignment:UIControlContentVerticalAlignmentTop];
-        [_minimizeButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
-        [_minimizeButton setContentEdgeInsets:UIEdgeInsetsMake(10, 0, 0, 17)];
-        [_minimizeButton.titleLabel setFont:[UIFont fontWithName:@"Moon-Bold" size:17]];
-        [_minimizeButton setTitle:@"X" forState:UIControlStateNormal];
-        [_minimizeButton addTarget:self action:@selector(minimizePressed) forControlEvents:UIControlEventTouchUpInside];
-        [_AppDelegate addGlowToLayer:_minimizeButton.titleLabel.layer withColor:_minimizeButton.currentTitleColor.CGColor];
-        [self.contentView addSubview:_minimizeButton];
-        
-        _upgradeDescription = [[UILabel alloc] initWithFrame:CGRectMake(0, 400, self.frame.size.width, 100)];
-        _upgradeDescription.textColor = [UIColor whiteColor];
-        _upgradeDescription.font = [UIFont fontWithName:@"Moon-Bold" size:14];
-        _upgradeDescription.textAlignment = NSTextAlignmentCenter;
-        _upgradeDescription.numberOfLines = 0;
-        _upgradeDescription.text = upgrade.upgradeDescription;
-        [self.contentView addSubview:_upgradeDescription];
-        [_AppDelegate addGlowToLayer:_upgradeDescription.layer withColor:_upgradeDescription.textColor.CGColor];
-        _upgradeDescription.alpha = 0;
-        
-        [self setMaximizedAlphas:0]; //initial cell will be minimized
-        
-        _contentCreated = YES;
-    }
+    _upgradeTitleLabel.text = upgrade.title;
+    
+    //minimized content
+
+    //maximized content
+    _upgradeDescription.text = upgrade.upgradeDescription;
 }
 
 - (void) minimizePressed
