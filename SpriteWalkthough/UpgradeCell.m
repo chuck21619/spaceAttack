@@ -93,6 +93,15 @@
 //        self.heightConstraintView.layer.borderWidth = _defaultBorderWidth;
 //}
 
+- (void) hideBorderForDuration:(float)duration
+{
+    self.borderView.layer.shadowRadius = 0;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, duration * NSEC_PER_SEC), dispatch_get_main_queue(), ^
+    {
+        self.borderView.layer.shadowRadius = 4.0;
+    });
+}
+
 #pragma mark
 - (void) showMinimizedContent:(BOOL)show animated:(BOOL)animated completion:(void (^)())completion
 {

@@ -235,6 +235,8 @@
         tmpUpgrade.isMaximized = NO;
     }
     
+    
+    [cell hideBorderForDuration:.3];
     [UIView animateWithDuration:.3 animations:^
     {
         [self.view layoutIfNeeded];

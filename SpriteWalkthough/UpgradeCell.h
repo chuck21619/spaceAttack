@@ -26,4 +26,6 @@
 
 - (void) createContentFromUpgrade:(Upgrade *)upgrade;
 
+- (void) hideBorderForDuration:(float)duration;
+
 @end
