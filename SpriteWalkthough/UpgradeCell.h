@@ -13,6 +13,7 @@
 @protocol UpgradeCellDelegate <NSObject>
 - (void) minimizePressed:(UpgradeCell *)upgradeCell;
 - (void) purchasedWithPoints:(float)pointsSpent;
+- (void) purchaseWithMoneyPressed:(Upgrade *)upgrade;
 @end
 
 

@@ -41,7 +41,7 @@
     
     self.mySpaceship = [[Abdul_Kadir alloc] init];
     [self.mySpaceship setExhaustTargetNode:self];
-    self.mySpaceship.position = CGPointMake(self.size.width/2, self.size.height/4);
+    self.mySpaceship.position = CGPointMake(self.size.width/2, self.size.height/16);
     [self addChild:self.mySpaceship];
     
     self.moveShipTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(randomlyMoveShip) userInfo:nil repeats:YES];
@@ -168,7 +168,7 @@
 
 - (CGPoint) randomPosition
 {
-    CGPoint position = (CGPoint){(arc4random() % (int)self.scene.size.width) + 1.0f, (arc4random() % (int)(self.scene.size.height/4)) + 1.0f};
+    CGPoint position = (CGPoint){(arc4random() % (int)self.scene.size.width) + 1.0f, (arc4random() % (int)(self.scene.size.height/16)) + 1.0f};
     return position;
 }
 

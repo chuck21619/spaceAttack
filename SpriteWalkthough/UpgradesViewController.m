@@ -13,6 +13,7 @@
 #import <Crashlytics/Crashlytics.h>
 #import "SpriteAppDelegate.h"
 #import "MenuBackgroundScene.h"
+#import "UIView+Shake.h"
 
 
 @implementation UpgradesViewController
@@ -30,7 +31,7 @@
     
     self.upgrades = [[AccountManager sharedInstance] upgrades];
     
-    //[self validateProductIdentifiers];
+    [self validateProductIdentifiers];
     
     _cellSpacing = 5;
     _minimizedCellHeight = (self.myTable.frame.size.height/8) - _cellSpacing;
@@ -58,7 +59,7 @@
 
 - (void) refreshUpgradeViews
 {
-    //[self.myTable reloadData];
+    [self.myTable reloadData];
 }
 
 - (void) dealloc
@@ -201,6 +202,23 @@
     //if minimized
     if ( ! tmpUpgrade.isMaximized )
     {
+        if ( tmpUpgrade.upgradeType == kUpgrade4Weapons )
+        {
+            int numberOfUnlockedUpgrades = 0;
+            for ( Upgrade * tmpUpgrade in [AccountManager sharedInstance].upgrades )
+            {
+                if ( tmpUpgrade.isUnlocked )
+                    numberOfUnlockedUpgrades++;
+            }
+            
+            if ( numberOfUnlockedUpgrades < 7 )
+            {
+                [cell shake];
+                return;
+            }
+        }
+        
+        
         mainScreenViewsAlpha = 0;
         tableView.allowsSelection = NO;
         tmpUpgrade.isMaximized = YES;
@@ -264,6 +282,31 @@
 {
     [self animateAvailablePoints:[NSNumber numberWithFloat:pointsSpent]];
 }
+
+- (void) purchaseWithMoneyPressed:(Upgrade *)upgrade
+{
+    SKProduct * product = nil;
+    for ( SKProduct * tmpProduct in self.products )
+    {
+        if ( [tmpProduct.productIdentifier isEqualToString:upgrade.storeKitIdentifier] )
+        {
+            product = tmpProduct;
+            break;
+        }
+    }
+    
+    if ( product )
+    {
+        SKMutablePayment * payment = [SKMutablePayment paymentWithProduct:product];
+        [[SKPaymentQueue defaultQueue] addPayment:payment];
+        [self showProgressHud];
+    }
+    else
+    {
+        NSLog(@"somethign screwd up i think");
+    }
+}
+
 
 #pragma mark - game center
 - (void) achievementsLoaded
@@ -355,82 +398,4 @@
     [self refreshUpgradeViews];
 }
 
-/*
-- (void) unlockWithPointsPressed:(UpgradeView *)upgradeView
-{
-    [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuUnlock];
-    NSNumberFormatter *formatter = [NSNumberFormatter new];
-    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    NSString * formattedPoints = [formatter stringFromNumber:[NSNumber numberWithInteger:upgradeView.upgrade.pointsToUnlock]];
-
-    DQAlertView * unlockAlert = [[DQAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"Unlock %@\nfor %@ points?", upgradeView.upgrade.title, formattedPoints] cancelButtonTitle:@"Cancel" otherButtonTitle:@"Unlock"];
-    unlockAlert.appearAnimationType = DQAlertViewAnimationTypeFadeIn;
-    unlockAlert.disappearAnimationType = DQAlertViewAnimationTypeFaceOut;
-    unlockAlert.appearTime = .2;
-    unlockAlert.disappearTime = .2;
-    unlockAlert.backgroundColor = [UIColor colorWithWhite:.2 alpha:.95];
-    unlockAlert.messageLabel.font = [UIFont fontWithName:@"Moon-Bold" size:20];
-    unlockAlert.messageLabel.textColor = [UIColor whiteColor];
-    unlockAlert.cancelButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
-    [unlockAlert.cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    unlockAlert.otherButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
-    [unlockAlert.otherButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    unlockAlert.otherButtonAction = ^
-    {
-        [Answers logPurchaseWithPrice:[[NSDecimalNumber alloc] initWithFloat:upgradeView.upgrade.pointsToUnlock]
-                             currency:@"game points"
-                              success:@YES
-                             itemName:upgradeView.upgrade.title
-                             itemType:@"Upgrade"
-                               itemId:nil
-                     customAttributes:@{}];
-        [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuDidUnlock];
-        [AccountManager subtractPoints:upgradeView.upgrade.pointsToUnlock];
-        [AccountManager unlockUpgrade:upgradeView.upgrade.upgradeType];
-        [self refreshUpgradeViews];
-        [self animateAvailablePoints:[NSNumber numberWithInt:upgradeView.upgrade.pointsToUnlock]];
-    };
-    [unlockAlert show];
-}
- 
-- (void) unlockWithMoneyPressed:(UpgradeView *)upgradeView
-{
-    [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuUnlock];
-    DQAlertView * unlockAlert = [[DQAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"Unlock %@\nfor %@?", upgradeView.upgrade.title, upgradeView.upgrade.priceString] cancelButtonTitle:@"Cancel" otherButtonTitle:@"Unlock"];
-    unlockAlert.appearAnimationType = DQAlertViewAnimationTypeFadeIn;
-    unlockAlert.disappearAnimationType = DQAlertViewAnimationTypeFaceOut;
-    unlockAlert.appearTime = .2;
-    unlockAlert.disappearTime = .2;
-    unlockAlert.backgroundColor = [UIColor colorWithWhite:.2 alpha:.95];
-    unlockAlert.messageLabel.font = [UIFont fontWithName:@"Moon-Bold" size:20];
-    unlockAlert.messageLabel.textColor = [UIColor whiteColor];
-    unlockAlert.cancelButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
-    [unlockAlert.cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    unlockAlert.otherButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
-    [unlockAlert.otherButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    unlockAlert.otherButtonAction = ^
-    {
-        SKProduct * product = nil;
-        for ( SKProduct * tmpProduct in self.products )
-        {
-            if ( [tmpProduct.productIdentifier isEqualToString:upgradeView.upgrade.storeKitIdentifier] )
-            {
-                product = tmpProduct;
-                break;
-            }
-        }
-        
-        if ( product )
-        {
-            SKMutablePayment * payment = [SKMutablePayment paymentWithProduct:product];
-            [[SKPaymentQueue defaultQueue] addPayment:payment];
-            [self showProgressHud];
-        }
-        else
-        {
-            NSLog(@"somethign screwd up i think");
-        }
-    };
-    [unlockAlert show];
-}*/
 @end

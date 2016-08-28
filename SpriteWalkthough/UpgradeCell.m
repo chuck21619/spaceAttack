@@ -11,7 +11,7 @@
 #import "GlowingButton.h"
 #import "AccountManager.h"
 #import "AudioManager.h"
-#import "DQAlertView.h"
+#import "SAAlertView.h"
 #import <Crashlytics/Crashlytics.h>
 
 @implementation UpgradeCell
@@ -25,7 +25,7 @@
     
     //minimized content
     UIImageView * _iconImage;
-    UIImageView * _lockedIcon;
+    UIImageView * _lockOrCheckIcon;
     UILabel * _costLabel;
     UILabel * _pointsNumberLabel;
     UILabel * _pointsLabel;
@@ -92,9 +92,9 @@
     [self.contentView addSubview:_pointsLabel];
     [_AppDelegate addGlowToLayer:_pointsLabel.layer withColor:_pointsLabel.textColor.CGColor];
 
-    _lockedIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Lock.png"]];
-    _lockedIcon.contentMode = UIViewContentModeScaleAspectFit;
-    [self.contentView addSubview:_lockedIcon];
+    _lockOrCheckIcon = [UIImageView new];
+    _lockOrCheckIcon.contentMode = UIViewContentModeScaleAspectFit;
+    [self.contentView addSubview:_lockOrCheckIcon];
     
     
     //--maximied content
@@ -157,7 +157,7 @@
         _costLabel.frame = CGRectMake(250, 2, 50, 10);
         _pointsNumberLabel.frame = CGRectMake(250, 10, 50, 35);
         _pointsLabel.frame = CGRectMake(250, 43, 50, 10);
-        _lockedIcon.frame = CGRectMake(262, 10, 32, 32);
+        _lockOrCheckIcon.frame = CGRectMake(262, 10, 32, 32);
         
         
         _minimizeButton.frame = CGRectMake(self.frame.size.width - 73, 0, 80, 55);
@@ -197,6 +197,10 @@
     //minimized content
     _iconImage.image = upgrade.icon;
     _pointsNumberLabel.text = [NSString stringWithFormat:@"%iK", _myUpgrade.pointsToUnlock/1000];
+    if ( upgrade.isUnlocked )
+        _lockOrCheckIcon.image = [UIImage imageNamed:@"Check.png"];
+    else
+        _lockOrCheckIcon.image = [UIImage imageNamed:@"Lock.png"];
 
     //maximized content
     _demoScene = [[UpgradeScene alloc] initWithUpgradeType:upgrade.upgradeType];
@@ -339,7 +343,17 @@
 #pragma mark
 - (void) unlockWithMoneyPressed
 {
-    
+    [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuUnlock];
+    SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"Unlock %@\nfor %@?", _myUpgrade.title, _myUpgrade.priceString] cancelButtonTitle:@"Cancel" otherButtonTitle:@"Unlock"];
+    unlockAlert.backgroundColor = [UIColor colorWithWhite:.2 alpha:.95];
+    unlockAlert.messageLabel.font = [UIFont fontWithName:@"Moon-Bold" size:20];
+    unlockAlert.cancelButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
+    unlockAlert.otherButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
+    unlockAlert.otherButtonAction = ^
+    {
+        [self.delegate purchaseWithMoneyPressed:_myUpgrade];
+    };
+    [unlockAlert show];
 }
 
 - (void) unlockWithPointsPressed
@@ -349,18 +363,11 @@
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
     NSString * formattedPoints = [formatter stringFromNumber:[NSNumber numberWithInteger:_myUpgrade.pointsToUnlock]];
     
-    DQAlertView * unlockAlert = [[DQAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"Unlock %@\nfor %@ points?", _myUpgrade.title, formattedPoints] cancelButtonTitle:@"Cancel" otherButtonTitle:@"Unlock"];
-    unlockAlert.appearAnimationType = DQAlertViewAnimationTypeFadeIn;
-    unlockAlert.disappearAnimationType = DQAlertViewAnimationTypeFaceOut;
-    unlockAlert.appearTime = .3;
-    unlockAlert.disappearTime = .3;
+    SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"Unlock %@\nfor %@ points?", _myUpgrade.title, formattedPoints] cancelButtonTitle:@"Cancel" otherButtonTitle:@"Unlock"];
     unlockAlert.backgroundColor = [UIColor colorWithWhite:.2 alpha:.95];
     unlockAlert.messageLabel.font = [UIFont fontWithName:@"Moon-Bold" size:20];
-    unlockAlert.messageLabel.textColor = [UIColor whiteColor];
     unlockAlert.cancelButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
-    [unlockAlert.cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     unlockAlert.otherButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
-    [unlockAlert.otherButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     unlockAlert.otherButtonAction = ^
     {
         [Answers logPurchaseWithPrice:[[NSDecimalNumber alloc] initWithFloat:_myUpgrade.pointsToUnlock]
@@ -459,21 +466,36 @@
     
     _iconImage.alpha = alpha;
     
-    _lockedIcon.alpha = 0;
+    _lockOrCheckIcon.alpha = 0;
     _costLabel.alpha = 0;
     _pointsNumberLabel.alpha = 0;
     _pointsLabel.alpha = 0;
     
     if ( ! _myUpgrade.isUnlocked )
     {
-        if ( _myUpgrade.upgradeType == kUpgrade4Weapons )
-            _lockedIcon.alpha = alpha;
+        int numberOfUnlockedUpgrades = 0;
+        for ( Upgrade * tmpUpgrade in [AccountManager sharedInstance].upgrades )
+        {
+            if ( tmpUpgrade.isUnlocked )
+                numberOfUnlockedUpgrades++;
+        }
+        
+        if ( _myUpgrade.upgradeType == kUpgrade4Weapons && numberOfUnlockedUpgrades < 7 )
+            _lockOrCheckIcon.alpha = alpha;
         else
         {
+            if ( _myUpgrade.upgradeType == kUpgrade4Weapons )
+                _iconImage.image = [UIImage imageNamed:@"fourWeaponsUpgrade.png"];
+            
             _costLabel.alpha = alpha;
             _pointsNumberLabel.alpha = alpha;
             _pointsLabel.alpha = alpha;
         }
+    }
+    else
+    {
+        _lockOrCheckIcon.image = [UIImage imageNamed:@"Check.png"];
+        _lockOrCheckIcon.alpha = alpha;
     }
 }
 
@@ -490,6 +512,16 @@
         [_demoView presentScene:_demoScene];
         _demoView.alpha = 0;
         [self.contentView addSubview:_demoView];
+        
+        CALayer *maskLayer = [CALayer layer];
+        maskLayer.frame = _demoView.bounds;
+        maskLayer.shadowRadius = 5;
+        maskLayer.shadowPath = CGPathCreateWithRoundedRect(CGRectInset(_demoView.bounds, 10, 10), 10, 10, nil);
+        maskLayer.shadowOpacity = 1;
+        maskLayer.shadowOffset = CGSizeZero;
+        maskLayer.shadowColor = [UIColor whiteColor].CGColor;
+        
+        _demoView.layer.mask = maskLayer;
     }
     else
     {

@@ -395,6 +395,8 @@
 		A3E009B51D72C5D800C340AA /* Questionmark.png in Resources */ = {isa = PBXBuildFile; fileRef = A3E009AC1D72C5D800C340AA /* Questionmark.png */; };
 		A3E009B61D72C5D800C340AA /* Shields.png in Resources */ = {isa = PBXBuildFile; fileRef = A3E009AD1D72C5D800C340AA /* Shields.png */; };
 		A3E009B71D72C5D800C340AA /* Smart Photon.png in Resources */ = {isa = PBXBuildFile; fileRef = A3E009AE1D72C5D800C340AA /* Smart Photon.png */; };
+		A3E009BB1D72F86700C340AA /* UIView+Shake.m in Sources */ = {isa = PBXBuildFile; fileRef = A3E009BA1D72F86700C340AA /* UIView+Shake.m */; };
+		A3E009BD1D72FE3C00C340AA /* fourWeaponsUpgrade.png in Resources */ = {isa = PBXBuildFile; fileRef = A3E009BC1D72FE3C00C340AA /* fourWeaponsUpgrade.png */; };
 		A3E0F2F41D3B725700BB4508 /* laserUpgraded.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A3E0F2F21D3B725700BB4508 /* laserUpgraded.atlas */; };
 		A3E3E64F1D4DD5DD00EEF2C3 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = A3E3E64E1D4DD5DD00EEF2C3 /* share.png */; };
 		A3E3E6541D4DD80500EEF2C3 /* Tumblr-black.png in Resources */ = {isa = PBXBuildFile; fileRef = A3E3E6501D4DD80500EEF2C3 /* Tumblr-black.png */; };
@@ -959,6 +961,9 @@
 		A3E009AC1D72C5D800C340AA /* Questionmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Questionmark.png; sourceTree = "<group>"; };
 		A3E009AD1D72C5D800C340AA /* Shields.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Shields.png; sourceTree = "<group>"; };
 		A3E009AE1D72C5D800C340AA /* Smart Photon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Smart Photon.png"; sourceTree = "<group>"; };
+		A3E009B91D72F86700C340AA /* UIView+Shake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Shake.h"; sourceTree = "<group>"; };
+		A3E009BA1D72F86700C340AA /* UIView+Shake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Shake.m"; sourceTree = "<group>"; };
+		A3E009BC1D72FE3C00C340AA /* fourWeaponsUpgrade.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fourWeaponsUpgrade.png; sourceTree = "<group>"; };
 		A3E0F2F21D3B725700BB4508 /* laserUpgraded.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = laserUpgraded.atlas; sourceTree = "<group>"; };
 		A3E3E6401D4DC50600EEF2C3 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		A3E3E64E1D4DD5DD00EEF2C3 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
@@ -1493,6 +1498,7 @@
 		6E5D38111AB6922F0002F22F /* 3rd Party */ = {
 			isa = PBXGroup;
 			children = (
+				A3E009B81D72F85F00C340AA /* shake */,
 				A30112711D5FC80E00E133F2 /* fonts */,
 				A39CEF0C1D317D7E00C01870 /* ObjectAL */,
 				A331D6251C72DC780054124F /* DGActivityIndicatorView */,
@@ -1885,6 +1891,7 @@
 		A3328C101C702EE500E18FF4 /* upgrades */ = {
 			isa = PBXGroup;
 			children = (
+				A3E009BC1D72FE3C00C340AA /* fourWeaponsUpgrade.png */,
 				A3E009A71D72C5D800C340AA /* Check.png */,
 				A3E009A61D72C5D800C340AA /* Bullets.png */,
 				A3E009A81D72C5D800C340AA /* Double Weapon.png */,
@@ -2223,6 +2230,15 @@
 			name = DQAlertView;
 			sourceTree = "<group>";
 		};
+		A3E009B81D72F85F00C340AA /* shake */ = {
+			isa = PBXGroup;
+			children = (
+				A3E009B91D72F86700C340AA /* UIView+Shake.h */,
+				A3E009BA1D72F86700C340AA /* UIView+Shake.m */,
+			);
+			name = shake;
+			sourceTree = "<group>";
+		};
 		A3E3E6451D4DD2E400EEF2C3 /* social media */ = {
 			isa = PBXGroup;
 			children = (
@@ -2497,6 +2513,7 @@
 				A3483FD71D6914F100E9D1F9 /* asteroid.atlas in Resources */,
 				A34840051D691CE300E9D1F9 /* electricity3.png in Resources */,
 				13EDFF38190965500077B7D2 /* missile.png in Resources */,
+				A3E009BD1D72FE3C00C340AA /* fourWeaponsUpgrade.png in Resources */,
 				A32C06201D612786008DDC80 /* Twin Suns.png in Resources */,
 				A32C06081D612786008DDC80 /* BlackStar_0Grain-ColorDodge.png in Resources */,
 				A39ABA3A1C4E1A8E00AF1455 /* tooltipArrowRight.png in Resources */,
@@ -2744,6 +2761,7 @@
 				A331D66E1C72DCB20054124F /* DGActivityIndicatorBallClipRotatePulseAnimation.m in Sources */,
 				6ED0AEF81A9149DA00493ED0 /* MenuBackgroundScene.m in Sources */,
 				A39CEF551D317D7E00C01870 /* OALAudioTrackNotifications.m in Sources */,
+				A3E009BB1D72F86700C340AA /* UIView+Shake.m in Sources */,
 				135BEDA3197456C900892311 /* EnemyFast.m in Sources */,
 				A331D6741C72DCB20054124F /* DGActivityIndicatorBallScaleAnimation.m in Sources */,
 				139F8B29194A96AA0027DB1D /* Enemy.m in Sources */,
