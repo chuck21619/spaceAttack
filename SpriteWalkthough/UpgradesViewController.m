@@ -125,16 +125,15 @@
     self.availablePointsLabel.alpha = alpha;
 }
 
-/*
 - (void) animateAvailablePoints:(NSNumber *)pointsToSubtractNumber
 {
     int pointsToSubtract = [pointsToSubtractNumber intValue];
     
-    if ( self.animatingUpgradeView )
-    {
-        [self performSelector:@selector(animateAvailablePoints:) withObject:@(pointsToSubtract) afterDelay:.5];
-        return;
-    }
+//    if ( self.animatingUpgradeView )
+//    {
+//        [self performSelector:@selector(animateAvailablePoints:) withObject:@(pointsToSubtract) afterDelay:.5];
+//        return;
+//    }
     
     NSString * availablePointsPart = [NSString stringWithFormat:@"%@ : ", NSLocalizedString(@"Available Points", nil)];
     
@@ -146,8 +145,7 @@
     
     if ( pointsToSubtract != 500 )
         [self performSelector:@selector(animateAvailablePoints:) withObject:[NSNumber numberWithInt:pointsToSubtract-500] afterDelay:.05];
-}*/
-
+}
 
 #pragma mark - table view
 - (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
@@ -176,20 +174,9 @@
     Upgrade * tmpUpgrade = [self.upgrades objectAtIndex:indexPath.section];
     
     if ( tmpUpgrade.isMaximized )
-        return self.view.frame.size.height;
-    
+        return self.myTable.frame.size.height;
     
     return _minimizedCellHeight;
-        
-        
-        
-//    testCell * cell = (testCell *)[self tableView:tableView cellForRowAtIndexPath:indexPath];
-//    UILabel * testLabel = cell.myLabel;
-//    
-//    if ( [testLabel.text isEqualToString:@"pressed"] )
-//        return self.myTable.frame.size.height;
-    
-    //return 44;
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -212,41 +199,58 @@
     float mainScreenViewsAlpha;
     
     //if minimized
-    if ( ! tmpUpgrade.isMaximized )//cell.heightConstraint.constant == _defaultRowHeightMinmized )
+    if ( ! tmpUpgrade.isMaximized )
     {
         mainScreenViewsAlpha = 0;
-        [cell showMinimizedContent:NO animated:YES completion:^
-        {
-            [cell showMaximizedContent:YES animated:YES completion:nil];
-        }];
-        self.constraintTopMyTable.constant = 0;
         tableView.allowsSelection = NO;
         tmpUpgrade.isMaximized = YES;
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:kUpgradeTableWillAnimate object:nil];
+        [cell showMinimizedContent:NO animated:YES completion:^
+        {
+            [self animateCellHeight:cell tableTopConstraint:7 mainScreenViewsAlpha:mainScreenViewsAlpha completion:^
+            {
+                [[NSNotificationCenter defaultCenter] postNotificationName:kUpgradeTableDidAnimate object:nil];
+                [cell showMaximizedContent:YES animated:YES completion:nil];
+            }];
+        }];
     }
     else
     {
         mainScreenViewsAlpha = 1;
-        [cell showMaximizedContent:NO animated:YES completion:^
-        {
-            [cell showMinimizedContent:YES animated:YES completion:nil];
-        }];
-        self.constraintTopMyTable.constant = _defaultConstraintTopMyTable;
         tableView.allowsSelection = YES;
         tmpUpgrade.isMaximized = NO;
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:kUpgradeTableWillAnimate object:nil];
+        [cell showMaximizedContent:NO animated:YES completion:^
+        {
+            [self animateCellHeight:cell tableTopConstraint:_defaultConstraintTopMyTable mainScreenViewsAlpha:mainScreenViewsAlpha completion:^
+            {
+                [[NSNotificationCenter defaultCenter] postNotificationName:kUpgradeTableDidAnimate object:nil];
+                [cell showMinimizedContent:YES animated:YES completion:nil];
+            }];
+        }];
     }
-    
-    
-    [cell hideBorderForDuration:.3];
-    [UIView animateWithDuration:.3 animations:^
+}
+
+- (void) animateCellHeight:(UpgradeCell *)cell tableTopConstraint:(int)constraintConstant mainScreenViewsAlpha:(float)alpha completion:(void (^)())completion
+{
+    self.constraintTopMyTable.constant = constraintConstant;
+    [UIView animateWithDuration:.35 animations:^
     {
         [self.view layoutIfNeeded];
-        [self setMainScreenViewsAlpha:mainScreenViewsAlpha];
+        [self setMainScreenViewsAlpha:alpha];
+    }
+    completion:^(BOOL finished)
+    {
+        if ( completion )
+            completion();
     }];
     
-    [tableView beginUpdates];
-    [tableView endUpdates];
-    [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-
+    [self.myTable beginUpdates];
+    [self.myTable endUpdates];
+    NSIndexPath * indexPath = [self.myTable indexPathForCell:cell];
+    [self.myTable scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
 #pragma mark upgrade cell delegate
@@ -254,6 +258,11 @@
 {
     NSIndexPath * indexPath = [self.myTable indexPathForCell:upgradeCell];
     [self tableView:self.myTable didSelectRowAtIndexPath:indexPath];
+}
+
+- (void) purchasedWithPoints:(float)pointsSpent
+{
+    [self animateAvailablePoints:[NSNumber numberWithFloat:pointsSpent]];
 }
 
 #pragma mark - game center

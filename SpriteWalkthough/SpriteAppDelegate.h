@@ -14,6 +14,8 @@
 //colors
 #define _SAPink [UIColor colorWithRed:255.0/255.0 green:113.0/255.0 blue:223.0/255.0 alpha:1]
 
+#define kUpgradeTableWillAnimate @"upgradeTableWillAnimate"
+#define kUpgradeTableDidAnimate @"upgradeTableDidAnimate"
 
 @interface SpriteAppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -22,8 +24,5 @@
 
 - (void) addGlowToLayer:(CALayer *)layer withColor:(CGColorRef)color;
 - (void) addGlowToLayer:(CALayer *)layer withColor:(CGColorRef)color size:(float)size;
-
-- (void) addGlowToView:(UIView*)view withColor:(CGColorRef)color;
-- (void) addGlowToView:(UIView*)view withColor:(CGColorRef)color size:(float)size;
 
 @end

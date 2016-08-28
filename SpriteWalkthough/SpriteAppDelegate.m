@@ -94,28 +94,6 @@
     layer.masksToBounds = NO;
     layer.shouldRasterize = YES;
     layer.rasterizationScale = UIScreen.mainScreen.scale;
-    //layer.shadowPath = [UIBezierPath bezierPathWithRect:theView.bounds].CGPath;
-
-}
-
-
-- (void) addGlowToView:(UIView *)view withColor:(CGColorRef)color
-{
-    [self addGlowToView:view withColor:color size:4.0];
-}
-
-- (void) addGlowToView:(UIView *)view withColor:(CGColorRef)color size:(float)size
-{
-    view.layer.shadowColor = color;
-    view.layer.shadowRadius = size;
-    view.layer.shadowOpacity = 1;
-    view.layer.shadowOffset = CGSizeZero;
-    view.layer.masksToBounds = NO;
-    view.layer.shouldRasterize = YES;
-    view.layer.rasterizationScale = UIScreen.mainScreen.scale;
-    //view.layer.shadowPath = [UIBezierPath bezierPathWithRect:view.bounds].CGPath;
-    
-    view.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:view.bounds cornerRadius:view.layer.cornerRadius].CGPath;
 }
 
 @end

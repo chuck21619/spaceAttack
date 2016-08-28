@@ -12,6 +12,7 @@
 @class UpgradeCell;
 @protocol UpgradeCellDelegate <NSObject>
 - (void) minimizePressed:(UpgradeCell *)upgradeCell;
+- (void) purchasedWithPoints:(float)pointsSpent;
 @end
 
 
@@ -25,7 +26,5 @@
 - (void) showMaximizedContent:(BOOL)show animated:(BOOL)animated completion:(void (^)())completion;
 
 - (void) createContentFromUpgrade:(Upgrade *)upgrade;
-
-- (void) hideBorderForDuration:(float)duration;
 
 @end

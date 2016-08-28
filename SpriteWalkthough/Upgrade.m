@@ -22,7 +22,7 @@
                 self.storeKitIdentifier = @"TestWeaponsTwo";
                 self.title = NSLocalizedString(@"Two Weapons", nil);
                 self.upgradeDescription = NSLocalizedString(@"Your spaceships will be able to equip two different weapons!", nil);
-                self.icon = [[UIImage imageNamed:@"shotgunShells.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+                self.icon = [UIImage imageNamed:@"Double Weapon.png"];
                 self.pointsToUnlock = 50000;
                 self.priceToUnlock = 2.99;
                 if ( [AccountManager numberOfWeaponSlotsUnlocked] >= 2)
@@ -36,7 +36,7 @@
                 self.storeKitIdentifier = @"SmartPhotons";
                 self.title = NSLocalizedString(@"Smart Photons", nil);
                 self.upgradeDescription = NSLocalizedString(@"Increases Photon Targeting IQ", nil);
-                self.icon = [[UIImage imageNamed:@"photon.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+                self.icon = [UIImage imageNamed:@"Smart Photon.png"];
                 self.pointsToUnlock = 15000;
                 self.priceToUnlock = 1.99;
                 if ( [AccountManager smartPhotonsUnlocked] )
@@ -50,7 +50,7 @@
                 self.storeKitIdentifier = @"MachineGunFireRate";
                 self.title = NSLocalizedString(@"More Bullets", nil);
                 self.upgradeDescription = NSLocalizedString(@"Increases rate of fire for the Machine Gun", nil);
-                self.icon = [[UIImage imageNamed:@"upgradeMachineGunFireRate.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+                self.icon = [UIImage imageNamed:@"Bullets.png"];
                 self.pointsToUnlock = 10000;
                 self.priceToUnlock = .99;
                 if ( [AccountManager machineGunFireRateUpgraded] )
@@ -64,7 +64,7 @@
                 self.storeKitIdentifier = @"Shield";
                 self.title = NSLocalizedString(@"Shield", nil);
                 self.upgradeDescription = NSLocalizedString(@"Unlocks the Shield Power Up", nil);
-                self.icon = [[UIImage imageNamed:@"shieldPowerUp.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+                self.icon = [UIImage imageNamed:@"Shields.png"];
                 self.pointsToUnlock = 20000;
                 self.priceToUnlock = 1.99;
                 if ( [AccountManager shieldUnlocked] )
@@ -78,7 +78,7 @@
                 self.storeKitIdentifier = @"BiggerLaser";
                 self.title = NSLocalizedString(@"Bigger Laser", nil);
                 self.upgradeDescription = NSLocalizedString(@"Increases the size of Laser Cannon Beams", nil);
-                self.icon = [[UIImage imageNamed:@"laserCannonUpgrade.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+                self.icon = [UIImage imageNamed:@"Lasers.png"];
                 self.pointsToUnlock = 12500;
                 self.priceToUnlock = .99;
                 if ( [AccountManager laserUpgraded] )
@@ -92,7 +92,7 @@
                 self.storeKitIdentifier = @"ElectricityChain";
                 self.title = NSLocalizedString(@"Electricity Chain", nil);
                 self.upgradeDescription = NSLocalizedString(@"Powers up the Electrical Generator to send volts through to a second target", nil);
-                self.icon = [[UIImage imageNamed:@"electricityChainUpgrade.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+                self.icon = [UIImage imageNamed:@"Electricity.png"];
                 self.pointsToUnlock = 15000;
                 self.priceToUnlock = .99;
                 if ( [AccountManager electricityChainUnlocked] )
@@ -106,7 +106,7 @@
                 self.storeKitIdentifier = @"EnergyBooster";
                 self.title = NSLocalizedString(@"Energy Booster", nil);
                 self.upgradeDescription = NSLocalizedString(@"Unlocks the Energy Booster Power Up. Doubles Points and Damage for 30 seconds", nil);
-                self.icon = [[UIImage imageNamed:@"energyBooster.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+                self.icon = [UIImage imageNamed:@"Energy.png"];
                 self.pointsToUnlock = 12500;
                 self.priceToUnlock = 1.99;
                 if ( [AccountManager energyBoosterUnlocked] )
@@ -120,7 +120,7 @@
                 self.storeKitIdentifier = @"TestWeaponsFour";
                 self.title = NSLocalizedString(@"Four Weapons", nil);
                 self.upgradeDescription = NSLocalizedString(@"Your spaceships will be able to equip four different weapons!", nil);
-                self.icon = [[UIImage imageNamed:@"shotgunShellsFour.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+                self.icon = [UIImage imageNamed:@"Questionmark.png"];
                 self.pointsToUnlock = 500000;
                 self.priceToUnlock = 9.99;
                 if ( [AccountManager numberOfWeaponSlotsUnlocked] >= 4)
