@@ -19,7 +19,7 @@
         {
             case kUpgrade2Weapons:
                 [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(unlockUpgrade) name:@"unlocked_kAchievementTwoWeapons" object:nil];
-                self.storeKitIdentifier = @"TestWeaponsTwo";
+                self.storeKitIdentifier = @"TwoWeapons";
                 self.title = NSLocalizedString(@"Two Weapons", nil);
                 self.upgradeDescription = NSLocalizedString(@"Your spaceships will be able to equip two different weapons!", nil);
                 self.icon = [UIImage imageNamed:@"Double Weapon.png"];
@@ -117,7 +117,7 @@
                 
             case kUpgrade4Weapons:
                 [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(unlockUpgrade) name:@"unlocked_kAchievementFourWeapons" object:nil];
-                self.storeKitIdentifier = @"TestWeaponsFour";
+                self.storeKitIdentifier = @"FourWeapons";
                 self.title = NSLocalizedString(@"Four Weapons", nil);
                 self.upgradeDescription = NSLocalizedString(@"Your spaceships will be able to equip four different weapons!", nil);
                 self.icon = [UIImage imageNamed:@"Questionmark.png"];

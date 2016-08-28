@@ -12,6 +12,7 @@
 #import "AccountManager.h"
 #import "AudioManager.h"
 #import "SAAlertView.h"
+#import "DGActivityIndicatorView.h"
 #import <Crashlytics/Crashlytics.h>
 
 @implementation UpgradeCell
@@ -32,9 +33,11 @@
     
     //maximized content
     UIButton * _minimizeButton;
+    DGActivityIndicatorView * _demoLoadingIndicator;
     SKScene * _demoScene;
     SKView * _demoView;
     CGRect _demoViewFrame;
+    
     UILabel * _upgradeDescription;
     GlowingButton * _purchaseButtonMoney;
     GlowingButton * _purchaseButtonPoints;
@@ -108,6 +111,9 @@
     [self.contentView addSubview:_minimizeButton];
     [_AppDelegate addGlowToLayer:_minimizeButton.titleLabel.layer withColor:_minimizeButton.currentTitleColor.CGColor];
     
+    _demoLoadingIndicator = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeLineScale tintColor:[UIColor whiteColor] size:35];
+    [self.contentView addSubview:_demoLoadingIndicator];
+    
     _upgradeDescription = [UILabel new];
     _upgradeDescription.textColor = [UIColor whiteColor];
     _upgradeDescription.font = [UIFont fontWithName:@"Moon-Bold" size:14];
@@ -151,23 +157,38 @@
     
     if ( ! _framesAdjustedForHeight )
     {
+        float width = self.frame.size.width;
+        
+        self.borderView.layer.cornerRadius = self.frame.size.height/3.0;
+        _upgradeTitleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.065];
+        _costLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.026];
+        _pointsNumberLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.092];
+        _pointsLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.026];
+        [_minimizeButton setContentEdgeInsets:UIEdgeInsetsMake(width*.033, 0, 0, width*.056)];
+        [_minimizeButton.titleLabel setFont:[UIFont fontWithName:@"Moon-Bold" size:width*.056]];
+        _upgradeDescription.font = [UIFont fontWithName:@"Moon-Bold" size:width*.046];
+        _purchaseButtonMoney.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.039];
+        _purchaseButtonPoints.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.039];
+        _purchasedLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.098];
+        
+        
         _upgradeTitleLabel.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
         
-        _iconImage.frame = CGRectMake(3, 3, 50, 50);
-        _costLabel.frame = CGRectMake(250, 2, 50, 10);
-        _pointsNumberLabel.frame = CGRectMake(250, 10, 50, 35);
-        _pointsLabel.frame = CGRectMake(250, 43, 50, 10);
-        _lockOrCheckIcon.frame = CGRectMake(262, 10, 32, 32);
+        _iconImage.frame = CGRectMake(width*.0098, width*.0098, width*.163, width*.163);
+        _costLabel.frame = CGRectMake(width*.817, width*.0065, width*.163, width*.033);
+        _pointsNumberLabel.frame = CGRectMake(width*.817, width*.033, width*.163, width*.114);
+        _pointsLabel.frame = CGRectMake(width*.817, width*.141, width*.163, width*.033);
+        _lockOrCheckIcon.frame = CGRectMake(width*.856, width*.033, width*.105, width*.105);
         
-        
-        _minimizeButton.frame = CGRectMake(self.frame.size.width - 73, 0, 80, 55);
-        _demoViewFrame = CGRectMake((self.frame.size.width - 220)/2, 75, 220, 300);
-        _upgradeDescription.frame = CGRectMake(7, 365, self.frame.size.width-14, 100);
-        _purchaseButtonMoney.frame = CGRectMake(20, 460, 110, 65);
+        _minimizeButton.frame = CGRectMake(self.frame.size.width - width*.239, 0, width*.261, width*.18);
+        _demoViewFrame = CGRectMake((self.frame.size.width - width*.719)/2, width*.245, width*.719, width*.98);
+        _demoLoadingIndicator.frame = CGRectMake((self.frame.size.width - width*.163)/2, width*.637, width*.163, width*.163);
+        _upgradeDescription.frame = CGRectMake(width*.023, width*1.19, self.frame.size.width-width*.046, width*.327);
+        _purchaseButtonMoney.frame = CGRectMake(width*.065, width*1.503, width*.359, width*.212);
         _purchaseButtonMoney.layer.cornerRadius = _purchaseButtonMoney.frame.size.height/3.0;
-        _purchaseButtonPoints.frame = CGRectMake(self.frame.size.width - 130, 460, 110, 65);
+        _purchaseButtonPoints.frame = CGRectMake(self.frame.size.width - width*.425, width*1.503, width*.359, width*.212);
         _purchaseButtonPoints.layer.cornerRadius = _purchaseButtonPoints.frame.size.height/3.0;
-        _purchasedLabel.frame = CGRectMake(0, 460, self.frame.size.width, 65);
+        _purchasedLabel.frame = CGRectMake(0, width*1.503, self.frame.size.width, width*.212);
         
         _framesAdjustedForHeight = YES;
     }
@@ -420,6 +441,17 @@
 {
     if ( animated )
     {
+        if ( show )
+        {
+            [_minimizeButton setEnabled:NO];
+            
+            _demoScene = [[UpgradeScene alloc] initWithUpgradeType:_myUpgrade.upgradeType];
+            _demoView = [[SKView alloc] initWithFrame:_demoViewFrame];
+            [_demoView presentScene:_demoScene];
+            _demoView.alpha = 0;
+            [self.contentView addSubview:_demoView];
+        }
+        
         [UIView animateWithDuration:.3 animations:^
         {
             [self showMaximizedContent:show];
@@ -431,6 +463,21 @@
                 [_demoView presentScene:nil];
                 [_demoView removeFromSuperview];
                 _demoScene = nil;
+            }
+            else
+            {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^
+                {
+                    [UIView animateWithDuration:.3 animations:^
+                    {
+                        _demoLoadingIndicator.alpha = 0;
+                        _demoView.alpha = 1;
+                    }
+                    completion:^(BOOL finished)
+                    {
+                        [_minimizeButton setEnabled:YES];
+                    }];
+                });
             }
             
             if ( completion )
@@ -507,11 +554,7 @@
     {
         alpha = 1;
         
-        _demoScene = [[UpgradeScene alloc] initWithUpgradeType:_myUpgrade.upgradeType];
-        _demoView = [[SKView alloc] initWithFrame:_demoViewFrame];
-        [_demoView presentScene:_demoScene];
-        _demoView.alpha = 0;
-        [self.contentView addSubview:_demoView];
+        [_demoLoadingIndicator startAnimating];
         
         CALayer *maskLayer = [CALayer layer];
         maskLayer.frame = _demoView.bounds;
@@ -526,12 +569,15 @@
     else
     {
         alpha = 0;
+        
+        [_demoLoadingIndicator stopAnimating];
+        _demoView.alpha = alpha;
     }
     
     _minimizeButton.alpha = alpha;
-    _demoView.alpha = alpha;
+    //_demoView.alpha = alpha;
     _upgradeDescription.alpha = alpha;
-    
+    _demoLoadingIndicator.alpha = alpha;
     
     _purchasedLabel.alpha = 0;
     _purchaseButtonPoints.alpha = 0;

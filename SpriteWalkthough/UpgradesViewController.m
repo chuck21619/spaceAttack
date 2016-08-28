@@ -33,8 +33,8 @@
     
     [self validateProductIdentifiers];
     
-    _cellSpacing = 5;
-    _minimizedCellHeight = (self.myTable.frame.size.height/8) - _cellSpacing;
+    [self adjustForDeviceSize];
+    
     _defaultConstraintTopMyTable = self.constraintTopMyTable.constant;
     
     [_AppDelegate addGlowToLayer:self.upgradeTitleLabel.layer withColor:[self.upgradeTitleLabel.textColor CGColor]];
@@ -93,7 +93,7 @@
     }
     if ( ! self.activityIndicator )
     {
-        self.activityIndicator = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeBallTrianglePath tintColor:[UIColor whiteColor] size:self.view.frame.size.width/6.4];
+        self.activityIndicator = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeLineScale tintColor:[UIColor whiteColor] size:self.view.frame.size.width/6.4];
         self.activityIndicator.frame = CGRectMake(self.view.frame.size.width/2, self.view.frame.size.height/2, 0, 0);
     }
     
@@ -146,6 +146,34 @@
     
     if ( pointsToSubtract != 500 )
         [self performSelector:@selector(animateAvailablePoints:) withObject:[NSNumber numberWithInt:pointsToSubtract-500] afterDelay:.05];
+}
+
+- (void) viewDidLayoutSubviews
+{
+    _minimizedCellHeight = (self.myTable.frame.size.height/_upgrades.count) - _cellSpacing;
+    [super viewDidLayoutSubviews];
+}
+
+- (void) adjustForDeviceSize
+{
+    float width = self.view.frame.size.width;
+    
+    _cellSpacing = width*.016;
+    
+    self.constraintTrailingBackButton.constant = width*.669;
+    [self.backButton.titleLabel setFont:[self.backButton.titleLabel.font fontWithSize:width*.044]];
+    
+    self.constraintTopTitleLabel.constant = width*.047;
+    self.constraintHeightTitleLabel.constant = width*.147;
+    self.upgradeTitleLabel.font = [self.upgradeTitleLabel.font fontWithSize:width*.119];
+    
+    self.constraintHeightAvailablePoints.constant = width*.047;
+    self.availablePointsLabel.font = [self.availablePointsLabel.font fontWithSize:width*.044];
+    
+    self.constraintTopMyTable.constant = width*.25;
+    self.constraintLeadingMyTable.constant = width*.022;
+    self.constraintTrailingMyTable.constant = width*.022;
+    self.constraintBottomMyTable.constant = width*.022;
 }
 
 #pragma mark - table view

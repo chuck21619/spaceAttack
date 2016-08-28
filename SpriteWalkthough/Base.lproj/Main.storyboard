@@ -782,8 +782,8 @@ Firead 100 Bullets + 100 points</string>
                                             <rect key="frame" x="0.0" y="0.0" width="306" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j1r-lL-vZt">
-                                                    <rect key="frame" x="0.0" y="0.0" width="306" height="60"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j1r-lL-vZt">
+                                                    <rect key="frame" x="0.0" y="0.0" width="306" height="44"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
                                             </subviews>
@@ -808,7 +808,7 @@ Firead 100 Bullets + 100 points</string>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UPGRADES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vk6-dJ-1Dg">
                                 <rect key="frame" x="0.0" y="15" width="320" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="gCy-m3-Bo5"/>
+                                    <constraint firstAttribute="height" constant="45" id="C4D-e4-8Ql"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Moon-Bold" family="Moon" pointSize="38"/>
                                 <color key="textColor" red="1" green="0.44439655169999998" blue="0.87338362069999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -818,7 +818,7 @@ Firead 100 Bullets + 100 points</string>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Points : 4444" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EfH-lL-bT5">
                                 <rect key="frame" x="0.0" y="60" width="320" height="15"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="UHp-hD-txO"/>
+                                    <constraint firstAttribute="height" constant="15" id="UzY-dc-p6o"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Moon-Bold" family="Moon" pointSize="14"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -827,8 +827,7 @@ Firead 100 Bullets + 100 points</string>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qqh-sQ-Qqa" userLabel="Button - back">
                                 <rect key="frame" x="0.0" y="0.0" width="106" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="106" id="GCU-wz-GyX"/>
-                                    <constraint firstAttribute="height" constant="40" id="SJb-gd-ix7"/>
+                                    <constraint firstAttribute="width" secondItem="Qqh-sQ-Qqa" secondAttribute="height" multiplier="53:20" id="wgy-tT-Zgq"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Moon-Bold" family="Moon" pointSize="14"/>
                                 <inset key="contentEdgeInsets" minX="8" minY="4" maxX="0.0" maxY="0.0"/>
@@ -841,29 +840,37 @@ Firead 100 Bullets + 100 points</string>
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="EfH-lL-bT5" firstAttribute="leading" secondItem="JHo-OB-i3G" secondAttribute="leading" id="2ch-PS-jnM"/>
-                            <constraint firstItem="InG-Qn-Tsn" firstAttribute="top" secondItem="JHo-OB-i3G" secondAttribute="top" id="3Gc-rG-l1M"/>
-                            <constraint firstItem="HxO-R2-jYh" firstAttribute="leading" secondItem="JHo-OB-i3G" secondAttribute="leading" constant="7" id="7yN-kS-yiv"/>
-                            <constraint firstAttribute="trailing" secondItem="Vk6-dJ-1Dg" secondAttribute="trailing" id="IKM-i2-zKH"/>
-                            <constraint firstAttribute="trailing" secondItem="InG-Qn-Tsn" secondAttribute="trailing" id="LNA-Jo-NEW"/>
-                            <constraint firstItem="Vk6-dJ-1Dg" firstAttribute="leading" secondItem="JHo-OB-i3G" secondAttribute="leading" id="LQ9-AM-NZD"/>
-                            <constraint firstItem="Qqh-sQ-Qqa" firstAttribute="leading" secondItem="JHo-OB-i3G" secondAttribute="leading" id="NKJ-DC-wJp"/>
-                            <constraint firstItem="HxO-R2-jYh" firstAttribute="top" secondItem="JHo-OB-i3G" secondAttribute="top" constant="80" id="TB5-9I-lWQ"/>
-                            <constraint firstItem="Qqh-sQ-Qqa" firstAttribute="top" secondItem="JHo-OB-i3G" secondAttribute="top" id="Vg8-3I-wke"/>
-                            <constraint firstItem="InG-Qn-Tsn" firstAttribute="leading" secondItem="JHo-OB-i3G" secondAttribute="leading" id="Z2P-Bj-D4p"/>
-                            <constraint firstItem="Vk6-dJ-1Dg" firstAttribute="top" secondItem="JHo-OB-i3G" secondAttribute="top" constant="15" id="h6u-Db-TIv"/>
-                            <constraint firstAttribute="bottom" secondItem="InG-Qn-Tsn" secondAttribute="bottom" id="ias-K7-Vza"/>
-                            <constraint firstItem="6zT-Rt-WEQ" firstAttribute="top" secondItem="HxO-R2-jYh" secondAttribute="bottom" constant="7" id="jWT-gO-vj5"/>
-                            <constraint firstAttribute="trailing" secondItem="EfH-lL-bT5" secondAttribute="trailing" id="kAY-nf-qpn"/>
-                            <constraint firstAttribute="trailing" secondItem="HxO-R2-jYh" secondAttribute="trailing" constant="7" id="ro8-4h-YsK"/>
-                            <constraint firstItem="EfH-lL-bT5" firstAttribute="top" secondItem="Vk6-dJ-1Dg" secondAttribute="bottom" id="zKv-v6-q4T"/>
+                            <constraint firstItem="HxO-R2-jYh" firstAttribute="top" secondItem="JHo-OB-i3G" secondAttribute="top" constant="80" id="0x9-1h-06K"/>
+                            <constraint firstItem="Vk6-dJ-1Dg" firstAttribute="top" secondItem="JHo-OB-i3G" secondAttribute="top" constant="15" id="48d-u8-LtP"/>
+                            <constraint firstItem="InG-Qn-Tsn" firstAttribute="top" secondItem="JHo-OB-i3G" secondAttribute="top" id="5D0-aT-7uj"/>
+                            <constraint firstAttribute="bottom" secondItem="HxO-R2-jYh" secondAttribute="bottom" constant="7" id="67L-3d-paU"/>
+                            <constraint firstItem="InG-Qn-Tsn" firstAttribute="leading" secondItem="JHo-OB-i3G" secondAttribute="leading" id="7hW-AM-2em"/>
+                            <constraint firstAttribute="trailing" secondItem="Qqh-sQ-Qqa" secondAttribute="trailing" constant="214" id="DuZ-MM-e79"/>
+                            <constraint firstAttribute="trailing" secondItem="Vk6-dJ-1Dg" secondAttribute="trailing" id="EWE-Gu-wo5"/>
+                            <constraint firstItem="Qqh-sQ-Qqa" firstAttribute="top" secondItem="JHo-OB-i3G" secondAttribute="top" id="K7X-tF-jee"/>
+                            <constraint firstItem="EfH-lL-bT5" firstAttribute="top" secondItem="Vk6-dJ-1Dg" secondAttribute="bottom" id="PN9-vE-Dgk"/>
+                            <constraint firstItem="EfH-lL-bT5" firstAttribute="leading" secondItem="JHo-OB-i3G" secondAttribute="leading" id="R4F-OS-AQZ"/>
+                            <constraint firstItem="HxO-R2-jYh" firstAttribute="leading" secondItem="JHo-OB-i3G" secondAttribute="leading" constant="7" id="VhC-FS-hnn"/>
+                            <constraint firstItem="Vk6-dJ-1Dg" firstAttribute="leading" secondItem="JHo-OB-i3G" secondAttribute="leading" id="Xd4-PP-pWk"/>
+                            <constraint firstAttribute="trailing" secondItem="InG-Qn-Tsn" secondAttribute="trailing" id="gSr-77-Thq"/>
+                            <constraint firstAttribute="bottom" secondItem="InG-Qn-Tsn" secondAttribute="bottom" id="jA9-Uu-BOz"/>
+                            <constraint firstAttribute="trailing" secondItem="EfH-lL-bT5" secondAttribute="trailing" id="ja3-YP-TOK"/>
+                            <constraint firstAttribute="trailing" secondItem="HxO-R2-jYh" secondAttribute="trailing" constant="7" id="r1u-Mb-yu2"/>
+                            <constraint firstItem="Qqh-sQ-Qqa" firstAttribute="leading" secondItem="JHo-OB-i3G" secondAttribute="leading" id="z7Y-FB-23L"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="availablePointsLabel" destination="EfH-lL-bT5" id="MFJ-TZ-dff"/>
                         <outlet property="backButton" destination="Qqh-sQ-Qqa" id="rOv-R3-zF8"/>
-                        <outlet property="constraintTopMyTable" destination="TB5-9I-lWQ" id="ukz-it-mHR"/>
+                        <outlet property="constraintBottomMyTable" destination="67L-3d-paU" id="iC5-i4-LkV"/>
+                        <outlet property="constraintHeightAvailablePoints" destination="UzY-dc-p6o" id="zsv-BE-JaW"/>
+                        <outlet property="constraintHeightTitleLabel" destination="C4D-e4-8Ql" id="4H3-wE-3MC"/>
+                        <outlet property="constraintLeadingMyTable" destination="VhC-FS-hnn" id="9wM-WW-Uce"/>
+                        <outlet property="constraintTopMyTable" destination="0x9-1h-06K" id="06C-iO-M5X"/>
+                        <outlet property="constraintTopTitleLabel" destination="48d-u8-LtP" id="BfF-AG-NU4"/>
+                        <outlet property="constraintTrailingBackButton" destination="DuZ-MM-e79" id="5wh-2a-HGE"/>
+                        <outlet property="constraintTrailingMyTable" destination="r1u-Mb-yu2" id="ZcE-yO-Yv6"/>
                         <outlet property="myTable" destination="HxO-R2-jYh" id="vcp-32-NLf"/>
                         <outlet property="upgradeTitleLabel" destination="Vk6-dJ-1Dg" id="Gk7-Im-zti"/>
                     </connections>
