@@ -40,4 +40,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTrailingBackButton;
 - (IBAction)backAction:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIView *viewForSKView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintBottomViewForSKView;
+
 @end

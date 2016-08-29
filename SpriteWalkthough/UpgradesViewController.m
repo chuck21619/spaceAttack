@@ -35,6 +35,15 @@
     
     [self adjustForDeviceSize];
     
+    CALayer *maskLayer = [CALayer layer];
+    maskLayer.frame = self.viewForSKView.bounds;
+    maskLayer.shadowRadius = 5;
+    maskLayer.shadowPath = CGPathCreateWithRoundedRect(CGRectInset(self.viewForSKView.bounds, 10, 10), 10, 10, nil);
+    maskLayer.shadowOpacity = 1;
+    maskLayer.shadowOffset = CGSizeZero;
+    maskLayer.shadowColor = [UIColor whiteColor].CGColor;
+    self.viewForSKView.layer.mask = maskLayer;
+    
     _defaultConstraintTopMyTable = self.constraintTopMyTable.constant;
     
     [_AppDelegate addGlowToLayer:self.upgradeTitleLabel.layer withColor:[self.upgradeTitleLabel.textColor CGColor]];
@@ -174,6 +183,8 @@
     self.constraintLeadingMyTable.constant = width*.022;
     self.constraintTrailingMyTable.constant = width*.022;
     self.constraintBottomMyTable.constant = width*.022;
+    
+    self.constraintBottomViewForSKView.constant = width*.65;
 }
 
 #pragma mark - table view
@@ -257,6 +268,7 @@
             [self animateCellHeight:cell tableTopConstraint:7 mainScreenViewsAlpha:mainScreenViewsAlpha completion:^
             {
                 [[NSNotificationCenter defaultCenter] postNotificationName:kUpgradeTableDidAnimate object:nil];
+                [self presentSceneForUpgrade:tmpUpgrade];
                 [cell showMaximizedContent:YES animated:YES completion:nil];
             }];
         }];
@@ -268,6 +280,7 @@
         tmpUpgrade.isMaximized = NO;
         
         [[NSNotificationCenter defaultCenter] postNotificationName:kUpgradeTableWillAnimate object:nil];
+        [self hideScene];
         [cell showMaximizedContent:NO animated:YES completion:^
         {
             [self animateCellHeight:cell tableTopConstraint:_defaultConstraintTopMyTable mainScreenViewsAlpha:mainScreenViewsAlpha completion:^
@@ -335,6 +348,41 @@
     }
 }
 
+#pragma mark
+- (void) presentSceneForUpgrade:(Upgrade *)upgrade
+{
+    self.viewForSKView.alpha = 0;
+    UpgradeScene * upgradeScene = [[UpgradeScene alloc] initWithUpgradeType:upgrade.upgradeType];
+    SKView * skView = [[SKView alloc] initWithFrame:CGRectMake(0, 0, self.viewForSKView.frame.size.width, self.viewForSKView.frame.size.height)];
+    [skView presentScene:upgradeScene];
+    [self.viewForSKView addSubview:skView];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.6 * NSEC_PER_SEC), dispatch_get_main_queue(), ^
+    {
+        [UIView animateWithDuration:.3 animations:^
+        {
+            self.viewForSKView.alpha = 1;
+        }];
+    });
+}
+
+- (void) hideScene
+{
+    [UIView animateWithDuration:.25 animations:^
+    {
+        self.viewForSKView.alpha = 0;
+    }
+    completion:^(BOOL finished)
+    {
+        SKView * skView = (SKView *)[[self.viewForSKView subviews] firstObject];
+        [skView presentScene:nil];
+        [skView removeFromSuperview];
+    }];
+    
+    //                [_demoView presentScene:nil];
+    //                [_demoView removeFromSuperview];
+    //                _demoScene = nil;
+}
 
 #pragma mark - game center
 - (void) achievementsLoaded

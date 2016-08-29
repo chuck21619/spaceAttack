@@ -34,7 +34,7 @@
     //maximized content
     UIButton * _minimizeButton;
     DGActivityIndicatorView * _demoLoadingIndicator;
-    SKScene * _demoScene;
+    UpgradeScene * _demoScene;
     SKView * _demoView;
     CGRect _demoViewFrame;
     
@@ -56,7 +56,6 @@
     
     self.borderView.layer.borderWidth = _defaultBorderWidth;
     self.borderView.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.borderView.layer.cornerRadius = self.frame.size.height/3.0;
     [_AppDelegate addGlowToLayer:self.borderView.layer withColor:self.borderView.layer.borderColor];
     
     _upgradeTitleLabel = [UILabel new];
@@ -159,7 +158,7 @@
     {
         float width = self.frame.size.width;
         
-        self.borderView.layer.cornerRadius = self.frame.size.height/3.0;
+        self.borderView.layer.cornerRadius = self.frame.size.height/4.0;
         _upgradeTitleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.065];
         _costLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.026];
         _pointsNumberLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.092];
@@ -224,7 +223,7 @@
         _lockOrCheckIcon.image = [UIImage imageNamed:@"Lock.png"];
 
     //maximized content
-    _demoScene = [[UpgradeScene alloc] initWithUpgradeType:upgrade.upgradeType];
+    //_demoScene = [[UpgradeScene alloc] initWithUpgradeType:upgrade.upgradeType];
     _upgradeDescription.text = upgrade.upgradeDescription;
     
     if ( upgrade.isValidForMoneyPurchase )
@@ -345,7 +344,6 @@
     animation.fromValue = [NSNumber numberWithFloat:0.0];
     animation.toValue = [NSNumber numberWithFloat:1.0];
     animation.duration = 1;
-    animation.removedOnCompletion = NO;
     animation.fillMode = kCAFillModeForwards;
     
     [_borderView.layer addAnimation:animation forKey:@"shadowOpacity"];
@@ -358,6 +356,18 @@
     [_purchaseButtonMoney.layer addAnimation:animation forKey:@"shadowOpacity"];
     [_purchaseButtonPoints.layer addAnimation:animation forKey:@"shadowOpacity"];
     [_purchasedLabel.layer addAnimation:animation forKey:@"shadowOpacity"];
+    
+    
+    _borderView.layer.shadowOpacity = 1;
+    _upgradeTitleLabel.layer.shadowOpacity = 1;
+    _costLabel.layer.shadowOpacity = 1;
+    _pointsNumberLabel.layer.shadowOpacity = 1;
+    _pointsLabel.layer.shadowOpacity = 1;
+    _minimizeButton.layer.shadowOpacity = 1;
+    _upgradeDescription.layer.shadowOpacity = 1;
+    _purchaseButtonMoney.layer.shadowOpacity = 1;
+    _purchaseButtonPoints.layer.shadowOpacity = 1;
+    _purchasedLabel.layer.shadowOpacity = 1;
 }
 
 
@@ -445,11 +455,11 @@
         {
             [_minimizeButton setEnabled:NO];
             
-            _demoScene = [[UpgradeScene alloc] initWithUpgradeType:_myUpgrade.upgradeType];
-            _demoView = [[SKView alloc] initWithFrame:_demoViewFrame];
-            [_demoView presentScene:_demoScene];
-            _demoView.alpha = 0;
-            [self.contentView addSubview:_demoView];
+//            _demoScene = [[UpgradeScene alloc] initWithUpgradeType:_myUpgrade.upgradeType];
+//            _demoView = [[SKView alloc] initWithFrame:_demoViewFrame];
+//            [_demoView presentScene:_demoScene];
+//            _demoView.alpha = 0;
+//            [self.contentView addSubview:_demoView];
         }
         
         [UIView animateWithDuration:.3 animations:^
@@ -460,9 +470,9 @@
         {
             if ( !show )
             {
-                [_demoView presentScene:nil];
-                [_demoView removeFromSuperview];
-                _demoScene = nil;
+//                [_demoView presentScene:nil];
+//                [_demoView removeFromSuperview];
+//                _demoScene = nil;
             }
             else
             {
@@ -471,7 +481,7 @@
                     [UIView animateWithDuration:.3 animations:^
                     {
                         _demoLoadingIndicator.alpha = 0;
-                        _demoView.alpha = 1;
+//                        _demoView.alpha = 1;
                     }
                     completion:^(BOOL finished)
                     {
@@ -486,6 +496,8 @@
     }
     else
     {
+        NSLog(@"pretty sure this should never get called");
+        
         [self showMaximizedContent:show];
         if ( !show )
         {
@@ -556,22 +568,22 @@
         
         [_demoLoadingIndicator startAnimating];
         
-        CALayer *maskLayer = [CALayer layer];
-        maskLayer.frame = _demoView.bounds;
-        maskLayer.shadowRadius = 5;
-        maskLayer.shadowPath = CGPathCreateWithRoundedRect(CGRectInset(_demoView.bounds, 10, 10), 10, 10, nil);
-        maskLayer.shadowOpacity = 1;
-        maskLayer.shadowOffset = CGSizeZero;
-        maskLayer.shadowColor = [UIColor whiteColor].CGColor;
-        
-        _demoView.layer.mask = maskLayer;
+//        CALayer *maskLayer = [CALayer layer];
+//        maskLayer.frame = _demoView.bounds;
+//        maskLayer.shadowRadius = 5;
+//        maskLayer.shadowPath = CGPathCreateWithRoundedRect(CGRectInset(_demoView.bounds, 10, 10), 10, 10, nil);
+//        maskLayer.shadowOpacity = 1;
+//        maskLayer.shadowOffset = CGSizeZero;
+//        maskLayer.shadowColor = [UIColor whiteColor].CGColor;
+//        
+//        _demoView.layer.mask = maskLayer;
     }
     else
     {
         alpha = 0;
         
         [_demoLoadingIndicator stopAnimating];
-        _demoView.alpha = alpha;
+//        _demoView.alpha = alpha;
     }
     
     _minimizeButton.alpha = alpha;

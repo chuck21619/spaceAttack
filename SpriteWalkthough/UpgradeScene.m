@@ -21,6 +21,11 @@
     }
 }
 
+- (void) willMoveFromView:(SKView *)view
+{
+    [self destroy];
+}
+
 - (instancetype) initWithUpgradeType:(UpgradeType)upgradeType
 {
     if ( self = [super init] )
@@ -367,6 +372,29 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
             [(Shield *)secondBody.node takeDamage];
         }
     }
+}
+
+- (void) destroy
+{
+    [self.moveShipTimer invalidate];
+    [self removeAllActions];
+//    [self removeActionForKey:@"makeAsteroids"];
+//    [self removeActionForKey:@"makeEnemies"];
+//    [self removeActionForKey:@"makePowerUps"];
+//    SKEmitterNode * clouds = (SKEmitterNode *)[self childNodeWithName:@"cloudsEmitter"];
+//    clouds.particleBirthRate = 0;
+//    SKEmitterNode * cloudsOnTop = (SKEmitterNode *)[self childNodeWithName:@"cloudsOnTopEmitter"];
+//    cloudsOnTop.particleBirthRate = 0;
+//    [self updateScoreMultiplierLabel];
+//    [self showEndGameScreen];
+//    [[AudioManager sharedInstance] fadeOutGameplayMusic];
+//    for ( Enemy * enemy in self.cachedEnemies )
+//        [enemy runAction:[SKAction fadeOutWithDuration:1]];
+}
+
+- (void) dealloc
+{
+    NSLog(@"UpgradeScene Dealloc");
 }
 
 #pragma mark photon/electricity stuff

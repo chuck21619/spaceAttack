@@ -25,4 +25,6 @@
 - (void) addGlowToLayer:(CALayer *)layer withColor:(CGColorRef)color;
 - (void) addGlowToLayer:(CALayer *)layer withColor:(CGColorRef)color size:(float)size;
 
+- (void) removeGlowFromLayer:(CALayer*)layer;
+
 @end

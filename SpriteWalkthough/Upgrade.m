@@ -136,7 +136,7 @@
         self.isMaximized = NO;
         self.isValidForMoneyPurchase = NO;
         self.upgradeType = upgradeType;
-        self.demoScene = [[UpgradeScene alloc] initWithUpgradeType:upgradeType];
+        //self.demoScene = [[UpgradeScene alloc] initWithUpgradeType:upgradeType];
     }
     return self;
 }
