@@ -146,6 +146,11 @@
     self.isUnlocked = YES;
 }
 
+- (NSString*) description
+{
+    return self.title;
+}
+
 - (void) dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];

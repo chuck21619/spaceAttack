@@ -53,7 +53,6 @@
 		13EC766F194F5E7A00E023A2 /* EnemyBasic.m in Sources */ = {isa = PBXBuildFile; fileRef = 13EC766E194F5E7A00E023A2 /* EnemyBasic.m */; };
 		13EC7676194F61DB00E023A2 /* EnemyKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 13EC7675194F61DB00E023A2 /* EnemyKit.m */; };
 		13EDFF36190960AE0077B7D2 /* Asteroid.m in Sources */ = {isa = PBXBuildFile; fileRef = 13EDFF35190960AE0077B7D2 /* Asteroid.m */; };
-		13EDFF38190965500077B7D2 /* missile.png in Resources */ = {isa = PBXBuildFile; fileRef = 13EDFF37190965500077B7D2 /* missile.png */; };
 		13EDFF3F190994CA0077B7D2 /* CrumbleParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 13EDFF3E190994CA0077B7D2 /* CrumbleParticle.sks */; };
 		6E49CED21A91C65000FC48CC /* Abdul_Kadir.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E49CED11A91C65000FC48CC /* Abdul_Kadir.m */; };
 		6E49CED61A91C68E00FC48CC /* Babenberg.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E49CED51A91C68E00FC48CC /* Babenberg.m */; };
@@ -71,6 +70,10 @@
 		6ED0AEF11A91414200493ED0 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED0AEF01A91414200493ED0 /* MainMenuViewController.m */; };
 		6ED0AEF81A9149DA00493ED0 /* MenuBackgroundScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED0AEF71A9149DA00493ED0 /* MenuBackgroundScene.m */; };
 		6ED0AEFB1A914FC600493ED0 /* SelectShipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED0AEFA1A914FC600493ED0 /* SelectShipViewController.m */; };
+		9C6FFE7A1D74B748001AD117 /* slider bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C6FFE781D74B748001AD117 /* slider bar.png */; };
+		9C6FFE7B1D74B748001AD117 /* Slider.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C6FFE791D74B748001AD117 /* Slider.png */; };
+		9C6FFE7E1D74CBFB001AD117 /* SliderMin.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C6FFE7C1D74CBFB001AD117 /* SliderMin.png */; };
+		9C6FFE8B1D74E3A0001AD117 /* SASlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6FFE8A1D74E3A0001AD117 /* SASlider.m */; };
 		A30112721D5FC8BA00E133F2 /* MoonLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = A301126F1D5FC80300E133F2 /* MoonLight.otf */; };
 		A30112731D5FC8BA00E133F2 /* MoonBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A30112701D5FC80300E133F2 /* MoonBold.otf */; };
 		A30112771D5FDF1600E133F2 /* ShipSelectionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A30112761D5FDF1600E133F2 /* ShipSelectionButton.m */; };
@@ -82,7 +85,6 @@
 		A30112881D5FF6C100E133F2 /* damage.png in Resources */ = {isa = PBXBuildFile; fileRef = A30112851D5FF6C100E133F2 /* damage.png */; };
 		A30112891D5FF6C100E133F2 /* Speed.png in Resources */ = {isa = PBXBuildFile; fileRef = A30112861D5FF6C100E133F2 /* Speed.png */; };
 		A301128B1D5FFF5700E133F2 /* Lock.png in Resources */ = {isa = PBXBuildFile; fileRef = A301128A1D5FFF5700E133F2 /* Lock.png */; };
-		A301128D1D60123F00E133F2 /* Back.png in Resources */ = {isa = PBXBuildFile; fileRef = A301128C1D60123F00E133F2 /* Back.png */; };
 		A302A36C1CC74E040034C49F /* shield1.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A302A3691CC74E040034C49F /* shield1.atlas */; };
 		A302A36D1CC74E040034C49F /* shield2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A302A36A1CC74E040034C49F /* shield2.atlas */; };
 		A302A36E1CC74E040034C49F /* shield3.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A302A36B1CC74E040034C49F /* shield3.atlas */; };
@@ -280,7 +282,6 @@
 		A35B3B761D2A79CC006DB8C3 /* tooltip.wav in Resources */ = {isa = PBXBuildFile; fileRef = A35B3B751D2A79CC006DB8C3 /* tooltip.wav */; };
 		A36B6C781D3B3725007DF9D1 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A36B6C771D3B3725007DF9D1 /* GoogleMobileAds.framework */; };
 		A375B59D1D2B59CE00CB9E52 /* ShieldParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = A375B59C1D2B59CE00CB9E52 /* ShieldParticle.sks */; };
-		A37C57C41C4F527F00886092 /* asteroidImage.png in Resources */ = {isa = PBXBuildFile; fileRef = A37C57C31C4F527F00886092 /* asteroidImage.png */; };
 		A38732021D3B866B00FE1D00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A38732041D3B866B00FE1D00 /* Main.storyboard */; };
 		A387320A1D3B93E500FE1D00 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A387320C1D3B93E500FE1D00 /* Localizable.strings */; };
 		A38974AA1C681AB800D45B56 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A38974A91C681AB800D45B56 /* AdSupport.framework */; };
@@ -295,7 +296,6 @@
 		A38974BC1C681B2200D45B56 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A38974BB1C681B2200D45B56 /* SystemConfiguration.framework */; };
 		A38974BF1C6846EA00D45B56 /* FullScreenAdSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = A38974BE1C6846EA00D45B56 /* FullScreenAdSingleton.m */; };
 		A389DF0D1CA7664E0086D2A5 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A389DF0C1CA7664E0086D2A5 /* MediaPlayer.framework */; };
-		A39216581CFBDE5E006943A0 /* energyBooster.png in Resources */ = {isa = PBXBuildFile; fileRef = A39216571CFBDE5E006943A0 /* energyBooster.png */; };
 		A39246151D3C964600A8A040 /* planets1.png in Resources */ = {isa = PBXBuildFile; fileRef = A39246131D3C964600A8A040 /* planets1.png */; };
 		A39246161D3C964600A8A040 /* planets2.png in Resources */ = {isa = PBXBuildFile; fileRef = A39246141D3C964600A8A040 /* planets2.png */; };
 		A392461C1D3C964D00A8A040 /* planets8.png in Resources */ = {isa = PBXBuildFile; fileRef = A39246171D3C964D00A8A040 /* planets8.png */; };
@@ -363,7 +363,6 @@
 		A39CEF6B1D317DA700C01870 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A39CEF6A1D317DA700C01870 /* OpenAL.framework */; };
 		A39D0F991D3300D200D86AC8 /* machineGunLevel3.wav in Resources */ = {isa = PBXBuildFile; fileRef = A39D0F981D3300D200D86AC8 /* machineGunLevel3.wav */; };
 		A39D0F9D1D33035600D86AC8 /* machineGunLevel4.wav in Resources */ = {isa = PBXBuildFile; fileRef = A39D0F9C1D33035600D86AC8 /* machineGunLevel4.wav */; };
-		A39EAB1C1D288FC700E09B7D /* mute.png in Resources */ = {isa = PBXBuildFile; fileRef = A39EAB1B1D288FC700E09B7D /* mute.png */; };
 		A3AEDFB51C6AF808009966FE /* joystick.png in Resources */ = {isa = PBXBuildFile; fileRef = A3AEDFB21C6AF808009966FE /* joystick.png */; };
 		A3AEDFB61C6AF808009966FE /* sledgehammer.png in Resources */ = {isa = PBXBuildFile; fileRef = A3AEDFB31C6AF808009966FE /* sledgehammer.png */; };
 		A3B17F7B1D73C1030047BDCA /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B17F791D73C1030047BDCA /* Fabric.framework */; };
@@ -500,7 +499,6 @@
 		13EC7675194F61DB00E023A2 /* EnemyKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyKit.m; sourceTree = "<group>"; };
 		13EDFF34190960AE0077B7D2 /* Asteroid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Asteroid.h; sourceTree = "<group>"; };
 		13EDFF35190960AE0077B7D2 /* Asteroid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Asteroid.m; sourceTree = "<group>"; };
-		13EDFF37190965500077B7D2 /* missile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = missile.png; sourceTree = "<group>"; };
 		13EDFF3E190994CA0077B7D2 /* CrumbleParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CrumbleParticle.sks; sourceTree = "<group>"; };
 		6E49CED11A91C65000FC48CC /* Abdul_Kadir.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Abdul_Kadir.m; sourceTree = "<group>"; };
 		6E49CED41A91C68E00FC48CC /* Babenberg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Babenberg.h; sourceTree = "<group>"; };
@@ -532,6 +530,11 @@
 		6ED0AEF71A9149DA00493ED0 /* MenuBackgroundScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuBackgroundScene.m; sourceTree = "<group>"; };
 		6ED0AEF91A914FC600493ED0 /* SelectShipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectShipViewController.h; sourceTree = "<group>"; };
 		6ED0AEFA1A914FC600493ED0 /* SelectShipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectShipViewController.m; sourceTree = "<group>"; };
+		9C6FFE781D74B748001AD117 /* slider bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slider bar.png"; sourceTree = "<group>"; };
+		9C6FFE791D74B748001AD117 /* Slider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Slider.png; sourceTree = "<group>"; };
+		9C6FFE7C1D74CBFB001AD117 /* SliderMin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SliderMin.png; sourceTree = "<group>"; };
+		9C6FFE891D74E3A0001AD117 /* SASlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlider.h; sourceTree = "<group>"; };
+		9C6FFE8A1D74E3A0001AD117 /* SASlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlider.m; sourceTree = "<group>"; };
 		A301126F1D5FC80300E133F2 /* MoonLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MoonLight.otf; sourceTree = "<group>"; };
 		A30112701D5FC80300E133F2 /* MoonBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MoonBold.otf; sourceTree = "<group>"; };
 		A30112751D5FDF1600E133F2 /* ShipSelectionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShipSelectionButton.h; sourceTree = "<group>"; };
@@ -545,7 +548,6 @@
 		A30112851D5FF6C100E133F2 /* damage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = damage.png; sourceTree = "<group>"; };
 		A30112861D5FF6C100E133F2 /* Speed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Speed.png; sourceTree = "<group>"; };
 		A301128A1D5FFF5700E133F2 /* Lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Lock.png; sourceTree = "<group>"; };
-		A301128C1D60123F00E133F2 /* Back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Back.png; sourceTree = "<group>"; };
 		A302A3691CC74E040034C49F /* shield1.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = shield1.atlas; sourceTree = "<group>"; };
 		A302A36A1CC74E040034C49F /* shield2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = shield2.atlas; sourceTree = "<group>"; };
 		A302A36B1CC74E040034C49F /* shield3.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = shield3.atlas; sourceTree = "<group>"; };
@@ -793,7 +795,6 @@
 		A35B3B751D2A79CC006DB8C3 /* tooltip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tooltip.wav; sourceTree = "<group>"; };
 		A36B6C771D3B3725007DF9D1 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		A375B59C1D2B59CE00CB9E52 /* ShieldParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ShieldParticle.sks; sourceTree = "<group>"; };
-		A37C57C31C4F527F00886092 /* asteroidImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asteroidImage.png; sourceTree = "<group>"; };
 		A38732031D3B866B00FE1D00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A38732061D3B867D00FE1D00 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		A38732071D3B87A000FE1D00 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
@@ -813,7 +814,6 @@
 		A38974BD1C6846EA00D45B56 /* FullScreenAdSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullScreenAdSingleton.h; sourceTree = "<group>"; };
 		A38974BE1C6846EA00D45B56 /* FullScreenAdSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullScreenAdSingleton.m; sourceTree = "<group>"; };
 		A389DF0C1CA7664E0086D2A5 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		A39216571CFBDE5E006943A0 /* energyBooster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = energyBooster.png; sourceTree = "<group>"; };
 		A39246131D3C964600A8A040 /* planets1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = planets1.png; sourceTree = "<group>"; };
 		A39246141D3C964600A8A040 /* planets2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = planets2.png; sourceTree = "<group>"; };
 		A39246171D3C964D00A8A040 /* planets8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = planets8.png; sourceTree = "<group>"; };
@@ -917,7 +917,6 @@
 		A39CEF6A1D317DA700C01870 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		A39D0F981D3300D200D86AC8 /* machineGunLevel3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = machineGunLevel3.wav; sourceTree = "<group>"; };
 		A39D0F9C1D33035600D86AC8 /* machineGunLevel4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = machineGunLevel4.wav; sourceTree = "<group>"; };
-		A39EAB1B1D288FC700E09B7D /* mute.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mute.png; sourceTree = "<group>"; };
 		A3AEDFB21C6AF808009966FE /* joystick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystick.png; sourceTree = "<group>"; };
 		A3AEDFB31C6AF808009966FE /* sledgehammer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sledgehammer.png; sourceTree = "<group>"; };
 		A3B17F791D73C1030047BDCA /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
@@ -1104,13 +1103,9 @@
 				A3483FD01D68FA4400E9D1F9 /* customBadgeIcon.png */,
 				A3E783541C5EFE88006A6D7B /* Launch Screen.storyboard */,
 				A3E783561C5EFF91006A6D7B /* IMG_0728.PNG */,
-				A37C57C31C4F527F00886092 /* asteroidImage.png */,
-				A39EAB1B1D288FC700E09B7D /* mute.png */,
 				A35816BE1D3390E40028C019 /* homeButton.png */,
 				A35816C61D33A1520028C019 /* restartButton.png */,
-				13EDFF37190965500077B7D2 /* missile.png */,
-				A301128C1D60123F00E133F2 /* Back.png */,
-				A39216571CFBDE5E006943A0 /* energyBooster.png */,
+				9C6FFE771D74B740001AD117 /* settings */,
 				A3483FE61D691BBC00E9D1F9 /* powerUps */,
 				A30112781D5FE3AF00E133F2 /* ship select */,
 				A3E3E6451D4DD2E400EEF2C3 /* social media */,
@@ -1522,6 +1517,25 @@
 			name = spaceshipKit;
 			sourceTree = "<group>";
 		};
+		9C6FFE771D74B740001AD117 /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				9C6FFE7C1D74CBFB001AD117 /* SliderMin.png */,
+				9C6FFE781D74B748001AD117 /* slider bar.png */,
+				9C6FFE791D74B748001AD117 /* Slider.png */,
+			);
+			name = settings;
+			sourceTree = "<group>";
+		};
+		9C6FFE881D74E378001AD117 /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				9C6FFE891D74E3A0001AD117 /* SASlider.h */,
+				9C6FFE8A1D74E3A0001AD117 /* SASlider.m */,
+			);
+			name = settings;
+			sourceTree = "<group>";
+		};
 		9CA0D0271D6FB891005E6FB7 /* shipSelect */ = {
 			isa = PBXGroup;
 			children = (
@@ -1559,6 +1573,7 @@
 				A3E3E6591D4DFCB100EEF2C3 /* SAAlertView.m */,
 				A3DB9EEB1D618E61006A8AEB /* GlowingButton.h */,
 				A3DB9EEC1D618E61006A8AEB /* GlowingButton.m */,
+				9C6FFE881D74E378001AD117 /* settings */,
 				9CA0D0281D6FB8D0005E6FB7 /* upgrade */,
 				9CA0D0271D6FB891005E6FB7 /* shipSelect */,
 			);
@@ -2418,6 +2433,7 @@
 				A35B3B741D2A7918006DB8C3 /* bossIntro.wav in Resources */,
 				A348400B1D691CE300E9D1F9 /* electricity9.png in Resources */,
 				A39C5F2D1D29851700A68E2D /* photon1.wav in Resources */,
+				9C6FFE7A1D74B748001AD117 /* slider bar.png in Resources */,
 				A39C5F331D2987A000A68E2D /* laser4.wav in Resources */,
 				A39C5F5D1D29C00800A68E2D /* basic.wav in Resources */,
 				A32C06261D612786008DDC80 /* Verdant_Gradient_3-ColorDodge.png in Resources */,
@@ -2479,12 +2495,11 @@
 				A34840171D691CEF00E9D1F9 /* laser4.png in Resources */,
 				A3E3E6571D4DD80500EEF2C3 /* Instagram-black.png in Resources */,
 				A30112871D5FF6C100E133F2 /* armor.png in Resources */,
-				A39216581CFBDE5E006943A0 /* energyBooster.png in Resources */,
+				9C6FFE7E1D74CBFB001AD117 /* SliderMin.png in Resources */,
 				A31AD1721D0D5819000CF547 /* SpaceTrip.mp3 in Resources */,
 				A39ABA391C4E1A8E00AF1455 /* tooltipArrowLeft.png in Resources */,
 				A32C060A1D612786008DDC80 /* BlackStar_Gradient_2-HardLight.png in Resources */,
 				A3E009B41D72C5D800C340AA /* Lasers.png in Resources */,
-				A37C57C41C4F527F00886092 /* asteroidImage.png in Resources */,
 				1345CE8918FD8CEE004ECA6C /* FireParticle.sks in Resources */,
 				A39246161D3C964600A8A040 /* planets2.png in Resources */,
 				A39C5F391D29892C00A68E2D /* photonParticle.sks in Resources */,
@@ -2512,7 +2527,6 @@
 				A35B3B361D2A4298006DB8C3 /* asteroid1.wav in Resources */,
 				A3483FD71D6914F100E9D1F9 /* asteroid.atlas in Resources */,
 				A34840051D691CE300E9D1F9 /* electricity3.png in Resources */,
-				13EDFF38190965500077B7D2 /* missile.png in Resources */,
 				A3E009BD1D72FE3C00C340AA /* fourWeaponsUpgrade.png in Resources */,
 				A32C06201D612786008DDC80 /* Twin Suns.png in Resources */,
 				A32C06081D612786008DDC80 /* BlackStar_0Grain-ColorDodge.png in Resources */,
@@ -2537,6 +2551,7 @@
 				A3483FED1D691BCA00E9D1F9 /* Boost_Powerup.png in Resources */,
 				A32C062B1D612786008DDC80 /* Void_Planet.png in Resources */,
 				A34840041D691CE300E9D1F9 /* electricity2.png in Resources */,
+				9C6FFE7B1D74B748001AD117 /* Slider.png in Resources */,
 				A3CE276E1C4B9D030082D2AC /* planets4.png in Resources */,
 				A3B4008F1D445C2800E0AFDF /* UpgradeView.xib in Resources */,
 				A31AD1351D0CAD5D000CF547 /* spaceBackground4.png in Resources */,
@@ -2580,7 +2595,6 @@
 				A31AD1711D0D5819000CF547 /* UnknownPlanet.mp3 in Resources */,
 				A39C5F561D29A95F00A68E2D /* electricity3.wav in Resources */,
 				A348400A1D691CE300E9D1F9 /* electricity8.png in Resources */,
-				A39EAB1C1D288FC700E09B7D /* mute.png in Resources */,
 				A34840191D691CEF00E9D1F9 /* laser6.png in Resources */,
 				A3E783571C5EFF91006A6D7B /* IMG_0728.PNG in Resources */,
 				A3CE27671C4B87F70082D2AC /* planets3.png in Resources */,
@@ -2599,7 +2613,6 @@
 				A375B59D1D2B59CE00CB9E52 /* ShieldParticle.sks in Resources */,
 				A31525D31C54496400DC3303 /* Exhaust.sks in Resources */,
 				A32C060D1D612786008DDC80 /* Broken_Gradient_1-Exclusion.png in Resources */,
-				A301128D1D60123F00E133F2 /* Back.png in Resources */,
 				A302A36D1CC74E040034C49F /* shield2.atlas in Resources */,
 				A32C06221D612786008DDC80 /* Twin_Suns_Gradient_1-Add.png in Resources */,
 				A3CE275A1C4B72990082D2AC /* Stars.sks in Resources */,
@@ -2671,6 +2684,7 @@
 				A3DB9EED1D618E61006A8AEB /* GlowingButton.m in Sources */,
 				A39CEF5E1D317D7E00C01870 /* ALSoundSourcePool.m in Sources */,
 				A39CEF641D317D7E00C01870 /* IOSVersion.m in Sources */,
+				9C6FFE8B1D74E3A0001AD117 /* SASlider.m in Sources */,
 				135BEDB419759EF800892311 /* Boss1.m in Sources */,
 				6ED0AEF11A91414200493ED0 /* MainMenuViewController.m in Sources */,
 				A3C615C51C4CCE5000566AF2 /* DQAlertView.m in Sources */,

@@ -392,11 +392,6 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
 //        [enemy runAction:[SKAction fadeOutWithDuration:1]];
 }
 
-- (void) dealloc
-{
-    NSLog(@"UpgradeScene Dealloc");
-}
-
 #pragma mark photon/electricity stuff
 - (SKNode *) nextPriorityTargetForPhoton:(Photon *)photon
 {

@@ -44,10 +44,10 @@
     if ( ! [[GKLocalPlayer localPlayer] isAuthenticated] )
         [self.highScoresAchievementsButton setTitleColor:[UIColor colorWithWhite:.5 alpha:1] forState:UIControlStateNormal];
         
-    SKView * spriteView = (SKView *)self.view;
-    spriteView.ignoresSiblingOrder = YES; // improves performance
-    MenuBackgroundScene * backgroundScene = [MenuBackgroundScene sharedInstance];
-    [spriteView presentScene:backgroundScene];
+//    SKView * spriteView = (SKView *)self.view;
+//    spriteView.ignoresSiblingOrder = YES; // improves performance
+//    MenuBackgroundScene * backgroundScene = [MenuBackgroundScene sharedInstance];
+//    [spriteView presentScene:backgroundScene];
     
     [self authenticateLocalPlayer];
     [self updateButtonColorStatus];
@@ -85,8 +85,8 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    SKView * spriteView = (SKView *)self.view;
-    [spriteView presentScene:nil];
+//    SKView * spriteView = (SKView *)self.view;
+//    [spriteView presentScene:nil];
 }
 
 - (BOOL) prefersStatusBarHidden
@@ -216,8 +216,8 @@
         [self presentViewController:ssvc animated:NO completion:^
         {
             self.view.alpha = 1;
-            SKView * spriteView = (SKView *)self.view;
-            [spriteView presentScene:nil];
+//            SKView * spriteView = (SKView *)self.view;
+//            [spriteView presentScene:nil];
         }];
     }];
 }
@@ -233,8 +233,8 @@
         [self presentViewController:upgradesVC animated:NO completion:^
         {
             self.view.alpha = 1;
-            SKView * spriteView = (SKView *)self.view;
-            [spriteView presentScene:nil];
+//            SKView * spriteView = (SKView *)self.view;
+//            [spriteView presentScene:nil];
         }];
     }];
 }
@@ -290,8 +290,8 @@
         [self presentViewController:settingsVC animated:NO completion:^
         {
             self.view.alpha = 1;
-            SKView * spriteView = (SKView *)self.view;
-            [spriteView presentScene:nil];
+//            SKView * spriteView = (SKView *)self.view;
+//            [spriteView presentScene:nil];
         }];
     }];
 }
