@@ -81,7 +81,7 @@ static AccountManager * sharedAccountManager = nil;
                 break;
                 
             case SKPaymentTransactionStatePurchased:
-                if ( [transaction.payment.productIdentifier isEqualToString:@"TestWeaponsTwo"] )
+                if ( [transaction.payment.productIdentifier isEqualToString:@"TwoWeapons"] )
                     [AccountManager unlockUpgrade:kUpgrade2Weapons];
                 else if ( [transaction.payment.productIdentifier isEqualToString:@"SmartPhotons"] )
                     [AccountManager unlockUpgrade:kUpgradeSmartPhotons];
@@ -95,7 +95,7 @@ static AccountManager * sharedAccountManager = nil;
                     [AccountManager unlockUpgrade:kUpgradeElectricityChain];
                 else if ( [transaction.payment.productIdentifier isEqualToString:@"EnergyBooster"] )
                     [AccountManager unlockUpgrade:kUpgradeEnergyBooster];
-                else if ( [transaction.payment.productIdentifier isEqualToString:@"TestWeaponsFour"] )
+                else if ( [transaction.payment.productIdentifier isEqualToString:@"FourWeapons"] )
                     [AccountManager unlockUpgrade:kUpgrade4Weapons];
                 
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];

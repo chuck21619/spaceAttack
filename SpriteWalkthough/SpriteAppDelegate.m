@@ -96,4 +96,13 @@
     layer.rasterizationScale = UIScreen.mainScreen.scale;
 }
 
+- (void) removeGlowFromLayer:(CALayer *)layer
+{
+    layer.shadowOffset = CGSizeMake(0, 0);
+    layer.shadowColor = [[UIColor clearColor] CGColor];
+    layer.cornerRadius = 0.0f;
+    layer.shadowRadius = 0.0f;
+    layer.shadowOpacity = 0.00f;
+}
+
 @end

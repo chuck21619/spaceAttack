@@ -13,14 +13,13 @@
 #import <Crashlytics/Crashlytics.h>
 #import "SpriteAppDelegate.h"
 #import "MenuBackgroundScene.h"
-#import "UpgradeCell.h"
+#import "UIView+Shake.h"
 
 
 @implementation UpgradesViewController
 {
-    int _defaultRowHeightMinmized;
-    int _defaultRowHeightMaximized;
     int _defaultConstraintTopMyTable;
+    float _minimizedCellHeight;
     float _cellSpacing;
 }
 
@@ -32,16 +31,20 @@
     
     self.upgrades = [[AccountManager sharedInstance] upgrades];
     
-    //[self validateProductIdentifiers];
+    [self validateProductIdentifiers];
     
-    _cellSpacing = 5;
+    [self adjustForDeviceSize];
+    
+    CALayer *maskLayer = [CALayer layer];
+    maskLayer.frame = self.viewForSKView.bounds;
+    maskLayer.shadowRadius = 5;
+    maskLayer.shadowPath = CGPathCreateWithRoundedRect(CGRectInset(self.viewForSKView.bounds, 10, 10), 10, 10, nil);
+    maskLayer.shadowOpacity = 1;
+    maskLayer.shadowOffset = CGSizeZero;
+    maskLayer.shadowColor = [UIColor whiteColor].CGColor;
+    self.viewForSKView.layer.mask = maskLayer;
     
     _defaultConstraintTopMyTable = self.constraintTopMyTable.constant;
-    
-    _defaultRowHeightMaximized = self.view.frame.size.height;
-    _defaultRowHeightMinmized = (self.myTable.frame.size.height/self.upgrades.count) - _cellSpacing;
-    self.myTable.rowHeight = UITableViewAutomaticDimension;
-    self.myTable.estimatedRowHeight = _defaultRowHeightMinmized;
     
     [_AppDelegate addGlowToLayer:self.upgradeTitleLabel.layer withColor:[self.upgradeTitleLabel.textColor CGColor]];
     [_AppDelegate addGlowToLayer:self.availablePointsLabel.layer withColor:[self.availablePointsLabel.textColor CGColor]];
@@ -65,7 +68,7 @@
 
 - (void) refreshUpgradeViews
 {
-    //[self.myTable reloadData];
+    [self.myTable reloadData];
 }
 
 - (void) dealloc
@@ -99,7 +102,7 @@
     }
     if ( ! self.activityIndicator )
     {
-        self.activityIndicator = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeBallTrianglePath tintColor:[UIColor whiteColor] size:self.view.frame.size.width/6.4];
+        self.activityIndicator = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeLineScale tintColor:[UIColor whiteColor] size:self.view.frame.size.width/6.4];
         self.activityIndicator.frame = CGRectMake(self.view.frame.size.width/2, self.view.frame.size.height/2, 0, 0);
     }
     
@@ -132,16 +135,15 @@
     self.availablePointsLabel.alpha = alpha;
 }
 
-/*
 - (void) animateAvailablePoints:(NSNumber *)pointsToSubtractNumber
 {
     int pointsToSubtract = [pointsToSubtractNumber intValue];
     
-    if ( self.animatingUpgradeView )
-    {
-        [self performSelector:@selector(animateAvailablePoints:) withObject:@(pointsToSubtract) afterDelay:.5];
-        return;
-    }
+//    if ( self.animatingUpgradeView )
+//    {
+//        [self performSelector:@selector(animateAvailablePoints:) withObject:@(pointsToSubtract) afterDelay:.5];
+//        return;
+//    }
     
     NSString * availablePointsPart = [NSString stringWithFormat:@"%@ : ", NSLocalizedString(@"Available Points", nil)];
     
@@ -153,8 +155,37 @@
     
     if ( pointsToSubtract != 500 )
         [self performSelector:@selector(animateAvailablePoints:) withObject:[NSNumber numberWithInt:pointsToSubtract-500] afterDelay:.05];
-}*/
+}
 
+- (void) viewDidLayoutSubviews
+{
+    _minimizedCellHeight = (self.myTable.frame.size.height/_upgrades.count) - _cellSpacing;
+    [super viewDidLayoutSubviews];
+}
+
+- (void) adjustForDeviceSize
+{
+    float width = self.view.frame.size.width;
+    
+    _cellSpacing = width*.016;
+    
+    self.constraintTrailingBackButton.constant = width*.669;
+    [self.backButton.titleLabel setFont:[self.backButton.titleLabel.font fontWithSize:width*.044]];
+    
+    self.constraintTopTitleLabel.constant = width*.047;
+    self.constraintHeightTitleLabel.constant = width*.147;
+    self.upgradeTitleLabel.font = [self.upgradeTitleLabel.font fontWithSize:width*.119];
+    
+    self.constraintHeightAvailablePoints.constant = width*.047;
+    self.availablePointsLabel.font = [self.availablePointsLabel.font fontWithSize:width*.044];
+    
+    self.constraintTopMyTable.constant = width*.25;
+    self.constraintLeadingMyTable.constant = width*.022;
+    self.constraintTrailingMyTable.constant = width*.022;
+    self.constraintBottomMyTable.constant = width*.022;
+    
+    self.constraintBottomViewForSKView.constant = width*.65;
+}
 
 #pragma mark - table view
 - (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
@@ -178,12 +209,19 @@
     return 1;
 }
 
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Upgrade * tmpUpgrade = [self.upgrades objectAtIndex:indexPath.section];
+    
+    if ( tmpUpgrade.isMaximized )
+        return self.myTable.frame.size.height;
+    
+    return _minimizedCellHeight;
+}
+
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UpgradeCell * cell = (UpgradeCell*)[tableView dequeueReusableCellWithIdentifier:@"upgradeCell"];
-    
-    if ( cell.heightConstraint.constant != _defaultRowHeightMinmized && cell.heightConstraint.constant != _defaultRowHeightMaximized )
-        cell.heightConstraint.constant = _defaultRowHeightMinmized;
     
     Upgrade * tmpUpgrade = [self.upgrades objectAtIndex:indexPath.section];
     [cell createContentFromUpgrade:tmpUpgrade];
@@ -194,49 +232,156 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UpgradeCell * cell = (UpgradeCell*)[tableView cellForRowAtIndexPath:indexPath];
+    cell.delegate = self;
     
-    NSMutableArray * allOtherCells = [[tableView visibleCells] mutableCopy];
-    [allOtherCells removeObject:cell];
+    Upgrade * tmpUpgrade = [self.upgrades objectAtIndex:indexPath.section];
     
     float mainScreenViewsAlpha;
     
     //if minimized
-    if ( cell.heightConstraint.constant == _defaultRowHeightMinmized )
+    if ( ! tmpUpgrade.isMaximized )
     {
-        mainScreenViewsAlpha = 0;
+        if ( tmpUpgrade.upgradeType == kUpgrade4Weapons )
+        {
+            int numberOfUnlockedUpgrades = 0;
+            for ( Upgrade * tmpUpgrade in [AccountManager sharedInstance].upgrades )
+            {
+                if ( tmpUpgrade.isUnlocked )
+                    numberOfUnlockedUpgrades++;
+            }
+            
+            if ( numberOfUnlockedUpgrades < 7 )
+            {
+                [cell shake];
+                return;
+            }
+        }
         
+        
+        mainScreenViewsAlpha = 0;
+        tableView.allowsSelection = NO;
+        tmpUpgrade.isMaximized = YES;
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:kUpgradeTableWillAnimate object:nil];
         [cell showMinimizedContent:NO animated:YES completion:^
         {
-            [cell showMaximizedContent:YES animated:YES completion:nil];
+            [self animateCellHeight:cell tableTopConstraint:7 mainScreenViewsAlpha:mainScreenViewsAlpha completion:^
+            {
+                [[NSNotificationCenter defaultCenter] postNotificationName:kUpgradeTableDidAnimate object:nil];
+                [self presentSceneForUpgrade:tmpUpgrade];
+                [cell showMaximizedContent:YES animated:YES completion:nil];
+            }];
         }];
-        
-        cell.heightConstraint.constant = _defaultRowHeightMaximized;
-        self.constraintTopMyTable.constant = 0;
-        tableView.scrollEnabled = NO;
     }
     else
     {
         mainScreenViewsAlpha = 1;
+        tableView.allowsSelection = YES;
+        tmpUpgrade.isMaximized = NO;
         
+        [[NSNotificationCenter defaultCenter] postNotificationName:kUpgradeTableWillAnimate object:nil];
+        [self hideScene];
         [cell showMaximizedContent:NO animated:YES completion:^
         {
-            [cell showMinimizedContent:YES animated:YES completion:nil];
+            [self animateCellHeight:cell tableTopConstraint:_defaultConstraintTopMyTable mainScreenViewsAlpha:mainScreenViewsAlpha completion:^
+            {
+                [[NSNotificationCenter defaultCenter] postNotificationName:kUpgradeTableDidAnimate object:nil];
+                [cell showMinimizedContent:YES animated:YES completion:nil];
+            }];
         }];
-        
-        cell.heightConstraint.constant = _defaultRowHeightMinmized;
-        self.constraintTopMyTable.constant = _defaultConstraintTopMyTable;
-        tableView.scrollEnabled = YES;
+    }
+}
+
+- (void) animateCellHeight:(UpgradeCell *)cell tableTopConstraint:(int)constraintConstant mainScreenViewsAlpha:(float)alpha completion:(void (^)())completion
+{
+    self.constraintTopMyTable.constant = constraintConstant;
+    [UIView animateWithDuration:.35 animations:^
+    {
+        [self.view layoutIfNeeded];
+        [self setMainScreenViewsAlpha:alpha];
+    }
+    completion:^(BOOL finished)
+    {
+        if ( completion )
+            completion();
+    }];
+    
+    [self.myTable beginUpdates];
+    [self.myTable endUpdates];
+    NSIndexPath * indexPath = [self.myTable indexPathForCell:cell];
+    [self.myTable scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+}
+
+#pragma mark upgrade cell delegate
+- (void) minimizePressed:(UpgradeCell *)upgradeCell
+{
+    NSIndexPath * indexPath = [self.myTable indexPathForCell:upgradeCell];
+    [self tableView:self.myTable didSelectRowAtIndexPath:indexPath];
+}
+
+- (void) purchasedWithPoints:(float)pointsSpent
+{
+    [self animateAvailablePoints:[NSNumber numberWithFloat:pointsSpent]];
+}
+
+- (void) purchaseWithMoneyPressed:(Upgrade *)upgrade
+{
+    SKProduct * product = nil;
+    for ( SKProduct * tmpProduct in self.products )
+    {
+        if ( [tmpProduct.productIdentifier isEqualToString:upgrade.storeKitIdentifier] )
+        {
+            product = tmpProduct;
+            break;
+        }
     }
     
-    [UIView animateWithDuration:.2 animations:^
+    if ( product )
     {
-        [self setMainScreenViewsAlpha:mainScreenViewsAlpha];
-        [self.view layoutIfNeeded];
-        [cell.contentView layoutIfNeeded];
-        [tableView beginUpdates];
-        [tableView endUpdates];
-        [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        SKMutablePayment * payment = [SKMutablePayment paymentWithProduct:product];
+        [[SKPaymentQueue defaultQueue] addPayment:payment];
+        [self showProgressHud];
+    }
+    else
+    {
+        NSLog(@"somethign screwd up i think");
+    }
+}
+
+#pragma mark
+- (void) presentSceneForUpgrade:(Upgrade *)upgrade
+{
+    self.viewForSKView.alpha = 0;
+    UpgradeScene * upgradeScene = [[UpgradeScene alloc] initWithUpgradeType:upgrade.upgradeType];
+    SKView * skView = [[SKView alloc] initWithFrame:CGRectMake(0, 0, self.viewForSKView.frame.size.width, self.viewForSKView.frame.size.height)];
+    [skView presentScene:upgradeScene];
+    [self.viewForSKView addSubview:skView];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.6 * NSEC_PER_SEC), dispatch_get_main_queue(), ^
+    {
+        [UIView animateWithDuration:.3 animations:^
+        {
+            self.viewForSKView.alpha = 1;
+        }];
+    });
+}
+
+- (void) hideScene
+{
+    [UIView animateWithDuration:.25 animations:^
+    {
+        self.viewForSKView.alpha = 0;
+    }
+    completion:^(BOOL finished)
+    {
+        SKView * skView = (SKView *)[[self.viewForSKView subviews] firstObject];
+        [skView presentScene:nil];
+        [skView removeFromSuperview];
     }];
+    
+    //                [_demoView presentScene:nil];
+    //                [_demoView removeFromSuperview];
+    //                _demoScene = nil;
 }
 
 #pragma mark - game center
@@ -329,82 +474,4 @@
     [self refreshUpgradeViews];
 }
 
-/*
-- (void) unlockWithPointsPressed:(UpgradeView *)upgradeView
-{
-    [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuUnlock];
-    NSNumberFormatter *formatter = [NSNumberFormatter new];
-    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    NSString * formattedPoints = [formatter stringFromNumber:[NSNumber numberWithInteger:upgradeView.upgrade.pointsToUnlock]];
-
-    DQAlertView * unlockAlert = [[DQAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"Unlock %@\nfor %@ points?", upgradeView.upgrade.title, formattedPoints] cancelButtonTitle:@"Cancel" otherButtonTitle:@"Unlock"];
-    unlockAlert.appearAnimationType = DQAlertViewAnimationTypeFadeIn;
-    unlockAlert.disappearAnimationType = DQAlertViewAnimationTypeFaceOut;
-    unlockAlert.appearTime = .2;
-    unlockAlert.disappearTime = .2;
-    unlockAlert.backgroundColor = [UIColor colorWithWhite:.2 alpha:.95];
-    unlockAlert.messageLabel.font = [UIFont fontWithName:@"Moon-Bold" size:20];
-    unlockAlert.messageLabel.textColor = [UIColor whiteColor];
-    unlockAlert.cancelButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
-    [unlockAlert.cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    unlockAlert.otherButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
-    [unlockAlert.otherButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    unlockAlert.otherButtonAction = ^
-    {
-        [Answers logPurchaseWithPrice:[[NSDecimalNumber alloc] initWithFloat:upgradeView.upgrade.pointsToUnlock]
-                             currency:@"game points"
-                              success:@YES
-                             itemName:upgradeView.upgrade.title
-                             itemType:@"Upgrade"
-                               itemId:nil
-                     customAttributes:@{}];
-        [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuDidUnlock];
-        [AccountManager subtractPoints:upgradeView.upgrade.pointsToUnlock];
-        [AccountManager unlockUpgrade:upgradeView.upgrade.upgradeType];
-        [self refreshUpgradeViews];
-        [self animateAvailablePoints:[NSNumber numberWithInt:upgradeView.upgrade.pointsToUnlock]];
-    };
-    [unlockAlert show];
-}
- 
-- (void) unlockWithMoneyPressed:(UpgradeView *)upgradeView
-{
-    [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuUnlock];
-    DQAlertView * unlockAlert = [[DQAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"Unlock %@\nfor %@?", upgradeView.upgrade.title, upgradeView.upgrade.priceString] cancelButtonTitle:@"Cancel" otherButtonTitle:@"Unlock"];
-    unlockAlert.appearAnimationType = DQAlertViewAnimationTypeFadeIn;
-    unlockAlert.disappearAnimationType = DQAlertViewAnimationTypeFaceOut;
-    unlockAlert.appearTime = .2;
-    unlockAlert.disappearTime = .2;
-    unlockAlert.backgroundColor = [UIColor colorWithWhite:.2 alpha:.95];
-    unlockAlert.messageLabel.font = [UIFont fontWithName:@"Moon-Bold" size:20];
-    unlockAlert.messageLabel.textColor = [UIColor whiteColor];
-    unlockAlert.cancelButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
-    [unlockAlert.cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    unlockAlert.otherButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
-    [unlockAlert.otherButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    unlockAlert.otherButtonAction = ^
-    {
-        SKProduct * product = nil;
-        for ( SKProduct * tmpProduct in self.products )
-        {
-            if ( [tmpProduct.productIdentifier isEqualToString:upgradeView.upgrade.storeKitIdentifier] )
-            {
-                product = tmpProduct;
-                break;
-            }
-        }
-        
-        if ( product )
-        {
-            SKMutablePayment * payment = [SKMutablePayment paymentWithProduct:product];
-            [[SKPaymentQueue defaultQueue] addPayment:payment];
-            [self showProgressHud];
-        }
-        else
-        {
-            NSLog(@"somethign screwd up i think");
-        }
-    };
-    [unlockAlert show];
-}*/
 @end

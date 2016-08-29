@@ -19,18 +19,12 @@
 {
     [super viewDidLoad];
     
-    SKView * spriteView = (SKView *)self.view;
-    MenuBackgroundScene * backgroundScene = [MenuBackgroundScene sharedInstance];
-    [spriteView presentScene:backgroundScene];
     [self adjustForDeviceSize];
     
     [_AppDelegate addGlowToLayer:self.settingsTitleLabel.layer withColor:self.settingsTitleLabel.textColor.CGColor];
     [_AppDelegate addGlowToLayer:self.soundEffectsLabel.layer withColor:self.soundEffectsLabel.textColor.CGColor];
     [_AppDelegate addGlowToLayer:self.musicLabel.layer withColor:self.musicLabel.textColor.CGColor];
-    [_AppDelegate addGlowToLayer:self.soundEffectsVolumeSlider.layer withColor:[UIColor whiteColor].CGColor];
-    [_AppDelegate addGlowToLayer:self.musicVolumeSlider.layer withColor:[UIColor whiteColor].CGColor];
     [_AppDelegate addGlowToLayer:self.vibrateLabel.layer withColor:self.vibrateLabel.textColor.CGColor];
-    [_AppDelegate addGlowToLayer:self.vibrateSwitch.layer withColor:[UIColor whiteColor].CGColor];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -43,14 +37,19 @@
     
     [self.musicVolumeSlider setValue:[[AudioManager sharedInstance] musicVolume]];
     [self.soundEffectsVolumeSlider setValue:[[AudioManager sharedInstance] soundEffectsVolume]];
+    
     [self.vibrateSwitch setOn:[AccountManager isVibrateOn]];
+    if ( self.vibrateSwitch.isOn )
+        [_AppDelegate addGlowToLayer:self.vibrateSwitch.layer withColor:self.vibrateSwitch.onTintColor.CGColor];
+    else
+        [_AppDelegate addGlowToLayer:self.vibrateSwitch.layer withColor:[UIColor whiteColor].CGColor];
 }
 
 #pragma mark - sliders
 #pragma mark music
 - (IBAction)musicTouchDown:(id)sender
 {
-    self.musicUpdater = [NSTimer scheduledTimerWithTimeInterval:.25 target:self selector:@selector(musicVolumeUpdate) userInfo:nil repeats:YES];
+    self.musicUpdater = [NSTimer scheduledTimerWithTimeInterval:.33 target:self selector:@selector(musicVolumeUpdate) userInfo:nil repeats:YES];
     [self musicVolumeUpdate];
 }
 
@@ -74,7 +73,7 @@
 #pragma mark sound effects
 - (IBAction)soundEffectsTouchDown:(id)sender
 {
-    self.soundEffectUpdater =[ NSTimer scheduledTimerWithTimeInterval:.25 target:self selector:@selector(soundEffectsVolumeUpdate) userInfo:nil repeats:YES];
+    self.soundEffectUpdater =[ NSTimer scheduledTimerWithTimeInterval:.33 target:self selector:@selector(soundEffectsVolumeUpdate) userInfo:nil repeats:YES];
     [self soundEffectsVolumeUpdate];
 }
 
@@ -102,7 +101,12 @@
 {
     [AccountManager setVibrate:self.vibrateSwitch.isOn];
     if ( self.vibrateSwitch.isOn )
+    {
         [[AudioManager sharedInstance] vibrate];
+        [_AppDelegate addGlowToLayer:self.vibrateSwitch.layer withColor:self.vibrateSwitch.onTintColor.CGColor];
+    }
+    else
+        [_AppDelegate addGlowToLayer:self.vibrateSwitch.layer withColor:[UIColor whiteColor].CGColor];
 }
 
 

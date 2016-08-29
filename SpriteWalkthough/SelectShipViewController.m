@@ -43,9 +43,9 @@
     
     [self adjustForDeviceSize];
     
-    MenuBackgroundScene * backgroundScene = [MenuBackgroundScene sharedInstance];
-    SKView * spriteView = (SKView *)self.view;
-    [spriteView presentScene:backgroundScene];
+//    MenuBackgroundScene * backgroundScene = [MenuBackgroundScene sharedInstance];
+//    SKView * spriteView = (SKView *)self.view;
+//    [spriteView presentScene:backgroundScene];
 }
 
 - (void) viewWillAppear:(BOOL)animated

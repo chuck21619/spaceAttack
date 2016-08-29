@@ -9,10 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "Upgrade.h"
 
+@class UpgradeCell;
+@protocol UpgradeCellDelegate <NSObject>
+- (void) minimizePressed:(UpgradeCell *)upgradeCell;
+- (void) purchasedWithPoints:(float)pointsSpent;
+- (void) purchaseWithMoneyPressed:(Upgrade *)upgrade;
+@end
+
+
 @interface UpgradeCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightConstraint;
-@property (weak, nonatomic) IBOutlet UIView *heightConstraintView;
+@property (weak, nonatomic) id <UpgradeCellDelegate>delegate;
+
+@property (weak, nonatomic) IBOutlet UIView *borderView;
 
 - (void) showMinimizedContent:(BOOL)show animated:(BOOL)animated completion:(void (^)())completion;
 - (void) showMaximizedContent:(BOOL)show animated:(BOOL)animated completion:(void (^)())completion;

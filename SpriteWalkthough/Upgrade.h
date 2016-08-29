@@ -26,4 +26,7 @@
 @property (nonatomic) NSString * priceString;
 @property (nonatomic) BOOL isValidForMoneyPurchase;
 
+//menu
+@property (nonatomic) BOOL isMaximized;
+
 @end

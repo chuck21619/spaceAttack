@@ -21,6 +21,11 @@
     }
 }
 
+- (void) willMoveFromView:(SKView *)view
+{
+    [self destroy];
+}
+
 - (instancetype) initWithUpgradeType:(UpgradeType)upgradeType
 {
     if ( self = [super init] )
@@ -41,7 +46,7 @@
     
     self.mySpaceship = [[Abdul_Kadir alloc] init];
     [self.mySpaceship setExhaustTargetNode:self];
-    self.mySpaceship.position = CGPointMake(self.size.width/2, self.size.height/4);
+    self.mySpaceship.position = CGPointMake(self.size.width/2, self.size.height/16);
     [self addChild:self.mySpaceship];
     
     self.moveShipTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(randomlyMoveShip) userInfo:nil repeats:YES];
@@ -168,7 +173,7 @@
 
 - (CGPoint) randomPosition
 {
-    CGPoint position = (CGPoint){(arc4random() % (int)self.scene.size.width) + 1.0f, (arc4random() % (int)(self.scene.size.height/4)) + 1.0f};
+    CGPoint position = (CGPoint){(arc4random() % (int)self.scene.size.width) + 1.0f, (arc4random() % (int)(self.scene.size.height/16)) + 1.0f};
     return position;
 }
 
@@ -367,6 +372,24 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
             [(Shield *)secondBody.node takeDamage];
         }
     }
+}
+
+- (void) destroy
+{
+    [self.moveShipTimer invalidate];
+    [self removeAllActions];
+//    [self removeActionForKey:@"makeAsteroids"];
+//    [self removeActionForKey:@"makeEnemies"];
+//    [self removeActionForKey:@"makePowerUps"];
+//    SKEmitterNode * clouds = (SKEmitterNode *)[self childNodeWithName:@"cloudsEmitter"];
+//    clouds.particleBirthRate = 0;
+//    SKEmitterNode * cloudsOnTop = (SKEmitterNode *)[self childNodeWithName:@"cloudsOnTopEmitter"];
+//    cloudsOnTop.particleBirthRate = 0;
+//    [self updateScoreMultiplierLabel];
+//    [self showEndGameScreen];
+//    [[AudioManager sharedInstance] fadeOutGameplayMusic];
+//    for ( Enemy * enemy in self.cachedEnemies )
+//        [enemy runAction:[SKAction fadeOutWithDuration:1]];
 }
 
 #pragma mark photon/electricity stuff
