@@ -19,6 +19,7 @@
 {
     Upgrade * _myUpgrade;
     
+    BOOL _contentCreated;
     BOOL _framesAdjustedForHeight; //this is becuase we dont have the updated frame size in awakeFromNib
     float _defaultBorderWidth;
     
@@ -44,9 +45,11 @@
     UILabel * _purchasedLabel;
 }
 
-- (void)awakeFromNib
+- (void)prepareForReuse
 {
-    [super awakeFromNib];
+    if ( ! _contentCreated )
+    {
+    //[super awakeFromNib];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tableWillAnimate) name:kUpgradeTableWillAnimate object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tableDidAnimate) name:kUpgradeTableDidAnimate object:nil];
     
@@ -148,6 +151,9 @@
     _purchasedLabel.textAlignment = NSTextAlignmentCenter;
     [self.contentView addSubview:_purchasedLabel];
     [_AppDelegate addGlowToLayer:_purchasedLabel.layer withColor:_purchasedLabel.textColor.CGColor];
+        
+        _contentCreated = YES;
+    }
 }
 
 - (void) layoutSubviews

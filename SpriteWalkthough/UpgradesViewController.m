@@ -21,6 +21,9 @@
     int _defaultConstraintTopMyTable;
     float _minimizedCellHeight;
     float _cellSpacing;
+    
+    UpgradeCell * precomputedCell;
+    //http://stackoverflow.com/questions/12662450/preload-cells-of-uitableview
 }
 
 - (void) viewDidLoad
@@ -49,6 +52,8 @@
     [_AppDelegate addGlowToLayer:self.upgradeTitleLabel.layer withColor:[self.upgradeTitleLabel.textColor CGColor]];
     [_AppDelegate addGlowToLayer:self.availablePointsLabel.layer withColor:[self.availablePointsLabel.textColor CGColor]];
     [_AppDelegate addGlowToLayer:self.backButton.titleLabel.layer withColor:[self.backButton.titleLabel.textColor CGColor]];
+    
+    [self.myTable reloadData];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -58,11 +63,19 @@
     NSString *numberString = [numberFormatter stringFromNumber:@([AccountManager availablePoints])];
     self.availablePointsLabel.text = [NSString stringWithFormat:@"%@ : %@", NSLocalizedString(@"Available Points", nil),numberString];
     
-    self.view.alpha = 0;
-    [UIView animateWithDuration:.2 animations:^
+    for ( UIView * subview in [self.view subviews] )
     {
-        self.view.alpha = 1;
-    }];
+        if ( subview.tag != 10 ) //10 is the background image
+            subview.alpha = 0;
+    }
+    [UIView animateWithDuration:.2 animations:^
+     {
+         for ( UIView * subview in [self.view subviews] )
+         {
+             if ( subview != self.viewForSKView )
+                 subview.alpha = 1;
+         }
+     }];
 }
 
 
@@ -84,7 +97,11 @@
     [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuBackButton];
     [UIView animateWithDuration:.2 animations:^
     {
-        self.view.alpha = 0;
+        for ( UIView * subview in [self.view subviews] )
+        {
+            if ( subview.tag != 10 ) //10 is the background image
+                subview.alpha = 0;
+        }
     }
     completion:^(BOOL finished)
     {

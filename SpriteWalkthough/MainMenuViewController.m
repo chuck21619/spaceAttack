@@ -29,17 +29,18 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    self.playButton.alpha = 0;
-    self.upgradesButton.alpha = 0;
-    self.highScoresAchievementsButton.alpha = 0;
-    self.settingsButton.alpha = 0;
-    [UIView animateWithDuration:.5 animations:^
+    for ( UIView * subview in [self.view subviews] )
     {
-        self.playButton.alpha = 1;
-        self.upgradesButton.alpha = 1;
-        self.highScoresAchievementsButton.alpha = 1;
-        self.settingsButton.alpha = 1;
-    }];
+        if ( subview.tag != 10 ) //10 is the background image
+            subview.alpha = 0;
+    }
+    [UIView animateWithDuration:.2 animations:^
+     {
+         for ( UIView * subview in [self.view subviews] )
+         {
+             subview.alpha = 1;
+         }
+     }];
     
     if ( ! [[GKLocalPlayer localPlayer] isAuthenticated] )
         [self.highScoresAchievementsButton setTitleColor:[UIColor colorWithWhite:.5 alpha:1] forState:UIControlStateNormal];
@@ -212,7 +213,11 @@
     SelectShipViewController * ssvc = [storyboard instantiateViewControllerWithIdentifier:@"selectShipViewController"];
     [UIView animateWithDuration:.2 animations:^
     {
-        self.view.alpha = 0;
+        for ( UIView * subview in [self.view subviews] )
+        {
+            if ( subview.tag != 10 ) //10 is the background image
+                subview.alpha = 0;
+        }
         [self presentViewController:ssvc animated:NO completion:^
         {
             self.view.alpha = 1;
@@ -227,14 +232,23 @@
     [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuUpgrade];
     UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UpgradesViewController * upgradesVC = [storyboard instantiateViewControllerWithIdentifier:@"upgradesViewController"];
+    [upgradesVC view]; //preloads the view
     [UIView animateWithDuration:.2 animations:^
     {
-        self.view.alpha = 0;
+        for ( UIView * subview in [self.view subviews] )
+        {
+            if ( subview.tag != 10 ) //10 is the background image
+                subview.alpha = 0;
+        }
+    }
+    completion:^(BOOL finished)
+    {
         [self presentViewController:upgradesVC animated:NO completion:^
         {
-            self.view.alpha = 1;
-//            SKView * spriteView = (SKView *)self.view;
-//            [spriteView presentScene:nil];
+            for ( UIView * subview in [self.view subviews] )
+            {
+                subview.alpha = 1;
+            }
         }];
     }];
 }
@@ -283,15 +297,20 @@
     SettingsViewController * settingsVC = [storyboard instantiateViewControllerWithIdentifier:@"settingsViewController"];
     [UIView animateWithDuration:.2 animations:^
     {
-        self.view.alpha = 0;
+        for ( UIView * subview in [self.view subviews] )
+        {
+            if ( subview.tag != 10 ) //10 is the background image
+                subview.alpha = 0;
+        }
     }
     completion:^(BOOL finished)
     {
         [self presentViewController:settingsVC animated:NO completion:^
         {
-            self.view.alpha = 1;
-//            SKView * spriteView = (SKView *)self.view;
-//            [spriteView presentScene:nil];
+            for ( UIView * subview in [self.view subviews] )
+            {
+                    subview.alpha = 1;
+            }
         }];
     }];
 }

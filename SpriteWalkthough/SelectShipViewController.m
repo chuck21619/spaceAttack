@@ -50,15 +50,18 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
-//    NSString *numberString = [_numberFormatter stringFromNumber:@([AccountManager availablePoints])];
-//    self.availablePointsValueLabel.text = [NSString stringWithFormat:@"%@ : %@", NSLocalizedString(@"Available Points", nil), numberString];
-    
-    self.view.alpha = 0;
-    [UIView animateWithDuration:.2 animations:^
+    for ( UIView * subview in [self.view subviews] )
     {
-        self.view.alpha = 1;
-    }];
-    
+        if ( subview.tag != 10 ) //10 is the background image
+            subview.alpha = 0;
+    }
+    [UIView animateWithDuration:.2 animations:^
+     {
+         for ( UIView * subview in [self.view subviews] )
+         {
+             subview.alpha = 1;
+         }
+     }];
 }
 
 - (void) adjustForDeviceSize
@@ -163,7 +166,11 @@
     [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuBackButton];
     [UIView animateWithDuration:.2 animations:^
     {
-        self.view.alpha = 0;
+        for ( UIView * subview in [self.view subviews] )
+        {
+            if ( subview.tag != 10 ) //10 is the background image
+                subview.alpha = 0;
+        }
     }
     completion:^(BOOL finished)
     {
