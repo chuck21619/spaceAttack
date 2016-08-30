@@ -61,6 +61,8 @@
     [_AppDelegate addGlowToLayer:self.upgradeTitleLabel.layer withColor:[self.upgradeTitleLabel.textColor CGColor]];
     [_AppDelegate addGlowToLayer:self.availablePointsLabel.layer withColor:[self.availablePointsLabel.textColor CGColor]];
     [_AppDelegate addGlowToLayer:self.backButton.titleLabel.layer withColor:[self.backButton.titleLabel.textColor CGColor]];
+    
+    [self.myTable reloadData];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -79,15 +81,28 @@
      {
          for ( UIView * subview in [self.view subviews] )
          {
-             if ( subview != self.demoPreviewImageView )
+             if ( subview != self.demoPreviewImageView && subview != self.myTable )
                  subview.alpha = 1;
          }
      }];
+    [UIView animateWithDuration:.4 animations:^{
+        self.myTable.alpha = 1;
+    }];
 }
 
 
 - (void) refreshUpgradeViews
 {
+    _precomputedCells = [NSMutableArray new];
+    for ( int i = 0; i < self.upgrades.count; i++ )
+    {
+        Upgrade * upgrade = [self.upgrades objectAtIndex:i];
+        UpgradeCell * cell = [[UpgradeCell alloc] initWithUpgrade:upgrade];
+        [_precomputedCells addObject:cell];
+    }
+    _minimizedCellFramesUpdated = NO;
+    [self updateMinizedCellFramesIfNeccessary];
+    
     [self.myTable reloadData];
 }
 
@@ -183,6 +198,12 @@
 
 - (void) viewDidLayoutSubviews
 {
+    [self updateMinizedCellFramesIfNeccessary];
+    [super viewDidLayoutSubviews];
+}
+
+- (void) updateMinizedCellFramesIfNeccessary
+{
     if ( ! _minimizedCellFramesUpdated )
     {
         _minimizedCellHeight = (self.myTable.frame.size.height/_upgrades.count) - _cellSpacing;
@@ -191,8 +212,6 @@
         
         _minimizedCellFramesUpdated = YES;
     }
-    
-    [super viewDidLayoutSubviews];
 }
 
 - (void) adjustForDeviceSize

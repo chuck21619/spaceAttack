@@ -105,7 +105,7 @@
         [self.contentView addSubview:_lockOrCheckIcon];
         
         
-        //--maximied content
+        //--maximzied content
         _minimizeButton = [UIButton new];
         [_minimizeButton setContentVerticalAlignment:UIControlContentVerticalAlignmentTop];
         [_minimizeButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
