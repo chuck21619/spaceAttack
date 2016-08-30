@@ -105,4 +105,15 @@
     layer.shadowOpacity = 0.00f;
 }
 
+- (void) addEdgeConstraint:(NSLayoutAttribute)edge superview:(UIView *)superview subview:(UIView *)subview
+{
+    [superview addConstraint:[NSLayoutConstraint constraintWithItem:subview
+                                                          attribute:edge
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:superview
+                                                          attribute:edge
+                                                         multiplier:1
+                                                           constant:0]];
+}
+
 @end

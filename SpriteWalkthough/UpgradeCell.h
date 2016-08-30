@@ -21,11 +21,13 @@
 
 @property (weak, nonatomic) id <UpgradeCellDelegate>delegate;
 
-@property (weak, nonatomic) IBOutlet UIView *borderView;
+- (instancetype) initWithUpgrade:(Upgrade*)upgrade;
 
 - (void) showMinimizedContent:(BOOL)show animated:(BOOL)animated completion:(void (^)())completion;
 - (void) showMaximizedContent:(BOOL)show animated:(BOOL)animated completion:(void (^)())completion;
 
-- (void) createContentFromUpgrade:(Upgrade *)upgrade;
+//- (void) updateContentWithUpgrade:(Upgrade *)upgrade;
+
+- (void) updateMinimizedCellHeight:(float)height;
 
 @end

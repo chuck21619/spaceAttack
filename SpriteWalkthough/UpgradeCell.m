@@ -19,8 +19,7 @@
 {
     Upgrade * _myUpgrade;
     
-    BOOL _contentCreated;
-    BOOL _framesAdjustedForHeight; //this is becuase we dont have the updated frame size in awakeFromNib
+    UIView * _borderView;
     float _defaultBorderWidth;
     
     UILabel * _upgradeTitleLabel;
@@ -34,172 +33,173 @@
     
     //maximized content
     UIButton * _minimizeButton;
-    DGActivityIndicatorView * _demoLoadingIndicator;
-    UpgradeScene * _demoScene;
-    SKView * _demoView;
-    CGRect _demoViewFrame;
-    
     UILabel * _upgradeDescription;
     GlowingButton * _purchaseButtonMoney;
     GlowingButton * _purchaseButtonPoints;
     UILabel * _purchasedLabel;
 }
 
-- (void)prepareForReuse
+- (instancetype) initWithUpgrade:(Upgrade *)upgrade
 {
-    if ( ! _contentCreated )
+    if ( self = [super init] )
     {
-    //[super awakeFromNib];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tableWillAnimate) name:kUpgradeTableWillAnimate object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tableDidAnimate) name:kUpgradeTableDidAnimate object:nil];
-    
-    _framesAdjustedForHeight = NO;
-    
-    _defaultBorderWidth = 1.5;
-    
-    self.borderView.layer.borderWidth = _defaultBorderWidth;
-    self.borderView.layer.borderColor = [UIColor whiteColor].CGColor;
-    [_AppDelegate addGlowToLayer:self.borderView.layer withColor:self.borderView.layer.borderColor];
-    
-    _upgradeTitleLabel = [UILabel new];
-    _upgradeTitleLabel.textColor = [UIColor whiteColor];
-    _upgradeTitleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:20];
-    _upgradeTitleLabel.textAlignment = NSTextAlignmentCenter;
-    [self.contentView addSubview:_upgradeTitleLabel];
-    [_AppDelegate addGlowToLayer:_upgradeTitleLabel.layer withColor:_upgradeTitleLabel.textColor.CGColor];
-    
-    //--minimized content
-    _iconImage = [UIImageView new];
-    _iconImage.contentMode = UIViewContentModeScaleAspectFit;
-    [self.contentView addSubview:_iconImage];
-    
-    _costLabel = [UILabel new];
-    _costLabel.text = @"COST";
-    _costLabel.textColor = [UIColor whiteColor];
-    _costLabel.font = [UIFont fontWithName:@"Moon-Bold" size:8];
-    _costLabel.textAlignment = NSTextAlignmentCenter;
-    [self.contentView addSubview:_costLabel];
-    [_AppDelegate addGlowToLayer:_costLabel.layer withColor:_costLabel.textColor.CGColor];
-    
-    _pointsNumberLabel = [UILabel new];
-    _pointsNumberLabel.textColor = [UIColor whiteColor];
-    _pointsNumberLabel.font = [UIFont fontWithName:@"Moon-Bold" size:28];
-    _pointsNumberLabel.textAlignment = NSTextAlignmentCenter;
-    _pointsNumberLabel.adjustsFontSizeToFitWidth = YES;
-    [self.contentView addSubview:_pointsNumberLabel];
-    [_AppDelegate addGlowToLayer:_pointsNumberLabel.layer withColor:_pointsNumberLabel.textColor.CGColor];
-    
-    _pointsLabel = [UILabel new];
-    _pointsLabel.text = NSLocalizedString(@"points", nil);
-    _pointsLabel.textColor = [UIColor whiteColor];
-    _pointsLabel.font = [UIFont fontWithName:@"Moon-Bold" size:8];
-    _pointsLabel.textAlignment = NSTextAlignmentCenter;
-    [self.contentView addSubview:_pointsLabel];
-    [_AppDelegate addGlowToLayer:_pointsLabel.layer withColor:_pointsLabel.textColor.CGColor];
-
-    _lockOrCheckIcon = [UIImageView new];
-    _lockOrCheckIcon.contentMode = UIViewContentModeScaleAspectFit;
-    [self.contentView addSubview:_lockOrCheckIcon];
-    
-    
-    //--maximied content
-    _minimizeButton = [UIButton new];
-    [_minimizeButton setContentVerticalAlignment:UIControlContentVerticalAlignmentTop];
-    [_minimizeButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
-    [_minimizeButton setContentEdgeInsets:UIEdgeInsetsMake(10, 0, 0, 17)];
-    [_minimizeButton.titleLabel setFont:[UIFont fontWithName:@"Moon-Bold" size:17]];
-    [_minimizeButton setTitle:@"X" forState:UIControlStateNormal];
-    [_minimizeButton addTarget:self action:@selector(minimizePressed) forControlEvents:UIControlEventTouchUpInside];
-    [self.contentView addSubview:_minimizeButton];
-    [_AppDelegate addGlowToLayer:_minimizeButton.titleLabel.layer withColor:_minimizeButton.currentTitleColor.CGColor];
-    
-    _demoLoadingIndicator = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeLineScale tintColor:[UIColor whiteColor] size:35];
-    [self.contentView addSubview:_demoLoadingIndicator];
-    
-    _upgradeDescription = [UILabel new];
-    _upgradeDescription.textColor = [UIColor whiteColor];
-    _upgradeDescription.font = [UIFont fontWithName:@"Moon-Bold" size:14];
-    _upgradeDescription.textAlignment = NSTextAlignmentCenter;
-    _upgradeDescription.numberOfLines = 0;
-    [self.contentView addSubview:_upgradeDescription];
-    [_AppDelegate addGlowToLayer:_upgradeDescription.layer withColor:_upgradeDescription.textColor.CGColor];
-    
-    _purchaseButtonMoney = [GlowingButton new];
-    _purchaseButtonMoney.layer.borderWidth = 1.5;
-    _purchaseButtonMoney.layer.borderColor = [UIColor whiteColor].CGColor;
-    [_purchaseButtonMoney setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    _purchaseButtonMoney.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:12];
-    _purchaseButtonMoney.titleLabel.textAlignment = NSTextAlignmentCenter;
-    _purchaseButtonMoney.titleLabel.numberOfLines = 0;
-    [_purchaseButtonMoney addTarget:self action:@selector(unlockWithMoneyPressed) forControlEvents:UIControlEventTouchUpInside];
-    [self.contentView addSubview:_purchaseButtonMoney];
-    
-    _purchaseButtonPoints = [GlowingButton new];
-    _purchaseButtonPoints.layer.borderWidth = 1.5;
-    _purchaseButtonPoints.layer.borderColor = [UIColor whiteColor].CGColor;
-    [_purchaseButtonPoints setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    _purchaseButtonPoints.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:12];
-    _purchaseButtonPoints.titleLabel.textAlignment = NSTextAlignmentCenter;
-    _purchaseButtonPoints.titleLabel.numberOfLines = 0;
-    [_purchaseButtonPoints addTarget:self action:@selector(unlockWithPointsPressed) forControlEvents:UIControlEventTouchUpInside];
-    [self.contentView addSubview:_purchaseButtonPoints];
-    
-    _purchasedLabel = [UILabel new];
-    _purchasedLabel.text = @"PURCHASED";
-    _purchasedLabel.textColor = [UIColor whiteColor];
-    _purchasedLabel.font = [UIFont fontWithName:@"Moon-Bold" size:30];
-    _purchasedLabel.textAlignment = NSTextAlignmentCenter;
-    [self.contentView addSubview:_purchasedLabel];
-    [_AppDelegate addGlowToLayer:_purchasedLabel.layer withColor:_purchasedLabel.textColor.CGColor];
+        //[super awakeFromNib];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tableWillAnimate) name:kUpgradeTableWillAnimate object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tableDidAnimate) name:kUpgradeTableDidAnimate object:nil];
         
-        _contentCreated = YES;
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        _defaultBorderWidth = 1.5;
+        
+        self.backgroundColor = [UIColor clearColor];
+        
+        _borderView = [[UIView alloc] initWithFrame:self.contentView.bounds];
+        _borderView.layer.borderWidth = _defaultBorderWidth;
+        _borderView.layer.borderColor = [UIColor whiteColor].CGColor;
+        _borderView.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.contentView addSubview:_borderView];
+        [_AppDelegate addEdgeConstraint:NSLayoutAttributeLeft superview:self.contentView subview:_borderView];
+        [_AppDelegate addEdgeConstraint:NSLayoutAttributeRight superview:self.contentView subview:_borderView];
+        [_AppDelegate addEdgeConstraint:NSLayoutAttributeTop superview:self.contentView subview:_borderView];
+        [_AppDelegate addEdgeConstraint:NSLayoutAttributeBottom superview:self.contentView subview:_borderView];
+        [_AppDelegate addGlowToLayer:_borderView.layer withColor:_borderView.layer.borderColor];
+        
+        _upgradeTitleLabel = [UILabel new];
+        _upgradeTitleLabel.textColor = [UIColor whiteColor];
+        _upgradeTitleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:20];
+        _upgradeTitleLabel.textAlignment = NSTextAlignmentCenter;
+        [self.contentView addSubview:_upgradeTitleLabel];
+        [_AppDelegate addGlowToLayer:_upgradeTitleLabel.layer withColor:_upgradeTitleLabel.textColor.CGColor];
+        
+        //--minimized content
+        _iconImage = [UIImageView new];
+        _iconImage.contentMode = UIViewContentModeScaleAspectFit;
+        [self.contentView addSubview:_iconImage];
+        
+        _costLabel = [UILabel new];
+        _costLabel.text = @"COST";
+        _costLabel.textColor = [UIColor whiteColor];
+        _costLabel.font = [UIFont fontWithName:@"Moon-Bold" size:8];
+        _costLabel.textAlignment = NSTextAlignmentCenter;
+        [self.contentView addSubview:_costLabel];
+        [_AppDelegate addGlowToLayer:_costLabel.layer withColor:_costLabel.textColor.CGColor];
+        
+        _pointsNumberLabel = [UILabel new];
+        _pointsNumberLabel.textColor = [UIColor whiteColor];
+        _pointsNumberLabel.font = [UIFont fontWithName:@"Moon-Bold" size:28];
+        _pointsNumberLabel.textAlignment = NSTextAlignmentCenter;
+        _pointsNumberLabel.adjustsFontSizeToFitWidth = YES;
+        [self.contentView addSubview:_pointsNumberLabel];
+        [_AppDelegate addGlowToLayer:_pointsNumberLabel.layer withColor:_pointsNumberLabel.textColor.CGColor];
+        
+        _pointsLabel = [UILabel new];
+        _pointsLabel.text = NSLocalizedString(@"points", nil);
+        _pointsLabel.textColor = [UIColor whiteColor];
+        _pointsLabel.font = [UIFont fontWithName:@"Moon-Bold" size:8];
+        _pointsLabel.textAlignment = NSTextAlignmentCenter;
+        [self.contentView addSubview:_pointsLabel];
+        [_AppDelegate addGlowToLayer:_pointsLabel.layer withColor:_pointsLabel.textColor.CGColor];
+
+        _lockOrCheckIcon = [UIImageView new];
+        _lockOrCheckIcon.contentMode = UIViewContentModeScaleAspectFit;
+        [self.contentView addSubview:_lockOrCheckIcon];
+        
+        
+        //--maximied content
+        _minimizeButton = [UIButton new];
+        [_minimizeButton setContentVerticalAlignment:UIControlContentVerticalAlignmentTop];
+        [_minimizeButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
+        [_minimizeButton setContentEdgeInsets:UIEdgeInsetsMake(10, 0, 0, 17)];
+        [_minimizeButton.titleLabel setFont:[UIFont fontWithName:@"Moon-Bold" size:17]];
+        [_minimizeButton setTitle:@"X" forState:UIControlStateNormal];
+        [_minimizeButton addTarget:self action:@selector(minimizePressed) forControlEvents:UIControlEventTouchUpInside];
+        [self.contentView addSubview:_minimizeButton];
+        [_AppDelegate addGlowToLayer:_minimizeButton.titleLabel.layer withColor:_minimizeButton.currentTitleColor.CGColor];
+        
+        _upgradeDescription = [UILabel new];
+        _upgradeDescription.textColor = [UIColor whiteColor];
+        _upgradeDescription.font = [UIFont fontWithName:@"Moon-Bold" size:14];
+        _upgradeDescription.textAlignment = NSTextAlignmentCenter;
+        _upgradeDescription.numberOfLines = 0;
+        [self.contentView addSubview:_upgradeDescription];
+        [_AppDelegate addGlowToLayer:_upgradeDescription.layer withColor:_upgradeDescription.textColor.CGColor];
+        
+        _purchaseButtonMoney = [GlowingButton new];
+        _purchaseButtonMoney.layer.borderWidth = 1.5;
+        _purchaseButtonMoney.layer.borderColor = [UIColor whiteColor].CGColor;
+        [_purchaseButtonMoney setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _purchaseButtonMoney.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:12];
+        _purchaseButtonMoney.titleLabel.textAlignment = NSTextAlignmentCenter;
+        _purchaseButtonMoney.titleLabel.numberOfLines = 0;
+        [_purchaseButtonMoney addTarget:self action:@selector(unlockWithMoneyPressed) forControlEvents:UIControlEventTouchUpInside];
+        [self.contentView addSubview:_purchaseButtonMoney];
+        
+        _purchaseButtonPoints = [GlowingButton new];
+        _purchaseButtonPoints.layer.borderWidth = 1.5;
+        _purchaseButtonPoints.layer.borderColor = [UIColor whiteColor].CGColor;
+        [_purchaseButtonPoints setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _purchaseButtonPoints.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:12];
+        _purchaseButtonPoints.titleLabel.textAlignment = NSTextAlignmentCenter;
+        _purchaseButtonPoints.titleLabel.numberOfLines = 0;
+        [_purchaseButtonPoints addTarget:self action:@selector(unlockWithPointsPressed) forControlEvents:UIControlEventTouchUpInside];
+        [self.contentView addSubview:_purchaseButtonPoints];
+        
+        _purchasedLabel = [UILabel new];
+        _purchasedLabel.text = @"PURCHASED";
+        _purchasedLabel.textColor = [UIColor whiteColor];
+        _purchasedLabel.font = [UIFont fontWithName:@"Moon-Bold" size:30];
+        _purchasedLabel.textAlignment = NSTextAlignmentCenter;
+        [self.contentView addSubview:_purchasedLabel];
+        [_AppDelegate addGlowToLayer:_purchasedLabel.layer withColor:_purchasedLabel.textColor.CGColor];
+        
+        [self adjustForDeviceSize];
+        
+        [self updateContentWithUpgrade:upgrade];
     }
+    
+    return self;
 }
 
-- (void) layoutSubviews
+- (void) adjustForDeviceSize
 {
-    [super layoutSubviews];
+    float width = [[UIScreen mainScreen] bounds].size.width*0.95625; //cell width
     
-    if ( ! _framesAdjustedForHeight )
-    {
-        float width = self.frame.size.width;
-        
-        self.borderView.layer.cornerRadius = self.frame.size.height/4.0;
-        _upgradeTitleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.065];
-        _costLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.026];
-        _pointsNumberLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.092];
-        _pointsLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.026];
-        [_minimizeButton setContentEdgeInsets:UIEdgeInsetsMake(width*.033, 0, 0, width*.056)];
-        [_minimizeButton.titleLabel setFont:[UIFont fontWithName:@"Moon-Bold" size:width*.056]];
-        _upgradeDescription.font = [UIFont fontWithName:@"Moon-Bold" size:width*.046];
-        _purchaseButtonMoney.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.039];
-        _purchaseButtonPoints.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.039];
-        _purchasedLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.098];
-        
-        
-        _upgradeTitleLabel.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-        
-        _iconImage.frame = CGRectMake(width*.0098, width*.0098, width*.163, width*.163);
-        _costLabel.frame = CGRectMake(width*.817, width*.0065, width*.163, width*.033);
-        _pointsNumberLabel.frame = CGRectMake(width*.817, width*.033, width*.163, width*.114);
-        _pointsLabel.frame = CGRectMake(width*.817, width*.141, width*.163, width*.033);
-        _lockOrCheckIcon.frame = CGRectMake(width*.856, width*.033, width*.105, width*.105);
-        
-        _minimizeButton.frame = CGRectMake(self.frame.size.width - width*.239, 0, width*.261, width*.18);
-        _demoViewFrame = CGRectMake((self.frame.size.width - width*.719)/2, width*.245, width*.719, width*.98);
-        _demoLoadingIndicator.frame = CGRectMake((self.frame.size.width - width*.163)/2, width*.637, width*.163, width*.163);
-        _upgradeDescription.frame = CGRectMake(width*.023, width*1.19, self.frame.size.width-width*.046, width*.327);
-        _purchaseButtonMoney.frame = CGRectMake(width*.065, width*1.503, width*.359, width*.212);
-        _purchaseButtonMoney.layer.cornerRadius = _purchaseButtonMoney.frame.size.height/3.0;
-        _purchaseButtonPoints.frame = CGRectMake(self.frame.size.width - width*.425, width*1.503, width*.359, width*.212);
-        _purchaseButtonPoints.layer.cornerRadius = _purchaseButtonPoints.frame.size.height/3.0;
-        _purchasedLabel.frame = CGRectMake(0, width*1.503, self.frame.size.width, width*.212);
-        
-        _framesAdjustedForHeight = YES;
-    }
+    _borderView.layer.cornerRadius = self.frame.size.height/4.0;
+    
+    //fonts
+    _upgradeTitleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.065];
+    _costLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.026];
+    _pointsNumberLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.092];
+    _pointsLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.026];
+    [_minimizeButton setContentEdgeInsets:UIEdgeInsetsMake(width*.033, 0, 0, width*.056)];
+    [_minimizeButton.titleLabel setFont:[UIFont fontWithName:@"Moon-Bold" size:width*.056]];
+    _upgradeDescription.font = [UIFont fontWithName:@"Moon-Bold" size:width*.046];
+    _purchaseButtonMoney.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.039];
+    _purchaseButtonPoints.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.039];
+    _purchasedLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.098];
+    
+    //---frames
+    _upgradeTitleLabel.frame = CGRectMake(0, 0, width, self.frame.size.height);
+    
+    //minimized frames
+    _iconImage.frame = CGRectMake(width*.0098, width*.0098, width*.163, width*.163);
+    _costLabel.frame = CGRectMake(width*.817, width*.0065, width*.163, width*.033);
+    _pointsNumberLabel.frame = CGRectMake(width*.817, width*.033, width*.163, width*.114);
+    _pointsLabel.frame = CGRectMake(width*.817, width*.141, width*.163, width*.033);
+    _lockOrCheckIcon.frame = CGRectMake(width*.856, width*.033, width*.105, width*.105);
+    
+    //maximized frames
+    _minimizeButton.frame = CGRectMake(width - width*.239, 0, width*.261, width*.18);
+    _upgradeDescription.frame = CGRectMake(width*.023, width*1.19, width-width*.046, width*.327);
+    _purchaseButtonMoney.frame = CGRectMake(width*.065, width*1.503, width*.359, width*.212);
+    _purchaseButtonMoney.layer.cornerRadius = _purchaseButtonMoney.frame.size.height/3.0;
+    _purchaseButtonPoints.frame = CGRectMake(width - width*.425, width*1.503, width*.359, width*.212);
+    _purchaseButtonPoints.layer.cornerRadius = _purchaseButtonPoints.frame.size.height/3.0;
+    _purchasedLabel.frame = CGRectMake(0, width*1.503, width, width*.212);
+
 }
 
-- (void) createContentFromUpgrade:(Upgrade *)upgrade
+- (void) updateContentWithUpgrade:(Upgrade *)upgrade
 {
     _myUpgrade = upgrade;
     
@@ -281,6 +281,14 @@
         _purchaseButtonPoints.alpha = 0;
         _purchasedLabel.alpha = 1;
     }
+}
+
+- (void) updateMinimizedCellHeight:(float)height
+{
+    _borderView.layer.cornerRadius = height/4.0;
+    _upgradeTitleLabel.frame = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width*0.95625, height);
+    _purchaseButtonMoney.layer.cornerRadius = height/3.0;
+    _purchaseButtonPoints.layer.cornerRadius = height/3.0;
 }
 
 - (void) dealloc
@@ -457,45 +465,12 @@
 {
     if ( animated )
     {
-        if ( show )
-        {
-            [_minimizeButton setEnabled:NO];
-            
-//            _demoScene = [[UpgradeScene alloc] initWithUpgradeType:_myUpgrade.upgradeType];
-//            _demoView = [[SKView alloc] initWithFrame:_demoViewFrame];
-//            [_demoView presentScene:_demoScene];
-//            _demoView.alpha = 0;
-//            [self.contentView addSubview:_demoView];
-        }
-        
         [UIView animateWithDuration:.3 animations:^
         {
             [self showMaximizedContent:show];
         }
         completion:^(BOOL finished)
         {
-            if ( !show )
-            {
-//                [_demoView presentScene:nil];
-//                [_demoView removeFromSuperview];
-//                _demoScene = nil;
-            }
-            else
-            {
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^
-                {
-                    [UIView animateWithDuration:.3 animations:^
-                    {
-                        _demoLoadingIndicator.alpha = 0;
-//                        _demoView.alpha = 1;
-                    }
-                    completion:^(BOOL finished)
-                    {
-                        [_minimizeButton setEnabled:YES];
-                    }];
-                });
-            }
-            
             if ( completion )
                 completion();
         }];
@@ -505,11 +480,7 @@
         NSLog(@"pretty sure this should never get called");
         
         [self showMaximizedContent:show];
-        if ( !show )
-        {
-            [_demoView presentScene:nil];
-            [_demoView removeFromSuperview];
-        }
+        
         if ( completion )
             completion();
     }
@@ -521,13 +492,9 @@
     float alpha;
     
     if ( show )
-    {
         alpha = 1;
-    }
     else
-    {
         alpha = 0;
-    }
     
     _iconImage.alpha = alpha;
     
@@ -569,33 +536,12 @@
     float alpha;
     
     if ( show )
-    {
         alpha = 1;
-        
-        [_demoLoadingIndicator startAnimating];
-        
-//        CALayer *maskLayer = [CALayer layer];
-//        maskLayer.frame = _demoView.bounds;
-//        maskLayer.shadowRadius = 5;
-//        maskLayer.shadowPath = CGPathCreateWithRoundedRect(CGRectInset(_demoView.bounds, 10, 10), 10, 10, nil);
-//        maskLayer.shadowOpacity = 1;
-//        maskLayer.shadowOffset = CGSizeZero;
-//        maskLayer.shadowColor = [UIColor whiteColor].CGColor;
-//        
-//        _demoView.layer.mask = maskLayer;
-    }
     else
-    {
         alpha = 0;
-        
-        [_demoLoadingIndicator stopAnimating];
-//        _demoView.alpha = alpha;
-    }
     
     _minimizeButton.alpha = alpha;
-    //_demoView.alpha = alpha;
     _upgradeDescription.alpha = alpha;
-    _demoLoadingIndicator.alpha = alpha;
     
     _purchasedLabel.alpha = 0;
     _purchaseButtonPoints.alpha = 0;

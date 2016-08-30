@@ -22,7 +22,9 @@
     float _minimizedCellHeight;
     float _cellSpacing;
     
-    UpgradeCell * precomputedCell;
+    BOOL _minimizedCellFramesUpdated;
+    
+    NSMutableArray * _precomputedCells;
     //http://stackoverflow.com/questions/12662450/preload-cells-of-uitableview
 }
 
@@ -33,27 +35,32 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(achievementsLoaded) name:@"achievementsLoaded" object:nil];
     
     self.upgrades = [[AccountManager sharedInstance] upgrades];
+    _precomputedCells = [NSMutableArray new];
+    for ( int i = 0; i < self.upgrades.count; i++ )
+    {
+        Upgrade * upgrade = [self.upgrades objectAtIndex:i];
+        UpgradeCell * cell = [[UpgradeCell alloc] initWithUpgrade:upgrade];
+        [_precomputedCells addObject:cell];
+    }
     
     [self validateProductIdentifiers];
     
     [self adjustForDeviceSize];
     
     CALayer *maskLayer = [CALayer layer];
-    maskLayer.frame = self.viewForSKView.bounds;
+    maskLayer.frame = self.demoPreviewImageView.bounds;
     maskLayer.shadowRadius = 5;
-    maskLayer.shadowPath = CGPathCreateWithRoundedRect(CGRectInset(self.viewForSKView.bounds, 10, 10), 10, 10, nil);
+    maskLayer.shadowPath = CGPathCreateWithRoundedRect(CGRectInset(self.demoPreviewImageView.bounds, 10, 10), 10, 10, nil);
     maskLayer.shadowOpacity = 1;
     maskLayer.shadowOffset = CGSizeZero;
     maskLayer.shadowColor = [UIColor whiteColor].CGColor;
-    self.viewForSKView.layer.mask = maskLayer;
+    self.demoPreviewImageView.layer.mask = maskLayer;
     
     _defaultConstraintTopMyTable = self.constraintTopMyTable.constant;
     
     [_AppDelegate addGlowToLayer:self.upgradeTitleLabel.layer withColor:[self.upgradeTitleLabel.textColor CGColor]];
     [_AppDelegate addGlowToLayer:self.availablePointsLabel.layer withColor:[self.availablePointsLabel.textColor CGColor]];
     [_AppDelegate addGlowToLayer:self.backButton.titleLabel.layer withColor:[self.backButton.titleLabel.textColor CGColor]];
-    
-    [self.myTable reloadData];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -72,7 +79,7 @@
      {
          for ( UIView * subview in [self.view subviews] )
          {
-             if ( subview != self.viewForSKView )
+             if ( subview != self.demoPreviewImageView )
                  subview.alpha = 1;
          }
      }];
@@ -176,7 +183,15 @@
 
 - (void) viewDidLayoutSubviews
 {
-    _minimizedCellHeight = (self.myTable.frame.size.height/_upgrades.count) - _cellSpacing;
+    if ( ! _minimizedCellFramesUpdated )
+    {
+        _minimizedCellHeight = (self.myTable.frame.size.height/_upgrades.count) - _cellSpacing;
+        for ( UpgradeCell * cell in _precomputedCells )
+            [cell updateMinimizedCellHeight:_minimizedCellHeight];
+        
+        _minimizedCellFramesUpdated = YES;
+    }
+    
     [super viewDidLayoutSubviews];
 }
 
@@ -201,7 +216,7 @@
     self.constraintTrailingMyTable.constant = width*.022;
     self.constraintBottomMyTable.constant = width*.022;
     
-    self.constraintBottomViewForSKView.constant = width*.65;
+    self.constraintBottomDemoPreviewImageView.constant = width*.65;
 }
 
 #pragma mark - table view
@@ -238,11 +253,7 @@
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UpgradeCell * cell = (UpgradeCell*)[tableView dequeueReusableCellWithIdentifier:@"upgradeCell"];
-    
-    Upgrade * tmpUpgrade = [self.upgrades objectAtIndex:indexPath.section];
-    [cell createContentFromUpgrade:tmpUpgrade];
-    
+    UpgradeCell * cell = [_precomputedCells objectAtIndex:indexPath.section];
     return cell;
 }
 
@@ -252,6 +263,7 @@
     cell.delegate = self;
     
     Upgrade * tmpUpgrade = [self.upgrades objectAtIndex:indexPath.section];
+    self.activeUpgrade = tmpUpgrade;
     
     float mainScreenViewsAlpha;
     
@@ -285,7 +297,7 @@
             [self animateCellHeight:cell tableTopConstraint:7 mainScreenViewsAlpha:mainScreenViewsAlpha completion:^
             {
                 [[NSNotificationCenter defaultCenter] postNotificationName:kUpgradeTableDidAnimate object:nil];
-                [self presentSceneForUpgrade:tmpUpgrade];
+                [self showDemoImageForUpgrade:tmpUpgrade];
                 [cell showMaximizedContent:YES animated:YES completion:nil];
             }];
         }];
@@ -366,39 +378,23 @@
 }
 
 #pragma mark
-- (void) presentSceneForUpgrade:(Upgrade *)upgrade
+- (void) showDemoImageForUpgrade:(Upgrade *)upgrade
 {
-    self.viewForSKView.alpha = 0;
-    UpgradeScene * upgradeScene = [[UpgradeScene alloc] initWithUpgradeType:upgrade.upgradeType];
-    SKView * skView = [[SKView alloc] initWithFrame:CGRectMake(0, 0, self.viewForSKView.frame.size.width, self.viewForSKView.frame.size.height)];
-    [skView presentScene:upgradeScene];
-    [self.viewForSKView addSubview:skView];
+    self.demoPreviewImageView.alpha = 0;
+    self.demoPreviewImageView.image = [UIImage imageNamed:@"share.png"];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.6 * NSEC_PER_SEC), dispatch_get_main_queue(), ^
+    [UIView animateWithDuration:.3 animations:^
     {
-        [UIView animateWithDuration:.3 animations:^
-        {
-            self.viewForSKView.alpha = 1;
-        }];
-    });
+        self.demoPreviewImageView.alpha = 1;
+    }];
 }
 
 - (void) hideScene
 {
-    [UIView animateWithDuration:.25 animations:^
+    [UIView animateWithDuration:.3 animations:^
     {
-        self.viewForSKView.alpha = 0;
-    }
-    completion:^(BOOL finished)
-    {
-        SKView * skView = (SKView *)[[self.viewForSKView subviews] firstObject];
-        [skView presentScene:nil];
-        [skView removeFromSuperview];
+        self.demoPreviewImageView.alpha = 0;
     }];
-    
-    //                [_demoView presentScene:nil];
-    //                [_demoView removeFromSuperview];
-    //                _demoScene = nil;
 }
 
 #pragma mark - game center
