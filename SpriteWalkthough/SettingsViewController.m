@@ -29,10 +29,17 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    self.view.alpha = 0;
+    for ( UIView * subview in [self.view subviews] )
+    {
+        if ( subview.tag != 10 ) //10 is the background image
+            subview.alpha = 0;
+    }
     [UIView animateWithDuration:.2 animations:^
     {
-        self.view.alpha = 1;
+        for ( UIView * subview in [self.view subviews] )
+        {
+                subview.alpha = 1;
+        }
     }];
     
     [self.musicVolumeSlider setValue:[[AudioManager sharedInstance] musicVolume]];
@@ -116,7 +123,11 @@
     [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuBackButton];
     [UIView animateWithDuration:.2 animations:^
     {
-        self.view.alpha = 0;
+        for ( UIView * subview in [self.view subviews] )
+        {
+            if ( subview.tag != 10 ) //10 is the background image
+                subview.alpha = 0;
+        }
     }
     completion:^(BOOL finished)
     {
@@ -164,6 +175,9 @@
     self.constraintTopVibrateSwitch.constant = width*-.0156;
     
     self.constraintHeightHelp.constant = width*.166;
+    
+    [self.soundEffectsVolumeSlider adjustForDeviceWidth:width];
+    [self.musicVolumeSlider adjustForDeviceWidth:width];
 }
 
 @end

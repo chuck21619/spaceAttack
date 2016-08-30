@@ -10,4 +10,6 @@
 
 @interface SASlider : UISlider
 
+- (void) adjustForDeviceWidth:(float)width;
+
 @end
