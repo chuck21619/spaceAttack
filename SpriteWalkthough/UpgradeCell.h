@@ -26,7 +26,7 @@
 - (void) showMinimizedContent:(BOOL)show animated:(BOOL)animated completion:(void (^)())completion;
 - (void) showMaximizedContent:(BOOL)show animated:(BOOL)animated completion:(void (^)())completion;
 
-//- (void) updateContentWithUpgrade:(Upgrade *)upgrade;
+- (void) updateContentWithUpgrade:(Upgrade *)upgrade;
 
 - (void) updateMinimizedCellHeight:(float)height;
 

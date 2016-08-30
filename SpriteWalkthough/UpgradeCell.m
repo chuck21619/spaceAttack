@@ -155,6 +155,10 @@
         [self adjustForDeviceSize];
         
         [self updateContentWithUpgrade:upgrade];
+        
+        //initial cell will be minimized
+        [self showMaximizedContent:NO];
+        [self showMinimizedContent:YES];
     }
     
     return self;
@@ -247,10 +251,6 @@
         [_purchaseButtonPoints setTitle:[NSString stringWithFormat:@"%ik %@\n%@", upgrade.pointsToUnlock/1000, NSLocalizedString(@"points", nil), NSLocalizedString(@"to Unlock", nil)] forState:UIControlStateNormal];
         _purchaseButtonPoints.enabled = NO;
     }
-    
-    //initial cell will be minimized
-    [self showMaximizedContent:NO];
-    [self showMinimizedContent:YES];
 }
 
 - (void) minimizePressed

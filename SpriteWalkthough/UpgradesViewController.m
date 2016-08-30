@@ -24,8 +24,8 @@
     
     BOOL _minimizedCellFramesUpdated;
     
-    NSMutableArray * _precomputedCells;
-    //http://stackoverflow.com/questions/12662450/preload-cells-of-uitableview
+    NSMutableDictionary * _precomputedCells;
+    
     BOOL _demoMaskApplied;
 }
 
@@ -34,14 +34,16 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(paymentPurchased) name:@"SKPaymentTransactionStatePurchased" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(paymentFailed) name:@"SKPaymentTransactionStateFailed" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(achievementsLoaded) name:@"achievementsLoaded" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillResignActive) name:@"appWillResignActive" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidBecomeActive) name:@"appDidBecomeActive" object:nil];
     
     self.upgrades = [[AccountManager sharedInstance] upgrades];
-    _precomputedCells = [NSMutableArray new];
+    _precomputedCells = [NSMutableDictionary new];
     for ( int i = 0; i < self.upgrades.count; i++ )
     {
         Upgrade * upgrade = [self.upgrades objectAtIndex:i];
         UpgradeCell * cell = [[UpgradeCell alloc] initWithUpgrade:upgrade];
-        [_precomputedCells addObject:cell];
+        [_precomputedCells setObject:cell forKey:upgrade.title];
     }
     
     [self validateProductIdentifiers];
@@ -83,20 +85,13 @@
     }];
 }
 
-
 - (void) refreshUpgradeViews
 {
-    _precomputedCells = [NSMutableArray new];
-    for ( int i = 0; i < self.upgrades.count; i++ )
+    for ( Upgrade * upgrade in self.upgrades )
     {
-        Upgrade * upgrade = [self.upgrades objectAtIndex:i];
-        UpgradeCell * cell = [[UpgradeCell alloc] initWithUpgrade:upgrade];
-        [_precomputedCells addObject:cell];
+        UpgradeCell * cell = [_precomputedCells objectForKey:upgrade.title];
+        [cell updateContentWithUpgrade:upgrade];
     }
-    _minimizedCellFramesUpdated = NO;
-    [self updateMinizedCellFramesIfNeccessary];
-    
-    [self.myTable reloadData];
 }
 
 - (void) dealloc
@@ -109,14 +104,22 @@
 
 - (IBAction)backAction:(id)sender
 {
+    //remove app store validity
+    [self removeAppStoreValidity];
+    
     [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuBackButton];
+    
     [UIView animateWithDuration:.2 animations:^
     {
         for ( UIView * subview in [self.view subviews] )
         {
-            if ( subview.tag != 10 ) //10 is the background image
+            if ( subview.tag != 10 && subview != self.myTable ) //10 is the background image
                 subview.alpha = 0;
         }
+    }];
+    [UIView animateWithDuration:.3 animations:^
+    {
+        self.myTable.alpha = 0;
     }
     completion:^(BOOL finished)
     {
@@ -214,7 +217,7 @@
     if ( ! _minimizedCellFramesUpdated )
     {
         _minimizedCellHeight = (self.myTable.frame.size.height/_upgrades.count) - _cellSpacing;
-        for ( UpgradeCell * cell in _precomputedCells )
+        for ( UpgradeCell * cell in [_precomputedCells allValues] )
             [cell updateMinimizedCellHeight:_minimizedCellHeight];
         
         _minimizedCellFramesUpdated = YES;
@@ -245,6 +248,46 @@
     self.constraintBottomMyTable.constant = width*.022;
     
     self.constraintBottomDemoPreviewImageView.constant = width*.65;
+}
+
+- (void) animateCellHeight:(UpgradeCell *)cell tableTopConstraint:(int)constraintConstant mainScreenViewsAlpha:(float)alpha completion:(void (^)())completion
+{
+    self.constraintTopMyTable.constant = constraintConstant;
+    [UIView animateWithDuration:.35 animations:^
+     {
+         [self.view layoutIfNeeded];
+         [self setMainScreenViewsAlpha:alpha];
+     }
+                     completion:^(BOOL finished)
+     {
+         if ( completion )
+             completion();
+     }];
+    
+    [self.myTable beginUpdates];
+    [self.myTable endUpdates];
+    NSIndexPath * indexPath = [self.myTable indexPathForCell:cell];
+    [self.myTable scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+}
+
+- (void) removeAppStoreValidity
+{
+    //remove app store validity
+    for ( Upgrade * upgrade in self.upgrades )
+        upgrade.isValidForMoneyPurchase = NO;
+    
+    [self refreshUpgradeViews];
+}
+
+- (void) appWillResignActive
+{
+    [self removeAppStoreValidity];
+    [self refreshUpgradeViews];
+}
+
+- (void) appDidBecomeActive
+{
+    [self validateProductIdentifiers];
 }
 
 #pragma mark - table view
@@ -281,7 +324,8 @@
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UpgradeCell * cell = [_precomputedCells objectAtIndex:indexPath.section];
+    Upgrade * upgrade = [self.upgrades objectAtIndex:indexPath.section];
+    UpgradeCell * cell = [_precomputedCells objectForKey:upgrade.title];
     return cell;
 }
 
@@ -347,26 +391,6 @@
             }];
         }];
     }
-}
-
-- (void) animateCellHeight:(UpgradeCell *)cell tableTopConstraint:(int)constraintConstant mainScreenViewsAlpha:(float)alpha completion:(void (^)())completion
-{
-    self.constraintTopMyTable.constant = constraintConstant;
-    [UIView animateWithDuration:.35 animations:^
-    {
-        [self.view layoutIfNeeded];
-        [self setMainScreenViewsAlpha:alpha];
-    }
-    completion:^(BOOL finished)
-    {
-        if ( completion )
-            completion();
-    }];
-    
-    [self.myTable beginUpdates];
-    [self.myTable endUpdates];
-    NSIndexPath * indexPath = [self.myTable indexPathForCell:cell];
-    [self.myTable scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
 #pragma mark upgrade cell delegate
@@ -445,6 +469,8 @@
 
 - (void) productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response
 {
+    NSLog(@"products validated");
+    
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
     [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
