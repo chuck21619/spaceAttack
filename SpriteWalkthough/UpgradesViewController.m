@@ -26,6 +26,7 @@
     
     NSMutableArray * _precomputedCells;
     //http://stackoverflow.com/questions/12662450/preload-cells-of-uitableview
+    BOOL _demoMaskApplied;
 }
 
 - (void) viewDidLoad
@@ -46,15 +47,6 @@
     [self validateProductIdentifiers];
     
     [self adjustForDeviceSize];
-    
-    CALayer *maskLayer = [CALayer layer];
-    maskLayer.frame = self.demoPreviewImageView.bounds;
-    maskLayer.shadowRadius = 5;
-    maskLayer.shadowPath = CGPathCreateWithRoundedRect(CGRectInset(self.demoPreviewImageView.bounds, 10, 10), 10, 10, nil);
-    maskLayer.shadowOpacity = 1;
-    maskLayer.shadowOffset = CGSizeZero;
-    maskLayer.shadowColor = [UIColor whiteColor].CGColor;
-    self.demoPreviewImageView.layer.mask = maskLayer;
     
     _defaultConstraintTopMyTable = self.constraintTopMyTable.constant;
     
@@ -78,14 +70,15 @@
             subview.alpha = 0;
     }
     [UIView animateWithDuration:.2 animations:^
-     {
-         for ( UIView * subview in [self.view subviews] )
-         {
-             if ( subview != self.demoPreviewImageView && subview != self.myTable )
-                 subview.alpha = 1;
-         }
-     }];
-    [UIView animateWithDuration:.4 animations:^{
+    {
+        for ( UIView * subview in [self.view subviews] )
+        {
+            if ( subview != self.demoPreviewImageView && subview != self.myTable )
+                subview.alpha = 1;
+        }
+    }];
+    [UIView animateWithDuration:.4 animations:^
+    {
         self.myTable.alpha = 1;
     }];
 }
@@ -200,6 +193,20 @@
 {
     [self updateMinizedCellFramesIfNeccessary];
     [super viewDidLayoutSubviews];
+    
+    if ( ! _demoMaskApplied )
+    {
+        CALayer *maskLayer = [CALayer layer];
+        maskLayer.frame = CGRectMake(0, 0, self.demoPreviewImageView.frame.size.width, self.demoPreviewImageView.frame.size.height);
+        maskLayer.shadowRadius = 5;
+        maskLayer.shadowPath = CGPathCreateWithRoundedRect(CGRectInset(maskLayer.frame, 10, 10), 10, 10, nil);
+        maskLayer.shadowOpacity = 1;
+        maskLayer.shadowOffset = CGSizeZero;
+        maskLayer.shadowColor = [UIColor whiteColor].CGColor;
+        self.demoPreviewImageView.layer.mask = maskLayer;
+        
+        _demoMaskApplied = YES;
+    }
 }
 
 - (void) updateMinizedCellFramesIfNeccessary
@@ -219,6 +226,8 @@
     float width = self.view.frame.size.width;
     
     _cellSpacing = width*.016;
+    _demoPreviewImageView.layer.borderColor = [UIColor blackColor].CGColor;
+    _demoPreviewImageView.layer.borderWidth = width*0.03125;
     
     self.constraintTrailingBackButton.constant = width*.669;
     [self.backButton.titleLabel setFont:[self.backButton.titleLabel.font fontWithSize:width*.044]];
