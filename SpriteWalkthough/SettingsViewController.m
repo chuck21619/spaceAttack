@@ -164,6 +164,9 @@
     self.constraintTopVibrateSwitch.constant = width*-.0156;
     
     self.constraintHeightHelp.constant = width*.166;
+    
+    [self.soundEffectsVolumeSlider adjustForDeviceWidth:width];
+    [self.musicVolumeSlider adjustForDeviceWidth:width];
 }
 
 @end
