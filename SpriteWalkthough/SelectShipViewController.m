@@ -42,10 +42,6 @@
     [self.shipButton8 setupForSpaceship:[self.spaceships objectAtIndex:7]];
     
     [self adjustForDeviceSize];
-    
-//    MenuBackgroundScene * backgroundScene = [MenuBackgroundScene sharedInstance];
-//    SKView * spriteView = (SKView *)self.view;
-//    [spriteView presentScene:backgroundScene];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -89,17 +85,15 @@
     [[AudioManager sharedInstance] fadeOutMenuMusic];
     [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuEngage];
     [AccountManager setLastSelectedShip:selectedShip];
-    SKView * spriteView = (SKView *)self.view;
     
     UIViewController * mainMenuVC = [self presentingViewController];
     mainMenuVC.view.alpha = 0;
     [UIView animateWithDuration:.2 animations:^
     {
-        spriteView.alpha = 0;
+        self.view.alpha = 0;
     }
     completion:^(BOOL finished)
     {
-        [spriteView presentScene:nil];
         [self dismissViewControllerAnimated:NO completion:^
         {
             UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];

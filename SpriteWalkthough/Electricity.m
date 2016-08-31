@@ -17,8 +17,7 @@
 {
     if (self = [super init])
     {
-        self = [[Electricity alloc] initWithTexture:[SKTexture textureWithImageNamed:@"electricity1"]];
-        [self setTexture:nil];
+        self.size = CGSizeMake(150, 1000);
         self.name = @"electricity";
         self.timeSinceLastDamageDealt = -1;
         self.damageFrequency = damageFrequency;
