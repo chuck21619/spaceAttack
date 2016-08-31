@@ -34,7 +34,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(paymentPurchased) name:@"SKPaymentTransactionStatePurchased" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(paymentFailed) name:@"SKPaymentTransactionStateFailed" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(achievementsLoaded) name:@"achievementsLoaded" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillResignActive) name:@"appWillResignActive" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidEnterBackground) name:@"appDidEnterBackground" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidBecomeActive) name:@"appDidBecomeActive" object:nil];
     
     self.upgrades = [[AccountManager sharedInstance] upgrades];
@@ -279,7 +279,7 @@
     [self refreshUpgradeViews];
 }
 
-- (void) appWillResignActive
+- (void) appDidEnterBackground
 {
     [self removeAppStoreValidity];
     [self refreshUpgradeViews];
