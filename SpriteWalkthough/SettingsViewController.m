@@ -37,9 +37,7 @@
     [UIView animateWithDuration:.2 animations:^
     {
         for ( UIView * subview in [self.view subviews] )
-        {
-                subview.alpha = 1;
-        }
+            subview.alpha = 1;
     }];
     
     [self.musicVolumeSlider setValue:[[AudioManager sharedInstance] musicVolume]];

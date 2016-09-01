@@ -22,8 +22,11 @@
     float _minimizedCellHeight;
     float _cellSpacing;
     
-    UpgradeCell * precomputedCell;
-    //http://stackoverflow.com/questions/12662450/preload-cells-of-uitableview
+    BOOL _minimizedCellFramesUpdated;
+    
+    NSMutableDictionary * _precomputedCells;
+    
+    BOOL _demoMaskApplied;
 }
 
 - (void) viewDidLoad
@@ -31,21 +34,21 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(paymentPurchased) name:@"SKPaymentTransactionStatePurchased" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(paymentFailed) name:@"SKPaymentTransactionStateFailed" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(achievementsLoaded) name:@"achievementsLoaded" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidEnterBackground) name:@"appDidEnterBackground" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidBecomeActive) name:@"appDidBecomeActive" object:nil];
     
     self.upgrades = [[AccountManager sharedInstance] upgrades];
+    _precomputedCells = [NSMutableDictionary new];
+    for ( int i = 0; i < self.upgrades.count; i++ )
+    {
+        Upgrade * upgrade = [self.upgrades objectAtIndex:i];
+        UpgradeCell * cell = [[UpgradeCell alloc] initWithUpgrade:upgrade];
+        [_precomputedCells setObject:cell forKey:upgrade.title];
+    }
     
     [self validateProductIdentifiers];
     
     [self adjustForDeviceSize];
-    
-    CALayer *maskLayer = [CALayer layer];
-    maskLayer.frame = self.viewForSKView.bounds;
-    maskLayer.shadowRadius = 5;
-    maskLayer.shadowPath = CGPathCreateWithRoundedRect(CGRectInset(self.viewForSKView.bounds, 10, 10), 10, 10, nil);
-    maskLayer.shadowOpacity = 1;
-    maskLayer.shadowOffset = CGSizeZero;
-    maskLayer.shadowColor = [UIColor whiteColor].CGColor;
-    self.viewForSKView.layer.mask = maskLayer;
     
     _defaultConstraintTopMyTable = self.constraintTopMyTable.constant;
     
@@ -69,19 +72,26 @@
             subview.alpha = 0;
     }
     [UIView animateWithDuration:.2 animations:^
-     {
-         for ( UIView * subview in [self.view subviews] )
-         {
-             if ( subview != self.viewForSKView )
-                 subview.alpha = 1;
-         }
-     }];
+    {
+        for ( UIView * subview in [self.view subviews] )
+        {
+            if ( subview != self.demoPreviewImageView && subview != self.myTable )
+                subview.alpha = 1;
+        }
+    }];
+    [UIView animateWithDuration:.4 animations:^
+    {
+        self.myTable.alpha = 1;
+    }];
 }
-
 
 - (void) refreshUpgradeViews
 {
-    [self.myTable reloadData];
+    for ( Upgrade * upgrade in self.upgrades )
+    {
+        UpgradeCell * cell = [_precomputedCells objectForKey:upgrade.title];
+        [cell updateContentWithUpgrade:upgrade];
+    }
 }
 
 - (void) dealloc
@@ -94,14 +104,22 @@
 
 - (IBAction)backAction:(id)sender
 {
+    //remove app store validity
+    [self removeAppStoreValidity];
+    
     [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuBackButton];
+    
     [UIView animateWithDuration:.2 animations:^
     {
         for ( UIView * subview in [self.view subviews] )
         {
-            if ( subview.tag != 10 ) //10 is the background image
+            if ( subview.tag != 10 && subview != self.myTable ) //10 is the background image
                 subview.alpha = 0;
         }
+    }];
+    [UIView animateWithDuration:.3 animations:^
+    {
+        self.myTable.alpha = 0;
     }
     completion:^(BOOL finished)
     {
@@ -176,8 +194,34 @@
 
 - (void) viewDidLayoutSubviews
 {
-    _minimizedCellHeight = (self.myTable.frame.size.height/_upgrades.count) - _cellSpacing;
+    [self updateMinizedCellFramesIfNeccessary];
     [super viewDidLayoutSubviews];
+    
+    if ( ! _demoMaskApplied )
+    {
+        CALayer *maskLayer = [CALayer layer];
+        maskLayer.frame = CGRectMake(0, 0, self.demoPreviewImageView.frame.size.width, self.demoPreviewImageView.frame.size.height);
+        maskLayer.shadowRadius = 5;
+        maskLayer.shadowPath = CGPathCreateWithRoundedRect(CGRectInset(maskLayer.frame, 10, 10), 10, 10, nil);
+        maskLayer.shadowOpacity = 1;
+        maskLayer.shadowOffset = CGSizeZero;
+        maskLayer.shadowColor = [UIColor whiteColor].CGColor;
+        self.demoPreviewImageView.layer.mask = maskLayer;
+        
+        _demoMaskApplied = YES;
+    }
+}
+
+- (void) updateMinizedCellFramesIfNeccessary
+{
+    if ( ! _minimizedCellFramesUpdated )
+    {
+        _minimizedCellHeight = (self.myTable.frame.size.height/_upgrades.count) - _cellSpacing;
+        for ( UpgradeCell * cell in [_precomputedCells allValues] )
+            [cell updateMinimizedCellHeight:_minimizedCellHeight];
+        
+        _minimizedCellFramesUpdated = YES;
+    }
 }
 
 - (void) adjustForDeviceSize
@@ -185,6 +229,8 @@
     float width = self.view.frame.size.width;
     
     _cellSpacing = width*.016;
+    _demoPreviewImageView.layer.borderColor = [UIColor blackColor].CGColor;
+    _demoPreviewImageView.layer.borderWidth = width*0.03125;
     
     self.constraintTrailingBackButton.constant = width*.669;
     [self.backButton.titleLabel setFont:[self.backButton.titleLabel.font fontWithSize:width*.044]];
@@ -201,7 +247,47 @@
     self.constraintTrailingMyTable.constant = width*.022;
     self.constraintBottomMyTable.constant = width*.022;
     
-    self.constraintBottomViewForSKView.constant = width*.65;
+    self.constraintBottomDemoPreviewImageView.constant = width*.65;
+}
+
+- (void) animateCellHeight:(UpgradeCell *)cell tableTopConstraint:(int)constraintConstant mainScreenViewsAlpha:(float)alpha completion:(void (^)())completion
+{
+    self.constraintTopMyTable.constant = constraintConstant;
+    [UIView animateWithDuration:.35 animations:^
+     {
+         [self.view layoutIfNeeded];
+         [self setMainScreenViewsAlpha:alpha];
+     }
+                     completion:^(BOOL finished)
+     {
+         if ( completion )
+             completion();
+     }];
+    
+    [self.myTable beginUpdates];
+    [self.myTable endUpdates];
+    NSIndexPath * indexPath = [self.myTable indexPathForCell:cell];
+    [self.myTable scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+}
+
+- (void) removeAppStoreValidity
+{
+    //remove app store validity
+    for ( Upgrade * upgrade in self.upgrades )
+        upgrade.isValidForMoneyPurchase = NO;
+    
+    [self refreshUpgradeViews];
+}
+
+- (void) appDidEnterBackground
+{
+    [self removeAppStoreValidity];
+    [self refreshUpgradeViews];
+}
+
+- (void) appDidBecomeActive
+{
+    [self validateProductIdentifiers];
 }
 
 #pragma mark - table view
@@ -238,11 +324,8 @@
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UpgradeCell * cell = (UpgradeCell*)[tableView dequeueReusableCellWithIdentifier:@"upgradeCell"];
-    
-    Upgrade * tmpUpgrade = [self.upgrades objectAtIndex:indexPath.section];
-    [cell createContentFromUpgrade:tmpUpgrade];
-    
+    Upgrade * upgrade = [self.upgrades objectAtIndex:indexPath.section];
+    UpgradeCell * cell = [_precomputedCells objectForKey:upgrade.title];
     return cell;
 }
 
@@ -252,6 +335,7 @@
     cell.delegate = self;
     
     Upgrade * tmpUpgrade = [self.upgrades objectAtIndex:indexPath.section];
+    self.activeUpgrade = tmpUpgrade;
     
     float mainScreenViewsAlpha;
     
@@ -285,7 +369,7 @@
             [self animateCellHeight:cell tableTopConstraint:7 mainScreenViewsAlpha:mainScreenViewsAlpha completion:^
             {
                 [[NSNotificationCenter defaultCenter] postNotificationName:kUpgradeTableDidAnimate object:nil];
-                [self presentSceneForUpgrade:tmpUpgrade];
+                [self showDemoImageForUpgrade:tmpUpgrade];
                 [cell showMaximizedContent:YES animated:YES completion:nil];
             }];
         }];
@@ -307,26 +391,6 @@
             }];
         }];
     }
-}
-
-- (void) animateCellHeight:(UpgradeCell *)cell tableTopConstraint:(int)constraintConstant mainScreenViewsAlpha:(float)alpha completion:(void (^)())completion
-{
-    self.constraintTopMyTable.constant = constraintConstant;
-    [UIView animateWithDuration:.35 animations:^
-    {
-        [self.view layoutIfNeeded];
-        [self setMainScreenViewsAlpha:alpha];
-    }
-    completion:^(BOOL finished)
-    {
-        if ( completion )
-            completion();
-    }];
-    
-    [self.myTable beginUpdates];
-    [self.myTable endUpdates];
-    NSIndexPath * indexPath = [self.myTable indexPathForCell:cell];
-    [self.myTable scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
 #pragma mark upgrade cell delegate
@@ -366,39 +430,23 @@
 }
 
 #pragma mark
-- (void) presentSceneForUpgrade:(Upgrade *)upgrade
+- (void) showDemoImageForUpgrade:(Upgrade *)upgrade
 {
-    self.viewForSKView.alpha = 0;
-    UpgradeScene * upgradeScene = [[UpgradeScene alloc] initWithUpgradeType:upgrade.upgradeType];
-    SKView * skView = [[SKView alloc] initWithFrame:CGRectMake(0, 0, self.viewForSKView.frame.size.width, self.viewForSKView.frame.size.height)];
-    [skView presentScene:upgradeScene];
-    [self.viewForSKView addSubview:skView];
+    self.demoPreviewImageView.alpha = 0;
+    self.demoPreviewImageView.image = [UIImage imageNamed:@"share.png"];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.6 * NSEC_PER_SEC), dispatch_get_main_queue(), ^
+    [UIView animateWithDuration:.3 animations:^
     {
-        [UIView animateWithDuration:.3 animations:^
-        {
-            self.viewForSKView.alpha = 1;
-        }];
-    });
+        self.demoPreviewImageView.alpha = 1;
+    }];
 }
 
 - (void) hideScene
 {
-    [UIView animateWithDuration:.25 animations:^
+    [UIView animateWithDuration:.3 animations:^
     {
-        self.viewForSKView.alpha = 0;
-    }
-    completion:^(BOOL finished)
-    {
-        SKView * skView = (SKView *)[[self.viewForSKView subviews] firstObject];
-        [skView presentScene:nil];
-        [skView removeFromSuperview];
+        self.demoPreviewImageView.alpha = 0;
     }];
-    
-    //                [_demoView presentScene:nil];
-    //                [_demoView removeFromSuperview];
-    //                _demoScene = nil;
 }
 
 #pragma mark - game center
@@ -421,6 +469,8 @@
 
 - (void) productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response
 {
+    NSLog(@"products validated");
+    
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
     [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];

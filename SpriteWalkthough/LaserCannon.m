@@ -20,7 +20,7 @@
     {
         self.weaponType = kPowerUpTypeLaserCannon;
         self.name = @"laserCannon";
-        self.laserFrames = [[PlayerWeaponsKit sharedInstance] laserFrames];
+        self.laserFrames = [[PlayerWeaponsKit sharedInstance] currentLaserFrames];
         [self startFiring];
 	}
     return self;

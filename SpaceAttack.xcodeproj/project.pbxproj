@@ -70,6 +70,27 @@
 		6ED0AEF11A91414200493ED0 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED0AEF01A91414200493ED0 /* MainMenuViewController.m */; };
 		6ED0AEF81A9149DA00493ED0 /* MenuBackgroundScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED0AEF71A9149DA00493ED0 /* MenuBackgroundScene.m */; };
 		6ED0AEFB1A914FC600493ED0 /* SelectShipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED0AEFA1A914FC600493ED0 /* SelectShipViewController.m */; };
+		9C359FC31D7777BB00107AF4 /* laserUpgraded5.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C359FBE1D7777BB00107AF4 /* laserUpgraded5.png */; };
+		9C359FC41D7777BB00107AF4 /* laserUpgraded4.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C359FBF1D7777BB00107AF4 /* laserUpgraded4.png */; };
+		9C359FC51D7777BB00107AF4 /* laserUpgraded3.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C359FC01D7777BB00107AF4 /* laserUpgraded3.png */; };
+		9C359FC61D7777BB00107AF4 /* laserUpgraded2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C359FC11D7777BB00107AF4 /* laserUpgraded2.png */; };
+		9C359FC71D7777BB00107AF4 /* laserUpgraded1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C359FC21D7777BB00107AF4 /* laserUpgraded1.png */; };
+		9C359FCC1D7777EA00107AF4 /* laser4.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C359FC81D7777EA00107AF4 /* laser4.png */; };
+		9C359FCD1D7777EA00107AF4 /* laser3.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C359FC91D7777EA00107AF4 /* laser3.png */; };
+		9C359FCE1D7777EA00107AF4 /* laser2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C359FCA1D7777EA00107AF4 /* laser2.png */; };
+		9C359FCF1D7777EA00107AF4 /* laser1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C359FCB1D7777EA00107AF4 /* laser1.png */; };
+		9C359FDC1D77822500107AF4 /* electricity3.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C359FD01D77822500107AF4 /* electricity3.png */; };
+		9C359FDD1D77822500107AF4 /* electricity4.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C359FD11D77822500107AF4 /* electricity4.png */; };
+		9C359FDE1D77822500107AF4 /* electricity5.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C359FD21D77822500107AF4 /* electricity5.png */; };
+		9C359FDF1D77822500107AF4 /* electricity6.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C359FD31D77822500107AF4 /* electricity6.png */; };
+		9C359FE01D77822500107AF4 /* electricity7.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C359FD41D77822500107AF4 /* electricity7.png */; };
+		9C359FE11D77822500107AF4 /* electricity8.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C359FD51D77822500107AF4 /* electricity8.png */; };
+		9C359FE21D77822500107AF4 /* electricity9.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C359FD61D77822500107AF4 /* electricity9.png */; };
+		9C359FE31D77822500107AF4 /* electricity10.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C359FD71D77822500107AF4 /* electricity10.png */; };
+		9C359FE41D77822500107AF4 /* electricity12.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C359FD81D77822500107AF4 /* electricity12.png */; };
+		9C359FE51D77822500107AF4 /* electricity2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C359FD91D77822500107AF4 /* electricity2.png */; };
+		9C359FE61D77822500107AF4 /* electricity1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C359FDA1D77822500107AF4 /* electricity1.png */; };
+		9C359FE71D77822500107AF4 /* electricity11.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C359FDB1D77822500107AF4 /* electricity11.png */; };
 		9C6FFE7A1D74B748001AD117 /* slider bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C6FFE781D74B748001AD117 /* slider bar.png */; };
 		9C6FFE7B1D74B748001AD117 /* Slider.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C6FFE791D74B748001AD117 /* Slider.png */; };
 		9C6FFE7E1D74CBFB001AD117 /* SliderMin.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C6FFE7C1D74CBFB001AD117 /* SliderMin.png */; };
@@ -215,25 +236,6 @@
 		A3483FF01D691BCA00E9D1F9 /* Laser_Powerup.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FEA1D691BCA00E9D1F9 /* Laser_Powerup.png */; };
 		A3483FF11D691BCA00E9D1F9 /* Photon_Powerup.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FEB1D691BCA00E9D1F9 /* Photon_Powerup.png */; };
 		A3483FF21D691BCA00E9D1F9 /* Shield_Powerup.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FEC1D691BCA00E9D1F9 /* Shield_Powerup.png */; };
-		A34840001D691CE300E9D1F9 /* electricity1.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FF41D691CE300E9D1F9 /* electricity1.png */; };
-		A34840011D691CE300E9D1F9 /* electricity10.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FF51D691CE300E9D1F9 /* electricity10.png */; };
-		A34840021D691CE300E9D1F9 /* electricity11.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FF61D691CE300E9D1F9 /* electricity11.png */; };
-		A34840031D691CE300E9D1F9 /* electricity12.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FF71D691CE300E9D1F9 /* electricity12.png */; };
-		A34840041D691CE300E9D1F9 /* electricity2.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FF81D691CE300E9D1F9 /* electricity2.png */; };
-		A34840051D691CE300E9D1F9 /* electricity3.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FF91D691CE300E9D1F9 /* electricity3.png */; };
-		A34840061D691CE300E9D1F9 /* electricity4.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FFA1D691CE300E9D1F9 /* electricity4.png */; };
-		A34840071D691CE300E9D1F9 /* electricity5.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FFB1D691CE300E9D1F9 /* electricity5.png */; };
-		A34840081D691CE300E9D1F9 /* electricity6.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FFC1D691CE300E9D1F9 /* electricity6.png */; };
-		A34840091D691CE300E9D1F9 /* electricity7.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FFD1D691CE300E9D1F9 /* electricity7.png */; };
-		A348400A1D691CE300E9D1F9 /* electricity8.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FFE1D691CE300E9D1F9 /* electricity8.png */; };
-		A348400B1D691CE300E9D1F9 /* electricity9.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FFF1D691CE300E9D1F9 /* electricity9.png */; };
-		A34840141D691CEF00E9D1F9 /* laser1.png in Resources */ = {isa = PBXBuildFile; fileRef = A348400D1D691CEF00E9D1F9 /* laser1.png */; };
-		A34840151D691CEF00E9D1F9 /* laser2.png in Resources */ = {isa = PBXBuildFile; fileRef = A348400E1D691CEF00E9D1F9 /* laser2.png */; };
-		A34840161D691CEF00E9D1F9 /* laser3.png in Resources */ = {isa = PBXBuildFile; fileRef = A348400F1D691CEF00E9D1F9 /* laser3.png */; };
-		A34840171D691CEF00E9D1F9 /* laser4.png in Resources */ = {isa = PBXBuildFile; fileRef = A34840101D691CEF00E9D1F9 /* laser4.png */; };
-		A34840181D691CEF00E9D1F9 /* laser5.png in Resources */ = {isa = PBXBuildFile; fileRef = A34840111D691CEF00E9D1F9 /* laser5.png */; };
-		A34840191D691CEF00E9D1F9 /* laser6.png in Resources */ = {isa = PBXBuildFile; fileRef = A34840121D691CEF00E9D1F9 /* laser6.png */; };
-		A348401A1D691CEF00E9D1F9 /* laser7.png in Resources */ = {isa = PBXBuildFile; fileRef = A34840131D691CEF00E9D1F9 /* laser7.png */; };
 		A34F35241D56F8BE007A1191 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A34F35231D56F8BE007A1191 /* Reachability.m */; };
 		A35816A41D334EEE0028C019 /* photonExplosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = A35816A31D334EEE0028C019 /* photonExplosion.wav */; };
 		A35816B01D3357CD0028C019 /* unlock.wav in Resources */ = {isa = PBXBuildFile; fileRef = A35816A61D3357CD0028C019 /* unlock.wav */; };
@@ -399,7 +401,6 @@
 		A3E009B71D72C5D800C340AA /* Smart Photon.png in Resources */ = {isa = PBXBuildFile; fileRef = A3E009AE1D72C5D800C340AA /* Smart Photon.png */; };
 		A3E009BB1D72F86700C340AA /* UIView+Shake.m in Sources */ = {isa = PBXBuildFile; fileRef = A3E009BA1D72F86700C340AA /* UIView+Shake.m */; };
 		A3E009BD1D72FE3C00C340AA /* fourWeaponsUpgrade.png in Resources */ = {isa = PBXBuildFile; fileRef = A3E009BC1D72FE3C00C340AA /* fourWeaponsUpgrade.png */; };
-		A3E0F2F41D3B725700BB4508 /* laserUpgraded.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A3E0F2F21D3B725700BB4508 /* laserUpgraded.atlas */; };
 		A3E3E65A1D4DFCB100EEF2C3 /* SAAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3E3E6591D4DFCB100EEF2C3 /* SAAlertView.m */; };
 		A3E783551C5EFE88006A6D7B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3E783541C5EFE88006A6D7B /* Launch Screen.storyboard */; };
 		A3E783571C5EFF91006A6D7B /* IMG_0728.PNG in Resources */ = {isa = PBXBuildFile; fileRef = A3E783561C5EFF91006A6D7B /* IMG_0728.PNG */; };
@@ -528,6 +529,27 @@
 		6ED0AEF71A9149DA00493ED0 /* MenuBackgroundScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuBackgroundScene.m; sourceTree = "<group>"; };
 		6ED0AEF91A914FC600493ED0 /* SelectShipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectShipViewController.h; sourceTree = "<group>"; };
 		6ED0AEFA1A914FC600493ED0 /* SelectShipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectShipViewController.m; sourceTree = "<group>"; };
+		9C359FBE1D7777BB00107AF4 /* laserUpgraded5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laserUpgraded5.png; sourceTree = "<group>"; };
+		9C359FBF1D7777BB00107AF4 /* laserUpgraded4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laserUpgraded4.png; sourceTree = "<group>"; };
+		9C359FC01D7777BB00107AF4 /* laserUpgraded3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laserUpgraded3.png; sourceTree = "<group>"; };
+		9C359FC11D7777BB00107AF4 /* laserUpgraded2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laserUpgraded2.png; sourceTree = "<group>"; };
+		9C359FC21D7777BB00107AF4 /* laserUpgraded1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laserUpgraded1.png; sourceTree = "<group>"; };
+		9C359FC81D7777EA00107AF4 /* laser4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laser4.png; sourceTree = "<group>"; };
+		9C359FC91D7777EA00107AF4 /* laser3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laser3.png; sourceTree = "<group>"; };
+		9C359FCA1D7777EA00107AF4 /* laser2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laser2.png; sourceTree = "<group>"; };
+		9C359FCB1D7777EA00107AF4 /* laser1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laser1.png; sourceTree = "<group>"; };
+		9C359FD01D77822500107AF4 /* electricity3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity3.png; sourceTree = "<group>"; };
+		9C359FD11D77822500107AF4 /* electricity4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity4.png; sourceTree = "<group>"; };
+		9C359FD21D77822500107AF4 /* electricity5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity5.png; sourceTree = "<group>"; };
+		9C359FD31D77822500107AF4 /* electricity6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity6.png; sourceTree = "<group>"; };
+		9C359FD41D77822500107AF4 /* electricity7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity7.png; sourceTree = "<group>"; };
+		9C359FD51D77822500107AF4 /* electricity8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity8.png; sourceTree = "<group>"; };
+		9C359FD61D77822500107AF4 /* electricity9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity9.png; sourceTree = "<group>"; };
+		9C359FD71D77822500107AF4 /* electricity10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity10.png; sourceTree = "<group>"; };
+		9C359FD81D77822500107AF4 /* electricity12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity12.png; sourceTree = "<group>"; };
+		9C359FD91D77822500107AF4 /* electricity2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity2.png; sourceTree = "<group>"; };
+		9C359FDA1D77822500107AF4 /* electricity1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity1.png; sourceTree = "<group>"; };
+		9C359FDB1D77822500107AF4 /* electricity11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity11.png; sourceTree = "<group>"; };
 		9C6FFE781D74B748001AD117 /* slider bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slider bar.png"; sourceTree = "<group>"; };
 		9C6FFE791D74B748001AD117 /* Slider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Slider.png; sourceTree = "<group>"; };
 		9C6FFE7C1D74CBFB001AD117 /* SliderMin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SliderMin.png; sourceTree = "<group>"; };
@@ -723,25 +745,6 @@
 		A3483FEA1D691BCA00E9D1F9 /* Laser_Powerup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Laser_Powerup.png; sourceTree = "<group>"; };
 		A3483FEB1D691BCA00E9D1F9 /* Photon_Powerup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Photon_Powerup.png; sourceTree = "<group>"; };
 		A3483FEC1D691BCA00E9D1F9 /* Shield_Powerup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Shield_Powerup.png; sourceTree = "<group>"; };
-		A3483FF41D691CE300E9D1F9 /* electricity1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity1.png; sourceTree = "<group>"; };
-		A3483FF51D691CE300E9D1F9 /* electricity10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity10.png; sourceTree = "<group>"; };
-		A3483FF61D691CE300E9D1F9 /* electricity11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity11.png; sourceTree = "<group>"; };
-		A3483FF71D691CE300E9D1F9 /* electricity12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity12.png; sourceTree = "<group>"; };
-		A3483FF81D691CE300E9D1F9 /* electricity2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity2.png; sourceTree = "<group>"; };
-		A3483FF91D691CE300E9D1F9 /* electricity3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity3.png; sourceTree = "<group>"; };
-		A3483FFA1D691CE300E9D1F9 /* electricity4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity4.png; sourceTree = "<group>"; };
-		A3483FFB1D691CE300E9D1F9 /* electricity5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity5.png; sourceTree = "<group>"; };
-		A3483FFC1D691CE300E9D1F9 /* electricity6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity6.png; sourceTree = "<group>"; };
-		A3483FFD1D691CE300E9D1F9 /* electricity7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity7.png; sourceTree = "<group>"; };
-		A3483FFE1D691CE300E9D1F9 /* electricity8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity8.png; sourceTree = "<group>"; };
-		A3483FFF1D691CE300E9D1F9 /* electricity9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity9.png; sourceTree = "<group>"; };
-		A348400D1D691CEF00E9D1F9 /* laser1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laser1.png; sourceTree = "<group>"; };
-		A348400E1D691CEF00E9D1F9 /* laser2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laser2.png; sourceTree = "<group>"; };
-		A348400F1D691CEF00E9D1F9 /* laser3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laser3.png; sourceTree = "<group>"; };
-		A34840101D691CEF00E9D1F9 /* laser4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laser4.png; sourceTree = "<group>"; };
-		A34840111D691CEF00E9D1F9 /* laser5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laser5.png; sourceTree = "<group>"; };
-		A34840121D691CEF00E9D1F9 /* laser6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laser6.png; sourceTree = "<group>"; };
-		A34840131D691CEF00E9D1F9 /* laser7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laser7.png; sourceTree = "<group>"; };
 		A34F35221D56F8BE007A1191 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		A34F35231D56F8BE007A1191 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		A34F997A1D3C00DF00C5CCD7 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -966,7 +969,6 @@
 		A3E009B91D72F86700C340AA /* UIView+Shake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Shake.h"; sourceTree = "<group>"; };
 		A3E009BA1D72F86700C340AA /* UIView+Shake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Shake.m"; sourceTree = "<group>"; };
 		A3E009BC1D72FE3C00C340AA /* fourWeaponsUpgrade.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fourWeaponsUpgrade.png; sourceTree = "<group>"; };
-		A3E0F2F21D3B725700BB4508 /* laserUpgraded.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = laserUpgraded.atlas; sourceTree = "<group>"; };
 		A3E3E6401D4DC50600EEF2C3 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		A3E3E6581D4DFCB100EEF2C3 /* SAAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAAlertView.h; sourceTree = "<group>"; };
 		A3E3E6591D4DFCB100EEF2C3 /* SAAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAAlertView.m; sourceTree = "<group>"; };
@@ -1071,7 +1073,6 @@
 		130169421909C8FA00DDC896 /* playerProjectiles */ = {
 			isa = PBXGroup;
 			children = (
-				A3E0F2F21D3B725700BB4508 /* laserUpgraded.atlas */,
 				A348400C1D691CEF00E9D1F9 /* laser */,
 				A3483FF31D691CE300E9D1F9 /* electricity */,
 				13915101190EE050009751D5 /* bullet.png */,
@@ -1510,6 +1511,18 @@
 				6E49CED31A91C65500FC48CC /* spaceships */,
 			);
 			name = spaceshipKit;
+			sourceTree = "<group>";
+		};
+		9C359FBD1D77778D00107AF4 /* upgraded */ = {
+			isa = PBXGroup;
+			children = (
+				9C359FC21D7777BB00107AF4 /* laserUpgraded1.png */,
+				9C359FC11D7777BB00107AF4 /* laserUpgraded2.png */,
+				9C359FC01D7777BB00107AF4 /* laserUpgraded3.png */,
+				9C359FBF1D7777BB00107AF4 /* laserUpgraded4.png */,
+				9C359FBE1D7777BB00107AF4 /* laserUpgraded5.png */,
+			);
+			name = upgraded;
 			sourceTree = "<group>";
 		};
 		9C6FFE771D74B740001AD117 /* settings */ = {
@@ -1963,18 +1976,18 @@
 		A3483FF31D691CE300E9D1F9 /* electricity */ = {
 			isa = PBXGroup;
 			children = (
-				A3483FF41D691CE300E9D1F9 /* electricity1.png */,
-				A3483FF51D691CE300E9D1F9 /* electricity10.png */,
-				A3483FF61D691CE300E9D1F9 /* electricity11.png */,
-				A3483FF71D691CE300E9D1F9 /* electricity12.png */,
-				A3483FF81D691CE300E9D1F9 /* electricity2.png */,
-				A3483FF91D691CE300E9D1F9 /* electricity3.png */,
-				A3483FFA1D691CE300E9D1F9 /* electricity4.png */,
-				A3483FFB1D691CE300E9D1F9 /* electricity5.png */,
-				A3483FFC1D691CE300E9D1F9 /* electricity6.png */,
-				A3483FFD1D691CE300E9D1F9 /* electricity7.png */,
-				A3483FFE1D691CE300E9D1F9 /* electricity8.png */,
-				A3483FFF1D691CE300E9D1F9 /* electricity9.png */,
+				9C359FDA1D77822500107AF4 /* electricity1.png */,
+				9C359FD91D77822500107AF4 /* electricity2.png */,
+				9C359FD01D77822500107AF4 /* electricity3.png */,
+				9C359FD11D77822500107AF4 /* electricity4.png */,
+				9C359FD21D77822500107AF4 /* electricity5.png */,
+				9C359FD31D77822500107AF4 /* electricity6.png */,
+				9C359FD41D77822500107AF4 /* electricity7.png */,
+				9C359FD51D77822500107AF4 /* electricity8.png */,
+				9C359FD61D77822500107AF4 /* electricity9.png */,
+				9C359FD71D77822500107AF4 /* electricity10.png */,
+				9C359FDB1D77822500107AF4 /* electricity11.png */,
+				9C359FD81D77822500107AF4 /* electricity12.png */,
 			);
 			path = electricity;
 			sourceTree = "<group>";
@@ -1982,13 +1995,11 @@
 		A348400C1D691CEF00E9D1F9 /* laser */ = {
 			isa = PBXGroup;
 			children = (
-				A348400D1D691CEF00E9D1F9 /* laser1.png */,
-				A348400E1D691CEF00E9D1F9 /* laser2.png */,
-				A348400F1D691CEF00E9D1F9 /* laser3.png */,
-				A34840101D691CEF00E9D1F9 /* laser4.png */,
-				A34840111D691CEF00E9D1F9 /* laser5.png */,
-				A34840121D691CEF00E9D1F9 /* laser6.png */,
-				A34840131D691CEF00E9D1F9 /* laser7.png */,
+				9C359FCB1D7777EA00107AF4 /* laser1.png */,
+				9C359FCA1D7777EA00107AF4 /* laser2.png */,
+				9C359FC91D7777EA00107AF4 /* laser3.png */,
+				9C359FC81D7777EA00107AF4 /* laser4.png */,
+				9C359FBD1D77778D00107AF4 /* upgraded */,
 			);
 			path = laser;
 			sourceTree = "<group>";
@@ -2400,25 +2411,24 @@
 				A30112731D5FC8BA00E133F2 /* MoonBold.otf in Resources */,
 				A35B3B571D2A648B006DB8C3 /* enemyDamage5.wav in Resources */,
 				A3E009B21D72C5D800C340AA /* Electricity.png in Resources */,
+				9C359FDD1D77822500107AF4 /* electricity4.png in Resources */,
 				A30112821D5FECC400E133F2 /* Node_off.png in Resources */,
 				A35B3B6C1D2A7051006DB8C3 /* shieldDamage4.wav in Resources */,
 				A3E009B31D72C5D800C340AA /* Energy.png in Resources */,
 				A35B3B321D2A4298006DB8C3 /* asteroid5.wav in Resources */,
+				9C359FDC1D77822500107AF4 /* electricity3.png in Resources */,
 				A31AD1741D0D5819000CF547 /* TimePortal.mp3 in Resources */,
 				A39ABA3B1C4E1A8E00AF1455 /* tooltipArrowUp.png in Resources */,
 				A31AD1751D0D5819000CF547 /* Mercury.mp3 in Resources */,
 				A3483FC81D68F98000E9D1F9 /* Habsburg_Menu.png in Resources */,
-				A34840021D691CE300E9D1F9 /* electricity11.png in Resources */,
 				A39D0F991D3300D200D86AC8 /* machineGunLevel3.wav in Resources */,
 				A32C06191D612786008DDC80 /* Red_Gradient_2-HardLight.png in Resources */,
 				A35B3B561D2A648B006DB8C3 /* enemyDamage3.wav in Resources */,
 				A32C061F1D612786008DDC80 /* Serebus_Gradient_1-Luminosity.png in Resources */,
 				A3483FCA1D68F98000E9D1F9 /* Edinburgh_Menu.png in Resources */,
 				A39C5F4A1D29956800A68E2D /* bullet1.wav in Resources */,
-				A34840081D691CE300E9D1F9 /* electricity6.png in Resources */,
 				A31AD1321D0CAD5D000CF547 /* spaceBackground1.png in Resources */,
 				A3E009B71D72C5D800C340AA /* Smart Photon.png in Resources */,
-				A34840071D691CE300E9D1F9 /* electricity5.png in Resources */,
 				A32C060B1D612786008DDC80 /* Broken.png in Resources */,
 				A3FE9ECB1D449F5B002290C5 /* InfoPlist.strings in Resources */,
 				A32C06171D612786008DDC80 /* Red_0Grain-ColorDodge.png in Resources */,
@@ -2428,7 +2438,6 @@
 				A32C06101D612786008DDC80 /* Colony_0Grain-ColorDodge.png in Resources */,
 				A3CE276B1C4B87F70082D2AC /* planets7.png in Resources */,
 				A35B3B6D1D2A7051006DB8C3 /* shieldDamage1.wav in Resources */,
-				A34840061D691CE300E9D1F9 /* electricity4.png in Resources */,
 				A35B3B611D2A68F7006DB8C3 /* spaceshipDamage5.wav in Resources */,
 				A35B3B3E1D2A4824006DB8C3 /* shieldDestroy2.wav in Resources */,
 				A32C062A1D612786008DDC80 /* Void_Gradient_2-Screen.png in Resources */,
@@ -2437,7 +2446,6 @@
 				A32C06211D612786008DDC80 /* Twin_Suns_0Grain-ColorDodge.png in Resources */,
 				A32030D01D16B56900B0F4BC /* star.png in Resources */,
 				A35B3B741D2A7918006DB8C3 /* bossIntro.wav in Resources */,
-				A348400B1D691CE300E9D1F9 /* electricity9.png in Resources */,
 				A39C5F2D1D29851700A68E2D /* photon1.wav in Resources */,
 				9C6FFE7A1D74B748001AD117 /* slider bar.png in Resources */,
 				A39C5F331D2987A000A68E2D /* laser4.wav in Resources */,
@@ -2450,7 +2458,6 @@
 				A32C061B1D612786008DDC80 /* Ring_0Grain-ColorDodge.png in Resources */,
 				A35B3B421D2A53E6006DB8C3 /* shieldEquip.wav in Resources */,
 				A32C06291D612786008DDC80 /* Void_Gradient_1-Subtract.png in Resources */,
-				A34840181D691CEF00E9D1F9 /* laser5.png in Resources */,
 				A313A68D1D56633D006916EB /* photonExplosion.sks in Resources */,
 				A35B3B591D2A648B006DB8C3 /* enemyDamage2.wav in Resources */,
 				A35B3B4E1D2A5D1E006DB8C3 /* photonCannonEquip.wav in Resources */,
@@ -2460,16 +2467,14 @@
 				A392461C1D3C964D00A8A040 /* planets8.png in Resources */,
 				A39C5F5E1D29C00800A68E2D /* big.wav in Resources */,
 				A3483FDB1D69154E00E9D1F9 /* enemyFast.png in Resources */,
+				9C359FE01D77822500107AF4 /* electricity7.png in Resources */,
 				A35B3B621D2A68F7006DB8C3 /* spaceshipDamage4.wav in Resources */,
 				A35B3B6A1D2A7051006DB8C3 /* shieldDamage2.wav in Resources */,
 				A32C06301D613DCC008DDC80 /* Colony_tall.png in Resources */,
-				A34840141D691CEF00E9D1F9 /* laser1.png in Resources */,
 				A3483FCC1D68F98000E9D1F9 /* Caiman_Menu.png in Resources */,
 				A39ABA381C4E1A8E00AF1455 /* tooltipArrowDownLeft.png in Resources */,
-				A34840031D691CE300E9D1F9 /* electricity12.png in Resources */,
 				A3483FF11D691BCA00E9D1F9 /* Photon_Powerup.png in Resources */,
 				A35816B01D3357CD0028C019 /* unlock.wav in Resources */,
-				A34840091D691CE300E9D1F9 /* electricity7.png in Resources */,
 				A35B3B711D2A7512006DB8C3 /* increaseMultiplier.wav in Resources */,
 				A35B3B6B1D2A7051006DB8C3 /* shieldDamage3.wav in Resources */,
 				A35816B31D3357CD0028C019 /* upgradeMinimize.wav in Resources */,
@@ -2480,11 +2485,11 @@
 				A3E009B51D72C5D800C340AA /* Questionmark.png in Resources */,
 				A3D1FC031B7476C90018E247 /* Boss1.png in Resources */,
 				A39C5F581D29A95F00A68E2D /* electricity1.wav in Resources */,
-				A3E0F2F41D3B725700BB4508 /* laserUpgraded.atlas in Resources */,
 				A3170E741CC4806C0098C24E /* ShieldDestroy.sks in Resources */,
 				135BEDC61975B8B700892311 /* blastGun.png in Resources */,
 				A302A36E1CC74E040034C49F /* shield3.atlas in Resources */,
-				A34840011D691CE300E9D1F9 /* electricity10.png in Resources */,
+				9C359FDE1D77822500107AF4 /* electricity5.png in Resources */,
+				9C359FC41D7777BB00107AF4 /* laserUpgraded4.png in Resources */,
 				A39C5F551D29A95F00A68E2D /* electricity4.wav in Resources */,
 				A35B3B6F1D2A7435006DB8C3 /* lostMultiplier.wav in Resources */,
 				A32C060E1D612786008DDC80 /* Broken_Gradient_2-Hue.png in Resources */,
@@ -2494,14 +2499,17 @@
 				A3E009B01D72C5D800C340AA /* Check.png in Resources */,
 				A35B3B3C1D2A4824006DB8C3 /* shieldDestroy3.wav in Resources */,
 				A35816B21D3357CD0028C019 /* upgradeMaximize.wav in Resources */,
+				9C359FE21D77822500107AF4 /* electricity9.png in Resources */,
 				A39C5F291D29851700A68E2D /* photon5.wav in Resources */,
 				A35B3B4D1D2A5D1E006DB8C3 /* electricalGeneratorEquip.wav in Resources */,
 				A31AD1341D0CAD5D000CF547 /* spaceBackground3.png in Resources */,
 				A32C06151D612786008DDC80 /* Hologram_Gradient_1-ColorDodge.png in Resources */,
+				9C359FE51D77822500107AF4 /* electricity2.png in Resources */,
 				A34840171D691CEF00E9D1F9 /* laser4.png in Resources */,
 				A30112871D5FF6C100E133F2 /* armor.png in Resources */,
 				9C6FFE7E1D74CBFB001AD117 /* SliderMin.png in Resources */,
 				A31AD1721D0D5819000CF547 /* SpaceTrip.mp3 in Resources */,
+				9C359FE11D77822500107AF4 /* electricity8.png in Resources */,
 				A39ABA391C4E1A8E00AF1455 /* tooltipArrowLeft.png in Resources */,
 				A32C060A1D612786008DDC80 /* BlackStar_Gradient_2-HardLight.png in Resources */,
 				A3E009B41D72C5D800C340AA /* Lasers.png in Resources */,
@@ -2518,6 +2526,7 @@
 				A35B3B761D2A79CC006DB8C3 /* tooltip.wav in Resources */,
 				A3E009B61D72C5D800C340AA /* Shields.png in Resources */,
 				A392461F1D3C964D00A8A040 /* planets11.png in Resources */,
+				9C359FC71D7777BB00107AF4 /* laserUpgraded1.png in Resources */,
 				A3483FE51D691B8B00E9D1F9 /* shield.png in Resources */,
 				A3483FF21D691BCA00E9D1F9 /* Shield_Powerup.png in Resources */,
 				A35816BF1D3390E40028C019 /* homeButton.png in Resources */,
@@ -2532,9 +2541,9 @@
 				133FCD5519101B0500A8E49A /* laserCannon.png in Resources */,
 				A35B3B361D2A4298006DB8C3 /* asteroid1.wav in Resources */,
 				A3483FD71D6914F100E9D1F9 /* asteroid.atlas in Resources */,
-				A34840051D691CE300E9D1F9 /* electricity3.png in Resources */,
 				A3E009BD1D72FE3C00C340AA /* fourWeaponsUpgrade.png in Resources */,
 				A32C06201D612786008DDC80 /* Twin Suns.png in Resources */,
+				9C359FCC1D7777EA00107AF4 /* laser4.png in Resources */,
 				A32C06081D612786008DDC80 /* BlackStar_0Grain-ColorDodge.png in Resources */,
 				A39ABA3A1C4E1A8E00AF1455 /* tooltipArrowRight.png in Resources */,
 				A392461E1D3C964D00A8A040 /* planets10.png in Resources */,
@@ -2544,29 +2553,34 @@
 				A35816B61D3357CD0028C019 /* upgrade.wav in Resources */,
 				A3CE27581C4B6AC10082D2AC /* cloudParticle.png in Resources */,
 				A35816B71D3357CD0028C019 /* engage.wav in Resources */,
+				9C359FE31D77822500107AF4 /* electricity10.png in Resources */,
 				A32C06131D612786008DDC80 /* Hologram.png in Resources */,
+				9C359FC51D7777BB00107AF4 /* laserUpgraded3.png in Resources */,
 				A3483FF01D691BCA00E9D1F9 /* Laser_Powerup.png in Resources */,
 				1345CE8A18FD8CEE004ECA6C /* spark.png in Resources */,
 				A35816B51D3357CD0028C019 /* highScoreAchievements.wav in Resources */,
+				9C359FDF1D77822500107AF4 /* electricity6.png in Resources */,
 				A302A36C1CC74E040034C49F /* shield1.atlas in Resources */,
 				A3CE27701C4B9D0E0082D2AC /* planets6.png in Resources */,
+				9C359FC31D7777BB00107AF4 /* laserUpgraded5.png in Resources */,
 				139150FA190ECCA7009751D5 /* machineGun.png in Resources */,
 				A32C061C1D612786008DDC80 /* Ring_Gradient_1-Difference.png in Resources */,
 				A35B3B641D2A68F7006DB8C3 /* spaceshipDamage2.wav in Resources */,
 				A39C5F361D2987A000A68E2D /* laser1.wav in Resources */,
 				A3483FED1D691BCA00E9D1F9 /* Boost_Powerup.png in Resources */,
 				A32C062B1D612786008DDC80 /* Void_Planet.png in Resources */,
-				A34840041D691CE300E9D1F9 /* electricity2.png in Resources */,
+				9C359FE71D77822500107AF4 /* electricity11.png in Resources */,
 				9C6FFE7B1D74B748001AD117 /* Slider.png in Resources */,
 				A3CE276E1C4B9D030082D2AC /* planets4.png in Resources */,
 				A3B4008F1D445C2800E0AFDF /* UpgradeView.xib in Resources */,
 				A31AD1351D0CAD5D000CF547 /* spaceBackground4.png in Resources */,
 				13EDFF3F190994CA0077B7D2 /* CrumbleParticle.sks in Resources */,
 				A3483FEF1D691BCA00E9D1F9 /* Electricity_Powerup.png in Resources */,
-				A34840151D691CEF00E9D1F9 /* laser2.png in Resources */,
+				9C359FCE1D7777EA00107AF4 /* laser2.png in Resources */,
 				A3DB9EEF1D61B71F006A8AEB /* Abdul_Kadir_Menu.png in Resources */,
 				A32C06251D612786008DDC80 /* Verdant_2Planets.png in Resources */,
 				A32C061E1D612786008DDC80 /* Serebus_0Grain-ColorDodge.png in Resources */,
+				9C359FE41D77822500107AF4 /* electricity12.png in Resources */,
 				A39246151D3C964600A8A040 /* planets1.png in Resources */,
 				A35B3B5A1D2A648B006DB8C3 /* enemyDamage1.wav in Resources */,
 				A39C5F571D29A95F00A68E2D /* electricity2.wav in Resources */,
@@ -2576,7 +2590,6 @@
 				A3483FCF1D68F9FA00E9D1F9 /* spaceship.png in Resources */,
 				A392461D1D3C964D00A8A040 /* planets9.png in Resources */,
 				A31AD1681D0D5801000CF547 /* SpaceCube.wav in Resources */,
-				A348401A1D691CEF00E9D1F9 /* laser7.png in Resources */,
 				A35B3B401D2A4F58006DB8C3 /* energyBoosterStart.wav in Resources */,
 				A32C06281D612786008DDC80 /* Void_0Grain-ColorDodge.png in Resources */,
 				A39246201D3C964D00A8A040 /* planets12.png in Resources */,
@@ -2590,21 +2603,20 @@
 				A30112831D5FECC400E133F2 /* Node_on.png in Resources */,
 				A39C5F351D2987A000A68E2D /* laser2.wav in Resources */,
 				A31AD1761D0D5819000CF547 /* Kalliope.mp3 in Resources */,
+				9C359FE61D77822500107AF4 /* electricity1.png in Resources */,
+				9C359FCF1D7777EA00107AF4 /* laser1.png in Resources */,
 				A35B3B581D2A648B006DB8C3 /* enemyDamage4.wav in Resources */,
-				A34840001D691CE300E9D1F9 /* electricity1.png in Resources */,
 				A3483FCB1D68F98000E9D1F9 /* Dandolo_Menu.png in Resources */,
 				A3C8279B1B76A93F007F7E64 /* pellet.png in Resources */,
 				A30112881D5FF6C100E133F2 /* damage.png in Resources */,
 				A31AD1711D0D5819000CF547 /* UnknownPlanet.mp3 in Resources */,
 				A39C5F561D29A95F00A68E2D /* electricity3.wav in Resources */,
-				A348400A1D691CE300E9D1F9 /* electricity8.png in Resources */,
-				A34840191D691CEF00E9D1F9 /* laser6.png in Resources */,
+				9C359FCD1D7777EA00107AF4 /* laser3.png in Resources */,
 				A3E783571C5EFF91006A6D7B /* IMG_0728.PNG in Resources */,
 				A3CE27671C4B87F70082D2AC /* planets3.png in Resources */,
 				A35B3B441D2A56D1006DB8C3 /* energyBoosterEnd.wav in Resources */,
 				A387320A1D3B93E500FE1D00 /* Localizable.strings in Resources */,
 				A31AD16A1D0D5801000CF547 /* Starlight.wav in Resources */,
-				A34840161D691CEF00E9D1F9 /* laser3.png in Resources */,
 				13B231FF1943CB240097A15A /* electricalGenerator.png in Resources */,
 				A39C5F3A1D29892C00A68E2D /* bokeh.png in Resources */,
 				A3E009AF1D72C5D800C340AA /* Bullets.png in Resources */,
@@ -2640,6 +2652,7 @@
 				A31AD1331D0CAD5D000CF547 /* spaceBackground2.png in Resources */,
 				A3E009B11D72C5D800C340AA /* Double Weapon.png in Resources */,
 				A32C061D1D612786008DDC80 /* Serebus.png in Resources */,
+				9C359FC61D7777BB00107AF4 /* laserUpgraded2.png in Resources */,
 				A35816BD1D336EDF0028C019 /* machineGunLevel3Upgraded.wav in Resources */,
 				137ED0EA195E55F400AEE889 /* test.sks in Resources */,
 				A301128B1D5FFF5700E133F2 /* Lock.png in Resources */,

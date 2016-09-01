@@ -24,7 +24,8 @@
 
 - (void) addGlowToLayer:(CALayer *)layer withColor:(CGColorRef)color;
 - (void) addGlowToLayer:(CALayer *)layer withColor:(CGColorRef)color size:(float)size;
-
 - (void) removeGlowFromLayer:(CALayer*)layer;
+
+- (void)addEdgeConstraint:(NSLayoutAttribute)edge superview:(UIView *)superview subview:(UIView *)subview;
 
 @end

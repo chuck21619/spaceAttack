@@ -34,22 +34,19 @@ static PlayerWeaponsKit * sharedPlayerWeaponsKit = nil;
         
         //laser
         NSMutableArray * laserFrames = [NSMutableArray new];
-//        NSString * atlasName;
-//        if ( [AccountManager laserUpgraded] || [sharedPlayerWeaponsKit beingUsedForDemoScene] )
-//            atlasName = @"laserUpgraded";
-//        else
-//            atlasName = @"laser";
-//        SKTextureAtlas * laserAtlas = [SKTextureAtlas atlasNamed:atlasName];
-        
         [laserFrames addObject:[SKTexture textureWithImageNamed:@"laser1.png"]];
         [laserFrames addObject:[SKTexture textureWithImageNamed:@"laser2.png"]];
         [laserFrames addObject:[SKTexture textureWithImageNamed:@"laser3.png"]];
         [laserFrames addObject:[SKTexture textureWithImageNamed:@"laser4.png"]];
-        [laserFrames addObject:[SKTexture textureWithImageNamed:@"laser5.png"]];
-        [laserFrames addObject:[SKTexture textureWithImageNamed:@"laser6.png"]];
-        [laserFrames addObject:[SKTexture textureWithImageNamed:@"laser7.png"]];
-        
         sharedPlayerWeaponsKit.laserFrames = laserFrames;
+        
+        NSMutableArray * laserFramesUpgraded = [NSMutableArray new];
+        [laserFramesUpgraded addObject:[SKTexture textureWithImageNamed:@"laserUpgraded1.png"]];
+        [laserFramesUpgraded addObject:[SKTexture textureWithImageNamed:@"laserUpgraded2.png"]];
+        [laserFramesUpgraded addObject:[SKTexture textureWithImageNamed:@"laserUpgraded3.png"]];
+        [laserFramesUpgraded addObject:[SKTexture textureWithImageNamed:@"laserUpgraded4.png"]];
+        [laserFramesUpgraded addObject:[SKTexture textureWithImageNamed:@"laserUpgraded5.png"]];
+        sharedPlayerWeaponsKit.laserFramesUpgraded = laserFramesUpgraded;
         
         //electricity
         sharedPlayerWeaponsKit.electricityFrames = [NSMutableArray new];
@@ -70,12 +67,12 @@ static PlayerWeaponsKit * sharedPlayerWeaponsKit = nil;
     return sharedPlayerWeaponsKit;
 }
 
-- (BOOL) beingUsedForDemoScene
+- (NSArray *) currentLaserFrames
 {
-    if ( [[[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentedViewController] class] == [UpgradesViewController class] )
-        return YES;
-    
-    return NO;
+    if ( [AccountManager laserUpgraded] )
+        return self.laserFramesUpgraded;
+    else
+        return self.laserFrames;
 }
 
 - (NSArray *) texturesForPreloading

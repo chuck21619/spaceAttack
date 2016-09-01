@@ -791,13 +791,12 @@ Firead 100 Bullets + 100 points</string>
                             <imageView userInteractionEnabled="NO" tag="10" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="InG-Qn-Tsn">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XsK-N9-g8v">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LWm-QQ-h2r">
                                 <rect key="frame" x="50" y="75" width="220" height="285"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="XsK-N9-g8v" secondAttribute="height" multiplier="44:57" id="lqM-Ff-Wq9"/>
+                                    <constraint firstAttribute="width" secondItem="LWm-QQ-h2r" secondAttribute="height" multiplier="44:57" id="Ghv-ea-dpT"/>
                                 </constraints>
-                            </view>
+                            </imageView>
                             <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HxO-R2-jYh">
                                 <rect key="frame" x="7" y="80" width="306" height="481"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -808,23 +807,8 @@ Firead 100 Bullets + 100 points</string>
                                         <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8in-wq-Kzl" id="CKa-lu-L4s">
                                             <rect key="frame" x="0.0" y="0.0" width="306" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j1r-lL-vZt">
-                                                    <rect key="frame" x="0.0" y="0.0" width="306" height="44"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="j1r-lL-vZt" secondAttribute="trailing" id="Y88-0c-TMs"/>
-                                                <constraint firstAttribute="bottom" secondItem="j1r-lL-vZt" secondAttribute="bottom" id="bLY-s5-Pce"/>
-                                                <constraint firstItem="j1r-lL-vZt" firstAttribute="top" secondItem="CKa-lu-L4s" secondAttribute="top" id="hSq-Zf-VJh"/>
-                                                <constraint firstItem="j1r-lL-vZt" firstAttribute="leading" secondItem="CKa-lu-L4s" secondAttribute="leading" id="zqU-Yi-W20"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <outlet property="borderView" destination="j1r-lL-vZt" id="QT1-uA-yhg"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -868,24 +852,24 @@ Firead 100 Bullets + 100 points</string>
                         </subviews>
                         <constraints>
                             <constraint firstItem="HxO-R2-jYh" firstAttribute="top" secondItem="JHo-OB-i3G" secondAttribute="top" constant="80" id="0x9-1h-06K"/>
-                            <constraint firstAttribute="bottom" secondItem="XsK-N9-g8v" secondAttribute="bottom" constant="208" id="1B6-g5-mN1"/>
                             <constraint firstItem="Vk6-dJ-1Dg" firstAttribute="top" secondItem="JHo-OB-i3G" secondAttribute="top" constant="15" id="48d-u8-LtP"/>
                             <constraint firstItem="InG-Qn-Tsn" firstAttribute="top" secondItem="JHo-OB-i3G" secondAttribute="top" id="5D0-aT-7uj"/>
                             <constraint firstAttribute="bottom" secondItem="HxO-R2-jYh" secondAttribute="bottom" constant="7" id="67L-3d-paU"/>
                             <constraint firstItem="InG-Qn-Tsn" firstAttribute="leading" secondItem="JHo-OB-i3G" secondAttribute="leading" id="7hW-AM-2em"/>
                             <constraint firstAttribute="trailing" secondItem="Qqh-sQ-Qqa" secondAttribute="trailing" constant="214" id="DuZ-MM-e79"/>
                             <constraint firstAttribute="trailing" secondItem="Vk6-dJ-1Dg" secondAttribute="trailing" id="EWE-Gu-wo5"/>
+                            <constraint firstItem="LWm-QQ-h2r" firstAttribute="centerX" secondItem="JHo-OB-i3G" secondAttribute="centerX" id="HIV-ko-DqW"/>
                             <constraint firstItem="Qqh-sQ-Qqa" firstAttribute="top" secondItem="JHo-OB-i3G" secondAttribute="top" id="K7X-tF-jee"/>
                             <constraint firstItem="EfH-lL-bT5" firstAttribute="top" secondItem="Vk6-dJ-1Dg" secondAttribute="bottom" id="PN9-vE-Dgk"/>
                             <constraint firstItem="EfH-lL-bT5" firstAttribute="leading" secondItem="JHo-OB-i3G" secondAttribute="leading" id="R4F-OS-AQZ"/>
                             <constraint firstItem="HxO-R2-jYh" firstAttribute="leading" secondItem="JHo-OB-i3G" secondAttribute="leading" constant="7" id="VhC-FS-hnn"/>
+                            <constraint firstItem="LWm-QQ-h2r" firstAttribute="top" secondItem="EfH-lL-bT5" secondAttribute="bottom" id="WWR-PY-Zei"/>
                             <constraint firstItem="Vk6-dJ-1Dg" firstAttribute="leading" secondItem="JHo-OB-i3G" secondAttribute="leading" id="Xd4-PP-pWk"/>
                             <constraint firstAttribute="trailing" secondItem="InG-Qn-Tsn" secondAttribute="trailing" id="gSr-77-Thq"/>
                             <constraint firstAttribute="bottom" secondItem="InG-Qn-Tsn" secondAttribute="bottom" id="jA9-Uu-BOz"/>
                             <constraint firstAttribute="trailing" secondItem="EfH-lL-bT5" secondAttribute="trailing" id="ja3-YP-TOK"/>
-                            <constraint firstItem="XsK-N9-g8v" firstAttribute="centerX" secondItem="JHo-OB-i3G" secondAttribute="centerX" id="oeB-d5-w7H"/>
                             <constraint firstAttribute="trailing" secondItem="HxO-R2-jYh" secondAttribute="trailing" constant="7" id="r1u-Mb-yu2"/>
-                            <constraint firstItem="XsK-N9-g8v" firstAttribute="top" secondItem="EfH-lL-bT5" secondAttribute="bottom" id="w3Q-qQ-Y3w"/>
+                            <constraint firstAttribute="bottom" secondItem="LWm-QQ-h2r" secondAttribute="bottom" constant="208" id="ubw-s1-3Im"/>
                             <constraint firstItem="Qqh-sQ-Qqa" firstAttribute="leading" secondItem="JHo-OB-i3G" secondAttribute="leading" id="z7Y-FB-23L"/>
                         </constraints>
                     </view>
@@ -893,8 +877,8 @@ Firead 100 Bullets + 100 points</string>
                     <connections>
                         <outlet property="availablePointsLabel" destination="EfH-lL-bT5" id="MFJ-TZ-dff"/>
                         <outlet property="backButton" destination="Qqh-sQ-Qqa" id="rOv-R3-zF8"/>
+                        <outlet property="constraintBottomDemoPreviewImageView" destination="ubw-s1-3Im" id="HfS-gn-kWO"/>
                         <outlet property="constraintBottomMyTable" destination="67L-3d-paU" id="iC5-i4-LkV"/>
-                        <outlet property="constraintBottomViewForSKView" destination="1B6-g5-mN1" id="AsD-ca-NqT"/>
                         <outlet property="constraintHeightAvailablePoints" destination="UzY-dc-p6o" id="zsv-BE-JaW"/>
                         <outlet property="constraintHeightTitleLabel" destination="C4D-e4-8Ql" id="4H3-wE-3MC"/>
                         <outlet property="constraintLeadingMyTable" destination="VhC-FS-hnn" id="9wM-WW-Uce"/>
@@ -902,9 +886,9 @@ Firead 100 Bullets + 100 points</string>
                         <outlet property="constraintTopTitleLabel" destination="48d-u8-LtP" id="BfF-AG-NU4"/>
                         <outlet property="constraintTrailingBackButton" destination="DuZ-MM-e79" id="5wh-2a-HGE"/>
                         <outlet property="constraintTrailingMyTable" destination="r1u-Mb-yu2" id="ZcE-yO-Yv6"/>
+                        <outlet property="demoPreviewImageView" destination="LWm-QQ-h2r" id="Y6u-N7-fq5"/>
                         <outlet property="myTable" destination="HxO-R2-jYh" id="vcp-32-NLf"/>
                         <outlet property="upgradeTitleLabel" destination="Vk6-dJ-1Dg" id="Gk7-Im-zti"/>
-                        <outlet property="viewForSKView" destination="XsK-N9-g8v" id="mrc-vx-qTk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fg1-Rl-l78" sceneMemberID="firstResponder"/>
