@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "EnumTypes.h"
 #import "UpgradeScene.h"
+#import "FLAnimatedImage.h"
 
 @interface Upgrade : NSObject
 
@@ -22,6 +23,7 @@
 @property (nonatomic) float priceToUnlock;
 @property (nonatomic) UpgradeScene * demoScene;
 @property (nonatomic) UIImage * icon;
+@property (nonatomic) FLAnimatedImage * animatedImage;
 @property (nonatomic) BOOL isUnlocked;
 @property (nonatomic) NSString * priceString;
 @property (nonatomic) BOOL isValidForMoneyPurchase;

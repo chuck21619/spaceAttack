@@ -791,7 +791,7 @@ Firead 100 Bullets + 100 points</string>
                             <imageView userInteractionEnabled="NO" tag="10" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="InG-Qn-Tsn">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LWm-QQ-h2r">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LWm-QQ-h2r" customClass="FLAnimatedImageView">
                                 <rect key="frame" x="50" y="75" width="220" height="285"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="LWm-QQ-h2r" secondAttribute="height" multiplier="44:57" id="Ghv-ea-dpT"/>

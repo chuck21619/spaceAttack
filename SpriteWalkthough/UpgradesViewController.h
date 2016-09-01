@@ -10,6 +10,7 @@
 #import "Upgrade.h"
 #import "UpgradeCell.h"
 #import <UIKit/UIKit.h>
+#import "FLAnimatedImageView.h"
 @import StoreKit;
 
 
@@ -40,7 +41,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTrailingBackButton;
 - (IBAction)backAction:(id)sender;
 
-@property (weak, nonatomic) IBOutlet UIImageView *demoPreviewImageView;
+@property (weak, nonatomic) IBOutlet FLAnimatedImageView *demoPreviewImageView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintBottomDemoPreviewImageView;
 
 @end

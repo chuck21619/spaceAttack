@@ -15,7 +15,6 @@
 #import "MenuBackgroundScene.h"
 #import "UIView+Shake.h"
 
-
 @implementation UpgradesViewController
 {
     int _defaultConstraintTopMyTable;
@@ -104,6 +103,7 @@
 
 - (IBAction)backAction:(id)sender
 {
+#warning stop the shadow animation
     //remove app store validity
     [self removeAppStoreValidity];
     
@@ -433,7 +433,7 @@
 - (void) showDemoImageForUpgrade:(Upgrade *)upgrade
 {
     self.demoPreviewImageView.alpha = 0;
-    self.demoPreviewImageView.image = [UIImage imageNamed:@"share.png"];
+    self.demoPreviewImageView.animatedImage = upgrade.animatedImage;
     
     [UIView animateWithDuration:.3 animations:^
     {

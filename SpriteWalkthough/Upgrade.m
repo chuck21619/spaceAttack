@@ -23,6 +23,7 @@
                 self.title = NSLocalizedString(@"Two Weapons", nil);
                 self.upgradeDescription = NSLocalizedString(@"Your spaceships will be able to equip two different weapons!", nil);
                 self.icon = [UIImage imageNamed:@"Double Weapon.png"];
+                self.animatedImage = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"testGif.gif" ofType:nil]]]];
                 self.pointsToUnlock = 50000;
                 self.priceToUnlock = 2.99;
                 if ( [AccountManager numberOfWeaponSlotsUnlocked] >= 2)
@@ -136,7 +137,6 @@
         self.isMaximized = NO;
         self.isValidForMoneyPurchase = NO;
         self.upgradeType = upgradeType;
-        //self.demoScene = [[UpgradeScene alloc] initWithUpgradeType:upgradeType];
     }
     return self;
 }
