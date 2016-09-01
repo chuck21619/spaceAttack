@@ -74,6 +74,9 @@
 		9C6FFE7B1D74B748001AD117 /* Slider.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C6FFE791D74B748001AD117 /* Slider.png */; };
 		9C6FFE7E1D74CBFB001AD117 /* SliderMin.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C6FFE7C1D74CBFB001AD117 /* SliderMin.png */; };
 		9C6FFE8B1D74E3A0001AD117 /* SASlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6FFE8A1D74E3A0001AD117 /* SASlider.m */; };
+		9CA06B251D77A7F50074687B /* FLAnimatedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA06B221D77A7F50074687B /* FLAnimatedImage.m */; };
+		9CA06B261D77A7F50074687B /* FLAnimatedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA06B241D77A7F50074687B /* FLAnimatedImageView.m */; };
+		9CA06B291D77A94F0074687B /* testGif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9CA06B281D77A94F0074687B /* testGif.gif */; };
 		A30112721D5FC8BA00E133F2 /* MoonLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = A301126F1D5FC80300E133F2 /* MoonLight.otf */; };
 		A30112731D5FC8BA00E133F2 /* MoonBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A30112701D5FC80300E133F2 /* MoonBold.otf */; };
 		A30112771D5FDF1600E133F2 /* ShipSelectionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A30112761D5FDF1600E133F2 /* ShipSelectionButton.m */; };
@@ -397,11 +400,6 @@
 		A3E009BB1D72F86700C340AA /* UIView+Shake.m in Sources */ = {isa = PBXBuildFile; fileRef = A3E009BA1D72F86700C340AA /* UIView+Shake.m */; };
 		A3E009BD1D72FE3C00C340AA /* fourWeaponsUpgrade.png in Resources */ = {isa = PBXBuildFile; fileRef = A3E009BC1D72FE3C00C340AA /* fourWeaponsUpgrade.png */; };
 		A3E0F2F41D3B725700BB4508 /* laserUpgraded.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A3E0F2F21D3B725700BB4508 /* laserUpgraded.atlas */; };
-		A3E3E64F1D4DD5DD00EEF2C3 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = A3E3E64E1D4DD5DD00EEF2C3 /* share.png */; };
-		A3E3E6541D4DD80500EEF2C3 /* Tumblr-black.png in Resources */ = {isa = PBXBuildFile; fileRef = A3E3E6501D4DD80500EEF2C3 /* Tumblr-black.png */; };
-		A3E3E6551D4DD80500EEF2C3 /* Twitter-black.png in Resources */ = {isa = PBXBuildFile; fileRef = A3E3E6511D4DD80500EEF2C3 /* Twitter-black.png */; };
-		A3E3E6561D4DD80500EEF2C3 /* Facebook-black.png in Resources */ = {isa = PBXBuildFile; fileRef = A3E3E6521D4DD80500EEF2C3 /* Facebook-black.png */; };
-		A3E3E6571D4DD80500EEF2C3 /* Instagram-black.png in Resources */ = {isa = PBXBuildFile; fileRef = A3E3E6531D4DD80500EEF2C3 /* Instagram-black.png */; };
 		A3E3E65A1D4DFCB100EEF2C3 /* SAAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3E3E6591D4DFCB100EEF2C3 /* SAAlertView.m */; };
 		A3E783551C5EFE88006A6D7B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3E783541C5EFE88006A6D7B /* Launch Screen.storyboard */; };
 		A3E783571C5EFF91006A6D7B /* IMG_0728.PNG in Resources */ = {isa = PBXBuildFile; fileRef = A3E783561C5EFF91006A6D7B /* IMG_0728.PNG */; };
@@ -535,6 +533,11 @@
 		9C6FFE7C1D74CBFB001AD117 /* SliderMin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SliderMin.png; sourceTree = "<group>"; };
 		9C6FFE891D74E3A0001AD117 /* SASlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlider.h; sourceTree = "<group>"; };
 		9C6FFE8A1D74E3A0001AD117 /* SASlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlider.m; sourceTree = "<group>"; };
+		9CA06B211D77A7F50074687B /* FLAnimatedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnimatedImage.h; sourceTree = "<group>"; };
+		9CA06B221D77A7F50074687B /* FLAnimatedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnimatedImage.m; sourceTree = "<group>"; };
+		9CA06B231D77A7F50074687B /* FLAnimatedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnimatedImageView.h; sourceTree = "<group>"; };
+		9CA06B241D77A7F50074687B /* FLAnimatedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnimatedImageView.m; sourceTree = "<group>"; };
+		9CA06B281D77A94F0074687B /* testGif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = testGif.gif; sourceTree = "<group>"; };
 		A301126F1D5FC80300E133F2 /* MoonLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MoonLight.otf; sourceTree = "<group>"; };
 		A30112701D5FC80300E133F2 /* MoonBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MoonBold.otf; sourceTree = "<group>"; };
 		A30112751D5FDF1600E133F2 /* ShipSelectionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShipSelectionButton.h; sourceTree = "<group>"; };
@@ -965,11 +968,6 @@
 		A3E009BC1D72FE3C00C340AA /* fourWeaponsUpgrade.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fourWeaponsUpgrade.png; sourceTree = "<group>"; };
 		A3E0F2F21D3B725700BB4508 /* laserUpgraded.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = laserUpgraded.atlas; sourceTree = "<group>"; };
 		A3E3E6401D4DC50600EEF2C3 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
-		A3E3E64E1D4DD5DD00EEF2C3 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
-		A3E3E6501D4DD80500EEF2C3 /* Tumblr-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tumblr-black.png"; sourceTree = "<group>"; };
-		A3E3E6511D4DD80500EEF2C3 /* Twitter-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Twitter-black.png"; sourceTree = "<group>"; };
-		A3E3E6521D4DD80500EEF2C3 /* Facebook-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Facebook-black.png"; sourceTree = "<group>"; };
-		A3E3E6531D4DD80500EEF2C3 /* Instagram-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Instagram-black.png"; sourceTree = "<group>"; };
 		A3E3E6581D4DFCB100EEF2C3 /* SAAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAAlertView.h; sourceTree = "<group>"; };
 		A3E3E6591D4DFCB100EEF2C3 /* SAAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAAlertView.m; sourceTree = "<group>"; };
 		A3E783541C5EFE88006A6D7B /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -1105,14 +1103,10 @@
 				A3E783561C5EFF91006A6D7B /* IMG_0728.PNG */,
 				A35816BE1D3390E40028C019 /* homeButton.png */,
 				A35816C61D33A1520028C019 /* restartButton.png */,
-				9C6FFE771D74B740001AD117 /* settings */,
+				9CA06B271D77A8F30074687B /* menus */,
 				A3483FE61D691BBC00E9D1F9 /* powerUps */,
-				A30112781D5FE3AF00E133F2 /* ship select */,
-				A3E3E6451D4DD2E400EEF2C3 /* social media */,
-				A32030CA1D16944100B0F4BC /* main menu */,
 				A3483FD61D6914F100E9D1F9 /* asteroid.atlas */,
 				A3170E691CC46C640098C24E /* shield */,
-				A3328C101C702EE500E18FF4 /* upgrades */,
 				A39ABA331C4E1A7F00AF1455 /* tooltips */,
 				6E49CEED1A91E7B100FC48CC /* spaceships */,
 				138E37281988266E00E92828 /* backgrounds */,
@@ -1501,6 +1495,7 @@
 				A331D6251C72DC780054124F /* DGActivityIndicatorView */,
 				A3E783581C5F0B68006A6D7B /* Advertisements */,
 				A3C615C21C4CCE0F00566AF2 /* DQAlertView */,
+				9CA06B201D77A7CD0074687B /* FLAnimatedImage */,
 			);
 			name = "3rd Party";
 			sourceTree = "<group>";
@@ -1534,6 +1529,28 @@
 				9C6FFE8A1D74E3A0001AD117 /* SASlider.m */,
 			);
 			name = settings;
+			sourceTree = "<group>";
+		};
+		9CA06B201D77A7CD0074687B /* FLAnimatedImage */ = {
+			isa = PBXGroup;
+			children = (
+				9CA06B211D77A7F50074687B /* FLAnimatedImage.h */,
+				9CA06B221D77A7F50074687B /* FLAnimatedImage.m */,
+				9CA06B231D77A7F50074687B /* FLAnimatedImageView.h */,
+				9CA06B241D77A7F50074687B /* FLAnimatedImageView.m */,
+			);
+			name = FLAnimatedImage;
+			sourceTree = "<group>";
+		};
+		9CA06B271D77A8F30074687B /* menus */ = {
+			isa = PBXGroup;
+			children = (
+				9C6FFE771D74B740001AD117 /* settings */,
+				A30112781D5FE3AF00E133F2 /* ship select */,
+				A32030CA1D16944100B0F4BC /* main menu */,
+				A3328C101C702EE500E18FF4 /* upgrades */,
+			);
+			name = menus;
 			sourceTree = "<group>";
 		};
 		9CA0D0271D6FB891005E6FB7 /* shipSelect */ = {
@@ -1906,6 +1923,7 @@
 		A3328C101C702EE500E18FF4 /* upgrades */ = {
 			isa = PBXGroup;
 			children = (
+				9CA06B281D77A94F0074687B /* testGif.gif */,
 				A3E009BC1D72FE3C00C340AA /* fourWeaponsUpgrade.png */,
 				A3E009A71D72C5D800C340AA /* Check.png */,
 				A3E009A61D72C5D800C340AA /* Bullets.png */,
@@ -2254,18 +2272,6 @@
 			name = shake;
 			sourceTree = "<group>";
 		};
-		A3E3E6451D4DD2E400EEF2C3 /* social media */ = {
-			isa = PBXGroup;
-			children = (
-				A3E3E6501D4DD80500EEF2C3 /* Tumblr-black.png */,
-				A3E3E6511D4DD80500EEF2C3 /* Twitter-black.png */,
-				A3E3E6521D4DD80500EEF2C3 /* Facebook-black.png */,
-				A3E3E6531D4DD80500EEF2C3 /* Instagram-black.png */,
-				A3E3E64E1D4DD5DD00EEF2C3 /* share.png */,
-			);
-			name = "social media";
-			sourceTree = "<group>";
-		};
 		A3E783581C5F0B68006A6D7B /* Advertisements */ = {
 			isa = PBXGroup;
 			children = (
@@ -2493,7 +2499,6 @@
 				A31AD1341D0CAD5D000CF547 /* spaceBackground3.png in Resources */,
 				A32C06151D612786008DDC80 /* Hologram_Gradient_1-ColorDodge.png in Resources */,
 				A34840171D691CEF00E9D1F9 /* laser4.png in Resources */,
-				A3E3E6571D4DD80500EEF2C3 /* Instagram-black.png in Resources */,
 				A30112871D5FF6C100E133F2 /* armor.png in Resources */,
 				9C6FFE7E1D74CBFB001AD117 /* SliderMin.png in Resources */,
 				A31AD1721D0D5819000CF547 /* SpaceTrip.mp3 in Resources */,
@@ -2508,6 +2513,7 @@
 				133A041318E22B1F00053595 /* Images.xcassets in Resources */,
 				A39C5F2B1D29851700A68E2D /* photon3.wav in Resources */,
 				A35816C71D33A1520028C019 /* restartButton.png in Resources */,
+				9CA06B291D77A94F0074687B /* testGif.gif in Resources */,
 				A3483FEE1D691BCA00E9D1F9 /* Bullet_Powerup.png in Resources */,
 				A35B3B761D2A79CC006DB8C3 /* tooltip.wav in Resources */,
 				A3E009B61D72C5D800C340AA /* Shields.png in Resources */,
@@ -2561,7 +2567,6 @@
 				A3DB9EEF1D61B71F006A8AEB /* Abdul_Kadir_Menu.png in Resources */,
 				A32C06251D612786008DDC80 /* Verdant_2Planets.png in Resources */,
 				A32C061E1D612786008DDC80 /* Serebus_0Grain-ColorDodge.png in Resources */,
-				A3E3E6561D4DD80500EEF2C3 /* Facebook-black.png in Resources */,
 				A39246151D3C964600A8A040 /* planets1.png in Resources */,
 				A35B3B5A1D2A648B006DB8C3 /* enemyDamage1.wav in Resources */,
 				A39C5F571D29A95F00A68E2D /* electricity2.wav in Resources */,
@@ -2570,7 +2575,6 @@
 				A3CE27561C4B66B20082D2AC /* Clouds.sks in Resources */,
 				A3483FCF1D68F9FA00E9D1F9 /* spaceship.png in Resources */,
 				A392461D1D3C964D00A8A040 /* planets9.png in Resources */,
-				A3E3E6551D4DD80500EEF2C3 /* Twitter-black.png in Resources */,
 				A31AD1681D0D5801000CF547 /* SpaceCube.wav in Resources */,
 				A348401A1D691CEF00E9D1F9 /* laser7.png in Resources */,
 				A35B3B401D2A4F58006DB8C3 /* energyBoosterStart.wav in Resources */,
@@ -2578,7 +2582,6 @@
 				A39246201D3C964D00A8A040 /* planets12.png in Resources */,
 				A39C5F631D29D25800A68E2D /* spaceshipExplosion.sks in Resources */,
 				A32C06231D612786008DDC80 /* Twin_Suns_Gradient_1-PinLight.png in Resources */,
-				A3E3E64F1D4DD5DD00EEF2C3 /* share.png in Resources */,
 				A39ABA3D1C4E1D3200AF1455 /* tooltipArrowDownRight.png in Resources */,
 				A35B3B3D1D2A4824006DB8C3 /* shieldDestroy1.wav in Resources */,
 				A39C5F2C1D29851700A68E2D /* photon2.wav in Resources */,
@@ -2609,7 +2612,6 @@
 				A3E783551C5EFE88006A6D7B /* Launch Screen.storyboard in Resources */,
 				A39C5F491D29956800A68E2D /* bullet3.wav in Resources */,
 				A32C06241D612786008DDC80 /* Verdant_0Grain-ColorDodge.png in Resources */,
-				A3E3E6541D4DD80500EEF2C3 /* Tumblr-black.png in Resources */,
 				A375B59D1D2B59CE00CB9E52 /* ShieldParticle.sks in Resources */,
 				A31525D31C54496400DC3303 /* Exhaust.sks in Resources */,
 				A32C060D1D612786008DDC80 /* Broken_Gradient_1-Exclusion.png in Resources */,
@@ -2775,6 +2777,7 @@
 				A331D66E1C72DCB20054124F /* DGActivityIndicatorBallClipRotatePulseAnimation.m in Sources */,
 				6ED0AEF81A9149DA00493ED0 /* MenuBackgroundScene.m in Sources */,
 				A39CEF551D317D7E00C01870 /* OALAudioTrackNotifications.m in Sources */,
+				9CA06B261D77A7F50074687B /* FLAnimatedImageView.m in Sources */,
 				A3E009BB1D72F86700C340AA /* UIView+Shake.m in Sources */,
 				135BEDA3197456C900892311 /* EnemyFast.m in Sources */,
 				A331D6741C72DCB20054124F /* DGActivityIndicatorBallScaleAnimation.m in Sources */,
@@ -2796,6 +2799,7 @@
 				A39CEF651D317D7E00C01870 /* mach_timing.c in Sources */,
 				A3328C041C6FBCF800E18FF4 /* UpgradeView.m in Sources */,
 				13231175190B2300009CD772 /* Photon.m in Sources */,
+				9CA06B251D77A7F50074687B /* FLAnimatedImage.m in Sources */,
 				A3451F371C730F9D0080B81C /* CategoryBitMasks.m in Sources */,
 				13A50ECA1978502B0060E04B /* SpaceObjectsKit.m in Sources */,
 				A3F29ECB1D43DCD20080AA34 /* SpaceBackground.m in Sources */,
