@@ -186,7 +186,9 @@ static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
     
     newAsteroid.position = CGPointMake(xCoord, yCoord);
     [self.scene addChild:newAsteroid];
-    [newAsteroid.physicsBody applyTorque:skRand(-.02, .02)];
+    
+    float deviceSizeFactor = [[UIScreen mainScreen] bounds].size.width*0.0000125;
+    [newAsteroid.physicsBody applyTorque:skRand(-deviceSizeFactor, deviceSizeFactor)];
     
     //impulse
     CGFloat radianFactor = 0.0174532925;
@@ -194,7 +196,7 @@ static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
     CGFloat newRotationRadians = newRotationDegrees * radianFactor;
     CGFloat dx = speed * cos(newRotationRadians);
     CGFloat dy = speed * sin(newRotationRadians);
-    [newAsteroid.physicsBody applyImpulse:CGVectorMake(dx, dy)];
+    [newAsteroid.physicsBody applyImpulse:CGVectorMake(dx*newAsteroid.size.width*.01, dy*newAsteroid.size.width*.01)];
     
     return newAsteroid;
 }

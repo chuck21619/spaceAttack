@@ -21,27 +21,13 @@
         self.armor = 350;
         self.zPosition = -2;
         
-        self.size = CGSizeMake(texture.size.width/2, texture.size.height/2);
+        float resizeFactor = ([[UIScreen mainScreen] bounds].size.width/320.0)*.7;
         
-        //draw the physics body
-        CGFloat offsetX = self.frame.size.width * self.anchorPoint.x;
-        CGFloat offsetY = self.frame.size.height * self.anchorPoint.y;
-        CGMutablePathRef path = CGPathCreateMutable();
-//        CGPathMoveToPoint(path, NULL, 1 - offsetX, 13 - offsetY);
-//        CGPathAddLineToPoint(path, NULL, 21 - offsetX, 42 - offsetY);
-//        CGPathAddLineToPoint(path, NULL, 57 - offsetX, 42 - offsetY);
-//        CGPathAddLineToPoint(path, NULL, 79 - offsetX, 12 - offsetY);
-//        CGPathAddLineToPoint(path, NULL, 61 - offsetX, 0 - offsetY);
-//        CGPathAddLineToPoint(path, NULL, 19 - offsetX, 0 - offsetY);
-        CGPathMoveToPoint(path, NULL, 41 - offsetX, 3 - offsetY);
-        CGPathAddLineToPoint(path, NULL, 3 - offsetX, 71 - offsetY);
-        CGPathAddLineToPoint(path, NULL, 35 - offsetX, 108 - offsetY);
-        CGPathAddLineToPoint(path, NULL, 63 - offsetX, 108 - offsetY);
-        CGPathAddLineToPoint(path, NULL, 96 - offsetX, 71 - offsetY);
-        CGPathAddLineToPoint(path, NULL, 60 - offsetX, 3 - offsetY);
-        CGPathCloseSubpath(path);
-        self.physicsBody = [SKPhysicsBody bodyWithPolygonFromPath:path];
-        //[self attachDebugFrameFromPath:path];
+        self.size = CGSizeMake(texture.size.width*resizeFactor, texture.size.height*resizeFactor);
+    
+        float physicsBodyRadius = (self.size.width*.8)/2;
+        self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:physicsBodyRadius];
+        //[self attachDebugCircleWithSize:physicsBodyRadius*2];
         
         self.physicsBody.categoryBitMask = [CategoryBitMasks enemyCategory];
         self.physicsBody.collisionBitMask = 0;
@@ -56,11 +42,17 @@
     [super explode];
 }
 
+- (void)attachDebugCircleWithSize:(int)s
+{
+    CGPathRef bodyPath = CGPathCreateWithEllipseInRect(CGRectMake(-s/2, -s/2, s, s), nil);
+    [self attachDebugFrameFromPath:bodyPath];
+}
+
 - (void)attachDebugFrameFromPath:(CGPathRef)bodyPath {
     //if (kDebugDraw==NO) return;
     SKShapeNode *shape = [SKShapeNode node];
     shape.path = bodyPath;
-    shape.strokeColor = [SKColor colorWithRed:1 green:1 blue:1 alpha:1];
+    shape.strokeColor = [SKColor colorWithRed:1.0 green:1 blue:1 alpha:1];
     shape.lineWidth = 1.0;
     [self addChild:shape];
 }

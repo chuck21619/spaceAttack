@@ -20,20 +20,22 @@
         self.pointValue = 3;
         self.armor = 50;
         
-        self.size = CGSizeMake(texture.size.width/4, texture.size.height/4);
+        
+        float resizeFactor = ([[UIScreen mainScreen] bounds].size.width/320.0)*.25;
+        
+        self.size = CGSizeMake(texture.size.width*resizeFactor, texture.size.height*resizeFactor);
         
         //draw the physics body
         CGFloat offsetX = self.frame.size.width * self.anchorPoint.x;
         CGFloat offsetY = self.frame.size.height * self.anchorPoint.y;
         CGMutablePathRef path = CGPathCreateMutable();
-//        CGPathMoveToPoint(path, NULL, 8 - offsetX, 2 - offsetY);
-//        CGPathAddLineToPoint(path, NULL, 1 - offsetX, 13 - offsetY);
-//        CGPathAddLineToPoint(path, NULL, 16 - offsetX, 25 - offsetY);
-//        CGPathAddLineToPoint(path, NULL, 31 - offsetX, 14 - offsetY);
-//        CGPathAddLineToPoint(path, NULL, 24 - offsetX, 3 - offsetY);
-        CGPathMoveToPoint(path, NULL, 0 - offsetX, 2 - offsetY);
-        CGPathAddLineToPoint(path, NULL, 15 - offsetX, 25 - offsetY);
-        CGPathAddLineToPoint(path, NULL, 28 - offsetX, 4 - offsetY);
+        
+        CGPathMoveToPoint(path, NULL, (62*resizeFactor) - offsetX, (100*resizeFactor) - offsetY);
+        CGPathAddLineToPoint(path, NULL, (108*resizeFactor) - offsetX, (60*resizeFactor) - offsetY);
+        CGPathAddLineToPoint(path, NULL, (142*resizeFactor) - offsetX, (61*resizeFactor) - offsetY);
+        CGPathAddLineToPoint(path, NULL, (187*resizeFactor) - offsetX, (101*resizeFactor) - offsetY);
+        CGPathAddLineToPoint(path, NULL, (150*resizeFactor) - offsetX, (180*resizeFactor) - offsetY);
+        CGPathAddLineToPoint(path, NULL, (99*resizeFactor) - offsetX, (177*resizeFactor) - offsetY);
 
         CGPathCloseSubpath(path);
         self.physicsBody = [SKPhysicsBody bodyWithPolygonFromPath:path];
@@ -57,7 +59,7 @@
     SKShapeNode *shape = [SKShapeNode node];
     shape.path = bodyPath;
     shape.strokeColor = [SKColor colorWithRed:1 green:1 blue:1 alpha:1];
-    shape.lineWidth = 1.0;
+    shape.lineWidth = 2.0;
     [self addChild:shape];
 }
 

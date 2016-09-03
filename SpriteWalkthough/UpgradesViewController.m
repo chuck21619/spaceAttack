@@ -353,6 +353,7 @@
             
             if ( numberOfUnlockedUpgrades < 7 )
             {
+#warning stop the shadow animation
                 [cell shake];
                 return;
             }

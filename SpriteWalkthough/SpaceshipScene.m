@@ -138,23 +138,6 @@
             [self runAction:[SKAction repeatActionForever:makePowerUps] withKey:@"makePowerUps"];
     });
     
-#if !(TARGET_IPHONE_SIMULATOR) //simulator sucks at rendering clouds for some reason
-//    NSString * cloudsPath = [[NSBundle mainBundle] pathForResource:@"Clouds" ofType:@"sks"];
-//    SKEmitterNode * clouds = [NSKeyedUnarchiver unarchiveObjectWithFile:cloudsPath];
-//    clouds.name = @"cloudsEmitter";
-//    clouds.position = CGPointMake(self.size.width/2, self.size.height+300);
-//    [self addChild:clouds];
-//    
-//    SKEmitterNode * cloudsOnTop = [NSKeyedUnarchiver unarchiveObjectWithFile:cloudsPath];
-//    cloudsOnTop.zPosition = 100;
-//    cloudsOnTop.particleBirthRate = .5;
-//    cloudsOnTop.name = @"cloudsOnTopEmitter";
-//    cloudsOnTop.position = CGPointMake(self.size.width/2, self.size.height+300);
-//    [self addChild:cloudsOnTop];
-//    
-//    self.changeCloudDensityTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(changeCloudDensity) userInfo:nil repeats:YES];
-#endif
-    
     self.periodicAchievementUpdatingTimer = [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(submitAchievementProgress) userInfo:nil repeats:YES];
     
     NSString * starsPath = [[NSBundle mainBundle] pathForResource:@"Stars" ofType:@"sks"];
@@ -225,8 +208,12 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     tmpPowerUp.delegate = self;
     tmpPowerUp.position = CGPointMake(skRand(0, self.size.width), self.size.height+tmpPowerUp.size.height);
     [self addChild:tmpPowerUp];
-    [tmpPowerUp.physicsBody applyImpulse:CGVectorMake(skRand(-tmpPowerUp.size.width/30, tmpPowerUp.size.width/30), -(tmpPowerUp.size.width + tmpPowerUp.size.height)/4)];
-    [tmpPowerUp.physicsBody applyTorque:skRand(-.2, .2)];
+    float deviceSizeFactor = self.size.width*0.00008;
+    float deviceSizeFactor2 = self.size.width*0.00025;
+    float deviceSizeFactor3 = self.size.width*0.000055;
+    [tmpPowerUp.physicsBody applyImpulse:CGVectorMake(skRand(-tmpPowerUp.size.width*deviceSizeFactor, tmpPowerUp.size.width*deviceSizeFactor),
+                                                      -(tmpPowerUp.size.width + tmpPowerUp.size.height)*deviceSizeFactor2)];
+    [tmpPowerUp.physicsBody applyTorque:skRand(-deviceSizeFactor3, deviceSizeFactor3)];
 }
 
 - (void) updateScoreMultiplierLabel

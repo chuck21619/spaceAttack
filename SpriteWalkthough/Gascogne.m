@@ -17,13 +17,17 @@
     if ( self = [super init] )
     {
         self.menuImageName = @"Gascogne_Menu.png";
-        self.size = CGSizeMake(100, 64);
+        
         self.texture = [[[SpaceshipKit sharedInstance] shipTextures] objectForKey:NSStringFromClass([self class])];
+        float resizeFactor = ([[UIScreen mainScreen] bounds].size.width/320.0)*.15;
+        self.size = CGSizeMake(self.texture.size.width*resizeFactor, self.texture.size.height*resizeFactor);
         
         self.defaultDamage = 7;
         self.damage = self.defaultDamage;
         self.armor = 19;
         self.mySpeed = 18;
+        self.pointsToUnlock = 4500;
+        
         NSString * exhaustPath = [[NSBundle mainBundle] pathForResource:@"Exhaust" ofType:@"sks"];
         SKEmitterNode * exhaust1 = [NSKeyedUnarchiver unarchiveObjectWithFile:exhaustPath];
         exhaust1.name = @"exhaust";
@@ -41,17 +45,17 @@
         exhaust3.particleBirthRate = exhaust3.particleBirthRate*(self.mySpeed/4);
         [self addChild:exhaust3];
         
-        self.pointsToUnlock = 4500;
-        
         // draw the physics body
         CGFloat offsetX = self.frame.size.width * self.anchorPoint.x;
         CGFloat offsetY = self.frame.size.height * self.anchorPoint.y;
         CGMutablePathRef path = CGPathCreateMutable();
-        CGPathMoveToPoint(path, NULL, 1 - offsetX, 19 - offsetY);
-        CGPathAddLineToPoint(path, NULL, 45 - offsetX, 62 - offsetY);
-        CGPathAddLineToPoint(path, NULL, 56 - offsetX, 63 - offsetY);
-        CGPathAddLineToPoint(path, NULL, 99 - offsetX, 23 - offsetY);
-        CGPathAddLineToPoint(path, NULL, 49 - offsetX, 0 - offsetY);
+        
+        CGPathMoveToPoint(path, NULL, (73*resizeFactor) - offsetX, (110*resizeFactor) - offsetY);
+        CGPathAddLineToPoint(path, NULL, (99*resizeFactor) - offsetX, (486*resizeFactor) - offsetY);
+        CGPathAddLineToPoint(path, NULL, (419*resizeFactor) - offsetX, (488*resizeFactor) - offsetY);
+        CGPathAddLineToPoint(path, NULL, (441*resizeFactor) - offsetX, (105*resizeFactor) - offsetY);
+        CGPathAddLineToPoint(path, NULL, (256*resizeFactor) - offsetX, (27*resizeFactor) - offsetY);
+        
         CGPathCloseSubpath(path);
         self.physicsBody = [SKPhysicsBody bodyWithPolygonFromPath:path];
         //[self attachDebugFrameFromPath:path];
@@ -94,8 +98,9 @@
 - (void)attachDebugFrameFromPath:(CGPathRef)bodyPath {
     //if (kDebugDraw==NO) return;
     SKShapeNode *shape = [SKShapeNode node];
+    shape.zPosition = 100;
     shape.path = bodyPath;
-    shape.strokeColor = [SKColor colorWithRed:1.0 green:0 blue:0 alpha:0.5];
+    shape.strokeColor = [SKColor colorWithRed:0 green:0 blue:1 alpha:1];
     shape.lineWidth = 1.0;
     [self addChild:shape];
 }

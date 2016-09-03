@@ -17,7 +17,8 @@
 {
     if (self = [super init])
     {
-        self.size = CGSizeMake(150, 1000);
+        float resizeFactor = [[UIScreen mainScreen] bounds].size.width/320.0;
+        self.size = CGSizeMake(resizeFactor*150, resizeFactor*1000);
         self.name = @"electricity";
         self.timeSinceLastDamageDealt = -1;
         self.damageFrequency = damageFrequency;
