@@ -17,6 +17,8 @@
 {
     if (self = [super initWithTexture:texture])
     {
+        float resizeFactor = ([[UIScreen mainScreen] bounds].size.width/320.0)*1;
+        self.size = CGSizeMake(self.texture.size.width*resizeFactor, self.texture.size.height*resizeFactor);
         self.level = 1;
         self.zPosition = -1;
     }
