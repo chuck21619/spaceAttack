@@ -19,6 +19,8 @@
 @property NSArray * upgrades;
 @property Upgrade * activeUpgrade;
 
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+
 @property (weak, nonatomic) IBOutlet UITableView *myTable;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTopMyTable;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintLeadingMyTable;

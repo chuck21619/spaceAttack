@@ -46,7 +46,4 @@
 - (void) setNumberOfWeaponSlots:(int)numberOfWeaponSlots;
 - (void) increaseExhaustSpeed;
 
-@property (nonatomic) NSString * menuImageName; //used for the select ship scrollview. there is no way to get the image from an skspritenode
-                                                                           //^ might want to double check this ^
-
 @end

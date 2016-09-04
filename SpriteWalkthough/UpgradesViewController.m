@@ -168,6 +168,7 @@
     self.upgradeTitleLabel.alpha = alpha;
     self.backButton.alpha = alpha;
     self.availablePointsLabel.alpha = alpha;
+    self.backgroundImageView.alpha = alpha;
 }
 
 - (void) animateAvailablePoints:(NSNumber *)pointsToSubtractNumber
@@ -254,15 +255,15 @@
 {
     self.constraintTopMyTable.constant = constraintConstant;
     [UIView animateWithDuration:.35 animations:^
-     {
-         [self.view layoutIfNeeded];
-         [self setMainScreenViewsAlpha:alpha];
-     }
-                     completion:^(BOOL finished)
-     {
-         if ( completion )
-             completion();
-     }];
+    {
+        [self.view layoutIfNeeded];
+        [self setMainScreenViewsAlpha:alpha];
+    }
+    completion:^(BOOL finished)
+    {
+        if ( completion )
+            completion();
+    }];
     
     [self.myTable beginUpdates];
     [self.myTable endUpdates];

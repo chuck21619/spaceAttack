@@ -55,21 +55,6 @@
     self.bannerView.rootViewController = self;
     self.bannerAdRequest = nil;
     
-    //set gameplay icon to last selected ship
-//    if ( [AccountManager enoughGamePointsToUnlockAShip] )
-//        [self.selectShipButton.imageView setTintColor:[UIColor colorWithRed:.2 green:.8 blue:.2 alpha:1]];
-//    else
-//        [self.selectShipButton.imageView setTintColor:[UIColor whiteColor]];
-//    [self.selectShipButton.imageView setContentMode:UIViewContentModeScaleAspectFit];
-//    [self.selectShipButton setImage:[[UIImage imageNamed:[[AccountManager lastSelectedShip] menuImageName]] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-//    
-//    if ( [AccountManager enoughGamePointsToUnlockAnUpgrade] )
-//        [self.upgradesButton.imageView setTintColor:[UIColor colorWithRed:.2 green:.8 blue:.2 alpha:1]];
-//    else
-//        [self.upgradesButton.imageView setTintColor:[UIColor whiteColor]];
-//    [self.upgradesButton.imageView setContentMode:UIViewContentModeScaleAspectFit];
-//    [self.upgradesButton setImage:[[[self.upgradesButton imageView] image] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-    
     self.restartButton.layer.borderColor = [UIColor whiteColor].CGColor;
     self.restartButton.layer.borderWidth = 2;
     self.restartButton.layer.cornerRadius = self.restartButton.frame.size.height/3;
@@ -155,7 +140,7 @@
 - (void) calibrate
 {
     NSMutableArray * textures = [NSMutableArray new];
-    [textures addObjectsFromArray:[[SpaceshipKit sharedInstance] texturesForPreloading]];
+    [textures addObjectsFromArray:[[SpaceshipKit sharedInstance] texturesForPreloading:self.spaceshipForScene]];
     [textures addObjectsFromArray:[[EnemyKit sharedInstanceWithScene:nil] texturesForPreloading]];
     [textures addObjectsFromArray:[[SpaceObjectsKit sharedInstanceWithScene:nil] texturesForPreloading]];
     [textures addObjectsFromArray:[[PlayerWeaponsKit sharedInstance] texturesForPreloading]];

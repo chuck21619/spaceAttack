@@ -152,6 +152,7 @@
                     [self removeWeakestWeaponThatIsNotThisType:powerUp];
                 
                 [self equipWeapon:powerUp];
+                [self adjustTextureForEquippedWeapons];
             }
         }
     }
@@ -324,6 +325,76 @@
     {
         [weakestWeapon removeFromParent];
     }];
+}
+
+- (void) adjustTextureForEquippedWeapons
+{
+    BOOL machineGun = NO;
+    BOOL photonCannon = NO;
+    BOOL electricalGenerator = NO;
+    BOOL laserCannon = NO;
+    
+    for ( NSString * weaponSlotkey in self.equippedWeapons.allKeys )
+    {
+        PlayerWeapon * tmpWeapon = [self.equippedWeapons valueForKey:weaponSlotkey];
+        
+        switch ( tmpWeapon.weaponType )
+        {
+            case kPowerUpTypeMachineGun:
+                machineGun = YES;
+                break;
+                
+            case kPowerUpTypePhotonCannon:
+                photonCannon = YES;
+                break;
+                
+            case kPowerUpTypeElectricalGenerator:
+                electricalGenerator = YES;
+                break;
+                
+            case kPowerUpTypeLaserCannon:
+                laserCannon = YES;
+                break;
+                
+            default:
+                break;
+        }
+    }
+    
+    NSString * newTextureKey;
+    if ( machineGun )
+    {
+        if ( photonCannon )
+            newTextureKey = @"BulPho";
+        else if ( electricalGenerator )
+            newTextureKey = @"BulEle";
+        else if ( laserCannon )
+            newTextureKey = @"BulLaz";
+        else
+            newTextureKey = @"Bul";
+    }
+    else if ( photonCannon )
+    {
+        if ( electricalGenerator )
+            newTextureKey = @"PhoEle";
+        else if ( laserCannon )
+            newTextureKey = @"PhoLaz";
+        else
+            newTextureKey = @"Pho";
+    }
+    else if ( electricalGenerator )
+    {
+        if ( laserCannon )
+            newTextureKey = @"LazEle";
+        else
+            newTextureKey = @"Ele";
+    }
+    else if ( laserCannon )
+    {
+        newTextureKey = @"Laz";
+    }
+    
+    self.texture = [[[[SpaceshipKit sharedInstance] shipTextures] objectForKey:NSStringFromClass([self class])] objectForKey:newTextureKey];
 }
 
 #pragma mark - debug

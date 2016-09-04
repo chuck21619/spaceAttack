@@ -44,7 +44,7 @@
     {
         waitDuration = 4.0;
         waitRange = 2.0;
-        self.electricityDamageFrequency = .15;
+        self.electricityDamageFrequency = .12;
     }
     else if ( self.level == 2 )
     {
@@ -56,13 +56,13 @@
     {
         waitDuration = 2.0;
         waitRange = 1.0;
-        self.electricityDamageFrequency = .1;
+        self.electricityDamageFrequency = .12;
     }
     else //if ( self.level == 4 )
     {
         waitDuration = 1.0;
         waitRange = .5;
-        self.electricityDamageFrequency = .08;
+        self.electricityDamageFrequency = .12;
     }
     
     SKAction * performSelector = [SKAction performSelector:@selector(fire) onTarget:self];

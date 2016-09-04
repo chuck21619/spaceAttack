@@ -206,12 +206,12 @@
 		A3328C0F1C6FEA6E00E18FF4 /* UpgradeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A3328C0E1C6FEA6E00E18FF4 /* UpgradeScene.m */; };
 		A3451F371C730F9D0080B81C /* CategoryBitMasks.m in Sources */ = {isa = PBXBuildFile; fileRef = A3451E171C730F980080B81C /* CategoryBitMasks.m */; };
 		A3483FC11D68F13200E9D1F9 /* menuBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FC01D68F13200E9D1F9 /* menuBackground.png */; };
-		A3483FC81D68F98000E9D1F9 /* Habsburg_Menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FC21D68F98000E9D1F9 /* Habsburg_Menu.png */; };
-		A3483FC91D68F98000E9D1F9 /* Gascogne_Menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FC31D68F98000E9D1F9 /* Gascogne_Menu.png */; };
-		A3483FCA1D68F98000E9D1F9 /* Edinburgh_Menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FC41D68F98000E9D1F9 /* Edinburgh_Menu.png */; };
-		A3483FCB1D68F98000E9D1F9 /* Dandolo_Menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FC51D68F98000E9D1F9 /* Dandolo_Menu.png */; };
-		A3483FCC1D68F98000E9D1F9 /* Caiman_Menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FC61D68F98000E9D1F9 /* Caiman_Menu.png */; };
-		A3483FCD1D68F98000E9D1F9 /* Babenberg_Menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FC71D68F98000E9D1F9 /* Babenberg_Menu.png */; };
+		A3483FC81D68F98000E9D1F9 /* Habsburg.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FC21D68F98000E9D1F9 /* Habsburg.png */; };
+		A3483FC91D68F98000E9D1F9 /* Gascogne.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FC31D68F98000E9D1F9 /* Gascogne.png */; };
+		A3483FCA1D68F98000E9D1F9 /* Edinburgh.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FC41D68F98000E9D1F9 /* Edinburgh.png */; };
+		A3483FCB1D68F98000E9D1F9 /* Dandolo.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FC51D68F98000E9D1F9 /* Dandolo.png */; };
+		A3483FCC1D68F98000E9D1F9 /* Caiman.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FC61D68F98000E9D1F9 /* Caiman.png */; };
+		A3483FCD1D68F98000E9D1F9 /* Babenberg.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FC71D68F98000E9D1F9 /* Babenberg.png */; };
 		A3483FCF1D68F9FA00E9D1F9 /* spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FCE1D68F9FA00E9D1F9 /* spaceship.png */; };
 		A3483FD11D68FA4400E9D1F9 /* customBadgeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FD01D68FA4400E9D1F9 /* customBadgeIcon.png */; };
 		A3483FD51D6900BE00E9D1F9 /* menuPlanet.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FD41D6900BE00E9D1F9 /* menuPlanet.png */; };
@@ -353,6 +353,86 @@
 		A3B17F7B1D73C1030047BDCA /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B17F791D73C1030047BDCA /* Fabric.framework */; };
 		A3B17F7C1D73C1030047BDCA /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B17F7A1D73C1030047BDCA /* Crashlytics.framework */; };
 		A3B7F2421D6C012100DB27FA /* UpgradeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B7F2411D6C012100DB27FA /* UpgradeCell.m */; };
+		A3B7FE2D1D7C7DC300DD6528 /* Abdul_KadirPhoLaz.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE231D7C7DC300DD6528 /* Abdul_KadirPhoLaz.png */; };
+		A3B7FE2E1D7C7DC300DD6528 /* Abdul_KadirPhoEle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE241D7C7DC300DD6528 /* Abdul_KadirPhoEle.png */; };
+		A3B7FE2F1D7C7DC300DD6528 /* Abdul_KadirPho.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE251D7C7DC300DD6528 /* Abdul_KadirPho.png */; };
+		A3B7FE301D7C7DC300DD6528 /* Abdul_KadirEle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE261D7C7DC300DD6528 /* Abdul_KadirEle.png */; };
+		A3B7FE311D7C7DC300DD6528 /* Abdul_KadirLazEle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE271D7C7DC300DD6528 /* Abdul_KadirLazEle.png */; };
+		A3B7FE321D7C7DC300DD6528 /* Abdul_KadirLaz.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE281D7C7DC300DD6528 /* Abdul_KadirLaz.png */; };
+		A3B7FE331D7C7DC300DD6528 /* Abdul_KadirBulPho.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE291D7C7DC300DD6528 /* Abdul_KadirBulPho.png */; };
+		A3B7FE341D7C7DC300DD6528 /* Abdul_KadirBulLaz.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE2A1D7C7DC300DD6528 /* Abdul_KadirBulLaz.png */; };
+		A3B7FE351D7C7DC300DD6528 /* Abdul_KadirBulEle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE2B1D7C7DC300DD6528 /* Abdul_KadirBulEle.png */; };
+		A3B7FE361D7C7DC300DD6528 /* Abdul_KadirBul.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE2C1D7C7DC300DD6528 /* Abdul_KadirBul.png */; };
+		A3B7FE481D7C808F00DD6528 /* FlandrePhoLaz.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE3E1D7C808F00DD6528 /* FlandrePhoLaz.png */; };
+		A3B7FE491D7C808F00DD6528 /* FlandrePhoEle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE3F1D7C808F00DD6528 /* FlandrePhoEle.png */; };
+		A3B7FE4A1D7C808F00DD6528 /* FlandrePho.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE401D7C808F00DD6528 /* FlandrePho.png */; };
+		A3B7FE4B1D7C808F00DD6528 /* FlandreEle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE411D7C808F00DD6528 /* FlandreEle.png */; };
+		A3B7FE4C1D7C808F00DD6528 /* FlandreLazEle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE421D7C808F00DD6528 /* FlandreLazEle.png */; };
+		A3B7FE4D1D7C808F00DD6528 /* FlandreLaz.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE431D7C808F00DD6528 /* FlandreLaz.png */; };
+		A3B7FE4E1D7C808F00DD6528 /* FlandreBulPho.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE441D7C808F00DD6528 /* FlandreBulPho.png */; };
+		A3B7FE4F1D7C808F00DD6528 /* FlandreBulLaz.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE451D7C808F00DD6528 /* FlandreBulLaz.png */; };
+		A3B7FE501D7C808F00DD6528 /* FlandreBulEle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE461D7C808F00DD6528 /* FlandreBulEle.png */; };
+		A3B7FE511D7C808F00DD6528 /* FlandreBul.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE471D7C808F00DD6528 /* FlandreBul.png */; };
+		A3B7FE5C1D7C81F700DD6528 /* BabenbergPhoLaz.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE521D7C81F700DD6528 /* BabenbergPhoLaz.png */; };
+		A3B7FE5D1D7C81F700DD6528 /* BabenbergPhoEle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE531D7C81F700DD6528 /* BabenbergPhoEle.png */; };
+		A3B7FE5E1D7C81F700DD6528 /* BabenbergPho.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE541D7C81F700DD6528 /* BabenbergPho.png */; };
+		A3B7FE5F1D7C81F700DD6528 /* BabenbergEle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE551D7C81F700DD6528 /* BabenbergEle.png */; };
+		A3B7FE601D7C81F700DD6528 /* BabenbergLazEle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE561D7C81F700DD6528 /* BabenbergLazEle.png */; };
+		A3B7FE611D7C81F700DD6528 /* BabenbergLaz.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE571D7C81F700DD6528 /* BabenbergLaz.png */; };
+		A3B7FE621D7C81F700DD6528 /* BabenbergBulPho.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE581D7C81F700DD6528 /* BabenbergBulPho.png */; };
+		A3B7FE631D7C81F700DD6528 /* BabenbergBulLaz.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE591D7C81F700DD6528 /* BabenbergBulLaz.png */; };
+		A3B7FE641D7C81F700DD6528 /* BabenbergBulEle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE5A1D7C81F700DD6528 /* BabenbergBulEle.png */; };
+		A3B7FE651D7C81F700DD6528 /* BabenbergBul.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE5B1D7C81F700DD6528 /* BabenbergBul.png */; };
+		A3B7FE701D7C824200DD6528 /* CaimanPhoLaz.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE661D7C824200DD6528 /* CaimanPhoLaz.png */; };
+		A3B7FE711D7C824200DD6528 /* CaimanPhoEle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE671D7C824200DD6528 /* CaimanPhoEle.png */; };
+		A3B7FE721D7C824200DD6528 /* CaimanPho.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE681D7C824200DD6528 /* CaimanPho.png */; };
+		A3B7FE731D7C824200DD6528 /* CaimanEle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE691D7C824200DD6528 /* CaimanEle.png */; };
+		A3B7FE741D7C824200DD6528 /* CaimanLazEle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE6A1D7C824200DD6528 /* CaimanLazEle.png */; };
+		A3B7FE751D7C824200DD6528 /* CaimanLaz.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE6B1D7C824200DD6528 /* CaimanLaz.png */; };
+		A3B7FE761D7C824200DD6528 /* CaimanBulPho.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE6C1D7C824200DD6528 /* CaimanBulPho.png */; };
+		A3B7FE771D7C824200DD6528 /* CaimanBulLaz.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE6D1D7C824200DD6528 /* CaimanBulLaz.png */; };
+		A3B7FE781D7C824200DD6528 /* CaimanBulEle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE6E1D7C824200DD6528 /* CaimanBulEle.png */; };
+		A3B7FE791D7C824200DD6528 /* CaimanBul.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE6F1D7C824200DD6528 /* CaimanBul.png */; };
+		A3B7FE841D7C827C00DD6528 /* DandoloEle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE7A1D7C827C00DD6528 /* DandoloEle.png */; };
+		A3B7FE851D7C827C00DD6528 /* DandoloPhoLaz.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE7B1D7C827C00DD6528 /* DandoloPhoLaz.png */; };
+		A3B7FE861D7C827C00DD6528 /* DandoloPhoEle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE7C1D7C827C00DD6528 /* DandoloPhoEle.png */; };
+		A3B7FE871D7C827C00DD6528 /* DandoloPho.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE7D1D7C827C00DD6528 /* DandoloPho.png */; };
+		A3B7FE881D7C827C00DD6528 /* DandoloLazEle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE7E1D7C827C00DD6528 /* DandoloLazEle.png */; };
+		A3B7FE891D7C827C00DD6528 /* DandoloLaz.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE7F1D7C827C00DD6528 /* DandoloLaz.png */; };
+		A3B7FE8A1D7C827C00DD6528 /* DandoloBulPho.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE801D7C827C00DD6528 /* DandoloBulPho.png */; };
+		A3B7FE8B1D7C827C00DD6528 /* DandoloBulLaz.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE811D7C827C00DD6528 /* DandoloBulLaz.png */; };
+		A3B7FE8C1D7C827C00DD6528 /* DandoloBulEle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE821D7C827C00DD6528 /* DandoloBulEle.png */; };
+		A3B7FE8D1D7C827C00DD6528 /* DandoloBul.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE831D7C827C00DD6528 /* DandoloBul.png */; };
+		A3B7FE981D7C82C700DD6528 /* EdinburghPhoLaz.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE8E1D7C82C700DD6528 /* EdinburghPhoLaz.png */; };
+		A3B7FE991D7C82C700DD6528 /* EdinburghPhoEle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE8F1D7C82C700DD6528 /* EdinburghPhoEle.png */; };
+		A3B7FE9A1D7C82C700DD6528 /* EdinburghPho.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE901D7C82C700DD6528 /* EdinburghPho.png */; };
+		A3B7FE9B1D7C82C700DD6528 /* EdinburghEle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE911D7C82C700DD6528 /* EdinburghEle.png */; };
+		A3B7FE9C1D7C82C700DD6528 /* EdinburghLazEle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE921D7C82C700DD6528 /* EdinburghLazEle.png */; };
+		A3B7FE9D1D7C82C700DD6528 /* EdinburghLaz.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE931D7C82C700DD6528 /* EdinburghLaz.png */; };
+		A3B7FE9E1D7C82C700DD6528 /* EdinburghBulPho.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE941D7C82C700DD6528 /* EdinburghBulPho.png */; };
+		A3B7FE9F1D7C82C700DD6528 /* EdinburghBulLaz.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE951D7C82C700DD6528 /* EdinburghBulLaz.png */; };
+		A3B7FEA01D7C82C700DD6528 /* EdinburghBulEle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE961D7C82C700DD6528 /* EdinburghBulEle.png */; };
+		A3B7FEA11D7C82C700DD6528 /* EdinburghBul.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE971D7C82C700DD6528 /* EdinburghBul.png */; };
+		A3B7FEAC1D7C831300DD6528 /* GascognePhoLaz.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FEA21D7C831300DD6528 /* GascognePhoLaz.png */; };
+		A3B7FEAD1D7C831300DD6528 /* GascognePhoEle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FEA31D7C831300DD6528 /* GascognePhoEle.png */; };
+		A3B7FEAE1D7C831300DD6528 /* GascognePho.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FEA41D7C831300DD6528 /* GascognePho.png */; };
+		A3B7FEAF1D7C831300DD6528 /* GascogneEle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FEA51D7C831300DD6528 /* GascogneEle.png */; };
+		A3B7FEB01D7C831300DD6528 /* GascogneLazEle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FEA61D7C831300DD6528 /* GascogneLazEle.png */; };
+		A3B7FEB11D7C831300DD6528 /* GascogneLaz.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FEA71D7C831300DD6528 /* GascogneLaz.png */; };
+		A3B7FEB21D7C831300DD6528 /* GascogneBulPho.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FEA81D7C831300DD6528 /* GascogneBulPho.png */; };
+		A3B7FEB31D7C831300DD6528 /* GascogneBulLaz.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FEA91D7C831300DD6528 /* GascogneBulLaz.png */; };
+		A3B7FEB41D7C831300DD6528 /* GascogneBulEle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FEAA1D7C831300DD6528 /* GascogneBulEle.png */; };
+		A3B7FEB51D7C831300DD6528 /* GascogneBul.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FEAB1D7C831300DD6528 /* GascogneBul.png */; };
+		A3B7FEC01D7C835500DD6528 /* HabsburgPhoLaz.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FEB61D7C835500DD6528 /* HabsburgPhoLaz.png */; };
+		A3B7FEC11D7C835500DD6528 /* HabsburgPhoEle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FEB71D7C835500DD6528 /* HabsburgPhoEle.png */; };
+		A3B7FEC21D7C835500DD6528 /* HabsburgPho.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FEB81D7C835500DD6528 /* HabsburgPho.png */; };
+		A3B7FEC31D7C835500DD6528 /* HabsburgEle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FEB91D7C835500DD6528 /* HabsburgEle.png */; };
+		A3B7FEC41D7C835500DD6528 /* HabsburgLazEle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FEBA1D7C835500DD6528 /* HabsburgLazEle.png */; };
+		A3B7FEC51D7C835500DD6528 /* HabsburgLaz.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FEBB1D7C835500DD6528 /* HabsburgLaz.png */; };
+		A3B7FEC61D7C835500DD6528 /* HabsburgBulPho.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FEBC1D7C835500DD6528 /* HabsburgBulPho.png */; };
+		A3B7FEC71D7C835500DD6528 /* HabsburgBulLaz.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FEBD1D7C835500DD6528 /* HabsburgBulLaz.png */; };
+		A3B7FEC81D7C835500DD6528 /* HabsburgBulEle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FEBE1D7C835500DD6528 /* HabsburgBulEle.png */; };
+		A3B7FEC91D7C835500DD6528 /* HabsburgBul.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FEBF1D7C835500DD6528 /* HabsburgBul.png */; };
 		A3C615C51C4CCE5000566AF2 /* DQAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C615C41C4CCE5000566AF2 /* DQAlertView.m */; };
 		A3C8279B1B76A93F007F7E64 /* pellet.png in Resources */ = {isa = PBXBuildFile; fileRef = A3C8279A1B76A93F007F7E64 /* pellet.png */; };
 		A3CE27561C4B66B20082D2AC /* Clouds.sks in Resources */ = {isa = PBXBuildFile; fileRef = A3CE27551C4B66B20082D2AC /* Clouds.sks */; };
@@ -367,8 +447,8 @@
 		A3D2C9CB1B79940200687F98 /* PowerUp.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D2C9CA1B79940200687F98 /* PowerUp.m */; };
 		A3D2C9CF1B7994E100687F98 /* EnumTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D2C9CE1B7994E100687F98 /* EnumTypes.m */; };
 		A3DB9EED1D618E61006A8AEB /* GlowingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A3DB9EEC1D618E61006A8AEB /* GlowingButton.m */; };
-		A3DB9EEF1D61B71F006A8AEB /* Abdul_Kadir_Menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A3DB9EEE1D61B71F006A8AEB /* Abdul_Kadir_Menu.png */; };
-		A3DB9EF11D61B74F006A8AEB /* Flandre_Menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A3DB9EF01D61B74F006A8AEB /* Flandre_Menu.png */; };
+		A3DB9EEF1D61B71F006A8AEB /* Abdul_Kadir.png in Resources */ = {isa = PBXBuildFile; fileRef = A3DB9EEE1D61B71F006A8AEB /* Abdul_Kadir.png */; };
+		A3DB9EF11D61B74F006A8AEB /* Flandre.png in Resources */ = {isa = PBXBuildFile; fileRef = A3DB9EF01D61B74F006A8AEB /* Flandre.png */; };
 		A3DD77A01D7B682400A1D2D1 /* enemyBasic.png in Resources */ = {isa = PBXBuildFile; fileRef = A3DD779F1D7B682400A1D2D1 /* enemyBasic.png */; };
 		A3DD77A21D7B6F6100A1D2D1 /* enemyFast.png in Resources */ = {isa = PBXBuildFile; fileRef = A3DD77A11D7B6F6100A1D2D1 /* enemyFast.png */; };
 		A3DD77A61D7B756E00A1D2D1 /* enemyBig.png in Resources */ = {isa = PBXBuildFile; fileRef = A3DD77A51D7B756E00A1D2D1 /* enemyBig.png */; };
@@ -739,12 +819,12 @@
 		A3451E161C730F980080B81C /* CategoryBitMasks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryBitMasks.h; sourceTree = "<group>"; };
 		A3451E171C730F980080B81C /* CategoryBitMasks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryBitMasks.m; sourceTree = "<group>"; };
 		A3483FC01D68F13200E9D1F9 /* menuBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuBackground.png; sourceTree = "<group>"; };
-		A3483FC21D68F98000E9D1F9 /* Habsburg_Menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Habsburg_Menu.png; sourceTree = "<group>"; };
-		A3483FC31D68F98000E9D1F9 /* Gascogne_Menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gascogne_Menu.png; sourceTree = "<group>"; };
-		A3483FC41D68F98000E9D1F9 /* Edinburgh_Menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Edinburgh_Menu.png; sourceTree = "<group>"; };
-		A3483FC51D68F98000E9D1F9 /* Dandolo_Menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Dandolo_Menu.png; sourceTree = "<group>"; };
-		A3483FC61D68F98000E9D1F9 /* Caiman_Menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Caiman_Menu.png; sourceTree = "<group>"; };
-		A3483FC71D68F98000E9D1F9 /* Babenberg_Menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Babenberg_Menu.png; sourceTree = "<group>"; };
+		A3483FC21D68F98000E9D1F9 /* Habsburg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Habsburg.png; sourceTree = "<group>"; };
+		A3483FC31D68F98000E9D1F9 /* Gascogne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gascogne.png; sourceTree = "<group>"; };
+		A3483FC41D68F98000E9D1F9 /* Edinburgh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Edinburgh.png; sourceTree = "<group>"; };
+		A3483FC51D68F98000E9D1F9 /* Dandolo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Dandolo.png; sourceTree = "<group>"; };
+		A3483FC61D68F98000E9D1F9 /* Caiman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Caiman.png; sourceTree = "<group>"; };
+		A3483FC71D68F98000E9D1F9 /* Babenberg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Babenberg.png; sourceTree = "<group>"; };
 		A3483FCE1D68F9FA00E9D1F9 /* spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spaceship.png; sourceTree = "<group>"; };
 		A3483FD01D68FA4400E9D1F9 /* customBadgeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = customBadgeIcon.png; sourceTree = "<group>"; };
 		A3483FD41D6900BE00E9D1F9 /* menuPlanet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuPlanet.png; sourceTree = "<group>"; };
@@ -935,6 +1015,86 @@
 		A3B4008E1D44514800E0AFDF /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A3B7F2401D6C012100DB27FA /* UpgradeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpgradeCell.h; sourceTree = "<group>"; };
 		A3B7F2411D6C012100DB27FA /* UpgradeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpgradeCell.m; sourceTree = "<group>"; };
+		A3B7FE231D7C7DC300DD6528 /* Abdul_KadirPhoLaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Abdul_KadirPhoLaz.png; sourceTree = "<group>"; };
+		A3B7FE241D7C7DC300DD6528 /* Abdul_KadirPhoEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Abdul_KadirPhoEle.png; sourceTree = "<group>"; };
+		A3B7FE251D7C7DC300DD6528 /* Abdul_KadirPho.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Abdul_KadirPho.png; sourceTree = "<group>"; };
+		A3B7FE261D7C7DC300DD6528 /* Abdul_KadirEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Abdul_KadirEle.png; sourceTree = "<group>"; };
+		A3B7FE271D7C7DC300DD6528 /* Abdul_KadirLazEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Abdul_KadirLazEle.png; sourceTree = "<group>"; };
+		A3B7FE281D7C7DC300DD6528 /* Abdul_KadirLaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Abdul_KadirLaz.png; sourceTree = "<group>"; };
+		A3B7FE291D7C7DC300DD6528 /* Abdul_KadirBulPho.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Abdul_KadirBulPho.png; sourceTree = "<group>"; };
+		A3B7FE2A1D7C7DC300DD6528 /* Abdul_KadirBulLaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Abdul_KadirBulLaz.png; sourceTree = "<group>"; };
+		A3B7FE2B1D7C7DC300DD6528 /* Abdul_KadirBulEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Abdul_KadirBulEle.png; sourceTree = "<group>"; };
+		A3B7FE2C1D7C7DC300DD6528 /* Abdul_KadirBul.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Abdul_KadirBul.png; sourceTree = "<group>"; };
+		A3B7FE3E1D7C808F00DD6528 /* FlandrePhoLaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlandrePhoLaz.png; sourceTree = "<group>"; };
+		A3B7FE3F1D7C808F00DD6528 /* FlandrePhoEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlandrePhoEle.png; sourceTree = "<group>"; };
+		A3B7FE401D7C808F00DD6528 /* FlandrePho.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlandrePho.png; sourceTree = "<group>"; };
+		A3B7FE411D7C808F00DD6528 /* FlandreEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlandreEle.png; sourceTree = "<group>"; };
+		A3B7FE421D7C808F00DD6528 /* FlandreLazEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlandreLazEle.png; sourceTree = "<group>"; };
+		A3B7FE431D7C808F00DD6528 /* FlandreLaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlandreLaz.png; sourceTree = "<group>"; };
+		A3B7FE441D7C808F00DD6528 /* FlandreBulPho.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlandreBulPho.png; sourceTree = "<group>"; };
+		A3B7FE451D7C808F00DD6528 /* FlandreBulLaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlandreBulLaz.png; sourceTree = "<group>"; };
+		A3B7FE461D7C808F00DD6528 /* FlandreBulEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlandreBulEle.png; sourceTree = "<group>"; };
+		A3B7FE471D7C808F00DD6528 /* FlandreBul.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlandreBul.png; sourceTree = "<group>"; };
+		A3B7FE521D7C81F700DD6528 /* BabenbergPhoLaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BabenbergPhoLaz.png; sourceTree = "<group>"; };
+		A3B7FE531D7C81F700DD6528 /* BabenbergPhoEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BabenbergPhoEle.png; sourceTree = "<group>"; };
+		A3B7FE541D7C81F700DD6528 /* BabenbergPho.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BabenbergPho.png; sourceTree = "<group>"; };
+		A3B7FE551D7C81F700DD6528 /* BabenbergEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BabenbergEle.png; sourceTree = "<group>"; };
+		A3B7FE561D7C81F700DD6528 /* BabenbergLazEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BabenbergLazEle.png; sourceTree = "<group>"; };
+		A3B7FE571D7C81F700DD6528 /* BabenbergLaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BabenbergLaz.png; sourceTree = "<group>"; };
+		A3B7FE581D7C81F700DD6528 /* BabenbergBulPho.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BabenbergBulPho.png; sourceTree = "<group>"; };
+		A3B7FE591D7C81F700DD6528 /* BabenbergBulLaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BabenbergBulLaz.png; sourceTree = "<group>"; };
+		A3B7FE5A1D7C81F700DD6528 /* BabenbergBulEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BabenbergBulEle.png; sourceTree = "<group>"; };
+		A3B7FE5B1D7C81F700DD6528 /* BabenbergBul.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BabenbergBul.png; sourceTree = "<group>"; };
+		A3B7FE661D7C824200DD6528 /* CaimanPhoLaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaimanPhoLaz.png; sourceTree = "<group>"; };
+		A3B7FE671D7C824200DD6528 /* CaimanPhoEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaimanPhoEle.png; sourceTree = "<group>"; };
+		A3B7FE681D7C824200DD6528 /* CaimanPho.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaimanPho.png; sourceTree = "<group>"; };
+		A3B7FE691D7C824200DD6528 /* CaimanEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaimanEle.png; sourceTree = "<group>"; };
+		A3B7FE6A1D7C824200DD6528 /* CaimanLazEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaimanLazEle.png; sourceTree = "<group>"; };
+		A3B7FE6B1D7C824200DD6528 /* CaimanLaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaimanLaz.png; sourceTree = "<group>"; };
+		A3B7FE6C1D7C824200DD6528 /* CaimanBulPho.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaimanBulPho.png; sourceTree = "<group>"; };
+		A3B7FE6D1D7C824200DD6528 /* CaimanBulLaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaimanBulLaz.png; sourceTree = "<group>"; };
+		A3B7FE6E1D7C824200DD6528 /* CaimanBulEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaimanBulEle.png; sourceTree = "<group>"; };
+		A3B7FE6F1D7C824200DD6528 /* CaimanBul.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaimanBul.png; sourceTree = "<group>"; };
+		A3B7FE7A1D7C827C00DD6528 /* DandoloEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DandoloEle.png; sourceTree = "<group>"; };
+		A3B7FE7B1D7C827C00DD6528 /* DandoloPhoLaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DandoloPhoLaz.png; sourceTree = "<group>"; };
+		A3B7FE7C1D7C827C00DD6528 /* DandoloPhoEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DandoloPhoEle.png; sourceTree = "<group>"; };
+		A3B7FE7D1D7C827C00DD6528 /* DandoloPho.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DandoloPho.png; sourceTree = "<group>"; };
+		A3B7FE7E1D7C827C00DD6528 /* DandoloLazEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DandoloLazEle.png; sourceTree = "<group>"; };
+		A3B7FE7F1D7C827C00DD6528 /* DandoloLaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DandoloLaz.png; sourceTree = "<group>"; };
+		A3B7FE801D7C827C00DD6528 /* DandoloBulPho.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DandoloBulPho.png; sourceTree = "<group>"; };
+		A3B7FE811D7C827C00DD6528 /* DandoloBulLaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DandoloBulLaz.png; sourceTree = "<group>"; };
+		A3B7FE821D7C827C00DD6528 /* DandoloBulEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DandoloBulEle.png; sourceTree = "<group>"; };
+		A3B7FE831D7C827C00DD6528 /* DandoloBul.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DandoloBul.png; sourceTree = "<group>"; };
+		A3B7FE8E1D7C82C700DD6528 /* EdinburghPhoLaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EdinburghPhoLaz.png; sourceTree = "<group>"; };
+		A3B7FE8F1D7C82C700DD6528 /* EdinburghPhoEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EdinburghPhoEle.png; sourceTree = "<group>"; };
+		A3B7FE901D7C82C700DD6528 /* EdinburghPho.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EdinburghPho.png; sourceTree = "<group>"; };
+		A3B7FE911D7C82C700DD6528 /* EdinburghEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EdinburghEle.png; sourceTree = "<group>"; };
+		A3B7FE921D7C82C700DD6528 /* EdinburghLazEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EdinburghLazEle.png; sourceTree = "<group>"; };
+		A3B7FE931D7C82C700DD6528 /* EdinburghLaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EdinburghLaz.png; sourceTree = "<group>"; };
+		A3B7FE941D7C82C700DD6528 /* EdinburghBulPho.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EdinburghBulPho.png; sourceTree = "<group>"; };
+		A3B7FE951D7C82C700DD6528 /* EdinburghBulLaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EdinburghBulLaz.png; sourceTree = "<group>"; };
+		A3B7FE961D7C82C700DD6528 /* EdinburghBulEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EdinburghBulEle.png; sourceTree = "<group>"; };
+		A3B7FE971D7C82C700DD6528 /* EdinburghBul.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EdinburghBul.png; sourceTree = "<group>"; };
+		A3B7FEA21D7C831300DD6528 /* GascognePhoLaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GascognePhoLaz.png; sourceTree = "<group>"; };
+		A3B7FEA31D7C831300DD6528 /* GascognePhoEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GascognePhoEle.png; sourceTree = "<group>"; };
+		A3B7FEA41D7C831300DD6528 /* GascognePho.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GascognePho.png; sourceTree = "<group>"; };
+		A3B7FEA51D7C831300DD6528 /* GascogneEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GascogneEle.png; sourceTree = "<group>"; };
+		A3B7FEA61D7C831300DD6528 /* GascogneLazEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GascogneLazEle.png; sourceTree = "<group>"; };
+		A3B7FEA71D7C831300DD6528 /* GascogneLaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GascogneLaz.png; sourceTree = "<group>"; };
+		A3B7FEA81D7C831300DD6528 /* GascogneBulPho.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GascogneBulPho.png; sourceTree = "<group>"; };
+		A3B7FEA91D7C831300DD6528 /* GascogneBulLaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GascogneBulLaz.png; sourceTree = "<group>"; };
+		A3B7FEAA1D7C831300DD6528 /* GascogneBulEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GascogneBulEle.png; sourceTree = "<group>"; };
+		A3B7FEAB1D7C831300DD6528 /* GascogneBul.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GascogneBul.png; sourceTree = "<group>"; };
+		A3B7FEB61D7C835500DD6528 /* HabsburgPhoLaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HabsburgPhoLaz.png; sourceTree = "<group>"; };
+		A3B7FEB71D7C835500DD6528 /* HabsburgPhoEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HabsburgPhoEle.png; sourceTree = "<group>"; };
+		A3B7FEB81D7C835500DD6528 /* HabsburgPho.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HabsburgPho.png; sourceTree = "<group>"; };
+		A3B7FEB91D7C835500DD6528 /* HabsburgEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HabsburgEle.png; sourceTree = "<group>"; };
+		A3B7FEBA1D7C835500DD6528 /* HabsburgLazEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HabsburgLazEle.png; sourceTree = "<group>"; };
+		A3B7FEBB1D7C835500DD6528 /* HabsburgLaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HabsburgLaz.png; sourceTree = "<group>"; };
+		A3B7FEBC1D7C835500DD6528 /* HabsburgBulPho.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HabsburgBulPho.png; sourceTree = "<group>"; };
+		A3B7FEBD1D7C835500DD6528 /* HabsburgBulLaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HabsburgBulLaz.png; sourceTree = "<group>"; };
+		A3B7FEBE1D7C835500DD6528 /* HabsburgBulEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HabsburgBulEle.png; sourceTree = "<group>"; };
+		A3B7FEBF1D7C835500DD6528 /* HabsburgBul.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HabsburgBul.png; sourceTree = "<group>"; };
 		A3C615C31C4CCE5000566AF2 /* DQAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQAlertView.h; sourceTree = "<group>"; };
 		A3C615C41C4CCE5000566AF2 /* DQAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQAlertView.m; sourceTree = "<group>"; };
 		A3C8279A1B76A93F007F7E64 /* pellet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pellet.png; sourceTree = "<group>"; };
@@ -954,8 +1114,8 @@
 		A3D7F94F1C5DDCCE007E0BE6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A3DB9EEB1D618E61006A8AEB /* GlowingButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlowingButton.h; sourceTree = "<group>"; };
 		A3DB9EEC1D618E61006A8AEB /* GlowingButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlowingButton.m; sourceTree = "<group>"; };
-		A3DB9EEE1D61B71F006A8AEB /* Abdul_Kadir_Menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Abdul_Kadir_Menu.png; sourceTree = "<group>"; };
-		A3DB9EF01D61B74F006A8AEB /* Flandre_Menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flandre_Menu.png; sourceTree = "<group>"; };
+		A3DB9EEE1D61B71F006A8AEB /* Abdul_Kadir.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Abdul_Kadir.png; sourceTree = "<group>"; };
+		A3DB9EF01D61B74F006A8AEB /* Flandre.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flandre.png; sourceTree = "<group>"; };
 		A3DD779F1D7B682400A1D2D1 /* enemyBasic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemyBasic.png; sourceTree = "<group>"; };
 		A3DD77A11D7B6F6100A1D2D1 /* enemyFast.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemyFast.png; sourceTree = "<group>"; };
 		A3DD77A51D7B756E00A1D2D1 /* enemyBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemyBig.png; sourceTree = "<group>"; };
@@ -1518,14 +1678,14 @@
 			isa = PBXGroup;
 			children = (
 				A3483FCE1D68F9FA00E9D1F9 /* spaceship.png */,
-				A3DB9EF01D61B74F006A8AEB /* Flandre_Menu.png */,
-				A3DB9EEE1D61B71F006A8AEB /* Abdul_Kadir_Menu.png */,
-				A3483FC21D68F98000E9D1F9 /* Habsburg_Menu.png */,
-				A3483FC31D68F98000E9D1F9 /* Gascogne_Menu.png */,
-				A3483FC41D68F98000E9D1F9 /* Edinburgh_Menu.png */,
-				A3483FC51D68F98000E9D1F9 /* Dandolo_Menu.png */,
-				A3483FC61D68F98000E9D1F9 /* Caiman_Menu.png */,
-				A3483FC71D68F98000E9D1F9 /* Babenberg_Menu.png */,
+				A3B7FE0E1D7C7C4900DD6528 /* A */,
+				A3B7FE381D7C7FDD00DD6528 /* B */,
+				A3B7FE391D7C7FE200DD6528 /* C */,
+				A3B7FE3A1D7C7FE600DD6528 /* D */,
+				A3B7FE3B1D7C7FEB00DD6528 /* E */,
+				A3B7FE371D7C7FD800DD6528 /* F */,
+				A3B7FE3C1D7C7FF000DD6528 /* G */,
+				A3B7FE3D1D7C7FF400DD6528 /* H */,
 			);
 			name = spaceships;
 			sourceTree = "<group>";
@@ -2275,6 +2435,150 @@
 			path = Support;
 			sourceTree = "<group>";
 		};
+		A3B7FE0E1D7C7C4900DD6528 /* A */ = {
+			isa = PBXGroup;
+			children = (
+				A3DB9EEE1D61B71F006A8AEB /* Abdul_Kadir.png */,
+				A3B7FE231D7C7DC300DD6528 /* Abdul_KadirPhoLaz.png */,
+				A3B7FE241D7C7DC300DD6528 /* Abdul_KadirPhoEle.png */,
+				A3B7FE251D7C7DC300DD6528 /* Abdul_KadirPho.png */,
+				A3B7FE261D7C7DC300DD6528 /* Abdul_KadirEle.png */,
+				A3B7FE271D7C7DC300DD6528 /* Abdul_KadirLazEle.png */,
+				A3B7FE281D7C7DC300DD6528 /* Abdul_KadirLaz.png */,
+				A3B7FE291D7C7DC300DD6528 /* Abdul_KadirBulPho.png */,
+				A3B7FE2A1D7C7DC300DD6528 /* Abdul_KadirBulLaz.png */,
+				A3B7FE2B1D7C7DC300DD6528 /* Abdul_KadirBulEle.png */,
+				A3B7FE2C1D7C7DC300DD6528 /* Abdul_KadirBul.png */,
+			);
+			name = A;
+			sourceTree = "<group>";
+		};
+		A3B7FE371D7C7FD800DD6528 /* F */ = {
+			isa = PBXGroup;
+			children = (
+				A3DB9EF01D61B74F006A8AEB /* Flandre.png */,
+				A3B7FE3E1D7C808F00DD6528 /* FlandrePhoLaz.png */,
+				A3B7FE3F1D7C808F00DD6528 /* FlandrePhoEle.png */,
+				A3B7FE401D7C808F00DD6528 /* FlandrePho.png */,
+				A3B7FE411D7C808F00DD6528 /* FlandreEle.png */,
+				A3B7FE421D7C808F00DD6528 /* FlandreLazEle.png */,
+				A3B7FE431D7C808F00DD6528 /* FlandreLaz.png */,
+				A3B7FE441D7C808F00DD6528 /* FlandreBulPho.png */,
+				A3B7FE451D7C808F00DD6528 /* FlandreBulLaz.png */,
+				A3B7FE461D7C808F00DD6528 /* FlandreBulEle.png */,
+				A3B7FE471D7C808F00DD6528 /* FlandreBul.png */,
+			);
+			name = F;
+			sourceTree = "<group>";
+		};
+		A3B7FE381D7C7FDD00DD6528 /* B */ = {
+			isa = PBXGroup;
+			children = (
+				A3483FC71D68F98000E9D1F9 /* Babenberg.png */,
+				A3B7FE521D7C81F700DD6528 /* BabenbergPhoLaz.png */,
+				A3B7FE531D7C81F700DD6528 /* BabenbergPhoEle.png */,
+				A3B7FE541D7C81F700DD6528 /* BabenbergPho.png */,
+				A3B7FE551D7C81F700DD6528 /* BabenbergEle.png */,
+				A3B7FE561D7C81F700DD6528 /* BabenbergLazEle.png */,
+				A3B7FE571D7C81F700DD6528 /* BabenbergLaz.png */,
+				A3B7FE581D7C81F700DD6528 /* BabenbergBulPho.png */,
+				A3B7FE591D7C81F700DD6528 /* BabenbergBulLaz.png */,
+				A3B7FE5A1D7C81F700DD6528 /* BabenbergBulEle.png */,
+				A3B7FE5B1D7C81F700DD6528 /* BabenbergBul.png */,
+			);
+			name = B;
+			sourceTree = "<group>";
+		};
+		A3B7FE391D7C7FE200DD6528 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				A3483FC61D68F98000E9D1F9 /* Caiman.png */,
+				A3B7FE661D7C824200DD6528 /* CaimanPhoLaz.png */,
+				A3B7FE671D7C824200DD6528 /* CaimanPhoEle.png */,
+				A3B7FE681D7C824200DD6528 /* CaimanPho.png */,
+				A3B7FE691D7C824200DD6528 /* CaimanEle.png */,
+				A3B7FE6A1D7C824200DD6528 /* CaimanLazEle.png */,
+				A3B7FE6B1D7C824200DD6528 /* CaimanLaz.png */,
+				A3B7FE6C1D7C824200DD6528 /* CaimanBulPho.png */,
+				A3B7FE6D1D7C824200DD6528 /* CaimanBulLaz.png */,
+				A3B7FE6E1D7C824200DD6528 /* CaimanBulEle.png */,
+				A3B7FE6F1D7C824200DD6528 /* CaimanBul.png */,
+			);
+			name = C;
+			sourceTree = "<group>";
+		};
+		A3B7FE3A1D7C7FE600DD6528 /* D */ = {
+			isa = PBXGroup;
+			children = (
+				A3483FC51D68F98000E9D1F9 /* Dandolo.png */,
+				A3B7FE7A1D7C827C00DD6528 /* DandoloEle.png */,
+				A3B7FE7B1D7C827C00DD6528 /* DandoloPhoLaz.png */,
+				A3B7FE7C1D7C827C00DD6528 /* DandoloPhoEle.png */,
+				A3B7FE7D1D7C827C00DD6528 /* DandoloPho.png */,
+				A3B7FE7E1D7C827C00DD6528 /* DandoloLazEle.png */,
+				A3B7FE7F1D7C827C00DD6528 /* DandoloLaz.png */,
+				A3B7FE801D7C827C00DD6528 /* DandoloBulPho.png */,
+				A3B7FE811D7C827C00DD6528 /* DandoloBulLaz.png */,
+				A3B7FE821D7C827C00DD6528 /* DandoloBulEle.png */,
+				A3B7FE831D7C827C00DD6528 /* DandoloBul.png */,
+			);
+			name = D;
+			sourceTree = "<group>";
+		};
+		A3B7FE3B1D7C7FEB00DD6528 /* E */ = {
+			isa = PBXGroup;
+			children = (
+				A3483FC41D68F98000E9D1F9 /* Edinburgh.png */,
+				A3B7FE8E1D7C82C700DD6528 /* EdinburghPhoLaz.png */,
+				A3B7FE8F1D7C82C700DD6528 /* EdinburghPhoEle.png */,
+				A3B7FE901D7C82C700DD6528 /* EdinburghPho.png */,
+				A3B7FE911D7C82C700DD6528 /* EdinburghEle.png */,
+				A3B7FE921D7C82C700DD6528 /* EdinburghLazEle.png */,
+				A3B7FE931D7C82C700DD6528 /* EdinburghLaz.png */,
+				A3B7FE941D7C82C700DD6528 /* EdinburghBulPho.png */,
+				A3B7FE951D7C82C700DD6528 /* EdinburghBulLaz.png */,
+				A3B7FE961D7C82C700DD6528 /* EdinburghBulEle.png */,
+				A3B7FE971D7C82C700DD6528 /* EdinburghBul.png */,
+			);
+			name = E;
+			sourceTree = "<group>";
+		};
+		A3B7FE3C1D7C7FF000DD6528 /* G */ = {
+			isa = PBXGroup;
+			children = (
+				A3483FC31D68F98000E9D1F9 /* Gascogne.png */,
+				A3B7FEA21D7C831300DD6528 /* GascognePhoLaz.png */,
+				A3B7FEA31D7C831300DD6528 /* GascognePhoEle.png */,
+				A3B7FEA41D7C831300DD6528 /* GascognePho.png */,
+				A3B7FEA51D7C831300DD6528 /* GascogneEle.png */,
+				A3B7FEA61D7C831300DD6528 /* GascogneLazEle.png */,
+				A3B7FEA71D7C831300DD6528 /* GascogneLaz.png */,
+				A3B7FEA81D7C831300DD6528 /* GascogneBulPho.png */,
+				A3B7FEA91D7C831300DD6528 /* GascogneBulLaz.png */,
+				A3B7FEAA1D7C831300DD6528 /* GascogneBulEle.png */,
+				A3B7FEAB1D7C831300DD6528 /* GascogneBul.png */,
+			);
+			name = G;
+			sourceTree = "<group>";
+		};
+		A3B7FE3D1D7C7FF400DD6528 /* H */ = {
+			isa = PBXGroup;
+			children = (
+				A3483FC21D68F98000E9D1F9 /* Habsburg.png */,
+				A3B7FEB61D7C835500DD6528 /* HabsburgPhoLaz.png */,
+				A3B7FEB71D7C835500DD6528 /* HabsburgPhoEle.png */,
+				A3B7FEB81D7C835500DD6528 /* HabsburgPho.png */,
+				A3B7FEB91D7C835500DD6528 /* HabsburgEle.png */,
+				A3B7FEBA1D7C835500DD6528 /* HabsburgLazEle.png */,
+				A3B7FEBB1D7C835500DD6528 /* HabsburgLaz.png */,
+				A3B7FEBC1D7C835500DD6528 /* HabsburgBulPho.png */,
+				A3B7FEBD1D7C835500DD6528 /* HabsburgBulLaz.png */,
+				A3B7FEBE1D7C835500DD6528 /* HabsburgBulEle.png */,
+				A3B7FEBF1D7C835500DD6528 /* HabsburgBul.png */,
+			);
+			name = H;
+			sourceTree = "<group>";
+		};
 		A3C615C21C4CCE0F00566AF2 /* DQAlertView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2488,27 +2792,38 @@
 				A30112721D5FC8BA00E133F2 /* MoonLight.otf in Resources */,
 				A30112731D5FC8BA00E133F2 /* MoonBold.otf in Resources */,
 				A35B3B571D2A648B006DB8C3 /* enemyDamage5.wav in Resources */,
+				A3B7FE9B1D7C82C700DD6528 /* EdinburghEle.png in Resources */,
 				A3E009B21D72C5D800C340AA /* Electricity.png in Resources */,
 				9C359FDD1D77822500107AF4 /* electricity4.png in Resources */,
+				A3B7FEB11D7C831300DD6528 /* GascogneLaz.png in Resources */,
 				A30112821D5FECC400E133F2 /* Node_off.png in Resources */,
 				A35B3B6C1D2A7051006DB8C3 /* shieldDamage4.wav in Resources */,
 				A3E009B31D72C5D800C340AA /* Energy.png in Resources */,
+				A3B7FE791D7C824200DD6528 /* CaimanBul.png in Resources */,
+				A3B7FE511D7C808F00DD6528 /* FlandreBul.png in Resources */,
 				A35B3B321D2A4298006DB8C3 /* asteroid5.wav in Resources */,
+				A3B7FE851D7C827C00DD6528 /* DandoloPhoLaz.png in Resources */,
 				9C359FDC1D77822500107AF4 /* electricity3.png in Resources */,
 				A31AD1741D0D5819000CF547 /* TimePortal.mp3 in Resources */,
 				A39ABA3B1C4E1A8E00AF1455 /* tooltipArrowUp.png in Resources */,
 				A31AD1751D0D5819000CF547 /* Mercury.mp3 in Resources */,
-				A3483FC81D68F98000E9D1F9 /* Habsburg_Menu.png in Resources */,
+				A3483FC81D68F98000E9D1F9 /* Habsburg.png in Resources */,
 				A39D0F991D3300D200D86AC8 /* machineGunLevel3.wav in Resources */,
 				A32C06191D612786008DDC80 /* Red_Gradient_2-HardLight.png in Resources */,
 				A3DD783C1D7BB2A100A1D2D1 /* laser 1.png in Resources */,
+				A3B7FE4E1D7C808F00DD6528 /* FlandreBulPho.png in Resources */,
 				A35B3B561D2A648B006DB8C3 /* enemyDamage3.wav in Resources */,
+				A3B7FEC61D7C835500DD6528 /* HabsburgBulPho.png in Resources */,
 				A32C061F1D612786008DDC80 /* Serebus_Gradient_1-Luminosity.png in Resources */,
 				A3DD785A1D7BB2A100A1D2D1 /* laser_upgrade 1@3x.png in Resources */,
-				A3483FCA1D68F98000E9D1F9 /* Edinburgh_Menu.png in Resources */,
+				A3483FCA1D68F98000E9D1F9 /* Edinburgh.png in Resources */,
 				A39C5F4A1D29956800A68E2D /* bullet1.wav in Resources */,
+				A3B7FEB21D7C831300DD6528 /* GascogneBulPho.png in Resources */,
+				A3B7FE481D7C808F00DD6528 /* FlandrePhoLaz.png in Resources */,
 				A31AD1321D0CAD5D000CF547 /* spaceBackground1.png in Resources */,
+				A3B7FE981D7C82C700DD6528 /* EdinburghPhoLaz.png in Resources */,
 				A3E009B71D72C5D800C340AA /* Smart Photon.png in Resources */,
+				A3B7FEC21D7C835500DD6528 /* HabsburgPho.png in Resources */,
 				A32C060B1D612786008DDC80 /* Broken.png in Resources */,
 				A3FE9ECB1D449F5B002290C5 /* InfoPlist.strings in Resources */,
 				A32C06171D612786008DDC80 /* Red_0Grain-ColorDodge.png in Resources */,
@@ -2520,6 +2835,7 @@
 				A3CE276B1C4B87F70082D2AC /* planets7.png in Resources */,
 				A35B3B6D1D2A7051006DB8C3 /* shieldDamage1.wav in Resources */,
 				A35B3B611D2A68F7006DB8C3 /* spaceshipDamage5.wav in Resources */,
+				A3B7FE2E1D7C7DC300DD6528 /* Abdul_KadirPhoEle.png in Resources */,
 				A35B3B3E1D2A4824006DB8C3 /* shieldDestroy2.wav in Resources */,
 				A32C062A1D612786008DDC80 /* Void_Gradient_2-Screen.png in Resources */,
 				A32030CC1D16945400B0F4BC /* gears.png in Resources */,
@@ -2532,6 +2848,8 @@
 				A3DD784E1D7BB2A100A1D2D1 /* laser_upgrade 2@2x.png in Resources */,
 				A39C5F331D2987A000A68E2D /* laser4.wav in Resources */,
 				A3DD78541D7BB2A100A1D2D1 /* laser_upgrade 8@2x.png in Resources */,
+				A3B7FEC71D7C835500DD6528 /* HabsburgBulLaz.png in Resources */,
+				A3B7FE331D7C7DC300DD6528 /* Abdul_KadirBulPho.png in Resources */,
 				A39C5F5D1D29C00800A68E2D /* basic.wav in Resources */,
 				A32C06261D612786008DDC80 /* Verdant_Gradient_3-ColorDodge.png in Resources */,
 				A31AD1371D0CBA70000CF547 /* spaceBackgroundFirst.png in Resources */,
@@ -2542,21 +2860,27 @@
 				A35B3B421D2A53E6006DB8C3 /* shieldEquip.wav in Resources */,
 				A32C06291D612786008DDC80 /* Void_Gradient_1-Subtract.png in Resources */,
 				A313A68D1D56633D006916EB /* photonExplosion.sks in Resources */,
+				A3B7FE9F1D7C82C700DD6528 /* EdinburghBulLaz.png in Resources */,
 				A3DD78521D7BB2A100A1D2D1 /* laser_upgrade 6@2x.png in Resources */,
 				A35B3B591D2A648B006DB8C3 /* enemyDamage2.wav in Resources */,
 				A35B3B4E1D2A5D1E006DB8C3 /* photonCannonEquip.wav in Resources */,
-				A3483FCD1D68F98000E9D1F9 /* Babenberg_Menu.png in Resources */,
+				A3B7FEC11D7C835500DD6528 /* HabsburgPhoEle.png in Resources */,
+				A3483FCD1D68F98000E9D1F9 /* Babenberg.png in Resources */,
 				A32C06071D612786008DDC80 /* Black Star.png in Resources */,
+				A3B7FE5D1D7C81F700DD6528 /* BabenbergPhoEle.png in Resources */,
 				A35816A41D334EEE0028C019 /* photonExplosion.wav in Resources */,
+				A3B7FE8A1D7C827C00DD6528 /* DandoloBulPho.png in Resources */,
 				A3DD77B01D7B871600A1D2D1 /* Boost_Powerup.png in Resources */,
+				A3B7FE881D7C827C00DD6528 /* DandoloLazEle.png in Resources */,
 				A392461C1D3C964D00A8A040 /* planets8.png in Resources */,
 				A39C5F5E1D29C00800A68E2D /* big.wav in Resources */,
 				9C359FE01D77822500107AF4 /* electricity7.png in Resources */,
 				A3DD78601D7BB2A100A1D2D1 /* laser_upgrade 7@3x.png in Resources */,
 				A35B3B621D2A68F7006DB8C3 /* spaceshipDamage4.wav in Resources */,
+				A3B7FE8D1D7C827C00DD6528 /* DandoloBul.png in Resources */,
 				A35B3B6A1D2A7051006DB8C3 /* shieldDamage2.wav in Resources */,
 				A32C06301D613DCC008DDC80 /* Colony_tall.png in Resources */,
-				A3483FCC1D68F98000E9D1F9 /* Caiman_Menu.png in Resources */,
+				A3483FCC1D68F98000E9D1F9 /* Caiman.png in Resources */,
 				A39ABA381C4E1A8E00AF1455 /* tooltipArrowDownLeft.png in Resources */,
 				A35816B01D3357CD0028C019 /* unlock.wav in Resources */,
 				A35B3B711D2A7512006DB8C3 /* increaseMultiplier.wav in Resources */,
@@ -2566,6 +2890,7 @@
 				A35816BC1D336EDF0028C019 /* machineGunLevel4Upgraded.wav in Resources */,
 				A3170E761CC484DB0098C24E /* shieldPowerUp.png in Resources */,
 				A3DD78491D7BB2A100A1D2D1 /* laser 1@2x.png in Resources */,
+				A3B7FE4D1D7C808F00DD6528 /* FlandreLaz.png in Resources */,
 				A39C5F541D29A95F00A68E2D /* electricity5.wav in Resources */,
 				A39C5F2A1D29851700A68E2D /* photon4.wav in Resources */,
 				A3DD785D1D7BB2A100A1D2D1 /* laser_upgrade 4@3x.png in Resources */,
@@ -2573,6 +2898,7 @@
 				A3D1FC031B7476C90018E247 /* Boss1.png in Resources */,
 				A39C5F581D29A95F00A68E2D /* electricity1.wav in Resources */,
 				A3DD78401D7BB2A100A1D2D1 /* laser_upgrade 1.png in Resources */,
+				A3B7FEC01D7C835500DD6528 /* HabsburgPhoLaz.png in Resources */,
 				A3170E741CC4806C0098C24E /* ShieldDestroy.sks in Resources */,
 				135BEDC61975B8B700892311 /* blastGun.png in Resources */,
 				A302A36E1CC74E040034C49F /* shield3.atlas in Resources */,
@@ -2585,6 +2911,8 @@
 				A32C060F1D612786008DDC80 /* Colony.png in Resources */,
 				13915102190EE050009751D5 /* bullet.png in Resources */,
 				A3E009B01D72C5D800C340AA /* Check.png in Resources */,
+				A3B7FEAF1D7C831300DD6528 /* GascogneEle.png in Resources */,
+				A3B7FE5C1D7C81F700DD6528 /* BabenbergPhoLaz.png in Resources */,
 				A3DD78531D7BB2A100A1D2D1 /* laser_upgrade 7@2x.png in Resources */,
 				A35B3B3C1D2A4824006DB8C3 /* shieldDestroy3.wav in Resources */,
 				A35816B21D3357CD0028C019 /* upgradeMaximize.wav in Resources */,
@@ -2595,12 +2923,15 @@
 				A31AD1341D0CAD5D000CF547 /* spaceBackground3.png in Resources */,
 				A32C06151D612786008DDC80 /* Hologram_Gradient_1-ColorDodge.png in Resources */,
 				9C359FE51D77822500107AF4 /* electricity2.png in Resources */,
+				A3B7FE501D7C808F00DD6528 /* FlandreBulEle.png in Resources */,
 				A30112871D5FF6C100E133F2 /* armor.png in Resources */,
 				9C6FFE7E1D74CBFB001AD117 /* SliderMin.png in Resources */,
+				A3B7FE4B1D7C808F00DD6528 /* FlandreEle.png in Resources */,
 				A31AD1721D0D5819000CF547 /* SpaceTrip.mp3 in Resources */,
 				A3DD77AF1D7B871600A1D2D1 /* Shield_Powerup.png in Resources */,
 				A3DD784B1D7BB2A100A1D2D1 /* laser 3@2x.png in Resources */,
 				9C359FE11D77822500107AF4 /* electricity8.png in Resources */,
+				A3B7FE4A1D7C808F00DD6528 /* FlandrePho.png in Resources */,
 				A39ABA391C4E1A8E00AF1455 /* tooltipArrowLeft.png in Resources */,
 				A32C060A1D612786008DDC80 /* BlackStar_Gradient_2-HardLight.png in Resources */,
 				A3E009B41D72C5D800C340AA /* Lasers.png in Resources */,
@@ -2614,38 +2945,50 @@
 				A35816C71D33A1520028C019 /* restartButton.png in Resources */,
 				9CA06B291D77A94F0074687B /* testGif.gif in Resources */,
 				A35B3B761D2A79CC006DB8C3 /* tooltip.wav in Resources */,
+				A3B7FE771D7C824200DD6528 /* CaimanBulLaz.png in Resources */,
 				A3E009B61D72C5D800C340AA /* Shields.png in Resources */,
 				A392461F1D3C964D00A8A040 /* planets11.png in Resources */,
+				A3B7FEAC1D7C831300DD6528 /* GascognePhoLaz.png in Resources */,
+				A3B7FE9D1D7C82C700DD6528 /* EdinburghLaz.png in Resources */,
 				A3483FE51D691B8B00E9D1F9 /* shield.png in Resources */,
 				A35816BF1D3390E40028C019 /* homeButton.png in Resources */,
+				A3B7FEB31D7C831300DD6528 /* GascogneBulLaz.png in Resources */,
 				A38732021D3B866B00FE1D00 /* Main.storyboard in Resources */,
 				A3EF688D1D035317003C9443 /* startingBackground.png in Resources */,
 				A35B3B331D2A4298006DB8C3 /* asteroid4.wav in Resources */,
 				A31AD1671D0D5801000CF547 /* StarMasterLoop.wav in Resources */,
-				A3DB9EF11D61B74F006A8AEB /* Flandre_Menu.png in Resources */,
+				A3DB9EF11D61B74F006A8AEB /* Flandre.png in Resources */,
 				A32C06161D612786008DDC80 /* Red.png in Resources */,
 				133FCD5519101B0500A8E49A /* laserCannon.png in Resources */,
 				A3DD785E1D7BB2A100A1D2D1 /* laser_upgrade 5@3x.png in Resources */,
 				A35B3B361D2A4298006DB8C3 /* asteroid1.wav in Resources */,
 				A3DD77A01D7B682400A1D2D1 /* enemyBasic.png in Resources */,
+				A3B7FEA01D7C82C700DD6528 /* EdinburghBulEle.png in Resources */,
 				A3E009BD1D72FE3C00C340AA /* fourWeaponsUpgrade.png in Resources */,
 				A32C06201D612786008DDC80 /* Twin Suns.png in Resources */,
 				A32C06081D612786008DDC80 /* BlackStar_0Grain-ColorDodge.png in Resources */,
+				A3B7FE301D7C7DC300DD6528 /* Abdul_KadirEle.png in Resources */,
 				A39ABA3A1C4E1A8E00AF1455 /* tooltipArrowRight.png in Resources */,
+				A3B7FE361D7C7DC300DD6528 /* Abdul_KadirBul.png in Resources */,
 				A392461E1D3C964D00A8A040 /* planets10.png in Resources */,
 				A32C060C1D612786008DDC80 /* Broken_0Grain-Overlay.png in Resources */,
+				A3B7FEC91D7C835500DD6528 /* HabsburgBul.png in Resources */,
 				A39C5F481D29956800A68E2D /* bullet4.wav in Resources */,
+				A3B7FE741D7C824200DD6528 /* CaimanLazEle.png in Resources */,
 				A35B3B4F1D2A5D1E006DB8C3 /* laserCannonEquip.wav in Resources */,
 				A35816B61D3357CD0028C019 /* upgrade.wav in Resources */,
 				A3DD77A61D7B756E00A1D2D1 /* enemyBig.png in Resources */,
 				A3CE27581C4B6AC10082D2AC /* cloudParticle.png in Resources */,
+				A3B7FE781D7C824200DD6528 /* CaimanBulEle.png in Resources */,
 				A35816B71D3357CD0028C019 /* engage.wav in Resources */,
+				A3B7FE2D1D7C7DC300DD6528 /* Abdul_KadirPhoLaz.png in Resources */,
 				A3DD78611D7BB2A100A1D2D1 /* laser_upgrade 8@3x.png in Resources */,
 				9C359FE31D77822500107AF4 /* electricity10.png in Resources */,
 				A3DD785F1D7BB2A100A1D2D1 /* laser_upgrade 6@3x.png in Resources */,
 				A32C06131D612786008DDC80 /* Hologram.png in Resources */,
 				1345CE8A18FD8CEE004ECA6C /* spark.png in Resources */,
 				A35816B51D3357CD0028C019 /* highScoreAchievements.wav in Resources */,
+				A3B7FE9C1D7C82C700DD6528 /* EdinburghLazEle.png in Resources */,
 				A3DD784F1D7BB2A100A1D2D1 /* laser_upgrade 3@2x.png in Resources */,
 				9C359FDF1D77822500107AF4 /* electricity6.png in Resources */,
 				A302A36C1CC74E040034C49F /* shield1.atlas in Resources */,
@@ -2654,7 +2997,9 @@
 				139150FA190ECCA7009751D5 /* machineGun.png in Resources */,
 				A32C061C1D612786008DDC80 /* Ring_Gradient_1-Difference.png in Resources */,
 				A3DD78411D7BB2A100A1D2D1 /* laser_upgrade 2.png in Resources */,
+				A3B7FE351D7C7DC300DD6528 /* Abdul_KadirBulEle.png in Resources */,
 				A3DD783F1D7BB2A100A1D2D1 /* laser 4.png in Resources */,
+				A3B7FE891D7C827C00DD6528 /* DandoloLaz.png in Resources */,
 				A35B3B641D2A68F7006DB8C3 /* spaceshipDamage2.wav in Resources */,
 				A39C5F361D2987A000A68E2D /* laser1.wav in Resources */,
 				A32C062B1D612786008DDC80 /* Void_Planet.png in Resources */,
@@ -2662,12 +3007,21 @@
 				A3DD77B31D7B871600A1D2D1 /* Photon_Powerup.png in Resources */,
 				9C359FE71D77822500107AF4 /* electricity11.png in Resources */,
 				9C6FFE7B1D74B748001AD117 /* Slider.png in Resources */,
+				A3B7FEC41D7C835500DD6528 /* HabsburgLazEle.png in Resources */,
+				A3B7FEB51D7C831300DD6528 /* GascogneBul.png in Resources */,
 				A3DD785C1D7BB2A100A1D2D1 /* laser_upgrade 3@3x.png in Resources */,
+				A3B7FE701D7C824200DD6528 /* CaimanPhoLaz.png in Resources */,
 				A3CE276E1C4B9D030082D2AC /* planets4.png in Resources */,
+				A3B7FE861D7C827C00DD6528 /* DandoloPhoEle.png in Resources */,
+				A3B7FE871D7C827C00DD6528 /* DandoloPho.png in Resources */,
 				A31AD1351D0CAD5D000CF547 /* spaceBackground4.png in Resources */,
+				A3B7FE9E1D7C82C700DD6528 /* EdinburghBulPho.png in Resources */,
+				A3B7FE9A1D7C82C700DD6528 /* EdinburghPho.png in Resources */,
 				13EDFF3F190994CA0077B7D2 /* CrumbleParticle.sks in Resources */,
-				A3DB9EEF1D61B71F006A8AEB /* Abdul_Kadir_Menu.png in Resources */,
+				A3B7FE8B1D7C827C00DD6528 /* DandoloBulLaz.png in Resources */,
+				A3DB9EEF1D61B71F006A8AEB /* Abdul_Kadir.png in Resources */,
 				A32C06251D612786008DDC80 /* Verdant_2Planets.png in Resources */,
+				A3B7FE751D7C824200DD6528 /* CaimanLaz.png in Resources */,
 				A32C061E1D612786008DDC80 /* Serebus_0Grain-ColorDodge.png in Resources */,
 				9C359FE41D77822500107AF4 /* electricity12.png in Resources */,
 				A39246151D3C964600A8A040 /* planets1.png in Resources */,
@@ -2675,37 +3029,53 @@
 				A39C5F571D29A95F00A68E2D /* electricity2.wav in Resources */,
 				A39C5F611D29CA9500A68E2D /* spaceshipExplosion.wav in Resources */,
 				130169361909AB1A00DDC896 /* photon.png in Resources */,
+				A3B7FEC31D7C835500DD6528 /* HabsburgEle.png in Resources */,
 				A3DD784D1D7BB2A100A1D2D1 /* laser_upgrade 1@2x.png in Resources */,
 				A3CE27561C4B66B20082D2AC /* Clouds.sks in Resources */,
 				A3483FCF1D68F9FA00E9D1F9 /* spaceship.png in Resources */,
 				A392461D1D3C964D00A8A040 /* planets9.png in Resources */,
 				A31AD1681D0D5801000CF547 /* SpaceCube.wav in Resources */,
+				A3B7FE651D7C81F700DD6528 /* BabenbergBul.png in Resources */,
+				A3B7FE721D7C824200DD6528 /* CaimanPho.png in Resources */,
 				A35B3B401D2A4F58006DB8C3 /* energyBoosterStart.wav in Resources */,
+				A3B7FE711D7C824200DD6528 /* CaimanPhoEle.png in Resources */,
+				A3B7FEC51D7C835500DD6528 /* HabsburgLaz.png in Resources */,
 				A32C06281D612786008DDC80 /* Void_0Grain-ColorDodge.png in Resources */,
 				A39246201D3C964D00A8A040 /* planets12.png in Resources */,
 				A39C5F631D29D25800A68E2D /* spaceshipExplosion.sks in Resources */,
+				A3B7FE4C1D7C808F00DD6528 /* FlandreLazEle.png in Resources */,
 				A32C06231D612786008DDC80 /* Twin_Suns_Gradient_1-PinLight.png in Resources */,
 				A3DD78421D7BB2A100A1D2D1 /* laser_upgrade 3.png in Resources */,
 				A3DD78571D7BB2A100A1D2D1 /* laser 2@3x.png in Resources */,
 				A39ABA3D1C4E1D3200AF1455 /* tooltipArrowDownRight.png in Resources */,
 				A35B3B3D1D2A4824006DB8C3 /* shieldDestroy1.wav in Resources */,
 				A3DD77B21D7B871600A1D2D1 /* Electricity_Powerup.png in Resources */,
+				A3B7FE731D7C824200DD6528 /* CaimanEle.png in Resources */,
 				A39C5F2C1D29851700A68E2D /* photon2.wav in Resources */,
 				A35816B11D3357CD0028C019 /* settings.wav in Resources */,
 				A3DD785B1D7BB2A100A1D2D1 /* laser_upgrade 2@3x.png in Resources */,
+				A3B7FE611D7C81F700DD6528 /* BabenbergLaz.png in Resources */,
+				A3B7FE5E1D7C81F700DD6528 /* BabenbergPho.png in Resources */,
+				A3B7FE311D7C7DC300DD6528 /* Abdul_KadirLazEle.png in Resources */,
 				A35B3B341D2A4298006DB8C3 /* asteroid3.wav in Resources */,
 				A30112831D5FECC400E133F2 /* Node_on.png in Resources */,
 				A39C5F351D2987A000A68E2D /* laser2.wav in Resources */,
+				A3B7FE2F1D7C7DC300DD6528 /* Abdul_KadirPho.png in Resources */,
 				A31AD1761D0D5819000CF547 /* Kalliope.mp3 in Resources */,
 				A3DD78591D7BB2A100A1D2D1 /* laser 4@3x.png in Resources */,
 				9C359FE61D77822500107AF4 /* electricity1.png in Resources */,
+				A3B7FE5F1D7C81F700DD6528 /* BabenbergEle.png in Resources */,
+				A3B7FE601D7C81F700DD6528 /* BabenbergLazEle.png in Resources */,
 				A35B3B581D2A648B006DB8C3 /* enemyDamage4.wav in Resources */,
-				A3483FCB1D68F98000E9D1F9 /* Dandolo_Menu.png in Resources */,
+				A3483FCB1D68F98000E9D1F9 /* Dandolo.png in Resources */,
+				A3B7FEAD1D7C831300DD6528 /* GascognePhoEle.png in Resources */,
 				A3C8279B1B76A93F007F7E64 /* pellet.png in Resources */,
 				A30112881D5FF6C100E133F2 /* damage.png in Resources */,
+				A3B7FE991D7C82C700DD6528 /* EdinburghPhoEle.png in Resources */,
 				A31AD1711D0D5819000CF547 /* UnknownPlanet.mp3 in Resources */,
 				A39C5F561D29A95F00A68E2D /* electricity3.wav in Resources */,
 				A3E783571C5EFF91006A6D7B /* IMG_0728.PNG in Resources */,
+				A3B7FEA11D7C82C700DD6528 /* EdinburghBul.png in Resources */,
 				A3CE27671C4B87F70082D2AC /* planets3.png in Resources */,
 				A35B3B441D2A56D1006DB8C3 /* energyBoosterEnd.wav in Resources */,
 				A387320A1D3B93E500FE1D00 /* Localizable.strings in Resources */,
@@ -2714,8 +3084,10 @@
 				A3DD783D1D7BB2A100A1D2D1 /* laser 2.png in Resources */,
 				A31AD16A1D0D5801000CF547 /* Starlight.wav in Resources */,
 				13B231FF1943CB240097A15A /* electricalGenerator.png in Resources */,
+				A3B7FEB01D7C831300DD6528 /* GascogneLazEle.png in Resources */,
 				A39C5F3A1D29892C00A68E2D /* bokeh.png in Resources */,
 				A3DD784A1D7BB2A100A1D2D1 /* laser 2@2x.png in Resources */,
+				A3B7FE621D7C81F700DD6528 /* BabenbergBulPho.png in Resources */,
 				A3E009AF1D72C5D800C340AA /* Bullets.png in Resources */,
 				A31AD1731D0D5819000CF547 /* SpaceTravel.mp3 in Resources */,
 				A3E783551C5EFE88006A6D7B /* Launch Screen.storyboard in Resources */,
@@ -2726,8 +3098,10 @@
 				A31525D31C54496400DC3303 /* Exhaust.sks in Resources */,
 				A32C060D1D612786008DDC80 /* Broken_Gradient_1-Exclusion.png in Resources */,
 				A302A36D1CC74E040034C49F /* shield2.atlas in Resources */,
+				A3B7FEAE1D7C831300DD6528 /* GascognePho.png in Resources */,
 				A3DD78501D7BB2A100A1D2D1 /* laser_upgrade 4@2x.png in Resources */,
 				A3DD78431D7BB2A100A1D2D1 /* laser_upgrade 4.png in Resources */,
+				A3B7FE8C1D7C827C00DD6528 /* DandoloBulEle.png in Resources */,
 				A32C06221D612786008DDC80 /* Twin_Suns_Gradient_1-Add.png in Resources */,
 				A3CE275A1C4B72990082D2AC /* Stars.sks in Resources */,
 				A3483FC11D68F13200E9D1F9 /* menuBackground.png in Resources */,
@@ -2738,28 +3112,38 @@
 				A32C06121D612786008DDC80 /* Colony_Gradient_2-Screen.png in Resources */,
 				A35816B81D3357CD0028C019 /* didUnlock.wav in Resources */,
 				A30112891D5FF6C100E133F2 /* Speed.png in Resources */,
-				A3483FC91D68F98000E9D1F9 /* Gascogne_Menu.png in Resources */,
+				A3483FC91D68F98000E9D1F9 /* Gascogne.png in Resources */,
 				A3DD783E1D7BB2A100A1D2D1 /* laser 3.png in Resources */,
 				A35816B91D3357CD0028C019 /* selectShip.wav in Resources */,
 				A3DD78441D7BB2A100A1D2D1 /* laser_upgrade 5.png in Resources */,
+				A3B7FE631D7C81F700DD6528 /* BabenbergBulLaz.png in Resources */,
 				A35B3B351D2A4298006DB8C3 /* asteroid2.wav in Resources */,
 				A3CE27691C4B87F70082D2AC /* planets5.png in Resources */,
 				A3DD78461D7BB2A100A1D2D1 /* laser_upgrade 7.png in Resources */,
 				A32C061A1D612786008DDC80 /* Ring.png in Resources */,
 				A3AEDFB51C6AF808009966FE /* joystick.png in Resources */,
+				A3B7FEC81D7C835500DD6528 /* HabsburgBulEle.png in Resources */,
 				A35B3B631D2A68F7006DB8C3 /* spaceshipDamage3.wav in Resources */,
 				A31AD1691D0D5801000CF547 /* CosmicMessages.wav in Resources */,
 				13B91A001900514C0050CA0A /* ExplosionParticle.sks in Resources */,
+				A3B7FE321D7C7DC300DD6528 /* Abdul_KadirLaz.png in Resources */,
 				A39D0F9D1D33035600D86AC8 /* machineGunLevel4.wav in Resources */,
 				A39C5F5F1D29C00800A68E2D /* fast.wav in Resources */,
 				A32C06141D612786008DDC80 /* Hologram_0Grain-ColorDodge.png in Resources */,
 				A31AD1331D0CAD5D000CF547 /* spaceBackground2.png in Resources */,
+				A3B7FE841D7C827C00DD6528 /* DandoloEle.png in Resources */,
+				A3B7FE341D7C7DC300DD6528 /* Abdul_KadirBulLaz.png in Resources */,
 				A3E009B11D72C5D800C340AA /* Double Weapon.png in Resources */,
+				A3B7FE761D7C824200DD6528 /* CaimanBulPho.png in Resources */,
+				A3B7FE4F1D7C808F00DD6528 /* FlandreBulLaz.png in Resources */,
 				A32C061D1D612786008DDC80 /* Serebus.png in Resources */,
 				A35816BD1D336EDF0028C019 /* machineGunLevel3Upgraded.wav in Resources */,
 				137ED0EA195E55F400AEE889 /* test.sks in Resources */,
 				A301128B1D5FFF5700E133F2 /* Lock.png in Resources */,
+				A3B7FEB41D7C831300DD6528 /* GascogneBulEle.png in Resources */,
+				A3B7FE491D7C808F00DD6528 /* FlandrePhoEle.png in Resources */,
 				A301127A1D5FE3BE00E133F2 /* buttonSM.png in Resources */,
+				A3B7FE641D7C81F700DD6528 /* BabenbergBulEle.png in Resources */,
 				A35B3B501D2A5D1E006DB8C3 /* machineGunEquip.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

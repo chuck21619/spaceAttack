@@ -877,6 +877,7 @@ Firead 100 Bullets + 100 points</string>
                     <connections>
                         <outlet property="availablePointsLabel" destination="EfH-lL-bT5" id="MFJ-TZ-dff"/>
                         <outlet property="backButton" destination="Qqh-sQ-Qqa" id="rOv-R3-zF8"/>
+                        <outlet property="backgroundImageView" destination="InG-Qn-Tsn" id="Dfm-j7-VLW"/>
                         <outlet property="constraintBottomDemoPreviewImageView" destination="ubw-s1-3Im" id="HfS-gn-kWO"/>
                         <outlet property="constraintBottomMyTable" destination="67L-3d-paU" id="iC5-i4-LkV"/>
                         <outlet property="constraintHeightAvailablePoints" destination="UzY-dc-p6o" id="zsv-BE-JaW"/>

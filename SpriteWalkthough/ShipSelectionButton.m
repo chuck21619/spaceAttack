@@ -100,7 +100,7 @@
 
 - (void) setupForSpaceship:(Spaceship *)spaceship
 {
-    [_spaceshipImageView setImage:[UIImage imageNamed:spaceship.menuImageName]];
+    [_spaceshipImageView setImage:[UIImage imageNamed:NSStringFromClass([spaceship class])]];
     [_shipNameLabel setText:NSLocalizedString(NSStringFromClass([spaceship class]), nil)];
     [_damageMeter fillToPercentage:spaceship.damage/18.0];
     [_armorMeter fillToPercentage:spaceship.armor/18.0];

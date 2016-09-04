@@ -16,9 +16,7 @@
 {
     if ( self = [super init] )
     {
-        self.menuImageName = @"Habsburg_Menu.png";
-        
-        self.texture = [[[SpaceshipKit sharedInstance] shipTextures] objectForKey:NSStringFromClass([self class])];
+        self.texture = [[[[SpaceshipKit sharedInstance] shipTextures] objectForKey:NSStringFromClass([self class])] objectForKey:@"Reg"];
         float resizeFactor = ([[UIScreen mainScreen] bounds].size.width/320.0)*.15;
         self.size = CGSizeMake(self.texture.size.width*resizeFactor, self.texture.size.height*resizeFactor);
         

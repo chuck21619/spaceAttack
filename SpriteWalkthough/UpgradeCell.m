@@ -237,7 +237,10 @@
     _upgradeDescription.text = upgrade.upgradeDescription;
     
     if ( upgrade.isValidForMoneyPurchase )
+    {
         [_purchaseButtonMoney setTitle:[NSString stringWithFormat:@"%@!\n%@", NSLocalizedString(@"Unlock Now", nil), upgrade.priceString] forState:UIControlStateNormal];
+        _purchaseButtonMoney.enabled = YES;
+    }
     else
     {
         [_purchaseButtonMoney setTitle:[NSString stringWithFormat:@"%@", NSLocalizedString(@"Unavailable", nil)] forState:UIControlStateNormal];
