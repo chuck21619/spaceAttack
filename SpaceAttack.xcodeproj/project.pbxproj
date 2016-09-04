@@ -29,7 +29,6 @@
 		133FCD5319101A4400A8E49A /* LaserCannon.m in Sources */ = {isa = PBXBuildFile; fileRef = 133FCD5219101A4400A8E49A /* LaserCannon.m */; };
 		133FCD5519101B0500A8E49A /* laserCannon.png in Resources */ = {isa = PBXBuildFile; fileRef = 133FCD5419101B0500A8E49A /* laserCannon.png */; };
 		133FCD5819101B4600A8E49A /* Laser.m in Sources */ = {isa = PBXBuildFile; fileRef = 133FCD5719101B4600A8E49A /* Laser.m */; };
-		1345CE8918FD8CEE004ECA6C /* FireParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1345CE8718FD8CEE004ECA6C /* FireParticle.sks */; };
 		1345CE8A18FD8CEE004ECA6C /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 1345CE8818FD8CEE004ECA6C /* spark.png */; };
 		135BEDA3197456C900892311 /* EnemyFast.m in Sources */ = {isa = PBXBuildFile; fileRef = 135BEDA2197456C900892311 /* EnemyFast.m */; };
 		135BEDAE19759D0D00892311 /* Boss.m in Sources */ = {isa = PBXBuildFile; fileRef = 135BEDAD19759D0D00892311 /* Boss.m */; };
@@ -39,7 +38,6 @@
 		135BEDBF1975B66F00892311 /* BlastGun.m in Sources */ = {isa = PBXBuildFile; fileRef = 135BEDBE1975B66F00892311 /* BlastGun.m */; };
 		135BEDC61975B8B700892311 /* blastGun.png in Resources */ = {isa = PBXBuildFile; fileRef = 135BEDC51975B8B700892311 /* blastGun.png */; };
 		135BEDCA1975B96100892311 /* Pellet.m in Sources */ = {isa = PBXBuildFile; fileRef = 135BEDC91975B96100892311 /* Pellet.m */; };
-		137ED0EA195E55F400AEE889 /* test.sks in Resources */ = {isa = PBXBuildFile; fileRef = 137ED0E9195E55F400AEE889 /* test.sks */; };
 		139150FA190ECCA7009751D5 /* machineGun.png in Resources */ = {isa = PBXBuildFile; fileRef = 139150F9190ECCA7009751D5 /* machineGun.png */; };
 		139150FD190ECCF3009751D5 /* MachineGun.m in Sources */ = {isa = PBXBuildFile; fileRef = 139150FC190ECCF3009751D5 /* MachineGun.m */; };
 		13915100190EDE21009751D5 /* Bullet.m in Sources */ = {isa = PBXBuildFile; fileRef = 139150FF190EDE21009751D5 /* Bullet.m */; };
@@ -302,7 +300,6 @@
 		A39C5F351D2987A000A68E2D /* laser2.wav in Resources */ = {isa = PBXBuildFile; fileRef = A39C5F311D2987A000A68E2D /* laser2.wav */; };
 		A39C5F361D2987A000A68E2D /* laser1.wav in Resources */ = {isa = PBXBuildFile; fileRef = A39C5F321D2987A000A68E2D /* laser1.wav */; };
 		A39C5F391D29892C00A68E2D /* photonParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = A39C5F371D29892C00A68E2D /* photonParticle.sks */; };
-		A39C5F3A1D29892C00A68E2D /* bokeh.png in Resources */ = {isa = PBXBuildFile; fileRef = A39C5F381D29892C00A68E2D /* bokeh.png */; };
 		A39C5F481D29956800A68E2D /* bullet4.wav in Resources */ = {isa = PBXBuildFile; fileRef = A39C5F441D29956800A68E2D /* bullet4.wav */; };
 		A39C5F491D29956800A68E2D /* bullet3.wav in Resources */ = {isa = PBXBuildFile; fileRef = A39C5F451D29956800A68E2D /* bullet3.wav */; };
 		A39C5F4A1D29956800A68E2D /* bullet1.wav in Resources */ = {isa = PBXBuildFile; fileRef = A39C5F461D29956800A68E2D /* bullet1.wav */; };
@@ -444,7 +441,6 @@
 		A3BACA581D7CC2AA004388F3 /* SpeedBoostUpgrade.gif in Resources */ = {isa = PBXBuildFile; fileRef = A3BACA501D7CC2AA004388F3 /* SpeedBoostUpgrade.gif */; };
 		A3C615C51C4CCE5000566AF2 /* DQAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C615C41C4CCE5000566AF2 /* DQAlertView.m */; };
 		A3C8279B1B76A93F007F7E64 /* pellet.png in Resources */ = {isa = PBXBuildFile; fileRef = A3C8279A1B76A93F007F7E64 /* pellet.png */; };
-		A3CE27561C4B66B20082D2AC /* Clouds.sks in Resources */ = {isa = PBXBuildFile; fileRef = A3CE27551C4B66B20082D2AC /* Clouds.sks */; };
 		A3CE27581C4B6AC10082D2AC /* cloudParticle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3CE27571C4B6AC10082D2AC /* cloudParticle.png */; };
 		A3CE275A1C4B72990082D2AC /* Stars.sks in Resources */ = {isa = PBXBuildFile; fileRef = A3CE27591C4B72990082D2AC /* Stars.sks */; };
 		A3CE27671C4B87F70082D2AC /* planets3.png in Resources */ = {isa = PBXBuildFile; fileRef = A3CE27601C4B87F70082D2AC /* planets3.png */; };
@@ -572,7 +568,6 @@
 		133FCD5419101B0500A8E49A /* laserCannon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laserCannon.png; sourceTree = "<group>"; };
 		133FCD5619101B4600A8E49A /* Laser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Laser.h; sourceTree = "<group>"; };
 		133FCD5719101B4600A8E49A /* Laser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Laser.m; sourceTree = "<group>"; };
-		1345CE8718FD8CEE004ECA6C /* FireParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FireParticle.sks; sourceTree = "<group>"; };
 		1345CE8818FD8CEE004ECA6C /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		135BEDA1197456C900892311 /* EnemyFast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyFast.h; sourceTree = "<group>"; };
 		135BEDA2197456C900892311 /* EnemyFast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyFast.m; sourceTree = "<group>"; };
@@ -589,7 +584,6 @@
 		135BEDC51975B8B700892311 /* blastGun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blastGun.png; sourceTree = "<group>"; };
 		135BEDC81975B96100892311 /* Pellet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pellet.h; sourceTree = "<group>"; };
 		135BEDC91975B96100892311 /* Pellet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pellet.m; sourceTree = "<group>"; };
-		137ED0E9195E55F400AEE889 /* test.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = test.sks; sourceTree = "<group>"; };
 		139150F9190ECCA7009751D5 /* machineGun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = machineGun.png; sourceTree = "<group>"; };
 		139150FB190ECCF3009751D5 /* MachineGun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MachineGun.h; sourceTree = "<group>"; };
 		139150FC190ECCF3009751D5 /* MachineGun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MachineGun.m; sourceTree = "<group>"; };
@@ -934,7 +928,6 @@
 		A39C5F311D2987A000A68E2D /* laser2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = laser2.wav; sourceTree = "<group>"; };
 		A39C5F321D2987A000A68E2D /* laser1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = laser1.wav; sourceTree = "<group>"; };
 		A39C5F371D29892C00A68E2D /* photonParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = photonParticle.sks; sourceTree = "<group>"; };
-		A39C5F381D29892C00A68E2D /* bokeh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bokeh.png; sourceTree = "<group>"; };
 		A39C5F441D29956800A68E2D /* bullet4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bullet4.wav; sourceTree = "<group>"; };
 		A39C5F451D29956800A68E2D /* bullet3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bullet3.wav; sourceTree = "<group>"; };
 		A39C5F461D29956800A68E2D /* bullet1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bullet1.wav; sourceTree = "<group>"; };
@@ -1116,7 +1109,6 @@
 		A3C615C31C4CCE5000566AF2 /* DQAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQAlertView.h; sourceTree = "<group>"; };
 		A3C615C41C4CCE5000566AF2 /* DQAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQAlertView.m; sourceTree = "<group>"; };
 		A3C8279A1B76A93F007F7E64 /* pellet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pellet.png; sourceTree = "<group>"; };
-		A3CE27551C4B66B20082D2AC /* Clouds.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Clouds.sks; sourceTree = "<group>"; };
 		A3CE27571C4B6AC10082D2AC /* cloudParticle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloudParticle.png; sourceTree = "<group>"; };
 		A3CE27591C4B72990082D2AC /* Stars.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Stars.sks; sourceTree = "<group>"; };
 		A3CE27601C4B87F70082D2AC /* planets3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = planets3.png; sourceTree = "<group>"; };
@@ -1636,18 +1628,14 @@
 		13EDFF40190996100077B7D2 /* particles */ = {
 			isa = PBXGroup;
 			children = (
-				1345CE8718FD8CEE004ECA6C /* FireParticle.sks */,
-				A375B59C1D2B59CE00CB9E52 /* ShieldParticle.sks */,
-				A39C5F621D29D25800A68E2D /* spaceshipExplosion.sks */,
-				137ED0E9195E55F400AEE889 /* test.sks */,
-				A39C5F371D29892C00A68E2D /* photonParticle.sks */,
-				A39C5F381D29892C00A68E2D /* bokeh.png */,
 				1345CE8818FD8CEE004ECA6C /* spark.png */,
+				A39C5F621D29D25800A68E2D /* spaceshipExplosion.sks */,
 				13B919FF1900514C0050CA0A /* ExplosionParticle.sks */,
+				A39C5F371D29892C00A68E2D /* photonParticle.sks */,
 				13EDFF3E190994CA0077B7D2 /* CrumbleParticle.sks */,
-				A3CE27551C4B66B20082D2AC /* Clouds.sks */,
 				A3CE27591C4B72990082D2AC /* Stars.sks */,
 				A31525D21C54496400DC3303 /* Exhaust.sks */,
+				A375B59C1D2B59CE00CB9E52 /* ShieldParticle.sks */,
 				A3170E731CC4806C0098C24E /* ShieldDestroy.sks */,
 				A313A68C1D56633D006916EB /* photonExplosion.sks */,
 			);
@@ -2973,7 +2961,6 @@
 				A39ABA391C4E1A8E00AF1455 /* tooltipArrowLeft.png in Resources */,
 				A32C060A1D612786008DDC80 /* BlackStar_Gradient_2-HardLight.png in Resources */,
 				A3E009B41D72C5D800C340AA /* Lasers.png in Resources */,
-				1345CE8918FD8CEE004ECA6C /* FireParticle.sks in Resources */,
 				A39246161D3C964600A8A040 /* planets2.png in Resources */,
 				A39C5F391D29892C00A68E2D /* photonParticle.sks in Resources */,
 				A35816B41D3357CD0028C019 /* backButton.wav in Resources */,
@@ -3070,7 +3057,6 @@
 				130169361909AB1A00DDC896 /* photon.png in Resources */,
 				A3B7FEC31D7C835500DD6528 /* HabsburgEle.png in Resources */,
 				A3DD784D1D7BB2A100A1D2D1 /* laser_upgrade 1@2x.png in Resources */,
-				A3CE27561C4B66B20082D2AC /* Clouds.sks in Resources */,
 				A3483FCF1D68F9FA00E9D1F9 /* spaceship.png in Resources */,
 				A3B7FEDD1D7CAAFC00DD6528 /* minimizeCell.wav in Resources */,
 				A3B7FEDC1D7CAAFC00DD6528 /* maximizeCell.wav in Resources */,
@@ -3128,7 +3114,6 @@
 				A31AD16A1D0D5801000CF547 /* Starlight.wav in Resources */,
 				13B231FF1943CB240097A15A /* electricalGenerator.png in Resources */,
 				A3B7FEB01D7C831300DD6528 /* GascogneLazEle.png in Resources */,
-				A39C5F3A1D29892C00A68E2D /* bokeh.png in Resources */,
 				A3DD784A1D7BB2A100A1D2D1 /* laser 2@2x.png in Resources */,
 				A3B7FE621D7C81F700DD6528 /* BabenbergBulPho.png in Resources */,
 				A3E009AF1D72C5D800C340AA /* Bullets.png in Resources */,
@@ -3181,7 +3166,6 @@
 				A3B7FE4F1D7C808F00DD6528 /* FlandreBulLaz.png in Resources */,
 				A32C061D1D612786008DDC80 /* Serebus.png in Resources */,
 				A35816BD1D336EDF0028C019 /* machineGunLevel3Upgraded.wav in Resources */,
-				137ED0EA195E55F400AEE889 /* test.sks in Resources */,
 				A301128B1D5FFF5700E133F2 /* Lock.png in Resources */,
 				A3B7FEB41D7C831300DD6528 /* GascogneBulEle.png in Resources */,
 				A3B7FE491D7C808F00DD6528 /* FlandrePhoEle.png in Resources */,
