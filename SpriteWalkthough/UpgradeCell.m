@@ -17,8 +17,6 @@
 
 @implementation UpgradeCell
 {
-    Upgrade * _myUpgrade;
-    
     UIView * _borderView;
     float _defaultBorderWidth;
     
@@ -205,7 +203,7 @@
 
 - (void) updateContentWithUpgrade:(Upgrade *)upgrade
 {
-    _myUpgrade = upgrade;
+    self.myUpgrade = upgrade;
     
     if ( upgrade.upgradeType == kUpgrade4Weapons )
     {
@@ -226,7 +224,7 @@
     
     //minimized content
     _iconImage.image = upgrade.icon;
-    _pointsNumberLabel.text = [NSString stringWithFormat:@"%iK", _myUpgrade.pointsToUnlock/1000];
+    _pointsNumberLabel.text = [NSString stringWithFormat:@"%iK", self.myUpgrade.pointsToUnlock/1000];
     if ( upgrade.isUnlocked )
         _lockOrCheckIcon.image = [UIImage imageNamed:@"Check.png"];
     else
@@ -392,16 +390,7 @@
 - (void) unlockWithMoneyPressed
 {
     [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuUnlock];
-    SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"Unlock %@\nfor %@?", _myUpgrade.title, _myUpgrade.priceString] cancelButtonTitle:@"Cancel" otherButtonTitle:@"Unlock"];
-    unlockAlert.backgroundColor = [UIColor colorWithWhite:.2 alpha:.95];
-    unlockAlert.messageLabel.font = [UIFont fontWithName:@"Moon-Bold" size:20];
-    unlockAlert.cancelButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
-    unlockAlert.otherButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
-    unlockAlert.otherButtonAction = ^
-    {
-        [self.delegate purchaseWithMoneyPressed:_myUpgrade];
-    };
-    [unlockAlert show];
+    [self.delegate purchaseWithMoneyPressed:self.myUpgrade];
 }
 
 - (void) unlockWithPointsPressed
@@ -409,27 +398,27 @@
     [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuUnlock];
     NSNumberFormatter *formatter = [NSNumberFormatter new];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    NSString * formattedPoints = [formatter stringFromNumber:[NSNumber numberWithInteger:_myUpgrade.pointsToUnlock]];
+    NSString * formattedPoints = [formatter stringFromNumber:[NSNumber numberWithInteger:self.myUpgrade.pointsToUnlock]];
     
-    SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"Unlock %@\nfor %@ points?", _myUpgrade.title, formattedPoints] cancelButtonTitle:@"Cancel" otherButtonTitle:@"Unlock"];
+    SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"Unlock %@\nfor %@ points?", self.myUpgrade.title, formattedPoints] cancelButtonTitle:@"Cancel" otherButtonTitle:@"Unlock"];
     unlockAlert.backgroundColor = [UIColor colorWithWhite:.2 alpha:.95];
     unlockAlert.messageLabel.font = [UIFont fontWithName:@"Moon-Bold" size:20];
     unlockAlert.cancelButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
     unlockAlert.otherButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
     unlockAlert.otherButtonAction = ^
     {
-        [Answers logPurchaseWithPrice:[[NSDecimalNumber alloc] initWithFloat:_myUpgrade.pointsToUnlock]
+        [Answers logPurchaseWithPrice:[[NSDecimalNumber alloc] initWithFloat:self.myUpgrade.pointsToUnlock]
                              currency:@"game points"
                               success:@YES
-                             itemName:_myUpgrade.title
+                             itemName:self.myUpgrade.title
                              itemType:@"Upgrade"
                                itemId:nil
                      customAttributes:@{}];
         [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuDidUnlock];
-        [AccountManager subtractPoints:_myUpgrade.pointsToUnlock];
-        [AccountManager unlockUpgrade:_myUpgrade.upgradeType];
+        [AccountManager subtractPoints:self.myUpgrade.pointsToUnlock];
+        [AccountManager unlockUpgrade:self.myUpgrade.upgradeType];
         [self showPurchasedLabelAnimated:YES];
-        [self.delegate purchasedWithPoints:_myUpgrade.pointsToUnlock];
+        [self.delegate purchasedWithPoints:self.myUpgrade.pointsToUnlock];
     };
     [unlockAlert show];
 }
@@ -506,7 +495,7 @@
     _pointsNumberLabel.alpha = 0;
     _pointsLabel.alpha = 0;
     
-    if ( ! _myUpgrade.isUnlocked )
+    if ( ! self.myUpgrade.isUnlocked )
     {
         int numberOfUnlockedUpgrades = 0;
         for ( Upgrade * tmpUpgrade in [AccountManager sharedInstance].upgrades )
@@ -515,11 +504,11 @@
                 numberOfUnlockedUpgrades++;
         }
         
-        if ( _myUpgrade.upgradeType == kUpgrade4Weapons && numberOfUnlockedUpgrades < 7 )
+        if ( self.myUpgrade.upgradeType == kUpgrade4Weapons && numberOfUnlockedUpgrades < 7 )
             _lockOrCheckIcon.alpha = alpha;
         else
         {
-            if ( _myUpgrade.upgradeType == kUpgrade4Weapons )
+            if ( self.myUpgrade.upgradeType == kUpgrade4Weapons )
                 _iconImage.image = [UIImage imageNamed:@"fourWeaponsUpgrade.png"];
             
             _costLabel.alpha = alpha;
@@ -550,7 +539,7 @@
     _purchaseButtonPoints.alpha = 0;
     _purchaseButtonMoney.alpha = 0;
     
-    if ( _myUpgrade.isUnlocked )
+    if ( self.myUpgrade.isUnlocked )
     {
         _purchasedLabel.alpha = alpha;
     }

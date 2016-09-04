@@ -421,13 +421,14 @@
     
     if ( product )
     {
+        NSLog(@"purchase prodect request : %@", product.productIdentifier);
         SKMutablePayment * payment = [SKMutablePayment paymentWithProduct:product];
         [[SKPaymentQueue defaultQueue] addPayment:payment];
         [self showProgressHud];
     }
     else
     {
-        NSLog(@"somethign screwd up i think");
+        NSLog(@"somethign screwd up : %@", product.productIdentifier);
     }
 }
 
@@ -521,8 +522,16 @@
                  customAttributes:@{}];
     [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuDidUnlock];
     NSLog(@"Payment Purchased Notification");
+    
+    for ( UpgradeCell * cell in [self.myTable visibleCells] )
+    {
+        if ( cell.myUpgrade.upgradeType == self.activeUpgrade.upgradeType )
+        {
+            [cell showPurchasedLabelAnimated:YES];
+            break;
+        }
+    }
     [self hideProgressHud];
-    [self refreshUpgradeViews];
 }
 
 - (void) paymentFailed

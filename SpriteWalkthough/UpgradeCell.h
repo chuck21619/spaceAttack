@@ -21,6 +21,7 @@
 
 @property (weak, nonatomic) id <UpgradeCellDelegate>delegate;
 
+@property (nonatomic) Upgrade * myUpgrade;
 - (instancetype) initWithUpgrade:(Upgrade*)upgrade;
 
 - (void) showMinimizedContent:(BOOL)show animated:(BOOL)animated completion:(void (^)())completion;
@@ -29,5 +30,7 @@
 - (void) updateContentWithUpgrade:(Upgrade *)upgrade;
 
 - (void) updateMinimizedCellHeight:(float)height;
+
+- (void) showPurchasedLabelAnimated:(BOOL)animated;
 
 @end
