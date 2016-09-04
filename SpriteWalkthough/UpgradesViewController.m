@@ -343,6 +343,8 @@
     //if minimized
     if ( ! tmpUpgrade.isMaximized )
     {
+        [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMaximizeCell];
+        
         if ( tmpUpgrade.upgradeType == kUpgrade4Weapons )
         {
             int numberOfUnlockedUpgrades = 0;
@@ -359,7 +361,6 @@
                 return;
             }
         }
-        
         
         mainScreenViewsAlpha = 0;
         tableView.allowsSelection = NO;
@@ -378,6 +379,8 @@
     }
     else
     {
+        [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMinimizeCell];
+        
         mainScreenViewsAlpha = 1;
         tableView.allowsSelection = YES;
         tmpUpgrade.isMaximized = NO;
@@ -405,6 +408,7 @@
 - (void) purchasedWithPoints:(float)pointsSpent
 {
     [self animateAvailablePoints:[NSNumber numberWithFloat:pointsSpent]];
+    [self refreshUpgradeViews];
 }
 
 - (void) purchaseWithMoneyPressed:(Upgrade *)upgrade
@@ -532,6 +536,7 @@
         }
     }
     [self hideProgressHud];
+    [self refreshUpgradeViews];
 }
 
 - (void) paymentFailed

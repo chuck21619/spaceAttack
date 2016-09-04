@@ -252,6 +252,12 @@
         [_purchaseButtonPoints setTitle:[NSString stringWithFormat:@"%ik %@\n%@", upgrade.pointsToUnlock/1000, NSLocalizedString(@"points", nil), NSLocalizedString(@"to Unlock", nil)] forState:UIControlStateNormal];
         _purchaseButtonPoints.enabled = NO;
     }
+    
+    if ( upgrade.upgradeType == kUpgrade4Weapons )
+    {
+        if ( !upgrade.isMaximized )
+            [self showMinimizedContent:YES];
+    }
 }
 
 - (void) minimizePressed
@@ -518,6 +524,9 @@
     }
     else
     {
+        if ( self.myUpgrade.upgradeType == kUpgrade4Weapons )
+            _iconImage.image = [UIImage imageNamed:@"fourWeaponsUpgrade.png"];
+        
         _lockOrCheckIcon.image = [UIImage imageNamed:@"Check.png"];
         _lockOrCheckIcon.alpha = alpha;
     }

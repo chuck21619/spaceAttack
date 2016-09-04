@@ -23,7 +23,7 @@
                 self.title = NSLocalizedString(@"Two Weapons", nil);
                 self.upgradeDescription = NSLocalizedString(@"Your spaceships will be able to equip two different weapons!", nil);
                 self.icon = [UIImage imageNamed:@"Double Weapon.png"];
-                self.animatedImage = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"testGif.gif" ofType:nil]]]];
+                self.animatedImage = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"DoubleWeaponUpgrade.gif" ofType:nil]]]];
                 self.pointsToUnlock = 50000;
                 self.priceToUnlock = 2.99;
                 if ( [AccountManager numberOfWeaponSlotsUnlocked] >= 2)
@@ -38,6 +38,7 @@
                 self.title = NSLocalizedString(@"Smart Photons", nil);
                 self.upgradeDescription = NSLocalizedString(@"Increases Photon Targeting IQ", nil);
                 self.icon = [UIImage imageNamed:@"Smart Photon.png"];
+                self.animatedImage = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"SmartPhotonUpgrade.gif" ofType:nil]]]];
                 self.pointsToUnlock = 15000;
                 self.priceToUnlock = 1.99;
                 if ( [AccountManager smartPhotonsUnlocked] )
@@ -52,6 +53,7 @@
                 self.title = NSLocalizedString(@"More Bullets", nil);
                 self.upgradeDescription = NSLocalizedString(@"Increases rate of fire for the Machine Gun", nil);
                 self.icon = [UIImage imageNamed:@"Bullets.png"];
+                self.animatedImage = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"ammoUpgrade.gif" ofType:nil]]]];
                 self.pointsToUnlock = 10000;
                 self.priceToUnlock = .99;
                 if ( [AccountManager machineGunFireRateUpgraded] )
@@ -66,6 +68,7 @@
                 self.title = NSLocalizedString(@"Shield", nil);
                 self.upgradeDescription = NSLocalizedString(@"Unlocks the Shield Power Up", nil);
                 self.icon = [UIImage imageNamed:@"Shields.png"];
+                self.animatedImage = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"ShieldUpgrade.gif" ofType:nil]]]];
                 self.pointsToUnlock = 20000;
                 self.priceToUnlock = 1.99;
                 if ( [AccountManager shieldUnlocked] )
@@ -80,6 +83,7 @@
                 self.title = NSLocalizedString(@"Bigger Laser", nil);
                 self.upgradeDescription = NSLocalizedString(@"Increases the size of Laser Cannon Beams", nil);
                 self.icon = [UIImage imageNamed:@"Lasers.png"];
+                self.animatedImage = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"laserUpgrade.gif" ofType:nil]]]];
                 self.pointsToUnlock = 12500;
                 self.priceToUnlock = .99;
                 if ( [AccountManager laserUpgraded] )
@@ -94,6 +98,7 @@
                 self.title = NSLocalizedString(@"Electricity Chain", nil);
                 self.upgradeDescription = NSLocalizedString(@"Powers up the Electrical Generator to send volts through to a second target", nil);
                 self.icon = [UIImage imageNamed:@"Electricity.png"];
+                self.animatedImage = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"electrictyUpgrade.gif" ofType:nil]]]];
                 self.pointsToUnlock = 15000;
                 self.priceToUnlock = .99;
                 if ( [AccountManager electricityChainUnlocked] )
@@ -108,6 +113,7 @@
                 self.title = NSLocalizedString(@"Energy Booster", nil);
                 self.upgradeDescription = NSLocalizedString(@"Unlocks the Energy Booster Power Up. Doubles Points and Damage for 30 seconds", nil);
                 self.icon = [UIImage imageNamed:@"Energy.png"];
+                self.animatedImage = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"SpeedBoostUpgrade.gif" ofType:nil]]]];
                 self.pointsToUnlock = 12500;
                 self.priceToUnlock = 1.99;
                 if ( [AccountManager energyBoosterUnlocked] )
@@ -122,6 +128,7 @@
                 self.title = NSLocalizedString(@"Four Weapons", nil);
                 self.upgradeDescription = NSLocalizedString(@"Your spaceships will be able to equip four different weapons!", nil);
                 self.icon = [UIImage imageNamed:@"Questionmark.png"];
+                self.animatedImage = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"fourWeaponsUpgrade.gif" ofType:nil]]]];
                 self.pointsToUnlock = 500000;
                 self.priceToUnlock = 9.99;
                 if ( [AccountManager numberOfWeaponSlotsUnlocked] >= 4)

@@ -134,7 +134,9 @@ typedef NS_ENUM(int, SoundEffect)
     kSoundEffectMenuUpgrade,
     kSoundEffectMenuEngage,
     kSoundEffectMenuDidUnlock,
-    kSoundEffectMenuSelectShip
+    kSoundEffectMenuSelectShip,
+    kSoundEffectMinimizeCell,
+    kSoundEffectMaximizeCell
 };
 
 @interface EnumTypes : NSObject

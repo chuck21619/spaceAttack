@@ -54,7 +54,7 @@
 #pragma mark music
 - (IBAction)musicTouchDown:(id)sender
 {
-    self.musicUpdater = [NSTimer scheduledTimerWithTimeInterval:.33 target:self selector:@selector(musicVolumeUpdate) userInfo:nil repeats:YES];
+    self.musicUpdater = [NSTimer scheduledTimerWithTimeInterval:.2 target:self selector:@selector(musicVolumeUpdate) userInfo:nil repeats:YES];
     [self musicVolumeUpdate];
 }
 
@@ -78,7 +78,7 @@
 #pragma mark sound effects
 - (IBAction)soundEffectsTouchDown:(id)sender
 {
-    self.soundEffectUpdater =[ NSTimer scheduledTimerWithTimeInterval:.33 target:self selector:@selector(soundEffectsVolumeUpdate) userInfo:nil repeats:YES];
+    self.soundEffectUpdater =[ NSTimer scheduledTimerWithTimeInterval:.2 target:self selector:@selector(soundEffectsVolumeUpdate) userInfo:nil repeats:YES];
     [self soundEffectsVolumeUpdate];
 }
 

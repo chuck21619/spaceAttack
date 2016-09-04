@@ -28,8 +28,11 @@
     AccountManager * accountManager = [AccountManager sharedInstance];
     [[SKPaymentQueue defaultQueue] addTransactionObserver:accountManager];
     
-    //background music
-    [[AudioManager sharedInstance] playMenuMusic];
+    //background music - without the delay, theres some choppiness starting the music
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, .5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^
+    {
+        [[AudioManager sharedInstance] playMenuMusic];
+    });
     
     //reachability
     self.internetReachability = [Reachability reachabilityForInternetConnection];

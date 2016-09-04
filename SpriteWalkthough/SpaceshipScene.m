@@ -17,6 +17,18 @@
 #import <Crashlytics/Crashlytics.h>
 
 @implementation SpaceshipScene
+{
+    NSMutableArray * _nodesToRemove;
+    
+    NSMutableArray * _cachedAsteroids;
+    NSMutableArray * _cachedEnemies;
+    NSMutableArray * _cachedBullets;
+    NSMutableArray * _cachedLasers;
+    NSMutableArray * _cachedPhotons;
+    NSMutableArray * _cachedElectricity;
+    NSMutableArray * _cachedPowerUps;
+    NSMutableArray * _cachedSpaceBackgrounds;
+}
 
 - (void) didMoveToView:(SKView *)view
 {
@@ -27,15 +39,16 @@
         [self createSceneContents];
         self.contentCreated = YES;
         //view.showsFPS = YES;
-        self.nodesToRemove = [NSMutableArray new];
-        self.cachedAsteroids = [NSMutableArray new];
-        self.cachedEnemies = [NSMutableArray new];
-        self.cachedBullets = [NSMutableArray new];
-        self.cachedLasers = [NSMutableArray new];
-        self.cachedPhotons = [NSMutableArray new];
-        self.cachedElectricity = [NSMutableArray new];
-        self.cachedPowerUps = [NSMutableArray new];
-        self.cachedSpaceBackgrounds = [NSMutableArray new];
+        _nodesToRemove = [NSMutableArray new];
+        
+        _cachedAsteroids = [NSMutableArray new];
+        _cachedEnemies = [NSMutableArray new];
+        _cachedBullets = [NSMutableArray new];
+        _cachedLasers = [NSMutableArray new];
+        _cachedPhotons = [NSMutableArray new];
+        _cachedElectricity = [NSMutableArray new];
+        _cachedPowerUps = [NSMutableArray new];
+        _cachedSpaceBackgrounds = [NSMutableArray new];
         
         self.bulletsFired = 0;
         self.photonsFired = 0;
@@ -501,7 +514,7 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     __block SKNode * closestTarget = nil;
     __block float closestDistance = -1;
     
-    for ( Asteroid * tmpAsteroid in self.cachedAsteroids )
+    for ( Asteroid * tmpAsteroid in _cachedAsteroids )
     {
         float distance = pow(tmpAsteroid.position.x - photon.position.x, 2) + pow(tmpAsteroid.position.y - (photon.position.y + 100), 2);
         // float actualDistance = sqrtf(pow(node.position.x - point.x, 2) + pow(node.position.y - point.y, 2));
@@ -523,7 +536,7 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
         }
     }
     
-    for ( Enemy * tmpEnemy in self.cachedEnemies )
+    for ( Enemy * tmpEnemy in _cachedEnemies )
     {
         float distance = pow(tmpEnemy.position.x - photon.position.x, 2) + pow(tmpEnemy.position.y - (photon.position.y + 100), 2);
         // float actualDistance = sqrtf(pow(node.position.x - point.x, 2) + pow(node.position.y - point.y, 2));
@@ -554,7 +567,7 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     __block float closestDistance = -1;
     CGPoint electricityPointInScene = electricity.parent.parent.parent.position;
     
-    for ( Asteroid * node in self.cachedAsteroids )
+    for ( Asteroid * node in _cachedAsteroids )
     {
         float distance = pow(node.position.x - electricityPointInScene.x, 2) + pow(node.position.y - electricityPointInScene.y, 2);
         // float actualDistance = sqrtf(pow(node.position.x - point.x, 2) + pow(node.position.y - point.y, 2));
@@ -565,7 +578,7 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
         }
     }
     
-    for ( Enemy * node in self.cachedEnemies )
+    for ( Enemy * node in _cachedEnemies )
     {
         float distance = pow(node.position.x - electricityPointInScene.x, 2) + pow(node.position.y - electricityPointInScene.y, 2);
         // float actualDistance = sqrtf(pow(node.position.x - point.x, 2) + pow(node.position.y - point.y, 2));
@@ -588,17 +601,17 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
 #pragma mark contact/collisions
 - (void) update:(NSTimeInterval)currentTime
 {
-    for ( Photon * node in self.cachedPhotons )
+    for ( Photon * node in _cachedPhotons )
         [(Photon *)node update:currentTime];
     
     //electricity
     NSMutableArray * asteroidsToTakeDmgFromElectricity = [NSMutableArray new];
     NSMutableArray * enemiesToTakeDmgFromElectricity = [NSMutableArray new];
-    for ( Electricity * tmpElectricityNode in self.cachedElectricity )
+    for ( Electricity * tmpElectricityNode in _cachedElectricity )
     {
         [tmpElectricityNode update:currentTime];
         
-        for ( Asteroid * node1 in self.cachedAsteroids )
+        for ( Asteroid * node1 in _cachedAsteroids )
         {
             if ( [tmpElectricityNode intersectsNode:node1] )
             {
@@ -610,7 +623,7 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
             }
         }
         
-        for ( Enemy * node1 in self.cachedEnemies )
+        for ( Enemy * node1 in _cachedEnemies )
         {
             if ( [tmpElectricityNode intersectsNode:node1] )
             {
@@ -627,17 +640,17 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     //laser
     NSMutableArray * asteroidsToTakeDmgFromLaser = [NSMutableArray new];
     NSMutableArray * enemiesToTakeDmgFromLaser = [NSMutableArray new];
-    for ( Laser * node in self.cachedLasers )
+    for ( Laser * node in _cachedLasers )
     {
         Laser * tmpLaser = (Laser *)node;
         
-        for ( Asteroid * node1 in self.cachedAsteroids )
+        for ( Asteroid * node1 in _cachedAsteroids )
         {
             if ( [tmpLaser intersectsNode:node1] )
                 [asteroidsToTakeDmgFromLaser addObject:node1];
         }
         
-        for ( Enemy * node1 in self.cachedEnemies )
+        for ( Enemy * node1 in _cachedEnemies )
         {
             if ( [tmpLaser intersectsNode:node1] )
                 [enemiesToTakeDmgFromLaser addObject:node1];
@@ -660,54 +673,54 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
 - (void) didSimulatePhysics
 {
     // This is your last chance to make changes to the scene.
-    for ( Bullet * node in self.cachedBullets )
+    for ( Bullet * node in _cachedBullets )
     {
         if ( node.position.y > self.scene.size.height + node.frame.size.height ||
             node.position.y < -node.frame.size.height ||
             node.position.x > self.scene.size.width + node.frame.size.width ||
             node.position.x < -node.frame.size.width )
-            [self.nodesToRemove addObject:node];
+            [_nodesToRemove addObject:node];
     }
     
-    for ( Photon * node in self.cachedPhotons )
+    for ( Photon * node in _cachedPhotons )
     {
         if ( node.position.y > self.scene.size.height + 100 ||
             node.position.y < -100 ||
             node.position.x > self.scene.size.width + 100 ||
             node.position.x < -100)
-            [self.nodesToRemove addObject:node];
+            [_nodesToRemove addObject:node];
     }
     
-    for ( Enemy * node in self.cachedEnemies )
+    for ( Enemy * node in _cachedEnemies )
     {
         if ( node.position.y <= -node.frame.size.height ||
             node.position.x > node.frame.size.width + self.scene.size.width ||
             node.position.x < -node.frame.size.height )
-            [self.nodesToRemove addObject:node];
+            [_nodesToRemove addObject:node];
     }
     
-    for ( Asteroid * node in self.cachedAsteroids )
+    for ( Asteroid * node in _cachedAsteroids )
     {
         if ( node.position.y < -node.frame.size.height )
-            [self.nodesToRemove addObject:node];
+            [_nodesToRemove addObject:node];
     }
     
-    for ( PowerUp * node in self.cachedPowerUps )
+    for ( PowerUp * node in _cachedPowerUps )
     {
         if ( node.position.y < -node.frame.size.height ||
             node.position.x > self.scene.size.width + node.frame.size.width ||
             node.position.x < -node.frame.size.width )
-            [self.nodesToRemove addObject:node];
+            [_nodesToRemove addObject:node];
     }
     
-    //[self removeChildrenInArray:self.nodesToRemove]; //this doesnt work for some reason
-    for ( SKNode * node in self.nodesToRemove )
+    //[self removeChildrenInArray:_nodesToRemove]; //this doesnt work for some reason
+    for ( SKNode * node in _nodesToRemove )
         [node removeFromParent];
     
-    [self.nodesToRemove removeAllObjects];
+    [_nodesToRemove removeAllObjects];
     
     __block BOOL allSpaceBackgroundsAreBelowTopOfScreen = YES;
-    for ( SpaceBackground * spaceBackground in self.cachedSpaceBackgrounds )
+    for ( SpaceBackground * spaceBackground in _cachedSpaceBackgrounds )
     {
         if ( spaceBackground.position.y > -(spaceBackground.size.height/2 - self.size.height) )
             allSpaceBackgroundsAreBelowTopOfScreen = NO;
@@ -878,7 +891,7 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
         self.backgroundColor = newColor;
     }];
     
-    for ( SpaceBackground * node in self.cachedSpaceBackgrounds )
+    for ( SpaceBackground * node in _cachedSpaceBackgrounds )
         [node runAction:[SKAction fadeAlphaTo:1-alpha duration:5]];
 }
 
@@ -1157,7 +1170,7 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     [self updateScoreMultiplierLabel];
     [self showEndGameScreen];
     [[AudioManager sharedInstance] fadeOutGameplayMusic];
-    for ( Enemy * enemy in self.cachedEnemies )
+    for ( Enemy * enemy in _cachedEnemies )
         [enemy runAction:[SKAction fadeOutWithDuration:1]];
 }
 
@@ -1228,46 +1241,46 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     
     //electricity and laser projectiles are added from player weapon delegate method (didAddProjectile:forWeapon:)
     if ( [node isKindOfClass:[Enemy class]] )
-        [self.cachedEnemies addObject:node];
+        [_cachedEnemies addObject:node];
     else if ( [node class] == [Asteroid class] )
-        [self.cachedAsteroids addObject:node];
+        [_cachedAsteroids addObject:node];
     else if ( [node class] == [Photon class] )
     {
-        [self.cachedPhotons addObject:node];
+        [_cachedPhotons addObject:node];
         self.photonsFired++;
     }
     else if ( [node class] == [Bullet class] )
     {
-        [self.cachedBullets addObject:node];
+        [_cachedBullets addObject:node];
         self.bulletsFired++;
     }
     else if ( [node class] == [PowerUp class] )
     {
-        [self.cachedPowerUps addObject:node];
+        [_cachedPowerUps addObject:node];
         self.powerUpsCollected++;
     }
     else if ( [node.name isEqualToString:@"spaceBackground"] )
-        [self.cachedSpaceBackgrounds addObject:node];
+        [_cachedSpaceBackgrounds addObject:node];
 }
 
 - (void) removeCachedSpriteNode:(SKSpriteNode *)spriteNode
 {
     if ( [spriteNode isKindOfClass:[Enemy class]] )
-        [self.cachedEnemies removeObject:spriteNode];
+        [_cachedEnemies removeObject:spriteNode];
     else if ( [spriteNode class] == [Asteroid class] )
-        [self.cachedAsteroids removeObject:spriteNode];
+        [_cachedAsteroids removeObject:spriteNode];
     else if ( [spriteNode class] == [Photon class] )
-        [self.cachedPhotons removeObject:spriteNode];
+        [_cachedPhotons removeObject:spriteNode];
     else if ( [spriteNode class] == [Bullet class] )
-        [self.cachedBullets removeObject:spriteNode];
+        [_cachedBullets removeObject:spriteNode];
     else if ( [spriteNode class] == [PowerUp class] )
-        [self.cachedPowerUps removeObject:spriteNode];
+        [_cachedPowerUps removeObject:spriteNode];
     else if ( [spriteNode class] == [SpaceBackground class] )
-        [self.cachedSpaceBackgrounds removeObject:spriteNode];
+        [_cachedSpaceBackgrounds removeObject:spriteNode];
     else if ( [spriteNode class] == [Electricity class] )
-        [self.cachedElectricity removeObject:spriteNode];
+        [_cachedElectricity removeObject:spriteNode];
     else if ( [spriteNode class] == [Laser class] )
-        [self.cachedLasers removeObject:spriteNode];
+        [_cachedLasers removeObject:spriteNode];
     
 }
 
@@ -1276,12 +1289,12 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
 {
     if ( [projectile class] == [Electricity class] )
     {
-        [self.cachedElectricity addObject:projectile];
+        [_cachedElectricity addObject:projectile];
         self.electricityFired++;
     }
     else if ( [projectile class] == [Laser class] )
     {
-        [self.cachedLasers addObject:projectile];
+        [_cachedLasers addObject:projectile];
         self.lasersFired++;
     }
 }

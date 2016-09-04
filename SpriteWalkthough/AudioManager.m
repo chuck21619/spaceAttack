@@ -137,6 +137,8 @@ static AudioManager * sharedAudioManager = nil;
         sharedAudioManager.engage = [[sharedAudioManager createAudioBuffers:@[@"engage"]] firstObject];
         sharedAudioManager.didUnlock = [[sharedAudioManager createAudioBuffers:@[@"didUnlock"]] firstObject];
         sharedAudioManager.selectShip = [[sharedAudioManager createAudioBuffers:@[@"selectShip"]] firstObject];
+        sharedAudioManager.minimizeCell = [[sharedAudioManager createAudioBuffers:@[@"minimizeCell"]] firstObject];
+        sharedAudioManager.maximizeCell = [[sharedAudioManager createAudioBuffers:@[@"maximizeCell"]] firstObject];
     }
     
     return sharedAudioManager;
@@ -427,6 +429,14 @@ static AudioManager * sharedAudioManager = nil;
             audioBuffer = self.selectShip;
             break;
         
+        case kSoundEffectMinimizeCell:
+            audioBuffer = self.minimizeCell;
+            break;
+            
+        case kSoundEffectMaximizeCell:
+            audioBuffer = self.maximizeCell;
+            break;
+            
         default:
             return;
     }
