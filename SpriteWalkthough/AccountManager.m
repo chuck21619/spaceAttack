@@ -66,7 +66,6 @@ static AccountManager * sharedAccountManager = nil;
         NSLog(@"identifier : %@", transaction.transactionIdentifier);
         NSLog(@"state : %li", (long)transaction.transactionState);
         
-        [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
         switch (transaction.transactionState)
         {
             case SKPaymentTransactionStatePurchasing:
