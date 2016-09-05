@@ -439,6 +439,7 @@
 		A3BACA561D7CC2AA004388F3 /* ShieldUpgrade.gif in Resources */ = {isa = PBXBuildFile; fileRef = A3BACA4E1D7CC2AA004388F3 /* ShieldUpgrade.gif */; };
 		A3BACA571D7CC2AA004388F3 /* SmartPhotonUpgrade.gif in Resources */ = {isa = PBXBuildFile; fileRef = A3BACA4F1D7CC2AA004388F3 /* SmartPhotonUpgrade.gif */; };
 		A3BACA581D7CC2AA004388F3 /* SpeedBoostUpgrade.gif in Resources */ = {isa = PBXBuildFile; fileRef = A3BACA501D7CC2AA004388F3 /* SpeedBoostUpgrade.gif */; };
+		A3BACA5B1D7CE425004388F3 /* PurchaseShipView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BACA5A1D7CE425004388F3 /* PurchaseShipView.m */; };
 		A3C615C51C4CCE5000566AF2 /* DQAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C615C41C4CCE5000566AF2 /* DQAlertView.m */; };
 		A3C8279B1B76A93F007F7E64 /* pellet.png in Resources */ = {isa = PBXBuildFile; fileRef = A3C8279A1B76A93F007F7E64 /* pellet.png */; };
 		A3CE27581C4B6AC10082D2AC /* cloudParticle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3CE27571C4B6AC10082D2AC /* cloudParticle.png */; };
@@ -1106,6 +1107,8 @@
 		A3BACA4E1D7CC2AA004388F3 /* ShieldUpgrade.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ShieldUpgrade.gif; sourceTree = "<group>"; };
 		A3BACA4F1D7CC2AA004388F3 /* SmartPhotonUpgrade.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = SmartPhotonUpgrade.gif; sourceTree = "<group>"; };
 		A3BACA501D7CC2AA004388F3 /* SpeedBoostUpgrade.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = SpeedBoostUpgrade.gif; sourceTree = "<group>"; };
+		A3BACA591D7CE425004388F3 /* PurchaseShipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseShipView.h; sourceTree = "<group>"; };
+		A3BACA5A1D7CE425004388F3 /* PurchaseShipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseShipView.m; sourceTree = "<group>"; };
 		A3C615C31C4CCE5000566AF2 /* DQAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQAlertView.h; sourceTree = "<group>"; };
 		A3C615C41C4CCE5000566AF2 /* DQAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQAlertView.m; sourceTree = "<group>"; };
 		A3C8279A1B76A93F007F7E64 /* pellet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pellet.png; sourceTree = "<group>"; };
@@ -1772,6 +1775,8 @@
 				A30112761D5FDF1600E133F2 /* ShipSelectionButton.m */,
 				A301127D1D5FE9EE00E133F2 /* ShipSelectMeter.h */,
 				A301127E1D5FE9EE00E133F2 /* ShipSelectMeter.m */,
+				A3BACA591D7CE425004388F3 /* PurchaseShipView.h */,
+				A3BACA5A1D7CE425004388F3 /* PurchaseShipView.m */,
 			);
 			name = shipSelect;
 			sourceTree = "<group>";
@@ -3229,6 +3234,7 @@
 				135BEDCA1975B96100892311 /* Pellet.m in Sources */,
 				A331D6791C72DCB20054124F /* DGActivityIndicatorBallZigZagAnimation.m in Sources */,
 				A39CEF5D1D317D7E00C01870 /* ALListener.m in Sources */,
+				A3BACA5B1D7CE425004388F3 /* PurchaseShipView.m in Sources */,
 				A331D6871C72DCB20054124F /* DGActivityIndicatorTriangleSkewSpinAnimation.m in Sources */,
 				A39CEF501D317D7E00C01870 /* OALAction.m in Sources */,
 				A331D66B1C72DCB20054124F /* DGActivityIndicatorBallBeatAnimation.m in Sources */,

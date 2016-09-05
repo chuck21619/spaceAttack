@@ -20,6 +20,7 @@
         float resizeFactor = ([[UIScreen mainScreen] bounds].size.width/320.0)*.15;
         self.size = CGSizeMake(self.texture.size.width*resizeFactor, self.texture.size.height*resizeFactor);
         
+        self.storeKitIdentifier = @"dandolo";
         self.defaultDamage = 8;
         self.damage = self.defaultDamage;
         self.armor = 11;

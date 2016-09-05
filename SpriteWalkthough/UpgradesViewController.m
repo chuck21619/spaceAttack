@@ -476,7 +476,7 @@
 
 - (void) productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response
 {
-    NSLog(@"products validated");
+    NSLog(@"upgrade products validated");
     
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
@@ -500,7 +500,7 @@
     
     for ( NSString * invalidIdentifier in response.invalidProductIdentifiers )
     {
-        NSLog(@"invalidIdentifier : %@", invalidIdentifier);
+        NSLog(@"invalid upgrade identifier : %@", invalidIdentifier);
         for ( Upgrade * upgrade in self.upgrades )
         {
             if ( [upgrade.storeKitIdentifier isEqualToString:invalidIdentifier] )
@@ -517,7 +517,9 @@
     [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
     NSString * currency = [formatter currencyCode];
     
-    [Answers logPurchaseWithPrice:[[NSDecimalNumber alloc] initWithFloat:self.activeUpgrade.priceToUnlock]
+    NSString * trimmedString = [[self.activeUpgrade.priceString componentsSeparatedByCharactersInSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]]componentsJoinedByString:@""];
+    
+    [Answers logPurchaseWithPrice:[[NSDecimalNumber alloc] initWithFloat:[trimmedString floatValue]]
                          currency:currency
                           success:@YES
                          itemName:self.activeUpgrade.title
@@ -525,7 +527,7 @@
                            itemId:nil
                  customAttributes:@{}];
     [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuDidUnlock];
-    NSLog(@"Payment Purchased Notification");
+    NSLog(@"Payment Purchased Notification - upgrades");
     
     for ( UpgradeCell * cell in [self.myTable visibleCells] )
     {
@@ -545,14 +547,16 @@
     [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
     NSString * currency = [formatter currencyCode];
     
-    [Answers logPurchaseWithPrice:[[NSDecimalNumber alloc] initWithFloat:self.activeUpgrade.priceToUnlock]
+    NSString * trimmedString = [[self.activeUpgrade.priceString componentsSeparatedByCharactersInSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]]componentsJoinedByString:@""];
+    
+    [Answers logPurchaseWithPrice:[[NSDecimalNumber alloc] initWithFloat:[trimmedString floatValue]]
                          currency:currency
                           success:@NO
                          itemName:self.activeUpgrade.title
                          itemType:@"Upgrade"
                            itemId:nil
                  customAttributes:@{}];
-    NSLog(@"Payment Failed Notification");
+    NSLog(@"Payment Failed Notification - upgrades");
     [self hideProgressHud];
     [self refreshUpgradeViews];
 }

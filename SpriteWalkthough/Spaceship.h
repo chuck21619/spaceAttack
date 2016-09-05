@@ -10,7 +10,7 @@
 #import "PlayerWeaponsKit.h"
 #import "EnumTypes.h"
 #import "Shield.h"
-//#import "Level.h"
+@import StoreKit;
 
 @class Spaceship;
 @protocol SpaceshipDelegate <NSObject>
@@ -24,6 +24,11 @@
 @interface Spaceship : SKSpriteNode
 
 @property (nonatomic, weak) id <SpaceshipDelegate> delegate;
+
+@property (nonatomic) NSString * storeKitIdentifier;
+@property (nonatomic) SKProduct * storeKitProduct;
+@property (nonatomic) BOOL isValidForMoneyPurchase;
+@property (nonatomic) NSString * priceString;
 
 @property (nonatomic) int defaultDamage;
 @property (nonatomic) int damage;

@@ -56,17 +56,17 @@ static AccountManager * sharedAccountManager = nil;
 #pragma mark - store kit
 - (void) paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray<SKPaymentTransaction *> *)transactions
 {
-    //NSLog(@"account manager - paymentQueue");
+    NSLog(@"account manager - paymentQueue");
     for (SKPaymentTransaction *transaction in transactions)
     {
-        //NSLog(@"transaction : %@", transaction);
-        //NSLog(@"error : %@", transaction.error);
-        //NSLog(@"payment : %@", transaction.payment);
-        //NSLog(@"payment.productIdentifier ::: %@", transaction.payment.productIdentifier);
-        //NSLog(@"identifier : %@", transaction.transactionIdentifier);
-        //NSLog(@"state : %li", (long)transaction.transactionState);
+        NSLog(@"transaction : %@", transaction);
+        NSLog(@"error : %@", transaction.error);
+        NSLog(@"payment : %@", transaction.payment);
+        NSLog(@"payment.productIdentifier ::: %@", transaction.payment.productIdentifier);
+        NSLog(@"identifier : %@", transaction.transactionIdentifier);
+        NSLog(@"state : %li", (long)transaction.transactionState);
         
-        //[[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+        [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
         switch (transaction.transactionState)
         {
             case SKPaymentTransactionStatePurchasing:
@@ -317,6 +317,11 @@ static AccountManager * sharedAccountManager = nil;
         [AccountManager submitCompletedAchievement:kAchievementPurchasedGascogne];
     else if ( [spaceshipString isEqualToString:@"Habsburg"] )
         [AccountManager submitCompletedAchievement:kAchievementPurchasedHabsburg];
+    
+    if ( [availableShips count] == 8 )
+    {
+        NSLog(@"submit all ships achievement");
+    }
 }
 
 

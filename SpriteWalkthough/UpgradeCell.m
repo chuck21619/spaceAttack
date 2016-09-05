@@ -245,11 +245,17 @@
         _purchaseButtonMoney.enabled = NO;
     }
     
+    NSString * pointsString;
+    if ( upgrade.pointsToUnlock > 1000 )
+        pointsString = [NSString stringWithFormat:@"%gk", upgrade.pointsToUnlock/1000.0];
+    else
+        pointsString = [NSString stringWithFormat:@"%i", upgrade.pointsToUnlock];
+    
     if ( [AccountManager availablePoints] >= upgrade.pointsToUnlock )
-        [_purchaseButtonPoints setTitle:[NSString stringWithFormat:@"%@!\n%ik %@", NSLocalizedString(@"Unlock Now", nil), upgrade.pointsToUnlock/1000, NSLocalizedString(@"points", nil)] forState:UIControlStateNormal];
+        [_purchaseButtonPoints setTitle:[NSString stringWithFormat:@"%@!\n%@ %@", NSLocalizedString(@"Unlock Now", nil), pointsString, NSLocalizedString(@"points", nil)] forState:UIControlStateNormal];
     else
     {
-        [_purchaseButtonPoints setTitle:[NSString stringWithFormat:@"%ik %@\n%@", upgrade.pointsToUnlock/1000, NSLocalizedString(@"points", nil), NSLocalizedString(@"to Unlock", nil)] forState:UIControlStateNormal];
+        [_purchaseButtonPoints setTitle:[NSString stringWithFormat:@"%@ %@\n%@", pointsString, NSLocalizedString(@"points", nil), NSLocalizedString(@"to Unlock", nil)] forState:UIControlStateNormal];
         _purchaseButtonPoints.enabled = NO;
     }
     
