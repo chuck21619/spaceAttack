@@ -19,9 +19,6 @@
 
 @property (nonatomic, weak) id <ShieldDelegate> delegate;
 @property (nonatomic) int armor;
-@property (nonatomic) NSArray * shield1Frames;
-@property (nonatomic) NSArray * shield2Frames;
-@property (nonatomic) NSArray * shield3Frames;
 - (void) takeDamage;
 
 @end

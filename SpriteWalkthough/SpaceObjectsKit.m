@@ -10,6 +10,9 @@
 #import "SpaceshipScene.h"
 
 @implementation SpaceObjectsKit
+{
+    NSDictionary * _spaceBackgroundTextures;
+}
 
 static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
 + (SpaceObjectsKit *)sharedInstanceWithScene:(SpaceshipScene *)scene
@@ -96,31 +99,16 @@ static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
                                  @"Shield": shield,
                                  @"EnergyBooster" : energyBooster};
         
-        //planets
-        SKTexture * planet1 = [SKTexture textureWithImageNamed:@"planets1.png"];
-        SKTexture * planet2 = [SKTexture textureWithImageNamed:@"planets2.png"];
-        SKTexture * planet3 = [SKTexture textureWithImageNamed:@"planets3.png"];
-        SKTexture * planet4 = [SKTexture textureWithImageNamed:@"planets4.png"];
-        SKTexture * planet5 = [SKTexture textureWithImageNamed:@"planets5.png"];
-        SKTexture * planet6 = [SKTexture textureWithImageNamed:@"planets6.png"];
-        SKTexture * planet7 = [SKTexture textureWithImageNamed:@"planets7.png"];
-        SKTexture * planet8 = [SKTexture textureWithImageNamed:@"planets8.png"];
-        SKTexture * planet9 = [SKTexture textureWithImageNamed:@"planets9.png"];
-        SKTexture * planet10 = [SKTexture textureWithImageNamed:@"planets10.png"];
-        SKTexture * planet11 = [SKTexture textureWithImageNamed:@"planets11.png"];
-        SKTexture * planet12 = [SKTexture textureWithImageNamed:@"planets12.png"];
-        self.backgroundPlanetTextures = @[planet1, planet2, planet3, planet4, planet5, planet6, planet7, planet8, planet9, planet10, planet11, planet12];
-        
-        //space backgrounds
-//        self.firstSpaceBackgroundTexture = [SKTexture textureWithImageNamed:@"spaceBackgroundFirst.png"];
-//        SKTexture * spaceBackground1 = [SKTexture textureWithImageNamed:@"spaceBackground1.png"];
-//        SKTexture * spaceBackground2 = [SKTexture textureWithImageNamed:@"spaceBackground2.png"];
-//        SKTexture * spaceBackground3 = [SKTexture textureWithImageNamed:@"spaceBackground3.png"];
-//        SKTexture * spaceBackground4 = [SKTexture textureWithImageNamed:@"spaceBackground4.png"];
-//        self.spaceBackgroundTextures = @[spaceBackground1, spaceBackground2, spaceBackground3, spaceBackground4];
-        
-        self.firstSpaceBackgroundTexture = [SKTexture textureWithImageNamed:@"Colony_tall.png"];
-        self.spaceBackgroundTextures = @[[SKTexture textureWithImageNamed:@"Colony_tall.png"], [SKTexture textureWithImageNamed:@"Colony_tall.png"], [SKTexture textureWithImageNamed:@"Colony_tall.png"], [SKTexture textureWithImageNamed:@"Colony_tall.png"], [SKTexture textureWithImageNamed:@"Colony_tall.png"]];
+        _spaceBackgroundTextures = @{@"Black Star" : [SKTexture textureWithImageNamed:@"Black Star copy.png"],
+                                     @"Broken" : [SKTexture textureWithImageNamed:@"Broken copy.png"],
+                                     @"Colony" : [SKTexture textureWithImageNamed:@"Colony copy.png"],
+                                     @"Hologram" : [SKTexture textureWithImageNamed:@"Hologram copy.png"],
+                                     @"Red" : [SKTexture textureWithImageNamed:@"Red copy.png"],
+                                     @"Ring" : [SKTexture textureWithImageNamed:@"Ring copy.png"],
+                                     @"Serebus" : [SKTexture textureWithImageNamed:@"Serebus copy.png"],
+                                     @"Twin Suns" : [SKTexture textureWithImageNamed:@"Twin Suns copy.png"],
+                                     @"Verdant" : [SKTexture textureWithImageNamed:@"Verdant copy.png"],
+                                     @"Void" : [SKTexture textureWithImageNamed:@"Void copy.png"]};
     }
     return self;
 }
@@ -128,14 +116,12 @@ static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
 - (NSArray *) texturesForPreloading
 {
     NSMutableArray * textures = [NSMutableArray new];
-    [textures addObjectsFromArray:self.backgroundPlanetTextures];
     [textures addObjectsFromArray:self.asteroidTextureAtlas];
     [textures addObjectsFromArray:[self.powerUpTextures allValues]];
-    [textures addObjectsFromArray:self.spaceBackgroundTextures];
+    [textures addObjectsFromArray:[_spaceBackgroundTextures allValues]];
     [textures addObjectsFromArray:self.shield1Frames];
     [textures addObjectsFromArray:self.shield2Frames];
     [textures addObjectsFromArray:self.shield3Frames];
-    [textures addObject:self.firstSpaceBackgroundTexture];
     return textures;
 }
 
@@ -201,42 +187,22 @@ static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
     return newAsteroid;
 }
 
-- (void) addPlanetToBackgroundWithAlpha:(float)alpha
-{
-    return;
-    SKTexture * randomPlanetTextue = [self.backgroundPlanetTextures objectAtIndex:arc4random_uniform((int)self.backgroundPlanetTextures.count)];
-    SKSpriteNode * backgroundPlanet = [SKSpriteNode spriteNodeWithTexture:randomPlanetTextue];
-    backgroundPlanet.zPosition = -50;
-    double randomScale = ((double)arc4random() / 0x100000000);
-    [backgroundPlanet setScale:randomScale*1.3];
-    [backgroundPlanet setAlpha:alpha];
-    [self.scene addChild:backgroundPlanet];
-    int randomXcoord = arc4random_uniform(self.scene.size.width + backgroundPlanet.size.width) - backgroundPlanet.size.width/2;
-    int yCoord = self.scene.size.height + backgroundPlanet.size.height;
-    [backgroundPlanet setPosition:CGPointMake(randomXcoord, yCoord)];
-    int randomDuration = arc4random_uniform(15)+20;
-    SKAction * moveDown = [SKAction moveTo:CGPointMake(backgroundPlanet.position.x, -backgroundPlanet.size.height) duration:randomDuration];
-    [backgroundPlanet runAction:moveDown completion:^
-    {
-        [backgroundPlanet removeFromParent];
-    }];
-}
-
 - (void) addSpaceBackground
 {
     SpaceBackground * spaceBackground;
     
     float posititionDifference = 0;
     if ( ![self.scene childNodeWithName:@"spaceBackground"] )
-    {
-        spaceBackground = [SpaceBackground spriteNodeWithTexture:self.firstSpaceBackgroundTexture];
         posititionDifference = self.scene.size.height;
-    }
-    else
-    {
-        SKTexture * randomSpaceBackground = [self.spaceBackgroundTextures objectAtIndex:arc4random_uniform(4)];
-        spaceBackground = [SpaceBackground spriteNodeWithTexture:randomSpaceBackground];
-    }
+    
+    NSArray * backgroundKeys = [_spaceBackgroundTextures allKeys];
+    NSString * randomTextureKey = [backgroundKeys objectAtIndex:arc4random_uniform(backgroundKeys.count)];
+                                                                                                      
+    SKTexture * randomSpaceBackground = [_spaceBackgroundTextures objectForKey:randomTextureKey];
+    NSLog(@"what : %@", NSStringFromCGSize(randomSpaceBackground.size));
+    float resizeFactor = self.scene.size.width / randomSpaceBackground.size.width;
+    spaceBackground = [SpaceBackground spriteNodeWithTexture:randomSpaceBackground size:CGSizeMake(randomSpaceBackground.size.width*resizeFactor, randomSpaceBackground.size.height*resizeFactor)];
+    
     spaceBackground.name = @"spaceBackground";
     spaceBackground.zPosition = -100;
     spaceBackground.delegate = self.scene;
@@ -252,6 +218,9 @@ static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
     {
         [spaceBackground removeFromParent];
     }];
+    
+    NSLog(@"play song for background : %@", randomTextureKey);
+    //[audiomanger playSongForBackgorund:randomTextureKey];
 }
 
 static inline CGFloat skRandf()

@@ -21,26 +21,17 @@
         self.zPosition = 3;
         self.armor = 3;
         
-//        self.shield1Frames = [[SpaceObjectsKit sharedInstanceWithScene:nil] shield1Frames];
-//        self.shield2Frames = [[SpaceObjectsKit sharedInstanceWithScene:nil] shield2Frames];
-//        self.shield3Frames = [[SpaceObjectsKit sharedInstanceWithScene:nil] shield3Frames];
-        
-        //[self setTexture:[self.shield1Frames firstObject]];
         [self setTexture:[SKTexture textureWithImageNamed:@"shield.png"]];
-        [self setSize:CGSizeMake(self.texture.size.width/2, self.texture.size.height/2)];
+        float resizeFactor = ([[UIScreen mainScreen] bounds].size.width/320.0)*.3;
+        int shieldSize = self.texture.size.width*resizeFactor;
+        [self setSize:CGSizeMake(shieldSize, shieldSize)];
+        self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:(shieldSize*.95)/2];
+        //[self attachDebugCircleWithSize:(shieldSize*.95)];
         
-        self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.texture.size.width/3];
         self.physicsBody.categoryBitMask = [CategoryBitMasks shieldCategory];
         self.physicsBody.collisionBitMask = [CategoryBitMasks shieldCategory] | [CategoryBitMasks asteroidCategory];
         self.physicsBody.contactTestBitMask = [CategoryBitMasks shieldCategory] | [CategoryBitMasks asteroidCategory] | [CategoryBitMasks missileCategory];
         self.physicsBody.dynamic = NO;
-        
-//        NSString * photonParticlePath = [[NSBundle mainBundle] pathForResource:@"ShieldParticle" ofType:@"sks"];
-//        SKEmitterNode * particleness = [NSKeyedUnarchiver unarchiveObjectWithFile:photonParticlePath];
-//        particleness.name = @"photonParticle";
-//        [self addChild:particleness];
-        
-        //[self animate];
     }
     return self;
 }
@@ -80,19 +71,20 @@
     }];
 }
 
-//- (void) animate
-//{
-//    NSArray * atlas;
-//    if ( self.armor == 1 )
-//        atlas = self.shield3Frames;
-//    else if ( self.armor == 2 )
-//        atlas = self.shield2Frames;
-//    else
-//        atlas = self.shield1Frames;
-//    
-//    [self removeActionForKey:@"animation"];
-//    SKAction * animateFrames = [SKAction repeatActionForever:[SKAction animateWithTextures:atlas timePerFrame:0.05]];
-//    [self runAction:animateFrames withKey:@"animation"];
-//}
+- (void)attachDebugCircleWithSize:(int)s
+{
+    CGPathRef bodyPath = CGPathCreateWithEllipseInRect(CGRectMake(-s/2, -s/2, s, s), nil);
+    [self attachDebugFrameFromPath:bodyPath];
+}
+
+- (void)attachDebugFrameFromPath:(CGPathRef)bodyPath {
+    //if (kDebugDraw==NO) return;
+    SKShapeNode *shape = [SKShapeNode node];
+    shape.zPosition = 100;
+    shape.path = bodyPath;
+    shape.strokeColor = [SKColor colorWithRed:1.0 green:1 blue:1 alpha:1];
+    shape.lineWidth = 1.0;
+    [self addChild:shape];
+}
 
 @end

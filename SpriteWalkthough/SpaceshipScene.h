@@ -47,10 +47,6 @@
 @property (nonatomic) BOOL resumeEnemyTimer;
 
 //background
-@property (nonatomic) NSTimer * backgroundPlanetsTimer;
-@property (nonatomic) BOOL resumeBackgroundPlanetsTimer;
-@property (nonatomic) NSTimer * changeCloudDensityTimer;
-@property (nonatomic) BOOL resumeChangeCloudDensityTimer;
 @property (nonatomic) float lastSpaceBackgroundDuration;
 
 //achievements'

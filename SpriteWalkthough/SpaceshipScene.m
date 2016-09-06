@@ -160,8 +160,6 @@
     cloudDust.position = CGPointMake(self.size.width/2, self.size.height);
     [self addChild:cloudDust];
     
-    self.backgroundPlanetsTimer = [NSTimer scheduledTimerWithTimeInterval:20 target:self selector:@selector(showPlanetInBackground) userInfo:nil repeats:YES];
-    
     self.showingTooltip = NO;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
     {
@@ -355,18 +353,6 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
         self.resumeAsteroidTimer = NO;
     [self.asteroidTimer invalidate];
     
-    if ( [self.backgroundPlanetsTimer isValid] )
-        self.resumeBackgroundPlanetsTimer = YES;
-    else
-        self.resumeBackgroundPlanetsTimer = NO;
-    [self.backgroundPlanetsTimer invalidate];
-    
-    if ( [self.changeCloudDensityTimer isValid] )
-        self.resumeChangeCloudDensityTimer = YES;
-    else
-        self.resumeChangeCloudDensityTimer = NO;
-    [self.changeCloudDensityTimer invalidate];
-    
     if ( [self.periodicAchievementUpdatingTimer isValid] )
         self.resumePeriodicAchievementUpdatingTimer = YES;
     else
@@ -392,13 +378,7 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     
     if ( self.resumeAsteroidTimer )
         self.asteroidTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(moreAsteroids) userInfo:nil repeats:YES];
-    
-    if ( self.resumeBackgroundPlanetsTimer )
-        self.backgroundPlanetsTimer = [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(showPlanetInBackground) userInfo:nil repeats:YES];
-    
-    if ( self.resumeChangeCloudDensityTimer )
-        self.changeCloudDensityTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(changeCloudDensity) userInfo:nil repeats:YES];
-    
+
     if ( self.resumePeriodicAchievementUpdatingTimer )
         self.periodicAchievementUpdatingTimer = [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(submitAchievementProgress) userInfo:nil repeats:YES];
     
@@ -426,6 +406,20 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
         [self submitAchievementProgress];
         [self submitGameKitScore];
     }];
+}
+
+#pragma mark background
+- (void) checkBackground
+{
+    __block BOOL allSpaceBackgroundsAreBelowTopOfScreen = YES;
+    for ( SpaceBackground * spaceBackground in _cachedSpaceBackgrounds )
+    {
+        if ( spaceBackground.position.y > -(spaceBackground.size.height/2 - self.size.height) )
+            allSpaceBackgroundsAreBelowTopOfScreen = NO;
+    }
+    
+    if ( allSpaceBackgroundsAreBelowTopOfScreen )
+        [self.spaceObjectKit addSpaceBackground];
 }
 
 #pragma mark game kit
@@ -711,41 +705,12 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
             [_nodesToRemove addObject:node];
     }
     
-    //[self removeChildrenInArray:_nodesToRemove]; //this doesnt work for some reason
     for ( SKNode * node in _nodesToRemove )
         [node removeFromParent];
     
     [_nodesToRemove removeAllObjects];
     
-    __block BOOL allSpaceBackgroundsAreBelowTopOfScreen = YES;
-    for ( SpaceBackground * spaceBackground in _cachedSpaceBackgrounds )
-    {
-        if ( spaceBackground.position.y > -(spaceBackground.size.height/2 - self.size.height) )
-            allSpaceBackgroundsAreBelowTopOfScreen = NO;
-    }
-    
-    //float alpha = CGColorGetAlpha(self.backgroundColor.CGColor);
-    
-    
-    if ( allSpaceBackgroundsAreBelowTopOfScreen )//&& alpha < .5 )
-    {
-        [self.spaceObjectKit addSpaceBackground];
-//        SKEmitterNode * stars = (SKEmitterNode *)[self childNodeWithName:@"stars"];
-//        float newBirthRate = stars.particleBirthRate*8;
-//        float newScaleRange = stars.particleScaleRange*3;
-//        float newSpeedRange = stars.particleSpeedRange*2;
-//        
-//        if ( newBirthRate > 20 )
-//            newBirthRate = 20;
-//        if ( newScaleRange > .18 )
-//            newScaleRange = .18;
-//        if ( newSpeedRange > 20 )
-//            newSpeedRange = 20;
-//        
-//        stars.particleBirthRate = newBirthRate;
-//        stars.particleScaleRange = newScaleRange;
-//        stars.particleSpeedRange = newSpeedRange;
-    }
+    [self checkBackground];
 }
 
 - (void) didBeginContact:(SKPhysicsContact *)contact
@@ -854,44 +819,6 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
             [(Shield *)secondBody.node takeDamage];
         }
     }
-}
-
-#pragma mark background
-- (void) showPlanetInBackground
-{
-    float alpha = 1 - CGColorGetAlpha(self.backgroundColor.CGColor);
-    [self.spaceObjectKit addPlanetToBackgroundWithAlpha:alpha];
-}
-
-- (void) changeCloudDensity
-{
-//    SKEmitterNode * clouds = (SKEmitterNode *)[self childNodeWithName:@"cloudsEmitter"];
-//    clouds.particleBirthRate = skRand(.02, 1.2);
-//    clouds.particleSpeed = clouds.particleSpeed + 10;
-//    
-//    SKEmitterNode * cloudsOnTop = (SKEmitterNode *)[self childNodeWithName:@"cloudsOnTopEmitter"];
-//    cloudsOnTop.particleBirthRate = skRand(.01, .5);
-//    cloudsOnTop.particleSpeed = cloudsOnTop.particleSpeed + 10;
-    
-    [self.mySpaceship increaseExhaustSpeed];
-    [self adjustBackground];
-}
-
-- (void) adjustBackground
-{
-    return;
-    
-    const CGFloat * colors = CGColorGetComponents(self.backgroundColor.CGColor);
-    float alpha = CGColorGetAlpha(self.backgroundColor.CGColor);
-    
-    UIColor * newColor = [UIColor colorWithRed:colors[0]-.1 green:colors[1]-.05 blue:colors[2]-.05 alpha:alpha-=.05];
-    
-    [UIView animateWithDuration:1 animations:^{
-        self.backgroundColor = newColor;
-    }];
-    
-    for ( SpaceBackground * node in _cachedSpaceBackgrounds )
-        [node runAction:[SKAction fadeAlphaTo:1-alpha duration:5]];
 }
 
 #pragma mark enemies
@@ -1153,12 +1080,8 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     self.resumeAsteroidTimer = NO;
     [self.enemyTimer invalidate];
     self.resumeEnemyTimer = NO;
-    [self.changeCloudDensityTimer invalidate];
-    self.resumeChangeCloudDensityTimer = NO;
     [self.periodicAchievementUpdatingTimer invalidate];
     self.resumePeriodicAchievementUpdatingTimer = NO;
-    [self.backgroundPlanetsTimer invalidate];
-    self.resumeBackgroundPlanetsTimer = NO;
     [self removeActionForKey:@"makeAsteroids"];
     [self removeActionForKey:@"makeEnemies"];
     [self removeActionForKey:@"makePowerUps"];

@@ -57,7 +57,7 @@
         
         float physicsBodyRadius = self.size.width;
         self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:physicsBodyRadius];
-        [self attachDebugCircleWithSize:physicsBodyRadius*2];
+        //[self attachDebugCircleWithSize:physicsBodyRadius*2];
         
         self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:physicsBodyRadius];
         self.physicsBody.dynamic = YES;
