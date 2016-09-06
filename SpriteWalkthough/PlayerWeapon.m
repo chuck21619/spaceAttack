@@ -8,7 +8,6 @@
 
 #import "PlayerWeapon.h"
 #import "PlayerWeaponsKit.h"
-#import "UpgradeScene.h"
 #import "AccountManager.h"
 
 @implementation PlayerWeapon
@@ -30,7 +29,7 @@
 {
     self.level++;
     [self startFiring];
-    if ( self.level == 4 && [[self scene] class] != [UpgradeScene class] )
+    if ( self.level == 4 )
     {
         if ( [self class] == [MachineGun class])
             [AccountManager submitCompletedAchievement:kAchievementMaxLevelMachineGun];

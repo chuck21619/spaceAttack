@@ -23,9 +23,9 @@ static AccountManager * sharedAccountManager = nil;
         sharedAccountManager = [[AccountManager alloc] init];
         sharedAccountManager.userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"ZinStudio"];
         
-#warning comment out for release builds
-        [sharedAccountManager.userDefaults removePersistentDomainForName:@"ZinStudio"]; //clear all defaults
-        [AccountManager addPoints:5000000];
+//#warning comment out for release builds
+//        [sharedAccountManager.userDefaults removePersistentDomainForName:@"ZinStudio"]; //clear all defaults
+//        [AccountManager addPoints:5000000];
         
         sharedAccountManager.fullScreenAdIteration = YES;
         sharedAccountManager.firstGameplaySinceLaunch = YES;
@@ -672,7 +672,7 @@ static AccountManager * sharedAccountManager = nil;
         }
         else
         {
-            //NSLog(@"achievements loaded");// : %@", achievements);
+            NSLog(@"account manager - achievements loaded : %@", achievements);
             NSMutableArray * completedAchievementsForUserDefaults = [NSMutableArray new];
             NSMutableArray * achievementsForUserDefaults = [[AccountManager achievements] mutableCopy];
             for ( GKAchievement * achievement in achievements )

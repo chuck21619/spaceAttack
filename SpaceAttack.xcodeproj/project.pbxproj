@@ -66,7 +66,6 @@
 		6EB3487E1A9ACF41003E551F /* GameplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EB3487D1A9ACF41003E551F /* GameplayViewController.m */; };
 		6EB348821A9ADB05003E551F /* SpaceshipKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EB348811A9ADB05003E551F /* SpaceshipKit.m */; };
 		6ED0AEF11A91414200493ED0 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED0AEF01A91414200493ED0 /* MainMenuViewController.m */; };
-		6ED0AEF81A9149DA00493ED0 /* MenuBackgroundScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED0AEF71A9149DA00493ED0 /* MenuBackgroundScene.m */; };
 		6ED0AEFB1A914FC600493ED0 /* SelectShipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED0AEFA1A914FC600493ED0 /* SelectShipViewController.m */; };
 		9C359FDC1D77822500107AF4 /* electricity3.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C359FD01D77822500107AF4 /* electricity3.png */; };
 		9C359FDD1D77822500107AF4 /* electricity4.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C359FD11D77822500107AF4 /* electricity4.png */; };
@@ -107,7 +106,6 @@
 		A3170E721CC474E90098C24E /* Shield.m in Sources */ = {isa = PBXBuildFile; fileRef = A3170E711CC474E90098C24E /* Shield.m */; };
 		A3170E741CC4806C0098C24E /* ShieldDestroy.sks in Resources */ = {isa = PBXBuildFile; fileRef = A3170E731CC4806C0098C24E /* ShieldDestroy.sks */; };
 		A3170E761CC484DB0098C24E /* shieldPowerUp.png in Resources */ = {isa = PBXBuildFile; fileRef = A3170E751CC484DB0098C24E /* shieldPowerUp.png */; };
-		A319A5821D644FB4001B00E4 /* testEffectNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A319A5811D644FB4001B00E4 /* testEffectNode.m */; };
 		A31AD1321D0CAD5D000CF547 /* spaceBackground1.png in Resources */ = {isa = PBXBuildFile; fileRef = A31AD12E1D0CAD5D000CF547 /* spaceBackground1.png */; };
 		A31AD1331D0CAD5D000CF547 /* spaceBackground2.png in Resources */ = {isa = PBXBuildFile; fileRef = A31AD12F1D0CAD5D000CF547 /* spaceBackground2.png */; };
 		A31AD1341D0CAD5D000CF547 /* spaceBackground3.png in Resources */ = {isa = PBXBuildFile; fileRef = A31AD1301D0CAD5D000CF547 /* spaceBackground3.png */; };
@@ -200,7 +198,6 @@
 		A331D68A1C72DCB20054124F /* DGActivityIndicatorTwoDotsAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = A331D66A1C72DCB20054124F /* DGActivityIndicatorTwoDotsAnimation.m */; };
 		A3328B4B1C6FA57B00E18FF4 /* UpgradesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3328B4A1C6FA57B00E18FF4 /* UpgradesViewController.m */; };
 		A3328C081C6FBE4E00E18FF4 /* Upgrade.m in Sources */ = {isa = PBXBuildFile; fileRef = A3328C071C6FBE4E00E18FF4 /* Upgrade.m */; };
-		A3328C0F1C6FEA6E00E18FF4 /* UpgradeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A3328C0E1C6FEA6E00E18FF4 /* UpgradeScene.m */; };
 		A3451F371C730F9D0080B81C /* CategoryBitMasks.m in Sources */ = {isa = PBXBuildFile; fileRef = A3451E171C730F980080B81C /* CategoryBitMasks.m */; };
 		A3483FC11D68F13200E9D1F9 /* menuBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FC01D68F13200E9D1F9 /* menuBackground.png */; };
 		A3483FC81D68F98000E9D1F9 /* Habsburg.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FC21D68F98000E9D1F9 /* Habsburg.png */; };
@@ -440,6 +437,8 @@
 		A3BACA571D7CC2AA004388F3 /* SmartPhotonUpgrade.gif in Resources */ = {isa = PBXBuildFile; fileRef = A3BACA4F1D7CC2AA004388F3 /* SmartPhotonUpgrade.gif */; };
 		A3BACA581D7CC2AA004388F3 /* SpeedBoostUpgrade.gif in Resources */ = {isa = PBXBuildFile; fileRef = A3BACA501D7CC2AA004388F3 /* SpeedBoostUpgrade.gif */; };
 		A3BACA5B1D7CE425004388F3 /* PurchaseShipView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BACA5A1D7CE425004388F3 /* PurchaseShipView.m */; };
+		A3BD28731D7E1C3B008F6FA1 /* jefParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = A3BD28721D7E1C3B008F6FA1 /* jefParticle.sks */; };
+		A3BD28761D7E3A5F008F6FA1 /* HighScoresAchievementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD28751D7E3A5F008F6FA1 /* HighScoresAchievementsViewController.m */; };
 		A3C615C51C4CCE5000566AF2 /* DQAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C615C41C4CCE5000566AF2 /* DQAlertView.m */; };
 		A3C8279B1B76A93F007F7E64 /* pellet.png in Resources */ = {isa = PBXBuildFile; fileRef = A3C8279A1B76A93F007F7E64 /* pellet.png */; };
 		A3CE27581C4B6AC10082D2AC /* cloudParticle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3CE27571C4B6AC10082D2AC /* cloudParticle.png */; };
@@ -634,8 +633,6 @@
 		6EB348811A9ADB05003E551F /* SpaceshipKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpaceshipKit.m; sourceTree = "<group>"; };
 		6ED0AEEF1A91414200493ED0 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
 		6ED0AEF01A91414200493ED0 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
-		6ED0AEF61A9149DA00493ED0 /* MenuBackgroundScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuBackgroundScene.h; sourceTree = "<group>"; };
-		6ED0AEF71A9149DA00493ED0 /* MenuBackgroundScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuBackgroundScene.m; sourceTree = "<group>"; };
 		6ED0AEF91A914FC600493ED0 /* SelectShipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectShipViewController.h; sourceTree = "<group>"; };
 		6ED0AEFA1A914FC600493ED0 /* SelectShipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectShipViewController.m; sourceTree = "<group>"; };
 		9C359FD01D77822500107AF4 /* electricity3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity3.png; sourceTree = "<group>"; };
@@ -685,8 +682,6 @@
 		A3170E711CC474E90098C24E /* Shield.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shield.m; sourceTree = "<group>"; };
 		A3170E731CC4806C0098C24E /* ShieldDestroy.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ShieldDestroy.sks; sourceTree = "<group>"; };
 		A3170E751CC484DB0098C24E /* shieldPowerUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shieldPowerUp.png; sourceTree = "<group>"; };
-		A319A5801D644FB4001B00E4 /* testEffectNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testEffectNode.h; sourceTree = "<group>"; };
-		A319A5811D644FB4001B00E4 /* testEffectNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = testEffectNode.m; sourceTree = "<group>"; };
 		A31AD12E1D0CAD5D000CF547 /* spaceBackground1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spaceBackground1.png; sourceTree = "<group>"; };
 		A31AD12F1D0CAD5D000CF547 /* spaceBackground2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spaceBackground2.png; sourceTree = "<group>"; };
 		A31AD1301D0CAD5D000CF547 /* spaceBackground3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spaceBackground3.png; sourceTree = "<group>"; };
@@ -817,8 +812,6 @@
 		A3328B4A1C6FA57B00E18FF4 /* UpgradesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpgradesViewController.m; sourceTree = "<group>"; };
 		A3328C061C6FBE4E00E18FF4 /* Upgrade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Upgrade.h; sourceTree = "<group>"; };
 		A3328C071C6FBE4E00E18FF4 /* Upgrade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Upgrade.m; sourceTree = "<group>"; };
-		A3328C0D1C6FEA6E00E18FF4 /* UpgradeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpgradeScene.h; sourceTree = "<group>"; };
-		A3328C0E1C6FEA6E00E18FF4 /* UpgradeScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpgradeScene.m; sourceTree = "<group>"; };
 		A3451E161C730F980080B81C /* CategoryBitMasks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryBitMasks.h; sourceTree = "<group>"; };
 		A3451E171C730F980080B81C /* CategoryBitMasks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryBitMasks.m; sourceTree = "<group>"; };
 		A3483FC01D68F13200E9D1F9 /* menuBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuBackground.png; sourceTree = "<group>"; };
@@ -1109,6 +1102,9 @@
 		A3BACA501D7CC2AA004388F3 /* SpeedBoostUpgrade.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = SpeedBoostUpgrade.gif; sourceTree = "<group>"; };
 		A3BACA591D7CE425004388F3 /* PurchaseShipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseShipView.h; sourceTree = "<group>"; };
 		A3BACA5A1D7CE425004388F3 /* PurchaseShipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseShipView.m; sourceTree = "<group>"; };
+		A3BD28721D7E1C3B008F6FA1 /* jefParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = jefParticle.sks; sourceTree = "<group>"; };
+		A3BD28741D7E3A5F008F6FA1 /* HighScoresAchievementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighScoresAchievementsViewController.h; sourceTree = "<group>"; };
+		A3BD28751D7E3A5F008F6FA1 /* HighScoresAchievementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighScoresAchievementsViewController.m; sourceTree = "<group>"; };
 		A3C615C31C4CCE5000566AF2 /* DQAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQAlertView.h; sourceTree = "<group>"; };
 		A3C615C41C4CCE5000566AF2 /* DQAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQAlertView.m; sourceTree = "<group>"; };
 		A3C8279A1B76A93F007F7E64 /* pellet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pellet.png; sourceTree = "<group>"; };
@@ -1599,12 +1595,6 @@
 		13EDFF3919096D7E0077B7D2 /* scenes */ = {
 			isa = PBXGroup;
 			children = (
-				A3328C0D1C6FEA6E00E18FF4 /* UpgradeScene.h */,
-				A3328C0E1C6FEA6E00E18FF4 /* UpgradeScene.m */,
-				6ED0AEF61A9149DA00493ED0 /* MenuBackgroundScene.h */,
-				6ED0AEF71A9149DA00493ED0 /* MenuBackgroundScene.m */,
-				A319A5801D644FB4001B00E4 /* testEffectNode.h */,
-				A319A5811D644FB4001B00E4 /* testEffectNode.m */,
 				133A043418E23BCB00053595 /* SpaceshipScene.h */,
 				133A043518E23BCB00053595 /* SpaceshipScene.m */,
 			);
@@ -1622,6 +1612,8 @@
 				6EB3487D1A9ACF41003E551F /* GameplayViewController.m */,
 				A3328B491C6FA57B00E18FF4 /* UpgradesViewController.h */,
 				A3328B4A1C6FA57B00E18FF4 /* UpgradesViewController.m */,
+				A3BD28741D7E3A5F008F6FA1 /* HighScoresAchievementsViewController.h */,
+				A3BD28751D7E3A5F008F6FA1 /* HighScoresAchievementsViewController.m */,
 				A32030C71D168E8B00B0F4BC /* SettingsViewController.h */,
 				A32030C81D168E8B00B0F4BC /* SettingsViewController.m */,
 			);
@@ -1632,6 +1624,7 @@
 			isa = PBXGroup;
 			children = (
 				1345CE8818FD8CEE004ECA6C /* spark.png */,
+				A3BD28721D7E1C3B008F6FA1 /* jefParticle.sks */,
 				A39C5F621D29D25800A68E2D /* spaceshipExplosion.sks */,
 				13B919FF1900514C0050CA0A /* ExplosionParticle.sks */,
 				A39C5F371D29892C00A68E2D /* photonParticle.sks */,
@@ -3062,6 +3055,7 @@
 				130169361909AB1A00DDC896 /* photon.png in Resources */,
 				A3B7FEC31D7C835500DD6528 /* HabsburgEle.png in Resources */,
 				A3DD784D1D7BB2A100A1D2D1 /* laser_upgrade 1@2x.png in Resources */,
+				A3BD28731D7E1C3B008F6FA1 /* jefParticle.sks in Resources */,
 				A3483FCF1D68F9FA00E9D1F9 /* spaceship.png in Resources */,
 				A3B7FEDD1D7CAAFC00DD6528 /* minimizeCell.wav in Resources */,
 				A3B7FEDC1D7CAAFC00DD6528 /* maximizeCell.wav in Resources */,
@@ -3227,7 +3221,6 @@
 				A331D66F1C72DCB20054124F /* DGActivityIndicatorBallGridBeatAnimation.m in Sources */,
 				6E49CED21A91C65000FC48CC /* Abdul_Kadir.m in Sources */,
 				A39CEF5F1D317D7E00C01870 /* ALSource.m in Sources */,
-				A3328C0F1C6FEA6E00E18FF4 /* UpgradeScene.m in Sources */,
 				13EDFF36190960AE0077B7D2 /* Asteroid.m in Sources */,
 				133A040718E22B1F00053595 /* main.m in Sources */,
 				6E49CEE21A91C70D00FC48CC /* Flandre.m in Sources */,
@@ -3309,15 +3302,14 @@
 				A3167F441C7A83D7007A6796 /* SpriteAppDelegate.m in Sources */,
 				A331D6751C72DCB20054124F /* DGActivityIndicatorBallScaleMultipleAnimation.m in Sources */,
 				A331D66E1C72DCB20054124F /* DGActivityIndicatorBallClipRotatePulseAnimation.m in Sources */,
-				6ED0AEF81A9149DA00493ED0 /* MenuBackgroundScene.m in Sources */,
 				A39CEF551D317D7E00C01870 /* OALAudioTrackNotifications.m in Sources */,
 				9CA06B261D77A7F50074687B /* FLAnimatedImageView.m in Sources */,
 				A3E009BB1D72F86700C340AA /* UIView+Shake.m in Sources */,
 				135BEDA3197456C900892311 /* EnemyFast.m in Sources */,
+				A3BD28761D7E3A5F008F6FA1 /* HighScoresAchievementsViewController.m in Sources */,
 				A331D6741C72DCB20054124F /* DGActivityIndicatorBallScaleAnimation.m in Sources */,
 				139F8B29194A96AA0027DB1D /* Enemy.m in Sources */,
 				A3328C081C6FBE4E00E18FF4 /* Upgrade.m in Sources */,
-				A319A5821D644FB4001B00E4 /* testEffectNode.m in Sources */,
 				A39CEF601D317D7E00C01870 /* ALWrapper.m in Sources */,
 				A331D6891C72DCB20054124F /* DGActivityIndicatorTripleRingsAnimation.m in Sources */,
 				A34F35241D56F8BE007A1191 /* Reachability.m in Sources */,

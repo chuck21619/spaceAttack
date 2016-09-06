@@ -9,7 +9,6 @@
 #import "SettingsViewController.h"
 #import "AudioManager.h"
 #import <SpriteKit/SpriteKit.h>
-#import "MenuBackgroundScene.h"
 #import "AccountManager.h"
 #import "SpriteAppDelegate.h"
 

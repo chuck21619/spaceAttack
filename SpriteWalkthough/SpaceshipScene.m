@@ -153,12 +153,12 @@
     
     self.periodicAchievementUpdatingTimer = [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(submitAchievementProgress) userInfo:nil repeats:YES];
     
-    NSString * starsPath = [[NSBundle mainBundle] pathForResource:@"Stars" ofType:@"sks"];
-    SKEmitterNode * stars = [NSKeyedUnarchiver unarchiveObjectWithFile:starsPath];
-    stars.name = @"stars";
-    stars.zPosition = -75;
-    stars.position = CGPointMake(self.size.width/2, self.size.height+20);
-    [self addChild:stars];
+    NSString * cloudDustString = [[NSBundle mainBundle] pathForResource:@"jefParticle" ofType:@"sks"];
+    SKEmitterNode * cloudDust = [NSKeyedUnarchiver unarchiveObjectWithFile:cloudDustString];
+    cloudDust.name = @"stars";
+    cloudDust.zPosition = -75;
+    cloudDust.position = CGPointMake(self.size.width/2, self.size.height);
+    [self addChild:cloudDust];
     
     self.backgroundPlanetsTimer = [NSTimer scheduledTimerWithTimeInterval:20 target:self selector:@selector(showPlanetInBackground) userInfo:nil repeats:YES];
     
@@ -221,12 +221,10 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     tmpPowerUp.delegate = self;
     tmpPowerUp.position = CGPointMake(skRand(0, self.size.width), self.size.height+tmpPowerUp.size.height);
     [self addChild:tmpPowerUp];
-    float deviceSizeFactor = self.size.width*0.00008;
-    float deviceSizeFactor2 = self.size.width*0.00025;
-    float deviceSizeFactor3 = self.size.width*0.000055;
-    [tmpPowerUp.physicsBody applyImpulse:CGVectorMake(skRand(-tmpPowerUp.size.width*deviceSizeFactor, tmpPowerUp.size.width*deviceSizeFactor),
-                                                      -(tmpPowerUp.size.width + tmpPowerUp.size.height)*deviceSizeFactor2)];
-    [tmpPowerUp.physicsBody applyTorque:skRand(-deviceSizeFactor3, deviceSizeFactor3)];
+    
+    [tmpPowerUp.physicsBody applyImpulse:CGVectorMake(skRand(-tmpPowerUp.physicsBody.mass*22, tmpPowerUp.physicsBody.mass*22),
+                                                      -tmpPowerUp.physicsBody.mass*180)];
+    [tmpPowerUp.physicsBody applyTorque:skRand(-tmpPowerUp.physicsBody.mass*.8, tmpPowerUp.physicsBody.mass*.8)];
 }
 
 - (void) updateScoreMultiplierLabel
@@ -728,24 +726,25 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     
     //float alpha = CGColorGetAlpha(self.backgroundColor.CGColor);
     
+    
     if ( allSpaceBackgroundsAreBelowTopOfScreen )//&& alpha < .5 )
     {
         [self.spaceObjectKit addSpaceBackground];
-        SKEmitterNode * stars = (SKEmitterNode *)[self childNodeWithName:@"stars"];
-        float newBirthRate = stars.particleBirthRate*8;
-        float newScaleRange = stars.particleScaleRange*3;
-        float newSpeedRange = stars.particleSpeedRange*2;
-        
-        if ( newBirthRate > 20 )
-            newBirthRate = 20;
-        if ( newScaleRange > .18 )
-            newScaleRange = .18;
-        if ( newSpeedRange > 20 )
-            newSpeedRange = 20;
-        
-        stars.particleBirthRate = newBirthRate;
-        stars.particleScaleRange = newScaleRange;
-        stars.particleSpeedRange = newSpeedRange;
+//        SKEmitterNode * stars = (SKEmitterNode *)[self childNodeWithName:@"stars"];
+//        float newBirthRate = stars.particleBirthRate*8;
+//        float newScaleRange = stars.particleScaleRange*3;
+//        float newSpeedRange = stars.particleSpeedRange*2;
+//        
+//        if ( newBirthRate > 20 )
+//            newBirthRate = 20;
+//        if ( newScaleRange > .18 )
+//            newScaleRange = .18;
+//        if ( newSpeedRange > 20 )
+//            newSpeedRange = 20;
+//        
+//        stars.particleBirthRate = newBirthRate;
+//        stars.particleScaleRange = newScaleRange;
+//        stars.particleSpeedRange = newSpeedRange;
     }
 }
 
@@ -1163,10 +1162,6 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     [self removeActionForKey:@"makeAsteroids"];
     [self removeActionForKey:@"makeEnemies"];
     [self removeActionForKey:@"makePowerUps"];
-    SKEmitterNode * clouds = (SKEmitterNode *)[self childNodeWithName:@"cloudsEmitter"];
-    clouds.particleBirthRate = 0;
-    SKEmitterNode * cloudsOnTop = (SKEmitterNode *)[self childNodeWithName:@"cloudsOnTopEmitter"];
-    cloudsOnTop.particleBirthRate = 0;
     [self updateScoreMultiplierLabel];
     [self showEndGameScreen];
     [[AudioManager sharedInstance] fadeOutGameplayMusic];

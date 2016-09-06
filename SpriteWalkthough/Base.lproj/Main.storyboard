@@ -28,6 +28,7 @@
             <string>Moon-Bold</string>
             <string>Moon-Bold</string>
             <string>Moon-Bold</string>
+            <string>Moon-Bold</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -895,6 +896,55 @@ Firead 100 Bullets + 100 points</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fg1-Rl-l78" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-152" y="667"/>
+        </scene>
+        <!--High Scores Achievements View Controller-->
+        <scene sceneID="eRV-iP-Nab">
+            <objects>
+                <viewController storyboardIdentifier="highscoresAchievementsVC" id="uh9-sL-8Yw" customClass="HighScoresAchievementsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aeU-2r-n1q"/>
+                        <viewControllerLayoutGuide type="bottom" id="Hp4-2J-Hsh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1h5-tx-cen">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" tag="10" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="menuBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="S56-8Z-EmI">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="game center" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="otj-rR-Ryr">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="woI-Kw-2ea" userLabel="Button - back">
+                                <rect key="frame" x="0.0" y="0.0" width="106" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="woI-Kw-2ea" secondAttribute="height" multiplier="53:20" id="f0u-10-UQJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Moon-Bold" family="Moon" pointSize="14"/>
+                                <inset key="contentEdgeInsets" minX="8" minY="4" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="&lt; BACK">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backAction:" destination="uh9-sL-8Yw" eventType="touchUpInside" id="oDE-6s-aY5"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="woI-Kw-2ea" secondAttribute="trailing" constant="214" id="1K3-gJ-diM"/>
+                            <constraint firstItem="woI-Kw-2ea" firstAttribute="leading" secondItem="1h5-tx-cen" secondAttribute="leading" id="7mL-mW-vjc"/>
+                            <constraint firstItem="woI-Kw-2ea" firstAttribute="top" secondItem="1h5-tx-cen" secondAttribute="top" id="z1b-eR-nXj"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Tg-iW-kcc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-152" y="1453"/>
         </scene>
     </scenes>
     <resources>

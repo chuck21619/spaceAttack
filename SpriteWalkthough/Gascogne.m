@@ -25,7 +25,7 @@
         self.damage = self.defaultDamage;
         self.armor = 19;
         self.mySpeed = 18;
-        self.pointsToUnlock = 4500;
+        self.pointsToUnlock = 55000;
         
         NSString * exhaustPath = [[NSBundle mainBundle] pathForResource:@"Exhaust" ofType:@"sks"];
         SKEmitterNode * exhaust1 = [NSKeyedUnarchiver unarchiveObjectWithFile:exhaustPath];

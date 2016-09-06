@@ -8,7 +8,6 @@
 
 #import "MainMenuViewController.h"
 #import <SpriteKit/SpriteKit.h>
-#import "MenuBackgroundScene.h"
 #import "SelectShipViewController.h"
 #import "UpgradesViewController.h"
 #import "SAAlertView.h"
@@ -187,8 +186,8 @@
 //            [_AppDelegate addGlowToLayer:self.highScoresAchievementsButton.layer withColor:[self.highScoresAchievementsButton.currentTitleColor CGColor]];
 //            [_AppDelegate addGlowToLayer:self.highScoresAchievementsButton.titleLabel.layer withColor:[self.highScoresAchievementsButton.currentTitleColor CGColor]];
             
-#warning uncomment for release builds
-//            [AccountManager loadAchievements];
+//#warning uncomment for release builds
+            [AccountManager loadAchievements];
         }
         else
         {
@@ -221,8 +220,6 @@
         [self presentViewController:ssvc animated:NO completion:^
         {
             self.view.alpha = 1;
-//            SKView * spriteView = (SKView *)self.view;
-//            [spriteView presentScene:nil];
         }];
     }];
 }
@@ -265,29 +262,25 @@
         return;
     }
     
-    GKGameCenterViewController *gameCenterController = [[GKGameCenterViewController alloc] init];
-    if (gameCenterController != nil)
+    [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuUpgrade];
+    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UpgradesViewController * upgradesVC = [storyboard instantiateViewControllerWithIdentifier:@"highscoresAchievementsVC"];
+    [UIView animateWithDuration:.2 animations:^
     {
-        gameCenterController.gameCenterDelegate = self;
-        gameCenterController.viewState = GKGameCenterViewControllerStateAchievements;
-        gameCenterController.leaderboardIdentifier = @"SingleFlightPoints";
-        gameCenterController.view.alpha = 0;
-        [UIView animateWithDuration:.2 animations:^
-         {
-             self.view.alpha = 0;
-             [self presentViewController:gameCenterController animated:NO completion:^
-              {
-                  [UIView animateWithDuration:.7 animations:^
-                   {
-                       gameCenterController.view.alpha = 1;
-                   }
-                                   completion:^(BOOL finished)
-                   {
-                       self.view.alpha = 1;
-                   }];
-              }];
-         }];
+        for ( UIView * subview in [self.view subviews] )
+        {
+            if ( subview.tag != 10 ) //10 is the background image
+                subview.alpha = 0;
+        }
     }
+    completion:^(BOOL finished)
+    {
+        [self presentViewController:upgradesVC animated:NO completion:^
+        {
+            for ( UIView * subview in [self.view subviews] )
+                subview.alpha = 1;
+        }];
+    }];
 }
 
 - (IBAction)settingsAction:(id)sender

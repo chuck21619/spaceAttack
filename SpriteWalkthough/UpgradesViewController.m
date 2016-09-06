@@ -12,7 +12,6 @@
 #import "AudioManager.h"
 #import <Crashlytics/Crashlytics.h>
 #import "SpriteAppDelegate.h"
-#import "MenuBackgroundScene.h"
 #import "UIView+Shake.h"
 
 @implementation UpgradesViewController
@@ -26,6 +25,8 @@
     NSMutableDictionary * _precomputedCells;
     
     BOOL _demoMaskApplied;
+    
+    BOOL _disableActionsDueToAnimations;
 }
 
 - (void) viewDidLoad
@@ -56,6 +57,8 @@
     [_AppDelegate addGlowToLayer:self.backButton.titleLabel.layer withColor:[self.backButton.titleLabel.textColor CGColor]];
     
     [self.myTable reloadData];
+    
+    _disableActionsDueToAnimations = NO;
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -103,8 +106,9 @@
 
 - (IBAction)backAction:(id)sender
 {
-#warning stop the shadow animation
-    //remove app store validity
+    if ( _disableActionsDueToAnimations )
+        return;
+    
     [self removeAppStoreValidity];
     
     [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuBackButton];
@@ -251,35 +255,8 @@
     self.constraintBottomDemoPreviewImageView.constant = width*.65;
 }
 
-- (void) animateCellHeight:(UpgradeCell *)cell tableTopConstraint:(int)constraintConstant mainScreenViewsAlpha:(float)alpha completion:(void (^)())completion
-{
-    self.constraintTopMyTable.constant = constraintConstant;
-    [UIView animateWithDuration:.35 animations:^
-    {
-        [self.view layoutIfNeeded];
-        [self setMainScreenViewsAlpha:alpha];
-    }
-    completion:^(BOOL finished)
-    {
-        if ( completion )
-            completion();
-    }];
-    
-    [self.myTable beginUpdates];
-    [self.myTable endUpdates];
-    NSIndexPath * indexPath = [self.myTable indexPathForCell:cell];
-    [self.myTable scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-}
 
-- (void) removeAppStoreValidity
-{
-    //remove app store validity
-    for ( Upgrade * upgrade in self.upgrades )
-        upgrade.isValidForMoneyPurchase = NO;
-    
-    [self refreshUpgradeViews];
-}
-
+#pragma mark
 - (void) appDidEnterBackground
 {
     [self removeAppStoreValidity];
@@ -356,8 +333,8 @@
             
             if ( numberOfUnlockedUpgrades < 7 )
             {
-#warning stop the shadow animation
-                [cell shake];
+                if ( ! _disableActionsDueToAnimations )
+                    [cell shake];
                 return;
             }
         }
@@ -396,6 +373,32 @@
             }];
         }];
     }
+    
+    _disableActionsDueToAnimations = YES;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^
+    {
+        _disableActionsDueToAnimations = NO;
+    });
+}
+
+- (void) animateCellHeight:(UpgradeCell *)cell tableTopConstraint:(int)constraintConstant mainScreenViewsAlpha:(float)alpha completion:(void (^)())completion
+{
+    self.constraintTopMyTable.constant = constraintConstant;
+    [UIView animateWithDuration:.35 animations:^
+     {
+         [self.view layoutIfNeeded];
+         [self setMainScreenViewsAlpha:alpha];
+     }
+                     completion:^(BOOL finished)
+     {
+         if ( completion )
+             completion();
+     }];
+    
+    [self.myTable beginUpdates];
+    [self.myTable endUpdates];
+    NSIndexPath * indexPath = [self.myTable indexPathForCell:cell];
+    [self.myTable scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
 #pragma mark upgrade cell delegate
@@ -463,6 +466,15 @@
 }
 
 #pragma mark - store kit
+- (void) removeAppStoreValidity
+{
+    //remove app store validity
+    for ( Upgrade * upgrade in self.upgrades )
+        upgrade.isValidForMoneyPurchase = NO;
+    
+    [self refreshUpgradeViews];
+}
+
 - (void) validateProductIdentifiers
 {
     NSMutableArray * productIdentifiers = [NSMutableArray new];
@@ -476,7 +488,7 @@
 
 - (void) productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response
 {
-    NSLog(@"upgrade products validated");
+    //NSLog(@"upgrade products validated");
     
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];

@@ -8,7 +8,6 @@
 
 #import "MachineGun.h"
 #import "AccountManager.h"
-#import "UpgradeScene.h"
 #import "AudioManager.h"
 #import "SpaceshipScene.h"
 

@@ -9,7 +9,6 @@
 #import "SelectShipViewController.h"
 #import <SpriteKit/SpriteKit.h>
 #import "SpaceshipKit.h"
-#import "MenuBackgroundScene.h"
 #import "GameplayViewController.h"
 #import "GameplayControls.h"
 #import "AccountManager.h"
@@ -36,6 +35,9 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(paymentPurchased) name:@"SKPaymentTransactionStatePurchased" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(paymentFailed) name:@"SKPaymentTransactionStateFailed" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(achievementsLoaded) name:@"achievementsLoaded" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidEnterBackground) name:@"appDidEnterBackground" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidBecomeActive) name:@"appDidBecomeActive" object:nil];
     
     [_AppDelegate addGlowToLayer:self.selectTitleLabel.layer withColor:self.selectTitleLabel.textColor.CGColor];
     
@@ -85,6 +87,11 @@
                 subview.alpha = 1;
         }
     }];
+}
+
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void) adjustForDeviceSize
@@ -154,7 +161,36 @@
         [shipButton refreshContent];
 }
 
+#pragma mark
+- (void) appDidEnterBackground
+{
+    [self removeAppStoreValidity];
+    if ( _activeSpaceship )
+        [_purchaseView updateContentWithSpaceship:_activeSpaceship];
+}
+
+- (void) appDidBecomeActive
+{
+    [self validateProductIdentifiers];
+}
+
+#pragma mark - game center
+- (void) achievementsLoaded
+{
+    if ( _activeSpaceship )
+        [_purchaseView updateContentWithSpaceship:_activeSpaceship];
+}
+
 #pragma mark - store kit
+- (void) removeAppStoreValidity
+{
+    for ( Spaceship * spaceship in self.spaceships )
+        spaceship.isValidForMoneyPurchase = NO;
+    
+    if ( _activeSpaceship )
+        [_purchaseView updateContentWithSpaceship:_activeSpaceship];
+}
+
 - (void) validateProductIdentifiers
 {
     NSMutableArray * productIdentifiers = [NSMutableArray new];
@@ -171,7 +207,7 @@
 
 - (void) productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response
 {
-    NSLog(@"spaceship products validated");
+    //NSLog(@"spaceship products validated");
     
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
@@ -184,7 +220,7 @@
         {
             if ( [product.productIdentifier isEqualToString:spaceship.storeKitIdentifier] )
             {
-                NSLog(@"identifier matched to spaceship : %@", product.productIdentifier);
+                //NSLog(@"identifier matched to spaceship : %@", product.productIdentifier);
                 spaceship.storeKitProduct = product;
                 spaceship.isValidForMoneyPurchase = YES;
                 spaceship.priceString = [numberFormatter stringFromNumber:product.price];
@@ -203,7 +239,8 @@
         }
     }
     
-    NSLog(@"refresh purchase dialog");
+    if ( _activeSpaceship )
+        [_purchaseView updateContentWithSpaceship:_activeSpaceship];
 }
 
 - (void) paymentPurchased
@@ -265,7 +302,7 @@
 
         UIViewController * mainMenuVC = [self presentingViewController];
         mainMenuVC.view.alpha = 0;
-        [UIView animateWithDuration:.2 animations:^
+        [UIView animateWithDuration:.3 animations:^
         {
             self.view.alpha = 0;
         }

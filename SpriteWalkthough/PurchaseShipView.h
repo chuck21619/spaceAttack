@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Upgrade.h"
+#import "Spaceship.h"
 
 @protocol PurchaseShipViewDelegate <NSObject>
 - (void) purchaseWithMoneyPressed:(Spaceship *)spacehship;
