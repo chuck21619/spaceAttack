@@ -91,6 +91,9 @@
 
 - (void) dealloc
 {
+    _productsRequest.delegate = nil;
+    [_productsRequest cancel];
+    _productsRequest = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

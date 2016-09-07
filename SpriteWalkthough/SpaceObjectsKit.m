@@ -196,7 +196,7 @@ static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
         posititionDifference = self.scene.size.height;
     
     NSArray * backgroundKeys = [_spaceBackgroundTextures allKeys];
-    NSString * randomTextureKey = [backgroundKeys objectAtIndex:arc4random_uniform(backgroundKeys.count)];
+    NSString * randomTextureKey = [backgroundKeys objectAtIndex:arc4random_uniform((int)backgroundKeys.count)];
                                                                                                       
     SKTexture * randomSpaceBackground = [_spaceBackgroundTextures objectForKey:randomTextureKey];
     NSLog(@"what : %@", NSStringFromCGSize(randomSpaceBackground.size));
