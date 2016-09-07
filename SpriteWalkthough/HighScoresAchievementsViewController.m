@@ -9,17 +9,26 @@
 #import "HighScoresAchievementsViewController.h"
 #import "AudioManager.h"
 #import "AccountManager.h"
+#import "DGActivityIndicatorView.h"
+#import <GameKit/GameKit.h>
 
 @implementation HighScoresAchievementsViewController
+{
+    GKLeaderboard * _leaderboard;
+    NSArray * _scores;
+    
+    DGActivityIndicatorView * _activityIndicator;
+    UIView * _activityIndicatorBackground;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(achievementsLoaded) name:@"achievementsLoaded" object:nil];
+    [self showProgressHud:YES];
     
-    NSLog(@"load game center bullshit");
-    NSLog(@"achievements : %@", [AccountManager achievements]);
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(achievementsLoaded) name:@"achievementsLoaded" object:nil];
+    [self loadLeaderboard];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -36,27 +45,91 @@
     }];
 }
 
-- (void) achievementsLoaded
-{
-    NSLog(@"achievementsLoaded");
-    NSLog(@"achievements : %@", [AccountManager achievements]);
-}
-
 - (IBAction)backAction:(id)sender
 {
     [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuBackButton];
     [UIView animateWithDuration:.2 animations:^
+     {
+         for ( UIView * subview in [self.view subviews] )
+         {
+             if ( subview.tag != 10 ) //10 is the background image
+                 subview.alpha = 0;
+         }
+     }
+                     completion:^(BOOL finished)
+     {
+         [self dismissViewControllerAnimated:NO completion:nil];
+     }];
+}
+
+- (void) showProgressHud:(BOOL)show
+{
+    if ( show )
     {
-        for ( UIView * subview in [self.view subviews] )
+        if ( ! _activityIndicatorBackground )
         {
-            if ( subview.tag != 10 ) //10 is the background image
-                subview.alpha = 0;
+            _activityIndicatorBackground = [[UIView alloc] initWithFrame:self.view.frame];
+            _activityIndicatorBackground.backgroundColor = [UIColor colorWithWhite:0 alpha:.75];
         }
+        if ( ! _activityIndicator )
+        {
+            _activityIndicator = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeLineScale tintColor:[UIColor whiteColor] size:self.view.frame.size.width/6.4];
+            _activityIndicator.frame = CGRectMake(self.view.frame.size.width/2, self.view.frame.size.height/2, 0, 0);
+        }
+        
+        _activityIndicatorBackground.alpha = 0;
+        [_activityIndicatorBackground addSubview:_activityIndicator];
+        [self.view addSubview:_activityIndicatorBackground];
+        [_activityIndicator startAnimating];
+        [UIView animateWithDuration:.2 animations:^
+         {
+             _activityIndicatorBackground.alpha = 1;
+         }];
     }
-    completion:^(BOOL finished)
+    else
     {
-        [self dismissViewControllerAnimated:NO completion:nil];
+        [UIView animateWithDuration:.2 animations:^
+         {
+             _activityIndicatorBackground.alpha = 0;
+         }
+                         completion:^(BOOL finished)
+         {
+             [_activityIndicator stopAnimating];
+         }];
+    }
+}
+
+#pragma mark - achievements
+- (void) achievementsLoaded
+{
+    [self refreshAchievementsView];
+}
+
+- (void) refreshAchievementsView
+{
+    
+    NSLog(@"refresh achievements view");
+}
+
+#pragma mark - leaderboards
+- (void) loadLeaderboard
+{
+    [GKLeaderboard loadLeaderboardsWithCompletionHandler:^(NSArray<GKLeaderboard *> * _Nullable leaderboards, NSError * _Nullable error)
+    {
+        _leaderboard = [leaderboards firstObject];
+        [_leaderboard loadScoresWithCompletionHandler:^(NSArray<GKScore *> * _Nullable scores, NSError * _Nullable error)
+        {
+            _scores = scores;
+            [self refreshLeaderboardView];
+            [self showProgressHud:NO];
+        }];
     }];
+}
+
+#pragma mark
+- (void) refreshLeaderboardView
+{
+    NSLog(@"refresh leaderboard view : %@\n%@", _leaderboard, _scores);
 }
 
 @end

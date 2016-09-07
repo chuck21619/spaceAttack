@@ -7,10 +7,10 @@
 //
 
 #import "AccountManager.h"
-#import <GameKit/GameKit.h>
 #import "FullScreenAdSingleton.h"
 #import "Upgrade.h"
 #import "AudioManager.h"
+#import <GameKit/GameKit.h>
 #import <Crashlytics/Crashlytics.h>
 
 @implementation AccountManager
@@ -457,6 +457,7 @@ static AccountManager * sharedAccountManager = nil;
 }
 
 #pragma mark - game center
+#pragma mark achievements
 + (NSArray *) achievementsCompleted
 {
     //NSLog(@"account manager - achievementsCompleted");
