@@ -520,6 +520,33 @@ static AccountManager * sharedAccountManager = nil;
     BOOL PowerUpsCollected300exists = NO;
     BOOL PowerUpsCollected3000exists = NO;
     
+    
+    BOOL MaxLevelMachineGun = NO;
+    BOOL MaxLevelPhotonCannon = NO;
+    BOOL MaxLevelElectricalGenerator = NO;
+    BOOL MaxLevelLaserCannon = NO;
+    
+    BOOL purchasedBabenberg = NO;
+    BOOL purchasedCaiman = NO;
+    BOOL purchasedDandolo = NO;
+    BOOL purchasedEdinburgh = NO;
+    BOOL purchasedFlandre = NO;
+    BOOL purchasedGascogne = NO;
+    BOOL purchasedHabsburg = NO;
+    BOOL PurchasedAllShips = NO;
+    
+    BOOL SmartPhotons = NO;
+    BOOL MachineGunFireRate = NO;
+    BOOL Shield = NO;
+    BOOL BiggerLaser = NO;
+    BOOL ElectricityChain = NO;
+    BOOL EnergyBooster = NO;
+    BOOL TwoWeapons = NO;
+    BOOL FourWeapons = NO;
+    
+    BOOL AllAchievements = NO;
+    
+    
     for ( GKAchievement * achievo in achievements )
     {
         if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementBulletsFired100]] )
@@ -575,6 +602,70 @@ static AccountManager * sharedAccountManager = nil;
             PowerUpsCollected300exists = YES;
         else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementPowerUpsCollected3000]] )
             PowerUpsCollected3000exists = YES;
+        
+        
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementMaxLevelMachineGun]] )
+            MaxLevelMachineGun = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementMaxLevelElectricalGenerator]] )
+            MaxLevelElectricalGenerator = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementMaxLevelPhotonCannon]] )
+            MaxLevelPhotonCannon = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementMaxLevelLaserCannon]] )
+            MaxLevelLaserCannon = YES;
+        
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementPurchasedBabenberg]] )
+            purchasedBabenberg = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementPurchasedCaiman]] )
+            purchasedCaiman = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementPurchasedDandolo]] )
+            purchasedDandolo = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementPurchasedEdinburgh]] )
+            purchasedEdinburgh = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementPurchasedFlandre]] )
+            purchasedFlandre = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementPurchasedGascogne]] )
+            purchasedGascogne = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementPurchasedHabsburg]] )
+            purchasedHabsburg = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementPurchasedAllShips]] )
+            PurchasedAllShips = YES;
+        
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementPurchasedAllShips]] )
+            PurchasedAllShips = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementPurchasedAllShips]] )
+            PurchasedAllShips = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementPurchasedAllShips]] )
+            PurchasedAllShips = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementPurchasedAllShips]] )
+            PurchasedAllShips = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementPurchasedAllShips]] )
+            PurchasedAllShips = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementPurchasedAllShips]] )
+            PurchasedAllShips = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementPurchasedAllShips]] )
+            PurchasedAllShips = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementPurchasedAllShips]] )
+            PurchasedAllShips = YES;
+        
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementSmartPhotons]] )
+            SmartPhotons = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementMachineGunFireRate]] )
+            MachineGunFireRate = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementShield]] )
+            Shield = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementBiggerLaser]] )
+            BiggerLaser = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementElectricityChain]] )
+            ElectricityChain = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementEnergyBooster]] )
+            EnergyBooster = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementTwoWeapons]] )
+            TwoWeapons = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementFourWeapons]] )
+            FourWeapons = YES;
+        
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementAllAchievements]] )
+            AllAchievements = YES;
     }
     
     if ( ! BulletsFired100exists )
@@ -631,6 +722,53 @@ static AccountManager * sharedAccountManager = nil;
     if ( ! PowerUpsCollected3000exists )
         [AccountManager populateAchievement:kAchievementPowerUpsCollected3000 inAchivements:achievements];
     
+    
+    if ( ! MaxLevelMachineGun )
+        [AccountManager populateAchievement:kAchievementMaxLevelMachineGun inAchivements:achievements];
+    if ( ! MaxLevelPhotonCannon )
+        [AccountManager populateAchievement:kAchievementMaxLevelPhotonCannon inAchivements:achievements];
+    if ( ! MaxLevelElectricalGenerator )
+        [AccountManager populateAchievement:kAchievementMaxLevelElectricalGenerator inAchivements:achievements];
+    if ( ! MaxLevelLaserCannon )
+        [AccountManager populateAchievement:kAchievementMaxLevelLaserCannon inAchivements:achievements];
+    
+    if ( ! purchasedBabenberg )
+        [AccountManager populateAchievement:kAchievementPurchasedBabenberg inAchivements:achievements];
+    if ( ! purchasedCaiman )
+        [AccountManager populateAchievement:kAchievementPurchasedCaiman inAchivements:achievements];
+    if ( ! purchasedDandolo )
+        [AccountManager populateAchievement:kAchievementPurchasedDandolo inAchivements:achievements];
+    if ( ! purchasedEdinburgh )
+        [AccountManager populateAchievement:kAchievementPurchasedEdinburgh inAchivements:achievements];
+    if ( ! purchasedFlandre )
+        [AccountManager populateAchievement:kAchievementPurchasedFlandre inAchivements:achievements];
+    if ( ! purchasedGascogne )
+        [AccountManager populateAchievement:kAchievementPurchasedGascogne inAchivements:achievements];
+    if ( ! purchasedHabsburg )
+        [AccountManager populateAchievement:kAchievementPurchasedHabsburg inAchivements:achievements];
+    if ( ! PurchasedAllShips )
+        [AccountManager populateAchievement:kAchievementPurchasedAllShips inAchivements:achievements];
+    
+    if ( ! SmartPhotons )
+        [AccountManager populateAchievement:kAchievementSmartPhotons inAchivements:achievements];
+    if ( ! MachineGunFireRate )
+        [AccountManager populateAchievement:kAchievementMachineGunFireRate inAchivements:achievements];
+    if ( ! Shield )
+        [AccountManager populateAchievement:kAchievementShield inAchivements:achievements];
+    if ( ! BiggerLaser )
+        [AccountManager populateAchievement:kAchievementBiggerLaser inAchivements:achievements];
+    if ( ! ElectricityChain )
+        [AccountManager populateAchievement:kAchievementElectricityChain inAchivements:achievements];
+    if ( ! EnergyBooster )
+        [AccountManager populateAchievement:kAchievementEnergyBooster inAchivements:achievements];
+    if ( ! TwoWeapons )
+        [AccountManager populateAchievement:kAchievementTwoWeapons inAchivements:achievements];
+    if ( ! FourWeapons )
+        [AccountManager populateAchievement:kAchievementFourWeapons inAchivements:achievements];
+    
+    if ( ! AllAchievements )
+        [AccountManager populateAchievement:kAchievementAllAchievements inAchivements:achievements];
+    
     return achievements;
 }
 
@@ -651,7 +789,9 @@ static AccountManager * sharedAccountManager = nil;
     {
         if ( [achievo.identifier isEqualToString:achievement.identifier] )
         {
-            achievo = achievement;
+            if ( achievement.percentComplete > achievo.percentComplete )
+                achievo.percentComplete = achievement.percentComplete;
+            
             matchedIdentifier = YES;
         }
     }
@@ -673,7 +813,7 @@ static AccountManager * sharedAccountManager = nil;
         }
         else
         {
-            NSLog(@"account manager - achievements loaded : %@", achievements);
+            //NSLog(@"account manager - achievements loaded : %@", achievements);
             NSMutableArray * completedAchievementsForUserDefaults = [NSMutableArray new];
             NSMutableArray * achievementsForUserDefaults = [[AccountManager achievements] mutableCopy];
             for ( GKAchievement * achievement in achievements )

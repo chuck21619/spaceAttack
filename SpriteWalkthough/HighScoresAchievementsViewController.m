@@ -14,11 +14,15 @@
 
 @implementation HighScoresAchievementsViewController
 {
+    DGActivityIndicatorView * _activityIndicator;
+    UIView * _activityIndicatorBackground;
+    
+    //high scores
     GKLeaderboard * _leaderboard;
     NSArray * _scores;
     
-    DGActivityIndicatorView * _activityIndicator;
-    UIView * _activityIndicatorBackground;
+    //achievements
+    NSArray * _achievements;
 }
 
 - (void)viewDidLoad
@@ -29,6 +33,9 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(achievementsLoaded) name:@"achievementsLoaded" object:nil];
     [self loadLeaderboard];
+    
+    _achievements = [AccountManager achievements];
+    [self refreshAchievementsView];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -102,13 +109,14 @@
 #pragma mark - achievements
 - (void) achievementsLoaded
 {
+    _achievements = [AccountManager achievements];
     [self refreshAchievementsView];
 }
 
 - (void) refreshAchievementsView
 {
-    
     NSLog(@"refresh achievements view");
+    NSLog(@"achievements : %@", _achievements);
 }
 
 #pragma mark - leaderboards
@@ -126,7 +134,6 @@
     }];
 }
 
-#pragma mark
 - (void) refreshLeaderboardView
 {
     NSLog(@"refresh leaderboard view : %@\n%@", _leaderboard, _scores);
