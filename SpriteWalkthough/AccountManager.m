@@ -1022,6 +1022,9 @@ static AccountManager * sharedAccountManager = nil;
                 [sharedAccountManager.userDefaults setValue:achievements forKey:@"achievementsCompleted"];
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"achievementCompleted" object:tmpAchievement];
                 NSLog(@"achievement completed - banner should be displayed : %@", tmpAchievement.identifier);
+                [sharedAccountManager checkAllUpgradesAchievement];
+                [sharedAccountManager checkAllShipsAchievement];
+                [sharedAccountManager checkAllAchievementsAchievement];
             }
         }];
     }
@@ -1029,6 +1032,40 @@ static AccountManager * sharedAccountManager = nil;
     {
         //NSLog(@"achievement already completed : %@", [EnumTypes identifierFromAchievement:achievement]);
     }
+}
+
+- (void) checkAllShipsAchievement
+{
+    NSArray * completedAchievements = [AccountManager achievementsCompleted];
+    if ( ![completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementPurchasedAllShips]] &&
+          [completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementPurchasedBabenberg]] &&
+          [completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementPurchasedCaiman]] &&
+          [completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementPurchasedDandolo]] &&
+          [completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementPurchasedEdinburgh]] &&
+          [completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementPurchasedFlandre]] &&
+          [completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementPurchasedGascogne]] &&
+          [completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementPurchasedHabsburg]] )
+    {
+        [AccountManager submitCompletedAchievement:kAchievementPurchasedAllShips];
+    }
+}
+
+- (void) checkAllUpgradesAchievement
+{
+    //copy the same logic as above ^^^^
+}
+
+- (void) checkAllAchievementsAchievement
+{
+    NSArray * achievements = [AccountManager achievements];
+    
+    for ( GKAchievement * achievement in achievements )
+    {
+        if ( achievement.percentComplete < 100 && ! [achievement.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementAllAchievements]] )
+            return;
+    }
+    
+    [AccountManager submitCompletedAchievement:kAchievementAllAchievements];
 }
 
 + (int) bonusPointsForAchievement:(Achievement)achievement
