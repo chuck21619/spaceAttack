@@ -319,6 +319,7 @@
             weakestWeapon = tmpPlayerWeapon;
     }
     
+    [weakestWeapon stopFiring];
     NSString * weakestWeaponKey = [[self.equippedWeapons allKeysForObject:weakestWeapon] firstObject];
     [self.equippedWeapons removeObjectForKey:weakestWeaponKey];
     

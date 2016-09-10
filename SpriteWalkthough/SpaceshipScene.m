@@ -214,7 +214,7 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
         randomPowerUp = arc4random_uniform(kPowerUpTypeCount);
     }
     
-//#warning change to randomPowerUp for release
+//#warning change to randomPowerUp
     PowerUp * tmpPowerUp = [[PowerUp alloc] initWithPowerUpType:randomPowerUp];
     tmpPowerUp.delegate = self;
     tmpPowerUp.position = CGPointMake(skRand(0, self.size.width), self.size.height+tmpPowerUp.size.height);

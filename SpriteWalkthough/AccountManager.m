@@ -543,6 +543,8 @@ static AccountManager * sharedAccountManager = nil;
     BOOL EnergyBooster = NO;
     BOOL TwoWeapons = NO;
     BOOL FourWeapons = NO;
+    BOOL AllUpgrades = NO;
+    
     
     BOOL AllAchievements = NO;
     
@@ -663,6 +665,8 @@ static AccountManager * sharedAccountManager = nil;
             TwoWeapons = YES;
         else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementFourWeapons]] )
             FourWeapons = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementAllUpgrades]] )
+            AllUpgrades = YES;
         
         else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementAllAchievements]] )
             AllAchievements = YES;
@@ -765,6 +769,8 @@ static AccountManager * sharedAccountManager = nil;
         [AccountManager populateAchievement:kAchievementTwoWeapons inAchivements:achievements];
     if ( ! FourWeapons )
         [AccountManager populateAchievement:kAchievementFourWeapons inAchivements:achievements];
+    if ( ! AllUpgrades )
+        [AccountManager populateAchievement:kAchievementAllUpgrades inAchivements:achievements];
     
     if ( ! AllAchievements )
         [AccountManager populateAchievement:kAchievementAllAchievements inAchivements:achievements];
@@ -1052,7 +1058,19 @@ static AccountManager * sharedAccountManager = nil;
 
 - (void) checkAllUpgradesAchievement
 {
-    //copy the same logic as above ^^^^
+    NSArray * completedAchievements = [AccountManager achievementsCompleted];
+    if ( ![completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementAllUpgrades]] &&
+          [completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementTwoWeapons]] &&
+          [completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementFourWeapons]] &&
+          [completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementSmartPhotons]] &&
+          [completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementMachineGunFireRate]] &&
+          [completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementShield]] &&
+          [completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementBiggerLaser]] &&
+          [completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementElectricityChain]] &&
+          [completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementEnergyBooster]] )
+    {
+        [AccountManager submitCompletedAchievement:kAchievementAllUpgrades];
+    }
 }
 
 - (void) checkAllAchievementsAchievement

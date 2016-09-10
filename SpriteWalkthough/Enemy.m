@@ -19,7 +19,7 @@
     {
         self.photonsTargetingMe = [NSPointerArray weakObjectsPointerArray];
         self.isBeingElectrocuted = NO;
-        self.pulseRed = [SKAction sequence:@[[SKAction colorizeWithColor:[SKColor redColor] colorBlendFactor:1.0 duration:0.14],
+        self.pulseRed = [SKAction sequence:@[[SKAction colorizeWithColor:[SKColor whiteColor] colorBlendFactor:1.0 duration:0.14],
                                                    [SKAction waitForDuration:0.15],
                                                    [SKAction colorizeWithColorBlendFactor:0.0 duration:0.14]]];
     }
