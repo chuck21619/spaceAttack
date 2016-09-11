@@ -44,44 +44,7 @@ static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
         self.asteroidTextureAtlas = [NSArray arrayWithArray:crumbleFrames];
         
         //shield textures
-        NSMutableArray * shieldFrames = [NSMutableArray array];
-        SKTextureAtlas * shieldAnimatedAtlas = [SKTextureAtlas atlasNamed:@"shield1"];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield1-1"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield1-2"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield1-3"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield1-4"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield1-5"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield1-6"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield1-7"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield1-8"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield1-9"]]];
-        self.shield1Frames = shieldFrames;
-        
-        shieldFrames = [NSMutableArray new];
-        shieldAnimatedAtlas = [SKTextureAtlas atlasNamed:@"shield2"];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield2-1"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield2-2"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield2-3"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield2-4"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield2-5"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield2-6"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield2-7"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield2-8"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield2-9"]]];
-        self.shield2Frames = shieldFrames;
-        
-        shieldFrames = [NSMutableArray new];
-        shieldAnimatedAtlas = [SKTextureAtlas atlasNamed:@"shield3"];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield3-1"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield3-2"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield3-3"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield3-4"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield3-5"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield3-6"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield3-7"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield3-8"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield3-9"]]];
-        self.shield3Frames = shieldFrames;
+        self.shieldTexture = [SKTexture textureWithImageNamed:@"shield.png"];
         
         //power up textures
         SKTexture * machineGun = [SKTexture textureWithImageNamed:@"Bullet_Powerup.png"];
@@ -119,9 +82,7 @@ static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
     [textures addObjectsFromArray:self.asteroidTextureAtlas];
     [textures addObjectsFromArray:[self.powerUpTextures allValues]];
     [textures addObjectsFromArray:[_spaceBackgroundTextures allValues]];
-    [textures addObjectsFromArray:self.shield1Frames];
-    [textures addObjectsFromArray:self.shield2Frames];
-    [textures addObjectsFromArray:self.shield3Frames];
+    [textures addObject:self.shieldTexture];
     return textures;
 }
 

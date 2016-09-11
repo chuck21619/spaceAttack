@@ -316,11 +316,6 @@ static AccountManager * sharedAccountManager = nil;
         [AccountManager submitCompletedAchievement:kAchievementPurchasedGascogne];
     else if ( [spaceshipString isEqualToString:@"Habsburg"] )
         [AccountManager submitCompletedAchievement:kAchievementPurchasedHabsburg];
-    
-    if ( [availableShips count] == 8 )
-    {
-        NSLog(@"submit all ships achievement");
-    }
 }
 
 

@@ -19,7 +19,8 @@
 @property (nonatomic, weak) id <EnemyDelegate> delegate;
 @property (nonatomic) int pointValue;
 @property (nonatomic) int armor;
-@property (nonatomic) NSPointerArray * photonsTargetingMe;
+@property (nonatomic) NSArray * explosionFrames;
+@property (nonatomic) NSPointerArray * photonsTargetingMe; //i doubt this is working correctly
 @property (nonatomic) BOOL isBeingElectrocuted;
 @property (nonatomic) SKAction * pulseRed;
 - (void) takeDamage:(int)damage;

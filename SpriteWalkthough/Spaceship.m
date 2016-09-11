@@ -184,7 +184,6 @@
     Shield * shield = [Shield new];
     shield.position = CGPointMake(0, 0);
     self.equippedShield = shield;
-    shield.alpha = 0;
     [self addChild:shield];
     [shield runAction:[SKAction fadeInWithDuration:.1]];
 }

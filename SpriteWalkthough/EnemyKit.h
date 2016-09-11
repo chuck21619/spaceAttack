@@ -11,7 +11,7 @@
 #import "EnemyFast.h"
 #import "EnemyBig.h"
 #import "Boss1.h"
-//#import "SpaceshipScene.h" //i have a circular reference somehow (havent looked into it). im importing the class in the .m file
+#import "EnemyExplosion.h"
 @class SpaceshipScene;
 
 @interface EnemyKit : NSObject
@@ -21,6 +21,7 @@
 @property (nonatomic) SKTexture * enemyTextureBasic;
 @property (nonatomic) SKTexture * enemyTextureFast;
 @property (nonatomic) SKTexture * enemyTextureBig;
+@property (nonatomic) NSArray * explosionFrames;
 - (NSArray *) texturesForPreloading;
 
 - (NSArray *) addEnemiesBasic:(int)count toScene:(SKScene *)scene withSpeed:(float)enemySpeedCoefficient;

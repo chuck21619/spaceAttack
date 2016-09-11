@@ -53,7 +53,7 @@
         
         
         float resizeFactor = ([[UIScreen mainScreen] bounds].size.width/320.0)*.2;
-        self.size = CGSizeMake(self.texture.size.width*resizeFactor, self.texture.size.height*resizeFactor);
+        self.size = CGSizeMake(135*resizeFactor, 135*resizeFactor);
         
         float physicsBodyRadius = self.size.width;
         self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:physicsBodyRadius];

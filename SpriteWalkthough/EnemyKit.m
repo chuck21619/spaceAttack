@@ -32,13 +32,33 @@ static EnemyKit * sharedEnemyKit = nil;
         self.enemyTextureBasic = [SKTexture textureWithImageNamed:@"enemyBasic.png"];
         self.enemyTextureFast = [SKTexture textureWithImageNamed:@"enemyFast.png"];
         self.enemyTextureBig = [SKTexture textureWithImageNamed:@"enemyBig.png"];
+        
+        self.explosionFrames = @[[SKTexture textureWithImageNamed:@"EnemyExplosion1.png"],
+                                 [SKTexture textureWithImageNamed:@"EnemyExplosion2.png"],
+                                 [SKTexture textureWithImageNamed:@"EnemyExplosion3.png"],
+                                 [SKTexture textureWithImageNamed:@"EnemyExplosion4.png"],
+                                 [SKTexture textureWithImageNamed:@"EnemyExplosion5.png"],
+                                 [SKTexture textureWithImageNamed:@"EnemyExplosion6.png"],
+                                 [SKTexture textureWithImageNamed:@"EnemyExplosion7.png"],
+                                 [SKTexture textureWithImageNamed:@"EnemyExplosion8.png"],
+                                 [SKTexture textureWithImageNamed:@"EnemyExplosion9.png"],
+                                 [SKTexture textureWithImageNamed:@"EnemyExplosion10.png"],
+                                 [SKTexture textureWithImageNamed:@"EnemyExplosion11.png"],
+                                 [SKTexture textureWithImageNamed:@"EnemyExplosion12.png"]];
     }
     return self;
 }
 
 - (NSArray *) texturesForPreloading
 {
-    return @[self.enemyTextureBasic, self.enemyTextureFast, self.enemyTextureBig];
+    NSMutableArray * texturesForPreloading = [NSMutableArray new];
+    
+    [texturesForPreloading addObject:self.enemyTextureBasic];
+    [texturesForPreloading addObject:self.enemyTextureFast];
+    [texturesForPreloading addObject:self.enemyTextureBig];
+    [texturesForPreloading addObjectsFromArray:self.explosionFrames];
+    
+    return texturesForPreloading;
 }
 
 - (NSArray *) addEnemiesBasic:(int)count toScene:(SKScene *)scene withSpeed:(float)enemySpeedCoefficient

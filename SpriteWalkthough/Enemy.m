@@ -8,6 +8,7 @@
 
 #import "Enemy.h"
 #import "AudioManager.h"
+#import "EnemyKit.h"
 
 @implementation Enemy
 
@@ -19,7 +20,8 @@
     {
         self.photonsTargetingMe = [NSPointerArray weakObjectsPointerArray];
         self.isBeingElectrocuted = NO;
-        self.pulseRed = [SKAction sequence:@[[SKAction colorizeWithColor:[SKColor whiteColor] colorBlendFactor:1.0 duration:0.14],
+        self.explosionFrames = [[EnemyKit sharedInstanceWithScene:nil] explosionFrames];
+        self.pulseRed = [SKAction sequence:@[[SKAction colorizeWithColor:[SKColor blackColor] colorBlendFactor:1.0 duration:0.14],
                                                    [SKAction waitForDuration:0.15],
                                                    [SKAction colorizeWithColorBlendFactor:0.0 duration:0.14]]];
     }
@@ -28,13 +30,11 @@
 
 - (void) explode
 {
-    NSString * explosionPath = [[NSBundle mainBundle] pathForResource:@"ExplosionParticle" ofType:@"sks"];
-    SKEmitterNode * explosion = [NSKeyedUnarchiver unarchiveObjectWithFile:explosionPath];
-    explosion.name = @"explosion";
+    EnemyExplosion * explosion = [[EnemyExplosion alloc] initWithAtlas:self.explosionFrames size:self.size.width*2];
     explosion.position = self.position;
-    
     [[self scene] addChild:explosion];
-    [explosion performSelector:@selector(removeFromParent) withObject:explosion afterDelay:3]; //i dont remember why i did this
+    [explosion performSelector:@selector(removeFromParent) withObject:explosion afterDelay:1];
+    
     [self removeFromParent];
     [self removeAllActions];
     [self.delegate enemyExploded:self];

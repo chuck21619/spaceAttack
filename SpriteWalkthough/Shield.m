@@ -10,8 +10,12 @@
 #import "CategoryBitMasks.h"
 #import "SpaceObjectsKit.h"
 #import "AudioManager.h"
+#import "SpaceObjectsKit.h"
 
 @implementation Shield
+{
+    SKAction * _pulse;
+}
 
 - (id)init
 {
@@ -21,12 +25,24 @@
         self.zPosition = 3;
         self.armor = 3;
         
-        [self setTexture:[SKTexture textureWithImageNamed:@"shield.png"]];
+        _pulse = [SKAction sequence:@[[SKAction colorizeWithColor:[SKColor blackColor] colorBlendFactor:.5 duration:0.14],
+                                      [SKAction waitForDuration:0.15],
+                                      [SKAction colorizeWithColorBlendFactor:0.0 duration:0.14]]];
+        
+        
+        SKTexture * shieldTexture = [[SpaceObjectsKit sharedInstanceWithScene:nil] shieldTexture];
+        [self setTexture:shieldTexture];
         float resizeFactor = ([[UIScreen mainScreen] bounds].size.width/320.0)*.3;
         int shieldSize = self.texture.size.width*resizeFactor;
         [self setSize:CGSizeMake(shieldSize, shieldSize)];
         self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:(shieldSize*.95)/2];
         //[self attachDebugCircleWithSize:(shieldSize*.95)];
+        
+        SKAction * rotate = [SKAction rotateByAngle:1 duration:5];
+        [self runAction:[SKAction repeatActionForever:rotate]];
+        
+        SKAction * fadeDown = [SKAction fadeAlphaTo:.8 duration:1];
+        [self runAction:fadeDown];
         
         self.physicsBody.categoryBitMask = [CategoryBitMasks shieldCategory];
         self.physicsBody.collisionBitMask = [CategoryBitMasks shieldCategory] | [CategoryBitMasks asteroidCategory];
@@ -47,6 +63,7 @@
     else
     {
         [[AudioManager sharedInstance] playSoundEffect:kSoundEffectShieldDamage];
+        [self runAction:_pulse];
         //[self animate];
     }
 }

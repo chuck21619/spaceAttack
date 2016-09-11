@@ -21,9 +21,7 @@
 
 @property (nonatomic) SpaceshipScene * scene;
 
-@property (nonatomic) NSArray * shield1Frames;
-@property (nonatomic) NSArray * shield2Frames;
-@property (nonatomic) NSArray * shield3Frames;
+@property (nonatomic) SKTexture * shieldTexture;
 @property (nonatomic) NSArray * asteroidTextureAtlas;
 @property (nonatomic) NSDictionary * powerUpTextures;
 - (NSArray *) texturesForPreloading;

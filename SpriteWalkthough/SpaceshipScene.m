@@ -160,6 +160,13 @@
     cloudDust.position = CGPointMake(self.size.width/2, self.size.height);
     [self addChild:cloudDust];
     
+    NSString * cloudDustString2 = [[NSBundle mainBundle] pathForResource:@"SpaceDust" ofType:@"sks"];
+    SKEmitterNode * cloudDust2 = [NSKeyedUnarchiver unarchiveObjectWithFile:cloudDustString2];
+    cloudDust2.name = @"stars";
+    cloudDust2.zPosition = -75;
+    cloudDust2.position = CGPointMake(self.size.width/2, self.size.height);
+    [self addChild:cloudDust2];
+    
     self.showingTooltip = NO;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
     {
