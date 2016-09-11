@@ -17,6 +17,19 @@ static SpaceshipKit * sharedSpaceshipKit = nil;
     {
         sharedSpaceshipKit = [[SpaceshipKit alloc] init];
         
+        sharedSpaceshipKit.explosionFrames = @[[SKTexture textureWithImageNamed:@"Ship_explosion1.png"],
+                                               [SKTexture textureWithImageNamed:@"Ship_explosion2.png"],
+                                               [SKTexture textureWithImageNamed:@"Ship_explosion3.png"],
+                                               [SKTexture textureWithImageNamed:@"Ship_explosion4.png"],
+                                               [SKTexture textureWithImageNamed:@"Ship_explosion5.png"],
+                                               [SKTexture textureWithImageNamed:@"Ship_explosion6.png"],
+                                               [SKTexture textureWithImageNamed:@"Ship_explosion7.png"],
+                                               [SKTexture textureWithImageNamed:@"Ship_explosion8.png"],
+                                               [SKTexture textureWithImageNamed:@"Ship_explosion9.png"],
+                                               [SKTexture textureWithImageNamed:@"Ship_explosion10.png"],
+                                               [SKTexture textureWithImageNamed:@"Ship_explosion11.png"],
+                                               [SKTexture textureWithImageNamed:@"Ship_explosion12.png"]];
+        
         NSString * abdulKair = NSStringFromClass([Abdul_Kadir class]);
         NSString * babenberg = NSStringFromClass([Babenberg class]);
         NSString * caiman = NSStringFromClass([Caiman class]);
@@ -142,7 +155,12 @@ static SpaceshipKit * sharedSpaceshipKit = nil;
 
 - (NSArray *) texturesForPreloading:(Spaceship*)spaceship
 {
-    return [[self.shipTextures objectForKey:NSStringFromClass([spaceship class])] allValues];
+    NSMutableArray * texturesForPreloading = [NSMutableArray new];
+    
+    [texturesForPreloading addObjectsFromArray:[[self.shipTextures objectForKey:NSStringFromClass([spaceship class])] allValues]];
+    [texturesForPreloading addObjectsFromArray:self.explosionFrames];
+    
+    return texturesForPreloading;
 }
 
 @end

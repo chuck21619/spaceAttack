@@ -162,7 +162,7 @@
     
     NSString * cloudDustString2 = [[NSBundle mainBundle] pathForResource:@"SpaceDust" ofType:@"sks"];
     SKEmitterNode * cloudDust2 = [NSKeyedUnarchiver unarchiveObjectWithFile:cloudDustString2];
-    cloudDust2.name = @"stars";
+    cloudDust2.name = @"stars2";
     cloudDust2.zPosition = -75;
     cloudDust2.position = CGPointMake(self.size.width/2, self.size.height);
     [self addChild:cloudDust2];
@@ -937,6 +937,18 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
                                   [SKAction waitForDuration:self.makeAsteroidsInterval withRange:.15]]];
     
     [self runAction:[SKAction repeatActionForever:makeAsteroids] withKey:@"makeAsteroids"];
+    
+    //also using this method to increase particle speed
+    SKEmitterNode * spaceDust1 = (SKEmitterNode *)[self childNodeWithName:@"stars"];
+    spaceDust1.particleSpeed += 5;
+    SKEmitterNode * spaceDust2 = (SKEmitterNode *)[self childNodeWithName:@"stars2"];
+    spaceDust2.particleSpeed += 5;
+    
+    [self.mySpaceship enumerateChildNodesWithName:@"exhaust" usingBlock:^(SKNode * _Nonnull node, BOOL * _Nonnull stop)
+    {
+        SKEmitterNode * exhaust = (SKEmitterNode *)node;
+        exhaust.particleSpeed += 1;
+    }];
 }
 
 - (void) asteroidCrumbled:(Asteroid *)asteroid

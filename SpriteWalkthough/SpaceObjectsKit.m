@@ -160,7 +160,6 @@ static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
     NSString * randomTextureKey = [backgroundKeys objectAtIndex:arc4random_uniform((int)backgroundKeys.count)];
                                                                                                       
     SKTexture * randomSpaceBackground = [_spaceBackgroundTextures objectForKey:randomTextureKey];
-    NSLog(@"what : %@", NSStringFromCGSize(randomSpaceBackground.size));
     float resizeFactor = self.scene.size.width / randomSpaceBackground.size.width;
     spaceBackground = [SpaceBackground spriteNodeWithTexture:randomSpaceBackground size:CGSizeMake(randomSpaceBackground.size.width*resizeFactor, randomSpaceBackground.size.height*resizeFactor)];
     

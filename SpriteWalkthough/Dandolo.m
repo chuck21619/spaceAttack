@@ -30,7 +30,7 @@
         NSString * exhaustPath = [[NSBundle mainBundle] pathForResource:@"Exhaust" ofType:@"sks"];
         SKEmitterNode * exhaust = [NSKeyedUnarchiver unarchiveObjectWithFile:exhaustPath];
         exhaust.name = @"exhaust";
-        exhaust.position = CGPointMake(0, -self.size.height/3);
+        exhaust.position = CGPointMake(0, -self.size.height/5);
         exhaust.particleBirthRate = exhaust.particleBirthRate*self.mySpeed;
         [self addChild:exhaust];
         

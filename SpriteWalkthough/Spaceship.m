@@ -14,6 +14,9 @@
 #import "SpaceshipScene.h"
 
 @implementation Spaceship
+{
+    NSArray * _explosionFrames;
+}
 
 - (id)init
 {
@@ -23,6 +26,7 @@
         self.zPosition = 1;
         self.energyBoosterActive = NO;
         self.equippedWeapons = [[NSMutableDictionary alloc] init];
+        _explosionFrames = [[SpaceshipKit sharedInstance] explosionFrames];
         NSDate * bogusDate = [[NSDate date] dateByAddingTimeInterval:5000]; // this date will never get fired
         self.energyBoosterTimer = [[NSTimer alloc] initWithFireDate:bogusDate interval:0 target:self selector:@selector(endEnergyBooster:) userInfo:nil repeats:NO];
         [self setNumberOfWeaponSlots:[AccountManager numberOfWeaponSlotsUnlocked]];
@@ -80,14 +84,17 @@
 {
     [[AudioManager sharedInstance] playSoundEffect:kSoundEffectExplosionSpaceship];
     [[AudioManager sharedInstance] vibrate];
-    NSString * explosionPath = [[NSBundle mainBundle] pathForResource:@"spaceshipExplosion" ofType:@"sks"];
-    SKEmitterNode * explosion = [NSKeyedUnarchiver unarchiveObjectWithFile:explosionPath];
-    explosion.name = @"explosion";
+    
+//    NSString * explosionPath = [[NSBundle mainBundle] pathForResource:@"spaceshipExplosion" ofType:@"sks"];
+//    SKEmitterNode * explosion = [NSKeyedUnarchiver unarchiveObjectWithFile:explosionPath];
+//    explosion.name = @"explosion";
+//    explosion.position = self.position;
+    EnemyExplosion * explosion = [[EnemyExplosion alloc] initWithAtlas:_explosionFrames size:self.size.width*5];
     explosion.position = self.position;
+    [[self scene] addChild:explosion];
     
     [self.energyBoosterTimer invalidate];
     self.energyBoosterTimer = nil;
-    [[self scene] addChild:explosion];
     [self stopFiring];
     [self.equippedWeapons removeAllObjects];
     for ( SKSpriteNode * node in [self children] )
