@@ -19,6 +19,7 @@
         self.texture = [[[[SpaceshipKit sharedInstance] shipTextures] objectForKey:NSStringFromClass([self class])] objectForKey:@"Reg"];
         float resizeFactor = ([[UIScreen mainScreen] bounds].size.width/320.0)*.15;
         self.size = CGSizeMake(self.texture.size.width*resizeFactor, self.texture.size.height*resizeFactor);
+        [self setNumberOfWeaponSlots:[AccountManager numberOfWeaponSlotsUnlocked]];
         
         self.defaultDamage = 3;
         self.damage = self.defaultDamage;
@@ -54,31 +55,6 @@
     }
     
     return self;
-}
-
-- (void) setNumberOfWeaponSlots:(int)numberOfWeaponSlots
-{
-    switch ( numberOfWeaponSlots )
-    {
-        case 1:
-            self.weaponSlotPositions = @{ @"weaponSlot1" : @[[NSValue valueWithCGPoint:CGPointMake(0, 58)], [NSNumber numberWithInt:-1]]};
-            break;
-            
-        case 2:
-            self.weaponSlotPositions = @{ @"weaponSlot1" : @[[NSValue valueWithCGPoint:CGPointMake(0, 58)], [NSNumber numberWithInt:-1]],
-                                          @"weaponSlot2" : @[[NSValue valueWithCGPoint:CGPointMake(0, -1)], [NSNumber numberWithInt:2]]};
-            break;
-            
-        case 4:
-            self.weaponSlotPositions = @{ @"weaponSlot1" : @[[NSValue valueWithCGPoint:CGPointMake(0, 58)], [NSNumber numberWithInt:-1]],
-                                          @"weaponSlot2" : @[[NSValue valueWithCGPoint:CGPointMake(0, -1)], [NSNumber numberWithInt:2]],
-                                          @"weaponSlot3" : @[[NSValue valueWithCGPoint:CGPointMake(20, 15)], [NSNumber numberWithInt:-1]],
-                                          @"weaponSlot4" : @[[NSValue valueWithCGPoint:CGPointMake(-20, 15)], [NSNumber numberWithInt:-1]]};
-            break;
-            
-        default:
-            self.weaponSlotPositions = @{};
-    }
 }
 
 - (void)attachDebugFrameFromPath:(CGPathRef)bodyPath {

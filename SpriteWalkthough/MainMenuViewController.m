@@ -18,16 +18,40 @@
 
 
 @implementation MainMenuViewController
+{
+    BOOL _ignoreNextViewWillAppear;
+}
 
 - (void) viewDidLoad
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(achievementsLoaded) name:@"achievementsLoaded" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ignoreViewWillAppearAnimation) name:@"ignoreViewWillAppearAnimation" object:nil];
     [self adjustForDeviceSize];
+    _ignoreNextViewWillAppear = NO;
     [_AppDelegate addGlowToLayer:self.spaceAttackLabel.layer withColor:self.spaceAttackLabel.textColor.CGColor];
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    if ( _ignoreNextViewWillAppear )
+    {
+        _ignoreNextViewWillAppear = NO;
+        for ( UIView * subview in [self.view subviews] )
+        {
+            if ( subview.tag ) //10 is the background image
+                subview.alpha = 0;
+        }
+        [UIView animateWithDuration:.2 animations:^
+         {
+             for ( UIView * subview in [self.view subviews] )
+             {
+                 if ( subview.tag == 10 )
+                     subview.alpha = 1;
+             }
+         }];
+        return;
+    }
+    
     for ( UIView * subview in [self.view subviews] )
     {
         if ( subview.tag != 10 ) //10 is the background image
@@ -83,15 +107,14 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-//    SKView * spriteView = (SKView *)self.view;
-//    [spriteView presentScene:nil];
-}
-
 - (BOOL) prefersStatusBarHidden
 {
     return YES;
+}
+
+- (void) ignoreViewWillAppearAnimation
+{
+    _ignoreNextViewWillAppear = YES;
 }
 
 - (void) updateButtonColorStatus

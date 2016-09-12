@@ -31,6 +31,7 @@ static GameplayControls * sharedGameplayControls = nil;
 
 - (void)calibrate:(void (^)())callBack
 {
+    self.isCalibrated = NO;
     NSMutableArray * accelerometerUpdates = [[NSMutableArray alloc] init];
     [self performSelector:@selector(stopCalibration:) withObject:@[accelerometerUpdates, callBack] afterDelay:3];
     [self.calibrationHeadings removeAllObjects];

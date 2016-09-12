@@ -43,19 +43,19 @@
     switch ( numberOfWeaponSlots )
     {
         case 1:
-            self.weaponSlotPositions = @{ @"weaponSlot1" : @[[NSValue valueWithCGPoint:CGPointMake(0, 60)], [NSNumber numberWithInt:-1]]};
+            self.weaponSlotPositions = @{ @"weaponSlot1" : @[[NSValue valueWithCGPoint:CGPointMake(0, self.size.height/2)], [NSNumber numberWithInt:-1]]};
             break;
             
         case 2:
-            self.weaponSlotPositions = @{ @"weaponSlot1" : @[[NSValue valueWithCGPoint:CGPointMake(0, 60)], [NSNumber numberWithInt:-1]],
-                                          @"weaponSlot2" : @[[NSValue valueWithCGPoint:CGPointMake(0, 0)], [NSNumber numberWithInt:2]]};
+            self.weaponSlotPositions = @{ @"weaponSlot1" : @[[NSValue valueWithCGPoint:CGPointMake(0, self.size.height/2)], [NSNumber numberWithInt:-1]],
+                                          @"weaponSlot2" : @[[NSValue valueWithCGPoint:CGPointMake(0, self.size.height/2)], [NSNumber numberWithInt:2]]};
             break;
             
         case 4:
-            self.weaponSlotPositions = @{ @"weaponSlot1" : @[[NSValue valueWithCGPoint:CGPointMake(0, 60)], [NSNumber numberWithInt:-1]],
-                                          @"weaponSlot2" : @[[NSValue valueWithCGPoint:CGPointMake(0, 0)], [NSNumber numberWithInt:2]],
-                                          @"weaponSlot3" : @[[NSValue valueWithCGPoint:CGPointMake(20, 15)], [NSNumber numberWithInt:-1]],
-                                          @"weaponSlot4" : @[[NSValue valueWithCGPoint:CGPointMake(-20, 15)], [NSNumber numberWithInt:-1]]};
+            self.weaponSlotPositions = @{ @"weaponSlot1" : @[[NSValue valueWithCGPoint:CGPointMake(0, self.size.height/2)], [NSNumber numberWithInt:-1]],
+                                          @"weaponSlot2" : @[[NSValue valueWithCGPoint:CGPointMake(0, self.size.height/2)], [NSNumber numberWithInt:2]],
+                                          @"weaponSlot3" : @[[NSValue valueWithCGPoint:CGPointMake(0, self.size.height/2)], [NSNumber numberWithInt:-1]],
+                                          @"weaponSlot4" : @[[NSValue valueWithCGPoint:CGPointMake(0, self.size.height/2)], [NSNumber numberWithInt:-1]]};
             break;
             
         default:
@@ -192,7 +192,6 @@
     shield.position = CGPointMake(0, 0);
     self.equippedShield = shield;
     [self addChild:shield];
-    [shield runAction:[SKAction fadeInWithDuration:.1]];
 }
 
 - (void) startEnergyBooster
@@ -200,6 +199,7 @@
     BOOL oldEnergyBoosterActive = self.energyBoosterActive;
     self.energyBoosterActive = YES;
     self.damage *= 2;
+    //self.mySpeed *= 2;
     
     SKAction * pulseGreen = [SKAction repeatActionForever:[SKAction sequence:@[[SKAction colorizeWithColor:[SKColor greenColor] colorBlendFactor:1.0 duration:0.2],
                                                                                [SKAction waitForDuration:0.1],
@@ -227,6 +227,7 @@
     [[AudioManager sharedInstance] playSoundEffect:kSoundEffectEnergyBoosterEnd];
     
     self.damage /= 2;
+    //self.mySpeed /= 2;
     [self removeActionForKey:@"pulseGreen"];
     self.energyBoosterActive = NO;
 

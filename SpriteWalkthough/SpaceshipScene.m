@@ -741,8 +741,8 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
         return; //glitch with spritekit collision bodies - didBeginContact gets called twice
                 //since i am usually removing at least one body, this will 'solve' it
     
-    //NSLog(@"body a : %@ %i", firstBody.node.name, firstBody.categoryBitMask);
-    //NSLog(@"body b : %@ %i", secondBody.node.name, secondBody.categoryBitMask);
+//    NSLog(@"body a : %@ %i", firstBody.node.name, firstBody.categoryBitMask);
+//    NSLog(@"body b : %@ %i", secondBody.node.name, secondBody.categoryBitMask);
     
     
     /*---  laser and electricity are handled in the update method  ---*/
@@ -813,6 +813,16 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     }
     else if ( [secondBody.node.name isEqualToString:@"shield"] )
     {
+        if ( [firstBody.node.name containsString:@"powerUp"] )
+        {
+            PowerUp * tmpPowerUp = (PowerUp *)firstBody.node;
+            [self.mySpaceship powerUpCollected:tmpPowerUp.powerUpType];
+            tmpPowerUp.physicsBody = nil;
+            [tmpPowerUp runAction:[SKAction fadeOutWithDuration:.2] completion:^
+             {
+                 [tmpPowerUp removeFromParent];
+             }];
+        }
         /*
         if ( [firstBody.node.name isEqualToString:@"pellet"] )
         {
@@ -820,7 +830,7 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
             [(Shield *)secondBody.node takeDamage];
         }
         else */
-        if ( [firstBody.node.name containsString:@"enemy"] )
+        else if ( [firstBody.node.name containsString:@"enemy"] )
         {
             [(Enemy *)firstBody.node explode];
             [(Shield *)secondBody.node takeDamage];

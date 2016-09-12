@@ -38,10 +38,11 @@
         self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:(shieldSize*.95)/2];
         //[self attachDebugCircleWithSize:(shieldSize*.95)];
         
-        SKAction * rotate = [SKAction rotateByAngle:1 duration:5];
+        SKAction * rotate = [SKAction rotateByAngle:1 duration:3];
         [self runAction:[SKAction repeatActionForever:rotate]];
         
-        SKAction * fadeDown = [SKAction fadeAlphaTo:.8 duration:1];
+        self.alpha = 0;
+        SKAction * fadeDown = [SKAction fadeAlphaTo:.8 duration:.3];
         [self runAction:fadeDown];
         
         self.physicsBody.categoryBitMask = [CategoryBitMasks shieldCategory];

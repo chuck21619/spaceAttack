@@ -159,6 +159,7 @@
 
 - (void) showSpaceshipScene
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ignoreViewWillAppearAnimation" object:nil];
     [self hideProgressHud];
     [self.achievementsCompletedDuringFlight removeAllObjects];
 
@@ -372,19 +373,6 @@
 }
 
 #pragma mark - buttons
-- (IBAction)mainMenuAction:(id)sender
-{
-    [UIView animateWithDuration:.5 animations:^
-    {
-        [self hideUIViews];
-    }
-    completion:^(BOOL finished)
-    {
-        [[AudioManager sharedInstance] playMenuMusic];
-        [self dismissViewControllerAnimated:NO completion:nil];
-    }];
-}
-
 - (IBAction)restartButtonAction:(id)sender
 {
     [UIView animateWithDuration:.2 animations:^

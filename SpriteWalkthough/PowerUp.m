@@ -63,7 +63,7 @@
         self.physicsBody.dynamic = YES;
         self.physicsBody.categoryBitMask = [CategoryBitMasks powerUpCategory];
         self.physicsBody.collisionBitMask = 0;
-        self.physicsBody.contactTestBitMask = [CategoryBitMasks shipCategory];
+        self.physicsBody.contactTestBitMask = [CategoryBitMasks shipCategory] | [CategoryBitMasks shieldCategory];
     }
     return self;
 }

@@ -913,7 +913,7 @@ static AccountManager * sharedAccountManager = nil;
          {
              for ( GKAchievement * achievo in achievementsToSubmit )
              {
-                 NSLog(@"submitAchievementProgress reported : %@", achievo.identifier);
+                 //NSLog(@"submitAchievementProgress reported : %@", achievo.identifier);
                  if ( achievo.percentComplete == 100.0 )
                  {
                      NSLog(@"achievement completed - banner should be displayed : %@", achievo.identifier);
@@ -1196,7 +1196,6 @@ static AccountManager * sharedAccountManager = nil;
 + (BOOL) shouldShowFullscreenAd
 {
     //NSLog(@"account manager - shouldShowFullscreenAd");
-    
     if ( sharedAccountManager.firstGameplaySinceLaunch )
         return NO;
     
