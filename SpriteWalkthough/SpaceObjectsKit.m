@@ -12,6 +12,8 @@
 @implementation SpaceObjectsKit
 {
     NSDictionary * _spaceBackgroundTextures;
+    SKTexture * _nextBackground;
+    
 }
 
 static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
@@ -62,16 +64,16 @@ static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
                                  @"Shield": shield,
                                  @"EnergyBooster" : energyBooster};
         
-        _spaceBackgroundTextures = @{@"Black Star" : [SKTexture textureWithImageNamed:@"Black Star copy.png"],
-                                     @"Broken" : [SKTexture textureWithImageNamed:@"Broken copy.png"],
-                                     @"Colony" : [SKTexture textureWithImageNamed:@"Colony copy.png"],
-                                     @"Hologram" : [SKTexture textureWithImageNamed:@"Hologram copy.png"],
-                                     @"Red" : [SKTexture textureWithImageNamed:@"Red copy.png"],
-                                     @"Ring" : [SKTexture textureWithImageNamed:@"Ring copy.png"],
-                                     @"Serebus" : [SKTexture textureWithImageNamed:@"Serebus copy.png"],
-                                     @"Twin Suns" : [SKTexture textureWithImageNamed:@"Twin Suns copy.png"],
-                                     @"Verdant" : [SKTexture textureWithImageNamed:@"Verdant copy.png"],
-                                     @"Void" : [SKTexture textureWithImageNamed:@"Void copy.png"]};
+        _spaceBackgroundTextures = @{@"Black Star" : [SKTexture textureWithImageNamed:@"Black Star.png"],
+                                     @"Broken" : [SKTexture textureWithImageNamed:@"Broken.png"],
+                                     @"Colony" : [SKTexture textureWithImageNamed:@"Colony.png"],
+                                     @"Hologram" : [SKTexture textureWithImageNamed:@"Hologram.png"],
+                                     @"Red" : [SKTexture textureWithImageNamed:@"Red.png"],
+                                     @"Ring" : [SKTexture textureWithImageNamed:@"Ring.png"],
+                                     @"Serebus" : [SKTexture textureWithImageNamed:@"Serebus.png"],
+                                     @"Twin Suns" : [SKTexture textureWithImageNamed:@"Twin Suns.png"],
+                                     @"Verdant" : [SKTexture textureWithImageNamed:@"Verdant.png"],
+                                     @"Void" : [SKTexture textureWithImageNamed:@"Void.png"]};
     }
     return self;
 }
@@ -81,8 +83,11 @@ static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
     NSMutableArray * textures = [NSMutableArray new];
     [textures addObjectsFromArray:self.asteroidTextureAtlas];
     [textures addObjectsFromArray:[self.powerUpTextures allValues]];
-    [textures addObjectsFromArray:[_spaceBackgroundTextures allValues]];
     [textures addObject:self.shieldTexture];
+    
+    SKTexture * backgroundTexture = [self randomTextureForNextBackground];
+    [textures addObject:backgroundTexture];
+    
     return textures;
 }
 
@@ -148,6 +153,23 @@ static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
     return newAsteroid;
 }
 
+- (SKTexture *)randomTextureForNextBackground
+{
+    NSArray * backgroundKeys = [_spaceBackgroundTextures allKeys];
+    NSString * randomTextureKey = [backgroundKeys objectAtIndex:arc4random_uniform((int)backgroundKeys.count)];
+    _nextBackground = [_spaceBackgroundTextures objectForKey:randomTextureKey];
+    return _nextBackground;
+}
+
+- (void) preloadNextBackground
+{
+    SKTexture * backgroundTexture = [self randomTextureForNextBackground];
+    [SKTexture preloadTextures:@[backgroundTexture] withCompletionHandler:^
+    {
+        //preloading done
+    }];
+}
+
 - (void) addSpaceBackground
 {
     SpaceBackground * spaceBackground;
@@ -156,10 +178,7 @@ static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
     if ( ![self.scene childNodeWithName:@"spaceBackground"] )
         posititionDifference = self.scene.size.height;
     
-    NSArray * backgroundKeys = [_spaceBackgroundTextures allKeys];
-    NSString * randomTextureKey = [backgroundKeys objectAtIndex:arc4random_uniform((int)backgroundKeys.count)];
-                                                                                                      
-    SKTexture * randomSpaceBackground = [_spaceBackgroundTextures objectForKey:randomTextureKey];
+    SKTexture * randomSpaceBackground = _nextBackground;
     float resizeFactor = self.scene.size.width / randomSpaceBackground.size.width;
     spaceBackground = [SpaceBackground spriteNodeWithTexture:randomSpaceBackground size:CGSizeMake(randomSpaceBackground.size.width*resizeFactor, randomSpaceBackground.size.height*resizeFactor)];
     
@@ -179,7 +198,8 @@ static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
         [spaceBackground removeFromParent];
     }];
     
-    NSLog(@"play song for background : %@", randomTextureKey);
+    [self preloadNextBackground];
+    //NSLog(@"play song for background : %@", randomTextureKey);
     //[audiomanger playSongForBackgorund:randomTextureKey];
 }
 

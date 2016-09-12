@@ -147,16 +147,6 @@
 		A331D68A1C72DCB20054124F /* DGActivityIndicatorTwoDotsAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = A331D66A1C72DCB20054124F /* DGActivityIndicatorTwoDotsAnimation.m */; };
 		A3328B4B1C6FA57B00E18FF4 /* UpgradesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3328B4A1C6FA57B00E18FF4 /* UpgradesViewController.m */; };
 		A3328C081C6FBE4E00E18FF4 /* Upgrade.m in Sources */ = {isa = PBXBuildFile; fileRef = A3328C071C6FBE4E00E18FF4 /* Upgrade.m */; };
-		A33886B41D7E76F400F5D677 /* Black Star copy.png in Resources */ = {isa = PBXBuildFile; fileRef = A33886AA1D7E76F400F5D677 /* Black Star copy.png */; };
-		A33886B51D7E76F400F5D677 /* Broken copy.png in Resources */ = {isa = PBXBuildFile; fileRef = A33886AB1D7E76F400F5D677 /* Broken copy.png */; };
-		A33886B61D7E76F400F5D677 /* Colony copy.png in Resources */ = {isa = PBXBuildFile; fileRef = A33886AC1D7E76F400F5D677 /* Colony copy.png */; };
-		A33886B71D7E76F400F5D677 /* Hologram copy.png in Resources */ = {isa = PBXBuildFile; fileRef = A33886AD1D7E76F400F5D677 /* Hologram copy.png */; };
-		A33886B81D7E76F400F5D677 /* Red copy.png in Resources */ = {isa = PBXBuildFile; fileRef = A33886AE1D7E76F400F5D677 /* Red copy.png */; };
-		A33886B91D7E76F400F5D677 /* Ring copy.png in Resources */ = {isa = PBXBuildFile; fileRef = A33886AF1D7E76F400F5D677 /* Ring copy.png */; };
-		A33886BA1D7E76F400F5D677 /* Serebus copy.png in Resources */ = {isa = PBXBuildFile; fileRef = A33886B01D7E76F400F5D677 /* Serebus copy.png */; };
-		A33886BB1D7E76F400F5D677 /* Twin Suns copy.png in Resources */ = {isa = PBXBuildFile; fileRef = A33886B11D7E76F400F5D677 /* Twin Suns copy.png */; };
-		A33886BC1D7E76F400F5D677 /* Verdant copy.png in Resources */ = {isa = PBXBuildFile; fileRef = A33886B21D7E76F400F5D677 /* Verdant copy.png */; };
-		A33886BD1D7E76F400F5D677 /* Void copy.png in Resources */ = {isa = PBXBuildFile; fileRef = A33886B31D7E76F400F5D677 /* Void copy.png */; };
 		A3451F371C730F9D0080B81C /* CategoryBitMasks.m in Sources */ = {isa = PBXBuildFile; fileRef = A3451E171C730F980080B81C /* CategoryBitMasks.m */; };
 		A3483FC11D68F13200E9D1F9 /* menuBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FC01D68F13200E9D1F9 /* menuBackground.png */; };
 		A3483FC81D68F98000E9D1F9 /* Habsburg.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FC21D68F98000E9D1F9 /* Habsburg.png */; };
@@ -215,6 +205,16 @@
 		A35B3B711D2A7512006DB8C3 /* increaseMultiplier.wav in Resources */ = {isa = PBXBuildFile; fileRef = A35B3B701D2A7512006DB8C3 /* increaseMultiplier.wav */; };
 		A35B3B741D2A7918006DB8C3 /* bossIntro.wav in Resources */ = {isa = PBXBuildFile; fileRef = A35B3B731D2A7918006DB8C3 /* bossIntro.wav */; };
 		A35B3B761D2A79CC006DB8C3 /* tooltip.wav in Resources */ = {isa = PBXBuildFile; fileRef = A35B3B751D2A79CC006DB8C3 /* tooltip.wav */; };
+		A3667C231D8679AE00CAFAF4 /* Red.png in Resources */ = {isa = PBXBuildFile; fileRef = A3667C191D8679AE00CAFAF4 /* Red.png */; };
+		A3667C291D867CE900CAFAF4 /* Ring.png in Resources */ = {isa = PBXBuildFile; fileRef = A3667C281D867CE900CAFAF4 /* Ring.png */; };
+		A3667C2B1D867DC400CAFAF4 /* Twin Suns.png in Resources */ = {isa = PBXBuildFile; fileRef = A3667C2A1D867DC400CAFAF4 /* Twin Suns.png */; };
+		A3667C2D1D867F0700CAFAF4 /* Broken.png in Resources */ = {isa = PBXBuildFile; fileRef = A3667C2C1D867F0700CAFAF4 /* Broken.png */; };
+		A3667C2F1D867FC300CAFAF4 /* Void.png in Resources */ = {isa = PBXBuildFile; fileRef = A3667C2E1D867FC300CAFAF4 /* Void.png */; };
+		A3667C311D8680B200CAFAF4 /* Serebus.png in Resources */ = {isa = PBXBuildFile; fileRef = A3667C301D8680B200CAFAF4 /* Serebus.png */; };
+		A3667C331D86813200CAFAF4 /* Colony.png in Resources */ = {isa = PBXBuildFile; fileRef = A3667C321D86813200CAFAF4 /* Colony.png */; };
+		A3667C351D86819100CAFAF4 /* Black Star.png in Resources */ = {isa = PBXBuildFile; fileRef = A3667C341D86819100CAFAF4 /* Black Star.png */; };
+		A3667C371D8681DC00CAFAF4 /* Hologram.png in Resources */ = {isa = PBXBuildFile; fileRef = A3667C361D8681DC00CAFAF4 /* Hologram.png */; };
+		A3667C391D86826F00CAFAF4 /* Verdant.png in Resources */ = {isa = PBXBuildFile; fileRef = A3667C381D86826F00CAFAF4 /* Verdant.png */; };
 		A36B6C781D3B3725007DF9D1 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A36B6C771D3B3725007DF9D1 /* GoogleMobileAds.framework */; };
 		A375B59D1D2B59CE00CB9E52 /* ShieldParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = A375B59C1D2B59CE00CB9E52 /* ShieldParticle.sks */; };
 		A37E3EA81D864E23002211AC /* electricalGenerator.png in Resources */ = {isa = PBXBuildFile; fileRef = A37E3EA41D864E23002211AC /* electricalGenerator.png */; };
@@ -733,16 +733,6 @@
 		A3328B4A1C6FA57B00E18FF4 /* UpgradesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpgradesViewController.m; sourceTree = "<group>"; };
 		A3328C061C6FBE4E00E18FF4 /* Upgrade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Upgrade.h; sourceTree = "<group>"; };
 		A3328C071C6FBE4E00E18FF4 /* Upgrade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Upgrade.m; sourceTree = "<group>"; };
-		A33886AA1D7E76F400F5D677 /* Black Star copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Black Star copy.png"; sourceTree = "<group>"; };
-		A33886AB1D7E76F400F5D677 /* Broken copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Broken copy.png"; sourceTree = "<group>"; };
-		A33886AC1D7E76F400F5D677 /* Colony copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Colony copy.png"; sourceTree = "<group>"; };
-		A33886AD1D7E76F400F5D677 /* Hologram copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Hologram copy.png"; sourceTree = "<group>"; };
-		A33886AE1D7E76F400F5D677 /* Red copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red copy.png"; sourceTree = "<group>"; };
-		A33886AF1D7E76F400F5D677 /* Ring copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ring copy.png"; sourceTree = "<group>"; };
-		A33886B01D7E76F400F5D677 /* Serebus copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Serebus copy.png"; sourceTree = "<group>"; };
-		A33886B11D7E76F400F5D677 /* Twin Suns copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Twin Suns copy.png"; sourceTree = "<group>"; };
-		A33886B21D7E76F400F5D677 /* Verdant copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Verdant copy.png"; sourceTree = "<group>"; };
-		A33886B31D7E76F400F5D677 /* Void copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Void copy.png"; sourceTree = "<group>"; };
 		A3451E161C730F980080B81C /* CategoryBitMasks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryBitMasks.h; sourceTree = "<group>"; };
 		A3451E171C730F980080B81C /* CategoryBitMasks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryBitMasks.m; sourceTree = "<group>"; };
 		A3483FC01D68F13200E9D1F9 /* menuBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuBackground.png; sourceTree = "<group>"; };
@@ -807,6 +797,16 @@
 		A35B3B701D2A7512006DB8C3 /* increaseMultiplier.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = increaseMultiplier.wav; sourceTree = "<group>"; };
 		A35B3B731D2A7918006DB8C3 /* bossIntro.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bossIntro.wav; sourceTree = "<group>"; };
 		A35B3B751D2A79CC006DB8C3 /* tooltip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tooltip.wav; sourceTree = "<group>"; };
+		A3667C191D8679AE00CAFAF4 /* Red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Red.png; sourceTree = "<group>"; };
+		A3667C281D867CE900CAFAF4 /* Ring.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ring.png; sourceTree = "<group>"; };
+		A3667C2A1D867DC400CAFAF4 /* Twin Suns.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Twin Suns.png"; sourceTree = "<group>"; };
+		A3667C2C1D867F0700CAFAF4 /* Broken.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Broken.png; sourceTree = "<group>"; };
+		A3667C2E1D867FC300CAFAF4 /* Void.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Void.png; sourceTree = "<group>"; };
+		A3667C301D8680B200CAFAF4 /* Serebus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Serebus.png; sourceTree = "<group>"; };
+		A3667C321D86813200CAFAF4 /* Colony.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Colony.png; sourceTree = "<group>"; };
+		A3667C341D86819100CAFAF4 /* Black Star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Black Star.png"; sourceTree = "<group>"; };
+		A3667C361D8681DC00CAFAF4 /* Hologram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hologram.png; sourceTree = "<group>"; };
+		A3667C381D86826F00CAFAF4 /* Verdant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Verdant.png; sourceTree = "<group>"; };
 		A36B6C771D3B3725007DF9D1 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		A375B59C1D2B59CE00CB9E52 /* ShieldParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ShieldParticle.sks; sourceTree = "<group>"; };
 		A37E3EA41D864E23002211AC /* electricalGenerator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricalGenerator.png; sourceTree = "<group>"; };
@@ -1474,16 +1474,16 @@
 		138E37281988266E00E92828 /* backgrounds */ = {
 			isa = PBXGroup;
 			children = (
-				A33886AA1D7E76F400F5D677 /* Black Star copy.png */,
-				A33886AB1D7E76F400F5D677 /* Broken copy.png */,
-				A33886AC1D7E76F400F5D677 /* Colony copy.png */,
-				A33886AD1D7E76F400F5D677 /* Hologram copy.png */,
-				A33886AE1D7E76F400F5D677 /* Red copy.png */,
-				A33886AF1D7E76F400F5D677 /* Ring copy.png */,
-				A33886B01D7E76F400F5D677 /* Serebus copy.png */,
-				A33886B11D7E76F400F5D677 /* Twin Suns copy.png */,
-				A33886B21D7E76F400F5D677 /* Verdant copy.png */,
-				A33886B31D7E76F400F5D677 /* Void copy.png */,
+				A3667C191D8679AE00CAFAF4 /* Red.png */,
+				A3667C2A1D867DC400CAFAF4 /* Twin Suns.png */,
+				A3667C281D867CE900CAFAF4 /* Ring.png */,
+				A3667C2C1D867F0700CAFAF4 /* Broken.png */,
+				A3667C2E1D867FC300CAFAF4 /* Void.png */,
+				A3667C301D8680B200CAFAF4 /* Serebus.png */,
+				A3667C321D86813200CAFAF4 /* Colony.png */,
+				A3667C341D86819100CAFAF4 /* Black Star.png */,
+				A3667C361D8681DC00CAFAF4 /* Hologram.png */,
+				A3667C381D86826F00CAFAF4 /* Verdant.png */,
 				A3483FBF1D68F12400E9D1F9 /* menu */,
 			);
 			name = backgrounds;
@@ -2658,6 +2658,7 @@
 				9C359FDC1D77822500107AF4 /* electricity3.png in Resources */,
 				A3DE73981D85096600DC63BD /* Ship_explosion6.png in Resources */,
 				A31AD1741D0D5819000CF547 /* TimePortal.mp3 in Resources */,
+				A3667C231D8679AE00CAFAF4 /* Red.png in Resources */,
 				A39ABA3B1C4E1A8E00AF1455 /* tooltipArrowUp.png in Resources */,
 				A31AD1751D0D5819000CF547 /* Mercury.mp3 in Resources */,
 				A3483FC81D68F98000E9D1F9 /* Habsburg.png in Resources */,
@@ -2669,7 +2670,6 @@
 				A39C5F4A1D29956800A68E2D /* bullet1.wav in Resources */,
 				A37E3EB51D8653D0002211AC /* FlandreBulPho.png in Resources */,
 				A3B7FEB21D7C831300DD6528 /* GascogneBulPho.png in Resources */,
-				A33886B51D7E76F400F5D677 /* Broken copy.png in Resources */,
 				A3B7FE481D7C808F00DD6528 /* FlandrePhoLaz.png in Resources */,
 				A3B7FE981D7C82C700DD6528 /* EdinburghPhoLaz.png in Resources */,
 				A37E3EB81D8653D0002211AC /* FlandrePho.png in Resources */,
@@ -2695,7 +2695,6 @@
 				A39C5F331D2987A000A68E2D /* laser4.wav in Resources */,
 				A3B7FEC71D7C835500DD6528 /* HabsburgBulLaz.png in Resources */,
 				A3DE73971D85096600DC63BD /* Ship_explosion5.png in Resources */,
-				A33886B81D7E76F400F5D677 /* Red copy.png in Resources */,
 				A3B7FE331D7C7DC300DD6528 /* Abdul_KadirBulPho.png in Resources */,
 				A3DE73651D84EC1E00DC63BD /* laser_upgrade 7@3x.png in Resources */,
 				A39C5F5D1D29C00800A68E2D /* basic.wav in Resources */,
@@ -2718,13 +2717,13 @@
 				A3B7FE881D7C827C00DD6528 /* DandoloLazEle.png in Resources */,
 				A39C5F5E1D29C00800A68E2D /* big.wav in Resources */,
 				9C359FE01D77822500107AF4 /* electricity7.png in Resources */,
-				A33886B71D7E76F400F5D677 /* Hologram copy.png in Resources */,
 				A35B3B621D2A68F7006DB8C3 /* spaceshipDamage4.wav in Resources */,
 				A3DE73471D84EC0B00DC63BD /* laser_upgrade 1@2x.png in Resources */,
 				A3DE73661D84EC1E00DC63BD /* laser_upgrade 8@3x.png in Resources */,
 				A3B7FE8D1D7C827C00DD6528 /* DandoloBul.png in Resources */,
 				A35B3B6A1D2A7051006DB8C3 /* shieldDamage2.wav in Resources */,
 				A3483FCC1D68F98000E9D1F9 /* Caiman.png in Resources */,
+				A3667C311D8680B200CAFAF4 /* Serebus.png in Resources */,
 				A39ABA381C4E1A8E00AF1455 /* tooltipArrowDownLeft.png in Resources */,
 				A35816B01D3357CD0028C019 /* unlock.wav in Resources */,
 				A35B3B711D2A7512006DB8C3 /* increaseMultiplier.wav in Resources */,
@@ -2749,7 +2748,6 @@
 				A39C5F551D29A95F00A68E2D /* electricity4.wav in Resources */,
 				A35B3B6F1D2A7435006DB8C3 /* lostMultiplier.wav in Resources */,
 				13915102190EE050009751D5 /* bullet.png in Resources */,
-				A33886BD1D7E76F400F5D677 /* Void copy.png in Resources */,
 				A3E009B01D72C5D800C340AA /* Check.png in Resources */,
 				A3B7FEAF1D7C831300DD6528 /* GascogneEle.png in Resources */,
 				A3DE737A1D8500DB00DC63BD /* EnemyExplosion1.png in Resources */,
@@ -2762,7 +2760,6 @@
 				A39C5F291D29851700A68E2D /* photon5.wav in Resources */,
 				A3DE736C1D84F5DA00DC63BD /* Shield_Powerup.png in Resources */,
 				A35B3B4D1D2A5D1E006DB8C3 /* electricalGeneratorEquip.wav in Resources */,
-				A33886BB1D7E76F400F5D677 /* Twin Suns copy.png in Resources */,
 				A3DE73481D84EC0B00DC63BD /* laser_upgrade 2@2x.png in Resources */,
 				9C359FE51D77822500107AF4 /* electricity2.png in Resources */,
 				A30112871D5FF6C100E133F2 /* armor.png in Resources */,
@@ -2779,7 +2776,6 @@
 				A35816B41D3357CD0028C019 /* backButton.wav in Resources */,
 				A39C5F4C1D29968E00A68E2D /* bullet2.wav in Resources */,
 				133A041318E22B1F00053595 /* Images.xcassets in Resources */,
-				A33886B61D7E76F400F5D677 /* Colony copy.png in Resources */,
 				A3DE73431D84EC0B00DC63BD /* laser 1@2x.png in Resources */,
 				A3DE739E1D85096600DC63BD /* Ship_explosion12.png in Resources */,
 				A39C5F2B1D29851700A68E2D /* photon3.wav in Resources */,
@@ -2794,7 +2790,6 @@
 				A3DE735E1D84EC1E00DC63BD /* laser 4@3x.png in Resources */,
 				A3DE739D1D85096600DC63BD /* Ship_explosion11.png in Resources */,
 				A38732021D3B866B00FE1D00 /* Main.storyboard in Resources */,
-				A33886B41D7E76F400F5D677 /* Black Star copy.png in Resources */,
 				A35B3B331D2A4298006DB8C3 /* asteroid4.wav in Resources */,
 				A31AD1671D0D5801000CF547 /* StarMasterLoop.wav in Resources */,
 				A3DB9EF11D61B74F006A8AEB /* Flandre.png in Resources */,
@@ -2806,6 +2801,7 @@
 				A3E009BD1D72FE3C00C340AA /* fourWeaponsUpgrade.png in Resources */,
 				A37E3EBD1D865409002211AC /* GascognePhoEle.png in Resources */,
 				A3DE73301D84EBF700DC63BD /* laser_upgrade 2.png in Resources */,
+				A3667C291D867CE900CAFAF4 /* Ring.png in Resources */,
 				A3B7FE301D7C7DC300DD6528 /* Abdul_KadirEle.png in Resources */,
 				A39ABA3A1C4E1A8E00AF1455 /* tooltipArrowRight.png in Resources */,
 				A3B7FE361D7C7DC300DD6528 /* Abdul_KadirBul.png in Resources */,
@@ -2823,8 +2819,11 @@
 				9C359FE31D77822500107AF4 /* electricity10.png in Resources */,
 				1345CE8A18FD8CEE004ECA6C /* spark.png in Resources */,
 				A35816B51D3357CD0028C019 /* highScoreAchievements.wav in Resources */,
+				A3667C371D8681DC00CAFAF4 /* Hologram.png in Resources */,
 				A3B7FE9C1D7C82C700DD6528 /* EdinburghLazEle.png in Resources */,
+				A3667C2F1D867FC300CAFAF4 /* Void.png in Resources */,
 				9C359FDF1D77822500107AF4 /* electricity6.png in Resources */,
+				A3667C2B1D867DC400CAFAF4 /* Twin Suns.png in Resources */,
 				A3DE73631D84EC1E00DC63BD /* laser_upgrade 5@3x.png in Resources */,
 				A3DD77A81D7B813600A1D2D1 /* asteroid.atlas in Resources */,
 				A3B7FE351D7C7DC300DD6528 /* Abdul_KadirBulEle.png in Resources */,
@@ -2871,6 +2870,7 @@
 				A35B3B401D2A4F58006DB8C3 /* energyBoosterStart.wav in Resources */,
 				A3B7FE711D7C824200DD6528 /* CaimanPhoEle.png in Resources */,
 				A3DE73641D84EC1E00DC63BD /* laser_upgrade 6@3x.png in Resources */,
+				A3667C391D86826F00CAFAF4 /* Verdant.png in Resources */,
 				A3B7FEC51D7C835500DD6528 /* HabsburgLaz.png in Resources */,
 				A39C5F631D29D25800A68E2D /* spaceshipExplosion.sks in Resources */,
 				A3B7FE4C1D7C808F00DD6528 /* FlandreLazEle.png in Resources */,
@@ -2892,7 +2892,6 @@
 				A39C5F351D2987A000A68E2D /* laser2.wav in Resources */,
 				A3DE734B1D84EC0B00DC63BD /* laser_upgrade 5@2x.png in Resources */,
 				A3DE73931D85096600DC63BD /* Ship_explosion1.png in Resources */,
-				A33886B91D7E76F400F5D677 /* Ring copy.png in Resources */,
 				A3B7FE2F1D7C7DC300DD6528 /* Abdul_KadirPho.png in Resources */,
 				A3DE737C1D8500DB00DC63BD /* EnemyExplosion3.png in Resources */,
 				A3DE73601D84EC1E00DC63BD /* laser_upgrade 2@3x.png in Resources */,
@@ -2916,6 +2915,7 @@
 				A387320A1D3B93E500FE1D00 /* Localizable.strings in Resources */,
 				A3DE73821D8500DB00DC63BD /* EnemyExplosion9.png in Resources */,
 				A31AD16A1D0D5801000CF547 /* Starlight.wav in Resources */,
+				A3667C331D86813200CAFAF4 /* Colony.png in Resources */,
 				A3B7FEB01D7C831300DD6528 /* GascogneLazEle.png in Resources */,
 				A3B7FE621D7C81F700DD6528 /* BabenbergBulPho.png in Resources */,
 				A3E009AF1D72C5D800C340AA /* Bullets.png in Resources */,
@@ -2936,13 +2936,13 @@
 				A3483FD11D68FA4400E9D1F9 /* customBadgeIcon.png in Resources */,
 				A3DE73361D84EBF700DC63BD /* laser_upgrade 8.png in Resources */,
 				A35816B81D3357CD0028C019 /* didUnlock.wav in Resources */,
+				A3667C2D1D867F0700CAFAF4 /* Broken.png in Resources */,
 				A30112891D5FF6C100E133F2 /* Speed.png in Resources */,
 				A3483FC91D68F98000E9D1F9 /* Gascogne.png in Resources */,
 				A35816B91D3357CD0028C019 /* selectShip.wav in Resources */,
 				A3DE732B1D84EBF700DC63BD /* laser 1.png in Resources */,
 				A3B7FE631D7C81F700DD6528 /* BabenbergBulLaz.png in Resources */,
 				A35B3B351D2A4298006DB8C3 /* asteroid2.wav in Resources */,
-				A33886BA1D7E76F400F5D677 /* Serebus copy.png in Resources */,
 				A3AEDFB51C6AF808009966FE /* joystick.png in Resources */,
 				A3B7FEC81D7C835500DD6528 /* HabsburgBulEle.png in Resources */,
 				A3DE73341D84EBF700DC63BD /* laser_upgrade 6.png in Resources */,
@@ -2956,7 +2956,6 @@
 				A3B7FE841D7C827C00DD6528 /* DandoloEle.png in Resources */,
 				A3B7FE341D7C7DC300DD6528 /* Abdul_KadirBulLaz.png in Resources */,
 				A3DE73961D85096600DC63BD /* Ship_explosion4.png in Resources */,
-				A33886BC1D7E76F400F5D677 /* Verdant copy.png in Resources */,
 				A37E3EAB1D864E23002211AC /* photonCannon.png in Resources */,
 				A3DE73611D84EC1E00DC63BD /* laser_upgrade 3@3x.png in Resources */,
 				A3DE73991D85096600DC63BD /* Ship_explosion7.png in Resources */,
@@ -2966,6 +2965,7 @@
 				A301128B1D5FFF5700E133F2 /* Lock.png in Resources */,
 				A3B7FEB41D7C831300DD6528 /* GascogneBulEle.png in Resources */,
 				A301127A1D5FE3BE00E133F2 /* buttonSM.png in Resources */,
+				A3667C351D86819100CAFAF4 /* Black Star.png in Resources */,
 				A3DE734C1D84EC0B00DC63BD /* laser_upgrade 6@2x.png in Resources */,
 				A3BACA571D7CC2AA004388F3 /* SmartPhotonUpgrade.gif in Resources */,
 				A3DE73951D85096600DC63BD /* Ship_explosion3.png in Resources */,
