@@ -86,6 +86,7 @@
         _pointsNumberLabel.textColor = [UIColor whiteColor];
         _pointsNumberLabel.font = [UIFont fontWithName:@"Moon-Bold" size:28];
         _pointsNumberLabel.textAlignment = NSTextAlignmentCenter;
+        _pointsNumberLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
         _pointsNumberLabel.adjustsFontSizeToFitWidth = YES;
         [self.contentView addSubview:_pointsNumberLabel];
         [_AppDelegate addGlowToLayer:_pointsNumberLabel.layer withColor:_pointsNumberLabel.textColor.CGColor];
@@ -222,16 +223,22 @@
     else
         _upgradeTitleLabel.text = upgrade.title;
     
+    NSString * pointsString;
+    if ( upgrade.pointsToUnlock > 1000 )
+        pointsString = [NSString stringWithFormat:@"%gk", upgrade.pointsToUnlock/1000.0];
+    else
+        pointsString = [NSString stringWithFormat:@"%i", upgrade.pointsToUnlock];
+    
     //minimized content
     _iconImage.image = upgrade.icon;
-    _pointsNumberLabel.text = [NSString stringWithFormat:@"%iK", self.myUpgrade.pointsToUnlock/1000];
+    _pointsNumberLabel.text = pointsString;
+    
     if ( upgrade.isUnlocked )
         _lockOrCheckIcon.image = [UIImage imageNamed:@"Check.png"];
     else
         _lockOrCheckIcon.image = [UIImage imageNamed:@"Lock.png"];
 
     //maximized content
-    //_demoScene = [[UpgradeScene alloc] initWithUpgradeType:upgrade.upgradeType];
     _upgradeDescription.text = upgrade.upgradeDescription;
     
     if ( upgrade.isValidForMoneyPurchase )
@@ -244,12 +251,6 @@
         [_purchaseButtonMoney setTitle:[NSString stringWithFormat:@"%@", NSLocalizedString(@"Unavailable", nil)] forState:UIControlStateNormal];
         _purchaseButtonMoney.enabled = NO;
     }
-    
-    NSString * pointsString;
-    if ( upgrade.pointsToUnlock > 1000 )
-        pointsString = [NSString stringWithFormat:@"%gk", upgrade.pointsToUnlock/1000.0];
-    else
-        pointsString = [NSString stringWithFormat:@"%i", upgrade.pointsToUnlock];
     
     if ( [AccountManager availablePoints] >= upgrade.pointsToUnlock )
         [_purchaseButtonPoints setTitle:[NSString stringWithFormat:@"%@!\n%@ %@", NSLocalizedString(@"Unlock Now", nil), pointsString, NSLocalizedString(@"points", nil)] forState:UIControlStateNormal];
