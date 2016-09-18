@@ -246,7 +246,7 @@
     else if ( randomInt == 2 )
         self.activityIndicator.tintColor = [UIColor colorWithRed:215.0/255.0 green:245.0/255.0 blue:10.0/255.0 alpha:.5];
     else if ( randomInt == 3 )
-        self.activityIndicator.tintColor = [UIColor blackColor];
+        self.activityIndicator.tintColor = [UIColor colorWithWhite:0 alpha:.5];
     
     [self.activityIndicatorBackground addSubview:self.activityIndicator];
     [self.view addSubview:self.activityIndicatorBackground];

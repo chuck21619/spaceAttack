@@ -23,9 +23,9 @@ static AccountManager * sharedAccountManager = nil;
         sharedAccountManager = [[AccountManager alloc] init];
         sharedAccountManager.userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"ZinStudio"];
         
-//#warning comment out for release builds
-//        [sharedAccountManager.userDefaults removePersistentDomainForName:@"ZinStudio"]; //clear all defaults
-//        [AccountManager addPoints:5000];
+#warning comment out for release builds
+        [sharedAccountManager.userDefaults removePersistentDomainForName:@"ZinStudio"]; //clear all defaults
+        [AccountManager addPoints:5000];
         
         sharedAccountManager.fullScreenAdIteration = YES;
         sharedAccountManager.firstGameplaySinceLaunch = YES;
@@ -48,9 +48,31 @@ static AccountManager * sharedAccountManager = nil;
                                             [Flandre new],
                                             [Gascogne new],
                                             [Habsburg new]];
+        
+        sharedAccountManager.touchControls = [sharedAccountManager savedTouchControls];
     }
     
     return sharedAccountManager;
+}
+
+#pragma mark - gameplay controls
+- (BOOL) savedTouchControls
+{
+    BOOL touchControls = [sharedAccountManager.userDefaults boolForKey:@"touchControls"];
+    NSNumber * touchControlsExistsValue = [sharedAccountManager.userDefaults valueForKey:@"touchControls"];
+    //touchControlsExistsValue is used becuase i cant check if a BOOL is null
+    if ( !touchControlsExistsValue )
+    {
+        touchControls = NO;
+        [AccountManager setVibrate:touchControls];
+    }
+    return touchControls;
+}
+
+- (void) setTouchControls:(BOOL)touchControls
+{
+    _touchControls = touchControls;
+    [sharedAccountManager.userDefaults setBool:touchControls forKey:@"touchControls"];
 }
 
 #pragma mark - store kit

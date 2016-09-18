@@ -20,6 +20,7 @@
 @property (nonatomic) BOOL firstGameplaySinceLaunch;
 @property (nonatomic) NSArray * upgrades;
 @property (nonatomic) NSArray * spaceships;
+@property (nonatomic) BOOL touchControls;
 
 #pragma mark ships
 + (Spaceship *) lastSelectedShip;

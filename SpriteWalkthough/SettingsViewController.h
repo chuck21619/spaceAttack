@@ -28,6 +28,9 @@
 
 @property (weak, nonatomic) IBOutlet UISwitch *vibrateSwitch;
 
+@property (weak, nonatomic) IBOutlet UILabel *controlsLabel;
+@property (weak, nonatomic) IBOutlet UIButton *controlsButton;
+
 @property (weak, nonatomic) IBOutlet GlowingButton *helpButton;
 - (IBAction)helpAction:(id)sender;
 
@@ -54,5 +57,14 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTopVibrateSwitch;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintHeightHelp;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTopControls;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTrailingControls;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTopControlsButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintWidthControlsButton;
+
+
+
 
 @end

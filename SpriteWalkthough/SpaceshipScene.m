@@ -78,7 +78,9 @@
     
     self.sharedGameplayControls = [GameplayControls sharedInstance];
     self.sharedGameplayControls.delegate = self;
-    [self.sharedGameplayControls startControllerUpdates];
+    
+    if ( ! [[AccountManager sharedInstance] touchControls] )
+        [self.sharedGameplayControls startControllerUpdates];
     
     self.spaceObjectKit = [SpaceObjectsKit sharedInstanceWithScene:self];
     //[self.spaceObjectKit addStartingBackground];
@@ -174,10 +176,10 @@
         {
             self.showingTooltip = YES;
             [self pauseGame];
-            
-            NSString * alertTitle = NSLocalizedString(@"How to Move:", nil);
-            NSString * alertMessage = NSLocalizedString(@"Tilt the screen to move your ship", nil);
-            SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:alertTitle message:alertMessage cancelButtonTitle:NSLocalizedString(@"Disable Tips", nil) otherButtonTitle:NSLocalizedString(@"Got It", nil)];
+#warning localize
+            NSString * alertTitle = NSLocalizedString(@"Choose how to Move:", nil);
+            NSString * alertMessage = NSLocalizedString(@"You can change this later in settings", nil);
+            SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:alertTitle message:alertMessage cancelButtonTitle:NSLocalizedString(@"Tilt Screen", nil) otherButtonTitle:NSLocalizedString(@"Touch", nil)];
             unlockAlert.customFrame = CGRectMake(0, 0, self.size.width, unlockAlert.frame.size.height);
             unlockAlert.backgroundColor = [UIColor colorWithWhite:.2 alpha:0];
             unlockAlert.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:18];
@@ -187,12 +189,14 @@
             [unlockAlert show];
             unlockAlert.otherButtonAction = ^
             {
+                [[AccountManager sharedInstance] setTouchControls:YES];
+                [[GameplayControls sharedInstance] stopControllerUpdates];
                 [self resumeGame];
                 self.showingTooltip = NO;
             };
             unlockAlert.cancelButtonAction = ^
             {
-                [AccountManager disableTips];
+                [[AccountManager sharedInstance] setTouchControls:NO];
                 [self resumeGame];
                 self.showingTooltip = NO;
             };
@@ -490,6 +494,12 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
 #pragma mark gameplay controls
 - (void) didUpdateAcceleration:(CMAcceleration)acceleration
 {
+    if ( [[AccountManager sharedInstance] touchControls] )
+    {
+        NSLog(@"this shouldnt occur. accelerometer updates should be turned off if user is using touchControls");
+        return;
+    }
+    
     if ( [self.view isPaused] )
         return;
     
@@ -502,10 +512,31 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     //SKAction * rotateSpaceship = [SKAction rotateToAngle:newAngle duration:5.0/self.mySpaceship.mySpeed shortestUnitArc:YES];
     
     //[self.mySpaceship runAction:rotateSpaceship];
-    [self.mySpaceship runAction:moveSpaceship]; //crash occurs here intermittenly
-                                                //it may be a spriekit bug for older devices:
-                                                //https://forums.developer.apple.com/thread/17267
+    [self.mySpaceship runAction:moveSpaceship];
 }
+
+- (void) touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self touchesMoved:touches withEvent:event];
+}
+
+- (void) touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    if ( ! [[AccountManager sharedInstance] touchControls] )
+        return;
+    
+    UITouch * touch = [touches anyObject];
+    CGPoint touchLocation = [touch locationInView:self.view];
+    SKAction * moveSpaceship = [SKAction moveTo:CGPointMake(touchLocation.x, (self.size.height-touchLocation.y)+(self.size.width*.1))  duration:10.0/self.mySpaceship.mySpeed];
+    [self.mySpaceship runAction:moveSpaceship];
+}
+
+- (void) touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    SKAction * moveSpaceship = [SKAction moveTo:self.mySpaceship.position  duration:10.0/self.mySpaceship.mySpeed];
+    [self.mySpaceship runAction:moveSpaceship];
+}
+
 
 #pragma mark photon/electricity stuff
 - (SKNode *) nextPriorityTargetForPhoton:(Photon *)photon

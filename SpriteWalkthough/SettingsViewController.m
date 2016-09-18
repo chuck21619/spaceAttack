@@ -24,6 +24,8 @@
     [_AppDelegate addGlowToLayer:self.soundEffectsLabel.layer withColor:self.soundEffectsLabel.textColor.CGColor];
     [_AppDelegate addGlowToLayer:self.musicLabel.layer withColor:self.musicLabel.textColor.CGColor];
     [_AppDelegate addGlowToLayer:self.vibrateLabel.layer withColor:self.vibrateLabel.textColor.CGColor];
+    [_AppDelegate addGlowToLayer:self.controlsLabel.layer withColor:self.controlsLabel.textColor.CGColor];
+    [_AppDelegate addGlowToLayer:self.controlsButton.layer withColor:self.controlsButton.currentTitleColor.CGColor];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -47,6 +49,13 @@
         [_AppDelegate addGlowToLayer:self.vibrateSwitch.layer withColor:self.vibrateSwitch.onTintColor.CGColor];
     else
         [_AppDelegate addGlowToLayer:self.vibrateSwitch.layer withColor:[UIColor whiteColor].CGColor];
+    
+    [UIView performWithoutAnimation:^
+    {
+        [self updateControlsButton];
+        [self.controlsButton layoutIfNeeded];
+    }];
+    
 }
 
 #pragma mark - sliders
@@ -113,6 +122,20 @@
         [_AppDelegate addGlowToLayer:self.vibrateSwitch.layer withColor:[UIColor whiteColor].CGColor];
 }
 
+#pragma mark - controls
+- (IBAction)controlsAction:(id)sender
+{
+    [[AccountManager sharedInstance] setTouchControls:![[AccountManager sharedInstance] touchControls]];
+    [self updateControlsButton];
+}
+
+- (void) updateControlsButton
+{
+    if ( [[AccountManager sharedInstance] touchControls] )
+        [self.controlsButton setTitle:@"Touch" forState:UIControlStateNormal];
+    else
+        [self.controlsButton setTitle:@"Tilt Screen" forState:UIControlStateNormal];
+}
 
 #pragma mark - misc.
 - (IBAction)backButtonAction:(id)sender
@@ -148,7 +171,8 @@
     [self.musicLabel setFont:[self.musicLabel.font fontWithSize:width*.056]];
     [self.vibrateLabel setFont:[self.vibrateLabel.font fontWithSize:width*.056]];
     [self.helpButton.titleLabel setFont:[self.helpButton.titleLabel.font fontWithSize:width*.056]];
-    
+    [self.controlsLabel setFont:[self.controlsLabel.font fontWithSize:width*.056]];
+    [self.controlsButton.titleLabel setFont:[self.controlsButton.titleLabel.font fontWithSize:width*0.04375]];
     
     self.constraintTrailingBack.constant = width*.669;
     self.constraintLeadingSettings.constant = width*.063;
@@ -172,6 +196,12 @@
     self.constraintTopVibrateSwitch.constant = width*-.0156;
     
     self.constraintHeightHelp.constant = width*.166;
+    
+    self.constraintTopControls.constant = width*0.190625;
+    self.constraintTrailingControls.constant = width*0.515625;
+    
+    self.constraintTopControlsButton.constant = width*0.1625;
+    self.constraintWidthControlsButton.constant = width*0.309375;
     
     [self.soundEffectsVolumeSlider adjustForDeviceWidth:width];
     [self.musicVolumeSlider adjustForDeviceWidth:width];
