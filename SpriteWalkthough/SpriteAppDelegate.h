@@ -13,6 +13,7 @@
 
 //colors
 #define _SAPink [UIColor colorWithRed:255.0/255.0 green:113.0/255.0 blue:223.0/255.0 alpha:1]
+#define _SAGreen [UIColor colorWithRed:10.0/255.0 green:252.0/255.0 blue:10.0/255.0 alpha:1]
 
 #define kUpgradeTableWillAnimate @"upgradeTableWillAnimate"
 #define kUpgradeTableDidAnimate @"upgradeTableDidAnimate"

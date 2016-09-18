@@ -409,7 +409,10 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     [self.pointsScoredLabel runAction:[SKAction fadeOutWithDuration:1] completion:^
     {
         [self.customDelegate gameOver:self.pointsScored];
-        [AccountManager addPoints:self.pointsScored];
+        
+#warning change to self.pointsScored
+        [AccountManager addPoints:5000];
+        
         [self submitAchievementProgress];
         [self submitGameKitScore];
     }];
@@ -934,7 +937,7 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
 {
     [self removeActionForKey:@"makeAsteroids"];
     self.makeAsteroidsInterval -= .08*self.makeAsteroidsInterval;
-    self.asteroidSpeedCoefficient += .03;
+    self.asteroidSpeedCoefficient += .06;
     
     BOOL randomBool = arc4random_uniform(2);
     if ( randomBool )
@@ -1062,16 +1065,20 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
         [alertContentView addSubview:alertMessageLabel];
 
         UIImageView * obstacle1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"asteroidImage.png"]];
-        obstacle1.frame = CGRectMake((((self.size.width/4) * 1)-obstacle1.frame.size.width/2)-(self.size.width/8), 92 - obstacle1.frame.size.height/2, obstacle1.frame.size.width, obstacle1.frame.size.height);
+        obstacle1.frame = CGRectMake((((self.size.width/4) * 1)-30/2)-(self.size.width/8), 92 - 30/2,
+                                     30, 30);
         [alertContentView addSubview:obstacle1];
         UIImageView * obstacle2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"enemyBasic.png"]];
-        obstacle2.frame = CGRectMake((((self.size.width/4) * 2)-obstacle2.frame.size.width/2)-(self.size.width/8), 92 - obstacle2.frame.size.height/2, obstacle2.frame.size.width, obstacle2.frame.size.height);
+        obstacle2.frame = CGRectMake((((self.size.width/4) * 2)-50/2)-(self.size.width/8), 92 - 50/2,
+                                     50, 50);
         [alertContentView addSubview:obstacle2];
         UIImageView * obstacle3 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"enemyFast.png"]];
-        obstacle3.frame = CGRectMake((((self.size.width/4) * 3)-obstacle3.frame.size.width/2)-(self.size.width/8), 92 - obstacle3.frame.size.height/2, obstacle3.frame.size.width, obstacle3.frame.size.height);
+        obstacle3.frame = CGRectMake((((self.size.width/4) * 3)-65/2)-(self.size.width/8), 92 - 65/2,
+                                     65, 65);
         [alertContentView addSubview:obstacle3];
         UIImageView * obstacle4 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"enemyBig.png"]];
-        obstacle4.frame = CGRectMake((((self.size.width/4) * 4)-obstacle4.frame.size.width/2)-(self.size.width/8), 92 - obstacle4.frame.size.height/2, obstacle4.frame.size.width, obstacle4.frame.size.height);
+        obstacle4.frame = CGRectMake((((self.size.width/4) * 4)-50/2)-(self.size.width/8), 92 - 50/2,
+                                     50, 50);
         [alertContentView addSubview:obstacle4];
         
         unlockAlert.contentView = alertContentView;

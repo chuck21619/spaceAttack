@@ -119,20 +119,15 @@
 
 - (void) updateButtonColorStatus
 {
-//    if ( [AccountManager enoughGamePointsToUnlockAShip] )
-//        //[self.playButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-//        self.playBadge.alpha = 1;
-//    else
-//        self.playBadge.alpha = 0;
-//        //[self.playButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    
+    if ( [AccountManager enoughGamePointsToUnlockAShip] )
+        self.playBadge.alpha = 1;
+    else
+        self.playBadge.alpha = 0;
     
     if ( [AccountManager enoughGamePointsToUnlockAnUpgrade] )
         self.upgradesBadge.alpha = 1;
-        //[self.upgradesButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
     else
         self.upgradesBadge.alpha = 0;
-        //[self.upgradesButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 }
 
 - (void) adjustForDeviceSize
@@ -163,6 +158,10 @@
     self.constraintLeadingBadge.constant = width*.691;
     self.constraintTopBadge.constant = width*-.05;
     self.constraintTrailingBadge.constant = width*.216;
+    
+    self.constraintLeadingBadgeStart.constant = width*0.7125;
+    self.constraintTopBadgeStart.constant = width*-0.046875;
+    self.constraintTrailingBadgeStart.constant = width*0.19375;
 }
 
 #pragma mark - game center
@@ -278,7 +277,8 @@
     [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuHighScoreAchievements];
     if ( ! [[GKLocalPlayer localPlayer] isAuthenticated] )
     {
-        SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:@"Scores Unavailable" message:@"You are not signed into\nGame Center" cancelButtonTitle:@"Got It" otherButtonTitle:nil];
+#warning localize
+        SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:@"Scores Unavailable" message:@"You are not signed into Game Center" cancelButtonTitle:@"Got It" otherButtonTitle:nil];
         unlockAlert.appearTime = .2;
         unlockAlert.disappearTime = .2;
         [unlockAlert show];

@@ -15,7 +15,7 @@
 "Bigger Laser" = "Bigger Laser";
 
 /* No comment provided by engineer. */
-"Blowing up aliens\nwithout taking damage\nmakes your multiplier go up!" = "Blowing up aliens\nwithout taking damage\nmakes your multiplier go up!";
+"Blowing up aliens without taking damage makes your multiplier go up!" = "Blowing up aliens without taking damage makes your multiplier go up!";
 
 /* No comment provided by engineer. */
 "Disable Tips" = "Disable Tips";
@@ -39,7 +39,7 @@
 "How to Move:" = "How to Move:";
 
 /* No comment provided by engineer. */
-"Increases Photon\nTargeting IQ" = "Increases Photon\nTargeting IQ";
+"Increases Photon Targeting IQ" = "Increases Photon Targeting IQ";
 
 /* No comment provided by engineer. */
 "Increases rate of fire for the Machine Gun" = "Increases rate of fire for the Machine Gun";
@@ -84,19 +84,19 @@
 "Unlock Now" = "Unlock Now";
 
 /* No comment provided by engineer. */
-"Unlocks the Energy\nBooster Power Up.\nDoubles Points and\nDamage for 30 seconds" = "Unlocks the Energy\nBooster Power Up.\nDoubles Points and\nDamage for 30 seconds";
+"Unlocks the Energy Booster Power Up. Doubles Points and Damage for 30 seconds" = "Unlocks the Energy Booster Power Up. Doubles Points and Damage for 30 seconds";
 
 /* No comment provided by engineer. */
-"Unlocks the\nShield Power Up" = "Unlocks the\nShield Power Up";
+"Unlocks the Shield Power Up" = "Unlocks the Shield Power Up";
 
 /* No comment provided by engineer. */
 "Weapon PowerUp!" = "Weapon PowerUp!";
 
 /* No comment provided by engineer. */
-"You just blew up an alien spaceship!\nThe more stuff you blow up,\nThe more points you score!" = "You just blew up an alien spaceship!\nThe more stuff you blow up,\nThe more points you score!";
+"You just blew up an alien spaceship! The more stuff you blow up, The more points you score!" = "You just blew up an alien spaceship! The more stuff you blow up, The more points you score!";
 
 /* No comment provided by engineer. */
-"You just picked up a weapon!\nPick up the same weapon again to upgrade it" = "You just picked up a weapon!\nPick up the same weapon again to upgrade it";
+"You just picked up a weapon! Pick up the same weapon again to upgrade it" = "You just picked up a weapon! Pick up the same weapon again to upgrade it";
 
 /* No comment provided by engineer. */
 "Your spaceships will be able to equip four different weapons!" = "Your spaceships will be able to equip four different weapons!";

@@ -25,7 +25,7 @@ static AccountManager * sharedAccountManager = nil;
         
 //#warning comment out for release builds
 //        [sharedAccountManager.userDefaults removePersistentDomainForName:@"ZinStudio"]; //clear all defaults
-//        [AccountManager addPoints:5000000];
+//        [AccountManager addPoints:5000];
         
         sharedAccountManager.fullScreenAdIteration = YES;
         sharedAccountManager.firstGameplaySinceLaunch = YES;

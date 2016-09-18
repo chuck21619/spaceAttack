@@ -19,6 +19,9 @@
 #import "SpriteAppDelegate.h"
 
 @implementation GameplayViewController
+{
+    UIImageView * _loadingScreenImageView;
+}
 
 - (void)viewDidLoad
 {
@@ -37,6 +40,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidBecomeActive) name:@"appDidBecomeActive" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillResignActive) name:@"appWillResignActive" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(achievementCompleted:) name:@"achievementCompleted" object:nil];
+    
+    
+    _loadingScreenImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     
     self.achievementsCompletedDuringFlight = [NSMutableArray new];
     self.bonusPointsTextViewHeightDefault = self.bonusPointsTextView.frame.size.height;
@@ -221,21 +227,34 @@
     {
         self.activityIndicatorBackground = [[UIView alloc] initWithFrame:self.view.frame];
         self.activityIndicatorBackground.backgroundColor = [UIColor colorWithWhite:0 alpha:.75];
+        [self.activityIndicatorBackground addSubview:_loadingScreenImageView];
     }
     if ( ! self.activityIndicator )
     {
-        self.activityIndicator = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeLineScale tintColor:[UIColor whiteColor] size:self.view.frame.size.width/6.4];
-        self.activityIndicator.frame = CGRectMake(self.view.frame.size.width/2, self.view.frame.size.height/2, 0, 0);
+        self.activityIndicator = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeLineScale tintColor:[UIColor whiteColor] size:self.view.frame.size.width/10];
+        self.activityIndicator.frame = CGRectMake(self.view.frame.size.width/2, self.view.frame.size.height - (self.view.frame.size.height/20), 0, 0);
     }
     
     self.activityIndicatorBackground.alpha = 0;
+    
+    int randomInt = arc4random_uniform(3)+1;
+    UIImage * loadingScreenImage = [UIImage imageNamed:[NSString stringWithFormat:@"Loading Screen %i.png", randomInt]];
+    _loadingScreenImageView.image = loadingScreenImage;
+    
+    if ( randomInt == 1 )
+        self.activityIndicator.tintColor = [UIColor colorWithRed:235.0/255.0 green:25.0/255.0 blue:10.0/255.0 alpha:.5];
+    else if ( randomInt == 2 )
+        self.activityIndicator.tintColor = [UIColor colorWithRed:215.0/255.0 green:245.0/255.0 blue:10.0/255.0 alpha:.5];
+    else if ( randomInt == 3 )
+        self.activityIndicator.tintColor = [UIColor blackColor];
+    
     [self.activityIndicatorBackground addSubview:self.activityIndicator];
     [self.view addSubview:self.activityIndicatorBackground];
     [self.activityIndicator startAnimating];
-    [UIView animateWithDuration:.2 animations:^
-     {
-         self.activityIndicatorBackground.alpha = 1;
-     }];
+    [UIView animateWithDuration:.33 animations:^
+    {
+        self.activityIndicatorBackground.alpha = 1;
+    }];
 }
 
 - (void) hideProgressHud

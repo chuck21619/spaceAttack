@@ -198,8 +198,9 @@
 {
     BOOL oldEnergyBoosterActive = self.energyBoosterActive;
     self.energyBoosterActive = YES;
-    self.damage *= 2;
-    //self.mySpeed *= 2;
+    
+    if ( ! oldEnergyBoosterActive )
+        self.damage *= 2;
     
     SKAction * pulseGreen = [SKAction repeatActionForever:[SKAction sequence:@[[SKAction colorizeWithColor:[SKColor greenColor] colorBlendFactor:1.0 duration:0.2],
                                                                                [SKAction waitForDuration:0.1],
@@ -227,7 +228,6 @@
     [[AudioManager sharedInstance] playSoundEffect:kSoundEffectEnergyBoosterEnd];
     
     self.damage /= 2;
-    //self.mySpeed /= 2;
     [self removeActionForKey:@"pulseGreen"];
     self.energyBoosterActive = NO;
 

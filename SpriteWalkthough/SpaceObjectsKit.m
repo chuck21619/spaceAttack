@@ -163,10 +163,11 @@ static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
 
 - (void) preloadNextBackground
 {
+    //NSLog(@"preload next background");
     SKTexture * backgroundTexture = [self randomTextureForNextBackground];
     [SKTexture preloadTextures:@[backgroundTexture] withCompletionHandler:^
     {
-        //preloading done
+        //NSLog(@"background preloading done");
     }];
 }
 
@@ -199,8 +200,6 @@ static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
     }];
     
     [self preloadNextBackground];
-    //NSLog(@"play song for background : %@", randomTextureKey);
-    //[audiomanger playSongForBackgorund:randomTextureKey];
 }
 
 static inline CGFloat skRandf()

@@ -39,7 +39,7 @@
     }
     else if ( self.level == 2 )
     {
-        waitDuration = 2.0;
+        waitDuration = 3.0;
         waitRange = .5;
     }
     else if ( self.level == 3 )

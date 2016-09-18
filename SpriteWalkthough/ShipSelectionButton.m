@@ -9,6 +9,7 @@
 #import "ShipSelectionButton.h"
 #import "ShipSelectMeter.h"
 #import "SpriteAppDelegate.h"
+#import "AccountManager.h"
 
 @implementation ShipSelectionButton
 {
@@ -129,6 +130,13 @@
     [_damageMeter fillToPercentage:spaceship.damage/18.0];
     [_armorMeter fillToPercentage:spaceship.armor/18.0];
     [_speedMeter fillToPercentage:spaceship.mySpeed/18.0];
+    
+    
+    if ( [AccountManager availablePoints] >= spaceship.pointsToUnlock )
+        [_lockedIcon setImage:[UIImage imageNamed:@"LockGreen.png"]];
+    else
+        [_lockedIcon setImage:[UIImage imageNamed:@"Lock.png"]];
+        
     
     if ( [spaceship isUnlocked] )
         _lockedIcon.alpha = 0;

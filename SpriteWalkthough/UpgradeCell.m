@@ -237,6 +237,17 @@
         _lockOrCheckIcon.image = [UIImage imageNamed:@"Check.png"];
     else
         _lockOrCheckIcon.image = [UIImage imageNamed:@"Lock.png"];
+    
+    if ( [AccountManager availablePoints] >= upgrade.pointsToUnlock )
+    {
+        _pointsNumberLabel.textColor = _SAGreen;
+        [_AppDelegate addGlowToLayer:_pointsNumberLabel.layer withColor:_SAGreen.CGColor];
+    }
+    else
+    {
+        _pointsNumberLabel.textColor = [UIColor whiteColor];
+        [_AppDelegate addGlowToLayer:_pointsNumberLabel.layer withColor:[UIColor whiteColor].CGColor];
+    }
 
     //maximized content
     _upgradeDescription.text = upgrade.upgradeDescription;
@@ -253,7 +264,10 @@
     }
     
     if ( [AccountManager availablePoints] >= upgrade.pointsToUnlock )
+    {
         [_purchaseButtonPoints setTitle:[NSString stringWithFormat:@"%@!\n%@ %@", NSLocalizedString(@"Unlock Now", nil), pointsString, NSLocalizedString(@"points", nil)] forState:UIControlStateNormal];
+        _purchaseButtonPoints.enabled = YES;
+    }
     else
     {
         [_purchaseButtonPoints setTitle:[NSString stringWithFormat:@"%@ %@\n%@", pointsString, NSLocalizedString(@"points", nil), NSLocalizedString(@"to Unlock", nil)] forState:UIControlStateNormal];

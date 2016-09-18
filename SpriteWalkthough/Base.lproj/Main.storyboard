@@ -177,6 +177,12 @@ ATTACK</string>
                                     <constraint firstAttribute="width" secondItem="xDl-wK-OZv" secondAttribute="height" multiplier="1:1" id="o2F-Qx-BTn"/>
                                 </constraints>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="customBadgeIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="J80-1N-Fyf">
+                                <rect key="frame" x="228" y="281" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="J80-1N-Fyf" secondAttribute="height" multiplier="1:1" id="6nd-lD-MFn"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -191,6 +197,7 @@ ATTACK</string>
                             <constraint firstItem="IRr-lm-nGg" firstAttribute="top" secondItem="juz-iM-qIp" secondAttribute="bottom" id="D0d-QK-6n1"/>
                             <constraint firstItem="vJW-K4-8rP" firstAttribute="top" secondItem="dEf-1W-Pt8" secondAttribute="bottom" constant="8" id="Des-YO-Ox6"/>
                             <constraint firstAttribute="trailing" secondItem="Kl6-OU-nGG" secondAttribute="trailing" constant="20" id="E3m-1Q-HoA"/>
+                            <constraint firstAttribute="trailing" secondItem="J80-1N-Fyf" secondAttribute="trailing" constant="62" id="E8f-aZ-3Tj"/>
                             <constraint firstItem="r4V-wO-nK5" firstAttribute="top" secondItem="0PD-dm-pXb" secondAttribute="top" constant="146" id="EXY-Zn-CLL"/>
                             <constraint firstItem="dEh-7H-kc8" firstAttribute="top" secondItem="xDl-wK-OZv" secondAttribute="bottom" constant="-16" id="FAB-cr-nNT"/>
                             <constraint firstAttribute="trailing" secondItem="gdH-ML-xnp" secondAttribute="trailing" id="GGu-et-rTT"/>
@@ -207,6 +214,8 @@ ATTACK</string>
                             <constraint firstItem="2E9-FI-wPc" firstAttribute="leading" secondItem="0PD-dm-pXb" secondAttribute="leading" constant="42" id="dJc-V8-seN"/>
                             <constraint firstAttribute="trailing" secondItem="HGt-bC-Frb" secondAttribute="trailing" constant="41" id="f5T-ed-bO8"/>
                             <constraint firstItem="1d1-lJ-Rw0" firstAttribute="top" secondItem="HGt-bC-Frb" secondAttribute="bottom" constant="22" id="fE7-Wk-NS9"/>
+                            <constraint firstItem="J80-1N-Fyf" firstAttribute="leading" secondItem="0PD-dm-pXb" secondAttribute="leading" constant="228" id="gUF-Ak-GS5"/>
+                            <constraint firstItem="HGt-bC-Frb" firstAttribute="top" secondItem="J80-1N-Fyf" secondAttribute="bottom" constant="-15" id="gt4-W1-F03"/>
                             <constraint firstAttribute="trailing" secondItem="1d1-lJ-Rw0" secondAttribute="trailing" constant="41" id="jhN-in-RIm"/>
                             <constraint firstAttribute="trailing" secondItem="juz-iM-qIp" secondAttribute="trailing" id="khw-qe-X8P"/>
                             <constraint firstItem="2E9-FI-wPc" firstAttribute="top" secondItem="0PD-dm-pXb" secondAttribute="top" constant="65" id="ljx-Hc-cTb"/>
@@ -219,20 +228,24 @@ ATTACK</string>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="constraintLeadingBadge" destination="8cs-GL-Kw8" id="5cB-JS-Ilk"/>
+                        <outlet property="constraintLeadingBadgeStart" destination="gUF-Ak-GS5" id="sDM-2d-KEJ"/>
                         <outlet property="constraintLeadingPlanet1" destination="C14-8b-V2C" id="oiI-Oh-a3U"/>
                         <outlet property="constraintLeadingPlanet2" destination="uDi-qz-mGS" id="5IB-wr-XbT"/>
                         <outlet property="constraintLeadingPlanet3" destination="L4m-hX-Foi" id="sIs-DB-xhP"/>
                         <outlet property="constraintLeadingSettings" destination="LIP-Y8-6fh" id="8iq-7f-gj2"/>
                         <outlet property="constraintTopBadge" destination="FAB-cr-nNT" id="Yka-iw-hne"/>
+                        <outlet property="constraintTopBadgeStart" destination="gt4-W1-F03" id="hbg-2B-Jum"/>
                         <outlet property="constraintTopPlanet1" destination="Des-YO-Ox6" id="hl6-gr-Oxb"/>
                         <outlet property="constraintTopPlanet2" destination="bio-2C-YgQ" id="hyc-6i-c00"/>
                         <outlet property="constraintTopPlanet3" destination="EXY-Zn-CLL" id="Y3z-8Q-ahN"/>
                         <outlet property="constraintTrailingBadge" destination="Y2T-C9-wpl" id="enR-eE-Jhs"/>
+                        <outlet property="constraintTrailingBadgeStart" destination="E8f-aZ-3Tj" id="P6M-DI-cFG"/>
                         <outlet property="constraintTrailingPlanet1" destination="34Y-hR-LHx" id="KpY-QC-fGZ"/>
                         <outlet property="constraintTrailingPlanet2" destination="E3m-1Q-HoA" id="XUA-gd-85O"/>
                         <outlet property="constraintTrailingPlanet3" destination="vz6-y5-1hH" id="E3A-Rd-i1u"/>
                         <outlet property="constraintTrailingZinStudio" destination="d8y-mU-XpV" id="PQm-ZB-nOD"/>
                         <outlet property="highScoresAchievementsButton" destination="1d1-lJ-Rw0" id="dNz-a5-thi"/>
+                        <outlet property="playBadge" destination="J80-1N-Fyf" id="BRN-3z-PO0"/>
                         <outlet property="playButton" destination="HGt-bC-Frb" id="Iqw-7V-7Ox"/>
                         <outlet property="settingsButton" destination="gdH-ML-xnp" id="vrW-Lm-97P"/>
                         <outlet property="spaceAttackLabel" destination="2E9-FI-wPc" id="uuh-7X-Ks7"/>

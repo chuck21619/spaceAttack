@@ -190,11 +190,11 @@
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
     int points = [[numberFormatter numberFromString:[self.availablePointsLabel.text stringByReplacingOccurrencesOfString:availablePointsPart withString:@""]] intValue];
-    NSString *numberString = [numberFormatter stringFromNumber:@(points - 500)];
+    NSString *numberString = [numberFormatter stringFromNumber:@(points - 50)];
     self.availablePointsLabel.text = [NSString stringWithFormat:@"%@ : %@", NSLocalizedString(@"Available Points", nil), numberString];
     
-    if ( pointsToSubtract != 500 )
-        [self performSelector:@selector(animateAvailablePoints:) withObject:[NSNumber numberWithInt:pointsToSubtract-500] afterDelay:.05];
+    if ( pointsToSubtract != 50 )
+        [self performSelector:@selector(animateAvailablePoints:) withObject:[NSNumber numberWithInt:pointsToSubtract-50] afterDelay:.05];
 }
 
 - (void) viewDidLayoutSubviews

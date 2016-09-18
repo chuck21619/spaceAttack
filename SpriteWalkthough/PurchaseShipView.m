@@ -207,9 +207,9 @@
     unlockAlert.appearTime = .4;
     unlockAlert.disappearTime = .3;
     unlockAlert.backgroundColor = [UIColor colorWithWhite:.2 alpha:.8];
-    unlockAlert.messageLabel.font = [UIFont fontWithName:@"Chalkduster" size:self.frame.size.width*0.0625];
-    unlockAlert.cancelButton.titleLabel.font = [UIFont fontWithName:@"Chalkduster" size:self.frame.size.width*0.047];
-    unlockAlert.otherButton.titleLabel.font = [UIFont fontWithName:@"Chalkduster" size:self.frame.size.width*0.047];
+    unlockAlert.messageLabel.font = [UIFont fontWithName:@"Moon-Bold" size:self.frame.size.width*0.0625];
+    unlockAlert.cancelButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:self.frame.size.width*0.047];
+    unlockAlert.otherButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:self.frame.size.width*0.047];
     unlockAlert.otherButtonAction = ^
     {
         [Answers logPurchaseWithPrice:[[NSDecimalNumber alloc] initWithFloat:_mySpaceship.pointsToUnlock]
