@@ -409,10 +409,7 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     [self.pointsScoredLabel runAction:[SKAction fadeOutWithDuration:1] completion:^
     {
         [self.customDelegate gameOver:self.pointsScored];
-        
-#warning change to self.pointsScored
-        [AccountManager addPoints:5000];
-        
+        [AccountManager addPoints:self.pointsScored];
         [self submitAchievementProgress];
         [self submitGameKitScore];
     }];

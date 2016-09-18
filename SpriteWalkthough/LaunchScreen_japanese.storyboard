@@ -14,16 +14,21 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="IMG_0728.PNG" translatesAutoresizingMaskIntoConstraints="NO" id="HoA-QN-Wbv">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="JP Box Art.png" translatesAutoresizingMaskIntoConstraints="NO" id="GgT-tT-WFg">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="GgT-tT-WFg" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="XH7-PH-AtD"/>
+                            <constraint firstAttribute="trailing" secondItem="GgT-tT-WFg" secondAttribute="trailing" id="clp-fe-OpQ"/>
+                            <constraint firstItem="GgT-tT-WFg" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="n0y-7A-yZy"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="GgT-tT-WFg" secondAttribute="bottom" id="zjV-zT-lD9"/>
+                        </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -31,6 +36,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="IMG_0728.PNG" width="640" height="1136"/>
+        <image name="JP Box Art.png" width="751" height="1335"/>
     </resources>
 </document>
