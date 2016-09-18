@@ -28,7 +28,6 @@
             <string>Moon-Bold</string>
             <string>Moon-Bold</string>
             <string>Moon-Bold</string>
-            <string>Moon-Bold</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -171,13 +170,13 @@ ATTACK</string>
                                 <color key="textColor" red="0.0" green="0.51233836206896555" blue="1" alpha="0.79055851063829785" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="customBadgeIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="xDl-wK-OZv">
+                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="customBadgeIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="xDl-wK-OZv">
                                 <rect key="frame" x="221" y="417" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="xDl-wK-OZv" secondAttribute="height" multiplier="1:1" id="o2F-Qx-BTn"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="customBadgeIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="J80-1N-Fyf">
+                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="customBadgeIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="J80-1N-Fyf">
                                 <rect key="frame" x="228" y="281" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="J80-1N-Fyf" secondAttribute="height" multiplier="1:1" id="6nd-lD-MFn"/>
@@ -257,6 +256,16 @@ ATTACK</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1wL-gI-add" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-651" y="-112"/>
+        </scene>
+        <!--Game Center Page View Controller-->
+        <scene sceneID="Okg-dR-Ogm">
+            <objects>
+                <pageViewController storyboardIdentifier="gameCenterPageVC" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="BCY-hS-07E" customClass="GameCenterPageViewController" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7V8-iB-rz7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-152" y="1451"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="u8A-JD-KC1">
@@ -922,42 +931,45 @@ Firead 100 Bullets + 100 points</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" tag="10" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="menuBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="S56-8Z-EmI">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="game center" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="otj-rR-Ryr">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JRY-Vu-Uhi">
+                                <rect key="frame" x="12" y="20" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="woI-Kw-2ea" userLabel="Button - back">
-                                <rect key="frame" x="0.0" y="0.0" width="106" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="woI-Kw-2ea" secondAttribute="height" multiplier="53:20" id="f0u-10-UQJ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Moon-Bold" family="Moon" pointSize="14"/>
-                                <inset key="contentEdgeInsets" minX="8" minY="4" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="&lt; BACK">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="backAction:" destination="uh9-sL-8Yw" eventType="touchUpInside" id="oDE-6s-aY5"/>
-                                </connections>
-                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="woI-Kw-2ea" secondAttribute="trailing" constant="214" id="1K3-gJ-diM"/>
-                            <constraint firstItem="woI-Kw-2ea" firstAttribute="leading" secondItem="1h5-tx-cen" secondAttribute="leading" id="7mL-mW-vjc"/>
-                            <constraint firstItem="woI-Kw-2ea" firstAttribute="top" secondItem="1h5-tx-cen" secondAttribute="top" id="z1b-eR-nXj"/>
-                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Tg-iW-kcc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-152" y="1453"/>
+            <point key="canvasLocation" x="363" y="1451"/>
+        </scene>
+        <!--High Scores View Controller-->
+        <scene sceneID="uvn-Tc-vg8">
+            <objects>
+                <viewController storyboardIdentifier="highScoresVC" id="eD6-tr-FhF" customClass="HighScoresViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zue-ba-RT3"/>
+                        <viewControllerLayoutGuide type="bottom" id="wqh-Hi-LWK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PfK-a1-eCm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="256-eI-0fL">
+                                <rect key="frame" x="11" y="20" width="152" height="81"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hc2-6I-aJx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="899" y="1451"/>
         </scene>
     </scenes>
     <resources>

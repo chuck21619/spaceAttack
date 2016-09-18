@@ -160,6 +160,8 @@
 		A337A4C61D8E5C59000A6570 /* EU Box Art.png in Resources */ = {isa = PBXBuildFile; fileRef = A337A4C31D8E5C59000A6570 /* EU Box Art.png */; };
 		A337A4C71D8E5C59000A6570 /* JP Box Art.png in Resources */ = {isa = PBXBuildFile; fileRef = A337A4C41D8E5C59000A6570 /* JP Box Art.png */; };
 		A337A4C91D8E5CC5000A6570 /* NA Box Art.png in Resources */ = {isa = PBXBuildFile; fileRef = A337A4C81D8E5CC5000A6570 /* NA Box Art.png */; };
+		A337A4CC1D8E678D000A6570 /* GameCenterPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A337A4CB1D8E678D000A6570 /* GameCenterPageViewController.m */; };
+		A337A4D01D8E6E3B000A6570 /* HighScoresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A337A4CF1D8E6E3B000A6570 /* HighScoresViewController.m */; };
 		A3451F371C730F9D0080B81C /* CategoryBitMasks.m in Sources */ = {isa = PBXBuildFile; fileRef = A3451E171C730F980080B81C /* CategoryBitMasks.m */; };
 		A3483FC11D68F13200E9D1F9 /* menuBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FC01D68F13200E9D1F9 /* menuBackground.png */; };
 		A3483FC81D68F98000E9D1F9 /* Habsburg.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FC21D68F98000E9D1F9 /* Habsburg.png */; };
@@ -758,6 +760,10 @@
 		A337A4C31D8E5C59000A6570 /* EU Box Art.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EU Box Art.png"; sourceTree = "<group>"; };
 		A337A4C41D8E5C59000A6570 /* JP Box Art.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "JP Box Art.png"; sourceTree = "<group>"; };
 		A337A4C81D8E5CC5000A6570 /* NA Box Art.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NA Box Art.png"; sourceTree = "<group>"; };
+		A337A4CA1D8E678D000A6570 /* GameCenterPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterPageViewController.h; sourceTree = "<group>"; };
+		A337A4CB1D8E678D000A6570 /* GameCenterPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterPageViewController.m; sourceTree = "<group>"; };
+		A337A4CE1D8E6E3B000A6570 /* HighScoresViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighScoresViewController.h; sourceTree = "<group>"; };
+		A337A4CF1D8E6E3B000A6570 /* HighScoresViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighScoresViewController.m; sourceTree = "<group>"; };
 		A3451E161C730F980080B81C /* CategoryBitMasks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryBitMasks.h; sourceTree = "<group>"; };
 		A3451E171C730F980080B81C /* CategoryBitMasks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryBitMasks.m; sourceTree = "<group>"; };
 		A3483FC01D68F13200E9D1F9 /* menuBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuBackground.png; sourceTree = "<group>"; };
@@ -1583,10 +1589,9 @@
 				6EB3487D1A9ACF41003E551F /* GameplayViewController.m */,
 				A3328B491C6FA57B00E18FF4 /* UpgradesViewController.h */,
 				A3328B4A1C6FA57B00E18FF4 /* UpgradesViewController.m */,
-				A3BD28741D7E3A5F008F6FA1 /* HighScoresAchievementsViewController.h */,
-				A3BD28751D7E3A5F008F6FA1 /* HighScoresAchievementsViewController.m */,
 				A32030C71D168E8B00B0F4BC /* SettingsViewController.h */,
 				A32030C81D168E8B00B0F4BC /* SettingsViewController.m */,
+				A337A4CD1D8E6DFF000A6570 /* game center */,
 			);
 			name = viewControllers;
 			sourceTree = "<group>";
@@ -2018,6 +2023,19 @@
 				A337A4C01D8E5BF1000A6570 /* LaunchScreen_spanish.storyboard */,
 			);
 			name = "launch screens";
+			sourceTree = "<group>";
+		};
+		A337A4CD1D8E6DFF000A6570 /* game center */ = {
+			isa = PBXGroup;
+			children = (
+				A337A4CA1D8E678D000A6570 /* GameCenterPageViewController.h */,
+				A337A4CB1D8E678D000A6570 /* GameCenterPageViewController.m */,
+				A3BD28741D7E3A5F008F6FA1 /* HighScoresAchievementsViewController.h */,
+				A3BD28751D7E3A5F008F6FA1 /* HighScoresAchievementsViewController.m */,
+				A337A4CE1D8E6E3B000A6570 /* HighScoresViewController.h */,
+				A337A4CF1D8E6E3B000A6570 /* HighScoresViewController.m */,
+			);
+			name = "game center";
 			sourceTree = "<group>";
 		};
 		A3483FBF1D68F12400E9D1F9 /* menu */ = {
@@ -3126,6 +3144,7 @@
 				A3D2C9CF1B7994E100687F98 /* EnumTypes.m in Sources */,
 				A331D67C1C72DCB20054124F /* DGActivityIndicatorDoubleBounceAnimation.m in Sources */,
 				A331D67A1C72DCB20054124F /* DGActivityIndicatorBallZigZagDeflectAnimation.m in Sources */,
+				A337A4D01D8E6E3B000A6570 /* HighScoresViewController.m in Sources */,
 				6EB3487E1A9ACF41003E551F /* GameplayViewController.m in Sources */,
 				A331D68A1C72DCB20054124F /* DGActivityIndicatorTwoDotsAnimation.m in Sources */,
 				13B231FD1943C9190097A15A /* ElectricalGenerator.m in Sources */,
@@ -3158,6 +3177,7 @@
 				A331D6731C72DCB20054124F /* DGActivityIndicatorBallRotateAnimation.m in Sources */,
 				1301693A1909C1FD00DDC896 /* PlayerWeapon.m in Sources */,
 				6E5D38211AB6B04B0002F22F /* GameplayControls.m in Sources */,
+				A337A4CC1D8E678D000A6570 /* GameCenterPageViewController.m in Sources */,
 				A331D67E1C72DCB20054124F /* DGActivityIndicatorLineScaleAnimation.m in Sources */,
 				A331D6291C72DC990054124F /* DGActivityIndicatorView.m in Sources */,
 				A331D6821C72DCB20054124F /* DGActivityIndicatorNineDotsAnimation.m in Sources */,

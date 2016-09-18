@@ -278,6 +278,7 @@
     if ( ! [[GKLocalPlayer localPlayer] isAuthenticated] )
     {
 #warning localize
+#warning should be available when not signed into game center as well
         SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:@"Scores Unavailable" message:@"You are not signed into Game Center" cancelButtonTitle:@"Got It" otherButtonTitle:nil];
         unlockAlert.appearTime = .2;
         unlockAlert.disappearTime = .2;
@@ -287,7 +288,7 @@
     
     [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuUpgrade];
     UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UpgradesViewController * upgradesVC = [storyboard instantiateViewControllerWithIdentifier:@"highscoresAchievementsVC"];
+    UpgradesViewController * upgradesVC = [storyboard instantiateViewControllerWithIdentifier:@"gameCenterPageVC"];
     [UIView animateWithDuration:.2 animations:^
     {
         for ( UIView * subview in [self.view subviews] )
