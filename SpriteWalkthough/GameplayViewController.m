@@ -73,6 +73,9 @@
     self.upgradesButton.layer.borderWidth = 2;
     self.upgradesButton.layer.cornerRadius = self.upgradesButton.frame.size.height/3;
     
+    self.homeButton.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.homeButton.layer.borderWidth = 2;
+    self.homeButton.layer.cornerRadius = self.homeButton.frame.size.height/3;
     
     [_AppDelegate addGlowToLayer:self.gameOverLabel.layer withColor:self.gameOverLabel.textColor.CGColor];
     [_AppDelegate addGlowToLayer:self.pointsLabel.layer withColor:self.pointsLabel.textColor.CGColor];
@@ -80,6 +83,7 @@
     [_AppDelegate addGlowToLayer:self.restartButton.layer withColor:self.restartButton.currentTitleColor.CGColor];
     [_AppDelegate addGlowToLayer:self.selectShipButton.layer withColor:self.selectShipButton.currentTitleColor.CGColor];
     [_AppDelegate addGlowToLayer:self.upgradesButton.layer withColor:self.upgradesButton.currentTitleColor.CGColor];
+    [_AppDelegate addGlowToLayer:self.homeButton.layer withColor:self.homeButton.currentTitleColor.CGColor];
 
     [self calibrate];
 }
@@ -94,6 +98,7 @@
     [self.restartButton.titleLabel setFont:[self.restartButton.titleLabel.font fontWithSize:width*.056]];
     [self.selectShipButton.titleLabel setFont:[self.selectShipButton.titleLabel.font fontWithSize:width*.056]];
     [self.upgradesButton.titleLabel setFont:[self.upgradesButton.titleLabel.font fontWithSize:width*.056]];
+    [self.homeButton.titleLabel setFont:[self.homeButton.titleLabel.font fontWithSize:width*.056]];
     
     self.constraintBottomUpgrades.constant = width*.75;
     self.constraintLeadingUpgrades.constant = width*.1875;
@@ -102,6 +107,8 @@
     self.constraintBottomSelectShip.constant = width*.028;
     
     self.constraintBottomRestart.constant = width*.025;
+    
+    self.constraintTopHome.constant = width*.025;
     
     self.constraintBottomBonus.constant = width*-.0156;
     
@@ -276,6 +283,7 @@
     self.pointsLabel.alpha = 0;
     self.restartButton.alpha = 0;
     self.upgradesButton.alpha = 0;
+    self.homeButton.alpha = 0;
     self.selectShipButton.alpha = 0;
     self.bonusPointsTextView.alpha = 0;
     self.upgradesBadge.alpha = 0;
@@ -329,6 +337,7 @@
         self.restartButton.alpha = 1;
         self.upgradesButton.alpha = 1;
         self.selectShipButton.alpha = 1;
+        self.homeButton.alpha = 1;
         
         if ( [AccountManager enoughGamePointsToUnlockAShip] )
             self.selectShipBadge.alpha = 1;
@@ -458,6 +467,19 @@
         [self dismissViewControllerAnimated:NO completion:nil];
         MainMenuViewController * mmvc = (MainMenuViewController *)self.presentingViewController;
         [mmvc upgradesAction:nil];
+    }];
+}
+
+- (IBAction)homeAction:(id)sender
+{
+    [UIView animateWithDuration:.5 animations:^
+    {
+        [self hideUIViews];
+    }
+    completion:^(BOOL finished)
+    {
+        [[AudioManager sharedInstance] playMenuMusic];
+        [self dismissViewControllerAnimated:NO completion:nil];
     }];
 }
 

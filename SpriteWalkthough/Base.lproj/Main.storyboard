@@ -30,6 +30,7 @@
             <string>Moon-Bold</string>
             <string>Moon-Bold</string>
             <string>Moon-Bold</string>
+            <string>Moon-Bold</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -686,6 +687,18 @@ ATTACK</string>
                                     <action selector="selectShipAction:" destination="Bfd-yQ-Nip" eventType="touchUpInside" id="DdK-3a-01C"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QFI-At-1xJ" customClass="GlowingButton">
+                                <rect key="frame" x="60" y="336" width="200" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="QFI-At-1xJ" secondAttribute="height" multiplier="67:9" id="x1n-po-ptb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Moon-Bold" family="Moon" pointSize="18"/>
+                                <inset key="contentEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
+                                <state key="normal" title="HOME"/>
+                                <connections>
+                                    <action selector="homeAction:" destination="Bfd-yQ-Nip" eventType="touchUpInside" id="EDy-LS-B69"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nun-yr-B4d" customClass="GlowingButton">
                                 <rect key="frame" x="60" y="301" width="200" height="27"/>
                                 <constraints>
@@ -764,15 +777,18 @@ Firead 100 Bullets + 100 points</string>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="QFI-At-1xJ" firstAttribute="trailing" secondItem="Nun-yr-B4d" secondAttribute="trailing" id="6yF-6U-1uV"/>
                             <constraint firstItem="Nun-yr-B4d" firstAttribute="leading" secondItem="Z4H-lk-5MB" secondAttribute="leading" constant="60" id="75A-Fr-A5z"/>
                             <constraint firstItem="ZPa-7R-INz" firstAttribute="top" secondItem="JVM-ek-Jer" secondAttribute="bottom" constant="-22" id="8r4-4t-u3J"/>
                             <constraint firstItem="Bcl-QF-Cpi" firstAttribute="top" secondItem="guR-xG-mbT" secondAttribute="top" constant="-6" id="9Rq-8C-iPn"/>
+                            <constraint firstItem="QFI-At-1xJ" firstAttribute="top" secondItem="Nun-yr-B4d" secondAttribute="bottom" constant="8" id="9yX-NE-Jw5"/>
                             <constraint firstItem="gyv-rw-FnK" firstAttribute="top" secondItem="Nun-yr-B4d" secondAttribute="top" constant="-6" id="CWM-9U-oBK"/>
                             <constraint firstItem="HHP-NJ-R62" firstAttribute="leading" secondItem="guR-xG-mbT" secondAttribute="leading" id="DoZ-L7-lFq"/>
                             <constraint firstAttribute="trailing" secondItem="Nun-yr-B4d" secondAttribute="trailing" constant="60" id="FYN-qE-hkn"/>
                             <constraint firstItem="HHP-NJ-R62" firstAttribute="top" secondItem="ZPa-7R-INz" secondAttribute="bottom" constant="-5" id="FcC-fx-j1o"/>
                             <constraint firstAttribute="trailing" secondItem="mA2-Z7-JDF" secondAttribute="trailing" id="FsW-dA-oUC"/>
                             <constraint firstAttribute="trailing" secondItem="F0Q-cG-Mq0" secondAttribute="trailing" id="GAj-72-DcI"/>
+                            <constraint firstItem="QFI-At-1xJ" firstAttribute="width" secondItem="QFI-At-1xJ" secondAttribute="height" multiplier="67:9" id="JRO-OX-uLV"/>
                             <constraint firstItem="guR-xG-mbT" firstAttribute="leading" secondItem="Nun-yr-B4d" secondAttribute="leading" id="KHX-Bs-4Qv"/>
                             <constraint firstItem="guR-xG-mbT" firstAttribute="top" secondItem="HHP-NJ-R62" secondAttribute="bottom" constant="8" id="Kgs-1t-w0p"/>
                             <constraint firstAttribute="trailing" secondItem="JVM-ek-Jer" secondAttribute="trailing" constant="20" id="QTq-0s-NUe"/>
@@ -790,12 +806,18 @@ Firead 100 Bullets + 100 points</string>
                             <constraint firstItem="Nun-yr-B4d" firstAttribute="top" secondItem="guR-xG-mbT" secondAttribute="bottom" constant="9" id="gkf-DU-WcT"/>
                             <constraint firstAttribute="trailing" secondItem="Bcl-QF-Cpi" secondAttribute="trailing" constant="90" id="jB9-xy-L4m"/>
                             <constraint firstItem="bVb-4F-HPl" firstAttribute="leading" secondItem="Z4H-lk-5MB" secondAttribute="leading" constant="20" id="kvs-0x-QEV"/>
+                            <constraint firstItem="QFI-At-1xJ" firstAttribute="leading" secondItem="Nun-yr-B4d" secondAttribute="leading" id="lNR-5h-E5O"/>
                             <constraint firstAttribute="trailing" secondItem="ZPa-7R-INz" secondAttribute="trailing" constant="20" id="oFV-83-vpt"/>
                             <constraint firstItem="ZPa-7R-INz" firstAttribute="leading" secondItem="Z4H-lk-5MB" secondAttribute="leading" constant="20" id="p1W-vM-CsA"/>
                             <constraint firstItem="F0Q-cG-Mq0" firstAttribute="leading" secondItem="Z4H-lk-5MB" secondAttribute="leading" id="ro9-sF-74r"/>
                             <constraint firstAttribute="trailing" secondItem="gyv-rw-FnK" secondAttribute="trailing" constant="99" id="uRT-ll-rj6"/>
                             <constraint firstAttribute="bottom" secondItem="F0Q-cG-Mq0" secondAttribute="bottom" id="wLF-qt-BR6"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="JRO-OX-uLV"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
@@ -816,10 +838,12 @@ Firead 100 Bullets + 100 points</string>
                         <outlet property="constraintLeadingUpgrades" destination="75A-Fr-A5z" id="IWp-p4-0sl"/>
                         <outlet property="constraintTopBadgeShip" destination="9Rq-8C-iPn" id="Rc4-X9-eei"/>
                         <outlet property="constraintTopBadgeUpgrades" destination="CWM-9U-oBK" id="321-qJ-y2q"/>
+                        <outlet property="constraintTopHome" destination="9yX-NE-Jw5" id="yoS-pd-sqd"/>
                         <outlet property="constraintTrailingBadgeShip" destination="jB9-xy-L4m" id="E8d-gd-JCO"/>
                         <outlet property="constraintTrailingBadgeUpgrades" destination="uRT-ll-rj6" id="fc0-E5-3xh"/>
                         <outlet property="constraintTrailingUpgrades" destination="FYN-qE-hkn" id="JVp-JU-wFG"/>
                         <outlet property="gameOverLabel" destination="bVb-4F-HPl" id="ccO-Ng-Den"/>
+                        <outlet property="homeButton" destination="QFI-At-1xJ" id="awS-Vm-twX"/>
                         <outlet property="mySKView" destination="F0Q-cG-Mq0" id="ZmC-XA-k4b"/>
                         <outlet property="mySKViewBottomConstraint" destination="wLF-qt-BR6" id="FtA-68-Pir"/>
                         <outlet property="mySKViewTopConstraint" destination="bMe-fI-ztD" id="TtO-sY-P1T"/>
@@ -970,7 +994,7 @@ Firead 100 Bullets + 100 points</string>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JRY-Vu-Uhi">
                                 <rect key="frame" x="12" y="20" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -996,7 +1020,7 @@ Firead 100 Bullets + 100 points</string>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="256-eI-0fL">
                                 <rect key="frame" x="11" y="20" width="152" height="81"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="45"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>

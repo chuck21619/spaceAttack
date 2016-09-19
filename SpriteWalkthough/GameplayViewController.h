@@ -11,6 +11,7 @@
 #import "GameplayControls.h"
 #import "SpaceshipScene.h"
 #import "DGActivityIndicatorView.h"
+#import "GlowingButton.h"
 @import GoogleMobileAds;
 
 @interface GameplayViewController : UIViewController <GADBannerViewDelegate, GADInterstitialDelegate, SpaceshipSceneDelegate>
@@ -33,14 +34,16 @@
 @property (weak, nonatomic) IBOutlet UILabel *gameOverLabel;
 @property (weak, nonatomic) IBOutlet UILabel *pointsLabel;
 @property (weak, nonatomic) IBOutlet UITextView *bonusPointsTextView;
-@property (weak, nonatomic) IBOutlet UIButton *restartButton;
+@property (weak, nonatomic) IBOutlet GlowingButton *restartButton;
 - (IBAction)restartButtonAction:(id)sender;
-@property (weak, nonatomic) IBOutlet UIButton *selectShipButton;
+@property (weak, nonatomic) IBOutlet GlowingButton *selectShipButton;
 @property (weak, nonatomic) IBOutlet UIImageView *selectShipBadge;
 - (IBAction)selectShipAction:(id)sender;
-@property (weak, nonatomic) IBOutlet UIButton *upgradesButton;
+@property (weak, nonatomic) IBOutlet GlowingButton *upgradesButton;
 @property (weak, nonatomic) IBOutlet UIImageView *upgradesBadge;
 - (IBAction)upgradesAction:(id)sender;
+@property (weak, nonatomic) IBOutlet GlowingButton *homeButton;
+- (IBAction)homeAction:(id)sender;
 
 @property (nonatomic) DGActivityIndicatorView * activityIndicator;
 @property (nonatomic) UIView * activityIndicatorBackground;
@@ -54,6 +57,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTrailingUpgrades;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintBottomSelectShip;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTopHome;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintBottomRestart;
 
