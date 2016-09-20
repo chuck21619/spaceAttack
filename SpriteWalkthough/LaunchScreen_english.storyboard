@@ -17,11 +17,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NA Box Art.png" translatesAutoresizingMaskIntoConstraints="NO" id="PQX-gX-OJ9">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="englishLaunchImage2.png" translatesAutoresizingMaskIntoConstraints="NO" id="PQX-gX-OJ9">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.44439655169999998" blue="0.87338362069999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="PQX-gX-OJ9" secondAttribute="bottom" id="8NN-gK-K2k"/>
                             <constraint firstItem="PQX-gX-OJ9" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="D7w-qK-YQK"/>
@@ -37,6 +37,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="NA Box Art.png" width="750" height="1331"/>
+        <image name="englishLaunchImage2.png" width="750" height="1331"/>
     </resources>
 </document>
