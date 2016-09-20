@@ -159,7 +159,6 @@
 		A337A4C11D8E5BF1000A6570 /* LaunchScreen_spanish.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A337A4C01D8E5BF1000A6570 /* LaunchScreen_spanish.storyboard */; };
 		A337A4C61D8E5C59000A6570 /* EU Box Art.png in Resources */ = {isa = PBXBuildFile; fileRef = A337A4C31D8E5C59000A6570 /* EU Box Art.png */; };
 		A337A4C71D8E5C59000A6570 /* JP Box Art.png in Resources */ = {isa = PBXBuildFile; fileRef = A337A4C41D8E5C59000A6570 /* JP Box Art.png */; };
-		A337A4C91D8E5CC5000A6570 /* NA Box Art.png in Resources */ = {isa = PBXBuildFile; fileRef = A337A4C81D8E5CC5000A6570 /* NA Box Art.png */; };
 		A337A4CC1D8E678D000A6570 /* GameCenterPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A337A4CB1D8E678D000A6570 /* GameCenterPageViewController.m */; };
 		A337A4D01D8E6E3B000A6570 /* HighScoresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A337A4CF1D8E6E3B000A6570 /* HighScoresViewController.m */; };
 		A3451F371C730F9D0080B81C /* CategoryBitMasks.m in Sources */ = {isa = PBXBuildFile; fileRef = A3451E171C730F980080B81C /* CategoryBitMasks.m */; };
@@ -174,6 +173,7 @@
 		A3483FD51D6900BE00E9D1F9 /* menuPlanet.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FD41D6900BE00E9D1F9 /* menuPlanet.png */; };
 		A3483FE51D691B8B00E9D1F9 /* shield.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FE41D691B8B00E9D1F9 /* shield.png */; };
 		A34F35241D56F8BE007A1191 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A34F35231D56F8BE007A1191 /* Reachability.m */; };
+		A35078F41D90F4CF00F9107F /* Scan Lines.png in Resources */ = {isa = PBXBuildFile; fileRef = A35078F31D90F4CF00F9107F /* Scan Lines.png */; };
 		A35816A41D334EEE0028C019 /* photonExplosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = A35816A31D334EEE0028C019 /* photonExplosion.wav */; };
 		A35816B01D3357CD0028C019 /* unlock.wav in Resources */ = {isa = PBXBuildFile; fileRef = A35816A61D3357CD0028C019 /* unlock.wav */; };
 		A35816B11D3357CD0028C019 /* settings.wav in Resources */ = {isa = PBXBuildFile; fileRef = A35816A71D3357CD0028C019 /* settings.wav */; };
@@ -322,6 +322,7 @@
 		A3AEDFB61C6AF808009966FE /* sledgehammer.png in Resources */ = {isa = PBXBuildFile; fileRef = A3AEDFB31C6AF808009966FE /* sledgehammer.png */; };
 		A3B17F7B1D73C1030047BDCA /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B17F791D73C1030047BDCA /* Fabric.framework */; };
 		A3B17F7C1D73C1030047BDCA /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B17F7A1D73C1030047BDCA /* Crashlytics.framework */; };
+		A3B4258C1D8F65CA004B5C59 /* NA Box Art.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B4258B1D8F65CA004B5C59 /* NA Box Art.png */; };
 		A3B7F2421D6C012100DB27FA /* UpgradeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B7F2411D6C012100DB27FA /* UpgradeCell.m */; };
 		A3B7FE2D1D7C7DC300DD6528 /* Abdul_KadirPhoLaz.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE231D7C7DC300DD6528 /* Abdul_KadirPhoLaz.png */; };
 		A3B7FE2E1D7C7DC300DD6528 /* Abdul_KadirPhoEle.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B7FE241D7C7DC300DD6528 /* Abdul_KadirPhoEle.png */; };
@@ -759,7 +760,6 @@
 		A337A4C01D8E5BF1000A6570 /* LaunchScreen_spanish.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen_spanish.storyboard; sourceTree = "<group>"; };
 		A337A4C31D8E5C59000A6570 /* EU Box Art.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EU Box Art.png"; sourceTree = "<group>"; };
 		A337A4C41D8E5C59000A6570 /* JP Box Art.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "JP Box Art.png"; sourceTree = "<group>"; };
-		A337A4C81D8E5CC5000A6570 /* NA Box Art.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NA Box Art.png"; sourceTree = "<group>"; };
 		A337A4CA1D8E678D000A6570 /* GameCenterPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterPageViewController.h; sourceTree = "<group>"; };
 		A337A4CB1D8E678D000A6570 /* GameCenterPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterPageViewController.m; sourceTree = "<group>"; };
 		A337A4CE1D8E6E3B000A6570 /* HighScoresViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighScoresViewController.h; sourceTree = "<group>"; };
@@ -782,6 +782,7 @@
 		A34F997B1D3C00DF00C5CCD7 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A34F997E1D3C00F600C5CCD7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		A34F997F1D3C00F600C5CCD7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A35078F31D90F4CF00F9107F /* Scan Lines.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Scan Lines.png"; sourceTree = "<group>"; };
 		A35816A31D334EEE0028C019 /* photonExplosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = photonExplosion.wav; sourceTree = "<group>"; };
 		A35816A61D3357CD0028C019 /* unlock.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = unlock.wav; sourceTree = "<group>"; };
 		A35816A71D3357CD0028C019 /* settings.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = settings.wav; sourceTree = "<group>"; };
@@ -973,6 +974,7 @@
 		A3B17F7A1D73C1030047BDCA /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		A3B4008D1D44514800E0AFDF /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		A3B4008E1D44514800E0AFDF /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A3B4258B1D8F65CA004B5C59 /* NA Box Art.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NA Box Art.png"; sourceTree = "<group>"; };
 		A3B7F2401D6C012100DB27FA /* UpgradeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpgradeCell.h; sourceTree = "<group>"; };
 		A3B7F2411D6C012100DB27FA /* UpgradeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpgradeCell.m; sourceTree = "<group>"; };
 		A3B7FE231D7C7DC300DD6528 /* Abdul_KadirPhoLaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Abdul_KadirPhoLaz.png; sourceTree = "<group>"; };
@@ -1730,6 +1732,7 @@
 		9CA06B271D77A8F30074687B /* menus */ = {
 			isa = PBXGroup;
 			children = (
+				A35078F31D90F4CF00F9107F /* Scan Lines.png */,
 				9C6FFE771D74B740001AD117 /* settings */,
 				A30112781D5FE3AF00E133F2 /* ship select */,
 				A32030CA1D16944100B0F4BC /* main menu */,
@@ -2006,7 +2009,7 @@
 		A337A45D1D8E2CD9000A6570 /* launch images */ = {
 			isa = PBXGroup;
 			children = (
-				A337A4C81D8E5CC5000A6570 /* NA Box Art.png */,
+				A3B4258B1D8F65CA004B5C59 /* NA Box Art.png */,
 				A337A4C31D8E5C59000A6570 /* EU Box Art.png */,
 				A337A4C41D8E5C59000A6570 /* JP Box Art.png */,
 			);
@@ -2823,6 +2826,7 @@
 				135BEDC61975B8B700892311 /* blastGun.png in Resources */,
 				A3DE732D1D84EBF700DC63BD /* laser 3.png in Resources */,
 				A3DD77B41D7B871600A1D2D1 /* Laser_Powerup.png in Resources */,
+				A35078F41D90F4CF00F9107F /* Scan Lines.png in Resources */,
 				A3DE732F1D84EBF700DC63BD /* laser_upgrade 1.png in Resources */,
 				9C359FDE1D77822500107AF4 /* electricity5.png in Resources */,
 				A39C5F551D29A95F00A68E2D /* electricity4.wav in Resources */,
@@ -3044,7 +3048,7 @@
 				A3B7FE841D7C827C00DD6528 /* DandoloEle.png in Resources */,
 				A3B7FE341D7C7DC300DD6528 /* Abdul_KadirBulLaz.png in Resources */,
 				A3DE73961D85096600DC63BD /* Ship_explosion4.png in Resources */,
-				A337A4C91D8E5CC5000A6570 /* NA Box Art.png in Resources */,
+				A3B4258C1D8F65CA004B5C59 /* NA Box Art.png in Resources */,
 				A37E3EAB1D864E23002211AC /* photonCannon.png in Resources */,
 				A3DE73611D84EC1E00DC63BD /* laser_upgrade 3@3x.png in Resources */,
 				A3DE73991D85096600DC63BD /* Ship_explosion7.png in Resources */,

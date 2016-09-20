@@ -38,15 +38,17 @@
         _ignoreNextViewWillAppear = NO;
         for ( UIView * subview in [self.view subviews] )
         {
-            if ( subview.tag ) //10 is the background image
-                subview.alpha = 0;
+            subview.alpha = 0;
         }
         [UIView animateWithDuration:.2 animations:^
          {
              for ( UIView * subview in [self.view subviews] )
              {
+                  //10 is the background image //9 is the scan lines
                  if ( subview.tag == 10 )
                      subview.alpha = 1;
+                 if ( subview.tag == 9 )
+                     subview.tag = .15;
              }
          }];
         return;
@@ -54,14 +56,17 @@
     
     for ( UIView * subview in [self.view subviews] )
     {
-        if ( subview.tag != 10 ) //10 is the background image
+         //10 is the background image //9 is the scan lines
+        if ( subview.tag != 10 && subview.tag != 9 )
             subview.alpha = 0;
     }
     [UIView animateWithDuration:.2 animations:^
      {
          for ( UIView * subview in [self.view subviews] )
          {
-             subview.alpha = 1;
+             //10 is the background image //9 is the scan lines
+             if ( subview.tag != 9 && subview.tag != 10 )
+                 subview.alpha = 1;
          }
      }];
     
@@ -236,7 +241,8 @@
     {
         for ( UIView * subview in [self.view subviews] )
         {
-            if ( subview.tag != 10 ) //10 is the background image
+            //10 is the background image //9 is the scan lines
+            if ( subview.tag != 10 && subview.tag != 9 )
                 subview.alpha = 0;
         }
         [self presentViewController:ssvc animated:NO completion:^

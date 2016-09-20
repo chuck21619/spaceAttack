@@ -185,6 +185,9 @@ ATTACK</string>
                                     <constraint firstAttribute="width" secondItem="J80-1N-Fyf" secondAttribute="height" multiplier="1:1" id="6nd-lD-MFn"/>
                                 </constraints>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" alpha="0.14999999999999999" tag="9" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Scan Lines.png" translatesAutoresizingMaskIntoConstraints="NO" id="yS2-03-29K">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -575,6 +578,9 @@ ATTACK</string>
                                 <color key="textColor" red="1" green="0.44439655169999998" blue="0.87338362069999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" alpha="0.14999999999999999" tag="9" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Scan Lines.png" translatesAutoresizingMaskIntoConstraints="NO" id="7XJ-QI-keL">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1033,6 +1039,7 @@ Firead 100 Bullets + 100 points</string>
         </scene>
     </scenes>
     <resources>
+        <image name="Scan Lines.png" width="375" height="665"/>
         <image name="customBadgeIcon.png" width="39" height="39"/>
         <image name="gears.png" width="200" height="200"/>
         <image name="menuBackground.png" width="391" height="670"/>
