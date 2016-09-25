@@ -69,14 +69,17 @@
     self.availablePointsLabel.text = [NSString stringWithFormat:@"%@ : %@", NSLocalizedString(@"Available Points", nil),numberString];
     
     for ( UIView * subview in [self.view subviews] )
-    {
-        if ( subview.tag != 10 ) //10 is the background image
-            subview.alpha = 0;
-    }
+        subview.alpha = 0;
     [UIView animateWithDuration:.2 animations:^
     {
         for ( UIView * subview in [self.view subviews] )
         {
+            if ( subview.tag == 9 )
+            {
+                subview.alpha = .15;
+                continue;
+            }
+            
             if ( subview != self.demoPreviewImageView && subview != self.myTable )
                 subview.alpha = 1;
         }
@@ -117,7 +120,7 @@
     {
         for ( UIView * subview in [self.view subviews] )
         {
-            if ( subview.tag != 10 && subview != self.myTable ) //10 is the background image
+            if ( subview != self.myTable )
                 subview.alpha = 0;
         }
     }];

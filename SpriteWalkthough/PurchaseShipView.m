@@ -157,7 +157,10 @@
         pointsString = [NSString stringWithFormat:@"%i", spaceship.pointsToUnlock];
     
     if ( [AccountManager availablePoints] >= spaceship.pointsToUnlock )
+    {
         [_purchaseButtonPoints setTitle:[NSString stringWithFormat:@"%@!\n%@ %@", NSLocalizedString(@"Unlock Now", nil), pointsString, NSLocalizedString(@"points", nil)] forState:UIControlStateNormal];
+        _purchaseButtonPoints.enabled = YES;
+    }
     else
     {
         [_purchaseButtonPoints setTitle:[NSString stringWithFormat:@"%@ %@\n%@", pointsString, NSLocalizedString(@"points", nil), NSLocalizedString(@"to Unlock", nil)] forState:UIControlStateNormal];

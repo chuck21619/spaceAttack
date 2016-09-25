@@ -46,7 +46,7 @@ static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
         self.asteroidTextureAtlas = [NSArray arrayWithArray:crumbleFrames];
         
         //shield textures
-        self.shieldTexture = [SKTexture textureWithImageNamed:@"shield.png"];
+        self.shieldTexture = [SKTexture textureWithImageNamed:@"shieldGameplay.png"];
         
         //power up textures
         SKTexture * machineGun = [SKTexture textureWithImageNamed:@"Bullet_Powerup.png"];

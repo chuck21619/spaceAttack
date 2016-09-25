@@ -38,6 +38,12 @@
     self.internetReachability = [Reachability reachabilityForInternetConnection];
     [self.internetReachability startNotifier];
     
+    //becauze jeff only made one main menu image (english)
+    if ( [NSLocalizedString(@"hasCustomMainMenuBackground", nil) isEqualToString:@"YES"] )
+        self.hasCustomMainMenuBackground = YES;
+    else
+        self.hasCustomMainMenuBackground = NO;
+    
     return YES;
 }
 							

@@ -29,4 +29,6 @@
 
 - (void)addEdgeConstraint:(NSLayoutAttribute)edge superview:(UIView *)superview subview:(UIView *)subview;
 
+@property (nonatomic) BOOL hasCustomMainMenuBackground;
+
 @end

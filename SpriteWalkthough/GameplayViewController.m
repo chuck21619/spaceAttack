@@ -172,7 +172,6 @@
 
 - (void) showSpaceshipScene
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ignoreViewWillAppearAnimation" object:nil];
     [self hideProgressHud];
     [self.achievementsCompletedDuringFlight removeAllObjects];
 

@@ -18,65 +18,31 @@
 
 
 @implementation MainMenuViewController
-{
-    BOOL _ignoreNextViewWillAppear;
-}
 
 - (void) viewDidLoad
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(achievementsLoaded) name:@"achievementsLoaded" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ignoreViewWillAppearAnimation) name:@"ignoreViewWillAppearAnimation" object:nil];
     [self adjustForDeviceSize];
-    _ignoreNextViewWillAppear = NO;
     [_AppDelegate addGlowToLayer:self.spaceAttackLabel.layer withColor:self.spaceAttackLabel.textColor.CGColor];
+    
+    if ( [_AppDelegate hasCustomMainMenuBackground] )
+        self.spaceAttackLabel.text = @"";
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    if ( _ignoreNextViewWillAppear )
-    {
-        _ignoreNextViewWillAppear = NO;
-        for ( UIView * subview in [self.view subviews] )
-        {
-            subview.alpha = 0;
-        }
-        [UIView animateWithDuration:.2 animations:^
-         {
-             for ( UIView * subview in [self.view subviews] )
-             {
-                  //10 is the background image //9 is the scan lines
-                 if ( subview.tag == 10 )
-                     subview.alpha = 1;
-                 if ( subview.tag == 9 )
-                     subview.tag = .15;
-             }
-         }];
-        return;
-    }
-    
     for ( UIView * subview in [self.view subviews] )
     {
-         //10 is the background image //9 is the scan lines
-        if ( subview.tag != 10 && subview.tag != 9 )
-            subview.alpha = 0;
+        subview.alpha = 0;
     }
     [UIView animateWithDuration:.2 animations:^
-     {
-         for ( UIView * subview in [self.view subviews] )
-         {
-             //10 is the background image //9 is the scan lines
-             if ( subview.tag != 9 && subview.tag != 10 )
-                 subview.alpha = 1;
-         }
-     }];
+    {
+        for ( UIView * subview in [self.view subviews] )
+            subview.alpha = 1;
+    }];
     
     if ( ! [[GKLocalPlayer localPlayer] isAuthenticated] )
         [self.highScoresAchievementsButton setTitleColor:[UIColor colorWithWhite:.5 alpha:1] forState:UIControlStateNormal];
-        
-//    SKView * spriteView = (SKView *)self.view;
-//    spriteView.ignoresSiblingOrder = YES; // improves performance
-//    MenuBackgroundScene * backgroundScene = [MenuBackgroundScene sharedInstance];
-//    [spriteView presentScene:backgroundScene];
     
     [self authenticateLocalPlayer];
     [self updateButtonColorStatus];
@@ -84,20 +50,14 @@
     self.playButton.layer.cornerRadius = 20;
     self.playButton.layer.borderColor = [self.playButton.currentTitleColor CGColor];
     self.playButton.layer.borderWidth = 2;
-    //[_AppDelegate addGlowToLayer:self.playButton.layer withColor:[self.playButton.currentTitleColor CGColor]];
-    //[_AppDelegate addGlowToLayer:self.playButton.titleLabel.layer withColor:[self.playButton.currentTitleColor CGColor]];
     
     self.highScoresAchievementsButton.layer.cornerRadius = 10;
     self.highScoresAchievementsButton.layer.borderColor = [self.highScoresAchievementsButton.currentTitleColor CGColor];
     self.highScoresAchievementsButton.layer.borderWidth = 2;
-//    [_AppDelegate addGlowToLayer:self.highScoresAchievementsButton.layer withColor:[self.highScoresAchievementsButton.currentTitleColor CGColor]];
-//    [_AppDelegate addGlowToLayer:self.highScoresAchievementsButton.titleLabel.layer withColor:[self.highScoresAchievementsButton.currentTitleColor CGColor]];
     
     self.upgradesButton.layer.cornerRadius = 10;
     self.upgradesButton.layer.borderColor = [self.upgradesButton.currentTitleColor CGColor];
     self.upgradesButton.layer.borderWidth = 2;
-//    [_AppDelegate addGlowToLayer:self.upgradesButton.layer withColor:[self.upgradesButton.currentTitleColor CGColor]];
-//    [_AppDelegate addGlowToLayer:self.upgradesButton.titleLabel.layer withColor:[self.upgradesButton.currentTitleColor CGColor]];
     
     [_AppDelegate addGlowToLayer:self.zinStudioButton.layer withColor:self.zinStudioButton.currentTitleColor.CGColor];
     
@@ -115,11 +75,6 @@
 - (BOOL) prefersStatusBarHidden
 {
     return YES;
-}
-
-- (void) ignoreViewWillAppearAnimation
-{
-    _ignoreNextViewWillAppear = YES;
 }
 
 - (void) updateButtonColorStatus
@@ -240,15 +195,8 @@
     [UIView animateWithDuration:.2 animations:^
     {
         for ( UIView * subview in [self.view subviews] )
-        {
-            //10 is the background image //9 is the scan lines
-            if ( subview.tag != 10 && subview.tag != 9 )
-                subview.alpha = 0;
-        }
-        [self presentViewController:ssvc animated:NO completion:^
-        {
-            self.view.alpha = 1;
-        }];
+            subview.alpha = 0;
+        [self presentViewController:ssvc animated:NO completion:nil];
     }];
 }
 
@@ -261,20 +209,11 @@
     [UIView animateWithDuration:.2 animations:^
     {
         for ( UIView * subview in [self.view subviews] )
-        {
-            if ( subview.tag != 10 ) //10 is the background image
-                subview.alpha = 0;
-        }
+            subview.alpha = 0;
     }
     completion:^(BOOL finished)
     {
-        [self presentViewController:upgradesVC animated:NO completion:^
-        {
-            for ( UIView * subview in [self.view subviews] )
-            {
-                subview.alpha = 1;
-            }
-        }];
+        [self presentViewController:upgradesVC animated:NO completion:nil];
     }];
 }
 
@@ -284,7 +223,7 @@
     if ( ! [[GKLocalPlayer localPlayer] isAuthenticated] )
     {
 #warning localize
-#warning should be available when not signed into game center as well
+#warning why doesnt this show up right
         SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:@"Scores Unavailable" message:@"You are not signed into Game Center" cancelButtonTitle:@"Got It" otherButtonTitle:nil];
         unlockAlert.appearTime = .2;
         unlockAlert.disappearTime = .2;
@@ -298,18 +237,11 @@
     [UIView animateWithDuration:.2 animations:^
     {
         for ( UIView * subview in [self.view subviews] )
-        {
-            if ( subview.tag != 10 ) //10 is the background image
-                subview.alpha = 0;
-        }
+            subview.alpha = 0;
     }
     completion:^(BOOL finished)
     {
-        [self presentViewController:upgradesVC animated:NO completion:^
-        {
-            for ( UIView * subview in [self.view subviews] )
-                subview.alpha = 1;
-        }];
+        [self presentViewController:upgradesVC animated:NO completion:nil];
     }];
 }
 
@@ -321,20 +253,11 @@
     [UIView animateWithDuration:.2 animations:^
     {
         for ( UIView * subview in [self.view subviews] )
-        {
-            if ( subview.tag != 10 ) //10 is the background image
-                subview.alpha = 0;
-        }
+            subview.alpha = 0;
     }
     completion:^(BOOL finished)
     {
-        [self presentViewController:settingsVC animated:NO completion:^
-        {
-            for ( UIView * subview in [self.view subviews] )
-            {
-                    subview.alpha = 1;
-            }
-        }];
+        [self presentViewController:settingsVC animated:NO completion:nil];
     }];
 }
 

@@ -31,14 +31,19 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     for ( UIView * subview in [self.view subviews] )
-    {
-        if ( subview.tag != 10 ) //10 is the background image
-            subview.alpha = 0;
-    }
+        subview.alpha = 0;
     [UIView animateWithDuration:.2 animations:^
     {
         for ( UIView * subview in [self.view subviews] )
+        {
+            if ( subview.tag == 9 )
+            {
+                subview.alpha = .15;
+                continue;
+            }
+            
             subview.alpha = 1;
+        }
     }];
     
     [self.musicVolumeSlider setValue:[[AudioManager sharedInstance] musicVolume]];
@@ -144,10 +149,7 @@
     [UIView animateWithDuration:.2 animations:^
     {
         for ( UIView * subview in [self.view subviews] )
-        {
-            if ( subview.tag != 10 ) //10 is the background image
-                subview.alpha = 0;
-        }
+            subview.alpha = 0;
     }
     completion:^(BOOL finished)
     {
