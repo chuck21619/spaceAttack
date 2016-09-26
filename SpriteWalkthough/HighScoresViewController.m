@@ -11,6 +11,7 @@
 #import "AccountManager.h"
 #import <GameKit/GameKit.h>
 #import "HighScoreCell.h"
+#import "SAAlertView.h"
 
 @implementation HighScoresViewController
 {
@@ -157,9 +158,21 @@
 {
     [GKLeaderboard loadLeaderboardsWithCompletionHandler:^(NSArray<GKLeaderboard *> * _Nullable leaderboards, NSError * _Nullable error)
      {
+         if ( error )
+         {
+             [self displayError:error];
+             return;
+         }
+         
          GKLeaderboard * leaderboard = [leaderboards firstObject];
-         [leaderboard loadScoresWithCompletionHandler:^(NSArray<GKScore *> * _Nullable scores, NSError * _Nullable error)
+         [leaderboard loadScoresWithCompletionHandler:^(NSArray<GKScore *> * _Nullable scores, NSError * _Nullable error2)
           {
+              if ( error2 )
+              {
+                  [self displayError:error2];
+                  return;
+              }
+              
               _localPlayerScore = [leaderboard localPlayerScore];
               _scores = scores;
               [self refreshLeaderboardView];
@@ -201,6 +214,13 @@
 - (IBAction)pageControlAction:(id)sender
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"turnPageToAchievements" object:nil];
+}
+
+- (void) displayError:(NSError *)error
+{
+    SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:error.localizedDescription cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitle:nil];
+    
+    [unlockAlert show];
 }
 
 #pragma mark - table view delegate/datasource
