@@ -69,6 +69,10 @@
     
     [self addGlowToShipSelectionButtons];
     
+    
+    self.selectTitleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.selectTitleLabel.font.pointSize];
+    self.backButton.titleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.backButton.titleLabel.font.pointSize];
+    
     [self adjustForDeviceSize];
 }
 
@@ -84,7 +88,7 @@
         {
             if ( subview.tag == 9 ) //scan lines
             {
-                subview.alpha = .15;
+                subview.alpha = .1;
                 continue;
             }
             

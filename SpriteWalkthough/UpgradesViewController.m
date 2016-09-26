@@ -48,6 +48,10 @@
     
     [self validateProductIdentifiers];
     
+    self.backButton.titleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.backButton.titleLabel.font.pointSize];
+    self.upgradeTitleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.upgradeTitleLabel.font.pointSize];
+    self.availablePointsLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.availablePointsLabel.font.pointSize];
+    
     [self adjustForDeviceSize];
     
     _defaultConstraintTopMyTable = self.constraintTopMyTable.constant;
@@ -76,7 +80,7 @@
         {
             if ( subview.tag == 9 )
             {
-                subview.alpha = .15;
+                subview.alpha = .1;
                 continue;
             }
             

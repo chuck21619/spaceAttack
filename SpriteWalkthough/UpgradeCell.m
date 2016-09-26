@@ -64,7 +64,7 @@
         
         _upgradeTitleLabel = [UILabel new];
         _upgradeTitleLabel.textColor = [UIColor whiteColor];
-        _upgradeTitleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:20];
+        _upgradeTitleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:20];
         _upgradeTitleLabel.textAlignment = NSTextAlignmentCenter;
         [self.contentView addSubview:_upgradeTitleLabel];
         [_AppDelegate addGlowToLayer:_upgradeTitleLabel.layer withColor:_upgradeTitleLabel.textColor.CGColor];
@@ -75,16 +75,16 @@
         [self.contentView addSubview:_iconImage];
         
         _costLabel = [UILabel new];
-        _costLabel.text = @"COST";
+        _costLabel.text = NSLocalizedString(@"Cost", nil);
         _costLabel.textColor = [UIColor whiteColor];
-        _costLabel.font = [UIFont fontWithName:@"Moon-Bold" size:8];
+        _costLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:8];
         _costLabel.textAlignment = NSTextAlignmentCenter;
         [self.contentView addSubview:_costLabel];
         [_AppDelegate addGlowToLayer:_costLabel.layer withColor:_costLabel.textColor.CGColor];
         
         _pointsNumberLabel = [UILabel new];
         _pointsNumberLabel.textColor = [UIColor whiteColor];
-        _pointsNumberLabel.font = [UIFont fontWithName:@"Moon-Bold" size:28];
+        _pointsNumberLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:28];
         _pointsNumberLabel.textAlignment = NSTextAlignmentCenter;
         _pointsNumberLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
         _pointsNumberLabel.adjustsFontSizeToFitWidth = YES;
@@ -94,7 +94,7 @@
         _pointsLabel = [UILabel new];
         _pointsLabel.text = NSLocalizedString(@"points", nil);
         _pointsLabel.textColor = [UIColor whiteColor];
-        _pointsLabel.font = [UIFont fontWithName:@"Moon-Bold" size:8];
+        _pointsLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:8];
         _pointsLabel.textAlignment = NSTextAlignmentCenter;
         [self.contentView addSubview:_pointsLabel];
         [_AppDelegate addGlowToLayer:_pointsLabel.layer withColor:_pointsLabel.textColor.CGColor];
@@ -109,7 +109,7 @@
         [_minimizeButton setContentVerticalAlignment:UIControlContentVerticalAlignmentTop];
         [_minimizeButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
         [_minimizeButton setContentEdgeInsets:UIEdgeInsetsMake(10, 0, 0, 17)];
-        [_minimizeButton.titleLabel setFont:[UIFont fontWithName:@"Moon-Bold" size:17]];
+        [_minimizeButton.titleLabel setFont:[UIFont fontWithName:NSLocalizedString(@"font1", nil) size:17]];
         [_minimizeButton setTitle:@"X" forState:UIControlStateNormal];
         [_minimizeButton addTarget:self action:@selector(minimizePressed) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_minimizeButton];
@@ -117,7 +117,7 @@
         
         _upgradeDescription = [UILabel new];
         _upgradeDescription.textColor = [UIColor whiteColor];
-        _upgradeDescription.font = [UIFont fontWithName:@"Moon-Bold" size:14];
+        _upgradeDescription.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:14];
         _upgradeDescription.textAlignment = NSTextAlignmentCenter;
         _upgradeDescription.numberOfLines = 0;
         [self.contentView addSubview:_upgradeDescription];
@@ -127,7 +127,7 @@
         _purchaseButtonMoney.layer.borderWidth = 1.5;
         _purchaseButtonMoney.layer.borderColor = [UIColor whiteColor].CGColor;
         [_purchaseButtonMoney setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        _purchaseButtonMoney.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:12];
+        _purchaseButtonMoney.titleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:12];
         _purchaseButtonMoney.titleLabel.textAlignment = NSTextAlignmentCenter;
         _purchaseButtonMoney.titleLabel.numberOfLines = 0;
         [_purchaseButtonMoney addTarget:self action:@selector(unlockWithMoneyPressed) forControlEvents:UIControlEventTouchUpInside];
@@ -137,16 +137,16 @@
         _purchaseButtonPoints.layer.borderWidth = 1.5;
         _purchaseButtonPoints.layer.borderColor = [UIColor whiteColor].CGColor;
         [_purchaseButtonPoints setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        _purchaseButtonPoints.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:12];
+        _purchaseButtonPoints.titleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:12];
         _purchaseButtonPoints.titleLabel.textAlignment = NSTextAlignmentCenter;
         _purchaseButtonPoints.titleLabel.numberOfLines = 0;
         [_purchaseButtonPoints addTarget:self action:@selector(unlockWithPointsPressed) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_purchaseButtonPoints];
         
         _purchasedLabel = [UILabel new];
-        _purchasedLabel.text = @"PURCHASED";
+        _purchasedLabel.text = NSLocalizedString(@"PURCHASED", nil);
         _purchasedLabel.textColor = [UIColor whiteColor];
-        _purchasedLabel.font = [UIFont fontWithName:@"Moon-Bold" size:30];
+        _purchasedLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:30];
         _purchasedLabel.textAlignment = NSTextAlignmentCenter;
         [self.contentView addSubview:_purchasedLabel];
         [_AppDelegate addGlowToLayer:_purchasedLabel.layer withColor:_purchasedLabel.textColor.CGColor];
@@ -170,16 +170,16 @@
     _borderView.layer.cornerRadius = self.frame.size.height/4.0;
     
     //fonts
-    _upgradeTitleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.065];
-    _costLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.026];
-    _pointsNumberLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.092];
-    _pointsLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.026];
+    _upgradeTitleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:width*.065];
+    _costLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:width*.026];
+    _pointsNumberLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:width*.092];
+    _pointsLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:width*.026];
     [_minimizeButton setContentEdgeInsets:UIEdgeInsetsMake(width*.033, 0, 0, width*.056)];
-    [_minimizeButton.titleLabel setFont:[UIFont fontWithName:@"Moon-Bold" size:width*.056]];
-    _upgradeDescription.font = [UIFont fontWithName:@"Moon-Bold" size:width*.046];
-    _purchaseButtonMoney.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.039];
-    _purchaseButtonPoints.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.039];
-    _purchasedLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.098];
+    [_minimizeButton.titleLabel setFont:[UIFont fontWithName:NSLocalizedString(@"font1", nil) size:width*.056]];
+    _upgradeDescription.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:width*.046];
+    _purchaseButtonMoney.titleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:width*.039];
+    _purchaseButtonPoints.titleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:width*.039];
+    _purchasedLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:width*.098];
     
     //---frames
     _upgradeTitleLabel.frame = CGRectMake(0, 0, width, self.frame.size.height);
@@ -199,7 +199,6 @@
     _purchaseButtonPoints.frame = CGRectMake(width - width*.425, width*1.503, width*.359, width*.212);
     _purchaseButtonPoints.layer.cornerRadius = _purchaseButtonPoints.frame.size.height/3.0;
     _purchasedLabel.frame = CGRectMake(0, width*1.503, width, width*.212);
-
 }
 
 - (void) updateContentWithUpgrade:(Upgrade *)upgrade
@@ -216,7 +215,7 @@
         }
         
         if ( numberOfUnlockedUpgrades < 7 )
-            _upgradeTitleLabel.text = @"Locked";
+            _upgradeTitleLabel.text = NSLocalizedString(@"Locked", nil);
         else
             _upgradeTitleLabel.text = upgrade.title;
     }
@@ -427,11 +426,7 @@
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
     NSString * formattedPoints = [formatter stringFromNumber:[NSNumber numberWithInteger:self.myUpgrade.pointsToUnlock]];
     
-    SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"Unlock %@\nfor %@ points?", self.myUpgrade.title, formattedPoints] cancelButtonTitle:@"Cancel" otherButtonTitle:@"Unlock"];
-    unlockAlert.backgroundColor = [UIColor colorWithWhite:.2 alpha:.95];
-    unlockAlert.messageLabel.font = [UIFont fontWithName:@"Moon-Bold" size:20];
-    unlockAlert.cancelButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
-    unlockAlert.otherButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
+    SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"%@ %@\n%@ %@ %@?", NSLocalizedString(@"Unlock", nil), self.myUpgrade.title, NSLocalizedString(@"for", nil), formattedPoints, NSLocalizedString(@"points", nil)] cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitle:NSLocalizedString(@"Unlock", nil)];
     unlockAlert.otherButtonAction = ^
     {
         [Answers logPurchaseWithPrice:[[NSDecimalNumber alloc] initWithFloat:self.myUpgrade.pointsToUnlock]

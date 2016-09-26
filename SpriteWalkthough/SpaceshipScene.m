@@ -15,6 +15,7 @@
 #import <GameKit/GameKit.h>
 #import "AudioManager.h"
 #import <Crashlytics/Crashlytics.h>
+#import "SpriteAppDelegate.h"
 
 @implementation SpaceshipScene
 {
@@ -128,7 +129,7 @@
     self.enemyTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(moreEnemies) userInfo:nil repeats:YES];
     
     
-    self.pointsScoredLabel = [SKLabelNode labelNodeWithFontNamed:@"Moon-Bold"];
+    self.pointsScoredLabel = [SKLabelNode labelNodeWithFontNamed:NSLocalizedString(@"font1", nil)];
     self.pointsScoredLabel.text = [NSString stringWithFormat:@"%i", self.pointsScored];
     self.pointsScoredLabel.fontSize = 15;
     self.pointsScoredLabel.fontColor = [SKColor whiteColor];
@@ -137,7 +138,7 @@
     
     self.enemiesDestroyedWithoutTakingDamage = 0;
     self.scoreMultiplier = 1;
-    self.scoreMultiplierLabel = [SKLabelNode labelNodeWithFontNamed:@"Moon-Bold"];
+    self.scoreMultiplierLabel = [SKLabelNode labelNodeWithFontNamed:NSLocalizedString(@"font1", nil)];
     self.scoreMultiplierLabel.text = [NSString stringWithFormat:@"%i", self.scoreMultiplier];
     self.scoreMultiplierLabel.fontSize = 13;
     self.scoreMultiplierLabel.fontColor = [SKColor whiteColor];
@@ -176,16 +177,10 @@
         {
             self.showingTooltip = YES;
             [self pauseGame];
-#warning localize
             NSString * alertTitle = NSLocalizedString(@"Choose how to Move:", nil);
             NSString * alertMessage = NSLocalizedString(@"You can change this later in settings", nil);
             SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:alertTitle message:alertMessage cancelButtonTitle:NSLocalizedString(@"Tilt Screen", nil) otherButtonTitle:NSLocalizedString(@"Touch", nil)];
             unlockAlert.customFrame = CGRectMake(0, 0, self.size.width, unlockAlert.frame.size.height);
-            unlockAlert.backgroundColor = [UIColor colorWithWhite:.2 alpha:0];
-            unlockAlert.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:18];
-            unlockAlert.messageLabel.font = [UIFont fontWithName:@"Moon-Bold" size:13];
-            unlockAlert.cancelButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
-            unlockAlert.otherButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
             [unlockAlert show];
             unlockAlert.otherButtonAction = ^
             {
@@ -263,11 +258,6 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
                 NSString * alertMessage = NSLocalizedString(@"Blowing up aliens without taking damage makes your multiplier go up!", nil);
                 SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:alertTitle message:alertMessage cancelButtonTitle:NSLocalizedString(@"Disable Tips", nil) otherButtonTitle:NSLocalizedString(@"Got It", nil)];
                 unlockAlert.customFrame = CGRectMake(0, (self.size.height+self.view.frame.origin.y) - 220, self.size.width, 150);
-                unlockAlert.backgroundColor = [UIColor colorWithWhite:.2 alpha:0];
-                unlockAlert.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:18];
-                unlockAlert.messageLabel.font = [UIFont fontWithName:@"Moon-Bold" size:13];
-                unlockAlert.cancelButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
-                unlockAlert.otherButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
                 [unlockAlert show];
                 SKSpriteNode * tooltipArrow = [self tooltipArrowAt:self.scoreMultiplierLabel];
                 unlockAlert.otherButtonAction = ^
@@ -306,7 +296,7 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     if ( !self.mySpaceship.energyBoosterActive )
         return;
     
-    SKLabelNode * tmpMultiplierLabel = [SKLabelNode labelNodeWithFontNamed:@"Moon-Bold"];
+    SKLabelNode * tmpMultiplierLabel = [SKLabelNode labelNodeWithFontNamed:NSLocalizedString(@"font1", nil)];
     tmpMultiplierLabel.text = [NSString stringWithFormat:@"x%i", self.scoreMultiplier];
     tmpMultiplierLabel.fontSize = 15;
     tmpMultiplierLabel.fontColor = [SKColor whiteColor];
@@ -919,23 +909,8 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
         [self pauseGame];
         NSString * alertTitle = NSLocalizedString(@"Ermahgerd!", nil);
         NSString * alertMessage = NSLocalizedString(@"You just blew up an alien spaceship! The more stuff you blow up, The more points you score!", nil);
-        DQAlertView * unlockAlert = [[DQAlertView alloc] initWithTitle:alertTitle message:alertMessage cancelButtonTitle:NSLocalizedString(@"Disable Tips", nil) otherButtonTitle:NSLocalizedString(@"Got It", nil)];
-        unlockAlert.cancelButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+        SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:alertTitle message:alertMessage cancelButtonTitle:NSLocalizedString(@"Disable Tips", nil) otherButtonTitle:NSLocalizedString(@"Got It", nil)];
         unlockAlert.customFrame = CGRectMake(0, (self.size.height+self.view.frame.origin.y) - 230, self.size.width, 150);
-        unlockAlert.appearAnimationType = DQAlertViewAnimationTypeFadeIn;
-        unlockAlert.disappearAnimationType = DQAlertViewAnimationTypeFaceOut;
-        unlockAlert.appearTime = .4;
-        unlockAlert.disappearTime = .4;
-        unlockAlert.backgroundColor = [UIColor colorWithWhite:.2 alpha:0];
-        unlockAlert.titleLabel.numberOfLines = 2;
-        unlockAlert.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:18];
-        unlockAlert.titleLabel.textColor = [UIColor whiteColor];
-        unlockAlert.messageLabel.font = [UIFont fontWithName:@"Moon-Bold" size:13];
-        unlockAlert.messageLabel.textColor = [UIColor whiteColor];
-        unlockAlert.cancelButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
-        [unlockAlert.cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        unlockAlert.otherButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
-        [unlockAlert.otherButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [unlockAlert show];
         SKSpriteNode * tooltipArrow = [self tooltipArrowAt:self.pointsScoredLabel];
         unlockAlert.otherButtonAction = ^
@@ -1008,25 +983,8 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
         
         NSString * alertTitle = NSLocalizedString(@"Weapon PowerUp!", nil);
         NSString * alertMessage = NSLocalizedString(@"You just picked up a weapon! Pick up the same weapon again to upgrade it", nil);
-        DQAlertView * unlockAlert = [[DQAlertView alloc] initWithTitle:alertTitle message:alertMessage cancelButtonTitle:NSLocalizedString(@"Disable Tips", nil) otherButtonTitle:NSLocalizedString(@"Got It", nil)];
-        unlockAlert.cancelButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-        //unlockAlert.customFrame = CGRectMake(30, 30, 200, 150);
-        //unlockAlert.contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"missile.png"]];
+        SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:alertTitle message:alertMessage cancelButtonTitle:NSLocalizedString(@"Disable Tips", nil) otherButtonTitle:NSLocalizedString(@"Got It", nil)];
         unlockAlert.customFrame = CGRectMake(0, 0, self.size.width, 170);
-        unlockAlert.appearAnimationType = DQAlertViewAnimationTypeFadeIn;
-        unlockAlert.disappearAnimationType = DQAlertViewAnimationTypeFaceOut;
-        unlockAlert.appearTime = .4;
-        unlockAlert.disappearTime = .4;
-        unlockAlert.backgroundColor = [UIColor colorWithWhite:.2 alpha:0];
-        unlockAlert.titleLabel.numberOfLines = 2;
-        unlockAlert.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:18];
-        unlockAlert.titleLabel.textColor = [UIColor whiteColor];
-        unlockAlert.messageLabel.font = [UIFont fontWithName:@"Moon-Bold" size:13];
-        unlockAlert.messageLabel.textColor = [UIColor whiteColor];
-        unlockAlert.cancelButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
-        [unlockAlert.cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        unlockAlert.otherButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
-        [unlockAlert.otherButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [unlockAlert show];
         SKSpriteNode * tooltipArrow = [self tooltipArrowAt:weapon];
         unlockAlert.otherButtonAction = ^
@@ -1075,19 +1033,18 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
         if ( spaceship.armor != 0 )
             [self pauseGame];
         
-        DQAlertView * unlockAlert = [[DQAlertView alloc] initWithTitle:@"" message:@"" cancelButtonTitle:NSLocalizedString(@"Disable Tips", nil) otherButtonTitle:NSLocalizedString(@"Got It", nil)];
+        SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:@"" message:@"" cancelButtonTitle:NSLocalizedString(@"Disable Tips", nil) otherButtonTitle:NSLocalizedString(@"Got It", nil)];
         
-        unlockAlert.cancelButton.titleLabel.adjustsFontSizeToFitWidth = YES;
         UIView * alertContentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.size.width, 140)];
         UILabel * alertTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 15, self.size.width, 20)];
-        alertTitleLabel.textColor = [UIColor whiteColor];
-        [alertTitleLabel setFont:[UIFont fontWithName:@"Moon-Bold" size:18]];
+        alertTitleLabel.textColor = _SAPink;
+        [alertTitleLabel setFont:[UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.size.width*0.05625]];
         [alertTitleLabel setTextAlignment:NSTextAlignmentCenter];
         alertTitleLabel.text = NSLocalizedString(@"Ouch!", nil);
         [alertContentView addSubview:alertTitleLabel];
         UILabel * alertMessageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 40, self.size.width, 20)];
-        alertMessageLabel.textColor = [UIColor whiteColor];
-        [alertMessageLabel setFont:[UIFont fontWithName:@"Moon-Bold" size:13]];
+        alertMessageLabel.textColor = _SAPink;
+        [alertMessageLabel setFont:[UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.size.width*0.040625]];
         [alertMessageLabel setTextAlignment:NSTextAlignmentCenter];
         alertMessageLabel.text = NSLocalizedString(@"Try to avoid objects like these:", nil);
         [alertContentView addSubview:alertMessageLabel];
@@ -1111,15 +1068,6 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
         
         unlockAlert.contentView = alertContentView;
         unlockAlert.customFrame = CGRectMake(0, 0, unlockAlert.frame.size.width, unlockAlert.frame.size.height);
-        unlockAlert.appearAnimationType = DQAlertViewAnimationTypeFadeIn;
-        unlockAlert.disappearAnimationType = DQAlertViewAnimationTypeFaceOut;
-        unlockAlert.appearTime = .4;
-        unlockAlert.disappearTime = .4;
-        unlockAlert.backgroundColor = [UIColor colorWithWhite:.2 alpha:0];
-        unlockAlert.cancelButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
-        [unlockAlert.cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        unlockAlert.otherButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
-        [unlockAlert.otherButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [unlockAlert show];
         unlockAlert.otherButtonAction = ^
         {

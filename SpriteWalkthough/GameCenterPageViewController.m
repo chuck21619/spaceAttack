@@ -47,7 +47,7 @@
         {
             if ( subview.tag == 9 )
             {
-                subview.alpha = .15;
+                subview.alpha = .1;
                 continue;
             }
             

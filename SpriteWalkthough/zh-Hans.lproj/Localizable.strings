@@ -1,3 +1,8 @@
+//fonts
+"font1" = "Chalkduster";
+"font2" = "Chalkduster";
+"font3" = "Chalkduster";
+
 //ship names
 "Abdul_Kadir" = "基隆";
 "Babenberg" = "蘇澳";
@@ -8,9 +13,36 @@
 "Gascogne" = "田單";
 "Habsburg" = "子儀";
 
+//ship selection button
 "damage" = "攻击力";
 "armor" = "盔甲";
 "speed" = "速度";
+
+//purchase ship view & upgrade cell
+"Unlock" = "解锁";
+"Cancel" = "取消";
+"for" = "对于";
+"PURCHASED" = "购买";
+
+//upgrade cell
+"Cost" = "成本";
+"Locked" = "锁定";
+
+//settings
+"Touch" = "触摸";
+"Tilt Screen" = "倾斜屏幕";
+
+//tooltips
+"Choose how to Move:" = "选择如何移动:";
+"You can change this later in settings" = "您可以在设置中改变这一点";
+
+//main menu
+"Unavailable" = "不可用";
+"You are not signed into Game Center" = "您没有登录 Game Center";
+"Sign In" = "签到";
+
+
+
 
 /* No comment provided by engineer. */
 "Available Points" = "可用积分";

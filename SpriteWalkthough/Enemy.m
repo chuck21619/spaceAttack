@@ -21,9 +21,10 @@
         self.photonsTargetingMe = [NSPointerArray weakObjectsPointerArray];
         self.isBeingElectrocuted = NO;
         self.explosionFrames = [[EnemyKit sharedInstanceWithScene:nil] explosionFrames];
-        self.pulseRed = [SKAction sequence:@[[SKAction colorizeWithColor:[SKColor blackColor] colorBlendFactor:1.0 duration:0.14],
+        self.pulseRed = [SKAction sequence:@[[SKAction colorizeWithColor:[SKColor grayColor] colorBlendFactor:1.0 duration:0.14],
                                                    [SKAction waitForDuration:0.15],
                                                    [SKAction colorizeWithColorBlendFactor:0.0 duration:0.14]]];
+        self.blendMode = SKBlendModeScreen;
     }
     return self;
 }

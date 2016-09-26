@@ -1,3 +1,8 @@
+//fonts
+"font1" = "Chalkduster";
+"font2" = "Chalkduster";
+"font3" = "Chalkduster";
+
 //ship names
 "Abdul_Kadir" = "Acheron";
 "Babenberg" = "Bant";
@@ -8,9 +13,36 @@
 "Gascogne" = "Gadebusch";
 "Habsburg" = "Häher";
 
+//ship selection button
 "damage" = "SCHADEN";
 "armor" = "RÜSTUNG";
 "speed" = "GESCHWINDIGKEIT";
+
+//purchase ship view & upgrade cell
+"Unlock" = "Freischalten";
+"Cancel" = "stornieren";
+"for" = "für";
+"PURCHASED" = "gekauft";
+
+//upgrade cell
+"Cost" = "Kosten";
+"Locked" = "Verschlossen";
+
+//settings
+"Touch" = "Berühren";
+"Tilt Screen" = "Neigungs Bildschirm";
+
+//tooltips
+"Choose how to Move:" = "Wählen Sie, wie sich zu bewegen:";
+"You can change this later in settings" = "Sie können diese später in den Einstellungen ändern";
+
+//main menu
+"Unavailable" = "Nicht Verfügbar";
+"You are not signed into Game Center" = "Sie sind nicht angemeldet in Game Center";
+"Sign In" = "Anmelden";
+
+
+
 
 /* No comment provided by engineer. */
 "Available Points" = "Verfügbare Punkte";
@@ -67,7 +99,7 @@
 "Shield" = "Schutzschild";
 
 /* No comment provided by engineer. */
-"Smart Photons" = "Intelligente Photonen";
+"Smart Photons" = "Photonen";
 
 /* No comment provided by engineer. */
 "Tilt the screen to move your ship" = "Neige dein Gerät, um dein Raumschiff zu bewegen.";

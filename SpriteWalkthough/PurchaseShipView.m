@@ -38,7 +38,7 @@
         [minimizeButton setContentVerticalAlignment:UIControlContentVerticalAlignmentTop];
         [minimizeButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
         [minimizeButton setContentEdgeInsets:UIEdgeInsetsMake(width*.033, 0, 0, width*.056)];
-        [minimizeButton.titleLabel setFont:[UIFont fontWithName:@"Moon-Bold" size:width*.056]];
+        [minimizeButton.titleLabel setFont:[UIFont fontWithName:NSLocalizedString(@"font1", nil) size:width*.056]];
         [minimizeButton setTitle:@"X" forState:UIControlStateNormal];
         [minimizeButton addTarget:self action:@selector(minimizePressed) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:minimizeButton];
@@ -46,7 +46,7 @@
         
         _shipNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, width*.05, width, width*.3)];
         _shipNameLabel.textColor = [UIColor whiteColor];
-        _shipNameLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.13];
+        _shipNameLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:width*.13];
         _shipNameLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:_shipNameLabel];
         [_AppDelegate addGlowToLayer:_shipNameLabel.layer withColor:_shipNameLabel.textColor.CGColor];
@@ -63,7 +63,7 @@
         _purchaseButtonMoney.layer.borderWidth = 1.5;
         _purchaseButtonMoney.layer.borderColor = [UIColor whiteColor].CGColor;
         [_purchaseButtonMoney setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        _purchaseButtonMoney.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.04];
+        _purchaseButtonMoney.titleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:width*.04];
         _purchaseButtonMoney.titleLabel.textAlignment = NSTextAlignmentCenter;
         _purchaseButtonMoney.titleLabel.numberOfLines = 0;
         [_purchaseButtonMoney addTarget:self action:@selector(unlockWithMoneyPressed) forControlEvents:UIControlEventTouchUpInside];
@@ -75,7 +75,7 @@
         _purchaseButtonPoints.layer.borderWidth = 1.5;
         _purchaseButtonPoints.layer.borderColor = [UIColor whiteColor].CGColor;
         [_purchaseButtonPoints setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        _purchaseButtonPoints.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.04];
+        _purchaseButtonPoints.titleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:width*.04];
         _purchaseButtonPoints.titleLabel.textAlignment = NSTextAlignmentCenter;
         _purchaseButtonPoints.titleLabel.numberOfLines = 0;
         [_purchaseButtonPoints addTarget:self action:@selector(unlockWithPointsPressed) forControlEvents:UIControlEventTouchUpInside];
@@ -84,7 +84,7 @@
         _availablePoints = [[UILabel alloc] initWithFrame:CGRectMake(0, width*1.44, width, width*.2)];
         _availablePoints.text = NSLocalizedString(@"Available Points", nil);
         _availablePoints.textColor = [UIColor whiteColor];
-        _availablePoints.font = [UIFont fontWithName:@"Moon-Bold" size:width*.07];
+        _availablePoints.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:width*.07];
         _availablePoints.textAlignment = NSTextAlignmentCenter;
         [self addSubview:_availablePoints];
         [_AppDelegate addGlowToLayer:_availablePoints.layer withColor:_availablePoints.textColor.CGColor];
@@ -94,16 +94,18 @@
         [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
         _availablePointsNumber.text = [numberFormatter stringFromNumber:@([AccountManager availablePoints])];
         _availablePointsNumber.textColor = [UIColor whiteColor];
-        _availablePointsNumber.font = [UIFont fontWithName:@"Moon-Bold" size:width*.07];
+        _availablePointsNumber.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:width*.07];
         _availablePointsNumber.textAlignment = NSTextAlignmentCenter;
         [self addSubview:_availablePointsNumber];
         [_AppDelegate addGlowToLayer:_availablePointsNumber.layer withColor:_availablePointsNumber.textColor.CGColor];
         
         _purchasedLabel = [UILabel new];
         _purchasedLabel.frame = CGRectMake(0, width*1.4, width, width*.212);
-        _purchasedLabel.text = @"PURCHASED";
+        _purchasedLabel.text = NSLocalizedString(@"PURCHASED", nil);
         _purchasedLabel.textColor = [UIColor whiteColor];
-        _purchasedLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.115];
+        
+        _purchasedLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:width*.115];
+        //_purchasedLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:width*.115];
         _purchasedLabel.textAlignment = NSTextAlignmentCenter;
         _purchasedLabel.alpha = 0;
         [self addSubview:_purchasedLabel];
@@ -206,13 +208,7 @@
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
     NSString *numberString = [numberFormatter stringFromNumber:@(_mySpaceship.pointsToUnlock)];
-    SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"Unlock %@\nfor %@ points?", NSLocalizedString(NSStringFromClass([_mySpaceship class]), nil), numberString] cancelButtonTitle:@"Cancel" otherButtonTitle:@"Unlock"];
-    unlockAlert.appearTime = .4;
-    unlockAlert.disappearTime = .3;
-    unlockAlert.backgroundColor = [UIColor colorWithWhite:.2 alpha:.8];
-    unlockAlert.messageLabel.font = [UIFont fontWithName:@"Moon-Bold" size:self.frame.size.width*0.0625];
-    unlockAlert.cancelButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:self.frame.size.width*0.047];
-    unlockAlert.otherButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:self.frame.size.width*0.047];
+    SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"%@ %@\n%@ %@ %@?", NSLocalizedString(@"Unlock", nil), NSLocalizedString(NSStringFromClass([_mySpaceship class]), nil), NSLocalizedString(@"for", nil),numberString, NSLocalizedString(@"points", nil)] cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitle:NSLocalizedString(@"Unlock", nil)];
     unlockAlert.otherButtonAction = ^
     {
         [Answers logPurchaseWithPrice:[[NSDecimalNumber alloc] initWithFloat:_mySpaceship.pointsToUnlock]

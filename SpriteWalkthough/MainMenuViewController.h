@@ -38,17 +38,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTrailingZinStudio;
 - (IBAction)zinStudioAction:(id)sender;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTrailingPlanet1;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintLeadingPlanet1;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTopPlanet1;
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTrailingPlanet2;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTopPlanet2;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintLeadingPlanet2;
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTopPlanet3;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintLeadingPlanet3;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTrailingPlanet3;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintLeadingBadge;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTopBadge;
@@ -58,5 +47,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTopBadgeStart;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTrailingBadgeStart;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintLeadingPlay;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTrailingPlay;
 
 @end

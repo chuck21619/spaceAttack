@@ -18,6 +18,20 @@
 {
     [super viewDidLoad];
     
+    self.backButton.titleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.backButton.titleLabel.font.pointSize];
+    self.settingsTitleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.settingsTitleLabel.font.pointSize];
+    self.musicLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.musicLabel.font.pointSize];
+    self.soundEffectsLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.soundEffectsLabel.font.pointSize];
+    self.vibrateLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.vibrateLabel.font.pointSize];
+    self.controlsLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.controlsLabel.font.pointSize];
+    self.controlsButton.titleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.controlsButton.titleLabel.font.pointSize];
+    self.helpButton.titleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.helpButton.titleLabel.font.pointSize];
+    
+    
+    self.controlsButton.titleLabel.numberOfLines = 1;
+    self.controlsButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    self.controlsButton.titleLabel.lineBreakMode = NSLineBreakByClipping;
+    
     [self adjustForDeviceSize];
     
     [_AppDelegate addGlowToLayer:self.settingsTitleLabel.layer withColor:self.settingsTitleLabel.textColor.CGColor];
@@ -38,7 +52,7 @@
         {
             if ( subview.tag == 9 )
             {
-                subview.alpha = .15;
+                subview.alpha = .1;
                 continue;
             }
             
@@ -137,9 +151,9 @@
 - (void) updateControlsButton
 {
     if ( [[AccountManager sharedInstance] touchControls] )
-        [self.controlsButton setTitle:@"Touch" forState:UIControlStateNormal];
+        [self.controlsButton setTitle:NSLocalizedString(@"Touch", nil) forState:UIControlStateNormal];
     else
-        [self.controlsButton setTitle:@"Tilt Screen" forState:UIControlStateNormal];
+        [self.controlsButton setTitle:NSLocalizedString(@"Tilt Screen", nil) forState:UIControlStateNormal];
 }
 
 #pragma mark - misc.

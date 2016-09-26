@@ -42,6 +42,8 @@
     _sortedKeys = [NSMutableArray arrayWithArray:[_achievements allKeys]];
     [_sortedKeys sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
     
+    self.backButton.titleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.backButton.titleLabel.font.pointSize];
+    
     [self adjustForDeviceSize];
     [self.view layoutIfNeeded];
     
@@ -76,7 +78,7 @@
              {
                  if ( subview.tag == 9 )
                  {
-                     subview.alpha = .15;
+                     subview.alpha = .1;
                      continue;
                  }
                  

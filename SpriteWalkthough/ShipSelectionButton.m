@@ -54,7 +54,7 @@
         _shipNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(width*.220, width*.047, width*.321, width*.101)];
         _shipNameLabel.text = @"Display Name";
         _shipNameLabel.textColor = [UIColor whiteColor];
-        _shipNameLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.047];
+        _shipNameLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:width*.047];
         _shipNameLabel.textAlignment = NSTextAlignmentCenter;
         //[_AppDelegate addGlowToLayer:_shipNameLabel.layer withColor:_shipNameLabel.textColor.CGColor];
         [self addSubview:_shipNameLabel];
@@ -66,7 +66,7 @@
         _damageLabel = [[UILabel alloc] initWithFrame:CGRectMake(width*.557, yCoordFirstRow-1, width*.128, (adjustedHeight-5)/3)];
         _damageLabel.text = NSLocalizedString(@"damage", nil);
         _damageLabel.textColor = [UIColor whiteColor];
-        _damageLabel.font = [UIFont fontWithName:@"Moon-Bold" size:width*.068];
+        _damageLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:width*.068];
         _damageLabel.textAlignment = NSTextAlignmentRight;
         _damageLabel.adjustsFontSizeToFitWidth = YES;
         _damageLabel.minimumScaleFactor = .1;
@@ -76,16 +76,20 @@
         _armorLabel = [[UILabel alloc] initWithFrame:CGRectMake(width*.557, yCoordSecondRow+1, width*.128, (adjustedHeight-5)/3)];
         _armorLabel.text = NSLocalizedString(@"armor", nil);
         _armorLabel.textColor = [UIColor whiteColor];
-        _armorLabel.font = [UIFont fontWithName:@"Moon-Bold" size:[self getActualFontSizeForLabel:_damageLabel]];
+        _armorLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:[self getActualFontSizeForLabel:_damageLabel]];
         _armorLabel.textAlignment = NSTextAlignmentRight;
+        _armorLabel.adjustsFontSizeToFitWidth = YES;
+        _armorLabel.minimumScaleFactor = .1;
         //[_AppDelegate addGlowToLayer:armorLabel.layer withColor:armorLabel.textColor.CGColor];
         [self addSubview:_armorLabel];
 
         _speedLabel = [[UILabel alloc] initWithFrame:CGRectMake(width*.557, yCoordThirdRow, width*.128, (adjustedHeight-5)/3)];
         _speedLabel.text = NSLocalizedString(@"speed", nil);
         _speedLabel.textColor = [UIColor whiteColor];
-        _speedLabel.font = [UIFont fontWithName:@"Moon-Bold" size:[self getActualFontSizeForLabel:_damageLabel]];
+        _speedLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:[self getActualFontSizeForLabel:_damageLabel]];
         _speedLabel.textAlignment = NSTextAlignmentRight;
+        _speedLabel.adjustsFontSizeToFitWidth = YES;
+        _speedLabel.minimumScaleFactor = .1;
         //[_AppDelegate addGlowToLayer:speedLabel.layer withColor:speedLabel.textColor.CGColor];
         [self addSubview:_speedLabel];
 

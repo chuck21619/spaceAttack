@@ -1,3 +1,8 @@
+//fonts
+"font1" = "Chalkduster";
+"font2" = "Chalkduster";
+"font3" = "Chalkduster";
+
 //ship names
 "Abdul_Kadir" = "Abdul Kadir";
 "Babenberg" = "Babenberg";

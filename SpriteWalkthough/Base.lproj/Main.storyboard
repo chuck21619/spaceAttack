@@ -59,7 +59,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <button autoresizesSubviews="NO" opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HGt-bC-Frb" customClass="GlowingButton">
-                                <rect key="frame" x="42" y="296" width="237" height="65"/>
+                                <rect key="frame" x="41" y="260" width="238" height="65.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="HGt-bC-Frb" secondAttribute="height" multiplier="237:65" id="Q2E-VN-rmR"/>
                                 </constraints>
@@ -73,7 +73,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="dEh-7H-kc8" customClass="GlowingButton">
-                                <rect key="frame" x="42" y="431" width="237" height="32"/>
+                                <rect key="frame" x="41" y="395.5" width="238" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="dEh-7H-kc8" secondAttribute="height" multiplier="237:32" id="Slj-R2-FBk"/>
                                 </constraints>
@@ -93,7 +93,7 @@
                                 </connections>
                             </button>
                             <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="1d1-lJ-Rw0" customClass="GlowingButton">
-                                <rect key="frame" x="42" y="383" width="237" height="32"/>
+                                <rect key="frame" x="41" y="347.5" width="238" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="1d1-lJ-Rw0" secondAttribute="height" multiplier="237:32" id="0Dg-pe-SNk"/>
                                 </constraints>
@@ -150,7 +150,7 @@
                                     <action selector="zinStudioAction:" destination="rZy-y3-DcA" eventType="touchUpInside" id="68K-tH-bzO"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2E9-FI-wPc">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2E9-FI-wPc">
                                 <rect key="frame" x="42" y="65" width="237" height="139"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="2E9-FI-wPc" secondAttribute="height" multiplier="237:139" id="4tF-9r-rLZ"/>
@@ -162,13 +162,13 @@ ATTACK</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="customBadgeIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="xDl-wK-OZv">
-                                <rect key="frame" x="221" y="417" width="30" height="30"/>
+                                <rect key="frame" x="221" y="381.5" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="xDl-wK-OZv" secondAttribute="height" multiplier="1:1" id="o2F-Qx-BTn"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="customBadgeIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="J80-1N-Fyf">
-                                <rect key="frame" x="228" y="281" width="30" height="30"/>
+                                <rect key="frame" x="228" y="245" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="J80-1N-Fyf" secondAttribute="height" multiplier="1:1" id="6nd-lD-MFn"/>
                                 </constraints>
@@ -176,12 +176,10 @@ ATTACK</string>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="HGt-bC-Frb" firstAttribute="leading" secondItem="0PD-dm-pXb" secondAttribute="leading" constant="42" id="1cP-rf-mCX"/>
-                            <constraint firstItem="dEh-7H-kc8" firstAttribute="leading" secondItem="0PD-dm-pXb" secondAttribute="leading" constant="42" id="66t-yQ-Pyp"/>
+                            <constraint firstItem="HGt-bC-Frb" firstAttribute="leading" secondItem="0PD-dm-pXb" secondAttribute="leading" constant="41" id="1cP-rf-mCX"/>
                             <constraint firstAttribute="trailing" secondItem="2E9-FI-wPc" secondAttribute="trailing" constant="41" id="7Cy-MG-gW2"/>
                             <constraint firstItem="xDl-wK-OZv" firstAttribute="leading" secondItem="0PD-dm-pXb" secondAttribute="leading" constant="221" id="8cs-GL-Kw8"/>
                             <constraint firstItem="juz-iM-qIp" firstAttribute="top" secondItem="0PD-dm-pXb" secondAttribute="top" id="8ct-UV-EHk"/>
-                            <constraint firstItem="1d1-lJ-Rw0" firstAttribute="leading" secondItem="0PD-dm-pXb" secondAttribute="leading" constant="42" id="AdH-nC-mOB"/>
                             <constraint firstItem="IRr-lm-nGg" firstAttribute="top" secondItem="juz-iM-qIp" secondAttribute="bottom" id="D0d-QK-6n1"/>
                             <constraint firstAttribute="trailing" secondItem="J80-1N-Fyf" secondAttribute="trailing" constant="62" id="E8f-aZ-3Tj"/>
                             <constraint firstItem="dEh-7H-kc8" firstAttribute="top" secondItem="xDl-wK-OZv" secondAttribute="bottom" constant="-16" id="FAB-cr-nNT"/>
@@ -189,9 +187,11 @@ ATTACK</string>
                             <constraint firstItem="IRr-lm-nGg" firstAttribute="top" secondItem="gdH-ML-xnp" secondAttribute="bottom" id="KA7-Mj-lKi"/>
                             <constraint firstItem="IRr-lm-nGg" firstAttribute="top" secondItem="iMS-mQ-8oM" secondAttribute="bottom" id="LAR-W7-QF3"/>
                             <constraint firstItem="gdH-ML-xnp" firstAttribute="leading" secondItem="0PD-dm-pXb" secondAttribute="leading" constant="279" id="LIP-Y8-6fh"/>
-                            <constraint firstAttribute="trailing" secondItem="dEh-7H-kc8" secondAttribute="trailing" constant="41" id="PJA-83-9aq"/>
+                            <constraint firstItem="dEh-7H-kc8" firstAttribute="trailing" secondItem="1d1-lJ-Rw0" secondAttribute="trailing" id="O4n-u5-44Q"/>
+                            <constraint firstItem="1d1-lJ-Rw0" firstAttribute="trailing" secondItem="HGt-bC-Frb" secondAttribute="trailing" id="Pba-7x-ZJl"/>
+                            <constraint firstItem="dEh-7H-kc8" firstAttribute="leading" secondItem="1d1-lJ-Rw0" secondAttribute="leading" id="Rk9-3o-0Nq"/>
                             <constraint firstAttribute="trailing" secondItem="xDl-wK-OZv" secondAttribute="trailing" constant="69" id="Y2T-C9-wpl"/>
-                            <constraint firstItem="HGt-bC-Frb" firstAttribute="top" secondItem="2E9-FI-wPc" secondAttribute="bottom" constant="92" id="ZE4-Ie-kuL"/>
+                            <constraint firstItem="HGt-bC-Frb" firstAttribute="top" secondItem="2E9-FI-wPc" secondAttribute="bottom" constant="56" id="ZE4-Ie-kuL"/>
                             <constraint firstItem="iMS-mQ-8oM" firstAttribute="leading" secondItem="0PD-dm-pXb" secondAttribute="leading" id="c3O-mQ-8TE"/>
                             <constraint firstAttribute="trailing" secondItem="iMS-mQ-8oM" secondAttribute="trailing" constant="213" id="d8y-mU-XpV"/>
                             <constraint firstItem="2E9-FI-wPc" firstAttribute="leading" secondItem="0PD-dm-pXb" secondAttribute="leading" constant="42" id="dJc-V8-seN"/>
@@ -199,9 +199,9 @@ ATTACK</string>
                             <constraint firstItem="1d1-lJ-Rw0" firstAttribute="top" secondItem="HGt-bC-Frb" secondAttribute="bottom" constant="22" id="fE7-Wk-NS9"/>
                             <constraint firstItem="J80-1N-Fyf" firstAttribute="leading" secondItem="0PD-dm-pXb" secondAttribute="leading" constant="228" id="gUF-Ak-GS5"/>
                             <constraint firstItem="HGt-bC-Frb" firstAttribute="top" secondItem="J80-1N-Fyf" secondAttribute="bottom" constant="-15" id="gt4-W1-F03"/>
-                            <constraint firstAttribute="trailing" secondItem="1d1-lJ-Rw0" secondAttribute="trailing" constant="41" id="jhN-in-RIm"/>
                             <constraint firstAttribute="trailing" secondItem="juz-iM-qIp" secondAttribute="trailing" id="khw-qe-X8P"/>
                             <constraint firstItem="2E9-FI-wPc" firstAttribute="top" secondItem="0PD-dm-pXb" secondAttribute="top" constant="65" id="ljx-Hc-cTb"/>
+                            <constraint firstItem="1d1-lJ-Rw0" firstAttribute="leading" secondItem="HGt-bC-Frb" secondAttribute="leading" id="uv5-ZA-4wh"/>
                             <constraint firstItem="juz-iM-qIp" firstAttribute="leading" secondItem="0PD-dm-pXb" secondAttribute="leading" id="ybp-c2-lcX"/>
                             <constraint firstItem="dEh-7H-kc8" firstAttribute="top" secondItem="1d1-lJ-Rw0" secondAttribute="bottom" constant="16" id="yuW-cl-8Aq"/>
                         </constraints>
@@ -210,11 +210,13 @@ ATTACK</string>
                     <connections>
                         <outlet property="constraintLeadingBadge" destination="8cs-GL-Kw8" id="5cB-JS-Ilk"/>
                         <outlet property="constraintLeadingBadgeStart" destination="gUF-Ak-GS5" id="sDM-2d-KEJ"/>
+                        <outlet property="constraintLeadingPlay" destination="1cP-rf-mCX" id="ofD-Fp-0Hm"/>
                         <outlet property="constraintLeadingSettings" destination="LIP-Y8-6fh" id="8iq-7f-gj2"/>
                         <outlet property="constraintTopBadge" destination="FAB-cr-nNT" id="Yka-iw-hne"/>
                         <outlet property="constraintTopBadgeStart" destination="gt4-W1-F03" id="hbg-2B-Jum"/>
                         <outlet property="constraintTrailingBadge" destination="Y2T-C9-wpl" id="enR-eE-Jhs"/>
                         <outlet property="constraintTrailingBadgeStart" destination="E8f-aZ-3Tj" id="P6M-DI-cFG"/>
+                        <outlet property="constraintTrailingPlay" destination="f5T-ed-bO8" id="tY1-5m-QhL"/>
                         <outlet property="constraintTrailingZinStudio" destination="d8y-mU-XpV" id="PQm-ZB-nOD"/>
                         <outlet property="highScoresAchievementsButton" destination="1d1-lJ-Rw0" id="dNz-a5-thi"/>
                         <outlet property="playBadge" destination="J80-1N-Fyf" id="BRN-3z-PO0"/>
@@ -279,7 +281,7 @@ ATTACK</string>
                                     <action selector="soundEffectsTouchDown:" destination="8hq-Uf-RA3" eventType="touchDown" id="4OF-cU-BIo"/>
                                 </connections>
                             </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G9W-eZ-eNc">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="G9W-eZ-eNc">
                                 <rect key="frame" x="37" y="219" width="81" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="G9W-eZ-eNc" secondAttribute="height" multiplier="27:7" id="AL2-YJ-EcD"/>
@@ -288,7 +290,7 @@ ATTACK</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vibration" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yfZ-e7-vgQ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vibration" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="yfZ-e7-vgQ">
                                 <rect key="frame" x="37" y="297" width="150" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="yfZ-e7-vgQ" secondAttribute="height" multiplier="50:7" id="DHj-1g-TvS"/>
@@ -297,7 +299,7 @@ ATTACK</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SFX" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rWG-hw-Xm7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SFX" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="rWG-hw-Xm7">
                                 <rect key="frame" x="37" y="144" width="81" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="rWG-hw-Xm7" secondAttribute="height" multiplier="27:7" id="MJe-8O-Eom"/>
@@ -341,7 +343,7 @@ ATTACK</string>
                                     <action selector="backButtonAction:" destination="8hq-Uf-RA3" eventType="touchUpInside" id="RfW-bc-0NE"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SETTINGS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tnT-uA-cOo">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SETTINGS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="tnT-uA-cOo">
                                 <rect key="frame" x="20" y="0.0" width="280" height="58"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="tnT-uA-cOo" secondAttribute="height" multiplier="140:29" id="JzS-a7-AgA"/>
@@ -350,7 +352,7 @@ ATTACK</string>
                                 <color key="textColor" red="1" green="0.44439655169999998" blue="0.87338362069999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Controls" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2D-hB-Sdw">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Controls" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="H2D-hB-Sdw">
                                 <rect key="frame" x="37" y="379" width="118" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="H2D-hB-Sdw" secondAttribute="height" multiplier="118:21" id="bUb-eC-00G"/>
@@ -373,7 +375,7 @@ ATTACK</string>
                                     <action selector="controlsAction:" destination="8hq-Uf-RA3" eventType="touchUpInside" id="5DE-MZ-ra1"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" alpha="0.14999999999999999" tag="9" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Scan Lines.png" translatesAutoresizingMaskIntoConstraints="NO" id="PVn-O8-7YK">
+                            <imageView userInteractionEnabled="NO" alpha="0.10000000000000001" tag="9" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Scan Lines.png" translatesAutoresizingMaskIntoConstraints="NO" id="PVn-O8-7YK">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                         </subviews>
@@ -552,7 +554,7 @@ ATTACK</string>
                                 <color key="textColor" red="1" green="0.44439655169999998" blue="0.87338362069999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" alpha="0.14999999999999999" tag="9" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Scan Lines.png" translatesAutoresizingMaskIntoConstraints="NO" id="7XJ-QI-keL">
+                            <imageView userInteractionEnabled="NO" alpha="0.10000000000000001" tag="9" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Scan Lines.png" translatesAutoresizingMaskIntoConstraints="NO" id="7XJ-QI-keL">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                         </subviews>
@@ -883,7 +885,7 @@ Firead 100 Bullets + 100 points</string>
                                     <outlet property="delegate" destination="DDr-u1-vQw" id="AZZ-09-0oO"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UPGRADES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vk6-dJ-1Dg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UPGRADES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Vk6-dJ-1Dg">
                                 <rect key="frame" x="0.0" y="15" width="320" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="C4D-e4-8Ql"/>
@@ -916,7 +918,7 @@ Firead 100 Bullets + 100 points</string>
                                     <action selector="backAction:" destination="DDr-u1-vQw" eventType="touchUpInside" id="mHu-jU-Xgr"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" alpha="0.14999999999999999" tag="9" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Scan Lines.png" translatesAutoresizingMaskIntoConstraints="NO" id="KsI-q2-S9D">
+                            <imageView userInteractionEnabled="NO" alpha="0.10000000000000001" tag="9" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Scan Lines.png" translatesAutoresizingMaskIntoConstraints="NO" id="KsI-q2-S9D">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                         </subviews>
@@ -1050,7 +1052,7 @@ Firead 100 Bullets + 100 points</string>
                                     <action selector="pageControlAction:" destination="uh9-sL-8Yw" eventType="touchUpInside" id="YPy-nR-JII"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" alpha="0.14999999999999999" tag="9" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Scan Lines.png" translatesAutoresizingMaskIntoConstraints="NO" id="UNj-pD-iGt">
+                            <imageView userInteractionEnabled="NO" alpha="0.10000000000000001" tag="9" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Scan Lines.png" translatesAutoresizingMaskIntoConstraints="NO" id="UNj-pD-iGt">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                         </subviews>
@@ -1080,6 +1082,7 @@ Firead 100 Bullets + 100 points</string>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="achievementTableView" destination="iIw-0l-5nU" id="727-w9-bjL"/>
+                        <outlet property="backButton" destination="zPW-T1-bTy" id="zia-4S-CjB"/>
                         <outlet property="constraintBottomTableContainer" destination="gew-Sm-KXc" id="vq9-94-sH9"/>
                         <outlet property="constraintHeightPageControl" destination="WjY-JY-8Zi" id="3TK-Tn-H6s"/>
                         <outlet property="constraintLeadingTableContainer" destination="x4m-eg-0hT" id="UUt-jg-u9d"/>
@@ -1158,13 +1161,19 @@ Firead 100 Bullets + 100 points</string>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9pa-jf-Z5B">
-                                <rect key="frame" x="149" y="476" width="57" height="37"/>
+                                <rect key="frame" x="149" y="476" width="151" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="9pa-jf-Z5B" secondAttribute="height" multiplier="57:37" id="KZJ-EE-S1B"/>
+                                    <constraint firstAttribute="width" secondItem="9pa-jf-Z5B" secondAttribute="height" multiplier="151:37" id="R3J-OP-oE2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="CooperBlackStd" family="Cooper Std" pointSize="24"/>
                                 <color key="textColor" red="0.49019607840000001" green="0.49019607840000001" blue="0.49019607840000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="KZJ-EE-S1B"/>
+                                    </mask>
+                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fkw-Dt-36i">
                                 <rect key="frame" x="20" y="471" width="121" height="69"/>
@@ -1196,7 +1205,7 @@ Firead 100 Bullets + 100 points</string>
                                     <action selector="pageControlAction:" destination="eD6-tr-FhF" eventType="touchUpInside" id="fe8-wS-mmN"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" alpha="0.14999999999999999" tag="9" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Scan Lines.png" translatesAutoresizingMaskIntoConstraints="NO" id="sCW-YF-2mn">
+                            <imageView userInteractionEnabled="NO" alpha="0.10000000000000001" tag="9" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Scan Lines.png" translatesAutoresizingMaskIntoConstraints="NO" id="sCW-YF-2mn">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                         </subviews>
@@ -1233,6 +1242,7 @@ Firead 100 Bullets + 100 points</string>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="backButton" destination="gI9-Fx-eN6" id="dwh-EN-Wjk"/>
                         <outlet property="constraintBottomTableContainer" destination="dK2-yl-sYR" id="UCm-iF-wFj"/>
                         <outlet property="constraintBottomUserName" destination="Mih-aw-0m5" id="Bzh-kn-E0r"/>
                         <outlet property="constraintBottomUserRank" destination="UBc-dI-agB" id="OCL-Il-zcC"/>

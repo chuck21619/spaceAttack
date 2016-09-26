@@ -1,3 +1,8 @@
+//fonts
+"font1" = "Chalkduster";
+"font2" = "Chalkduster";
+"font3" = "Chalkduster";
+
 //ship names
 "Abdul_Kadir" = "Azueta";
 "Babenberg" = "Baranda";
@@ -8,9 +13,35 @@
 "Gascogne" = "De la Vega";
 "Habsburg" = "Romero";
 
+//ship selection button
 "damage" = "DAÑOS";
 "armor" = "BLINDAJE";
 "speed" = "VELOCIDAD";
+
+//purchase ship view & upgrade cell
+"Unlock" = "Desbloquear";
+"Cancel" = "Cancelar";
+"for" = "para";
+"PURCHASED" = "comprado";
+
+//upgrade cell
+"Cost" = "Costo";
+"Locked" = "Bloqueada";
+
+//settings
+"Touch" = "Toque";
+"Tilt Screen" = "Pantalla de Inclinación";
+
+//tooltips
+"Choose how to Move:" = "Elija cómo mover:";
+"You can change this later in settings" = "Puede cambiar esta configuración más adelante en";
+
+//main menu
+"Unavailable" = "Indisponible";
+"You are not signed into Game Center" = "No está inscrito en Game Center";
+"Sign In" = "Registrarse";
+
+
 
 /* No comment provided by engineer. */
 "Available Points" = "Puntos disponibles";
@@ -28,7 +59,7 @@
 "Electricity Chain" = "Cadena de electricidad";
 
 /* No comment provided by engineer. */
-"Energy Booster" = "Potenciador de energía";
+"Energy Booster" = "Potenciador";
 
 /* No comment provided by engineer. */
 "Ermahgerd!" = "¡Ermahgerd!";
@@ -67,7 +98,7 @@
 "Shield" = "Escudo";
 
 /* No comment provided by engineer. */
-"Smart Photons" = "Fotones inteligentes";
+"Smart Photons" = "Fotones";
 
 /* No comment provided by engineer. */
 "Tilt the screen to move your ship" = "Inclina la pantalla para mover la nave";

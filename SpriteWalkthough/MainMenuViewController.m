@@ -22,11 +22,32 @@
 - (void) viewDidLoad
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(achievementsLoaded) name:@"achievementsLoaded" object:nil];
-    [self adjustForDeviceSize];
-    [_AppDelegate addGlowToLayer:self.spaceAttackLabel.layer withColor:self.spaceAttackLabel.textColor.CGColor];
     
     if ( [_AppDelegate hasCustomMainMenuBackground] )
         self.spaceAttackLabel.text = @"";
+    else
+    {
+        self.spaceAttackLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.spaceAttackLabel.font.pointSize];
+        [_AppDelegate addGlowToLayer:self.spaceAttackLabel.layer withColor:self.spaceAttackLabel.textColor.CGColor];
+    }
+    
+    self.playButton.titleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.playButton.titleLabel.font.pointSize];
+    self.highScoresAchievementsButton.titleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.highScoresAchievementsButton.titleLabel.font.pointSize];
+    self.upgradesButton.titleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.upgradesButton.titleLabel.font.pointSize];
+    
+    self.playButton.titleLabel.numberOfLines = 1;
+    self.playButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    self.playButton.titleLabel.lineBreakMode = NSLineBreakByClipping;
+    
+    self.highScoresAchievementsButton.titleLabel.numberOfLines = 1;
+    self.highScoresAchievementsButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    self.highScoresAchievementsButton.titleLabel.lineBreakMode = NSLineBreakByClipping;
+    
+    self.upgradesButton.titleLabel.numberOfLines = 1;
+    self.upgradesButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    self.upgradesButton.titleLabel.lineBreakMode = NSLineBreakByClipping;
+    
+    [self adjustForDeviceSize];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -103,18 +124,6 @@
     self.constraintLeadingSettings.constant = width*.872;
     self.constraintTrailingZinStudio.constant = width*.666;
     
-    self.constraintLeadingPlanet1.constant = width*.359;
-    self.constraintTopPlanet1.constant = width*.025;
-    self.constraintTrailingPlanet1.constant = width*.484;
-    
-    self.constraintLeadingPlanet2.constant = width*.625;
-    self.constraintTopPlanet2.constant = width*.191;
-    self.constraintTrailingPlanet2.constant = width*.063;
-    
-    self.constraintLeadingPlanet3.constant = width*.091;
-    self.constraintTopPlanet3.constant = width*.456;
-    self.constraintTrailingPlanet3.constant = width*.284;
-    
     self.constraintLeadingBadge.constant = width*.691;
     self.constraintTopBadge.constant = width*-.05;
     self.constraintTrailingBadge.constant = width*.216;
@@ -122,6 +131,9 @@
     self.constraintLeadingBadgeStart.constant = width*0.7125;
     self.constraintTopBadgeStart.constant = width*-0.046875;
     self.constraintTrailingBadgeStart.constant = width*0.19375;
+    
+    self.constraintLeadingPlay.constant = width*0.128125;
+    self.constraintTrailingPlay.constant = width*0.128125;
 }
 
 #pragma mark - game center
@@ -165,17 +177,12 @@
             NSLog(@"game center authenticated");
             [self.highScoresAchievementsButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             self.highScoresAchievementsButton.layer.borderColor = [self.highScoresAchievementsButton.currentTitleColor CGColor];
-//            [_AppDelegate addGlowToLayer:self.highScoresAchievementsButton.layer withColor:[self.highScoresAchievementsButton.currentTitleColor CGColor]];
-//            [_AppDelegate addGlowToLayer:self.highScoresAchievementsButton.titleLabel.layer withColor:[self.highScoresAchievementsButton.currentTitleColor CGColor]];
             
 //#warning uncomment for release builds
             [AccountManager loadAchievements];
         }
         else
-        {
             NSLog(@"game center authentication process failed");
-            //[self disableGameCenter];
-        }
     };
 }
 
@@ -222,11 +229,12 @@
     [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuHighScoreAchievements];
     if ( ! [[GKLocalPlayer localPlayer] isAuthenticated] )
     {
-#warning localize
-#warning why doesnt this show up right
-        SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:@"Scores Unavailable" message:@"You are not signed into Game Center" cancelButtonTitle:@"Got It" otherButtonTitle:nil];
-        unlockAlert.appearTime = .2;
-        unlockAlert.disappearTime = .2;
+        SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:NSLocalizedString(@"Unavailable", nil) message:NSLocalizedString(@"You are not signed into Game Center", nil) cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitle:NSLocalizedString(@"Sign In", nil)];
+        unlockAlert.otherButtonAction = ^
+        {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"gamecenter:"]];
+        };
+        
         [unlockAlert show];
         return;
     }

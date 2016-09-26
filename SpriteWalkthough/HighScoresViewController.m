@@ -37,6 +37,8 @@
     [self showProgressHud:YES];
     [self loadLeaderboard];
     
+    self.backButton.titleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.backButton.titleLabel.font.pointSize];
+    
     [self adjustForDeviceSize];
     [self.view layoutIfNeeded];
     
@@ -61,7 +63,6 @@
 - (void) adjustForDeviceSize
 {
     float width = self.view.frame.size.width;
-    NSLog(@"wiiiiiiidt 2 : %f", width);
     
     self.constraintTrailingBackButton.constant = width* 0.66875;
     
@@ -78,7 +79,7 @@
     self.constraintBottomUserName.constant = width* 0.171875;
     
     self.constraintTopUserScore.constant = width* 0.1875;
-    self.constraintBottomUserScore.constant = width* 30.11256;
+    self.constraintBottomUserScore.constant = width* 0.1125;
     
     self.constraintHeightPageControl.constant = width* 0.103125;
 }
@@ -95,7 +96,7 @@
             {
                 if ( subview.tag == 9 )
                 {
-                    subview.alpha = .15;
+                    subview.alpha = .1;
                     continue;
                 }
                 

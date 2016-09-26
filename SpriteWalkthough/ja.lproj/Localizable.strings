@@ -1,3 +1,8 @@
+//fonts
+"font1" = "Chalkduster";
+"font2" = "Chalkduster";
+"font3" = "Chalkduster";
+
 //ship names
 "Abdul_Kadir" = "甲鉄";
 "Babenberg" = "扶桑";
@@ -8,9 +13,37 @@
 "Gascogne" = "長門";
 "Habsburg" = "大和";
 
+//ship selection button
 "damage" = "ダメージ";
 "armor" = "アーマー";
 "speed" = "スピード";
+
+//purchase ship view & upgrade cell
+"Unlock" = "アンロック";
+"Cancel" = "キャンセル";
+"for" = "ために";
+"PURCHASED" = "購入した";
+
+//upgrade cell
+"Cost" = "コスト";
+"Locked" = "ロック";
+
+//settings
+"Touch" = "タッチ";
+"Tilt Screen" = "チルト画面";
+
+//tooltips
+"Choose how to Move:" = "移動する方法を選択してください:";
+"You can change this later in settings" = "後で設定で、これを変更することができます";
+
+//main menu
+"Unavailable" = "利用できません";
+"You are not signed into Game Center" = "あなたはにログインしていません Game Center";
+"Sign In" = "サインイン";
+
+
+
+
 
 /* No comment provided by engineer. */
 "Available Points" = "利用可能ポイント";

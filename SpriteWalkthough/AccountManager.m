@@ -827,6 +827,9 @@ static AccountManager * sharedAccountManager = nil;
 
 + (void) loadAchievements
 {
+//#warning uncomment for release
+//    return;
+    
     //NSLog(@"account manager - loadAchievements");
     [GKAchievement loadAchievementsWithCompletionHandler:^(NSArray<GKAchievement *> * _Nullable achievements, NSError * _Nullable error)
     {

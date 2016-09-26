@@ -217,9 +217,9 @@
 		A33B139E1D97D4B7003EDAF5 /* SmartPhotons.png in Resources */ = {isa = PBXBuildFile; fileRef = A33B13701D97D4B7003EDAF5 /* SmartPhotons.png */; };
 		A33B139F1D97D4B7003EDAF5 /* TwoWeapons.png in Resources */ = {isa = PBXBuildFile; fileRef = A33B13711D97D4B7003EDAF5 /* TwoWeapons.png */; };
 		A33B13A01D97E421003EDAF5 /* CooperBlackStd.otf in Resources */ = {isa = PBXBuildFile; fileRef = A33B133F1D97B00B003EDAF5 /* CooperBlackStd.otf */; };
-		A33B13A21D986421003EDAF5 /* Stick Here.png in Resources */ = {isa = PBXBuildFile; fileRef = A33B13A11D986421003EDAF5 /* Stick Here.png */; };
 		A33B13A91D987FE1003EDAF5 /* leftPageControl.png in Resources */ = {isa = PBXBuildFile; fileRef = A33B13A71D987FE1003EDAF5 /* leftPageControl.png */; };
 		A33B13AA1D987FE1003EDAF5 /* rightPageControl.png in Resources */ = {isa = PBXBuildFile; fileRef = A33B13A81D987FE1003EDAF5 /* rightPageControl.png */; };
+		A33B13AB1D98D2C0003EDAF5 /* Stick Here.png in Resources */ = {isa = PBXBuildFile; fileRef = A33B13AD1D98D2C0003EDAF5 /* Stick Here.png */; };
 		A3451F371C730F9D0080B81C /* CategoryBitMasks.m in Sources */ = {isa = PBXBuildFile; fileRef = A3451E171C730F980080B81C /* CategoryBitMasks.m */; };
 		A3483FC81D68F98000E9D1F9 /* Habsburg.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FC21D68F98000E9D1F9 /* Habsburg.png */; };
 		A3483FC91D68F98000E9D1F9 /* Gascogne.png in Resources */ = {isa = PBXBuildFile; fileRef = A3483FC31D68F98000E9D1F9 /* Gascogne.png */; };
@@ -880,9 +880,10 @@
 		A33B136F1D97D4B7003EDAF5 /* Shield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Shield.png; sourceTree = "<group>"; };
 		A33B13701D97D4B7003EDAF5 /* SmartPhotons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SmartPhotons.png; sourceTree = "<group>"; };
 		A33B13711D97D4B7003EDAF5 /* TwoWeapons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TwoWeapons.png; sourceTree = "<group>"; };
-		A33B13A11D986421003EDAF5 /* Stick Here.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stick Here.png"; sourceTree = "<group>"; };
 		A33B13A71D987FE1003EDAF5 /* leftPageControl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leftPageControl.png; sourceTree = "<group>"; };
 		A33B13A81D987FE1003EDAF5 /* rightPageControl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightPageControl.png; sourceTree = "<group>"; };
+		A33B13AC1D98D2C0003EDAF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Base.lproj/Stick Here.png"; sourceTree = "<group>"; };
+		A33B13AE1D98D2C7003EDAF5 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "en.lproj/Stick Here.png"; sourceTree = "<group>"; };
 		A3451E161C730F980080B81C /* CategoryBitMasks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryBitMasks.h; sourceTree = "<group>"; };
 		A3451E171C730F980080B81C /* CategoryBitMasks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryBitMasks.m; sourceTree = "<group>"; };
 		A3483FC21D68F98000E9D1F9 /* Habsburg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Habsburg.png; sourceTree = "<group>"; };
@@ -2160,7 +2161,7 @@
 				A33B13A71D987FE1003EDAF5 /* leftPageControl.png */,
 				A33B13A81D987FE1003EDAF5 /* rightPageControl.png */,
 				A33B13371D97A356003EDAF5 /* GameCenterBackground.png */,
-				A33B13A11D986421003EDAF5 /* Stick Here.png */,
+				A33B13AD1D98D2C0003EDAF5 /* Stick Here.png */,
 				A33B13431D97CE37003EDAF5 /* achievements */,
 			);
 			name = "game center";
@@ -3140,7 +3141,7 @@
 				A3DE73311D84EBF700DC63BD /* laser_upgrade 3.png in Resources */,
 				A35B3B641D2A68F7006DB8C3 /* spaceshipDamage2.wav in Resources */,
 				A39C5F361D2987A000A68E2D /* laser1.wav in Resources */,
-				A33B13A21D986421003EDAF5 /* Stick Here.png in Resources */,
+				A33B13AB1D98D2C0003EDAF5 /* Stick Here.png in Resources */,
 				A3DE734E1D84EC0B00DC63BD /* laser_upgrade 8@2x.png in Resources */,
 				A37E3EB91D8653D0002211AC /* FlandrePhoEle.png in Resources */,
 				A3DD77B31D7B871600A1D2D1 /* Photon_Powerup.png in Resources */,
@@ -3511,6 +3512,15 @@
 				A33B13331D9784BD003EDAF5 /* es */,
 			);
 			name = MainMenuBackground.png;
+			sourceTree = "<group>";
+		};
+		A33B13AD1D98D2C0003EDAF5 /* Stick Here.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A33B13AC1D98D2C0003EDAF5 /* Base */,
+				A33B13AE1D98D2C7003EDAF5 /* en */,
+			);
+			name = "Stick Here.png";
 			sourceTree = "<group>";
 		};
 		A38732041D3B866B00FE1D00 /* Main.storyboard */ = {

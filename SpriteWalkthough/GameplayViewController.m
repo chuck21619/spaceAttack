@@ -27,6 +27,15 @@
 {
     [super viewDidLoad];
     
+    
+    self.gameOverLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.gameOverLabel.font.pointSize];
+    self.pointsLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.pointsLabel.font.pointSize];
+    
+    self.restartButton.titleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.restartButton.titleLabel.font.pointSize];
+    self.selectShipButton.titleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.selectShipButton.titleLabel.font.pointSize];
+    self.upgradesButton.titleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.upgradesButton.titleLabel.font.pointSize];
+    self.homeButton.titleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.homeButton.titleLabel.font.pointSize];
+    
     [self adjustForDeviceSize];
     
     self.mySKView.ignoresSiblingOrder = YES; // improves performance
@@ -46,7 +55,7 @@
     
     self.achievementsCompletedDuringFlight = [NSMutableArray new];
     self.bonusPointsTextViewHeightDefault = self.bonusPointsTextView.frame.size.height;
-    self.bonusPointsTextView.font = [UIFont fontWithName:@"Moon-Bold" size:12];
+    self.bonusPointsTextView.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:12];
     
     self.fullScreenAdShown = NO;
     self.firstViewWillAppear = YES;
