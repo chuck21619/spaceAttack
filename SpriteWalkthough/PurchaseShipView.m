@@ -148,7 +148,7 @@
     }
     else
     {
-        [_purchaseButtonMoney setTitle:[NSString stringWithFormat:@"%@", NSLocalizedString(@"Unavailable", nil)] forState:UIControlStateNormal];
+        [_purchaseButtonMoney setTitle:[NSString stringWithFormat:@"%@", NSLocalizedString(@"App Store Unavailable", nil)] forState:UIControlStateNormal];
         _purchaseButtonMoney.enabled = NO;
     }
     

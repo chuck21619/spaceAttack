@@ -160,6 +160,8 @@
      {
          if ( error )
          {
+             NSLog(@"error 1 : %@", error);
+             [self showProgressHud:NO];
              [self displayError:error];
              return;
          }
@@ -169,6 +171,8 @@
           {
               if ( error2 )
               {
+                  NSLog(@"error 2 : %@", error);
+                  [self showProgressHud:NO];
                   [self displayError:error2];
                   return;
               }
@@ -218,7 +222,20 @@
 
 - (void) displayError:(NSError *)error
 {
-    SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:error.localizedDescription cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitle:nil];
+    SAAlertView * unlockAlert;
+    
+    if ( error.code == 6 ) // localPlayer is not authenticated
+    {
+        unlockAlert = [[SAAlertView alloc] initWithTitle:NSLocalizedString(@"Unavailable", nil) message:NSLocalizedString(@"You are not signed into Game Center", nil) cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitle:NSLocalizedString(@"Sign In", nil)];
+                unlockAlert.otherButtonAction = ^
+                {
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"gamecenter:"]];
+                };
+    }
+    else
+        unlockAlert = [[SAAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:error.localizedDescription cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitle:nil];
+    
+    
     
     [unlockAlert show];
 }
