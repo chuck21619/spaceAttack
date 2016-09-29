@@ -18,6 +18,8 @@
 
 - (void) awakeFromNib
 {
+    [super awakeFromNib];
+    
     _imageView = [UIImageView new];
     _nameLabel = [UILabel new];
     _dateLabel = [UILabel new];

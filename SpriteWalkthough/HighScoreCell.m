@@ -18,6 +18,8 @@
 
 - (void) awakeFromNib
 {
+    [super awakeFromNib];
+    
     _rankLabel = [UILabel new];
     _nameLabel = [UILabel new];
     _scoreLabel = [UILabel new];

@@ -13,6 +13,8 @@
 
 - (void) awakeFromNib
 {
+    [super awakeFromNib];
+    
     UIImage * originalThumbImage = [UIImage imageNamed:@"slider bar.png"];
     UIImage * thumbImage = [UIImage imageWithCGImage:[originalThumbImage CGImage] scale:4 orientation:(originalThumbImage.imageOrientation)];
     

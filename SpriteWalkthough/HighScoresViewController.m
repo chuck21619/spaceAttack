@@ -236,7 +236,7 @@
         unlockAlert = [[SAAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:error.localizedDescription cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitle:nil];
     
     
-    
+    [self showProgressHud:NO];
     [unlockAlert show];
 }
 
