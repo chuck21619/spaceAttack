@@ -83,6 +83,8 @@
 		9CA06B261D77A7F50074687B /* FLAnimatedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA06B241D77A7F50074687B /* FLAnimatedImageView.m */; };
 		9CABE7CA1D9EDCD700F714B4 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CABE7C81D9EDCD700F714B4 /* Icon-72@2x.png */; };
 		9CABE7CB1D9EDCD700F714B4 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CABE7C91D9EDCD700F714B4 /* Icon-72.png */; };
+		9CABE8081D9F1A5E00F714B4 /* GKAchievementHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CABE8051D9F1A5E00F714B4 /* GKAchievementHandler.m */; };
+		9CABE8091D9F1A5E00F714B4 /* GKAchievementNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CABE8071D9F1A5E00F714B4 /* GKAchievementNotification.m */; };
 		A30112721D5FC8BA00E133F2 /* MoonLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = A301126F1D5FC80300E133F2 /* MoonLight.otf */; };
 		A30112731D5FC8BA00E133F2 /* MoonBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A30112701D5FC80300E133F2 /* MoonBold.otf */; };
 		A30112771D5FDF1600E133F2 /* ShipSelectionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A30112761D5FDF1600E133F2 /* ShipSelectionButton.m */; };
@@ -695,6 +697,10 @@
 		9CA06B241D77A7F50074687B /* FLAnimatedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnimatedImageView.m; sourceTree = "<group>"; };
 		9CABE7C81D9EDCD700F714B4 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 		9CABE7C91D9EDCD700F714B4 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		9CABE8041D9F1A5E00F714B4 /* GKAchievementHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKAchievementHandler.h; sourceTree = "<group>"; };
+		9CABE8051D9F1A5E00F714B4 /* GKAchievementHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKAchievementHandler.m; sourceTree = "<group>"; };
+		9CABE8061D9F1A5E00F714B4 /* GKAchievementNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKAchievementNotification.h; sourceTree = "<group>"; };
+		9CABE8071D9F1A5E00F714B4 /* GKAchievementNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKAchievementNotification.m; sourceTree = "<group>"; };
 		A301126F1D5FC80300E133F2 /* MoonLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MoonLight.otf; sourceTree = "<group>"; };
 		A30112701D5FC80300E133F2 /* MoonBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MoonBold.otf; sourceTree = "<group>"; };
 		A30112751D5FDF1600E133F2 /* ShipSelectionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShipSelectionButton.h; sourceTree = "<group>"; };
@@ -1789,6 +1795,7 @@
 		6E5D38111AB6922F0002F22F /* 3rd Party */ = {
 			isa = PBXGroup;
 			children = (
+				9CABE8031D9F1A4000F714B4 /* customBannerNotification */,
 				A3B17F791D73C1030047BDCA /* Fabric.framework */,
 				A3B17F7A1D73C1030047BDCA /* Crashlytics.framework */,
 				A3E009B81D72F85F00C340AA /* shake */,
@@ -1887,6 +1894,17 @@
 				9CABE7C91D9EDCD700F714B4 /* Icon-72.png */,
 			);
 			name = "ipad icons";
+			sourceTree = "<group>";
+		};
+		9CABE8031D9F1A4000F714B4 /* customBannerNotification */ = {
+			isa = PBXGroup;
+			children = (
+				9CABE8041D9F1A5E00F714B4 /* GKAchievementHandler.h */,
+				9CABE8051D9F1A5E00F714B4 /* GKAchievementHandler.m */,
+				9CABE8061D9F1A5E00F714B4 /* GKAchievementNotification.h */,
+				9CABE8071D9F1A5E00F714B4 /* GKAchievementNotification.m */,
+			);
+			name = customBannerNotification;
 			sourceTree = "<group>";
 		};
 		A30112711D5FC80E00E133F2 /* fonts */ = {
@@ -3372,8 +3390,10 @@
 				A39CEF5C1D317D7E00C01870 /* ALDevice.m in Sources */,
 				A3DB9EED1D618E61006A8AEB /* GlowingButton.m in Sources */,
 				A39CEF5E1D317D7E00C01870 /* ALSoundSourcePool.m in Sources */,
+				9CABE8091D9F1A5E00F714B4 /* GKAchievementNotification.m in Sources */,
 				A39CEF641D317D7E00C01870 /* IOSVersion.m in Sources */,
 				9C6FFE8B1D74E3A0001AD117 /* SASlider.m in Sources */,
+				9CABE8081D9F1A5E00F714B4 /* GKAchievementHandler.m in Sources */,
 				135BEDB419759EF800892311 /* Boss1.m in Sources */,
 				A33B133C1D97AE43003EDAF5 /* AchievementCell.m in Sources */,
 				6ED0AEF11A91414200493ED0 /* MainMenuViewController.m in Sources */,

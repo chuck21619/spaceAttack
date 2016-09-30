@@ -15,7 +15,7 @@
 #import "AudioManager.h"
 #import "SettingsViewController.h"
 #import "SpriteAppDelegate.h"
-
+#import "GKAchievementHandler.h"
 
 @implementation MainMenuViewController
 
@@ -196,6 +196,11 @@
 #pragma mark - buttons
 - (IBAction)playAction:(id)sender
 {
+    [[GKAchievementHandler defaultHandler] setImage:[UIImage imageNamed:@"BulletsFired100.png"]];
+    [[GKAchievementHandler defaultHandler] notifyAchievementTitle:@"Fire 100 Bullets" andMessage:nil];
+
+    return;
+    
     [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuSelectShip];
     UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     SelectShipViewController * ssvc = [storyboard instantiateViewControllerWithIdentifier:@"selectShipViewController"];
