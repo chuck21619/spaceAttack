@@ -35,6 +35,9 @@
     [self removeFromSuperview];
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+//code here will ignore the warning
 - (void)delegateCallback:(SEL)selector withObject:(id)object
 {
     if (self.handlerDelegate)
@@ -45,6 +48,7 @@
         }
     }
 }
+#pragma clang diagnostic pop
 
 @end
 
