@@ -141,6 +141,12 @@
 }
 
 #pragma mark - table view delegate/datasource
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    float width = self.view.frame.size.width;
+    return width*0.34375;
+}
+
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return _achievements.count;

@@ -227,7 +227,6 @@
 - (IBAction)highScoresAchievementsAction:(id)sender
 {
     [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuHighScoreAchievements];
-#warning why the fuck does isAuthenticated return true
     if ( ! [[GKLocalPlayer localPlayer] isAuthenticated] )
     {
         SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:NSLocalizedString(@"Unavailable", nil) message:NSLocalizedString(@"You are not signed into Game Center", nil) cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitle:NSLocalizedString(@"Sign In", nil)];

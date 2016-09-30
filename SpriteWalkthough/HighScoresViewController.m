@@ -83,6 +83,11 @@
     self.constraintBottomUserScore.constant = width* 0.1125;
     
     self.constraintHeightPageControl.constant = width* 0.103125;
+    
+    
+    self.userScoreLabel.font = [self.userScoreLabel.font fontWithSize:width*0.05625];
+    self.userNameLabel.font = [self.userNameLabel.font fontWithSize:width*0.075];
+    self.userRankLabel.font = [self.userRankLabel.font fontWithSize:width*0.15625];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -241,6 +246,12 @@
 }
 
 #pragma mark - table view delegate/datasource
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    float width = self.view.frame.size.width;
+    return width*0.34375;
+}
+
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return _scores.count;

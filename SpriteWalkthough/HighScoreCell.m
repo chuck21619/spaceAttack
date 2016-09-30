@@ -24,9 +24,9 @@
     _nameLabel = [UILabel new];
     _scoreLabel = [UILabel new];
     
-    _rankLabel.font = [UIFont fontWithName:@"Cooper Std" size:50];
-    _nameLabel.font = [UIFont fontWithName:@"Cooper Std" size:24];
-    _scoreLabel.font = [UIFont fontWithName:@"Cooper Std" size:18];
+    _rankLabel.font = [UIFont fontWithName:NSLocalizedString(@"font3", nil) size:50];
+    _nameLabel.font = [UIFont fontWithName:NSLocalizedString(@"font3", nil) size:24];
+    _scoreLabel.font = [UIFont fontWithName:NSLocalizedString(@"font3", nil) size:18];
     
     _rankLabel.textColor = [UIColor darkGrayColor];
     _nameLabel.textColor = [UIColor colorWithWhite:.5 alpha:1];
@@ -46,9 +46,16 @@
 
 - (void) adjustForDeviceSize
 {
-    _rankLabel.frame = CGRectMake(0, 10, 121, 69);
-    _nameLabel.frame = CGRectMake(129, 15, 162, 37);
-    _scoreLabel.frame = CGRectMake(129, 50, 151, 21);
+    float width = [UIScreen mainScreen].bounds.size.width;
+    
+    _rankLabel.frame = CGRectMake(0, width*0.03125, width*0.378125, width*0.215625);
+    _nameLabel.frame = CGRectMake(width*0.403125, width*0.046875, width*0.50625, width*0.115625);
+    _scoreLabel.frame = CGRectMake(width*0.403125, width*0.15625, width*0.471875, width*0.065625);
+    
+    _rankLabel.font = [_rankLabel.font fontWithSize:width*0.15625];
+    _nameLabel.font = [_nameLabel.font fontWithSize:width*0.075];
+    _scoreLabel.font = [_scoreLabel.font fontWithSize:width*0.05625];
+    
 }
 
 - (void) updateContentWithScore:(GKScore *)score

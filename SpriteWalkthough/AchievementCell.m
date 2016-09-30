@@ -24,8 +24,8 @@
     _nameLabel = [UILabel new];
     _dateLabel = [UILabel new];
     
-    [_nameLabel setFont:[UIFont fontWithName:@"Cooper Std" size:17]];
-    [_dateLabel setFont:[UIFont fontWithName:@"Moon" size:12]];
+    [_nameLabel setFont:[UIFont fontWithName:NSLocalizedString(@"font3", nil) size:17]];
+    [_dateLabel setFont:[UIFont fontWithName:NSLocalizedString(@"font2", nil) size:12]];
     
     _nameLabel.textColor = [UIColor colorWithWhite:.5 alpha:1];
     _dateLabel.textColor = [UIColor colorWithWhite:.67 alpha:1];
@@ -44,9 +44,14 @@
 
 - (void) adjustForDeviceSize
 {
-    _imageView.frame = CGRectMake(25, 12, 85, 85);
-    _nameLabel.frame = CGRectMake(124, 36, 159, 21);
-    _dateLabel.frame = CGRectMake(124, 51, 159, 21);
+    float width = [UIScreen mainScreen].bounds.size.width;
+    
+    _imageView.frame = CGRectMake(width*0.078125, width*0.0375, width*0.265625, width*0.265625);
+    _nameLabel.frame = CGRectMake(width*0.3875, width*0.1125, width*0.496875, width*0.065625);
+    _dateLabel.frame = CGRectMake(width*0.3875, width*0.159375, width*0.496875, width*0.065625);
+    
+    [_nameLabel setFont:[_nameLabel.font fontWithSize:width*0.053125]];
+    [_dateLabel setFont:[_dateLabel.font fontWithSize:width*0.0375]];
 }
 
 - (void) updateContentWithAchievement:(GKAchievement *)achievement description:(NSString *)description
