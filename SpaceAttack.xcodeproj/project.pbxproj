@@ -81,6 +81,8 @@
 		9C6FFE8B1D74E3A0001AD117 /* SASlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6FFE8A1D74E3A0001AD117 /* SASlider.m */; };
 		9CA06B251D77A7F50074687B /* FLAnimatedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA06B221D77A7F50074687B /* FLAnimatedImage.m */; };
 		9CA06B261D77A7F50074687B /* FLAnimatedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA06B241D77A7F50074687B /* FLAnimatedImageView.m */; };
+		9CABE7CA1D9EDCD700F714B4 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CABE7C81D9EDCD700F714B4 /* Icon-72@2x.png */; };
+		9CABE7CB1D9EDCD700F714B4 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CABE7C91D9EDCD700F714B4 /* Icon-72.png */; };
 		A30112721D5FC8BA00E133F2 /* MoonLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = A301126F1D5FC80300E133F2 /* MoonLight.otf */; };
 		A30112731D5FC8BA00E133F2 /* MoonBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A30112701D5FC80300E133F2 /* MoonBold.otf */; };
 		A30112771D5FDF1600E133F2 /* ShipSelectionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A30112761D5FDF1600E133F2 /* ShipSelectionButton.m */; };
@@ -691,6 +693,8 @@
 		9CA06B221D77A7F50074687B /* FLAnimatedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnimatedImage.m; sourceTree = "<group>"; };
 		9CA06B231D77A7F50074687B /* FLAnimatedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnimatedImageView.h; sourceTree = "<group>"; };
 		9CA06B241D77A7F50074687B /* FLAnimatedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnimatedImageView.m; sourceTree = "<group>"; };
+		9CABE7C81D9EDCD700F714B4 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
+		9CABE7C91D9EDCD700F714B4 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		A301126F1D5FC80300E133F2 /* MoonLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MoonLight.otf; sourceTree = "<group>"; };
 		A30112701D5FC80300E133F2 /* MoonBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MoonBold.otf; sourceTree = "<group>"; };
 		A30112751D5FDF1600E133F2 /* ShipSelectionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShipSelectionButton.h; sourceTree = "<group>"; };
@@ -1404,6 +1408,7 @@
 			children = (
 				A3483FD01D68FA4400E9D1F9 /* customBadgeIcon.png */,
 				A337A44E1D8DD9A6000A6570 /* asteroidImage.png */,
+				9CABE7C71D9EDCC900F714B4 /* ipad icons */,
 				A337A45D1D8E2CD9000A6570 /* launch images */,
 				A337A4541D8E2497000A6570 /* loadingScreens */,
 				9CA06B271D77A8F30074687B /* menus */,
@@ -1873,6 +1878,15 @@
 				A3B7F2411D6C012100DB27FA /* UpgradeCell.m */,
 			);
 			name = upgrade;
+			sourceTree = "<group>";
+		};
+		9CABE7C71D9EDCC900F714B4 /* ipad icons */ = {
+			isa = PBXGroup;
+			children = (
+				9CABE7C81D9EDCD700F714B4 /* Icon-72@2x.png */,
+				9CABE7C91D9EDCD700F714B4 /* Icon-72.png */,
+			);
+			name = "ipad icons";
 			sourceTree = "<group>";
 		};
 		A30112711D5FC80E00E133F2 /* fonts */ = {
@@ -2997,6 +3011,7 @@
 				A3BACA551D7CC2AA004388F3 /* laserUpgrade.gif in Resources */,
 				A35B3B591D2A648B006DB8C3 /* enemyDamage2.wav in Resources */,
 				A35B3B4E1D2A5D1E006DB8C3 /* photonCannonEquip.wav in Resources */,
+				9CABE7CA1D9EDCD700F714B4 /* Icon-72@2x.png in Resources */,
 				A33B131F1D9768B3003EDAF5 /* boxArtMurica.png in Resources */,
 				A3B7FEC11D7C835500DD6528 /* HabsburgPhoEle.png in Resources */,
 				A33B132C1D9784B4003EDAF5 /* MainMenuBackground.png in Resources */,
@@ -3251,6 +3266,7 @@
 				A3DD77A21D7B6F6100A1D2D1 /* enemyFast.png in Resources */,
 				A3DE73451D84EC0B00DC63BD /* laser 3@2x.png in Resources */,
 				A337A4B61D8E57F3000A6570 /* LaunchScreen_english.storyboard in Resources */,
+				9CABE7CB1D9EDCD700F714B4 /* Icon-72.png in Resources */,
 				A33B13951D97D4B7003EDAF5 /* PurchasedAllShips.png in Resources */,
 				A37E3EB71D8653D0002211AC /* FlandreLaz.png in Resources */,
 				A337A44F1D8DD9A6000A6570 /* asteroidImage.png in Resources */,

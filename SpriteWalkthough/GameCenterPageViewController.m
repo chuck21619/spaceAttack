@@ -56,25 +56,32 @@
     }];
 }
 
-- (void) viewDidLayoutSubviews
-{
-    //this is because the page controller defaults to having a small gap at the bottom
-    [super viewDidLayoutSubviews];
-//    for ( UIView * subview in self.view.subviews )
-//    {
-//        if ( [subview isKindOfClass:[UIScrollView class]] )
-//            subview.frame = self.view.bounds;
-//    }
-}
-
 - (void) turnPageToAchievements
 {
-    [self setViewControllers:@[[_viewControllers firstObject]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    if ( self.view.userInteractionEnabled ) //if user spams page turns, i cant keep up
+    {
+        [self setViewControllers:@[[_viewControllers firstObject]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+        
+        self.view.userInteractionEnabled = NO;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, .36 * NSEC_PER_SEC), dispatch_get_main_queue(), ^
+        {
+            self.view.userInteractionEnabled = YES;
+        });
+    }
 }
 
 - (void) turnPageToHighScores
 {
-    [self setViewControllers:@[[_viewControllers lastObject]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    if ( self.view.userInteractionEnabled ) //if user spams page turns, i cant keep up
+    {
+        [self setViewControllers:@[[_viewControllers lastObject]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    
+        self.view.userInteractionEnabled = NO;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, .36 * NSEC_PER_SEC), dispatch_get_main_queue(), ^
+        {
+            self.view.userInteractionEnabled = YES;
+        });
+    }
 }
 
 -(UIViewController *)viewControllerAtIndex:(NSUInteger)index
@@ -93,6 +100,12 @@
 
 -(UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
+    self.view.userInteractionEnabled = NO; //if user spams page turns, i cant keep up
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, .36 * NSEC_PER_SEC), dispatch_get_main_queue(), ^
+    {
+        self.view.userInteractionEnabled = YES;
+    });
+    
     NSUInteger currentIndex = [_viewControllers indexOfObject:viewController];
     
     ++currentIndex;
@@ -100,11 +113,13 @@
     return [_viewControllers objectAtIndex:currentIndex];
 }
 
+//pretty sure i dont needs theis method anymore
 -(NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController
 {
     return _viewControllers.count;
 }
 
+//pretty sure i dont needs theis method anymore
 -(NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController
 {
     return 0;
