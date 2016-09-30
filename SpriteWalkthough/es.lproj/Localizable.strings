@@ -44,6 +44,54 @@
 "Error" = "Error";
 
 
+//achievement descriptions
+"AllAchievementsDescription" = "La Leyenda Del Cosmos";
+"AllUpgradesDescription" = "todas las actualizaciones";
+"BiggerLaserDescription" = "L\U00e1ser m\U00e1s grande";
+"BulletsFired100000Description" = "100,000 balas de fuego";
+"BulletsFired10000Description" = "10,000 balas de fuego";
+"BulletsFired1000Description" = "1,000 balas de fuego";
+"BulletsFired100Description" = "100 balas de fuego";
+"ElectricityChainDescription" = "Cadena de electricidad";
+"ElectricityFired20000Description" = "20,000 incendios de electricidad";
+"ElectricityFired2000Description" = "2,000 incendios de electricidad";
+"ElectricityFired200Description" = "200 incendios de electricidad";
+"ElectricityFired20Description" = "20 incendios de electricidad";
+"EnemiesDestroyed50000Description" = "destruir 50,000 extranjeros";
+"EnemiesDestroyed5000Description" = "destruir 5,000 extranjeros";
+"EnemiesDestroyed500Description" = "destruir 500 extranjeros";
+"EnemiesDestroyed50Description" = "destruir 50 extranjeros";
+"EnergyBoosterDescription" = "Potenciador de energ\U00eda";
+"FourWeaponsDescription" = "Cuatro armas";
+"LasersFired15000Description" = "15,000 incendios l\U00e1seres";
+"LasersFired1500Description" = "1,500 incendios l\U00e1seres";
+"LasersFired150Description" = "150 incendios l\U00e1seres";
+"LasersFired15Description" = "15 incendios l\U00e1seres";
+"MachineGunFireRateDescription" = "M\U00e1s balas";
+"MaxLevelElectricalGeneratorDescription" = "Generador el\U00e9ctrico";
+"MaxLevelLaserCannonDescription" = "Ca\U00f1\U00f3n l\U00e1ser";
+"MaxLevelMachineGunDescription" = "Ametralladora";
+"MaxLevelPhotonCannonDescription" = "Ca\U00f1\U00f3n de fotones";
+"PhotonsFired25000Description" = "25,000 bomberos fotones";
+"PhotonsFired2500Description" = "2,500 bomberos fotones";
+"PhotonsFired250Description" = "250 bomberos fotones";
+"PhotonsFired25Description" = "25 bomberos fotones";
+"PowerUpsCollected3000Description" = "3,000 recogida de Poder especial";
+"PowerUpsCollected300Description" = "300 recogida de Poder especial";
+"PowerUpsCollected30Description" = "30 recogida de Poder especial";
+"PowerUpsCollected3Description" = "3 recogida de Poder especial";
+"PurchasedAllShipsDescription" = "Todos Los Buques";
+"ShieldDescription" = "Escudo";
+"SmartPhotonsDescription" = "Fotones inteligentes";
+"TwoWeaponsDescription" = "Dos armas";
+"purchasedBabenbergDescription" = "Baranda";
+"purchasedCaimanDescription" = "Monasterio";
+"purchasedDandoloDescription" = "Uribe";
+"purchasedEdinburghDescription" = "Prierto";
+"purchasedFlandreDescription" = "God\U00ednez";
+"purchasedGascogneDescription" = "De la Vega";
+"purchasedHabsburgDescription" = "Romero";
+
 /* No comment provided by engineer. */
 "Available Points" = "Puntos disponibles";
 

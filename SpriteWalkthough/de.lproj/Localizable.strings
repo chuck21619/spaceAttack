@@ -45,6 +45,58 @@
 
 
 
+//achievement descriptions
+"AllAchievementsDescription" = "All Legende";
+"AllUpgradesDescription" = "Alle Upgrades";
+"BiggerLaserDescription" = "Gr\U00f6\U00dferer Laser";
+"BulletsFired100000Description" = "Feuer 100.000 Kugeln";
+"BulletsFired10000Description" = "Feuer 10.000 Kugeln";
+"BulletsFired1000Description" = "Feuer 1.000 Kugeln";
+"BulletsFired100Description" = "Feuer 100 Kugeln";
+"ElectricityChainDescription" = "Stromkette";
+"ElectricityFired20000Description" = "Feuer 20.000 Strom";
+"ElectricityFired2000Description" = "Feuer 2.000 Strom";
+"ElectricityFired200Description" = "Feuer 200 Strom";
+"ElectricityFired20Description" = "Feuer 20 Strom";
+"EnemiesDestroyed50000Description" = "zerst\U00f6ren 50.000 Aliens";
+"EnemiesDestroyed5000Description" = "zerst\U00f6ren 5.000 Aliens";
+"EnemiesDestroyed500Description" = "zerst\U00f6ren 500 Aliens";
+"EnemiesDestroyed50Description" = "zerst\U00f6ren 50 Aliens";
+"EnergyBoosterDescription" = "Energie-Booster";
+"FourWeaponsDescription" = "Vier Waffen";
+"LasersFired15000Description" = "Feuer 15.000 Laser";
+"LasersFired1500Description" = "Feuer 1.500 Laser";
+"LasersFired150Description" = "Feuer 150 Laser";
+"LasersFired15Description" = "Feuer 15 Laser";
+"MachineGunFireRateDescription" = "Mehr Munition";
+"MaxLevelElectricalGeneratorDescription" = "Stromgenerator";
+"MaxLevelLaserCannonDescription" = "Laserkanone";
+"MaxLevelMachineGunDescription" = "Maschinengewehr";
+"MaxLevelPhotonCannonDescription" = "Photonenkanone";
+"PhotonsFired25000Description" = "Feuer 25.000 Photonen";
+"PhotonsFired2500Description" = "Feuer 2.500 Photonen";
+"PhotonsFired250Description" = "Feuer 250 Photonen";
+"PhotonsFired25Description" = "Feuer 25 Photonen";
+"PowerUpsCollected3000Description" = "Gesammelt 3.000 Aufr\U00fcsten";
+"PowerUpsCollected300Description" = "Gesammelt 300 Aufr\U00fcsten";
+"PowerUpsCollected30Description" = "Gesammelt 30 Aufr\U00fcsten";
+"PowerUpsCollected3Description" = "Gesammelt 3 Aufr\U00fcsten";
+"PurchasedAllShipsDescription" = "Alle Schiffe";
+"ShieldDescription" = "Schutzschild";
+"SmartPhotonsDescription" = "Intelligente Photonen";
+"TwoWeaponsDescription" = "Zwei Waffen";
+"purchasedBabenbergDescription" = "Bant";
+"purchasedCaimanDescription" = "Cobra";
+"purchasedDandoloDescription" = "Dessau";
+"purchasedEdinburghDescription" = "Egerland";
+"purchasedFlandreDescription" = "F\U00f6rde";
+"purchasedGascogneDescription" = "Gadebusch";
+"purchasedHabsburgDescription" = "H\U00e4her";
+
+
+
+
+
 /* No comment provided by engineer. */
 "Available Points" = "Verfügbare Punkte";
 

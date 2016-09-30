@@ -26,9 +26,6 @@
 {
     [super viewDidLoad];
     
-    [self showProgressHud:YES];
-    [self loadAchievementDescriptions];
-    
     _achievements = [NSMutableDictionary new];
     
     for ( GKAchievement * achievement in [AccountManager achievements] )
@@ -38,6 +35,8 @@
         [chievo setObject:@"" forKey:@"title"];
         [_achievements setValue:chievo forKey:achievement.identifier];
     }
+    
+    [self loadAchievementDescriptions];
     
     _sortedKeys = [NSMutableArray arrayWithArray:[_achievements allKeys]];
     [_sortedKeys sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
@@ -104,53 +103,18 @@
     self.constraintHeightPageControl.constant = width* 0.103125;
 }
 
-- (void) showProgressHud:(BOOL)show
-{
-    if ( show )
-    {
-        if ( ! _activityIndicatorBackground )
-        {
-            _activityIndicatorBackground = [[UIView alloc] initWithFrame:self.view.frame];
-            _activityIndicatorBackground.backgroundColor = [UIColor colorWithWhite:0 alpha:.75];
-        }
-        if ( ! _activityIndicator )
-        {
-            _activityIndicator = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeLineScale tintColor:[UIColor whiteColor] size:self.view.frame.size.width/6.4];
-            _activityIndicator.frame = CGRectMake(self.view.frame.size.width/2, self.view.frame.size.height/2, 0, 0);
-        }
-        
-        _activityIndicatorBackground.alpha = 0;
-        [_activityIndicatorBackground addSubview:_activityIndicator];
-        [self.view addSubview:_activityIndicatorBackground];
-        [_activityIndicator startAnimating];
-        [UIView animateWithDuration:.2 animations:^
-         {
-             _activityIndicatorBackground.alpha = 1;
-         }];
-    }
-    else
-    {
-        [UIView animateWithDuration:.2 animations:^
-         {
-             _activityIndicatorBackground.alpha = 0;
-         }
-                         completion:^(BOOL finished)
-         {
-             [_activityIndicator stopAnimating];
-         }];
-    }
-}
-
 - (void) loadAchievementDescriptions
 {
-    [GKAchievementDescription loadAchievementDescriptionsWithCompletionHandler:^(NSArray<GKAchievementDescription *> * _Nullable descriptions, NSError * _Nullable error)
+    NSArray * achievementKeys = [_achievements allKeys];
+    
+    for ( NSString * achievementKey in achievementKeys )
     {
-        for ( GKAchievementDescription * description in descriptions )
-            [[_achievements valueForKey:description.identifier] setValue:description.title forKey:@"title"];
-        
-        [self showProgressHud:NO];
-        [self refreshAchievementsView];
-    }];
+        GKAchievement * achievement = [[_achievements valueForKey:achievementKey] valueForKey:@"gkAchievement"];
+        NSString * achievementIdentifier = achievement.identifier;
+        NSString * localizeKey = [NSString stringWithFormat:@"%@Description", achievementIdentifier];
+        NSString * achievementDescription = NSLocalizedString(localizeKey, nil);
+        [[_achievements valueForKey:achievementKey] setValue:achievementDescription forKey:@"title"];
+    }
 }
 
 - (void) refreshAchievementsView

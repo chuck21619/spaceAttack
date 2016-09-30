@@ -44,6 +44,55 @@
 "Error" = "错误";
 
 
+//achievement descriptions
+"AllAchievementsDescription" = "\U7a7a\U95f4\U4f20\U5947";
+"AllUpgradesDescription" = "\U6240\U6709\U5347\U7ea7";
+"BiggerLaserDescription" = "\U66f4\U5927\U7684\U6fc0\U5149";
+"BulletsFired100000Description" = "\U706b\U707e100,000\U53d1\U5b50\U5f39";
+"BulletsFired10000Description" = "\U706b\U707e10,000\U53d1\U5b50\U5f39";
+"BulletsFired1000Description" = "\U706b\U707e1,000\U53d1\U5b50\U5f39";
+"BulletsFired100Description" = "\U706b\U707e100\U53d1\U5b50\U5f39";
+"ElectricityChainDescription" = "\U7535\U94fe";
+"ElectricityFired20000Description" = "\U706b\U753520,000";
+"ElectricityFired2000Description" = "\U706b\U75352,000";
+"ElectricityFired200Description" = "\U706b\U7535200";
+"ElectricityFired20Description" = "\U706b\U753520";
+"EnemiesDestroyed50000Description" = "\U6467\U6bc150,000\U5916\U661f\U4eba";
+"EnemiesDestroyed5000Description" = "\U6467\U6bc15,000\U5916\U661f\U4eba";
+"EnemiesDestroyed500Description" = "\U6467\U6bc1500\U5916\U661f\U4eba";
+"EnemiesDestroyed50Description" = "\U6467\U6bc150\U5916\U661f\U4eba";
+"EnergyBoosterDescription" = "\U80fd\U91cf\U589e\U5f3a\U5668";
+"FourWeaponsDescription" = "\U4e24\U4e2a\U6b66\U5668";
+"LasersFired15000Description" = "\U6d88\U963215,000\U6fc0\U5149\U5668";
+"LasersFired1500Description" = "\U6d88\U96321,500\U6fc0\U5149\U5668";
+"LasersFired150Description" = "\U6d88\U9632150\U6fc0\U5149\U5668";
+"LasersFired15Description" = "\U6d88\U963215\U6fc0\U5149\U5668";
+"MachineGunFireRateDescription" = "\U66f4\U591a\U5b50\U5f39";
+"MaxLevelElectricalGeneratorDescription" = "\U53d1\U7535\U673a";
+"MaxLevelLaserCannonDescription" = "\U6fc0\U5149\U70ae";
+"MaxLevelMachineGunDescription" = "\U673a\U67aa";
+"MaxLevelPhotonCannonDescription" = "\U5149\U5b50\U70ae";
+"PhotonsFired25000Description" = "\U6d88\U963225,000\U5149\U5b50";
+"PhotonsFired2500Description" = "\U6d88\U96322,500\U5149\U5b50";
+"PhotonsFired250Description" = "\U6d88\U9632250\U5149\U5b50";
+"PhotonsFired25Description" = "\U6d88\U963225\U5149\U5b50";
+"PowerUpsCollected3000Description" = "\U6536\U96c63,000\U52a0\U901f";
+"PowerUpsCollected300Description" = "\U6536\U96c6300\U52a0\U901f";
+"PowerUpsCollected30Description" = "\U6536\U96c630\U52a0\U901f";
+"PowerUpsCollected3Description" = "\U6536\U96c63\U52a0\U901f";
+"PurchasedAllShipsDescription" = "\U6240\U6709\U8239\U8236";
+"ShieldDescription" = "\U9632\U5fa1\U76fe";
+"SmartPhotonsDescription" = "\U667a\U80fd\U5149\U5b50";
+"TwoWeaponsDescription" = "\U4e24\U4e2a\U6b66\U5668";
+"purchasedBabenbergDescription" = "\U8607\U6fb3";
+"purchasedCaimanDescription" = "\U5de6\U71df";
+"purchasedDandoloDescription" = "\U99ac\U516c";
+"purchasedEdinburghDescription" = "\U912d\U548c";
+"purchasedFlandreDescription" = "\U73ed\U8d85";
+"purchasedGascogneDescription" = "\U7530\U55ae";
+"purchasedHabsburgDescription" = "\U5b50\U5100";
+
+
 
 /* No comment provided by engineer. */
 "Available Points" = "可用积分";
