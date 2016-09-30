@@ -115,12 +115,12 @@
         
         // detail label
         UILabel *tDetailLabel = [[UILabel alloc] initWithFrame:r2];
-        tDetailLabel.textAlignment = NSTextAlignmentCenter;
+        tDetailLabel.textAlignment = NSTextAlignmentLeft;
         tDetailLabel.adjustsFontSizeToFitWidth = YES;
         tDetailLabel.minimumScaleFactor = 10.0f/15.0f;
         tDetailLabel.backgroundColor = [UIColor clearColor];
         tDetailLabel.textColor = [UIColor whiteColor];
-        tDetailLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:11.0f];
+        tDetailLabel.font = [UIFont fontWithName:NSLocalizedString(@"font3", nil) size:14];
         self.detailLabel = tDetailLabel;
 
         if (self.achievement)

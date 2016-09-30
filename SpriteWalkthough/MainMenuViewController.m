@@ -196,8 +196,8 @@
 #pragma mark - buttons
 - (IBAction)playAction:(id)sender
 {
-    [[GKAchievementHandler defaultHandler] setImage:[UIImage imageNamed:@"BulletsFired100.png"]];
-    [[GKAchievementHandler defaultHandler] notifyAchievementTitle:@"Fire 100 Bullets" andMessage:nil];
+    [[GKAchievementHandler defaultHandler] setImage:[UIImage imageNamed:@"BulletsFired10000.png"]];
+    [[GKAchievementHandler defaultHandler] notifyAchievementTitle:@"Fire 10,000 Bullets" andMessage:@"Achievement Earned!"];
 
     return;
     
