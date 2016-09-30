@@ -64,7 +64,7 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     SKEmitterNode * crumble = [NSKeyedUnarchiver unarchiveObjectWithFile:crumblePath];
     crumble.numParticlesToEmit = self.size.width / 5;
     crumble.name = @"crumble";
-    crumble.particleSpeed = (self.physicsBody.velocity.dx + self.physicsBody.velocity.dy) * .4;
+    crumble.particleSpeed = (self.physicsBody.velocity.dx + self.physicsBody.velocity.dy) * .01 * crumble.particleSpeed;
     crumble.position = self.position;
     
     [[self scene] addChild:crumble];

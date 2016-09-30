@@ -903,29 +903,33 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     if ( [[self.scoreMultiplierLabel.text stringByReplacingOccurrencesOfString:@"x" withString:@""] intValue] != self.scoreMultiplier )
         [self updateScoreMultiplierLabel];
     
-    if ( !self.showingTooltip && [AccountManager shouldShowTooltip:kTooltipTypeScoringPoints] )
+    if ( self.mySpaceship.armor && !self.showingTooltip && [AccountManager shouldShowTooltip:kTooltipTypeScoringPoints] )
     {
         self.showingTooltip = YES;
-        [self pauseGame];
-        NSString * alertTitle = NSLocalizedString(@"Ermahgerd!", nil);
-        NSString * alertMessage = NSLocalizedString(@"You just blew up an alien spaceship! The more stuff you blow up, The more points you score!", nil);
-        SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:alertTitle message:alertMessage cancelButtonTitle:NSLocalizedString(@"Disable Tips", nil) otherButtonTitle:NSLocalizedString(@"Got It", nil)];
-        unlockAlert.customFrame = CGRectMake(0, (self.size.height+self.view.frame.origin.y) - 230, self.size.width, 150);
-        [unlockAlert show];
-        SKSpriteNode * tooltipArrow = [self tooltipArrowAt:self.pointsScoredLabel];
-        unlockAlert.otherButtonAction = ^
+        //the delay is so the pause occurs while the explosion is on screen
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, .15 * NSEC_PER_SEC), dispatch_get_main_queue(), ^
         {
-            [self removeTooltipArrow:tooltipArrow];
-            [self resumeGame];
-            self.showingTooltip = NO;
-        };
-        unlockAlert.cancelButtonAction = ^
-        {
-            [self removeTooltipArrow:tooltipArrow];
-            [AccountManager disableTips];
-            [self resumeGame];
-            self.showingTooltip = NO;
-        };
+            [self pauseGame];
+            NSString * alertTitle = NSLocalizedString(@"Ermahgerd!", nil);
+            NSString * alertMessage = NSLocalizedString(@"You just blew up an alien spaceship! The more stuff you blow up, The more points you score!", nil);
+            SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:alertTitle message:alertMessage cancelButtonTitle:NSLocalizedString(@"Disable Tips", nil) otherButtonTitle:NSLocalizedString(@"Got It", nil)];
+            unlockAlert.customFrame = CGRectMake(0, (self.size.height+self.view.frame.origin.y) - 230, self.size.width, 150);
+            [unlockAlert show];
+            SKSpriteNode * tooltipArrow = [self tooltipArrowAt:self.pointsScoredLabel];
+            unlockAlert.otherButtonAction = ^
+            {
+                [self removeTooltipArrow:tooltipArrow];
+                [self resumeGame];
+                self.showingTooltip = NO;
+            };
+            unlockAlert.cancelButtonAction = ^
+            {
+                [self removeTooltipArrow:tooltipArrow];
+                [AccountManager disableTips];
+                [self resumeGame];
+                self.showingTooltip = NO;
+            };
+        });
     }
 }
 
@@ -1030,56 +1034,60 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     if ( !self.showingTooltip && [AccountManager shouldShowTooltip:kTooltipTypeAvoidObstacles ] )
     {
         self.showingTooltip = YES;
-        if ( spaceship.armor != 0 )
-            [self pauseGame];
-        
-        SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:@"" message:@"" cancelButtonTitle:NSLocalizedString(@"Disable Tips", nil) otherButtonTitle:NSLocalizedString(@"Got It", nil)];
-        
-        UIView * alertContentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.size.width, 140)];
-        UILabel * alertTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 15, self.size.width, 20)];
-        alertTitleLabel.textColor = _SAPink;
-        [alertTitleLabel setFont:[UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.size.width*0.05625]];
-        [alertTitleLabel setTextAlignment:NSTextAlignmentCenter];
-        alertTitleLabel.text = NSLocalizedString(@"Ouch!", nil);
-        [alertContentView addSubview:alertTitleLabel];
-        UILabel * alertMessageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 40, self.size.width, 20)];
-        alertMessageLabel.textColor = _SAPink;
-        [alertMessageLabel setFont:[UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.size.width*0.040625]];
-        [alertMessageLabel setTextAlignment:NSTextAlignmentCenter];
-        alertMessageLabel.text = NSLocalizedString(@"Try to avoid objects like these:", nil);
-        [alertContentView addSubview:alertMessageLabel];
+        //the delay is so the pause occurs while the explosion is on screen
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, .15 * NSEC_PER_SEC), dispatch_get_main_queue(), ^
+        {
+            if ( spaceship.armor != 0 )
+                [self pauseGame];
+            
+            SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:@"" message:@"" cancelButtonTitle:NSLocalizedString(@"Disable Tips", nil) otherButtonTitle:NSLocalizedString(@"Got It", nil)];
+            
+            UIView * alertContentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.size.width, 140)];
+            UILabel * alertTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 15, self.size.width, 20)];
+            alertTitleLabel.textColor = _SAPink;
+            [alertTitleLabel setFont:[UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.size.width*0.05625]];
+            [alertTitleLabel setTextAlignment:NSTextAlignmentCenter];
+            alertTitleLabel.text = NSLocalizedString(@"Ouch!", nil);
+            [alertContentView addSubview:alertTitleLabel];
+            UILabel * alertMessageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 40, self.size.width, 20)];
+            alertMessageLabel.textColor = _SAPink;
+            [alertMessageLabel setFont:[UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.size.width*0.040625]];
+            [alertMessageLabel setTextAlignment:NSTextAlignmentCenter];
+            alertMessageLabel.text = NSLocalizedString(@"Try to avoid objects like these:", nil);
+            [alertContentView addSubview:alertMessageLabel];
 
-        UIImageView * obstacle1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"asteroidImage.png"]];
-        obstacle1.frame = CGRectMake((((self.size.width/4) * 1)-30/2)-(self.size.width/8), 92 - 30/2,
-                                     30, 30);
-        [alertContentView addSubview:obstacle1];
-        UIImageView * obstacle2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"enemyBasic.png"]];
-        obstacle2.frame = CGRectMake((((self.size.width/4) * 2)-50/2)-(self.size.width/8), 92 - 50/2,
-                                     50, 50);
-        [alertContentView addSubview:obstacle2];
-        UIImageView * obstacle3 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"enemyFast.png"]];
-        obstacle3.frame = CGRectMake((((self.size.width/4) * 3)-65/2)-(self.size.width/8), 92 - 65/2,
-                                     65, 65);
-        [alertContentView addSubview:obstacle3];
-        UIImageView * obstacle4 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"enemyBig.png"]];
-        obstacle4.frame = CGRectMake((((self.size.width/4) * 4)-50/2)-(self.size.width/8), 92 - 50/2,
-                                     50, 50);
-        [alertContentView addSubview:obstacle4];
-        
-        unlockAlert.contentView = alertContentView;
-        unlockAlert.customFrame = CGRectMake(0, 0, unlockAlert.frame.size.width, unlockAlert.frame.size.height);
-        [unlockAlert show];
-        unlockAlert.otherButtonAction = ^
-        {
-            [self resumeGame];
-            self.showingTooltip = NO;
-        };
-        unlockAlert.cancelButtonAction = ^
-        {
-            [AccountManager disableTips];
-            [self resumeGame];
-            self.showingTooltip = NO;
-        };
+            UIImageView * obstacle1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"asteroidImage.png"]];
+            obstacle1.frame = CGRectMake((((self.size.width/4) * 1)-30/2)-(self.size.width/8), 92 - 30/2,
+                                         30, 30);
+            [alertContentView addSubview:obstacle1];
+            UIImageView * obstacle2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"enemyBasic.png"]];
+            obstacle2.frame = CGRectMake((((self.size.width/4) * 2)-50/2)-(self.size.width/8), 92 - 50/2,
+                                         50, 50);
+            [alertContentView addSubview:obstacle2];
+            UIImageView * obstacle3 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"enemyFast.png"]];
+            obstacle3.frame = CGRectMake((((self.size.width/4) * 3)-65/2)-(self.size.width/8), 92 - 65/2,
+                                         65, 65);
+            [alertContentView addSubview:obstacle3];
+            UIImageView * obstacle4 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"enemyBig.png"]];
+            obstacle4.frame = CGRectMake((((self.size.width/4) * 4)-50/2)-(self.size.width/8), 92 - 50/2,
+                                         50, 50);
+            [alertContentView addSubview:obstacle4];
+            
+            unlockAlert.contentView = alertContentView;
+            unlockAlert.customFrame = CGRectMake(0, 0, unlockAlert.frame.size.width, unlockAlert.frame.size.height);
+            [unlockAlert show];
+            unlockAlert.otherButtonAction = ^
+            {
+                [self resumeGame];
+                self.showingTooltip = NO;
+            };
+            unlockAlert.cancelButtonAction = ^
+            {
+                [AccountManager disableTips];
+                [self resumeGame];
+                self.showingTooltip = NO;
+            };
+        });
     }
 }
 
