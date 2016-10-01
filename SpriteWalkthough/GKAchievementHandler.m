@@ -71,8 +71,10 @@ static GKAchievementHandler *defaultHandler = nil;
 
 - (void)notifyAchievement:(GKAchievementDescription *)achievement
 {
+    float width = [UIScreen mainScreen].bounds.size.width;
+    
     GKAchievementNotification *notification = [[GKAchievementNotification alloc] initWithAchievementDescription:achievement];
-    notification.frame = kGKAchievementFrameStart;
+    notification.frame = CGRectMake(0, width*-0.176, width, width*0.1733);
     notification.handlerDelegate = self;
 
     [_queue addObject:notification];
@@ -84,8 +86,10 @@ static GKAchievementHandler *defaultHandler = nil;
 
 - (void)notifyAchievementTitle:(NSString *)title andMessage:(NSString *)message
 {
+    float width = [UIScreen mainScreen].bounds.size.width;
+    
     GKAchievementNotification *notification = [[GKAchievementNotification alloc] initWithTitle:title andMessage:message];
-    notification.frame = kGKAchievementFrameStart;
+    notification.frame = CGRectMake(0, width*-0.176, width, width*0.1733);
     notification.handlerDelegate = self;
 
     [_queue addObject:notification];

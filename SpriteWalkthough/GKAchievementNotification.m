@@ -69,7 +69,9 @@
 
 - (id)initWithAchievementDescription:(GKAchievementDescription *)achievement
 {
-    CGRect frame = kGKAchievementDefaultSize;
+    float width = [UIScreen mainScreen].bounds.size.width;
+    
+    CGRect frame = CGRectMake(0, 0, width, width*0.1733);
     self.achievement = achievement;
     if ((self = [self initWithFrame:frame]))
     {
@@ -83,7 +85,7 @@
     self.message = message;
     
     float width = [UIScreen mainScreen].bounds.size.width;
-    CGRect SAFrame = CGRectMake(0, 0, width, 65);
+    CGRect SAFrame = CGRectMake(0, 0, width, width*0.1733);
     
     if ((self = [self initWithFrame:SAFrame]))
     {
@@ -105,15 +107,15 @@
         self.opaque = NO;
         [self addSubview:self.background];
 
-        CGRect r1 = kGKAchievementText1;
-        CGRect r2 = kGKAchievementText2;
+        CGRect r1 = CGRectMake(0, 0, 0, 0);
+        CGRect r2 = CGRectMake(0, 0, 0, 0);
 
         // create the text label
         UILabel *tTextLabel = [[UILabel alloc] initWithFrame:r1];
         tTextLabel.textAlignment = NSTextAlignmentLeft;
         tTextLabel.backgroundColor = [UIColor clearColor];
         tTextLabel.textColor = [UIColor whiteColor];
-        tTextLabel.font = [UIFont fontWithName:NSLocalizedString(@"font3", nil) size:20];
+        tTextLabel.font = [UIFont fontWithName:NSLocalizedString(@"font3", nil) size:0.053*frame.size.width];
         tTextLabel.text = NSLocalizedString(@"Achievement Unlocked", @"Achievemnt Unlocked Message");
         self.textLabel = tTextLabel;
         
@@ -124,7 +126,7 @@
         tDetailLabel.minimumScaleFactor = 10.0f/15.0f;
         tDetailLabel.backgroundColor = [UIColor clearColor];
         tDetailLabel.textColor = [UIColor whiteColor];
-        tDetailLabel.font = [UIFont fontWithName:NSLocalizedString(@"font3", nil) size:14];
+        tDetailLabel.font = [UIFont fontWithName:NSLocalizedString(@"font3", nil) size:0.0373*frame.size.width];
         self.detailLabel = tDetailLabel;
 
         if (self.achievement)
@@ -152,8 +154,6 @@
 
 - (void)dealloc
 {
-    NSLog(@"dealloc: GKAchievementNotification");
-    
     self.handlerDelegate = nil;
     self.logo = nil;
 }
@@ -163,52 +163,46 @@
 
 - (void)animateIn
 {
+    float width = [UIScreen mainScreen].bounds.size.width;
+    
     [self delegateCallback:@selector(willShowAchievementNotification:) withObject:self];
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:kGKAchievementAnimeTime];
     [UIView setAnimationDelegate:self];
     [UIView setAnimationBeginsFromCurrentState:YES];
     [UIView setAnimationDidStopSelector:@selector(animationInDidStop:finished:context:)];
-    self.frame = kGKAchievementFrameEnd;
+    self.frame = CGRectMake(0, 0, width, width*0.1733);
     [UIView commitAnimations];
 }
 
 - (void)animateOut
 {
+    float width = [UIScreen mainScreen].bounds.size.width;
+    
     [self delegateCallback:@selector(willHideAchievementNotification:) withObject:self];
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:kGKAchievementAnimeTime];
     [UIView setAnimationDelegate:self];
     [UIView setAnimationBeginsFromCurrentState:YES];
     [UIView setAnimationDidStopSelector:@selector(animationOutDidStop:finished:context:)];
-    self.frame = kGKAchievementFrameStart;
+    self.frame = CGRectMake(0, width*-0.176, width, width*0.1733);
     [UIView commitAnimations];
 }
 
 - (void)setImage:(UIImage *)image
 {
-    if (image)
+    float width = [UIScreen mainScreen].bounds.size.width;
+    
+    if (!self.logo)
     {
-        if (!self.logo)
-        {
-            UIImageView *tLogo = [[UIImageView alloc] initWithFrame:CGRectMake(45, 5, 55, 55)];
-            tLogo.contentMode = UIViewContentModeScaleAspectFit;
-            self.logo = tLogo;
-            [self addSubview:self.logo];
-        }
-        self.logo.image = image;
-        self.textLabel.frame = kGKAchievementText1WLogo;
-        self.detailLabel.frame = kGKAchievementText2WLogo;
+        UIImageView *tLogo = [[UIImageView alloc] initWithFrame:CGRectMake(width*0.12, width*0.0133, width*0.1467, width*0.1467)];
+        tLogo.contentMode = UIViewContentModeScaleAspectFit;
+        self.logo = tLogo;
+        [self addSubview:self.logo];
     }
-    else
-    {
-        if (self.logo)
-        {
-            [self.logo removeFromSuperview];
-        }
-        self.textLabel.frame = kGKAchievementText1;
-        self.detailLabel.frame = kGKAchievementText2;
-    }
+    self.logo.image = image;
+    self.textLabel.frame = CGRectMake(width*0.328, width*0.05067, width*0.61067, width*0.05867);
+    self.detailLabel.frame = CGRectMake(width*0.328, width*0.096, width*0.6106666667, width*0.05867);
 }
 
 @end
