@@ -176,12 +176,24 @@ static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
     SpaceBackground * spaceBackground;
     
     float posititionDifference = 0;
+    float timeFactor = 1;
     if ( ![self.scene childNodeWithName:@"spaceBackground"] )
+    {
         posititionDifference = self.scene.size.height;
+        timeFactor = .825;
+    }
     
     SKTexture * randomSpaceBackground = _nextBackground;
     float resizeFactor = self.scene.size.width / randomSpaceBackground.size.width;
     spaceBackground = [SpaceBackground spriteNodeWithTexture:randomSpaceBackground size:CGSizeMake(randomSpaceBackground.size.width*resizeFactor, randomSpaceBackground.size.height*resizeFactor)];
+    
+    //debug border
+//        SKShapeNode *shape = [SKShapeNode node];
+//        shape.zPosition = 100;
+//        shape.path = CGPathCreateWithRoundedRect(spaceBackground.frame, 2, 2, nil);
+//        shape.strokeColor = [SKColor colorWithRed:1.0 green:1 blue:1 alpha:1];
+//        shape.lineWidth = 3.0;
+//        [spaceBackground addChild:shape];
     
     spaceBackground.name = @"spaceBackground";
     spaceBackground.zPosition = -100;
@@ -193,7 +205,7 @@ static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
     int randomXcoord = arc4random_uniform(difference) - (spaceBackground.size.width/2 - self.scene.size.width);
 
     [spaceBackground setPosition:CGPointMake(randomXcoord, yCoord)];
-    SKAction * moveDown = [SKAction moveTo:CGPointMake(spaceBackground.position.x, -spaceBackground.size.height) duration:300];
+    SKAction * moveDown = [SKAction moveTo:CGPointMake(spaceBackground.position.x, -spaceBackground.size.height) duration:30*timeFactor];
     [spaceBackground runAction:moveDown completion:^
     {
         [spaceBackground removeFromParent];
