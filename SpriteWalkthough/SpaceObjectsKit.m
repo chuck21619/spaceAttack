@@ -205,7 +205,7 @@ static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
     int randomXcoord = arc4random_uniform(difference) - (spaceBackground.size.width/2 - self.scene.size.width);
 
     [spaceBackground setPosition:CGPointMake(randomXcoord, yCoord)];
-    SKAction * moveDown = [SKAction moveTo:CGPointMake(spaceBackground.position.x, -spaceBackground.size.height) duration:30*timeFactor];
+    SKAction * moveDown = [SKAction moveTo:CGPointMake(spaceBackground.position.x, -spaceBackground.size.height) duration:300*timeFactor];
     [spaceBackground runAction:moveDown completion:^
     {
         [spaceBackground removeFromParent];

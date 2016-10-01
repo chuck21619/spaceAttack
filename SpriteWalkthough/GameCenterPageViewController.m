@@ -8,6 +8,7 @@
 
 #import "GameCenterPageViewController.h"
 #import "SpriteAppDelegate.h"
+#import "AudioManager.h"
 
 @implementation GameCenterPageViewController
 {
@@ -60,6 +61,7 @@
 {
     if ( self.view.userInteractionEnabled ) //if user spams page turns, i cant keep up
     {
+        [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuPageTurn];
         [self setViewControllers:@[[_viewControllers firstObject]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
         
         self.view.userInteractionEnabled = NO;
@@ -74,6 +76,7 @@
 {
     if ( self.view.userInteractionEnabled ) //if user spams page turns, i cant keep up
     {
+        [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuPageTurn];
         [self setViewControllers:@[[_viewControllers lastObject]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
     
         self.view.userInteractionEnabled = NO;
@@ -101,6 +104,7 @@
 -(UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
     self.view.userInteractionEnabled = NO; //if user spams page turns, i cant keep up
+    [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuPageTurn];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, .36 * NSEC_PER_SEC), dispatch_get_main_queue(), ^
     {
         self.view.userInteractionEnabled = YES;

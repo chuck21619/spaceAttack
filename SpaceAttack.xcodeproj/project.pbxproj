@@ -473,6 +473,7 @@
 		A3D1FC031B7476C90018E247 /* Boss1.png in Resources */ = {isa = PBXBuildFile; fileRef = A3D1FC021B7476C90018E247 /* Boss1.png */; };
 		A3D2C9CB1B79940200687F98 /* PowerUp.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D2C9CA1B79940200687F98 /* PowerUp.m */; };
 		A3D2C9CF1B7994E100687F98 /* EnumTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D2C9CE1B7994E100687F98 /* EnumTypes.m */; };
+		A3D8015C1DA0580E00F9935A /* pageTurn.wav in Resources */ = {isa = PBXBuildFile; fileRef = A3D8015B1DA0580E00F9935A /* pageTurn.wav */; };
 		A3DB9EED1D618E61006A8AEB /* GlowingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A3DB9EEC1D618E61006A8AEB /* GlowingButton.m */; };
 		A3DB9EEF1D61B71F006A8AEB /* Abdul_Kadir.png in Resources */ = {isa = PBXBuildFile; fileRef = A3DB9EEE1D61B71F006A8AEB /* Abdul_Kadir.png */; };
 		A3DB9EF11D61B74F006A8AEB /* Flandre.png in Resources */ = {isa = PBXBuildFile; fileRef = A3DB9EF01D61B74F006A8AEB /* Flandre.png */; };
@@ -1198,6 +1199,7 @@
 		A3D2C9CD1B7994E100687F98 /* EnumTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnumTypes.h; sourceTree = "<group>"; };
 		A3D2C9CE1B7994E100687F98 /* EnumTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnumTypes.m; sourceTree = "<group>"; };
 		A3D7F94F1C5DDCCE007E0BE6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		A3D8015B1DA0580E00F9935A /* pageTurn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pageTurn.wav; sourceTree = "<group>"; };
 		A3DB9EEB1D618E61006A8AEB /* GlowingButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlowingButton.h; sourceTree = "<group>"; };
 		A3DB9EEC1D618E61006A8AEB /* GlowingButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlowingButton.m; sourceTree = "<group>"; };
 		A3DB9EEE1D61B71F006A8AEB /* Abdul_Kadir.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Abdul_Kadir.png; sourceTree = "<group>"; };
@@ -2327,6 +2329,7 @@
 				A35816AD1D3357CD0028C019 /* engage.wav */,
 				A35816AE1D3357CD0028C019 /* didUnlock.wav */,
 				A35816AF1D3357CD0028C019 /* selectShip.wav */,
+				A3D8015B1DA0580E00F9935A /* pageTurn.wav */,
 			);
 			name = menu;
 			sourceTree = "<group>";
@@ -3336,6 +3339,7 @@
 				A3E009B11D72C5D800C340AA /* fourWeaponsUpgrade.png in Resources */,
 				A33B13971D97D4B7003EDAF5 /* purchasedCaiman.png in Resources */,
 				A3B7FE761D7C824200DD6528 /* CaimanBulPho.png in Resources */,
+				A3D8015C1DA0580E00F9935A /* pageTurn.wav in Resources */,
 				A35816BD1D336EDF0028C019 /* machineGunLevel3Upgraded.wav in Resources */,
 				A301128B1D5FFF5700E133F2 /* Lock.png in Resources */,
 				A3B7FEB41D7C831300DD6528 /* GascogneBulEle.png in Resources */,

@@ -12,6 +12,7 @@
 @interface AchievementsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
+@property (weak, nonatomic) IBOutlet UILabel *achievementsTitleLabel;
 
 @property (weak, nonatomic) IBOutlet UITableView *achievementTableView;
 @property (weak, nonatomic) IBOutlet UIView *tableViewContainerForGradientMask;

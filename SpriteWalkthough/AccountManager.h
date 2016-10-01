@@ -51,6 +51,7 @@
 #pragma mark tooltips
 + (BOOL) shouldShowTooltip:(TooltipType)tooltipType;
 + (void) disableTips;
++ (void) resetTooltips;
 
 #pragma mark achievements
 @property (nonatomic) NSArray * cachedAchievements;

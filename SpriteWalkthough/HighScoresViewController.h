@@ -12,6 +12,7 @@
 @interface HighScoresViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
+@property (weak, nonatomic) IBOutlet UILabel *highScoresTitleLabel;
 @property (weak, nonatomic) IBOutlet UITableView *highScoresTableView;
 @property (weak, nonatomic) IBOutlet UIView *tableViewContainerForGradientMask;
 @property (weak, nonatomic) IBOutlet UILabel *userRankLabel;

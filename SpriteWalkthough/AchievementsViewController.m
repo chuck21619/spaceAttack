@@ -10,6 +10,7 @@
 #import "AccountManager.h"
 #import "AchievementCell.h"
 #import "DGActivityIndicatorView.h"
+#import "AudioManager.h"
 
 @implementation AchievementsViewController
 {
@@ -42,6 +43,8 @@
     [_sortedKeys sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
     
     self.backButton.titleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.backButton.titleLabel.font.pointSize];
+    
+    self.achievementsTitleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font3", nil) size:self.achievementsTitleLabel.font.pointSize];
     
     [self adjustForDeviceSize];
     [self.view layoutIfNeeded];
@@ -101,6 +104,10 @@
     self.constraintBottomTableContainer.constant = width* 0.090625;
     
     self.constraintHeightPageControl.constant = width* 0.103125;
+    
+    
+    self.achievementsTitleLabel.font = [self.achievementsTitleLabel.font fontWithSize:width*0.08125];
+    [self.backButton.titleLabel setFont:[self.backButton.titleLabel.font fontWithSize:width*.044]];
 }
 
 - (void) loadAchievementDescriptions
@@ -124,6 +131,7 @@
 
 - (IBAction)backAction:(id)sender
 {
+    [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuBackButton];
     [UIView animateWithDuration:.2 animations:^
     {
         for ( UIView * subview in [self.view subviews] )

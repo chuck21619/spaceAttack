@@ -473,6 +473,11 @@ static AccountManager * sharedAccountManager = nil;
     [sharedAccountManager.userDefaults setValue:tooltipsShown forKey:@"tooltipsShown"];
 }
 
++ (void) resetTooltips
+{
+    [sharedAccountManager.userDefaults setValue:@[] forKey:@"tooltipsShown"];
+}
+
 #pragma mark - game center
 #pragma mark achievements
 + (NSArray *) achievementsCompleted

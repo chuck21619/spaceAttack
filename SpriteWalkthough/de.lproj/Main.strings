@@ -44,6 +44,8 @@
 "H2D-hB-Sdw.text" = "Steuerung";
 //help
 "wMI-5d-o5G.normalTitle" = "Hilfe";
+//reset tutorial
+"Lc4-J5-7kD.normalTitle" = "Reset-Tutorial";
 
 //---end game screen
 //restart

@@ -112,6 +112,8 @@
 
         // create the text label
         UILabel *tTextLabel = [[UILabel alloc] initWithFrame:r1];
+        tTextLabel.adjustsFontSizeToFitWidth = YES;
+        tTextLabel.minimumScaleFactor = .5;
         tTextLabel.textAlignment = NSTextAlignmentLeft;
         tTextLabel.backgroundColor = [UIColor clearColor];
         tTextLabel.textColor = [UIColor whiteColor];

@@ -12,6 +12,7 @@
 #import <GameKit/GameKit.h>
 #import "HighScoreCell.h"
 #import "SAAlertView.h"
+#import "AudioManager.h"
 
 @implementation HighScoresViewController
 {
@@ -39,6 +40,7 @@
     [self loadLeaderboard];
     
     self.backButton.titleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.backButton.titleLabel.font.pointSize];
+    self.highScoresTitleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font3", nil) size:self.highScoresTitleLabel.font.pointSize];
     
     [self adjustForDeviceSize];
     [self.view layoutIfNeeded];
@@ -88,6 +90,8 @@
     self.userScoreLabel.font = [self.userScoreLabel.font fontWithSize:width*0.05625];
     self.userNameLabel.font = [self.userNameLabel.font fontWithSize:width*0.075];
     self.userRankLabel.font = [self.userRankLabel.font fontWithSize:width*0.15625];
+    self.highScoresTitleLabel.font = [self.highScoresTitleLabel.font fontWithSize:width*0.0875];
+    [self.backButton.titleLabel setFont:[self.backButton.titleLabel.font fontWithSize:width*.044]];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -209,6 +213,7 @@
 
 - (IBAction)backAction:(id)sender
 {
+    [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuBackButton];
     [UIView animateWithDuration:.2 animations:^
     {
         for ( UIView * subview in [self.view subviews] )

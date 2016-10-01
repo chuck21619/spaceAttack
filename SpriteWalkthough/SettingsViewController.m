@@ -25,12 +25,17 @@
     self.vibrateLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.vibrateLabel.font.pointSize];
     self.controlsLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.controlsLabel.font.pointSize];
     self.controlsButton.titleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.controlsButton.titleLabel.font.pointSize];
+    self.resetTutorialButton.titleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.resetTutorialButton.titleLabel.font.pointSize];
     self.helpButton.titleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.helpButton.titleLabel.font.pointSize];
     
     
     self.controlsButton.titleLabel.numberOfLines = 1;
     self.controlsButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     self.controlsButton.titleLabel.lineBreakMode = NSLineBreakByClipping;
+    
+    self.resetTutorialButton.titleLabel.numberOfLines = 1;
+    self.resetTutorialButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    self.resetTutorialButton.titleLabel.lineBreakMode = NSLineBreakByClipping;
     
     [self adjustForDeviceSize];
     
@@ -40,6 +45,7 @@
     [_AppDelegate addGlowToLayer:self.vibrateLabel.layer withColor:self.vibrateLabel.textColor.CGColor];
     [_AppDelegate addGlowToLayer:self.controlsLabel.layer withColor:self.controlsLabel.textColor.CGColor];
     [_AppDelegate addGlowToLayer:self.controlsButton.layer withColor:self.controlsButton.currentTitleColor.CGColor];
+    [_AppDelegate addGlowToLayer:self.resetTutorialButton.layer withColor:self.resetTutorialButton.currentTitleColor.CGColor];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -144,6 +150,7 @@
 #pragma mark - controls
 - (IBAction)controlsAction:(id)sender
 {
+    [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuUnlock];
     [[AccountManager sharedInstance] setTouchControls:![[AccountManager sharedInstance] touchControls]];
     [self updateControlsButton];
 }
@@ -154,6 +161,17 @@
         [self.controlsButton setTitle:NSLocalizedString(@"Touch", nil) forState:UIControlStateNormal];
     else
         [self.controlsButton setTitle:NSLocalizedString(@"Tilt Screen", nil) forState:UIControlStateNormal];
+}
+
+#pragma mark - reset tutorial
+- (IBAction)resetTutorialAction:(id)sender
+{
+    [self.resetTutorialButton setTitle:NSLocalizedString(@"Tutorial Reset!", nil) forState:UIControlStateNormal];
+    [self.resetTutorialButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_AppDelegate addGlowToLayer:self.resetTutorialButton.layer withColor:self.resetTutorialButton.currentTitleColor.CGColor];
+    [self.resetTutorialButton setEnabled:NO];
+    [[AudioManager sharedInstance] playSoundEffect:kSoundEffectToolTip];
+    [AccountManager resetTooltips];
 }
 
 #pragma mark - misc.
@@ -189,13 +207,14 @@
     [self.helpButton.titleLabel setFont:[self.helpButton.titleLabel.font fontWithSize:width*.056]];
     [self.controlsLabel setFont:[self.controlsLabel.font fontWithSize:width*.056]];
     [self.controlsButton.titleLabel setFont:[self.controlsButton.titleLabel.font fontWithSize:width*0.04375]];
+    [self.resetTutorialButton.titleLabel setFont:[self.resetTutorialButton.titleLabel.font fontWithSize:width*0.046875]];
     
     self.constraintTrailingBack.constant = width*.669;
     self.constraintLeadingSettings.constant = width*.063;
     self.constraintTrailingSettings.constant = width*.063;
     
     self.constraintLeadingSFX.constant = width*.116;
-    self.constraintTopSFX.constant = width*.296;
+    self.constraintTopSFX.constant = width*0.203125;
     self.constraintTrailingSFX.constant = width*.631;
     
     self.constraintLeadingSFXSlider.constant = width*.447;
@@ -216,8 +235,9 @@
     self.constraintTopControls.constant = width*0.190625;
     self.constraintTrailingControls.constant = width*0.515625;
     
-    self.constraintTopControlsButton.constant = width*0.1625;
     self.constraintWidthControlsButton.constant = width*0.309375;
+    
+    self.constraintTopResetTutorial.constant = width*0.140625;
     
     [self.soundEffectsVolumeSlider adjustForDeviceWidth:width];
     [self.musicVolumeSlider adjustForDeviceWidth:width];

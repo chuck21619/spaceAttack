@@ -139,6 +139,7 @@ static AudioManager * sharedAudioManager = nil;
         sharedAudioManager.selectShip = [[sharedAudioManager createAudioBuffers:@[@"selectShip"]] firstObject];
         sharedAudioManager.minimizeCell = [[sharedAudioManager createAudioBuffers:@[@"minimizeCell"]] firstObject];
         sharedAudioManager.maximizeCell = [[sharedAudioManager createAudioBuffers:@[@"maximizeCell"]] firstObject];
+        sharedAudioManager.pageTurn = [[sharedAudioManager createAudioBuffers:@[@"pageTurn"]] firstObject];
     }
     
     return sharedAudioManager;
@@ -435,6 +436,10 @@ static AudioManager * sharedAudioManager = nil;
             
         case kSoundEffectMaximizeCell:
             audioBuffer = self.maximizeCell;
+            break;
+            
+        case kSoundEffectMenuPageTurn:
+            audioBuffer = self.pageTurn;
             break;
             
         default:

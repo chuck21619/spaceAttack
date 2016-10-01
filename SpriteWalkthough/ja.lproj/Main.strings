@@ -44,6 +44,8 @@
 "H2D-hB-Sdw.text" = "コントロール";
 //help
 "wMI-5d-o5G.normalTitle" = "助けて";
+//reset tutorial
+"Lc4-J5-7kD.normalTitle" = "チュートリアルをリセット";
 
 //---end game screen
 //restart
