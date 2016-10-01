@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "SpaceshipKit.h"
 #import "EnumTypes.h"
+#import "GKAchievementHandler.h"
 @import StoreKit;
 
 @interface AccountManager : NSObject <SKPaymentTransactionObserver>
@@ -59,6 +60,7 @@
 + (void) submitAchievementsProgress:(NSDictionary *)achievements;
 + (void) submitCompletedAchievement:(Achievement)achievement;
 + (int) bonusPointsForAchievement:(Achievement)achievement;
++ (void) showCompletionBannerForAchievement:(GKAchievement *)achievement;
 
 #pragma mark ads
 + (void) startFullScreenAdTimer;

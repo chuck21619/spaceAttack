@@ -545,7 +545,6 @@
                          itemType:@"Upgrade"
                            itemId:nil
                  customAttributes:@{}];
-    [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuDidUnlock];
     NSLog(@"Payment Purchased Notification - upgrades");
     
     for ( UpgradeCell * cell in [self.myTable visibleCells] )

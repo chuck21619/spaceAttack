@@ -63,6 +63,9 @@
 "purchasedGascogneDescription" = "Gatun";
 "purchasedHabsburgDescription" = "Hasley";
 
+//achievement banner
+"Achievement Earned!" = "Achievement Earned!";
+
 /* No comment provided by engineer. */
 "Available Points" = "Available Points";
 

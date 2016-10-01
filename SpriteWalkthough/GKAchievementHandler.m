@@ -26,15 +26,6 @@ static GKAchievementHandler *defaultHandler = nil;
 
 - (void)displayNotification:(GKAchievementNotification *)notification
 {
-    if (self.image != nil)
-    {
-        [notification setImage:self.image];
-    }
-    else
-    {
-        [notification setImage:nil];
-    }
-
     [_topView addSubview:notification];
     [notification animateIn];
 }
@@ -92,6 +83,22 @@ static GKAchievementHandler *defaultHandler = nil;
     notification.frame = CGRectMake(0, width*-0.176, width, width*0.1733);
     notification.handlerDelegate = self;
 
+    [_queue addObject:notification];
+    if ([_queue count] == 1)
+    {
+        [self displayNotification:notification];
+    }
+}
+
+- (void) notifyAchievementTitle:(NSString *)title andMessage:(NSString *)message image:(UIImage *)image
+{
+    float width = [UIScreen mainScreen].bounds.size.width;
+    
+    GKAchievementNotification *notification = [[GKAchievementNotification alloc] initWithTitle:title andMessage:message];
+    notification.frame = CGRectMake(0, width*-0.176, width, width*0.1733);
+    notification.handlerDelegate = self;
+    [notification setImage:image];
+    
     [_queue addObject:notification];
     if ([_queue count] == 1)
     {

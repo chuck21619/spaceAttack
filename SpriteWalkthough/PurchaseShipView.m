@@ -218,7 +218,6 @@
                              itemType:@"Spaceship"
                                itemId:nil
                      customAttributes:@{}];
-        [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuDidUnlock];
         [AccountManager unlockShip:_mySpaceship];
         [AccountManager subtractPoints:_mySpaceship.pointsToUnlock];
         [self showPurchasedLabelAnimated:YES];
@@ -229,6 +228,7 @@
 
 - (void) minimizePressed
 {
+    [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuUnlock];
     [self.delegate closeViewPressed];
 }
 

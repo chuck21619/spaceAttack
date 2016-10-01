@@ -46,5 +46,6 @@
  * @param message  Description of the achievement.
  */
 - (void)notifyAchievementTitle:(NSString *)title andMessage:(NSString *)message;
+- (void)notifyAchievementTitle:(NSString *)title andMessage:(NSString *)message image:(UIImage*)image;
 
 @end

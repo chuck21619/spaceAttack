@@ -436,7 +436,6 @@
                              itemType:@"Upgrade"
                                itemId:nil
                      customAttributes:@{}];
-        [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuDidUnlock];
         [AccountManager subtractPoints:self.myUpgrade.pointsToUnlock];
         [AccountManager unlockUpgrade:self.myUpgrade.upgradeType];
         [self showPurchasedLabelAnimated:YES];

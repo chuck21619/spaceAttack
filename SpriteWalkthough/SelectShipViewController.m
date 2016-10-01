@@ -270,7 +270,6 @@
                          itemType:@"Spaceship"
                            itemId:nil
                  customAttributes:@{}];
-    [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuDidUnlock];
     [AccountManager unlockShip:_activeSpaceship];
     NSLog(@"Payment Purchased Notification - spaceship");
     

@@ -92,6 +92,9 @@
 "purchasedGascogneDescription" = "\U7530\U55ae";
 "purchasedHabsburgDescription" = "\U5b50\U5100";
 
+//achievement banner
+"Achievement Earned!" = "成就获得！";
+
 
 
 /* No comment provided by engineer. */

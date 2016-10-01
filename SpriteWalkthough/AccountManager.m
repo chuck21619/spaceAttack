@@ -920,7 +920,10 @@ static AccountManager * sharedAccountManager = nil;
         if ( tmpAchievement.percentComplete == 100.0 )
             [alreadyCompletedAchievements addObject:tmpAchievement];
         else
+        {
+            tmpAchievement.showsCompletionBanner = NO;
             [achievementsToSubmit addObject:tmpAchievement];
+        }
         
         int increase = [[achievements valueForKey:key] intValue];
         tmpAchievement.percentComplete = [AccountManager calculatePercentCompleteForAchievement:achievement withIncrease:increase];
@@ -936,16 +939,22 @@ static AccountManager * sharedAccountManager = nil;
              NSLog(@"submitAchievementProgress error : %@", error );
          else
          {
+             BOOL checkAllAchievementsAchivement = NO;
              for ( GKAchievement * achievo in achievementsToSubmit )
              {
                  //NSLog(@"submitAchievementProgress reported : %@", achievo.identifier);
                  if ( achievo.percentComplete == 100.0 )
                  {
                      NSLog(@"achievement completed - banner should be displayed : %@", achievo.identifier);
+                     [AccountManager showCompletionBannerForAchievement:achievo];
                      [[NSNotificationCenter defaultCenter] postNotificationName:@"achievementCompleted" object:achievo];
                      [Answers logCustomEventWithName:@"Gameplay Achievement" customAttributes:@{@"achievement type" : achievo.identifier}];
+                     checkAllAchievementsAchivement = YES;
                  }
              }
+             
+             if ( checkAllAchievementsAchivement )
+                 [sharedAccountManager checkAllAchievementsAchievement];
          }
      }];
 }
@@ -1032,7 +1041,7 @@ static AccountManager * sharedAccountManager = nil;
     if ( ! [[AccountManager achievementsCompleted] containsObject:achievementIdentifier] )
     {
         GKAchievement * tmpAchievement = [[GKAchievement alloc] initWithIdentifier:achievementIdentifier];
-        tmpAchievement.showsCompletionBanner = YES;
+        tmpAchievement.showsCompletionBanner = NO;
         tmpAchievement.percentComplete = 100;
         [GKAchievement reportAchievements:@[tmpAchievement] withCompletionHandler:^(NSError * _Nullable error)
         {
@@ -1048,6 +1057,7 @@ static AccountManager * sharedAccountManager = nil;
                 [sharedAccountManager.userDefaults setValue:achievements forKey:@"achievementsCompleted"];
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"achievementCompleted" object:tmpAchievement];
                 NSLog(@"achievement completed - banner should be displayed : %@", tmpAchievement.identifier);
+                [AccountManager showCompletionBannerForAchievement:tmpAchievement];
                 [sharedAccountManager checkAllUpgradesAchievement];
                 [sharedAccountManager checkAllShipsAchievement];
                 [sharedAccountManager checkAllAchievementsAchievement];
@@ -1062,6 +1072,9 @@ static AccountManager * sharedAccountManager = nil;
 
 - (void) checkAllShipsAchievement
 {
+    if ( [AccountManager savedAchievement:kAchievementPurchasedAllShips].percentComplete >= 100 )
+        return;
+    
     NSArray * completedAchievements = [AccountManager achievementsCompleted];
     if ( ![completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementPurchasedAllShips]] &&
           [completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementPurchasedBabenberg]] &&
@@ -1078,6 +1091,9 @@ static AccountManager * sharedAccountManager = nil;
 
 - (void) checkAllUpgradesAchievement
 {
+    if ( [AccountManager savedAchievement:kAchievementAllUpgrades].percentComplete >= 100 )
+        return;
+    
     NSArray * completedAchievements = [AccountManager achievementsCompleted];
     if ( ![completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementAllUpgrades]] &&
           [completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementTwoWeapons]] &&
@@ -1095,6 +1111,9 @@ static AccountManager * sharedAccountManager = nil;
 
 - (void) checkAllAchievementsAchievement
 {
+    if ( [AccountManager savedAchievement:kAchievementAllAchievements].percentComplete >= 100 )
+        return;
+    
     NSArray * achievements = [AccountManager achievements];
     
     for ( GKAchievement * achievement in achievements )
@@ -1200,6 +1219,20 @@ static AccountManager * sharedAccountManager = nil;
         default:
             return 1;
     }
+}
+
++ (void) showCompletionBannerForAchievement:(GKAchievement *)achievement
+{
+    [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuDidUnlock];
+    
+    UIImage * achievementImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", achievement.identifier]];
+    
+    NSString * descriptionLocalizeKey = [NSString stringWithFormat:@"%@Description", achievement.identifier];
+    NSString * achievementDescription = NSLocalizedString(descriptionLocalizeKey, nil);
+    
+    [[GKAchievementHandler defaultHandler] notifyAchievementTitle:achievementDescription
+                                                       andMessage:NSLocalizedString(@"Achievement Earned!", nil)
+                                                            image:achievementImage];
 }
 
 #pragma mark - ads
