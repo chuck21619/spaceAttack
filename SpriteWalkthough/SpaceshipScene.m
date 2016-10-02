@@ -253,13 +253,13 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
             if ( !self.showingTooltip && [AccountManager shouldShowTooltip:kTooltipTypeScoreMultiplier] )
             {
                 self.showingTooltip = YES;
+                SKSpriteNode * tooltipArrow = [self tooltipArrowAt:self.scoreMultiplierLabel];
                 [self pauseGame];
                 NSString * alertTitle = NSLocalizedString(@"Ermahgerd!", nil);
                 NSString * alertMessage = NSLocalizedString(@"Blowing up aliens without taking damage makes your multiplier go up!", nil);
                 SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:alertTitle message:alertMessage cancelButtonTitle:NSLocalizedString(@"Disable Tips", nil) otherButtonTitle:NSLocalizedString(@"Got It", nil)];
                 unlockAlert.customFrame = CGRectMake(0, (self.size.height+self.view.frame.origin.y) - 220, self.size.width, 150);
                 [unlockAlert show];
-                SKSpriteNode * tooltipArrow = [self tooltipArrowAt:self.scoreMultiplierLabel];
                 unlockAlert.otherButtonAction = ^
                 {
                     [self removeTooltipArrow:tooltipArrow];
@@ -907,15 +907,16 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     {
         self.showingTooltip = YES;
         //the delay is so the pause occurs while the explosion is on screen
+        SKSpriteNode * tooltipArrow = [self tooltipArrowAt:self.pointsScoredLabel];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, .15 * NSEC_PER_SEC), dispatch_get_main_queue(), ^
         {
+            
             [self pauseGame];
             NSString * alertTitle = NSLocalizedString(@"Ermahgerd!", nil);
             NSString * alertMessage = NSLocalizedString(@"You just blew up an alien spaceship! The more stuff you blow up, The more points you score!", nil);
             SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:alertTitle message:alertMessage cancelButtonTitle:NSLocalizedString(@"Disable Tips", nil) otherButtonTitle:NSLocalizedString(@"Got It", nil)];
             unlockAlert.customFrame = CGRectMake(0, (self.size.height+self.view.frame.origin.y) - 230, self.size.width, 150);
             [unlockAlert show];
-            SKSpriteNode * tooltipArrow = [self tooltipArrowAt:self.pointsScoredLabel];
             unlockAlert.otherButtonAction = ^
             {
                 [self removeTooltipArrow:tooltipArrow];
@@ -983,6 +984,7 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     if ( !self.showingTooltip && [AccountManager shouldShowTooltip:kTooltipTypePowerUp ] )
     {
         self.showingTooltip = YES;
+        SKSpriteNode * tooltipArrow = [self tooltipArrowAt:weapon];
         [self pauseGame];
         
         NSString * alertTitle = NSLocalizedString(@"Weapon PowerUp!", nil);
@@ -990,7 +992,6 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
         SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:alertTitle message:alertMessage cancelButtonTitle:NSLocalizedString(@"Disable Tips", nil) otherButtonTitle:NSLocalizedString(@"Got It", nil)];
         unlockAlert.customFrame = CGRectMake(0, 0, self.size.width, 170);
         [unlockAlert show];
-        SKSpriteNode * tooltipArrow = [self tooltipArrowAt:weapon];
         unlockAlert.otherButtonAction = ^
         {
             [self removeTooltipArrow:tooltipArrow];
