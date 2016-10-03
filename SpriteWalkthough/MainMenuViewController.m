@@ -55,11 +55,40 @@
     {
         subview.alpha = 0;
     }
-    [UIView animateWithDuration:.2 animations:^
+
+    
+    if ( [AccountManager firstLaunch] )
     {
-        for ( UIView * subview in [self.view subviews] )
-            subview.alpha = 1;
-    }];
+        NSLog(@"main menu first launch");
+        
+        UIImageView * background = [self.view viewWithTag:10];
+        [UIView animateWithDuration:3 animations:^
+        {
+            background.alpha = 1;
+        }
+        completion:^(BOOL finished)
+        {
+            [UIView animateWithDuration:2 animations:^
+             {
+                 for ( UIView * subview in [self.view subviews] )
+                 {
+                     if ( subview != self.playBadge && subview != self.upgradesBadge )
+                         subview.alpha = 1;
+                 }
+             }];
+        }];
+    }
+    else
+    {
+        [UIView animateWithDuration:.2 animations:^
+        {
+            for ( UIView * subview in [self.view subviews] )
+            {
+                if ( subview != self.playBadge && subview != self.upgradesBadge )
+                    subview.alpha = 1;
+            }
+        }];
+    }
     
     if ( ! [[GKLocalPlayer localPlayer] isAuthenticated] )
         [self.highScoresAchievementsButton setTitleColor:[UIColor colorWithWhite:.5 alpha:1] forState:UIControlStateNormal];

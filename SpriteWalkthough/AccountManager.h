@@ -22,6 +22,7 @@
 @property (nonatomic) NSArray * upgrades;
 @property (nonatomic) NSArray * spaceships;
 @property (nonatomic) BOOL touchControls;
++ (BOOL) firstLaunch;
 
 #pragma mark ships
 + (Spaceship *) lastSelectedShip;

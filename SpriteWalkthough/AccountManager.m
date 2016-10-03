@@ -55,6 +55,20 @@ static AccountManager * sharedAccountManager = nil;
     return sharedAccountManager;
 }
 
++ (BOOL) firstLaunch
+{
+    NSNumber * firstLaunchExistsValue = [sharedAccountManager.userDefaults valueForKey:@"firstLaunch"];
+    //firstLaunchExistsValue is used becuase i cant check if a BOOL is null
+    if ( !firstLaunchExistsValue )
+    {
+        NSLog(@"first Launch");
+        [sharedAccountManager.userDefaults setBool:NO forKey:@"firstLaunch"];
+        return YES;
+    }
+    
+    return NO;
+}
+
 #pragma mark - gameplay controls
 - (BOOL) savedTouchControls
 {
