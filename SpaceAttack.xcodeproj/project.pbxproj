@@ -968,7 +968,6 @@
 		A37E3EB21D8653D0002211AC /* FlandrePhoEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlandrePhoEle.png; sourceTree = "<group>"; };
 		A37E3EBA1D865409002211AC /* GascogneBulLaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GascogneBulLaz.png; sourceTree = "<group>"; };
 		A37E3EBB1D865409002211AC /* GascognePhoEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GascognePhoEle.png; sourceTree = "<group>"; };
-		A38495D41DA0D8370010E2B7 /* spaceAttack.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = spaceAttack.entitlements; sourceTree = SOURCE_ROOT; };
 		A38732031D3B866B00FE1D00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A38732061D3B867D00FE1D00 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		A38732071D3B87A000FE1D00 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
@@ -1473,7 +1472,6 @@
 		133A040018E22B1F00053595 /* SpaceAttack */ = {
 			isa = PBXGroup;
 			children = (
-				A38495D41DA0D8370010E2B7 /* spaceAttack.entitlements */,
 				A3FE9ECD1D449F5B002290C5 /* InfoPlist.strings */,
 				A387320C1D3B93E500FE1D00 /* Localizable.strings */,
 				A38732041D3B866B00FE1D00 /* Main.storyboard */,
@@ -2909,7 +2907,7 @@
 						DevelopmentTeam = LSN9P4E87M;
 						SystemCapabilities = {
 							com.apple.SafariKeychain = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -3670,7 +3668,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = spaceAttack.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = YES;
@@ -3696,7 +3693,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = spaceAttack.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = YES;
