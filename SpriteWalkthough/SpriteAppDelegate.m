@@ -90,6 +90,18 @@
     NSLog(@"applicationProtectedDataWillBecomeUnavailable");
 }
 
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
+{
+    NSLog(@"WTF IS GOING ON YO : %@", url);
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler
+{
+    NSLog(@"WTF IS GOING ON YO 22222: %@", userActivity);
+    return YES;
+}
+
 - (void) addGlowToLayer:(CALayer *)layer withColor:(CGColorRef)color
 {
     [self addGlowToLayer:layer withColor:color size:4.0];

@@ -32,20 +32,15 @@ static AudioManager * sharedAudioManager = nil;
         sharedAudioManager.currentSounds = [NSMutableArray new];
         
         //gameplay songs
-        NSURL *url1 = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"UnknownPlanet" ofType:@"mp3"]];
-        NSURL *url2 = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"SpaceTrip" ofType:@"mp3"]];
-        NSURL *url3 = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"SpaceTravel" ofType:@"mp3"]];
-        NSURL *url4 = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"TimePortal" ofType:@"mp3"]];
-        NSURL *url5 = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Mercury" ofType:@"mp3"]];
-        NSURL *url6 = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Kalliope" ofType:@"mp3"]];
-        sharedAudioManager.gameplayTrackUrls = @[url1, url2, url3, url4, url5, url6];
+        NSURL *url1 = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"somewhere" ofType:@"mp3"]];
+        NSURL *url2 = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"81s" ofType:@"mp3"]];
+        NSURL *url3 = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"escape" ofType:@"mp3"]];
+        NSURL *url4 = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"80s" ofType:@"mp3"]];
+        sharedAudioManager.gameplayTrackUrls = @[url1, url2, url3, url4];
         
         //menu songs
-        NSURL * url7 = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"StarMasterLoop" ofType:@"wav"]];
-        NSURL * url8 = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"SpaceCube" ofType:@"wav"]];
-        NSURL * url9 = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"CosmicMessages" ofType:@"wav"]];
-        NSURL * url10 = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Starlight" ofType:@"wav"]];
-        sharedAudioManager.menuTrackUrls = @[url7, url8, url9, url10];
+        NSURL * url5 = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Main-Title" ofType:@"mp3"]];
+        sharedAudioManager.menuTrackUrls = @[url5];
         
         //sound effects
         //tooltip

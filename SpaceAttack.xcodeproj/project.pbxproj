@@ -103,16 +103,6 @@
 		A3170E721CC474E90098C24E /* Shield.m in Sources */ = {isa = PBXBuildFile; fileRef = A3170E711CC474E90098C24E /* Shield.m */; };
 		A3170E741CC4806C0098C24E /* ShieldDestroy.sks in Resources */ = {isa = PBXBuildFile; fileRef = A3170E731CC4806C0098C24E /* ShieldDestroy.sks */; };
 		A31AD13A1D0CCDC7000CF547 /* AudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A31AD1391D0CCDC7000CF547 /* AudioManager.m */; };
-		A31AD1671D0D5801000CF547 /* StarMasterLoop.wav in Resources */ = {isa = PBXBuildFile; fileRef = A31AD1631D0D5801000CF547 /* StarMasterLoop.wav */; };
-		A31AD1681D0D5801000CF547 /* SpaceCube.wav in Resources */ = {isa = PBXBuildFile; fileRef = A31AD1641D0D5801000CF547 /* SpaceCube.wav */; };
-		A31AD1691D0D5801000CF547 /* CosmicMessages.wav in Resources */ = {isa = PBXBuildFile; fileRef = A31AD1651D0D5801000CF547 /* CosmicMessages.wav */; };
-		A31AD16A1D0D5801000CF547 /* Starlight.wav in Resources */ = {isa = PBXBuildFile; fileRef = A31AD1661D0D5801000CF547 /* Starlight.wav */; };
-		A31AD1711D0D5819000CF547 /* UnknownPlanet.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A31AD16B1D0D5819000CF547 /* UnknownPlanet.mp3 */; };
-		A31AD1721D0D5819000CF547 /* SpaceTrip.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A31AD16C1D0D5819000CF547 /* SpaceTrip.mp3 */; };
-		A31AD1731D0D5819000CF547 /* SpaceTravel.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A31AD16D1D0D5819000CF547 /* SpaceTravel.mp3 */; };
-		A31AD1741D0D5819000CF547 /* TimePortal.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A31AD16E1D0D5819000CF547 /* TimePortal.mp3 */; };
-		A31AD1751D0D5819000CF547 /* Mercury.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A31AD16F1D0D5819000CF547 /* Mercury.mp3 */; };
-		A31AD1761D0D5819000CF547 /* Kalliope.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A31AD1701D0D5819000CF547 /* Kalliope.mp3 */; };
 		A32030C91D168E8B00B0F4BC /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A32030C81D168E8B00B0F4BC /* SettingsViewController.m */; };
 		A32030CC1D16945400B0F4BC /* gears.png in Resources */ = {isa = PBXBuildFile; fileRef = A32030CB1D16945400B0F4BC /* gears.png */; };
 		A32030D01D16B56900B0F4BC /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = A32030CF1D16B56900B0F4BC /* star.png */; };
@@ -559,6 +549,11 @@
 		A3E009B71D72C5D800C340AA /* Smart Photon.png in Resources */ = {isa = PBXBuildFile; fileRef = A3E009AE1D72C5D800C340AA /* Smart Photon.png */; };
 		A3E009BB1D72F86700C340AA /* UIView+Shake.m in Sources */ = {isa = PBXBuildFile; fileRef = A3E009BA1D72F86700C340AA /* UIView+Shake.m */; };
 		A3E3E65A1D4DFCB100EEF2C3 /* SAAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3E3E6591D4DFCB100EEF2C3 /* SAAlertView.m */; };
+		A3E6880F1DA2132000C248AE /* Main-Title.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A3E6880E1DA2132000C248AE /* Main-Title.mp3 */; };
+		A3E688141DA2132900C248AE /* somewhere.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A3E688101DA2132900C248AE /* somewhere.mp3 */; };
+		A3E688151DA2132900C248AE /* 81s.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A3E688111DA2132900C248AE /* 81s.mp3 */; };
+		A3E688161DA2132900C248AE /* escape.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A3E688121DA2132900C248AE /* escape.mp3 */; };
+		A3E688171DA2132900C248AE /* 80s.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A3E688131DA2132900C248AE /* 80s.mp3 */; };
 		A3E7835C1C5F0EF1006A6D7B /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3E7835B1C5F0EF1006A6D7B /* GameKit.framework */; };
 		A3F29ECB1D43DCD20080AA34 /* SpaceBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = A3F29ECA1D43DCD20080AA34 /* SpaceBackground.m */; };
 		A3F29ED41D43E2330080AA34 /* SASpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A3F29ED31D43E2330080AA34 /* SASpriteNode.m */; };
@@ -726,16 +721,6 @@
 		A3170E731CC4806C0098C24E /* ShieldDestroy.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ShieldDestroy.sks; sourceTree = "<group>"; };
 		A31AD1381D0CCDC7000CF547 /* AudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioManager.h; sourceTree = "<group>"; };
 		A31AD1391D0CCDC7000CF547 /* AudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioManager.m; sourceTree = "<group>"; };
-		A31AD1631D0D5801000CF547 /* StarMasterLoop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = StarMasterLoop.wav; sourceTree = "<group>"; };
-		A31AD1641D0D5801000CF547 /* SpaceCube.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = SpaceCube.wav; sourceTree = "<group>"; };
-		A31AD1651D0D5801000CF547 /* CosmicMessages.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = CosmicMessages.wav; sourceTree = "<group>"; };
-		A31AD1661D0D5801000CF547 /* Starlight.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Starlight.wav; sourceTree = "<group>"; };
-		A31AD16B1D0D5819000CF547 /* UnknownPlanet.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = UnknownPlanet.mp3; sourceTree = "<group>"; };
-		A31AD16C1D0D5819000CF547 /* SpaceTrip.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = SpaceTrip.mp3; sourceTree = "<group>"; };
-		A31AD16D1D0D5819000CF547 /* SpaceTravel.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = SpaceTravel.mp3; sourceTree = "<group>"; };
-		A31AD16E1D0D5819000CF547 /* TimePortal.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = TimePortal.mp3; sourceTree = "<group>"; };
-		A31AD16F1D0D5819000CF547 /* Mercury.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Mercury.mp3; sourceTree = "<group>"; };
-		A31AD1701D0D5819000CF547 /* Kalliope.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Kalliope.mp3; sourceTree = "<group>"; };
 		A32030C71D168E8B00B0F4BC /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		A32030C81D168E8B00B0F4BC /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		A32030CB1D16945400B0F4BC /* gears.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gears.png; sourceTree = "<group>"; };
@@ -983,6 +968,7 @@
 		A37E3EB21D8653D0002211AC /* FlandrePhoEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlandrePhoEle.png; sourceTree = "<group>"; };
 		A37E3EBA1D865409002211AC /* GascogneBulLaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GascogneBulLaz.png; sourceTree = "<group>"; };
 		A37E3EBB1D865409002211AC /* GascognePhoEle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GascognePhoEle.png; sourceTree = "<group>"; };
+		A38495D41DA0D8370010E2B7 /* spaceAttack.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = spaceAttack.entitlements; sourceTree = SOURCE_ROOT; };
 		A38732031D3B866B00FE1D00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A38732061D3B867D00FE1D00 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		A38732071D3B87A000FE1D00 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
@@ -1290,6 +1276,11 @@
 		A3E3E6401D4DC50600EEF2C3 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		A3E3E6581D4DFCB100EEF2C3 /* SAAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAAlertView.h; sourceTree = "<group>"; };
 		A3E3E6591D4DFCB100EEF2C3 /* SAAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAAlertView.m; sourceTree = "<group>"; };
+		A3E6880E1DA2132000C248AE /* Main-Title.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Main-Title.mp3"; sourceTree = "<group>"; };
+		A3E688101DA2132900C248AE /* somewhere.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = somewhere.mp3; sourceTree = "<group>"; };
+		A3E688111DA2132900C248AE /* 81s.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 81s.mp3; sourceTree = "<group>"; };
+		A3E688121DA2132900C248AE /* escape.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = escape.mp3; sourceTree = "<group>"; };
+		A3E688131DA2132900C248AE /* 80s.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 80s.mp3; sourceTree = "<group>"; };
 		A3E7835B1C5F0EF1006A6D7B /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		A3F29EC91D43DCD20080AA34 /* SpaceBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpaceBackground.h; sourceTree = "<group>"; };
 		A3F29ECA1D43DCD20080AA34 /* SpaceBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpaceBackground.m; sourceTree = "<group>"; };
@@ -1482,6 +1473,7 @@
 		133A040018E22B1F00053595 /* SpaceAttack */ = {
 			isa = PBXGroup;
 			children = (
+				A38495D41DA0D8370010E2B7 /* spaceAttack.entitlements */,
 				A3FE9ECD1D449F5B002290C5 /* InfoPlist.strings */,
 				A387320C1D3B93E500FE1D00 /* Localizable.strings */,
 				A38732041D3B866B00FE1D00 /* Main.storyboard */,
@@ -1998,12 +1990,10 @@
 		A31AD1611D0D57A5000CF547 /* gameplay */ = {
 			isa = PBXGroup;
 			children = (
-				A31AD16B1D0D5819000CF547 /* UnknownPlanet.mp3 */,
-				A31AD16C1D0D5819000CF547 /* SpaceTrip.mp3 */,
-				A31AD16D1D0D5819000CF547 /* SpaceTravel.mp3 */,
-				A31AD16E1D0D5819000CF547 /* TimePortal.mp3 */,
-				A31AD16F1D0D5819000CF547 /* Mercury.mp3 */,
-				A31AD1701D0D5819000CF547 /* Kalliope.mp3 */,
+				A3E688101DA2132900C248AE /* somewhere.mp3 */,
+				A3E688111DA2132900C248AE /* 81s.mp3 */,
+				A3E688121DA2132900C248AE /* escape.mp3 */,
+				A3E688131DA2132900C248AE /* 80s.mp3 */,
 			);
 			name = gameplay;
 			sourceTree = "<group>";
@@ -2011,10 +2001,7 @@
 		A31AD1621D0D57AB000CF547 /* menu */ = {
 			isa = PBXGroup;
 			children = (
-				A31AD1631D0D5801000CF547 /* StarMasterLoop.wav */,
-				A31AD1641D0D5801000CF547 /* SpaceCube.wav */,
-				A31AD1651D0D5801000CF547 /* CosmicMessages.wav */,
-				A31AD1661D0D5801000CF547 /* Starlight.wav */,
+				A3E6880E1DA2132000C248AE /* Main-Title.mp3 */,
 			);
 			name = menu;
 			sourceTree = "<group>";
@@ -2920,6 +2907,11 @@
 				TargetAttributes = {
 					133A03F618E22B1F00053595 = {
 						DevelopmentTeam = LSN9P4E87M;
+						SystemCapabilities = {
+							com.apple.SafariKeychain = {
+								enabled = 1;
+							};
+						};
 					};
 					133A041718E22B1F00053595 = {
 						TestTargetID = 133A03F618E22B1F00053595;
@@ -2974,10 +2966,8 @@
 				A33B13961D97D4B7003EDAF5 /* purchasedBabenberg.png in Resources */,
 				9C359FDC1D77822500107AF4 /* electricity3.png in Resources */,
 				A3DE73981D85096600DC63BD /* Ship_explosion6.png in Resources */,
-				A31AD1741D0D5819000CF547 /* TimePortal.mp3 in Resources */,
 				A3667C231D8679AE00CAFAF4 /* Red.png in Resources */,
 				A39ABA3B1C4E1A8E00AF1455 /* tooltipArrowUp.png in Resources */,
-				A31AD1751D0D5819000CF547 /* Mercury.mp3 in Resources */,
 				A3483FC81D68F98000E9D1F9 /* Habsburg.png in Resources */,
 				A39D0F991D3300D200D86AC8 /* machineGunLevel3.wav in Resources */,
 				A35B3B561D2A648B006DB8C3 /* enemyDamage3.wav in Resources */,
@@ -3000,6 +2990,7 @@
 				A39C5F531D29A95F00A68E2D /* electricity6.wav in Resources */,
 				A3DE73801D8500DB00DC63BD /* EnemyExplosion7.png in Resources */,
 				A35B3B651D2A68F7006DB8C3 /* spaceshipDamage1.wav in Resources */,
+				A3E688161DA2132900C248AE /* escape.mp3 in Resources */,
 				A3AEDFB61C6AF808009966FE /* sledgehammer.png in Resources */,
 				A35B3B6D1D2A7051006DB8C3 /* shieldDamage1.wav in Resources */,
 				A35B3B611D2A68F7006DB8C3 /* spaceshipDamage5.wav in Resources */,
@@ -3050,6 +3041,7 @@
 				A33B13351D979F85003EDAF5 /* Double Weapon.png in Resources */,
 				A33B139E1D97D4B7003EDAF5 /* SmartPhotons.png in Resources */,
 				A3DE73471D84EC0B00DC63BD /* laser_upgrade 1@2x.png in Resources */,
+				A3E6880F1DA2132000C248AE /* Main-Title.mp3 in Resources */,
 				A3DE73661D84EC1E00DC63BD /* laser_upgrade 8@3x.png in Resources */,
 				A3B7FE8D1D7C827C00DD6528 /* DandoloBul.png in Resources */,
 				A35B3B6A1D2A7051006DB8C3 /* shieldDamage2.wav in Resources */,
@@ -3103,7 +3095,6 @@
 				A30112871D5FF6C100E133F2 /* armor.png in Resources */,
 				A37E3EB61D8653D0002211AC /* FlandreEle.png in Resources */,
 				9C6FFE7E1D74CBFB001AD117 /* SliderMin.png in Resources */,
-				A31AD1721D0D5819000CF547 /* SpaceTrip.mp3 in Resources */,
 				9C359FE11D77822500107AF4 /* electricity8.png in Resources */,
 				A3DE739C1D85096600DC63BD /* Ship_explosion10.png in Resources */,
 				A33B138D1D97D4B7003EDAF5 /* PhotonsFired25.png in Resources */,
@@ -3123,13 +3114,13 @@
 				A3B7FEAC1D7C831300DD6528 /* GascognePhoLaz.png in Resources */,
 				A3DE73831D8500DB00DC63BD /* EnemyExplosion10.png in Resources */,
 				A37E3EA91D864E23002211AC /* laserCannon.png in Resources */,
+				A3E688141DA2132900C248AE /* somewhere.mp3 in Resources */,
 				A3B7FE9D1D7C82C700DD6528 /* EdinburghLaz.png in Resources */,
 				A3483FE51D691B8B00E9D1F9 /* shieldGameplay.png in Resources */,
 				A3DE735E1D84EC1E00DC63BD /* laser 4@3x.png in Resources */,
 				A3DE739D1D85096600DC63BD /* Ship_explosion11.png in Resources */,
 				A38732021D3B866B00FE1D00 /* Main.storyboard in Resources */,
 				A35B3B331D2A4298006DB8C3 /* asteroid4.wav in Resources */,
-				A31AD1671D0D5801000CF547 /* StarMasterLoop.wav in Resources */,
 				A3DB9EF11D61B74F006A8AEB /* Flandre.png in Resources */,
 				A35B3B361D2A4298006DB8C3 /* asteroid1.wav in Resources */,
 				A3BACA521D7CC2AA004388F3 /* DoubleWeaponUpgrade.gif in Resources */,
@@ -3171,6 +3162,7 @@
 				A3667C2B1D867DC400CAFAF4 /* Twin Suns.png in Resources */,
 				A3DE73631D84EC1E00DC63BD /* laser_upgrade 5@3x.png in Resources */,
 				A3DD77A81D7B813600A1D2D1 /* asteroid.atlas in Resources */,
+				A3E688171DA2132900C248AE /* 80s.mp3 in Resources */,
 				A3B7FE351D7C7DC300DD6528 /* Abdul_KadirBulEle.png in Resources */,
 				A3B7FE891D7C827C00DD6528 /* DandoloLaz.png in Resources */,
 				A3DE739B1D85096600DC63BD /* Ship_explosion9.png in Resources */,
@@ -3205,6 +3197,7 @@
 				A39C5F571D29A95F00A68E2D /* electricity2.wav in Resources */,
 				A39C5F611D29CA9500A68E2D /* spaceshipExplosion.wav in Resources */,
 				130169361909AB1A00DDC896 /* photon.png in Resources */,
+				A3E688151DA2132900C248AE /* 81s.mp3 in Resources */,
 				A3B7FEC31D7C835500DD6528 /* HabsburgEle.png in Resources */,
 				A3BD28731D7E1C3B008F6FA1 /* jefParticle.sks in Resources */,
 				A3DE73841D8500DB00DC63BD /* EnemyExplosion11.png in Resources */,
@@ -3212,7 +3205,6 @@
 				A37E3EBC1D865409002211AC /* GascogneBulLaz.png in Resources */,
 				A3B7FEDC1D7CAAFC00DD6528 /* maximizeCell.wav in Resources */,
 				A33B13881D97D4B7003EDAF5 /* MachineGunFireRate.png in Resources */,
-				A31AD1681D0D5801000CF547 /* SpaceCube.wav in Resources */,
 				A3B7FE651D7C81F700DD6528 /* BabenbergBul.png in Resources */,
 				A3B7FE721D7C824200DD6528 /* CaimanPho.png in Resources */,
 				A35B3B401D2A4F58006DB8C3 /* energyBoosterStart.wav in Resources */,
@@ -3249,7 +3241,6 @@
 				A3DE737C1D8500DB00DC63BD /* EnemyExplosion3.png in Resources */,
 				A33B138C1D97D4B7003EDAF5 /* MaxLevelPhotonCannon.png in Resources */,
 				A3DE73601D84EC1E00DC63BD /* laser_upgrade 2@3x.png in Resources */,
-				A31AD1761D0D5819000CF547 /* Kalliope.mp3 in Resources */,
 				A3BACA561D7CC2AA004388F3 /* ShieldUpgrade.gif in Resources */,
 				A33B13761D97D4B7003EDAF5 /* BulletsFired1000.png in Resources */,
 				9C359FE61D77822500107AF4 /* electricity1.png in Resources */,
@@ -3263,18 +3254,15 @@
 				A30112881D5FF6C100E133F2 /* damage.png in Resources */,
 				A3B7FE991D7C82C700DD6528 /* EdinburghPhoEle.png in Resources */,
 				A3DE734D1D84EC0B00DC63BD /* laser_upgrade 7@2x.png in Resources */,
-				A31AD1711D0D5819000CF547 /* UnknownPlanet.mp3 in Resources */,
 				A39C5F561D29A95F00A68E2D /* electricity3.wav in Resources */,
 				A3B7FEA11D7C82C700DD6528 /* EdinburghBul.png in Resources */,
 				A35B3B441D2A56D1006DB8C3 /* energyBoosterEnd.wav in Resources */,
 				A387320A1D3B93E500FE1D00 /* Localizable.strings in Resources */,
 				A3DE73821D8500DB00DC63BD /* EnemyExplosion9.png in Resources */,
-				A31AD16A1D0D5801000CF547 /* Starlight.wav in Resources */,
 				A3667C331D86813200CAFAF4 /* Colony.png in Resources */,
 				A3B7FEB01D7C831300DD6528 /* GascogneLazEle.png in Resources */,
 				A3B7FE621D7C81F700DD6528 /* BabenbergBulPho.png in Resources */,
 				A3E009AF1D72C5D800C340AA /* Bullets.png in Resources */,
-				A31AD1731D0D5819000CF547 /* SpaceTravel.mp3 in Resources */,
 				A33B13891D97D4B7003EDAF5 /* MaxLevelElectricalGenerator.png in Resources */,
 				A39C5F491D29956800A68E2D /* bullet3.wav in Resources */,
 				A375B59D1D2B59CE00CB9E52 /* ShieldParticle.sks in Resources */,
@@ -3311,7 +3299,6 @@
 				A3DE73341D84EBF700DC63BD /* laser_upgrade 6.png in Resources */,
 				A35B3B631D2A68F7006DB8C3 /* spaceshipDamage3.wav in Resources */,
 				A33B13751D97D4B7003EDAF5 /* BulletsFired100.png in Resources */,
-				A31AD1691D0D5801000CF547 /* CosmicMessages.wav in Resources */,
 				A33B13981D97D4B7003EDAF5 /* purchasedDandolo.png in Resources */,
 				A33B13721D97D4B7003EDAF5 /* AllAchievements.png in Resources */,
 				13B91A001900514C0050CA0A /* ExplosionParticle.sks in Resources */,
@@ -3683,6 +3670,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = spaceAttack.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = YES;
@@ -3708,6 +3696,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = spaceAttack.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = YES;
