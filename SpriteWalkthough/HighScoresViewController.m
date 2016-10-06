@@ -41,6 +41,9 @@
     
     self.backButton.titleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.backButton.titleLabel.font.pointSize];
     self.highScoresTitleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font3", nil) size:self.highScoresTitleLabel.font.pointSize];
+    self.userRankLabel.font = [UIFont fontWithName:NSLocalizedString(@"font3", nil) size:self.highScoresTitleLabel.font.pointSize];
+    self.userNameLabel.font = [UIFont fontWithName:NSLocalizedString(@"font3", nil) size:self.userNameLabel.font.pointSize];
+    self.userScoreLabel.font = [UIFont fontWithName:NSLocalizedString(@"font3", nil) size:self.userScoreLabel.font.pointSize];
     
     [self adjustForDeviceSize];
     [self.view layoutIfNeeded];
