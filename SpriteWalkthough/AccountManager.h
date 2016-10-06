@@ -54,6 +54,19 @@
 + (void) disableTips;
 + (void) resetTooltips;
 
+#pragma mark ads
++ (void) startFullScreenAdTimer;
++ (BOOL) shouldShowFullscreenAd;
+
+#pragma mark metrics
++ (int) numberOfTimesPlayed;
++ (void) incrementNumberOfTimesPlayed;
+
+#pragma mark - game center
++ (NSString *) lastPlayerLoggedIn;
++ (void) setLastPlayerLoggedIn:(NSString *)player;
++ (void) clearPlayerProgress;
+
 #pragma mark achievements
 @property (nonatomic) NSArray * cachedAchievements;
 + (NSArray *) achievements;
@@ -63,14 +76,6 @@
 + (void) submitCompletedAchievement:(Achievement)achievement;
 + (int) bonusPointsForAchievement:(Achievement)achievement;
 + (void) showCompletionBannerForAchievement:(GKAchievement *)achievement;
-
-#pragma mark ads
-+ (void) startFullScreenAdTimer;
-+ (BOOL) shouldShowFullscreenAd;
-
-#pragma mark metrics
-+ (int) numberOfTimesPlayed;
-+ (void) incrementNumberOfTimesPlayed;
 
 #pragma mark - settings
 #pragma mark sound volume

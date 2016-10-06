@@ -205,6 +205,16 @@
             NSLog(@"game center authenticated");
             [self.highScoresAchievementsButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             self.highScoresAchievementsButton.layer.borderColor = [self.highScoresAchievementsButton.currentTitleColor CGColor];
+
+            if ( ! [weaklocalPlayer.playerID isEqualToString:[AccountManager lastPlayerLoggedIn]] )
+            {
+                NSLog(@"   last player id : %@", [AccountManager lastPlayerLoggedIn]);
+                NSLog(@"current player id : %@", weaklocalPlayer.playerID);
+                NSLog(@"new player - clearing player progress");
+                [AccountManager clearPlayerProgress];
+            }
+            
+            [AccountManager setLastPlayerLoggedIn:weaklocalPlayer.playerID];
             
 //#warning uncomment for release builds
             [AccountManager loadAchievements];

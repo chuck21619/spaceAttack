@@ -493,6 +493,28 @@ static AccountManager * sharedAccountManager = nil;
 }
 
 #pragma mark - game center
++ (NSString *) lastPlayerLoggedIn
+{
+    NSString * lastPlayerLoggedIn = [sharedAccountManager.userDefaults objectForKey:@"lastPlayerLoggedIn"];
+    if ( ! lastPlayerLoggedIn )
+    {
+        lastPlayerLoggedIn = [GKLocalPlayer localPlayer].playerID;
+        [sharedAccountManager.userDefaults setObject:lastPlayerLoggedIn forKey:@"lastPlayerLoggedIn"];
+    }
+    
+    return lastPlayerLoggedIn;
+}
+
++ (void) setLastPlayerLoggedIn:(NSString *)player
+{
+    [sharedAccountManager.userDefaults setObject:player forKey:@"lastPlayerLoggedIn"];
+}
+
++ (void) clearPlayerProgress
+{
+    [sharedAccountManager.userDefaults removePersistentDomainForName:@"ZinStudio"]; //clears all defaults
+}
+
 #pragma mark achievements
 + (NSArray *) achievementsCompleted
 {
