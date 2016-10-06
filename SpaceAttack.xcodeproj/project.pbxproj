@@ -85,6 +85,7 @@
 		9CABE7CB1D9EDCD700F714B4 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CABE7C91D9EDCD700F714B4 /* Icon-72.png */; };
 		9CABE8081D9F1A5E00F714B4 /* GKAchievementHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CABE8051D9F1A5E00F714B4 /* GKAchievementHandler.m */; };
 		9CABE8091D9F1A5E00F714B4 /* GKAchievementNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CABE8071D9F1A5E00F714B4 /* GKAchievementNotification.m */; };
+		9CD551C81DA5D7F200F67A40 /* Shield.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CD551C71DA5D7F200F67A40 /* Shield.png */; };
 		A30112721D5FC8BA00E133F2 /* MoonLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = A301126F1D5FC80300E133F2 /* MoonLight.otf */; };
 		A30112731D5FC8BA00E133F2 /* MoonBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A30112701D5FC80300E133F2 /* MoonBold.otf */; };
 		A30112771D5FDF1600E133F2 /* ShipSelectionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A30112761D5FDF1600E133F2 /* ShipSelectionButton.m */; };
@@ -208,7 +209,6 @@
 		A33B139A1D97D4B7003EDAF5 /* purchasedFlandre.png in Resources */ = {isa = PBXBuildFile; fileRef = A33B136C1D97D4B7003EDAF5 /* purchasedFlandre.png */; };
 		A33B139B1D97D4B7003EDAF5 /* purchasedGascogne.png in Resources */ = {isa = PBXBuildFile; fileRef = A33B136D1D97D4B7003EDAF5 /* purchasedGascogne.png */; };
 		A33B139C1D97D4B7003EDAF5 /* purchasedHabsburg.png in Resources */ = {isa = PBXBuildFile; fileRef = A33B136E1D97D4B7003EDAF5 /* purchasedHabsburg.png */; };
-		A33B139D1D97D4B7003EDAF5 /* Shield.png in Resources */ = {isa = PBXBuildFile; fileRef = A33B136F1D97D4B7003EDAF5 /* Shield.png */; };
 		A33B139E1D97D4B7003EDAF5 /* SmartPhotons.png in Resources */ = {isa = PBXBuildFile; fileRef = A33B13701D97D4B7003EDAF5 /* SmartPhotons.png */; };
 		A33B139F1D97D4B7003EDAF5 /* TwoWeapons.png in Resources */ = {isa = PBXBuildFile; fileRef = A33B13711D97D4B7003EDAF5 /* TwoWeapons.png */; };
 		A33B13A01D97E421003EDAF5 /* CooperBlackStd.otf in Resources */ = {isa = PBXBuildFile; fileRef = A33B133F1D97B00B003EDAF5 /* CooperBlackStd.otf */; };
@@ -697,6 +697,7 @@
 		9CABE8051D9F1A5E00F714B4 /* GKAchievementHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKAchievementHandler.m; sourceTree = "<group>"; };
 		9CABE8061D9F1A5E00F714B4 /* GKAchievementNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKAchievementNotification.h; sourceTree = "<group>"; };
 		9CABE8071D9F1A5E00F714B4 /* GKAchievementNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKAchievementNotification.m; sourceTree = "<group>"; };
+		9CD551C71DA5D7F200F67A40 /* Shield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Shield.png; sourceTree = "<group>"; };
 		A301126F1D5FC80300E133F2 /* MoonLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MoonLight.otf; sourceTree = "<group>"; };
 		A30112701D5FC80300E133F2 /* MoonBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MoonBold.otf; sourceTree = "<group>"; };
 		A30112751D5FDF1600E133F2 /* ShipSelectionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShipSelectionButton.h; sourceTree = "<group>"; };
@@ -874,7 +875,6 @@
 		A33B136C1D97D4B7003EDAF5 /* purchasedFlandre.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purchasedFlandre.png; sourceTree = "<group>"; };
 		A33B136D1D97D4B7003EDAF5 /* purchasedGascogne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purchasedGascogne.png; sourceTree = "<group>"; };
 		A33B136E1D97D4B7003EDAF5 /* purchasedHabsburg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purchasedHabsburg.png; sourceTree = "<group>"; };
-		A33B136F1D97D4B7003EDAF5 /* Shield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Shield.png; sourceTree = "<group>"; };
 		A33B13701D97D4B7003EDAF5 /* SmartPhotons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SmartPhotons.png; sourceTree = "<group>"; };
 		A33B13711D97D4B7003EDAF5 /* TwoWeapons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TwoWeapons.png; sourceTree = "<group>"; };
 		A33B13A71D987FE1003EDAF5 /* leftPageControl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leftPageControl.png; sourceTree = "<group>"; };
@@ -2260,7 +2260,7 @@
 				A33B136C1D97D4B7003EDAF5 /* purchasedFlandre.png */,
 				A33B136D1D97D4B7003EDAF5 /* purchasedGascogne.png */,
 				A33B136E1D97D4B7003EDAF5 /* purchasedHabsburg.png */,
-				A33B136F1D97D4B7003EDAF5 /* Shield.png */,
+				9CD551C71DA5D7F200F67A40 /* Shield.png */,
 				A33B13701D97D4B7003EDAF5 /* SmartPhotons.png */,
 				A33B13711D97D4B7003EDAF5 /* TwoWeapons.png */,
 			);
@@ -3032,6 +3032,7 @@
 				A33B131D1D9768B3003EDAF5 /* boxArtEuro.png in Resources */,
 				A3B7FE8A1D7C827C00DD6528 /* DandoloBulPho.png in Resources */,
 				A3DD77B01D7B871600A1D2D1 /* Boost_Powerup.png in Resources */,
+				9CD551C81DA5D7F200F67A40 /* Shield.png in Resources */,
 				A3B7FE881D7C827C00DD6528 /* DandoloLazEle.png in Resources */,
 				A39C5F5E1D29C00800A68E2D /* big.wav in Resources */,
 				9C359FE01D77822500107AF4 /* electricity7.png in Resources */,
@@ -3072,7 +3073,6 @@
 				A39C5F551D29A95F00A68E2D /* electricity4.wav in Resources */,
 				A35B3B6F1D2A7435006DB8C3 /* lostMultiplier.wav in Resources */,
 				13915102190EE050009751D5 /* bullet.png in Resources */,
-				A33B139D1D97D4B7003EDAF5 /* Shield.png in Resources */,
 				A33B13861D97D4B7003EDAF5 /* LasersFired1500.png in Resources */,
 				A3E009B01D72C5D800C340AA /* Check.png in Resources */,
 				A3B7FEAF1D7C831300DD6528 /* GascogneEle.png in Resources */,
