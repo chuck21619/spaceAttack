@@ -90,9 +90,6 @@
         }];
     }
     
-    if ( ! [[GKLocalPlayer localPlayer] isAuthenticated] )
-        [self.highScoresAchievementsButton setTitleColor:[UIColor colorWithWhite:.5 alpha:1] forState:UIControlStateNormal];
-    
     [self authenticateLocalPlayer];
     [self updateButtonColorStatus];
     
@@ -203,9 +200,6 @@
         else if (weaklocalPlayer.isAuthenticated)
         {
             NSLog(@"game center authenticated");
-            [self.highScoresAchievementsButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            self.highScoresAchievementsButton.layer.borderColor = [self.highScoresAchievementsButton.currentTitleColor CGColor];
-
             if ( ! [weaklocalPlayer.playerID isEqualToString:[AccountManager lastPlayerLoggedIn]] )
             {
                 NSLog(@"   last player id : %@", [AccountManager lastPlayerLoggedIn]);
@@ -265,18 +259,6 @@
 - (IBAction)highScoresAchievementsAction:(id)sender
 {
     [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuHighScoreAchievements];
-    if ( ! [[GKLocalPlayer localPlayer] isAuthenticated] )
-    {
-        SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:NSLocalizedString(@"Unavailable", nil) message:NSLocalizedString(@"You are not signed into Game Center", nil) cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitle:NSLocalizedString(@"Sign In", nil)];
-        unlockAlert.otherButtonAction = ^
-        {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"gamecenter:"]];
-        };
-        
-        [unlockAlert show];
-        return;
-    }
-    
     UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UpgradesViewController * upgradesVC = [storyboard instantiateViewControllerWithIdentifier:@"gameCenterPageVC"];
     [UIView animateWithDuration:.2 animations:^
