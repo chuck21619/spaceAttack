@@ -446,13 +446,16 @@ static AudioManager * sharedAudioManager = nil;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
         {
             ALSource * soundSource = (ALSource *)[self.channel play:audioBuffer];
-            [self.currentSounds addObject:soundSource];
-            //[self.currentSounds performSelector:@selector(removeObject:) withObject:soundSource afterDelay:audioBuffer.duration];
-            
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, audioBuffer.duration * NSEC_PER_SEC), dispatch_get_main_queue(), ^
+            if ( soundSource ) // STR - play game, hold down the home button, press home button again
             {
-                [self.currentSounds removeObject:soundSource];
-            });
+                [self.currentSounds addObject:soundSource];
+                //[self.currentSounds performSelector:@selector(removeObject:) withObject:soundSource afterDelay:audioBuffer.duration];
+                
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, audioBuffer.duration * NSEC_PER_SEC), dispatch_get_main_queue(), ^
+                {
+                    [self.currentSounds removeObject:soundSource];
+                });
+            }
             
         });
     }
