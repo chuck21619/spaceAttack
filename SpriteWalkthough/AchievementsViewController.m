@@ -17,7 +17,7 @@
     DGActivityIndicatorView * _activityIndicator;
     UIView * _activityIndicatorBackground;
     
-    NSDictionary * _achievements;
+    NSMutableDictionary * _achievements;
     NSMutableArray * _sortedKeys;
     
     BOOL _alreadyAppeared;
@@ -120,6 +120,10 @@
         NSString * achievementIdentifier = achievement.identifier;
         NSString * localizeKey = [NSString stringWithFormat:@"%@Description", achievementIdentifier];
         NSString * achievementDescription = NSLocalizedString(localizeKey, nil);
+        
+        if ( [achievementIdentifier isEqualToString:@"FourWeapons"] && achievement.percentComplete < 100 )
+            achievementDescription = NSLocalizedString(@"Locked", nil);
+        
         [[_achievements valueForKey:achievementKey] setValue:achievementDescription forKey:@"title"];
     }
 }
