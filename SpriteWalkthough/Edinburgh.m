@@ -16,14 +16,18 @@
 {
     if ( self = [super init] )
     {
-        self.menuImageName = @"Edinburgh_Menu.png";
-        self.size = CGSizeMake(100, 79);
-        self.texture = [[[SpaceshipKit sharedInstance] shipTextures] objectForKey:NSStringFromClass([self class])];
+        self.texture = [[[[SpaceshipKit sharedInstance] shipTextures] objectForKey:NSStringFromClass([self class])] objectForKey:@"Reg"];
+        float resizeFactor = ([[UIScreen mainScreen] bounds].size.width/320.0)*.15;
+        self.size = CGSizeMake(self.texture.size.width*resizeFactor, self.texture.size.height*resizeFactor);
+        [self setNumberOfWeaponSlots:[AccountManager numberOfWeaponSlotsUnlocked]];
         
+        self.storeKitIdentifier = @"edinburgh";
         self.defaultDamage = 16;
         self.damage = self.defaultDamage;
         self.armor = 6;
         self.mySpeed = 4;
+        self.pointsToUnlock = 4000;
+        
         NSString * exhaustPath = [[NSBundle mainBundle] pathForResource:@"Exhaust" ofType:@"sks"];
         SKEmitterNode * exhaust = [NSKeyedUnarchiver unarchiveObjectWithFile:exhaustPath];
         exhaust.name = @"exhaust";
@@ -31,18 +35,19 @@
         exhaust.particleBirthRate = exhaust.particleBirthRate*self.mySpeed;
         [self addChild:exhaust];
         
-        self.pointsToUnlock = 1100;
-        
         // draw the physics body
         CGFloat offsetX = self.frame.size.width * self.anchorPoint.x;
         CGFloat offsetY = self.frame.size.height * self.anchorPoint.y;
         CGMutablePathRef path = CGPathCreateMutable();
-        CGPathMoveToPoint(path, NULL, 0 - offsetX, 43 - offsetY);
-        CGPathAddLineToPoint(path, NULL, 27 - offsetX, 78 - offsetY);
-        CGPathAddLineToPoint(path, NULL, 71 - offsetX, 78 - offsetY);
-        CGPathAddLineToPoint(path, NULL, 99 - offsetX, 37 - offsetY);
-        CGPathAddLineToPoint(path, NULL, 86 - offsetX, 0 - offsetY);
-        CGPathAddLineToPoint(path, NULL, 14 - offsetX, 0 - offsetY);
+        
+        CGPathMoveToPoint(path, NULL, (72*resizeFactor) - offsetX, (94*resizeFactor) - offsetY);
+        CGPathAddLineToPoint(path, NULL, (72*resizeFactor) - offsetX, (189*resizeFactor) - offsetY);
+        CGPathAddLineToPoint(path, NULL, (221*resizeFactor) - offsetX, (477*resizeFactor) - offsetY);
+        CGPathAddLineToPoint(path, NULL, (300*resizeFactor) - offsetX, (476*resizeFactor) - offsetY);
+        CGPathAddLineToPoint(path, NULL, (448*resizeFactor) - offsetX, (190*resizeFactor) - offsetY);
+        CGPathAddLineToPoint(path, NULL, (446*resizeFactor) - offsetX, (95*resizeFactor) - offsetY);
+        CGPathAddLineToPoint(path, NULL, (261*resizeFactor) - offsetX, (27*resizeFactor) - offsetY);
+        
         CGPathCloseSubpath(path);
         self.physicsBody = [SKPhysicsBody bodyWithPolygonFromPath:path];
         //[self attachDebugFrameFromPath:path];
@@ -57,36 +62,12 @@
     return self;
 }
 
-- (void) setNumberOfWeaponSlots:(int)numberOfWeaponSlots
-{
-    switch ( numberOfWeaponSlots )
-    {
-        case 1:
-            self.weaponSlotPositions = @{ @"weaponSlot1" : @[[NSValue valueWithCGPoint:CGPointMake(0, 35)], [NSNumber numberWithInt:-1]]};
-            break;
-            
-        case 2:
-            self.weaponSlotPositions = @{ @"weaponSlot1" : @[[NSValue valueWithCGPoint:CGPointMake(-20, -15)], [NSNumber numberWithInt:2]],
-                                          @"weaponSlot2" : @[[NSValue valueWithCGPoint:CGPointMake(20, -15)], [NSNumber numberWithInt:2]]};
-            break;
-            
-        case 4:
-            self.weaponSlotPositions = @{ @"weaponSlot1" : @[[NSValue valueWithCGPoint:CGPointMake(-20, -15)], [NSNumber numberWithInt:2]],
-                                          @"weaponSlot2" : @[[NSValue valueWithCGPoint:CGPointMake(20, -15)], [NSNumber numberWithInt:2]],
-                                          @"weaponSlot3" : @[[NSValue valueWithCGPoint:CGPointMake(40, 15)], [NSNumber numberWithInt:-1]],
-                                          @"weaponSlot4" : @[[NSValue valueWithCGPoint:CGPointMake(-40, 15)], [NSNumber numberWithInt:-1]]};
-            break;
-            
-        default:
-            self.weaponSlotPositions = @{};
-    }
-}
-
 - (void)attachDebugFrameFromPath:(CGPathRef)bodyPath {
     //if (kDebugDraw==NO) return;
     SKShapeNode *shape = [SKShapeNode node];
+    shape.zPosition = 100;
     shape.path = bodyPath;
-    shape.strokeColor = [SKColor colorWithRed:1.0 green:0 blue:0 alpha:0.5];
+    shape.strokeColor = [SKColor colorWithRed:0 green:0 blue:1 alpha:1];
     shape.lineWidth = 1.0;
     [self addChild:shape];
 }

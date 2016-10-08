@@ -95,5 +95,8 @@
 @property (nonatomic) ALBuffer * engage;
 @property (nonatomic) ALBuffer * didUnlock;
 @property (nonatomic) ALBuffer * selectShip;
+@property (nonatomic) ALBuffer * minimizeCell;
+@property (nonatomic) ALBuffer * maximizeCell;
+@property (nonatomic) ALBuffer * pageTurn;
 
 @end

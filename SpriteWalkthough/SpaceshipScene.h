@@ -29,19 +29,6 @@
 @property (nonatomic) EnemyKit * enemyKit;
 @property (nonatomic) BOOL showingTooltip;
 
-//this is used on every pass, so i dont want to keep recreating a new array
-@property (nonatomic) NSMutableArray * nodesToRemove;
-
-//weak references for enumeration
-@property (nonatomic) NSMutableArray * cachedAsteroids;
-@property (nonatomic) NSMutableArray * cachedEnemies;
-@property (nonatomic) NSMutableArray * cachedBullets;
-@property (nonatomic) NSMutableArray * cachedPhotons;
-@property (nonatomic) NSMutableArray * cachedElectricity;
-@property (nonatomic) NSMutableArray * cachedLasers;
-@property (nonatomic) NSMutableArray * cachedPowerUps;
-@property (nonatomic) NSMutableArray * cachedSpaceBackgrounds;
-
 //asteroids
 @property (nonatomic) float makeAsteroidsInterval;
 @property (nonatomic) float asteroidSpeedCoefficient;
@@ -60,10 +47,6 @@
 @property (nonatomic) BOOL resumeEnemyTimer;
 
 //background
-@property (nonatomic) NSTimer * backgroundPlanetsTimer;
-@property (nonatomic) BOOL resumeBackgroundPlanetsTimer;
-@property (nonatomic) NSTimer * changeCloudDensityTimer;
-@property (nonatomic) BOOL resumeChangeCloudDensityTimer;
 @property (nonatomic) float lastSpaceBackgroundDuration;
 
 //achievements'

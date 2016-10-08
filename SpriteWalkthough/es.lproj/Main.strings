@@ -1,4 +1,65 @@
 
+//---main menu
+//space attack
+"2E9-FI-wPc.text" = "Ataque especial";
+//start
+"HGt-bC-Frb.normalTitle" = "Comienzo";
+//achievements
+"1d1-lJ-Rw0.normalTitle" = "Logros";
+//upgrades
+"dEh-7H-kc8.normalTitle" = "Actualizaciones";
+
+
+//---select ship
+//back
+"vTv-73-QrP.normalTitle" = "< Volver";
+//select
+"uYw-2i-Iw7.text" = "Seleccionar";
+
+//---achievements
+//back
+"zPW-T1-bTy.normalTitle" = "< Volver";
+//achievments
+"gQS-86-JNa.text" = "Logros";
+
+//---high scores
+//back
+"gI9-Fx-eN6..normalTitle" = "< Volver";
+//high scores
+"256-eI-0fL.text" = "Récord";
+//me
+"9pa-jf-Z5B.text" = "Yo";
+
+//---upgrades
+//back
+"Qqh-sQ-Qqa.normalTitle" = "< Volver";
+//upgrades
+"Vk6-dJ-1Dg.text" = "Actualizaciones";
+
+//---settings
+//back
+"6K5-5I-WsQ.normalTitle" = "< Volver";
+//settings
+"tnT-uA-cOo.text" = "Ajustes";
+//controls
+"H2D-hB-Sdw.text" = "Controles";
+//help
+"wMI-5d-o5G.normalTitle" = "Ayuda";
+//reset tutorial
+"Lc4-J5-7kD.normalTitle" = "Tutorial de Reposición";
+
+//---end game screen
+//restart
+"HHP-NJ-R62" = "Reiniciar";
+//select ship
+"guR-xG-mbT" = "Nave de Cambio";
+//upgrades
+"Nun-yr-B4d" = "Actualizaciones";
+//home
+"QFI-At-1xJ" = "Menú Principal";
+
+
+
 /* Class = "UIButton"; normalTitle = "Engage"; ObjectID = "1FT-Qe-tOr"; */
 "1FT-Qe-tOr.normalTitle" = "Entrar en combate";
 

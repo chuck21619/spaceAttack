@@ -1,3 +1,8 @@
+//fonts
+"font1" = "Chalkduster";
+"font2" = "Chalkduster";
+"font3" = "Chalkduster";
+
 //ship names
 "Abdul_Kadir" = "甲鉄";
 "Babenberg" = "扶桑";
@@ -8,9 +13,92 @@
 "Gascogne" = "長門";
 "Habsburg" = "大和";
 
+//ship selection button
 "damage" = "ダメージ";
 "armor" = "アーマー";
 "speed" = "スピード";
+
+//purchase ship view & upgrade cell
+"Unlock" = "アンロック";
+"Cancel" = "キャンセル";
+"for" = "ために";
+"PURCHASED" = "購入した";
+
+//upgrade cell
+"Cost" = "コスト";
+"Locked" = "ロック";
+
+//settings
+"Touch" = "タッチ";
+"Tilt Screen" = "チルト画面";
+
+//tooltips
+"Choose how to Move:" = "移動する方法を選択してください:";
+"You can change this later in settings" = "後で設定で、これを変更することができます";
+
+//main menu
+"Unavailable" = "利用できません";
+"You are not signed into Game Center" = "あなたはにログインしていません Game Center";
+"Sign In" = "サインイン";
+
+"Error" = "エラー";
+
+
+//achievement descriptions
+"AllAchievementsDescription" = "\U30b9\U30da\U30fc\U30b9\U30ec\U30b8\U30a7\U30f3\U30c9";
+"AllUpgradesDescription" = "\U3059\U3079\U3066\U306e\U30a2\U30c3\U30d7\U30b0\U30ec\U30fc\U30c9";
+"BiggerLaserDescription" = "\U30d3\U30c3\U30b0\U30ec\U30fc\U30b6\U30fc";
+"BulletsFired100000Description" = "\U706b\U707d100,000\U5f3e\U4e38";
+"BulletsFired10000Description" = "\U706b\U707d10,000\U5f3e\U4e38";
+"BulletsFired1000Description" = "\U706b\U707d1,000\U5f3e\U4e38";
+"BulletsFired100Description" = "\U706b\U707d100\U5f3e\U4e38";
+"ElectricityChainDescription" = "\U96fb\U6c17\U30c1\U30a7\U30fc\U30f3";
+"ElectricityFired20000Description" = "\U706b20,000\U96fb\U6c17";
+"ElectricityFired2000Description" = "\U706b2,000\U96fb\U6c17";
+"ElectricityFired200Description" = "\U706b200\U96fb\U6c17";
+"ElectricityFired20Description" = "\U706b20\U96fb\U6c17";
+"EnemiesDestroyed50000Description" = "50,000\U30a8\U30a4\U30ea\U30a2\U30f3\U3092\U7834\U58ca\U3057\U307e\U3059";
+"EnemiesDestroyed5000Description" = "5,000\U30a8\U30a4\U30ea\U30a2\U30f3\U3092\U7834\U58ca\U3057\U307e\U3059";
+"EnemiesDestroyed500Description" = "500\U30a8\U30a4\U30ea\U30a2\U30f3\U3092\U7834\U58ca\U3057\U307e\U3059";
+"EnemiesDestroyed50Description" = "50\U30a8\U30a4\U30ea\U30a2\U30f3\U3092\U7834\U58ca\U3057\U307e\U3059";
+"EnergyBoosterDescription" = "\U30a8\U30cd\U30eb\U30ae\U30fc\U30d6\U30fc\U30b9\U30bf\U30fc";
+"FourWeaponsDescription" = "4\U7a2e\U306e\U6b66\U5668";
+"LasersFired15000Description" = "\U706b15,000\U30ec\U30fc\U30b6\U30fc";
+"LasersFired1500Description" = "\U706b1,500\U30ec\U30fc\U30b6\U30fc";
+"LasersFired150Description" = "\U706b150\U30ec\U30fc\U30b6\U30fc";
+"LasersFired15Description" = "\U706b15\U30ec\U30fc\U30b6\U30fc";
+"MachineGunFireRateDescription" = "\U5f3e\U4e38\U5897\U52a0";
+"MaxLevelElectricalGeneratorDescription" = "\U96fb\U6c17\U30b8\U30a7\U30cd\U30ec\U30fc\U30bf\U30fc";
+"MaxLevelLaserCannonDescription" = "\U30ec\U30fc\U30b6\U30fc\U30ad\U30e3\U30ce\U30f3";
+"MaxLevelMachineGunDescription" = "\U30de\U30b7\U30f3\U30ac\U30f3";
+"MaxLevelPhotonCannonDescription" = "\U30d5\U30a9\U30c8\U30f3\U30ad\U30e3\U30ce\U30f3";
+"PhotonsFired25000Description" = "\U706b25,000\U5149\U5b50";
+"PhotonsFired2500Description" = "\U706b2,500\U5149\U5b50";
+"PhotonsFired250Description" = "\U706b250\U5149\U5b50";
+"PhotonsFired25Description" = "\U706b25\U5149\U5b50";
+"PowerUpsCollected3000Description" = "\U53ce\U96c6\U3057\U305f3,000\U30d1\U30ef\U30fc\U30a2\U30c3\U30d7";
+"PowerUpsCollected300Description" = "\U53ce\U96c6\U3057\U305f300\U30d1\U30ef\U30fc\U30a2\U30c3\U30d7";
+"PowerUpsCollected30Description" = "\U53ce\U96c6\U3057\U305f30\U30d1\U30ef\U30fc\U30a2\U30c3\U30d7";
+"PowerUpsCollected3Description" = "\U53ce\U96c6\U3057\U305f3\U30d1\U30ef\U30fc\U30a2\U30c3\U30d7";
+"PurchasedAllShipsDescription" = "\U3059\U3079\U3066\U306e\U8239";
+"ShieldDescription" = "\U30b7\U30fc\U30eb\U30c9";
+"SmartPhotonsDescription" = "\U30b9\U30de\U30fc\U30c8\U30d5\U30a9\U30c8\U30f3";
+"TwoWeaponsDescription" = "2\U7a2e\U985e\U306e\U6b66\U5668";
+"purchasedBabenbergDescription" = "\U6276\U6851";
+"purchasedCaimanDescription" = "\U93ae\U9060";
+"purchasedDandoloDescription" = "\U671d\U65e5";
+"purchasedEdinburghDescription" = "\U9999\U53d6";
+"purchasedFlandreDescription" = "\U4f0a\U52e2";
+"purchasedGascogneDescription" = "\U9577\U9580";
+"purchasedHabsburgDescription" = "\U5927\U548c";
+
+//achievement banner
+"Achievement Earned!" = "成果獲得！";
+
+//settings
+"Tutorial Reset!" = "チュートリアルリセット！";
+
+
 
 /* No comment provided by engineer. */
 "Available Points" = "利用可能ポイント";
@@ -49,7 +137,7 @@
 "Increases rate of fire for the Machine Gun" = "マシンガンの発射速度アップ";
 
 /* No comment provided by engineer. */
-"Increases the size of Photon Cannon Beams" = "フォトンキャノンビームのサイズ増";
+"Increases the size of Laser Cannon Beams" = "フォトンキャノンビームのサイズ増";
 
 /* No comment provided by engineer. */
 "More Bullets" = "弾丸増加";
@@ -82,7 +170,7 @@
 "Two Weapons" = "2種類の武器";
 
 /* No comment provided by engineer. */
-"Unavailable" = "利用不可";
+"App Store Unavailable" = "App Store 利用不可";
 
 /* No comment provided by engineer. */
 "Unlock Now" = "今すぐアンロック";

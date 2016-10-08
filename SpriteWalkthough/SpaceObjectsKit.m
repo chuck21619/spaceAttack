@@ -10,6 +10,11 @@
 #import "SpaceshipScene.h"
 
 @implementation SpaceObjectsKit
+{
+    NSDictionary * _spaceBackgroundTextures;
+    SKTexture * _nextBackground;
+    
+}
 
 static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
 + (SpaceObjectsKit *)sharedInstanceWithScene:(SpaceshipScene *)scene
@@ -41,44 +46,7 @@ static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
         self.asteroidTextureAtlas = [NSArray arrayWithArray:crumbleFrames];
         
         //shield textures
-        NSMutableArray * shieldFrames = [NSMutableArray array];
-        SKTextureAtlas * shieldAnimatedAtlas = [SKTextureAtlas atlasNamed:@"shield1"];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield1-1"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield1-2"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield1-3"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield1-4"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield1-5"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield1-6"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield1-7"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield1-8"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield1-9"]]];
-        self.shield1Frames = shieldFrames;
-        
-        shieldFrames = [NSMutableArray new];
-        shieldAnimatedAtlas = [SKTextureAtlas atlasNamed:@"shield2"];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield2-1"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield2-2"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield2-3"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield2-4"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield2-5"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield2-6"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield2-7"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield2-8"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield2-9"]]];
-        self.shield2Frames = shieldFrames;
-        
-        shieldFrames = [NSMutableArray new];
-        shieldAnimatedAtlas = [SKTextureAtlas atlasNamed:@"shield3"];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield3-1"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield3-2"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield3-3"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield3-4"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield3-5"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield3-6"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield3-7"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield3-8"]]];
-        [shieldFrames addObject:[shieldAnimatedAtlas textureNamed:[NSString stringWithFormat:@"shield3-9"]]];
-        self.shield3Frames = shieldFrames;
+        self.shieldTexture = [SKTexture textureWithImageNamed:@"shieldGameplay.png"];
         
         //power up textures
         SKTexture * machineGun = [SKTexture textureWithImageNamed:@"Bullet_Powerup.png"];
@@ -96,31 +64,16 @@ static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
                                  @"Shield": shield,
                                  @"EnergyBooster" : energyBooster};
         
-        //planets
-        SKTexture * planet1 = [SKTexture textureWithImageNamed:@"planets1.png"];
-        SKTexture * planet2 = [SKTexture textureWithImageNamed:@"planets2.png"];
-        SKTexture * planet3 = [SKTexture textureWithImageNamed:@"planets3.png"];
-        SKTexture * planet4 = [SKTexture textureWithImageNamed:@"planets4.png"];
-        SKTexture * planet5 = [SKTexture textureWithImageNamed:@"planets5.png"];
-        SKTexture * planet6 = [SKTexture textureWithImageNamed:@"planets6.png"];
-        SKTexture * planet7 = [SKTexture textureWithImageNamed:@"planets7.png"];
-        SKTexture * planet8 = [SKTexture textureWithImageNamed:@"planets8.png"];
-        SKTexture * planet9 = [SKTexture textureWithImageNamed:@"planets9.png"];
-        SKTexture * planet10 = [SKTexture textureWithImageNamed:@"planets10.png"];
-        SKTexture * planet11 = [SKTexture textureWithImageNamed:@"planets11.png"];
-        SKTexture * planet12 = [SKTexture textureWithImageNamed:@"planets12.png"];
-        self.backgroundPlanetTextures = @[planet1, planet2, planet3, planet4, planet5, planet6, planet7, planet8, planet9, planet10, planet11, planet12];
-        
-        //space backgrounds
-//        self.firstSpaceBackgroundTexture = [SKTexture textureWithImageNamed:@"spaceBackgroundFirst.png"];
-//        SKTexture * spaceBackground1 = [SKTexture textureWithImageNamed:@"spaceBackground1.png"];
-//        SKTexture * spaceBackground2 = [SKTexture textureWithImageNamed:@"spaceBackground2.png"];
-//        SKTexture * spaceBackground3 = [SKTexture textureWithImageNamed:@"spaceBackground3.png"];
-//        SKTexture * spaceBackground4 = [SKTexture textureWithImageNamed:@"spaceBackground4.png"];
-//        self.spaceBackgroundTextures = @[spaceBackground1, spaceBackground2, spaceBackground3, spaceBackground4];
-        
-        self.firstSpaceBackgroundTexture = [SKTexture textureWithImageNamed:@"Colony_tall.png"];
-        self.spaceBackgroundTextures = @[[SKTexture textureWithImageNamed:@"Colony_tall.png"], [SKTexture textureWithImageNamed:@"Colony_tall.png"], [SKTexture textureWithImageNamed:@"Colony_tall.png"], [SKTexture textureWithImageNamed:@"Colony_tall.png"], [SKTexture textureWithImageNamed:@"Colony_tall.png"]];
+        _spaceBackgroundTextures = @{@"Black Star" : [SKTexture textureWithImageNamed:@"Black Star.png"],
+                                     @"Broken" : [SKTexture textureWithImageNamed:@"Broken.png"],
+                                     @"Colony" : [SKTexture textureWithImageNamed:@"Colony.png"],
+                                     @"Hologram" : [SKTexture textureWithImageNamed:@"Hologram.png"],
+                                     @"Red" : [SKTexture textureWithImageNamed:@"Red.png"],
+                                     @"Ring" : [SKTexture textureWithImageNamed:@"Ring.png"],
+                                     @"Serebus" : [SKTexture textureWithImageNamed:@"Serebus.png"],
+                                     @"Twin Suns" : [SKTexture textureWithImageNamed:@"Twin Suns.png"],
+                                     @"Verdant" : [SKTexture textureWithImageNamed:@"Verdant.png"],
+                                     @"Void" : [SKTexture textureWithImageNamed:@"Void.png"]};
     }
     return self;
 }
@@ -128,14 +81,13 @@ static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
 - (NSArray *) texturesForPreloading
 {
     NSMutableArray * textures = [NSMutableArray new];
-    [textures addObjectsFromArray:self.backgroundPlanetTextures];
     [textures addObjectsFromArray:self.asteroidTextureAtlas];
     [textures addObjectsFromArray:[self.powerUpTextures allValues]];
-    [textures addObjectsFromArray:self.spaceBackgroundTextures];
-    [textures addObjectsFromArray:self.shield1Frames];
-    [textures addObjectsFromArray:self.shield2Frames];
-    [textures addObjectsFromArray:self.shield3Frames];
-    [textures addObject:self.firstSpaceBackgroundTexture];
+    [textures addObject:self.shieldTexture];
+    
+    SKTexture * backgroundTexture = [self randomTextureForNextBackground];
+    [textures addObject:backgroundTexture];
+    
     return textures;
 }
 
@@ -186,7 +138,9 @@ static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
     
     newAsteroid.position = CGPointMake(xCoord, yCoord);
     [self.scene addChild:newAsteroid];
-    [newAsteroid.physicsBody applyTorque:skRand(-.02, .02)];
+    
+    float deviceSizeFactor = [[UIScreen mainScreen] bounds].size.width*0.0000125;
+    [newAsteroid.physicsBody applyTorque:skRand(-deviceSizeFactor, deviceSizeFactor)];
     
     //impulse
     CGFloat radianFactor = 0.0174532925;
@@ -194,29 +148,26 @@ static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
     CGFloat newRotationRadians = newRotationDegrees * radianFactor;
     CGFloat dx = speed * cos(newRotationRadians);
     CGFloat dy = speed * sin(newRotationRadians);
-    [newAsteroid.physicsBody applyImpulse:CGVectorMake(dx, dy)];
+    [newAsteroid.physicsBody applyImpulse:CGVectorMake(dx*newAsteroid.size.width*.01, dy*newAsteroid.size.width*.01)];
     
     return newAsteroid;
 }
 
-- (void) addPlanetToBackgroundWithAlpha:(float)alpha
+- (SKTexture *)randomTextureForNextBackground
 {
-    return;
-    SKTexture * randomPlanetTextue = [self.backgroundPlanetTextures objectAtIndex:arc4random_uniform((int)self.backgroundPlanetTextures.count)];
-    SKSpriteNode * backgroundPlanet = [SKSpriteNode spriteNodeWithTexture:randomPlanetTextue];
-    backgroundPlanet.zPosition = -50;
-    double randomScale = ((double)arc4random() / 0x100000000);
-    [backgroundPlanet setScale:randomScale*1.3];
-    [backgroundPlanet setAlpha:alpha];
-    [self.scene addChild:backgroundPlanet];
-    int randomXcoord = arc4random_uniform(self.scene.size.width + backgroundPlanet.size.width) - backgroundPlanet.size.width/2;
-    int yCoord = self.scene.size.height + backgroundPlanet.size.height;
-    [backgroundPlanet setPosition:CGPointMake(randomXcoord, yCoord)];
-    int randomDuration = arc4random_uniform(15)+20;
-    SKAction * moveDown = [SKAction moveTo:CGPointMake(backgroundPlanet.position.x, -backgroundPlanet.size.height) duration:randomDuration];
-    [backgroundPlanet runAction:moveDown completion:^
+    NSArray * backgroundKeys = [_spaceBackgroundTextures allKeys];
+    NSString * randomTextureKey = [backgroundKeys objectAtIndex:arc4random_uniform((int)backgroundKeys.count)];
+    _nextBackground = [_spaceBackgroundTextures objectForKey:randomTextureKey];
+    return _nextBackground;
+}
+
+- (void) preloadNextBackground
+{
+    //NSLog(@"preload next background");
+    SKTexture * backgroundTexture = [self randomTextureForNextBackground];
+    [SKTexture preloadTextures:@[backgroundTexture] withCompletionHandler:^
     {
-        [backgroundPlanet removeFromParent];
+        //NSLog(@"background preloading done");
     }];
 }
 
@@ -225,16 +176,25 @@ static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
     SpaceBackground * spaceBackground;
     
     float posititionDifference = 0;
+    float timeFactor = 1;
     if ( ![self.scene childNodeWithName:@"spaceBackground"] )
     {
-        spaceBackground = [SpaceBackground spriteNodeWithTexture:self.firstSpaceBackgroundTexture];
         posititionDifference = self.scene.size.height;
+        timeFactor = .825;
     }
-    else
-    {
-        SKTexture * randomSpaceBackground = [self.spaceBackgroundTextures objectAtIndex:arc4random_uniform(4)];
-        spaceBackground = [SpaceBackground spriteNodeWithTexture:randomSpaceBackground];
-    }
+    
+    SKTexture * randomSpaceBackground = _nextBackground;
+    float resizeFactor = self.scene.size.width / randomSpaceBackground.size.width;
+    spaceBackground = [SpaceBackground spriteNodeWithTexture:randomSpaceBackground size:CGSizeMake(randomSpaceBackground.size.width*resizeFactor, randomSpaceBackground.size.height*resizeFactor)];
+    
+    //debug border
+//        SKShapeNode *shape = [SKShapeNode node];
+//        shape.zPosition = 100;
+//        shape.path = CGPathCreateWithRoundedRect(spaceBackground.frame, 2, 2, nil);
+//        shape.strokeColor = [SKColor colorWithRed:1.0 green:1 blue:1 alpha:1];
+//        shape.lineWidth = 3.0;
+//        [spaceBackground addChild:shape];
+    
     spaceBackground.name = @"spaceBackground";
     spaceBackground.zPosition = -100;
     spaceBackground.delegate = self.scene;
@@ -245,11 +205,13 @@ static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
     int randomXcoord = arc4random_uniform(difference) - (spaceBackground.size.width/2 - self.scene.size.width);
 
     [spaceBackground setPosition:CGPointMake(randomXcoord, yCoord)];
-    SKAction * moveDown = [SKAction moveTo:CGPointMake(spaceBackground.position.x, -spaceBackground.size.height) duration:300];
+    SKAction * moveDown = [SKAction moveTo:CGPointMake(spaceBackground.position.x, -spaceBackground.size.height) duration:300*timeFactor];
     [spaceBackground runAction:moveDown completion:^
     {
         [spaceBackground removeFromParent];
     }];
+    
+    [self preloadNextBackground];
 }
 
 static inline CGFloat skRandf()

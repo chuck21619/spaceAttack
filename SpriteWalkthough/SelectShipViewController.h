@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "ShipSelectionButton.h"
-@interface SelectShipViewController : UIViewController
+#import "PurchaseShipView.h"
+@import StoreKit;
 
+@interface SelectShipViewController : UIViewController <SKProductsRequestDelegate, PurchaseShipViewDelegate>
 
 @property (nonatomic) NSArray * spaceships;
 

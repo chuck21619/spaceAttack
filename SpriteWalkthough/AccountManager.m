@@ -7,10 +7,10 @@
 //
 
 #import "AccountManager.h"
-#import <GameKit/GameKit.h>
 #import "FullScreenAdSingleton.h"
 #import "Upgrade.h"
 #import "AudioManager.h"
+#import <GameKit/GameKit.h>
 #import <Crashlytics/Crashlytics.h>
 
 @implementation AccountManager
@@ -23,9 +23,9 @@ static AccountManager * sharedAccountManager = nil;
         sharedAccountManager = [[AccountManager alloc] init];
         sharedAccountManager.userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"ZinStudio"];
         
-#warning comment out for release builds
-        [sharedAccountManager.userDefaults removePersistentDomainForName:@"ZinStudio"]; //clear all defaults
-        [AccountManager addPoints:5000000];
+//#warning comment out for release builds
+//        [sharedAccountManager.userDefaults removePersistentDomainForName:@"ZinStudio"]; //clear all defaults
+//        [AccountManager addPoints:5000];
         
         sharedAccountManager.fullScreenAdIteration = YES;
         sharedAccountManager.firstGameplaySinceLaunch = YES;
@@ -48,25 +48,60 @@ static AccountManager * sharedAccountManager = nil;
                                             [Flandre new],
                                             [Gascogne new],
                                             [Habsburg new]];
+        
+        sharedAccountManager.touchControls = [sharedAccountManager savedTouchControls];
     }
     
     return sharedAccountManager;
 }
 
++ (BOOL) firstLaunch
+{
+    NSNumber * firstLaunchExistsValue = [sharedAccountManager.userDefaults valueForKey:@"firstLaunch"];
+    //firstLaunchExistsValue is used becuase i cant check if a BOOL is null
+    if ( !firstLaunchExistsValue )
+    {
+        NSLog(@"first Launch");
+        [sharedAccountManager.userDefaults setBool:NO forKey:@"firstLaunch"];
+        return YES;
+    }
+    
+    return NO;
+}
+
+#pragma mark - gameplay controls
+- (BOOL) savedTouchControls
+{
+    BOOL touchControls = [sharedAccountManager.userDefaults boolForKey:@"touchControls"];
+    NSNumber * touchControlsExistsValue = [sharedAccountManager.userDefaults valueForKey:@"touchControls"];
+    //touchControlsExistsValue is used becuase i cant check if a BOOL is null
+    if ( !touchControlsExistsValue )
+    {
+        touchControls = NO;
+        [AccountManager setVibrate:touchControls];
+    }
+    return touchControls;
+}
+
+- (void) setTouchControls:(BOOL)touchControls
+{
+    _touchControls = touchControls;
+    [sharedAccountManager.userDefaults setBool:touchControls forKey:@"touchControls"];
+}
+
 #pragma mark - store kit
 - (void) paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray<SKPaymentTransaction *> *)transactions
 {
-    //NSLog(@"account manager - paymentQueue");
+    NSLog(@"account manager - paymentQueue");
     for (SKPaymentTransaction *transaction in transactions)
     {
-        //NSLog(@"transaction : %@", transaction);
-        //NSLog(@"error : %@", transaction.error);
-        //NSLog(@"payment : %@", transaction.payment);
-        //NSLog(@"payment.productIdentifier ::: %@", transaction.payment.productIdentifier);
-        //NSLog(@"identifier : %@", transaction.transactionIdentifier);
-        //NSLog(@"state : %li", (long)transaction.transactionState);
+        NSLog(@"transaction : %@", transaction);
+        NSLog(@"error : %@", transaction.error);
+        NSLog(@"payment : %@", transaction.payment);
+        NSLog(@"payment.productIdentifier ::: %@", transaction.payment.productIdentifier);
+        NSLog(@"identifier : %@", transaction.transactionIdentifier);
+        NSLog(@"state : %li", (long)transaction.transactionState);
         
-        //[[SKPaymentQueue defaultQueue] finishTransaction:transaction];
         switch (transaction.transactionState)
         {
             case SKPaymentTransactionStatePurchasing:
@@ -81,7 +116,7 @@ static AccountManager * sharedAccountManager = nil;
                 break;
                 
             case SKPaymentTransactionStatePurchased:
-                if ( [transaction.payment.productIdentifier isEqualToString:@"TestWeaponsTwo"] )
+                if ( [transaction.payment.productIdentifier isEqualToString:@"TwoWeapons"] )
                     [AccountManager unlockUpgrade:kUpgrade2Weapons];
                 else if ( [transaction.payment.productIdentifier isEqualToString:@"SmartPhotons"] )
                     [AccountManager unlockUpgrade:kUpgradeSmartPhotons];
@@ -95,7 +130,7 @@ static AccountManager * sharedAccountManager = nil;
                     [AccountManager unlockUpgrade:kUpgradeElectricityChain];
                 else if ( [transaction.payment.productIdentifier isEqualToString:@"EnergyBooster"] )
                     [AccountManager unlockUpgrade:kUpgradeEnergyBooster];
-                else if ( [transaction.payment.productIdentifier isEqualToString:@"TestWeaponsFour"] )
+                else if ( [transaction.payment.productIdentifier isEqualToString:@"FourWeapons"] )
                     [AccountManager unlockUpgrade:kUpgrade4Weapons];
                 
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
@@ -452,7 +487,35 @@ static AccountManager * sharedAccountManager = nil;
     [sharedAccountManager.userDefaults setValue:tooltipsShown forKey:@"tooltipsShown"];
 }
 
++ (void) resetTooltips
+{
+    [sharedAccountManager.userDefaults setValue:@[] forKey:@"tooltipsShown"];
+}
+
 #pragma mark - game center
++ (NSString *) lastPlayerLoggedIn
+{
+    NSString * lastPlayerLoggedIn = [sharedAccountManager.userDefaults objectForKey:@"lastPlayerLoggedIn"];
+    if ( ! lastPlayerLoggedIn )
+    {
+        lastPlayerLoggedIn = [GKLocalPlayer localPlayer].playerID;
+        [sharedAccountManager.userDefaults setObject:lastPlayerLoggedIn forKey:@"lastPlayerLoggedIn"];
+    }
+    
+    return lastPlayerLoggedIn;
+}
+
++ (void) setLastPlayerLoggedIn:(NSString *)player
+{
+    [sharedAccountManager.userDefaults setObject:player forKey:@"lastPlayerLoggedIn"];
+}
+
++ (void) clearPlayerProgress
+{
+    [sharedAccountManager.userDefaults removePersistentDomainForName:@"ZinStudio"]; //clears all defaults
+}
+
+#pragma mark achievements
 + (NSArray *) achievementsCompleted
 {
     //NSLog(@"account manager - achievementsCompleted");
@@ -515,6 +578,35 @@ static AccountManager * sharedAccountManager = nil;
     BOOL PowerUpsCollected300exists = NO;
     BOOL PowerUpsCollected3000exists = NO;
     
+    
+    BOOL MaxLevelMachineGun = NO;
+    BOOL MaxLevelPhotonCannon = NO;
+    BOOL MaxLevelElectricalGenerator = NO;
+    BOOL MaxLevelLaserCannon = NO;
+    
+    BOOL purchasedBabenberg = NO;
+    BOOL purchasedCaiman = NO;
+    BOOL purchasedDandolo = NO;
+    BOOL purchasedEdinburgh = NO;
+    BOOL purchasedFlandre = NO;
+    BOOL purchasedGascogne = NO;
+    BOOL purchasedHabsburg = NO;
+    BOOL PurchasedAllShips = NO;
+    
+    BOOL SmartPhotons = NO;
+    BOOL MachineGunFireRate = NO;
+    BOOL Shield = NO;
+    BOOL BiggerLaser = NO;
+    BOOL ElectricityChain = NO;
+    BOOL EnergyBooster = NO;
+    BOOL TwoWeapons = NO;
+    BOOL FourWeapons = NO;
+    BOOL AllUpgrades = NO;
+    
+    
+    BOOL AllAchievements = NO;
+    
+    
     for ( GKAchievement * achievo in achievements )
     {
         if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementBulletsFired100]] )
@@ -570,6 +662,72 @@ static AccountManager * sharedAccountManager = nil;
             PowerUpsCollected300exists = YES;
         else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementPowerUpsCollected3000]] )
             PowerUpsCollected3000exists = YES;
+        
+        
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementMaxLevelMachineGun]] )
+            MaxLevelMachineGun = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementMaxLevelElectricalGenerator]] )
+            MaxLevelElectricalGenerator = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementMaxLevelPhotonCannon]] )
+            MaxLevelPhotonCannon = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementMaxLevelLaserCannon]] )
+            MaxLevelLaserCannon = YES;
+        
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementPurchasedBabenberg]] )
+            purchasedBabenberg = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementPurchasedCaiman]] )
+            purchasedCaiman = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementPurchasedDandolo]] )
+            purchasedDandolo = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementPurchasedEdinburgh]] )
+            purchasedEdinburgh = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementPurchasedFlandre]] )
+            purchasedFlandre = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementPurchasedGascogne]] )
+            purchasedGascogne = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementPurchasedHabsburg]] )
+            purchasedHabsburg = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementPurchasedAllShips]] )
+            PurchasedAllShips = YES;
+        
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementPurchasedAllShips]] )
+            PurchasedAllShips = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementPurchasedAllShips]] )
+            PurchasedAllShips = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementPurchasedAllShips]] )
+            PurchasedAllShips = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementPurchasedAllShips]] )
+            PurchasedAllShips = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementPurchasedAllShips]] )
+            PurchasedAllShips = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementPurchasedAllShips]] )
+            PurchasedAllShips = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementPurchasedAllShips]] )
+            PurchasedAllShips = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementPurchasedAllShips]] )
+            PurchasedAllShips = YES;
+        
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementSmartPhotons]] )
+            SmartPhotons = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementMachineGunFireRate]] )
+            MachineGunFireRate = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementShield]] )
+            Shield = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementBiggerLaser]] )
+            BiggerLaser = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementElectricityChain]] )
+            ElectricityChain = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementEnergyBooster]] )
+            EnergyBooster = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementTwoWeapons]] )
+            TwoWeapons = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementFourWeapons]] )
+            FourWeapons = YES;
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementAllUpgrades]] )
+            AllUpgrades = YES;
+        
+        else if ( [achievo.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementAllAchievements]] )
+            AllAchievements = YES;
     }
     
     if ( ! BulletsFired100exists )
@@ -626,6 +784,55 @@ static AccountManager * sharedAccountManager = nil;
     if ( ! PowerUpsCollected3000exists )
         [AccountManager populateAchievement:kAchievementPowerUpsCollected3000 inAchivements:achievements];
     
+    
+    if ( ! MaxLevelMachineGun )
+        [AccountManager populateAchievement:kAchievementMaxLevelMachineGun inAchivements:achievements];
+    if ( ! MaxLevelPhotonCannon )
+        [AccountManager populateAchievement:kAchievementMaxLevelPhotonCannon inAchivements:achievements];
+    if ( ! MaxLevelElectricalGenerator )
+        [AccountManager populateAchievement:kAchievementMaxLevelElectricalGenerator inAchivements:achievements];
+    if ( ! MaxLevelLaserCannon )
+        [AccountManager populateAchievement:kAchievementMaxLevelLaserCannon inAchivements:achievements];
+    
+    if ( ! purchasedBabenberg )
+        [AccountManager populateAchievement:kAchievementPurchasedBabenberg inAchivements:achievements];
+    if ( ! purchasedCaiman )
+        [AccountManager populateAchievement:kAchievementPurchasedCaiman inAchivements:achievements];
+    if ( ! purchasedDandolo )
+        [AccountManager populateAchievement:kAchievementPurchasedDandolo inAchivements:achievements];
+    if ( ! purchasedEdinburgh )
+        [AccountManager populateAchievement:kAchievementPurchasedEdinburgh inAchivements:achievements];
+    if ( ! purchasedFlandre )
+        [AccountManager populateAchievement:kAchievementPurchasedFlandre inAchivements:achievements];
+    if ( ! purchasedGascogne )
+        [AccountManager populateAchievement:kAchievementPurchasedGascogne inAchivements:achievements];
+    if ( ! purchasedHabsburg )
+        [AccountManager populateAchievement:kAchievementPurchasedHabsburg inAchivements:achievements];
+    if ( ! PurchasedAllShips )
+        [AccountManager populateAchievement:kAchievementPurchasedAllShips inAchivements:achievements];
+    
+    if ( ! SmartPhotons )
+        [AccountManager populateAchievement:kAchievementSmartPhotons inAchivements:achievements];
+    if ( ! MachineGunFireRate )
+        [AccountManager populateAchievement:kAchievementMachineGunFireRate inAchivements:achievements];
+    if ( ! Shield )
+        [AccountManager populateAchievement:kAchievementShield inAchivements:achievements];
+    if ( ! BiggerLaser )
+        [AccountManager populateAchievement:kAchievementBiggerLaser inAchivements:achievements];
+    if ( ! ElectricityChain )
+        [AccountManager populateAchievement:kAchievementElectricityChain inAchivements:achievements];
+    if ( ! EnergyBooster )
+        [AccountManager populateAchievement:kAchievementEnergyBooster inAchivements:achievements];
+    if ( ! TwoWeapons )
+        [AccountManager populateAchievement:kAchievementTwoWeapons inAchivements:achievements];
+    if ( ! FourWeapons )
+        [AccountManager populateAchievement:kAchievementFourWeapons inAchivements:achievements];
+    if ( ! AllUpgrades )
+        [AccountManager populateAchievement:kAchievementAllUpgrades inAchivements:achievements];
+    
+    if ( ! AllAchievements )
+        [AccountManager populateAchievement:kAchievementAllAchievements inAchivements:achievements];
+    
     return achievements;
 }
 
@@ -646,7 +853,9 @@ static AccountManager * sharedAccountManager = nil;
     {
         if ( [achievo.identifier isEqualToString:achievement.identifier] )
         {
-            achievo = achievement;
+            if ( achievement.percentComplete > achievo.percentComplete )
+                achievo.percentComplete = achievement.percentComplete;
+            
             matchedIdentifier = YES;
         }
     }
@@ -659,6 +868,9 @@ static AccountManager * sharedAccountManager = nil;
 
 + (void) loadAchievements
 {
+//#warning uncomment for release
+//    return;
+    
     //NSLog(@"account manager - loadAchievements");
     [GKAchievement loadAchievementsWithCompletionHandler:^(NSArray<GKAchievement *> * _Nullable achievements, NSError * _Nullable error)
     {
@@ -668,7 +880,7 @@ static AccountManager * sharedAccountManager = nil;
         }
         else
         {
-            //NSLog(@"achievements loaded");// : %@", achievements);
+            //NSLog(@"account manager - achievements loaded : %@", achievements);
             NSMutableArray * completedAchievementsForUserDefaults = [NSMutableArray new];
             NSMutableArray * achievementsForUserDefaults = [[AccountManager achievements] mutableCopy];
             for ( GKAchievement * achievement in achievements )
@@ -749,7 +961,10 @@ static AccountManager * sharedAccountManager = nil;
         if ( tmpAchievement.percentComplete == 100.0 )
             [alreadyCompletedAchievements addObject:tmpAchievement];
         else
+        {
+            tmpAchievement.showsCompletionBanner = NO;
             [achievementsToSubmit addObject:tmpAchievement];
+        }
         
         int increase = [[achievements valueForKey:key] intValue];
         tmpAchievement.percentComplete = [AccountManager calculatePercentCompleteForAchievement:achievement withIncrease:increase];
@@ -765,16 +980,22 @@ static AccountManager * sharedAccountManager = nil;
              NSLog(@"submitAchievementProgress error : %@", error );
          else
          {
+             BOOL checkAllAchievementsAchivement = NO;
              for ( GKAchievement * achievo in achievementsToSubmit )
              {
                  //NSLog(@"submitAchievementProgress reported : %@", achievo.identifier);
                  if ( achievo.percentComplete == 100.0 )
                  {
                      NSLog(@"achievement completed - banner should be displayed : %@", achievo.identifier);
+                     [AccountManager showCompletionBannerForAchievement:achievo];
                      [[NSNotificationCenter defaultCenter] postNotificationName:@"achievementCompleted" object:achievo];
                      [Answers logCustomEventWithName:@"Gameplay Achievement" customAttributes:@{@"achievement type" : achievo.identifier}];
+                     checkAllAchievementsAchivement = YES;
                  }
              }
+             
+             if ( checkAllAchievementsAchivement )
+                 [sharedAccountManager checkAllAchievementsAchievement];
          }
      }];
 }
@@ -861,7 +1082,7 @@ static AccountManager * sharedAccountManager = nil;
     if ( ! [[AccountManager achievementsCompleted] containsObject:achievementIdentifier] )
     {
         GKAchievement * tmpAchievement = [[GKAchievement alloc] initWithIdentifier:achievementIdentifier];
-        tmpAchievement.showsCompletionBanner = YES;
+        tmpAchievement.showsCompletionBanner = NO;
         tmpAchievement.percentComplete = 100;
         [GKAchievement reportAchievements:@[tmpAchievement] withCompletionHandler:^(NSError * _Nullable error)
         {
@@ -877,6 +1098,10 @@ static AccountManager * sharedAccountManager = nil;
                 [sharedAccountManager.userDefaults setValue:achievements forKey:@"achievementsCompleted"];
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"achievementCompleted" object:tmpAchievement];
                 NSLog(@"achievement completed - banner should be displayed : %@", tmpAchievement.identifier);
+                [AccountManager showCompletionBannerForAchievement:tmpAchievement];
+                [sharedAccountManager checkAllUpgradesAchievement];
+                [sharedAccountManager checkAllShipsAchievement];
+                [sharedAccountManager checkAllAchievementsAchievement];
             }
         }];
     }
@@ -884,6 +1109,61 @@ static AccountManager * sharedAccountManager = nil;
     {
         //NSLog(@"achievement already completed : %@", [EnumTypes identifierFromAchievement:achievement]);
     }
+}
+
+- (void) checkAllShipsAchievement
+{
+    if ( [AccountManager savedAchievement:kAchievementPurchasedAllShips].percentComplete >= 100 )
+        return;
+    
+    NSArray * completedAchievements = [AccountManager achievementsCompleted];
+    if ( ![completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementPurchasedAllShips]] &&
+          [completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementPurchasedBabenberg]] &&
+          [completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementPurchasedCaiman]] &&
+          [completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementPurchasedDandolo]] &&
+          [completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementPurchasedEdinburgh]] &&
+          [completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementPurchasedFlandre]] &&
+          [completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementPurchasedGascogne]] &&
+          [completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementPurchasedHabsburg]] )
+    {
+        [AccountManager submitCompletedAchievement:kAchievementPurchasedAllShips];
+    }
+}
+
+- (void) checkAllUpgradesAchievement
+{
+    if ( [AccountManager savedAchievement:kAchievementAllUpgrades].percentComplete >= 100 )
+        return;
+    
+    NSArray * completedAchievements = [AccountManager achievementsCompleted];
+    if ( ![completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementAllUpgrades]] &&
+          [completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementTwoWeapons]] &&
+          [completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementFourWeapons]] &&
+          [completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementSmartPhotons]] &&
+          [completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementMachineGunFireRate]] &&
+          [completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementShield]] &&
+          [completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementBiggerLaser]] &&
+          [completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementElectricityChain]] &&
+          [completedAchievements containsObject:[EnumTypes identifierFromAchievement:kAchievementEnergyBooster]] )
+    {
+        [AccountManager submitCompletedAchievement:kAchievementAllUpgrades];
+    }
+}
+
+- (void) checkAllAchievementsAchievement
+{
+    if ( [AccountManager savedAchievement:kAchievementAllAchievements].percentComplete >= 100 )
+        return;
+    
+    NSArray * achievements = [AccountManager achievements];
+    
+    for ( GKAchievement * achievement in achievements )
+    {
+        if ( achievement.percentComplete < 100 && ! [achievement.identifier isEqualToString:[EnumTypes identifierFromAchievement:kAchievementAllAchievements]] )
+            return;
+    }
+    
+    [AccountManager submitCompletedAchievement:kAchievementAllAchievements];
 }
 
 + (int) bonusPointsForAchievement:(Achievement)achievement
@@ -982,6 +1262,20 @@ static AccountManager * sharedAccountManager = nil;
     }
 }
 
++ (void) showCompletionBannerForAchievement:(GKAchievement *)achievement
+{
+    [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuDidUnlock];
+    
+    UIImage * achievementImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", achievement.identifier]];
+    
+    NSString * descriptionLocalizeKey = [NSString stringWithFormat:@"%@Description", achievement.identifier];
+    NSString * achievementDescription = NSLocalizedString(descriptionLocalizeKey, nil);
+    
+    [[GKAchievementHandler defaultHandler] notifyAchievementTitle:achievementDescription
+                                                       andMessage:NSLocalizedString(@"Achievement Earned!", nil)
+                                                            image:achievementImage];
+}
+
 #pragma mark - ads
 + (void) startFullScreenAdTimer
 {
@@ -1001,7 +1295,6 @@ static AccountManager * sharedAccountManager = nil;
 + (BOOL) shouldShowFullscreenAd
 {
     //NSLog(@"account manager - shouldShowFullscreenAd");
-    
     if ( sharedAccountManager.firstGameplaySinceLaunch )
         return NO;
     

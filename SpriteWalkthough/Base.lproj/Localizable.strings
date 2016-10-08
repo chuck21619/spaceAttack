@@ -1,3 +1,8 @@
+//fonts
+"font1" = "Chalkduster";
+"font2" = "Chalkduster";
+"font3" = "Chalkduster";
+
 //ship names
 "Abdul_Kadir" = "Abdul Kadir";
 "Babenberg" = "Babenberg";
@@ -8,6 +13,64 @@
 "Gascogne" = "Gatun";
 "Habsburg" = "Hasley";
 
+"hasCustomMainMenuBackground" = "NO";
+
+//achievement descriptions
+"AllAchievementsDescription" = "SPACE LEGEND!";
+"AllUpgradesDescription" = "All Upgrades";
+"BiggerLaserDescription" = "Bigger Laser";
+"BulletsFired100000Description" = "Fire 100,000 Bullets";
+"BulletsFired10000Description" = "Fire 10,000 Bullets";
+"BulletsFired1000Description" = "Fire 1,000 Bullets";
+"BulletsFired100Description" = "Fire 100 Bullets";
+"ElectricityChainDescription" = "Electricity Chain";
+"ElectricityFired20000Description" = "Fire 20,000 Electricity";
+"ElectricityFired2000Description" = "Fire 2,000 Electricity";
+"ElectricityFired200Description" = "Fire 200 Electricity";
+"ElectricityFired20Description" = "Fire 20 Electricity";
+"EnemiesDestroyed50000Description" = "Destroy 50,000 Aliens";
+"EnemiesDestroyed5000Description" = "Destroy 5,000 Aliens";
+"EnemiesDestroyed500Description" = "Destroy 500 Aliens";
+"EnemiesDestroyed50Description" = "Destroy 50 Aliens";
+"EnergyBoosterDescription" = "Energy Booster";
+"FourWeaponsDescription" = "Four Weapons";
+"LasersFired15000Description" = "Fire 15,000 Lasers";
+"LasersFired1500Description" = "Fire 1,500 Lasers";
+"LasersFired150Description" = "Fire 150 Lasers";
+"LasersFired15Description" = "Fire 15 Lasers";
+"MachineGunFireRateDescription" = "More Bullets";
+"MaxLevelElectricalGeneratorDescription" = "Electrical Generator";
+"MaxLevelLaserCannonDescription" = "Laser Cannon";
+"MaxLevelMachineGunDescription" = "Machine Gun";
+"MaxLevelPhotonCannonDescription" = "Photon Cannon";
+"PhotonsFired25000Description" = "Fire 25,000 Photons";
+"PhotonsFired2500Description" = "Fire 2,500 Photons";
+"PhotonsFired250Description" = "Fire 250 Photons";
+"PhotonsFired25Description" = "Fire 25 Photons";
+"PowerUpsCollected3000Description" = "Collect 3,000 PowerUps";
+"PowerUpsCollected300Description" = "Collect 300 PowerUps";
+"PowerUpsCollected30Description" = "Collect 30 PowerUps";
+"PowerUpsCollected3Description" = "Collect 3 PowerUps";
+"PurchasedAllShipsDescription" = "All Ships";
+"ShieldDescription" = "Shield";
+"SmartPhotonsDescription" = "Smart Photons";
+"TwoWeaponsDescription" = "Two Weapons";
+"purchasedBabenbergDescription" = "Ballista";
+"purchasedCaimanDescription" = "Caiman";
+"purchasedDandoloDescription" = "Dandolo";
+"purchasedEdinburghDescription" = "Emory";
+"purchasedFlandreDescription" = "Flandre";
+"purchasedGascogneDescription" = "Gatun";
+"purchasedHabsburgDescription" = "Hasley";
+
+//achievement banner
+"Achievement Earned!" = "Achievement Earned!";
+
+//settings
+"Tutorial Reset!" = "Tutorial Reset!";
+
+
+
 /* No comment provided by engineer. */
 "Available Points" = "Available Points";
 
@@ -15,7 +78,7 @@
 "Bigger Laser" = "Bigger Laser";
 
 /* No comment provided by engineer. */
-"Blowing up aliens\nwithout taking damage\nmakes your multiplier go up!" = "Blowing up aliens\nwithout taking damage\nmakes your multiplier go up!";
+"Blowing up aliens without taking damage makes your multiplier go up!" = "Blowing up aliens without taking damage makes your multiplier go up!";
 
 /* No comment provided by engineer. */
 "Disable Tips" = "Disable Tips";
@@ -39,13 +102,13 @@
 "How to Move:" = "How to Move:";
 
 /* No comment provided by engineer. */
-"Increases Photon\nTargeting IQ" = "Increases Photon\nTargeting IQ";
+"Increases Photon Targeting IQ" = "Increases Photon Targeting IQ";
 
 /* No comment provided by engineer. */
-"Increases rate of fire\nfor the Machine Gun" = "Increases rate of fire\nfor the Machine Gun";
+"Increases rate of fire for the Machine Gun" = "Increases rate of fire for the Machine Gun";
 
 /* No comment provided by engineer. */
-"Increases the size of\nPhoton Cannon Beams" = "Increases the size of\nPhoton Cannon Beams";
+"Increases the size of Laser Cannon Beams" = "Increases the size of Laser Cannon Beams";
 
 /* No comment provided by engineer. */
 "More Bullets" = "More Bullets";
@@ -57,7 +120,7 @@
 "points" = "Points";
 
 /* No comment provided by engineer. */
-"Powers up the Electrical\nGenerator to send volts\nthrough to a second target" = "Powers up the Electrical\nGenerator to send volts\nthrough to a second target";
+"Powers up the Electrical Generator to send volts through to a second target" = "Powers up the Electrical Generator to send volts through to a second target";
 
 /* No comment provided by engineer. */
 "Shield" = "Shield";
@@ -84,19 +147,19 @@
 "Unlock Now" = "Unlock Now";
 
 /* No comment provided by engineer. */
-"Unlocks the Energy\nBooster Power Up.\nDoubles Points and\nDamage for 30 seconds" = "Unlocks the Energy\nBooster Power Up.\nDoubles Points and\nDamage for 30 seconds";
+"Unlocks the Energy Booster Power Up. Doubles Points and Damage for 30 seconds" = "Unlocks the Energy Booster Power Up. Doubles Points and Damage for 30 seconds";
 
 /* No comment provided by engineer. */
-"Unlocks the\nShield Power Up" = "Unlocks the\nShield Power Up";
+"Unlocks the Shield Power Up" = "Unlocks the Shield Power Up";
 
 /* No comment provided by engineer. */
 "Weapon PowerUp!" = "Weapon PowerUp!";
 
 /* No comment provided by engineer. */
-"You just blew up an alien spaceship!\nThe more stuff you blow up,\nThe more points you score!" = "You just blew up an alien spaceship!\nThe more stuff you blow up,\nThe more points you score!";
+"You just blew up an alien spaceship! The more stuff you blow up, The more points you score!" = "You just blew up an alien spaceship! The more stuff you blow up, The more points you score!";
 
 /* No comment provided by engineer. */
-"You just picked up a weapon!\nPick up the same weapon again to upgrade it" = "You just picked up a weapon!\nPick up the same weapon again to upgrade it";
+"You just picked up a weapon! Pick up the same weapon again to upgrade it" = "You just picked up a weapon! Pick up the same weapon again to upgrade it";
 
 /* No comment provided by engineer. */
 "Your spaceships will be able to equip four different weapons!" = "Your spaceships will be able to equip four different weapons!";

@@ -21,6 +21,7 @@
 + (SpaceshipKit *)sharedInstance;
 
 @property (nonatomic) NSDictionary * shipTextures;
-- (NSArray *) texturesForPreloading;
+@property (nonatomic) NSArray * explosionFrames;
+- (NSArray *) texturesForPreloading:(Spaceship*)spaceship;
 
 @end

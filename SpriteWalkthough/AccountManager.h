@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "SpaceshipKit.h"
 #import "EnumTypes.h"
+#import "GKAchievementHandler.h"
 @import StoreKit;
 
 @interface AccountManager : NSObject <SKPaymentTransactionObserver>
@@ -20,6 +21,8 @@
 @property (nonatomic) BOOL firstGameplaySinceLaunch;
 @property (nonatomic) NSArray * upgrades;
 @property (nonatomic) NSArray * spaceships;
+@property (nonatomic) BOOL touchControls;
++ (BOOL) firstLaunch;
 
 #pragma mark ships
 + (Spaceship *) lastSelectedShip;
@@ -49,6 +52,20 @@
 #pragma mark tooltips
 + (BOOL) shouldShowTooltip:(TooltipType)tooltipType;
 + (void) disableTips;
++ (void) resetTooltips;
+
+#pragma mark ads
++ (void) startFullScreenAdTimer;
++ (BOOL) shouldShowFullscreenAd;
+
+#pragma mark metrics
++ (int) numberOfTimesPlayed;
++ (void) incrementNumberOfTimesPlayed;
+
+#pragma mark - game center
++ (NSString *) lastPlayerLoggedIn;
++ (void) setLastPlayerLoggedIn:(NSString *)player;
++ (void) clearPlayerProgress;
 
 #pragma mark achievements
 @property (nonatomic) NSArray * cachedAchievements;
@@ -58,14 +75,7 @@
 + (void) submitAchievementsProgress:(NSDictionary *)achievements;
 + (void) submitCompletedAchievement:(Achievement)achievement;
 + (int) bonusPointsForAchievement:(Achievement)achievement;
-
-#pragma mark ads
-+ (void) startFullScreenAdTimer;
-+ (BOOL) shouldShowFullscreenAd;
-
-#pragma mark metrics
-+ (int) numberOfTimesPlayed;
-+ (void) incrementNumberOfTimesPlayed;
++ (void) showCompletionBannerForAchievement:(GKAchievement *)achievement;
 
 #pragma mark - settings
 #pragma mark sound volume

@@ -8,3 +8,4 @@
 
 //app name
 "CFBundleDisplayName" = "AtaqueEspacio";
+"UILaunchStoryboardName" = "LaunchScreen_spanish";

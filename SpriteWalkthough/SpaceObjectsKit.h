@@ -17,19 +17,12 @@
 
 + (SpaceObjectsKit *) sharedInstanceWithScene:(SpaceshipScene *)scene;
 - (Asteroid *) addAsteroidWithSpeed:(float)speed angle:(float)angle;
-- (void) addPlanetToBackgroundWithAlpha:(float)alpha;
-//- (void) addStartingBackground;
 - (void) addSpaceBackground;
 
 @property (nonatomic) SpaceshipScene * scene;
 
-@property (nonatomic) NSArray * shield1Frames;
-@property (nonatomic) NSArray * shield2Frames;
-@property (nonatomic) NSArray * shield3Frames;
-@property (nonatomic) SKTexture * firstSpaceBackgroundTexture;
-@property (nonatomic) NSArray * spaceBackgroundTextures;
+@property (nonatomic) SKTexture * shieldTexture;
 @property (nonatomic) NSArray * asteroidTextureAtlas;
-@property (nonatomic) NSArray * backgroundPlanetTextures;
 @property (nonatomic) NSDictionary * powerUpTextures;
 - (NSArray *) texturesForPreloading;
 

@@ -10,7 +10,7 @@
 #import "PlayerWeaponsKit.h"
 #import "EnumTypes.h"
 #import "Shield.h"
-//#import "Level.h"
+@import StoreKit;
 
 @class Spaceship;
 @protocol SpaceshipDelegate <NSObject>
@@ -24,6 +24,11 @@
 @interface Spaceship : SKSpriteNode
 
 @property (nonatomic, weak) id <SpaceshipDelegate> delegate;
+
+@property (nonatomic) NSString * storeKitIdentifier;
+@property (nonatomic) SKProduct * storeKitProduct;
+@property (nonatomic) BOOL isValidForMoneyPurchase;
+@property (nonatomic) NSString * priceString;
 
 @property (nonatomic) int defaultDamage;
 @property (nonatomic) int damage;
@@ -45,8 +50,5 @@
 - (void) setExhaustTargetNode:(SKNode *)node;
 - (void) setNumberOfWeaponSlots:(int)numberOfWeaponSlots;
 - (void) increaseExhaustSpeed;
-
-@property (nonatomic) NSString * menuImageName; //used for the select ship scrollview. there is no way to get the image from an skspritenode
-                                                                           //^ might want to double check this ^
 
 @end

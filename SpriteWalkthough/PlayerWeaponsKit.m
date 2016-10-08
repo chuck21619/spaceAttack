@@ -34,22 +34,22 @@ static PlayerWeaponsKit * sharedPlayerWeaponsKit = nil;
         
         //laser
         NSMutableArray * laserFrames = [NSMutableArray new];
-//        NSString * atlasName;
-//        if ( [AccountManager laserUpgraded] || [sharedPlayerWeaponsKit beingUsedForDemoScene] )
-//            atlasName = @"laserUpgraded";
-//        else
-//            atlasName = @"laser";
-//        SKTextureAtlas * laserAtlas = [SKTextureAtlas atlasNamed:atlasName];
-        
-        [laserFrames addObject:[SKTexture textureWithImageNamed:@"laser1.png"]];
-        [laserFrames addObject:[SKTexture textureWithImageNamed:@"laser2.png"]];
-        [laserFrames addObject:[SKTexture textureWithImageNamed:@"laser3.png"]];
-        [laserFrames addObject:[SKTexture textureWithImageNamed:@"laser4.png"]];
-        [laserFrames addObject:[SKTexture textureWithImageNamed:@"laser5.png"]];
-        [laserFrames addObject:[SKTexture textureWithImageNamed:@"laser6.png"]];
-        [laserFrames addObject:[SKTexture textureWithImageNamed:@"laser7.png"]];
-        
+        [laserFrames addObject:[SKTexture textureWithImageNamed:@"laser 1"]];
+        [laserFrames addObject:[SKTexture textureWithImageNamed:@"laser 2"]];
+        [laserFrames addObject:[SKTexture textureWithImageNamed:@"laser 3"]];
+        [laserFrames addObject:[SKTexture textureWithImageNamed:@"laser 4"]];
         sharedPlayerWeaponsKit.laserFrames = laserFrames;
+        
+        NSMutableArray * laserFramesUpgraded = [NSMutableArray new];
+        [laserFramesUpgraded addObject:[SKTexture textureWithImageNamed:@"laser_upgrade 1"]];
+        [laserFramesUpgraded addObject:[SKTexture textureWithImageNamed:@"laser_upgrade 2"]];
+        [laserFramesUpgraded addObject:[SKTexture textureWithImageNamed:@"laser_upgrade 3"]];
+        [laserFramesUpgraded addObject:[SKTexture textureWithImageNamed:@"laser_upgrade 4"]];
+        [laserFramesUpgraded addObject:[SKTexture textureWithImageNamed:@"laser_upgrade 5"]];
+        [laserFramesUpgraded addObject:[SKTexture textureWithImageNamed:@"laser_upgrade 6"]];
+        [laserFramesUpgraded addObject:[SKTexture textureWithImageNamed:@"laser_upgrade 7"]];
+        [laserFramesUpgraded addObject:[SKTexture textureWithImageNamed:@"laser_upgrade 8"]];
+        sharedPlayerWeaponsKit.laserFramesUpgraded = laserFramesUpgraded;
         
         //electricity
         sharedPlayerWeaponsKit.electricityFrames = [NSMutableArray new];
@@ -70,12 +70,12 @@ static PlayerWeaponsKit * sharedPlayerWeaponsKit = nil;
     return sharedPlayerWeaponsKit;
 }
 
-- (BOOL) beingUsedForDemoScene
+- (NSArray *) currentLaserFrames
 {
-    if ( [[[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentedViewController] class] == [UpgradesViewController class] )
-        return YES;
-    
-    return NO;
+    if ( [AccountManager laserUpgraded] )
+        return self.laserFramesUpgraded;
+    else
+        return self.laserFrames;
 }
 
 - (NSArray *) texturesForPreloading
@@ -85,6 +85,7 @@ static PlayerWeaponsKit * sharedPlayerWeaponsKit = nil;
     [textures addObject:self.bulletTexture];
     [textures addObject:self.photonTexture];
     [textures addObjectsFromArray:self.laserFrames];
+    [textures addObjectsFromArray:self.laserFramesUpgraded];
     [textures addObjectsFromArray:self.electricityFrames];
     return textures;
 }

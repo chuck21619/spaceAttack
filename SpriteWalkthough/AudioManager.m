@@ -32,20 +32,15 @@ static AudioManager * sharedAudioManager = nil;
         sharedAudioManager.currentSounds = [NSMutableArray new];
         
         //gameplay songs
-        NSURL *url1 = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"UnknownPlanet" ofType:@"mp3"]];
-        NSURL *url2 = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"SpaceTrip" ofType:@"mp3"]];
-        NSURL *url3 = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"SpaceTravel" ofType:@"mp3"]];
-        NSURL *url4 = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"TimePortal" ofType:@"mp3"]];
-        NSURL *url5 = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Mercury" ofType:@"mp3"]];
-        NSURL *url6 = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Kalliope" ofType:@"mp3"]];
-        sharedAudioManager.gameplayTrackUrls = @[url1, url2, url3, url4, url5, url6];
+        NSURL *url1 = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"somewhere" ofType:@"mp3"]];
+        NSURL *url2 = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"81s" ofType:@"mp3"]];
+        NSURL *url3 = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"escape" ofType:@"mp3"]];
+        NSURL *url4 = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"80s" ofType:@"mp3"]];
+        sharedAudioManager.gameplayTrackUrls = @[url1, url2, url3, url4];
         
         //menu songs
-        NSURL * url7 = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"StarMasterLoop" ofType:@"wav"]];
-        NSURL * url8 = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"SpaceCube" ofType:@"wav"]];
-        NSURL * url9 = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"CosmicMessages" ofType:@"wav"]];
-        NSURL * url10 = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Starlight" ofType:@"wav"]];
-        sharedAudioManager.menuTrackUrls = @[url7, url8, url9, url10];
+        NSURL * url5 = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Main-Title" ofType:@"mp3"]];
+        sharedAudioManager.menuTrackUrls = @[url5];
         
         //sound effects
         //tooltip
@@ -137,6 +132,9 @@ static AudioManager * sharedAudioManager = nil;
         sharedAudioManager.engage = [[sharedAudioManager createAudioBuffers:@[@"engage"]] firstObject];
         sharedAudioManager.didUnlock = [[sharedAudioManager createAudioBuffers:@[@"didUnlock"]] firstObject];
         sharedAudioManager.selectShip = [[sharedAudioManager createAudioBuffers:@[@"selectShip"]] firstObject];
+        sharedAudioManager.minimizeCell = [[sharedAudioManager createAudioBuffers:@[@"minimizeCell"]] firstObject];
+        sharedAudioManager.maximizeCell = [[sharedAudioManager createAudioBuffers:@[@"maximizeCell"]] firstObject];
+        sharedAudioManager.pageTurn = [[sharedAudioManager createAudioBuffers:@[@"pageTurn"]] firstObject];
     }
     
     return sharedAudioManager;
@@ -427,6 +425,18 @@ static AudioManager * sharedAudioManager = nil;
             audioBuffer = self.selectShip;
             break;
         
+        case kSoundEffectMinimizeCell:
+            audioBuffer = self.minimizeCell;
+            break;
+            
+        case kSoundEffectMaximizeCell:
+            audioBuffer = self.maximizeCell;
+            break;
+            
+        case kSoundEffectMenuPageTurn:
+            audioBuffer = self.pageTurn;
+            break;
+            
         default:
             return;
     }
@@ -436,13 +446,16 @@ static AudioManager * sharedAudioManager = nil;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
         {
             ALSource * soundSource = (ALSource *)[self.channel play:audioBuffer];
-            [self.currentSounds addObject:soundSource];
-            //[self.currentSounds performSelector:@selector(removeObject:) withObject:soundSource afterDelay:audioBuffer.duration];
-            
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, audioBuffer.duration * NSEC_PER_SEC), dispatch_get_main_queue(), ^
+            if ( soundSource ) // STR - play game, hold down the home button, press home button again
             {
-                [self.currentSounds removeObject:soundSource];
-            });
+                [self.currentSounds addObject:soundSource];
+                //[self.currentSounds performSelector:@selector(removeObject:) withObject:soundSource afterDelay:audioBuffer.duration];
+                
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, audioBuffer.duration * NSEC_PER_SEC), dispatch_get_main_queue(), ^
+                {
+                    [self.currentSounds removeObject:soundSource];
+                });
+            }
             
         });
     }

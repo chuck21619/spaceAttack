@@ -8,3 +8,4 @@
 
 //app name
 "CFBundleDisplayName" = "太空攻击";
+"UILaunchStoryboardName" = "LaunchScreen_chinese";

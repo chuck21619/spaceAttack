@@ -10,7 +10,6 @@
 #import "Asteroid.h"
 #import "SpaceshipScene.h"
 #import "CategoryBitMasks.h"
-#import "UpgradeScene.h"
 #import "AudioManager.h"
 
 @implementation Photon
@@ -60,8 +59,6 @@
         
         if ( [[self scene] class] == [SpaceshipScene class] )
             self.target = [(SpaceshipScene *)[self scene] nextPriorityTargetForPhoton:self];
-        else if ( [[self scene] class] == [UpgradeScene class] )
-            self.target = [(UpgradeScene *)[self scene] nextPriorityTargetForPhoton:self];
         
         if ( [self.target class] == [Asteroid class] )
             [[(Asteroid *)self.target photonsTargetingMe] addPointer:(__bridge void * _Nullable)(self)];

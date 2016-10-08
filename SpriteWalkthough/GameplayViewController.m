@@ -19,10 +19,22 @@
 #import "SpriteAppDelegate.h"
 
 @implementation GameplayViewController
+{
+    UIImageView * _loadingScreenImageView;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    self.gameOverLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.gameOverLabel.font.pointSize];
+    self.pointsLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.pointsLabel.font.pointSize];
+    
+    self.restartButton.titleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.restartButton.titleLabel.font.pointSize];
+    self.selectShipButton.titleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.selectShipButton.titleLabel.font.pointSize];
+    self.upgradesButton.titleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.upgradesButton.titleLabel.font.pointSize];
+    self.homeButton.titleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.homeButton.titleLabel.font.pointSize];
     
     [self adjustForDeviceSize];
     
@@ -38,9 +50,12 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillResignActive) name:@"appWillResignActive" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(achievementCompleted:) name:@"achievementCompleted" object:nil];
     
+    
+    _loadingScreenImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    
     self.achievementsCompletedDuringFlight = [NSMutableArray new];
     self.bonusPointsTextViewHeightDefault = self.bonusPointsTextView.frame.size.height;
-    self.bonusPointsTextView.font = [UIFont fontWithName:@"Moon-Bold" size:12];
+    self.bonusPointsTextView.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:12];
     
     self.fullScreenAdShown = NO;
     self.firstViewWillAppear = YES;
@@ -55,21 +70,6 @@
     self.bannerView.rootViewController = self;
     self.bannerAdRequest = nil;
     
-    //set gameplay icon to last selected ship
-//    if ( [AccountManager enoughGamePointsToUnlockAShip] )
-//        [self.selectShipButton.imageView setTintColor:[UIColor colorWithRed:.2 green:.8 blue:.2 alpha:1]];
-//    else
-//        [self.selectShipButton.imageView setTintColor:[UIColor whiteColor]];
-//    [self.selectShipButton.imageView setContentMode:UIViewContentModeScaleAspectFit];
-//    [self.selectShipButton setImage:[[UIImage imageNamed:[[AccountManager lastSelectedShip] menuImageName]] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-//    
-//    if ( [AccountManager enoughGamePointsToUnlockAnUpgrade] )
-//        [self.upgradesButton.imageView setTintColor:[UIColor colorWithRed:.2 green:.8 blue:.2 alpha:1]];
-//    else
-//        [self.upgradesButton.imageView setTintColor:[UIColor whiteColor]];
-//    [self.upgradesButton.imageView setContentMode:UIViewContentModeScaleAspectFit];
-//    [self.upgradesButton setImage:[[[self.upgradesButton imageView] image] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-    
     self.restartButton.layer.borderColor = [UIColor whiteColor].CGColor;
     self.restartButton.layer.borderWidth = 2;
     self.restartButton.layer.cornerRadius = self.restartButton.frame.size.height/3;
@@ -82,6 +82,9 @@
     self.upgradesButton.layer.borderWidth = 2;
     self.upgradesButton.layer.cornerRadius = self.upgradesButton.frame.size.height/3;
     
+    self.homeButton.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.homeButton.layer.borderWidth = 2;
+    self.homeButton.layer.cornerRadius = self.homeButton.frame.size.height/3;
     
     [_AppDelegate addGlowToLayer:self.gameOverLabel.layer withColor:self.gameOverLabel.textColor.CGColor];
     [_AppDelegate addGlowToLayer:self.pointsLabel.layer withColor:self.pointsLabel.textColor.CGColor];
@@ -89,6 +92,7 @@
     [_AppDelegate addGlowToLayer:self.restartButton.layer withColor:self.restartButton.currentTitleColor.CGColor];
     [_AppDelegate addGlowToLayer:self.selectShipButton.layer withColor:self.selectShipButton.currentTitleColor.CGColor];
     [_AppDelegate addGlowToLayer:self.upgradesButton.layer withColor:self.upgradesButton.currentTitleColor.CGColor];
+    [_AppDelegate addGlowToLayer:self.homeButton.layer withColor:self.homeButton.currentTitleColor.CGColor];
 
     [self calibrate];
 }
@@ -103,6 +107,7 @@
     [self.restartButton.titleLabel setFont:[self.restartButton.titleLabel.font fontWithSize:width*.056]];
     [self.selectShipButton.titleLabel setFont:[self.selectShipButton.titleLabel.font fontWithSize:width*.056]];
     [self.upgradesButton.titleLabel setFont:[self.upgradesButton.titleLabel.font fontWithSize:width*.056]];
+    [self.homeButton.titleLabel setFont:[self.homeButton.titleLabel.font fontWithSize:width*.056]];
     
     self.constraintBottomUpgrades.constant = width*.75;
     self.constraintLeadingUpgrades.constant = width*.1875;
@@ -111,6 +116,8 @@
     self.constraintBottomSelectShip.constant = width*.028;
     
     self.constraintBottomRestart.constant = width*.025;
+    
+    self.constraintTopHome.constant = width*.025;
     
     self.constraintBottomBonus.constant = width*-.0156;
     
@@ -155,7 +162,7 @@
 - (void) calibrate
 {
     NSMutableArray * textures = [NSMutableArray new];
-    [textures addObjectsFromArray:[[SpaceshipKit sharedInstance] texturesForPreloading]];
+    [textures addObjectsFromArray:[[SpaceshipKit sharedInstance] texturesForPreloading:self.spaceshipForScene]];
     [textures addObjectsFromArray:[[EnemyKit sharedInstanceWithScene:nil] texturesForPreloading]];
     [textures addObjectsFromArray:[[SpaceObjectsKit sharedInstanceWithScene:nil] texturesForPreloading]];
     [textures addObjectsFromArray:[[PlayerWeaponsKit sharedInstance] texturesForPreloading]];
@@ -235,21 +242,34 @@
     {
         self.activityIndicatorBackground = [[UIView alloc] initWithFrame:self.view.frame];
         self.activityIndicatorBackground.backgroundColor = [UIColor colorWithWhite:0 alpha:.75];
+        [self.activityIndicatorBackground addSubview:_loadingScreenImageView];
     }
     if ( ! self.activityIndicator )
     {
-        self.activityIndicator = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeBallTrianglePath tintColor:[UIColor whiteColor] size:self.view.frame.size.width/6.4];
-        self.activityIndicator.frame = CGRectMake(self.view.frame.size.width/2, self.view.frame.size.height/2, 0, 0);
+        self.activityIndicator = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeLineScale tintColor:[UIColor whiteColor] size:self.view.frame.size.width/10];
+        self.activityIndicator.frame = CGRectMake(self.view.frame.size.width/2, self.view.frame.size.height - (self.view.frame.size.height/20), 0, 0);
     }
     
     self.activityIndicatorBackground.alpha = 0;
+    
+    int randomInt = arc4random_uniform(3)+1;
+    UIImage * loadingScreenImage = [UIImage imageNamed:[NSString stringWithFormat:@"Loading Screen %i.png", randomInt]];
+    _loadingScreenImageView.image = loadingScreenImage;
+    
+    if ( randomInt == 1 )
+        self.activityIndicator.tintColor = [UIColor colorWithRed:235.0/255.0 green:25.0/255.0 blue:10.0/255.0 alpha:.5];
+    else if ( randomInt == 2 )
+        self.activityIndicator.tintColor = [UIColor colorWithRed:215.0/255.0 green:245.0/255.0 blue:10.0/255.0 alpha:.5];
+    else if ( randomInt == 3 )
+        self.activityIndicator.tintColor = [UIColor colorWithWhite:0 alpha:.5];
+    
     [self.activityIndicatorBackground addSubview:self.activityIndicator];
     [self.view addSubview:self.activityIndicatorBackground];
     [self.activityIndicator startAnimating];
-    [UIView animateWithDuration:.2 animations:^
-     {
-         self.activityIndicatorBackground.alpha = 1;
-     }];
+    [UIView animateWithDuration:.33 animations:^
+    {
+        self.activityIndicatorBackground.alpha = 1;
+    }];
 }
 
 - (void) hideProgressHud
@@ -271,6 +291,7 @@
     self.pointsLabel.alpha = 0;
     self.restartButton.alpha = 0;
     self.upgradesButton.alpha = 0;
+    self.homeButton.alpha = 0;
     self.selectShipButton.alpha = 0;
     self.bonusPointsTextView.alpha = 0;
     self.upgradesBadge.alpha = 0;
@@ -324,6 +345,7 @@
         self.restartButton.alpha = 1;
         self.upgradesButton.alpha = 1;
         self.selectShipButton.alpha = 1;
+        self.homeButton.alpha = 1;
         
         if ( [AccountManager enoughGamePointsToUnlockAShip] )
             self.selectShipBadge.alpha = 1;
@@ -387,19 +409,6 @@
 }
 
 #pragma mark - buttons
-- (IBAction)mainMenuAction:(id)sender
-{
-    [UIView animateWithDuration:.5 animations:^
-    {
-        [self hideUIViews];
-    }
-    completion:^(BOOL finished)
-    {
-        [[AudioManager sharedInstance] playMenuMusic];
-        [self dismissViewControllerAnimated:NO completion:nil];
-    }];
-}
-
 - (IBAction)restartButtonAction:(id)sender
 {
     [UIView animateWithDuration:.2 animations:^
@@ -466,6 +475,19 @@
         [self dismissViewControllerAnimated:NO completion:nil];
         MainMenuViewController * mmvc = (MainMenuViewController *)self.presentingViewController;
         [mmvc upgradesAction:nil];
+    }];
+}
+
+- (IBAction)homeAction:(id)sender
+{
+    [UIView animateWithDuration:.5 animations:^
+    {
+        [self hideUIViews];
+    }
+    completion:^(BOOL finished)
+    {
+        [[AudioManager sharedInstance] playMenuMusic];
+        [self dismissViewControllerAnimated:NO completion:nil];
     }];
 }
 

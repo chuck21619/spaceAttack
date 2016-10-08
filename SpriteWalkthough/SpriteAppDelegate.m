@@ -28,12 +28,21 @@
     AccountManager * accountManager = [AccountManager sharedInstance];
     [[SKPaymentQueue defaultQueue] addTransactionObserver:accountManager];
     
-    //background music
-    [[AudioManager sharedInstance] playMenuMusic];
+    //background music - without the delay, theres some choppiness starting the music
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, .5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^
+    {
+        [[AudioManager sharedInstance] playMenuMusic];
+    });
     
     //reachability
     self.internetReachability = [Reachability reachabilityForInternetConnection];
     [self.internetReachability startNotifier];
+    
+    //becauze jeff only made one main menu image (english)
+    if ( [NSLocalizedString(@"hasCustomMainMenuBackground", nil) isEqualToString:@"YES"] )
+        self.hasCustomMainMenuBackground = YES;
+    else
+        self.hasCustomMainMenuBackground = NO;
     
     return YES;
 }
@@ -47,6 +56,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"appDidEnterBackground" object:nil];
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
@@ -80,6 +90,18 @@
     NSLog(@"applicationProtectedDataWillBecomeUnavailable");
 }
 
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
+{
+    NSLog(@"WTF IS GOING ON YO : %@", url);
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler
+{
+    NSLog(@"WTF IS GOING ON YO 22222: %@", userActivity);
+    return YES;
+}
+
 - (void) addGlowToLayer:(CALayer *)layer withColor:(CGColorRef)color
 {
     [self addGlowToLayer:layer withColor:color size:4.0];
@@ -94,6 +116,26 @@
     layer.masksToBounds = NO;
     layer.shouldRasterize = YES;
     layer.rasterizationScale = UIScreen.mainScreen.scale;
+}
+
+- (void) removeGlowFromLayer:(CALayer *)layer
+{
+    layer.shadowOffset = CGSizeMake(0, 0);
+    layer.shadowColor = [[UIColor clearColor] CGColor];
+    layer.cornerRadius = 0.0f;
+    layer.shadowRadius = 0.0f;
+    layer.shadowOpacity = 0.00f;
+}
+
+- (void) addEdgeConstraint:(NSLayoutAttribute)edge superview:(UIView *)superview subview:(UIView *)subview
+{
+    [superview addConstraint:[NSLayoutConstraint constraintWithItem:subview
+                                                          attribute:edge
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:superview
+                                                          attribute:edge
+                                                         multiplier:1
+                                                           constant:0]];
 }
 
 @end

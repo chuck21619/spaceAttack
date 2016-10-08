@@ -58,6 +58,7 @@ typedef NS_ENUM(int, Achievement)
     kAchievementBiggerLaser,
     kAchievementElectricityChain,
     kAchievementEnergyBooster,
+    kAchievementAllUpgrades,
     kAchievementBulletsFired100,
     kAchievementBulletsFired1000,
     kAchievementBulletsFired10000,
@@ -134,7 +135,10 @@ typedef NS_ENUM(int, SoundEffect)
     kSoundEffectMenuUpgrade,
     kSoundEffectMenuEngage,
     kSoundEffectMenuDidUnlock,
-    kSoundEffectMenuSelectShip
+    kSoundEffectMenuSelectShip,
+    kSoundEffectMinimizeCell,
+    kSoundEffectMaximizeCell,
+    kSoundEffectMenuPageTurn
 };
 
 @interface EnumTypes : NSObject

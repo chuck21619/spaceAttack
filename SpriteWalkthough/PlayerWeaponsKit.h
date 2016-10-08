@@ -20,11 +20,12 @@
 @property (nonatomic) NSDictionary * weaponTextures;
 @property (nonatomic) SKTexture * bulletTexture;
 @property (nonatomic) SKTexture * photonTexture;
-@property (nonatomic) NSArray * laserFrames;
 @property (nonatomic) NSMutableArray * electricityFrames;
 
-- (NSArray *) texturesForPreloading;
+@property (nonatomic) NSArray * laserFrames;
+@property (nonatomic) NSArray * laserFramesUpgraded;
+- (NSArray *)currentLaserFrames;
 
-- (BOOL) beingUsedForDemoScene;
+- (NSArray *) texturesForPreloading;
 
 @end

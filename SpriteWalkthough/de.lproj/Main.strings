@@ -1,4 +1,65 @@
 
+//---main menu
+//space attack
+"2E9-FI-wPc.text" = "Angriff aus dem All";
+//start
+"HGt-bC-Frb.normalTitle" = "Anfang";
+//achievements
+"1d1-lJ-Rw0.normalTitle" = "Erfolge";
+//upgrades
+"dEh-7H-kc8.normalTitle" = "Aktualisierung";
+
+//---select ship
+//back
+"vTv-73-QrP.normalTitle" = "< Zurück";
+//select
+"uYw-2i-Iw7.text" = "Wählen";
+
+//---achievements
+//back
+"zPW-T1-bTy.normalTitle" = "< Zurück";
+//achievments
+"gQS-86-JNa.text" = "Erfolge";
+
+//---high scores
+//back
+"gI9-Fx-eN6.normalTitle" = "< Zurück";
+//high scores
+"256-eI-0fL.text" = "Highscore";
+//me
+"9pa-jf-Z5B.text" = "Mich";
+
+//---upgrades
+//back
+"Qqh-sQ-Qqa.normalTitle" = "< Zurück";
+//upgrades
+"Vk6-dJ-1Dg.text" = "Aktualisierung";
+
+//---settings
+//back
+"6K5-5I-WsQ.normalTitle" = "< Zurück";
+//settings
+"tnT-uA-cOo.text" = "Einstellungen";
+//controls
+"H2D-hB-Sdw.text" = "Steuerung";
+//help
+"wMI-5d-o5G.normalTitle" = "Hilfe";
+//reset tutorial
+"Lc4-J5-7kD.normalTitle" = "Reset-Tutorial";
+
+//---end game screen
+//restart
+"HHP-NJ-R62" = "Neustart";
+//select ship
+"guR-xG-mbT" = "Änderung Schiff";
+//upgrades
+"Nun-yr-B4d" = "Aktualisierung";
+//home
+"QFI-At-1xJ" = "Hauptmenü";
+
+
+
+
 /* Class = "UIButton"; normalTitle = "Engage"; ObjectID = "1FT-Qe-tOr"; */
 "1FT-Qe-tOr.normalTitle" = "Spielen";
 

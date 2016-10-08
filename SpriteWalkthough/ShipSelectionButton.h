@@ -10,9 +10,12 @@
 #import "Spaceship.h"
 #import "GlowingButton.h"
 
-@interface ShipSelectionButton : GlowingButton
+@interface ShipSelectionButton : UIButton
 
 -(void)setupForSpaceship:(Spaceship *)spaceship;
 @property Spaceship * spaceship;
+
+-(void)addGlowAnimated;
+-(void)refreshContent;
 
 @end

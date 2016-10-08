@@ -20,22 +20,28 @@
         self.pointValue = 2;
         self.armor = 100;
         
-        self.size = CGSizeMake(texture.size.width/4, texture.size.height/4);
+        float resizeFactor = ([[UIScreen mainScreen] bounds].size.width/320.0)*.25;
+        
+        self.size = CGSizeMake(texture.size.width*resizeFactor, texture.size.height*resizeFactor);
         
         //draw the physics body
         CGFloat offsetX = self.frame.size.width * self.anchorPoint.x;
         CGFloat offsetY = self.frame.size.height * self.anchorPoint.y;
         CGMutablePathRef path = CGPathCreateMutable();
-//        CGPathMoveToPoint(path, NULL, 1 - offsetX, 5 - offsetY);
-//        CGPathAddLineToPoint(path, NULL, 11 - offsetX, 24 - offsetY);
-//        CGPathAddLineToPoint(path, NULL, 31 - offsetX, 24 - offsetY);
-//        CGPathAddLineToPoint(path, NULL, 39 - offsetX, 7 - offsetY);
-//        CGPathAddLineToPoint(path, NULL, 21 - offsetX, 0 - offsetY);
-        CGPathMoveToPoint(path, NULL, 20 - offsetX, 0 - offsetY);
-        CGPathAddLineToPoint(path, NULL, 0 - offsetX, 19 - offsetY);
-        CGPathAddLineToPoint(path, NULL, 5 - offsetX, 34 - offsetY);
-        CGPathAddLineToPoint(path, NULL, 34 - offsetX, 34 - offsetY);
-        CGPathAddLineToPoint(path, NULL, 39 - offsetX, 18 - offsetY);
+        
+        
+        CGPathMoveToPoint(path, NULL, (19*resizeFactor) - offsetX, (73*resizeFactor) - offsetY);
+        CGPathAddLineToPoint(path, NULL, (45*resizeFactor) - offsetX, (130*resizeFactor) - offsetY);
+        CGPathAddLineToPoint(path, NULL, (20*resizeFactor) - offsetX, (186*resizeFactor) - offsetY);
+        CGPathAddLineToPoint(path, NULL, (50*resizeFactor) - offsetX, (203*resizeFactor) - offsetY);
+        CGPathAddLineToPoint(path, NULL, (218*resizeFactor) - offsetX, (199*resizeFactor) - offsetY);
+        CGPathAddLineToPoint(path, NULL, (234*resizeFactor) - offsetX, (180*resizeFactor) - offsetY);
+        CGPathAddLineToPoint(path, NULL, (212*resizeFactor) - offsetX, (135*resizeFactor) - offsetY);
+        CGPathAddLineToPoint(path, NULL, (242*resizeFactor) - offsetX, (81*resizeFactor) - offsetY);
+        CGPathAddLineToPoint(path, NULL, (221*resizeFactor) - offsetX, (59*resizeFactor) - offsetY);
+        CGPathAddLineToPoint(path, NULL, (125*resizeFactor) - offsetX, (47*resizeFactor) - offsetY);
+        CGPathAddLineToPoint(path, NULL, (31*resizeFactor) - offsetX, (63*resizeFactor) - offsetY);
+        
         CGPathCloseSubpath(path);
         self.physicsBody = [SKPhysicsBody bodyWithPolygonFromPath:path];
         //[self attachDebugFrameFromPath:path];
@@ -58,7 +64,7 @@
     SKShapeNode *shape = [SKShapeNode node];
     shape.path = bodyPath;
     shape.strokeColor = [SKColor colorWithRed:1 green:1 blue:1 alpha:1];
-    shape.lineWidth = 1.0;
+    shape.lineWidth = 2.0;
     [self addChild:shape];
 }
 

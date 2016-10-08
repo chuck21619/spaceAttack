@@ -14,6 +14,9 @@
 #import "SpaceshipScene.h"
 
 @implementation Spaceship
+{
+    NSArray * _explosionFrames;
+}
 
 - (id)init
 {
@@ -23,12 +26,14 @@
         self.zPosition = 1;
         self.energyBoosterActive = NO;
         self.equippedWeapons = [[NSMutableDictionary alloc] init];
+        _explosionFrames = [[SpaceshipKit sharedInstance] explosionFrames];
         NSDate * bogusDate = [[NSDate date] dateByAddingTimeInterval:5000]; // this date will never get fired
         self.energyBoosterTimer = [[NSTimer alloc] initWithFireDate:bogusDate interval:0 target:self selector:@selector(endEnergyBooster:) userInfo:nil repeats:NO];
         [self setNumberOfWeaponSlots:[AccountManager numberOfWeaponSlotsUnlocked]];
         self.pulseRed = [SKAction sequence:@[[SKAction colorizeWithColor:[SKColor redColor] colorBlendFactor:1.0 duration:0.15],
                                                    [SKAction waitForDuration:0.1],
                                                    [SKAction colorizeWithColorBlendFactor:0.0 duration:0.15]]];
+        self.isValidForMoneyPurchase = NO;
 	}
     return self;
 }
@@ -38,19 +43,19 @@
     switch ( numberOfWeaponSlots )
     {
         case 1:
-            self.weaponSlotPositions = @{ @"weaponSlot1" : @[[NSValue valueWithCGPoint:CGPointMake(0, 60)], [NSNumber numberWithInt:-1]]};
+            self.weaponSlotPositions = @{ @"weaponSlot1" : @[[NSValue valueWithCGPoint:CGPointMake(0, self.size.height/2)], [NSNumber numberWithInt:-1]]};
             break;
             
         case 2:
-            self.weaponSlotPositions = @{ @"weaponSlot1" : @[[NSValue valueWithCGPoint:CGPointMake(0, 60)], [NSNumber numberWithInt:-1]],
-                                          @"weaponSlot2" : @[[NSValue valueWithCGPoint:CGPointMake(0, 0)], [NSNumber numberWithInt:2]]};
+            self.weaponSlotPositions = @{ @"weaponSlot1" : @[[NSValue valueWithCGPoint:CGPointMake(0, self.size.height/2)], [NSNumber numberWithInt:-1]],
+                                          @"weaponSlot2" : @[[NSValue valueWithCGPoint:CGPointMake(0, self.size.height/2)], [NSNumber numberWithInt:2]]};
             break;
             
         case 4:
-            self.weaponSlotPositions = @{ @"weaponSlot1" : @[[NSValue valueWithCGPoint:CGPointMake(0, 60)], [NSNumber numberWithInt:-1]],
-                                          @"weaponSlot2" : @[[NSValue valueWithCGPoint:CGPointMake(0, 0)], [NSNumber numberWithInt:2]],
-                                          @"weaponSlot3" : @[[NSValue valueWithCGPoint:CGPointMake(20, 15)], [NSNumber numberWithInt:-1]],
-                                          @"weaponSlot4" : @[[NSValue valueWithCGPoint:CGPointMake(-20, 15)], [NSNumber numberWithInt:-1]]};
+            self.weaponSlotPositions = @{ @"weaponSlot1" : @[[NSValue valueWithCGPoint:CGPointMake(0, self.size.height/2)], [NSNumber numberWithInt:-1]],
+                                          @"weaponSlot2" : @[[NSValue valueWithCGPoint:CGPointMake(0, self.size.height/2)], [NSNumber numberWithInt:2]],
+                                          @"weaponSlot3" : @[[NSValue valueWithCGPoint:CGPointMake(0, self.size.height/2)], [NSNumber numberWithInt:-1]],
+                                          @"weaponSlot4" : @[[NSValue valueWithCGPoint:CGPointMake(0, self.size.height/2)], [NSNumber numberWithInt:-1]]};
             break;
             
         default:
@@ -79,14 +84,17 @@
 {
     [[AudioManager sharedInstance] playSoundEffect:kSoundEffectExplosionSpaceship];
     [[AudioManager sharedInstance] vibrate];
-    NSString * explosionPath = [[NSBundle mainBundle] pathForResource:@"spaceshipExplosion" ofType:@"sks"];
-    SKEmitterNode * explosion = [NSKeyedUnarchiver unarchiveObjectWithFile:explosionPath];
-    explosion.name = @"explosion";
+    
+//    NSString * explosionPath = [[NSBundle mainBundle] pathForResource:@"spaceshipExplosion" ofType:@"sks"];
+//    SKEmitterNode * explosion = [NSKeyedUnarchiver unarchiveObjectWithFile:explosionPath];
+//    explosion.name = @"explosion";
+//    explosion.position = self.position;
+    EnemyExplosion * explosion = [[EnemyExplosion alloc] initWithAtlas:_explosionFrames size:self.size.width*5];
     explosion.position = self.position;
+    [[self scene] addChild:explosion];
     
     [self.energyBoosterTimer invalidate];
     self.energyBoosterTimer = nil;
-    [[self scene] addChild:explosion];
     [self stopFiring];
     [self.equippedWeapons removeAllObjects];
     for ( SKSpriteNode * node in [self children] )
@@ -152,6 +160,7 @@
                     [self removeWeakestWeaponThatIsNotThisType:powerUp];
                 
                 [self equipWeapon:powerUp];
+                [self adjustTextureForEquippedWeapons];
             }
         }
     }
@@ -182,16 +191,16 @@
     Shield * shield = [Shield new];
     shield.position = CGPointMake(0, 0);
     self.equippedShield = shield;
-    shield.alpha = 0;
     [self addChild:shield];
-    [shield runAction:[SKAction fadeInWithDuration:.1]];
 }
 
 - (void) startEnergyBooster
 {
     BOOL oldEnergyBoosterActive = self.energyBoosterActive;
     self.energyBoosterActive = YES;
-    self.damage *= 2;
+    
+    if ( ! oldEnergyBoosterActive )
+        self.damage *= 2;
     
     SKAction * pulseGreen = [SKAction repeatActionForever:[SKAction sequence:@[[SKAction colorizeWithColor:[SKColor greenColor] colorBlendFactor:1.0 duration:0.2],
                                                                                [SKAction waitForDuration:0.1],
@@ -317,6 +326,7 @@
             weakestWeapon = tmpPlayerWeapon;
     }
     
+    [weakestWeapon stopFiring];
     NSString * weakestWeaponKey = [[self.equippedWeapons allKeysForObject:weakestWeapon] firstObject];
     [self.equippedWeapons removeObjectForKey:weakestWeaponKey];
     
@@ -324,6 +334,76 @@
     {
         [weakestWeapon removeFromParent];
     }];
+}
+
+- (void) adjustTextureForEquippedWeapons
+{
+    BOOL machineGun = NO;
+    BOOL photonCannon = NO;
+    BOOL electricalGenerator = NO;
+    BOOL laserCannon = NO;
+    
+    for ( NSString * weaponSlotkey in self.equippedWeapons.allKeys )
+    {
+        PlayerWeapon * tmpWeapon = [self.equippedWeapons valueForKey:weaponSlotkey];
+        
+        switch ( tmpWeapon.weaponType )
+        {
+            case kPowerUpTypeMachineGun:
+                machineGun = YES;
+                break;
+                
+            case kPowerUpTypePhotonCannon:
+                photonCannon = YES;
+                break;
+                
+            case kPowerUpTypeElectricalGenerator:
+                electricalGenerator = YES;
+                break;
+                
+            case kPowerUpTypeLaserCannon:
+                laserCannon = YES;
+                break;
+                
+            default:
+                break;
+        }
+    }
+    
+    NSString * newTextureKey;
+    if ( machineGun )
+    {
+        if ( photonCannon )
+            newTextureKey = @"BulPho";
+        else if ( electricalGenerator )
+            newTextureKey = @"BulEle";
+        else if ( laserCannon )
+            newTextureKey = @"BulLaz";
+        else
+            newTextureKey = @"Bul";
+    }
+    else if ( photonCannon )
+    {
+        if ( electricalGenerator )
+            newTextureKey = @"PhoEle";
+        else if ( laserCannon )
+            newTextureKey = @"PhoLaz";
+        else
+            newTextureKey = @"Pho";
+    }
+    else if ( electricalGenerator )
+    {
+        if ( laserCannon )
+            newTextureKey = @"LazEle";
+        else
+            newTextureKey = @"Ele";
+    }
+    else if ( laserCannon )
+    {
+        newTextureKey = @"Laz";
+    }
+    
+    self.texture = [[[[SpaceshipKit sharedInstance] shipTextures] objectForKey:NSStringFromClass([self class])] objectForKey:newTextureKey];
 }
 
 #pragma mark - debug

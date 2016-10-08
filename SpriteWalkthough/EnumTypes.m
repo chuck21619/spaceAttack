@@ -73,6 +73,9 @@
             
         case kAchievementEnergyBooster:
             return @"EnergyBooster";
+            
+        case kAchievementAllUpgrades:
+            return @"AllUpgrades";
         
         case kAchievementBulletsFired100:
             return @"BulletsFired100";

@@ -15,8 +15,21 @@
 #import <GameKit/GameKit.h>
 #import "AudioManager.h"
 #import <Crashlytics/Crashlytics.h>
+#import "SpriteAppDelegate.h"
 
 @implementation SpaceshipScene
+{
+    NSMutableArray * _nodesToRemove;
+    
+    NSMutableArray * _cachedAsteroids;
+    NSMutableArray * _cachedEnemies;
+    NSMutableArray * _cachedBullets;
+    NSMutableArray * _cachedLasers;
+    NSMutableArray * _cachedPhotons;
+    NSMutableArray * _cachedElectricity;
+    NSMutableArray * _cachedPowerUps;
+    NSMutableArray * _cachedSpaceBackgrounds;
+}
 
 - (void) didMoveToView:(SKView *)view
 {
@@ -27,15 +40,16 @@
         [self createSceneContents];
         self.contentCreated = YES;
         //view.showsFPS = YES;
-        self.nodesToRemove = [NSMutableArray new];
-        self.cachedAsteroids = [NSMutableArray new];
-        self.cachedEnemies = [NSMutableArray new];
-        self.cachedBullets = [NSMutableArray new];
-        self.cachedLasers = [NSMutableArray new];
-        self.cachedPhotons = [NSMutableArray new];
-        self.cachedElectricity = [NSMutableArray new];
-        self.cachedPowerUps = [NSMutableArray new];
-        self.cachedSpaceBackgrounds = [NSMutableArray new];
+        _nodesToRemove = [NSMutableArray new];
+        
+        _cachedAsteroids = [NSMutableArray new];
+        _cachedEnemies = [NSMutableArray new];
+        _cachedBullets = [NSMutableArray new];
+        _cachedLasers = [NSMutableArray new];
+        _cachedPhotons = [NSMutableArray new];
+        _cachedElectricity = [NSMutableArray new];
+        _cachedPowerUps = [NSMutableArray new];
+        _cachedSpaceBackgrounds = [NSMutableArray new];
         
         self.bulletsFired = 0;
         self.photonsFired = 0;
@@ -65,7 +79,9 @@
     
     self.sharedGameplayControls = [GameplayControls sharedInstance];
     self.sharedGameplayControls.delegate = self;
-    [self.sharedGameplayControls startControllerUpdates];
+    
+    if ( ! [[AccountManager sharedInstance] touchControls] )
+        [self.sharedGameplayControls startControllerUpdates];
     
     self.spaceObjectKit = [SpaceObjectsKit sharedInstanceWithScene:self];
     //[self.spaceObjectKit addStartingBackground];
@@ -113,7 +129,7 @@
     self.enemyTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(moreEnemies) userInfo:nil repeats:YES];
     
     
-    self.pointsScoredLabel = [SKLabelNode labelNodeWithFontNamed:@"Moon-Bold"];
+    self.pointsScoredLabel = [SKLabelNode labelNodeWithFontNamed:NSLocalizedString(@"font1", nil)];
     self.pointsScoredLabel.text = [NSString stringWithFormat:@"%i", self.pointsScored];
     self.pointsScoredLabel.fontSize = 15;
     self.pointsScoredLabel.fontColor = [SKColor whiteColor];
@@ -122,7 +138,7 @@
     
     self.enemiesDestroyedWithoutTakingDamage = 0;
     self.scoreMultiplier = 1;
-    self.scoreMultiplierLabel = [SKLabelNode labelNodeWithFontNamed:@"Moon-Bold"];
+    self.scoreMultiplierLabel = [SKLabelNode labelNodeWithFontNamed:NSLocalizedString(@"font1", nil)];
     self.scoreMultiplierLabel.text = [NSString stringWithFormat:@"%i", self.scoreMultiplier];
     self.scoreMultiplierLabel.fontSize = 13;
     self.scoreMultiplierLabel.fontColor = [SKColor whiteColor];
@@ -138,33 +154,21 @@
             [self runAction:[SKAction repeatActionForever:makePowerUps] withKey:@"makePowerUps"];
     });
     
-#if !(TARGET_IPHONE_SIMULATOR) //simulator sucks at rendering clouds for some reason
-//    NSString * cloudsPath = [[NSBundle mainBundle] pathForResource:@"Clouds" ofType:@"sks"];
-//    SKEmitterNode * clouds = [NSKeyedUnarchiver unarchiveObjectWithFile:cloudsPath];
-//    clouds.name = @"cloudsEmitter";
-//    clouds.position = CGPointMake(self.size.width/2, self.size.height+300);
-//    [self addChild:clouds];
-//    
-//    SKEmitterNode * cloudsOnTop = [NSKeyedUnarchiver unarchiveObjectWithFile:cloudsPath];
-//    cloudsOnTop.zPosition = 100;
-//    cloudsOnTop.particleBirthRate = .5;
-//    cloudsOnTop.name = @"cloudsOnTopEmitter";
-//    cloudsOnTop.position = CGPointMake(self.size.width/2, self.size.height+300);
-//    [self addChild:cloudsOnTop];
-//    
-//    self.changeCloudDensityTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(changeCloudDensity) userInfo:nil repeats:YES];
-#endif
-    
     self.periodicAchievementUpdatingTimer = [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(submitAchievementProgress) userInfo:nil repeats:YES];
     
-    NSString * starsPath = [[NSBundle mainBundle] pathForResource:@"Stars" ofType:@"sks"];
-    SKEmitterNode * stars = [NSKeyedUnarchiver unarchiveObjectWithFile:starsPath];
-    stars.name = @"stars";
-    stars.zPosition = -75;
-    stars.position = CGPointMake(self.size.width/2, self.size.height+20);
-    [self addChild:stars];
+    NSString * cloudDustString = [[NSBundle mainBundle] pathForResource:@"jefParticle" ofType:@"sks"];
+    SKEmitterNode * cloudDust = [NSKeyedUnarchiver unarchiveObjectWithFile:cloudDustString];
+    cloudDust.name = @"stars";
+    cloudDust.zPosition = -75;
+    cloudDust.position = CGPointMake(self.size.width/2, self.size.height);
+    [self addChild:cloudDust];
     
-    self.backgroundPlanetsTimer = [NSTimer scheduledTimerWithTimeInterval:20 target:self selector:@selector(showPlanetInBackground) userInfo:nil repeats:YES];
+    NSString * cloudDustString2 = [[NSBundle mainBundle] pathForResource:@"SpaceDust" ofType:@"sks"];
+    SKEmitterNode * cloudDust2 = [NSKeyedUnarchiver unarchiveObjectWithFile:cloudDustString2];
+    cloudDust2.name = @"stars2";
+    cloudDust2.zPosition = -75;
+    cloudDust2.position = CGPointMake(self.size.width/2, self.size.height);
+    [self addChild:cloudDust2];
     
     self.showingTooltip = NO;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
@@ -173,25 +177,21 @@
         {
             self.showingTooltip = YES;
             [self pauseGame];
-            
-            NSString * alertTitle = NSLocalizedString(@"How to Move:", nil);
-            NSString * alertMessage = NSLocalizedString(@"Tilt the screen to move your ship", nil);
-            SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:alertTitle message:alertMessage cancelButtonTitle:NSLocalizedString(@"Disable Tips", nil) otherButtonTitle:NSLocalizedString(@"Got It", nil)];
+            NSString * alertTitle = NSLocalizedString(@"Choose how to Move:", nil);
+            NSString * alertMessage = NSLocalizedString(@"You can change this later in settings", nil);
+            SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:alertTitle message:alertMessage cancelButtonTitle:NSLocalizedString(@"Tilt Screen", nil) otherButtonTitle:NSLocalizedString(@"Touch", nil)];
             unlockAlert.customFrame = CGRectMake(0, 0, self.size.width, unlockAlert.frame.size.height);
-            unlockAlert.backgroundColor = [UIColor colorWithWhite:.2 alpha:0];
-            unlockAlert.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:18];
-            unlockAlert.messageLabel.font = [UIFont fontWithName:@"Moon-Bold" size:13];
-            unlockAlert.cancelButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
-            unlockAlert.otherButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
             [unlockAlert show];
             unlockAlert.otherButtonAction = ^
             {
+                [[AccountManager sharedInstance] setTouchControls:YES];
+                [[GameplayControls sharedInstance] stopControllerUpdates];
                 [self resumeGame];
                 self.showingTooltip = NO;
             };
             unlockAlert.cancelButtonAction = ^
             {
-                [AccountManager disableTips];
+                [[AccountManager sharedInstance] setTouchControls:NO];
                 [self resumeGame];
                 self.showingTooltip = NO;
             };
@@ -220,12 +220,15 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
         randomPowerUp = arc4random_uniform(kPowerUpTypeCount);
     }
     
+//#warning change to randomPowerUp
     PowerUp * tmpPowerUp = [[PowerUp alloc] initWithPowerUpType:randomPowerUp];
     tmpPowerUp.delegate = self;
     tmpPowerUp.position = CGPointMake(skRand(0, self.size.width), self.size.height+tmpPowerUp.size.height);
     [self addChild:tmpPowerUp];
-    [tmpPowerUp.physicsBody applyImpulse:CGVectorMake(skRand(-tmpPowerUp.size.width/30, tmpPowerUp.size.width/30), -(tmpPowerUp.size.width + tmpPowerUp.size.height)/4)];
-    [tmpPowerUp.physicsBody applyTorque:skRand(-.2, .2)];
+    
+    [tmpPowerUp.physicsBody applyImpulse:CGVectorMake(skRand(-tmpPowerUp.physicsBody.mass*22, tmpPowerUp.physicsBody.mass*22),
+                                                      -tmpPowerUp.physicsBody.mass*180)];
+    [tmpPowerUp.physicsBody applyTorque:skRand(-tmpPowerUp.physicsBody.mass*.8, tmpPowerUp.physicsBody.mass*.8)];
 }
 
 - (void) updateScoreMultiplierLabel
@@ -250,18 +253,13 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
             if ( !self.showingTooltip && [AccountManager shouldShowTooltip:kTooltipTypeScoreMultiplier] )
             {
                 self.showingTooltip = YES;
+                SKSpriteNode * tooltipArrow = [self tooltipArrowAt:self.scoreMultiplierLabel];
                 [self pauseGame];
                 NSString * alertTitle = NSLocalizedString(@"Ermahgerd!", nil);
                 NSString * alertMessage = NSLocalizedString(@"Blowing up aliens without taking damage makes your multiplier go up!", nil);
                 SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:alertTitle message:alertMessage cancelButtonTitle:NSLocalizedString(@"Disable Tips", nil) otherButtonTitle:NSLocalizedString(@"Got It", nil)];
                 unlockAlert.customFrame = CGRectMake(0, (self.size.height+self.view.frame.origin.y) - 220, self.size.width, 150);
-                unlockAlert.backgroundColor = [UIColor colorWithWhite:.2 alpha:0];
-                unlockAlert.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:18];
-                unlockAlert.messageLabel.font = [UIFont fontWithName:@"Moon-Bold" size:13];
-                unlockAlert.cancelButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
-                unlockAlert.otherButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
                 [unlockAlert show];
-                SKSpriteNode * tooltipArrow = [self tooltipArrowAt:self.scoreMultiplierLabel];
                 unlockAlert.otherButtonAction = ^
                 {
                     [self removeTooltipArrow:tooltipArrow];
@@ -298,7 +296,7 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     if ( !self.mySpaceship.energyBoosterActive )
         return;
     
-    SKLabelNode * tmpMultiplierLabel = [SKLabelNode labelNodeWithFontNamed:@"Moon-Bold"];
+    SKLabelNode * tmpMultiplierLabel = [SKLabelNode labelNodeWithFontNamed:NSLocalizedString(@"font1", nil)];
     tmpMultiplierLabel.text = [NSString stringWithFormat:@"x%i", self.scoreMultiplier];
     tmpMultiplierLabel.fontSize = 15;
     tmpMultiplierLabel.fontColor = [SKColor whiteColor];
@@ -356,18 +354,6 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
         self.resumeAsteroidTimer = NO;
     [self.asteroidTimer invalidate];
     
-    if ( [self.backgroundPlanetsTimer isValid] )
-        self.resumeBackgroundPlanetsTimer = YES;
-    else
-        self.resumeBackgroundPlanetsTimer = NO;
-    [self.backgroundPlanetsTimer invalidate];
-    
-    if ( [self.changeCloudDensityTimer isValid] )
-        self.resumeChangeCloudDensityTimer = YES;
-    else
-        self.resumeChangeCloudDensityTimer = NO;
-    [self.changeCloudDensityTimer invalidate];
-    
     if ( [self.periodicAchievementUpdatingTimer isValid] )
         self.resumePeriodicAchievementUpdatingTimer = YES;
     else
@@ -393,13 +379,7 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     
     if ( self.resumeAsteroidTimer )
         self.asteroidTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(moreAsteroids) userInfo:nil repeats:YES];
-    
-    if ( self.resumeBackgroundPlanetsTimer )
-        self.backgroundPlanetsTimer = [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(showPlanetInBackground) userInfo:nil repeats:YES];
-    
-    if ( self.resumeChangeCloudDensityTimer )
-        self.changeCloudDensityTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(changeCloudDensity) userInfo:nil repeats:YES];
-    
+
     if ( self.resumePeriodicAchievementUpdatingTimer )
         self.periodicAchievementUpdatingTimer = [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(submitAchievementProgress) userInfo:nil repeats:YES];
     
@@ -427,6 +407,20 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
         [self submitAchievementProgress];
         [self submitGameKitScore];
     }];
+}
+
+#pragma mark background
+- (void) checkBackground
+{
+    __block BOOL allSpaceBackgroundsAreBelowTopOfScreen = YES;
+    for ( SpaceBackground * spaceBackground in _cachedSpaceBackgrounds )
+    {
+        if ( spaceBackground.position.y > -(spaceBackground.size.height/2 - self.size.height) )
+            allSpaceBackgroundsAreBelowTopOfScreen = NO;
+    }
+    
+    if ( allSpaceBackgroundsAreBelowTopOfScreen )
+        [self.spaceObjectKit addSpaceBackground];
 }
 
 #pragma mark game kit
@@ -490,6 +484,12 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
 #pragma mark gameplay controls
 - (void) didUpdateAcceleration:(CMAcceleration)acceleration
 {
+    if ( [[AccountManager sharedInstance] touchControls] )
+    {
+        NSLog(@"this shouldnt occur. accelerometer updates should be turned off if user is using touchControls");
+        return;
+    }
+    
     if ( [self.view isPaused] )
         return;
     
@@ -502,10 +502,31 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     //SKAction * rotateSpaceship = [SKAction rotateToAngle:newAngle duration:5.0/self.mySpaceship.mySpeed shortestUnitArc:YES];
     
     //[self.mySpaceship runAction:rotateSpaceship];
-    [self.mySpaceship runAction:moveSpaceship]; //crash occurs here intermittenly
-                                                //it may be a spriekit bug for older devices:
-                                                //https://forums.developer.apple.com/thread/17267
+    [self.mySpaceship runAction:moveSpaceship];
 }
+
+- (void) touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self touchesMoved:touches withEvent:event];
+}
+
+- (void) touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    if ( ! [[AccountManager sharedInstance] touchControls] )
+        return;
+    
+    UITouch * touch = [touches anyObject];
+    CGPoint touchLocation = [touch locationInView:self.view];
+    SKAction * moveSpaceship = [SKAction moveTo:CGPointMake(touchLocation.x, (self.size.height-touchLocation.y)+(self.size.width*.1))  duration:10.0/self.mySpaceship.mySpeed];
+    [self.mySpaceship runAction:moveSpaceship];
+}
+
+- (void) touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    SKAction * moveSpaceship = [SKAction moveTo:self.mySpaceship.position  duration:10.0/self.mySpaceship.mySpeed];
+    [self.mySpaceship runAction:moveSpaceship];
+}
+
 
 #pragma mark photon/electricity stuff
 - (SKNode *) nextPriorityTargetForPhoton:(Photon *)photon
@@ -513,7 +534,7 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     __block SKNode * closestTarget = nil;
     __block float closestDistance = -1;
     
-    for ( Asteroid * tmpAsteroid in self.cachedAsteroids )
+    for ( Asteroid * tmpAsteroid in _cachedAsteroids )
     {
         float distance = pow(tmpAsteroid.position.x - photon.position.x, 2) + pow(tmpAsteroid.position.y - (photon.position.y + 100), 2);
         // float actualDistance = sqrtf(pow(node.position.x - point.x, 2) + pow(node.position.y - point.y, 2));
@@ -535,7 +556,7 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
         }
     }
     
-    for ( Enemy * tmpEnemy in self.cachedEnemies )
+    for ( Enemy * tmpEnemy in _cachedEnemies )
     {
         float distance = pow(tmpEnemy.position.x - photon.position.x, 2) + pow(tmpEnemy.position.y - (photon.position.y + 100), 2);
         // float actualDistance = sqrtf(pow(node.position.x - point.x, 2) + pow(node.position.y - point.y, 2));
@@ -566,7 +587,7 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     __block float closestDistance = -1;
     CGPoint electricityPointInScene = electricity.parent.parent.parent.position;
     
-    for ( Asteroid * node in self.cachedAsteroids )
+    for ( Asteroid * node in _cachedAsteroids )
     {
         float distance = pow(node.position.x - electricityPointInScene.x, 2) + pow(node.position.y - electricityPointInScene.y, 2);
         // float actualDistance = sqrtf(pow(node.position.x - point.x, 2) + pow(node.position.y - point.y, 2));
@@ -577,7 +598,7 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
         }
     }
     
-    for ( Enemy * node in self.cachedEnemies )
+    for ( Enemy * node in _cachedEnemies )
     {
         float distance = pow(node.position.x - electricityPointInScene.x, 2) + pow(node.position.y - electricityPointInScene.y, 2);
         // float actualDistance = sqrtf(pow(node.position.x - point.x, 2) + pow(node.position.y - point.y, 2));
@@ -600,17 +621,17 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
 #pragma mark contact/collisions
 - (void) update:(NSTimeInterval)currentTime
 {
-    for ( Photon * node in self.cachedPhotons )
+    for ( Photon * node in _cachedPhotons )
         [(Photon *)node update:currentTime];
     
     //electricity
     NSMutableArray * asteroidsToTakeDmgFromElectricity = [NSMutableArray new];
     NSMutableArray * enemiesToTakeDmgFromElectricity = [NSMutableArray new];
-    for ( Electricity * tmpElectricityNode in self.cachedElectricity )
+    for ( Electricity * tmpElectricityNode in _cachedElectricity )
     {
         [tmpElectricityNode update:currentTime];
         
-        for ( Asteroid * node1 in self.cachedAsteroids )
+        for ( Asteroid * node1 in _cachedAsteroids )
         {
             if ( [tmpElectricityNode intersectsNode:node1] )
             {
@@ -622,7 +643,7 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
             }
         }
         
-        for ( Enemy * node1 in self.cachedEnemies )
+        for ( Enemy * node1 in _cachedEnemies )
         {
             if ( [tmpElectricityNode intersectsNode:node1] )
             {
@@ -639,17 +660,17 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     //laser
     NSMutableArray * asteroidsToTakeDmgFromLaser = [NSMutableArray new];
     NSMutableArray * enemiesToTakeDmgFromLaser = [NSMutableArray new];
-    for ( Laser * node in self.cachedLasers )
+    for ( Laser * node in _cachedLasers )
     {
         Laser * tmpLaser = (Laser *)node;
         
-        for ( Asteroid * node1 in self.cachedAsteroids )
+        for ( Asteroid * node1 in _cachedAsteroids )
         {
             if ( [tmpLaser intersectsNode:node1] )
                 [asteroidsToTakeDmgFromLaser addObject:node1];
         }
         
-        for ( Enemy * node1 in self.cachedEnemies )
+        for ( Enemy * node1 in _cachedEnemies )
         {
             if ( [tmpLaser intersectsNode:node1] )
                 [enemiesToTakeDmgFromLaser addObject:node1];
@@ -672,80 +693,52 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
 - (void) didSimulatePhysics
 {
     // This is your last chance to make changes to the scene.
-    for ( Bullet * node in self.cachedBullets )
+    for ( Bullet * node in _cachedBullets )
     {
         if ( node.position.y > self.scene.size.height + node.frame.size.height ||
             node.position.y < -node.frame.size.height ||
             node.position.x > self.scene.size.width + node.frame.size.width ||
             node.position.x < -node.frame.size.width )
-            [self.nodesToRemove addObject:node];
+            [_nodesToRemove addObject:node];
     }
     
-    for ( Photon * node in self.cachedPhotons )
+    for ( Photon * node in _cachedPhotons )
     {
         if ( node.position.y > self.scene.size.height + 100 ||
             node.position.y < -100 ||
             node.position.x > self.scene.size.width + 100 ||
             node.position.x < -100)
-            [self.nodesToRemove addObject:node];
+            [_nodesToRemove addObject:node];
     }
     
-    for ( Enemy * node in self.cachedEnemies )
+    for ( Enemy * node in _cachedEnemies )
     {
         if ( node.position.y <= -node.frame.size.height ||
             node.position.x > node.frame.size.width + self.scene.size.width ||
             node.position.x < -node.frame.size.height )
-            [self.nodesToRemove addObject:node];
+            [_nodesToRemove addObject:node];
     }
     
-    for ( Asteroid * node in self.cachedAsteroids )
+    for ( Asteroid * node in _cachedAsteroids )
     {
         if ( node.position.y < -node.frame.size.height )
-            [self.nodesToRemove addObject:node];
+            [_nodesToRemove addObject:node];
     }
     
-    for ( PowerUp * node in self.cachedPowerUps )
+    for ( PowerUp * node in _cachedPowerUps )
     {
         if ( node.position.y < -node.frame.size.height ||
             node.position.x > self.scene.size.width + node.frame.size.width ||
             node.position.x < -node.frame.size.width )
-            [self.nodesToRemove addObject:node];
+            [_nodesToRemove addObject:node];
     }
     
-    //[self removeChildrenInArray:self.nodesToRemove]; //this doesnt work for some reason
-    for ( SKNode * node in self.nodesToRemove )
+    for ( SKNode * node in _nodesToRemove )
         [node removeFromParent];
     
-    [self.nodesToRemove removeAllObjects];
+    [_nodesToRemove removeAllObjects];
     
-    __block BOOL allSpaceBackgroundsAreBelowTopOfScreen = YES;
-    for ( SpaceBackground * spaceBackground in self.cachedSpaceBackgrounds )
-    {
-        if ( spaceBackground.position.y > -(spaceBackground.size.height/2 - self.size.height) )
-            allSpaceBackgroundsAreBelowTopOfScreen = NO;
-    }
-    
-    //float alpha = CGColorGetAlpha(self.backgroundColor.CGColor);
-    
-    if ( allSpaceBackgroundsAreBelowTopOfScreen )//&& alpha < .5 )
-    {
-        [self.spaceObjectKit addSpaceBackground];
-        SKEmitterNode * stars = (SKEmitterNode *)[self childNodeWithName:@"stars"];
-        float newBirthRate = stars.particleBirthRate*8;
-        float newScaleRange = stars.particleScaleRange*3;
-        float newSpeedRange = stars.particleSpeedRange*2;
-        
-        if ( newBirthRate > 20 )
-            newBirthRate = 20;
-        if ( newScaleRange > .18 )
-            newScaleRange = .18;
-        if ( newSpeedRange > 20 )
-            newSpeedRange = 20;
-        
-        stars.particleBirthRate = newBirthRate;
-        stars.particleScaleRange = newScaleRange;
-        stars.particleSpeedRange = newSpeedRange;
-    }
+    [self checkBackground];
 }
 
 - (void) didBeginContact:(SKPhysicsContact *)contact
@@ -769,8 +762,8 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
         return; //glitch with spritekit collision bodies - didBeginContact gets called twice
                 //since i am usually removing at least one body, this will 'solve' it
     
-    //NSLog(@"body a : %@ %i", firstBody.node.name, firstBody.categoryBitMask);
-    //NSLog(@"body b : %@ %i", secondBody.node.name, secondBody.categoryBitMask);
+//    NSLog(@"body a : %@ %i", firstBody.node.name, firstBody.categoryBitMask);
+//    NSLog(@"body b : %@ %i", secondBody.node.name, secondBody.categoryBitMask);
     
     
     /*---  laser and electricity are handled in the update method  ---*/
@@ -841,6 +834,16 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     }
     else if ( [secondBody.node.name isEqualToString:@"shield"] )
     {
+        if ( [firstBody.node.name containsString:@"powerUp"] )
+        {
+            PowerUp * tmpPowerUp = (PowerUp *)firstBody.node;
+            [self.mySpaceship powerUpCollected:tmpPowerUp.powerUpType];
+            tmpPowerUp.physicsBody = nil;
+            [tmpPowerUp runAction:[SKAction fadeOutWithDuration:.2] completion:^
+             {
+                 [tmpPowerUp removeFromParent];
+             }];
+        }
         /*
         if ( [firstBody.node.name isEqualToString:@"pellet"] )
         {
@@ -848,50 +851,12 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
             [(Shield *)secondBody.node takeDamage];
         }
         else */
-        if ( [firstBody.node.name containsString:@"enemy"] )
+        else if ( [firstBody.node.name containsString:@"enemy"] )
         {
             [(Enemy *)firstBody.node explode];
             [(Shield *)secondBody.node takeDamage];
         }
     }
-}
-
-#pragma mark background
-- (void) showPlanetInBackground
-{
-    float alpha = 1 - CGColorGetAlpha(self.backgroundColor.CGColor);
-    [self.spaceObjectKit addPlanetToBackgroundWithAlpha:alpha];
-}
-
-- (void) changeCloudDensity
-{
-//    SKEmitterNode * clouds = (SKEmitterNode *)[self childNodeWithName:@"cloudsEmitter"];
-//    clouds.particleBirthRate = skRand(.02, 1.2);
-//    clouds.particleSpeed = clouds.particleSpeed + 10;
-//    
-//    SKEmitterNode * cloudsOnTop = (SKEmitterNode *)[self childNodeWithName:@"cloudsOnTopEmitter"];
-//    cloudsOnTop.particleBirthRate = skRand(.01, .5);
-//    cloudsOnTop.particleSpeed = cloudsOnTop.particleSpeed + 10;
-    
-    [self.mySpaceship increaseExhaustSpeed];
-    [self adjustBackground];
-}
-
-- (void) adjustBackground
-{
-    return;
-    
-    const CGFloat * colors = CGColorGetComponents(self.backgroundColor.CGColor);
-    float alpha = CGColorGetAlpha(self.backgroundColor.CGColor);
-    
-    UIColor * newColor = [UIColor colorWithRed:colors[0]-.1 green:colors[1]-.05 blue:colors[2]-.05 alpha:alpha-=.05];
-    
-    [UIView animateWithDuration:1 animations:^{
-        self.backgroundColor = newColor;
-    }];
-    
-    for ( SpaceBackground * node in self.cachedSpaceBackgrounds )
-        [node runAction:[SKAction fadeAlphaTo:1-alpha duration:5]];
 }
 
 #pragma mark enemies
@@ -938,44 +903,34 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     if ( [[self.scoreMultiplierLabel.text stringByReplacingOccurrencesOfString:@"x" withString:@""] intValue] != self.scoreMultiplier )
         [self updateScoreMultiplierLabel];
     
-    if ( !self.showingTooltip && [AccountManager shouldShowTooltip:kTooltipTypeScoringPoints] )
+    if ( self.mySpaceship.armor && !self.showingTooltip && [AccountManager shouldShowTooltip:kTooltipTypeScoringPoints] )
     {
         self.showingTooltip = YES;
-        [self pauseGame];
-        NSString * alertTitle = NSLocalizedString(@"Ermahgerd!", nil);
-        NSString * alertMessage = NSLocalizedString(@"You just blew up an alien spaceship! The more stuff you blow up, The more points you score!", nil);
-        DQAlertView * unlockAlert = [[DQAlertView alloc] initWithTitle:alertTitle message:alertMessage cancelButtonTitle:NSLocalizedString(@"Disable Tips", nil) otherButtonTitle:NSLocalizedString(@"Got It", nil)];
-        unlockAlert.cancelButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-        unlockAlert.customFrame = CGRectMake(0, (self.size.height+self.view.frame.origin.y) - 230, self.size.width, 150);
-        unlockAlert.appearAnimationType = DQAlertViewAnimationTypeFadeIn;
-        unlockAlert.disappearAnimationType = DQAlertViewAnimationTypeFaceOut;
-        unlockAlert.appearTime = .4;
-        unlockAlert.disappearTime = .4;
-        unlockAlert.backgroundColor = [UIColor colorWithWhite:.2 alpha:0];
-        unlockAlert.titleLabel.numberOfLines = 2;
-        unlockAlert.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:18];
-        unlockAlert.titleLabel.textColor = [UIColor whiteColor];
-        unlockAlert.messageLabel.font = [UIFont fontWithName:@"Moon-Bold" size:13];
-        unlockAlert.messageLabel.textColor = [UIColor whiteColor];
-        unlockAlert.cancelButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
-        [unlockAlert.cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        unlockAlert.otherButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
-        [unlockAlert.otherButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [unlockAlert show];
+        //the delay is so the pause occurs while the explosion is on screen
         SKSpriteNode * tooltipArrow = [self tooltipArrowAt:self.pointsScoredLabel];
-        unlockAlert.otherButtonAction = ^
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, .15 * NSEC_PER_SEC), dispatch_get_main_queue(), ^
         {
-            [self removeTooltipArrow:tooltipArrow];
-            [self resumeGame];
-            self.showingTooltip = NO;
-        };
-        unlockAlert.cancelButtonAction = ^
-        {
-            [self removeTooltipArrow:tooltipArrow];
-            [AccountManager disableTips];
-            [self resumeGame];
-            self.showingTooltip = NO;
-        };
+            
+            [self pauseGame];
+            NSString * alertTitle = NSLocalizedString(@"Ermahgerd!", nil);
+            NSString * alertMessage = NSLocalizedString(@"You just blew up an alien spaceship! The more stuff you blow up, The more points you score!", nil);
+            SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:alertTitle message:alertMessage cancelButtonTitle:NSLocalizedString(@"Disable Tips", nil) otherButtonTitle:NSLocalizedString(@"Got It", nil)];
+            unlockAlert.customFrame = CGRectMake(0, (self.size.height+self.view.frame.origin.y) - 230, self.size.width, 150);
+            [unlockAlert show];
+            unlockAlert.otherButtonAction = ^
+            {
+                [self removeTooltipArrow:tooltipArrow];
+                [self resumeGame];
+                self.showingTooltip = NO;
+            };
+            unlockAlert.cancelButtonAction = ^
+            {
+                [self removeTooltipArrow:tooltipArrow];
+                [AccountManager disableTips];
+                [self resumeGame];
+                self.showingTooltip = NO;
+            };
+        });
     }
 }
 
@@ -990,7 +945,7 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
 {
     [self removeActionForKey:@"makeAsteroids"];
     self.makeAsteroidsInterval -= .08*self.makeAsteroidsInterval;
-    self.asteroidSpeedCoefficient += .03;
+    self.asteroidSpeedCoefficient += .06;
     
     BOOL randomBool = arc4random_uniform(2);
     if ( randomBool )
@@ -1003,6 +958,18 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
                                   [SKAction waitForDuration:self.makeAsteroidsInterval withRange:.15]]];
     
     [self runAction:[SKAction repeatActionForever:makeAsteroids] withKey:@"makeAsteroids"];
+    
+    //also using this method to increase particle speed
+    SKEmitterNode * spaceDust1 = (SKEmitterNode *)[self childNodeWithName:@"stars"];
+    spaceDust1.particleSpeed += 5;
+    SKEmitterNode * spaceDust2 = (SKEmitterNode *)[self childNodeWithName:@"stars2"];
+    spaceDust2.particleSpeed += 5;
+    
+    [self.mySpaceship enumerateChildNodesWithName:@"exhaust" usingBlock:^(SKNode * _Nonnull node, BOOL * _Nonnull stop)
+    {
+        SKEmitterNode * exhaust = (SKEmitterNode *)node;
+        exhaust.particleSpeed += 1;
+    }];
 }
 
 - (void) asteroidCrumbled:(Asteroid *)asteroid
@@ -1017,31 +984,14 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     if ( !self.showingTooltip && [AccountManager shouldShowTooltip:kTooltipTypePowerUp ] )
     {
         self.showingTooltip = YES;
+        SKSpriteNode * tooltipArrow = [self tooltipArrowAt:weapon];
         [self pauseGame];
         
         NSString * alertTitle = NSLocalizedString(@"Weapon PowerUp!", nil);
         NSString * alertMessage = NSLocalizedString(@"You just picked up a weapon! Pick up the same weapon again to upgrade it", nil);
-        DQAlertView * unlockAlert = [[DQAlertView alloc] initWithTitle:alertTitle message:alertMessage cancelButtonTitle:NSLocalizedString(@"Disable Tips", nil) otherButtonTitle:NSLocalizedString(@"Got It", nil)];
-        unlockAlert.cancelButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-        //unlockAlert.customFrame = CGRectMake(30, 30, 200, 150);
-        //unlockAlert.contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"missile.png"]];
+        SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:alertTitle message:alertMessage cancelButtonTitle:NSLocalizedString(@"Disable Tips", nil) otherButtonTitle:NSLocalizedString(@"Got It", nil)];
         unlockAlert.customFrame = CGRectMake(0, 0, self.size.width, 170);
-        unlockAlert.appearAnimationType = DQAlertViewAnimationTypeFadeIn;
-        unlockAlert.disappearAnimationType = DQAlertViewAnimationTypeFaceOut;
-        unlockAlert.appearTime = .4;
-        unlockAlert.disappearTime = .4;
-        unlockAlert.backgroundColor = [UIColor colorWithWhite:.2 alpha:0];
-        unlockAlert.titleLabel.numberOfLines = 2;
-        unlockAlert.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:18];
-        unlockAlert.titleLabel.textColor = [UIColor whiteColor];
-        unlockAlert.messageLabel.font = [UIFont fontWithName:@"Moon-Bold" size:13];
-        unlockAlert.messageLabel.textColor = [UIColor whiteColor];
-        unlockAlert.cancelButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
-        [unlockAlert.cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        unlockAlert.otherButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
-        [unlockAlert.otherButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [unlockAlert show];
-        SKSpriteNode * tooltipArrow = [self tooltipArrowAt:weapon];
         unlockAlert.otherButtonAction = ^
         {
             [self removeTooltipArrow:tooltipArrow];
@@ -1085,62 +1035,60 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     if ( !self.showingTooltip && [AccountManager shouldShowTooltip:kTooltipTypeAvoidObstacles ] )
     {
         self.showingTooltip = YES;
-        if ( spaceship.armor != 0 )
-            [self pauseGame];
-        
-        DQAlertView * unlockAlert = [[DQAlertView alloc] initWithTitle:@"" message:@"" cancelButtonTitle:NSLocalizedString(@"Disable Tips", nil) otherButtonTitle:NSLocalizedString(@"Got It", nil)];
-        
-        unlockAlert.cancelButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-        UIView * alertContentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.size.width, 140)];
-        UILabel * alertTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 15, self.size.width, 20)];
-        alertTitleLabel.textColor = [UIColor whiteColor];
-        [alertTitleLabel setFont:[UIFont fontWithName:@"Moon-Bold" size:18]];
-        [alertTitleLabel setTextAlignment:NSTextAlignmentCenter];
-        alertTitleLabel.text = NSLocalizedString(@"Ouch!", nil);
-        [alertContentView addSubview:alertTitleLabel];
-        UILabel * alertMessageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 40, self.size.width, 20)];
-        alertMessageLabel.textColor = [UIColor whiteColor];
-        [alertMessageLabel setFont:[UIFont fontWithName:@"Moon-Bold" size:13]];
-        [alertMessageLabel setTextAlignment:NSTextAlignmentCenter];
-        alertMessageLabel.text = NSLocalizedString(@"Try to avoid objects like these:", nil);
-        [alertContentView addSubview:alertMessageLabel];
+        //the delay is so the pause occurs while the explosion is on screen
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, .15 * NSEC_PER_SEC), dispatch_get_main_queue(), ^
+        {
+            if ( spaceship.armor != 0 )
+                [self pauseGame];
+            
+            SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:@"" message:@"" cancelButtonTitle:NSLocalizedString(@"Disable Tips", nil) otherButtonTitle:NSLocalizedString(@"Got It", nil)];
+            
+            UIView * alertContentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.size.width, 140)];
+            UILabel * alertTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 15, self.size.width, 20)];
+            alertTitleLabel.textColor = _SAPink;
+            [alertTitleLabel setFont:[UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.size.width*0.05625]];
+            [alertTitleLabel setTextAlignment:NSTextAlignmentCenter];
+            alertTitleLabel.text = NSLocalizedString(@"Ouch!", nil);
+            [alertContentView addSubview:alertTitleLabel];
+            UILabel * alertMessageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 40, self.size.width, 20)];
+            alertMessageLabel.textColor = _SAPink;
+            [alertMessageLabel setFont:[UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.size.width*0.040625]];
+            [alertMessageLabel setTextAlignment:NSTextAlignmentCenter];
+            alertMessageLabel.text = NSLocalizedString(@"Try to avoid objects like these:", nil);
+            [alertContentView addSubview:alertMessageLabel];
 
-        UIImageView * obstacle1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"asteroidImage.png"]];
-        obstacle1.frame = CGRectMake((((self.size.width/4) * 1)-obstacle1.frame.size.width/2)-(self.size.width/8), 92 - obstacle1.frame.size.height/2, obstacle1.frame.size.width, obstacle1.frame.size.height);
-        [alertContentView addSubview:obstacle1];
-        UIImageView * obstacle2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"enemyBasic.png"]];
-        obstacle2.frame = CGRectMake((((self.size.width/4) * 2)-obstacle2.frame.size.width/2)-(self.size.width/8), 92 - obstacle2.frame.size.height/2, obstacle2.frame.size.width, obstacle2.frame.size.height);
-        [alertContentView addSubview:obstacle2];
-        UIImageView * obstacle3 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"enemyFast.png"]];
-        obstacle3.frame = CGRectMake((((self.size.width/4) * 3)-obstacle3.frame.size.width/2)-(self.size.width/8), 92 - obstacle3.frame.size.height/2, obstacle3.frame.size.width, obstacle3.frame.size.height);
-        [alertContentView addSubview:obstacle3];
-        UIImageView * obstacle4 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"enemyBig.png"]];
-        obstacle4.frame = CGRectMake((((self.size.width/4) * 4)-obstacle4.frame.size.width/2)-(self.size.width/8), 92 - obstacle4.frame.size.height/2, obstacle4.frame.size.width, obstacle4.frame.size.height);
-        [alertContentView addSubview:obstacle4];
-        
-        unlockAlert.contentView = alertContentView;
-        unlockAlert.customFrame = CGRectMake(0, 0, unlockAlert.frame.size.width, unlockAlert.frame.size.height);
-        unlockAlert.appearAnimationType = DQAlertViewAnimationTypeFadeIn;
-        unlockAlert.disappearAnimationType = DQAlertViewAnimationTypeFaceOut;
-        unlockAlert.appearTime = .4;
-        unlockAlert.disappearTime = .4;
-        unlockAlert.backgroundColor = [UIColor colorWithWhite:.2 alpha:0];
-        unlockAlert.cancelButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
-        [unlockAlert.cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        unlockAlert.otherButton.titleLabel.font = [UIFont fontWithName:@"Moon-Bold" size:15];
-        [unlockAlert.otherButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [unlockAlert show];
-        unlockAlert.otherButtonAction = ^
-        {
-            [self resumeGame];
-            self.showingTooltip = NO;
-        };
-        unlockAlert.cancelButtonAction = ^
-        {
-            [AccountManager disableTips];
-            [self resumeGame];
-            self.showingTooltip = NO;
-        };
+            UIImageView * obstacle1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"asteroidImage.png"]];
+            obstacle1.frame = CGRectMake((((self.size.width/4) * 1)-30/2)-(self.size.width/8), 92 - 30/2,
+                                         30, 30);
+            [alertContentView addSubview:obstacle1];
+            UIImageView * obstacle2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"enemyBasic.png"]];
+            obstacle2.frame = CGRectMake((((self.size.width/4) * 2)-50/2)-(self.size.width/8), 92 - 50/2,
+                                         50, 50);
+            [alertContentView addSubview:obstacle2];
+            UIImageView * obstacle3 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"enemyFast.png"]];
+            obstacle3.frame = CGRectMake((((self.size.width/4) * 3)-65/2)-(self.size.width/8), 92 - 65/2,
+                                         65, 65);
+            [alertContentView addSubview:obstacle3];
+            UIImageView * obstacle4 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"enemyBig.png"]];
+            obstacle4.frame = CGRectMake((((self.size.width/4) * 4)-50/2)-(self.size.width/8), 92 - 50/2,
+                                         50, 50);
+            [alertContentView addSubview:obstacle4];
+            
+            unlockAlert.contentView = alertContentView;
+            unlockAlert.customFrame = CGRectMake(0, 0, unlockAlert.frame.size.width, unlockAlert.frame.size.height);
+            [unlockAlert show];
+            unlockAlert.otherButtonAction = ^
+            {
+                [self resumeGame];
+                self.showingTooltip = NO;
+            };
+            unlockAlert.cancelButtonAction = ^
+            {
+                [AccountManager disableTips];
+                [self resumeGame];
+                self.showingTooltip = NO;
+            };
+        });
     }
 }
 
@@ -1153,23 +1101,15 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     self.resumeAsteroidTimer = NO;
     [self.enemyTimer invalidate];
     self.resumeEnemyTimer = NO;
-    [self.changeCloudDensityTimer invalidate];
-    self.resumeChangeCloudDensityTimer = NO;
     [self.periodicAchievementUpdatingTimer invalidate];
     self.resumePeriodicAchievementUpdatingTimer = NO;
-    [self.backgroundPlanetsTimer invalidate];
-    self.resumeBackgroundPlanetsTimer = NO;
     [self removeActionForKey:@"makeAsteroids"];
     [self removeActionForKey:@"makeEnemies"];
     [self removeActionForKey:@"makePowerUps"];
-    SKEmitterNode * clouds = (SKEmitterNode *)[self childNodeWithName:@"cloudsEmitter"];
-    clouds.particleBirthRate = 0;
-    SKEmitterNode * cloudsOnTop = (SKEmitterNode *)[self childNodeWithName:@"cloudsOnTopEmitter"];
-    cloudsOnTop.particleBirthRate = 0;
     [self updateScoreMultiplierLabel];
     [self showEndGameScreen];
     [[AudioManager sharedInstance] fadeOutGameplayMusic];
-    for ( Enemy * enemy in self.cachedEnemies )
+    for ( Enemy * enemy in _cachedEnemies )
         [enemy runAction:[SKAction fadeOutWithDuration:1]];
 }
 
@@ -1240,46 +1180,46 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     
     //electricity and laser projectiles are added from player weapon delegate method (didAddProjectile:forWeapon:)
     if ( [node isKindOfClass:[Enemy class]] )
-        [self.cachedEnemies addObject:node];
+        [_cachedEnemies addObject:node];
     else if ( [node class] == [Asteroid class] )
-        [self.cachedAsteroids addObject:node];
+        [_cachedAsteroids addObject:node];
     else if ( [node class] == [Photon class] )
     {
-        [self.cachedPhotons addObject:node];
+        [_cachedPhotons addObject:node];
         self.photonsFired++;
     }
     else if ( [node class] == [Bullet class] )
     {
-        [self.cachedBullets addObject:node];
+        [_cachedBullets addObject:node];
         self.bulletsFired++;
     }
     else if ( [node class] == [PowerUp class] )
     {
-        [self.cachedPowerUps addObject:node];
+        [_cachedPowerUps addObject:node];
         self.powerUpsCollected++;
     }
     else if ( [node.name isEqualToString:@"spaceBackground"] )
-        [self.cachedSpaceBackgrounds addObject:node];
+        [_cachedSpaceBackgrounds addObject:node];
 }
 
 - (void) removeCachedSpriteNode:(SKSpriteNode *)spriteNode
 {
     if ( [spriteNode isKindOfClass:[Enemy class]] )
-        [self.cachedEnemies removeObject:spriteNode];
+        [_cachedEnemies removeObject:spriteNode];
     else if ( [spriteNode class] == [Asteroid class] )
-        [self.cachedAsteroids removeObject:spriteNode];
+        [_cachedAsteroids removeObject:spriteNode];
     else if ( [spriteNode class] == [Photon class] )
-        [self.cachedPhotons removeObject:spriteNode];
+        [_cachedPhotons removeObject:spriteNode];
     else if ( [spriteNode class] == [Bullet class] )
-        [self.cachedBullets removeObject:spriteNode];
+        [_cachedBullets removeObject:spriteNode];
     else if ( [spriteNode class] == [PowerUp class] )
-        [self.cachedPowerUps removeObject:spriteNode];
+        [_cachedPowerUps removeObject:spriteNode];
     else if ( [spriteNode class] == [SpaceBackground class] )
-        [self.cachedSpaceBackgrounds removeObject:spriteNode];
+        [_cachedSpaceBackgrounds removeObject:spriteNode];
     else if ( [spriteNode class] == [Electricity class] )
-        [self.cachedElectricity removeObject:spriteNode];
+        [_cachedElectricity removeObject:spriteNode];
     else if ( [spriteNode class] == [Laser class] )
-        [self.cachedLasers removeObject:spriteNode];
+        [_cachedLasers removeObject:spriteNode];
     
 }
 
@@ -1288,12 +1228,12 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
 {
     if ( [projectile class] == [Electricity class] )
     {
-        [self.cachedElectricity addObject:projectile];
+        [_cachedElectricity addObject:projectile];
         self.electricityFired++;
     }
     else if ( [projectile class] == [Laser class] )
     {
-        [self.cachedLasers addObject:projectile];
+        [_cachedLasers addObject:projectile];
         self.lasersFired++;
     }
 }

@@ -48,17 +48,41 @@
         
         SKTexture * powerUpTexture = [[[SpaceObjectsKit sharedInstanceWithScene:nil] powerUpTextures] objectForKey:powerUpTextureKey];
         [self setTexture:powerUpTexture];
-        [self setSize:CGSizeMake(powerUpTexture.size.width/10, powerUpTexture.size.height/10)];
         self.powerUpType = powerUpType;
         self.name = [NSString stringWithFormat:@"powerUp_%@", powerUpTextureKey];
         
-        self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.size.width/2];
+        
+        float resizeFactor = ([[UIScreen mainScreen] bounds].size.width/320.0)*.2;
+        self.size = CGSizeMake(135*resizeFactor, 135*resizeFactor);
+        
+        float physicsBodyRadius = self.size.width;
+        self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:physicsBodyRadius];
+        //[self attachDebugCircleWithSize:physicsBodyRadius*2];
+        
+        self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:physicsBodyRadius];
         self.physicsBody.dynamic = YES;
         self.physicsBody.categoryBitMask = [CategoryBitMasks powerUpCategory];
         self.physicsBody.collisionBitMask = 0;
-        self.physicsBody.contactTestBitMask = [CategoryBitMasks shipCategory];
+        self.physicsBody.contactTestBitMask = [CategoryBitMasks shipCategory] | [CategoryBitMasks shieldCategory];
     }
     return self;
+}
+
+
+- (void)attachDebugCircleWithSize:(int)s
+{
+    CGPathRef bodyPath = CGPathCreateWithEllipseInRect(CGRectMake(-s/2, -s/2, s, s), nil);
+    [self attachDebugFrameFromPath:bodyPath];
+}
+
+- (void)attachDebugFrameFromPath:(CGPathRef)bodyPath {
+    //if (kDebugDraw==NO) return;
+    SKShapeNode *shape = [SKShapeNode node];
+    shape.zPosition = 100;
+    shape.path = bodyPath;
+    shape.strokeColor = [SKColor colorWithRed:1.0 green:1 blue:1 alpha:1];
+    shape.lineWidth = 1.0;
+    [self addChild:shape];
 }
 
 @end

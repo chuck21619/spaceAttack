@@ -1,4 +1,66 @@
 
+//---main menu
+//space attack
+"2E9-FI-wPc.text" = "スペ";
+//start
+"HGt-bC-Frb.normalTitle" = "開始";
+//achievements
+"1d1-lJ-Rw0.normalTitle" = "実績";
+//upgrades
+"dEh-7H-kc8.normalTitle" = "アップグレード";
+
+//---select ship
+//back
+"vTv-73-QrP.normalTitle" = "< 戻る";
+//select
+"uYw-2i-Iw7.text" = "選択します";
+
+//---achievements
+//back
+"zPW-T1-bTy.normalTitle" = "< 戻る";
+//achievments
+"gQS-86-JNa.text" = "実績";
+
+//---high scores
+//back
+"gI9-Fx-eN6.normalTitle" = "< 戻る";
+//high scores
+"256-eI-0fL.text" = "ハイスコア";
+//me
+"9pa-jf-Z5B.text" = "私に";
+
+//---upgrades
+//back
+"Qqh-sQ-Qqa.normalTitle" = "< 戻る";
+//upgrades
+"Vk6-dJ-1Dg.text" = "アップグレード";
+
+//---settings
+//back
+"6K5-5I-WsQ.normalTitle" = "< 戻る";
+//settings
+"tnT-uA-cOo.text" = "設定";
+//controls
+"H2D-hB-Sdw.text" = "コントロール";
+//help
+"wMI-5d-o5G.normalTitle" = "助けて";
+//reset tutorial
+"Lc4-J5-7kD.normalTitle" = "チュートリアルをリセット";
+
+//---end game screen
+//restart
+"HHP-NJ-R62" = "再起動";
+//select ship
+"guR-xG-mbT" = "変更の船";
+//upgrades
+"Nun-yr-B4d" = "アップグレード";
+//home
+"QFI-At-1xJ" = "メインメニュー";
+
+
+
+
+
 /* Class = "UIButton"; normalTitle = "Engage"; ObjectID = "1FT-Qe-tOr"; */
 "1FT-Qe-tOr.normalTitle" = "戦闘開始";
 

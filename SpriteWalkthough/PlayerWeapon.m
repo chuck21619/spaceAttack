@@ -8,7 +8,6 @@
 
 #import "PlayerWeapon.h"
 #import "PlayerWeaponsKit.h"
-#import "UpgradeScene.h"
 #import "AccountManager.h"
 
 @implementation PlayerWeapon
@@ -17,6 +16,8 @@
 {
     if (self = [super initWithTexture:texture])
     {
+        float resizeFactor = ([[UIScreen mainScreen] bounds].size.width/320.0)*1;
+        self.size = CGSizeMake(self.texture.size.width*resizeFactor, self.texture.size.height*resizeFactor);
         self.level = 1;
         self.zPosition = -1;
     }
@@ -28,7 +29,7 @@
 {
     self.level++;
     [self startFiring];
-    if ( self.level == 4 && [[self scene] class] != [UpgradeScene class] )
+    if ( self.level == 4 )
     {
         if ( [self class] == [MachineGun class])
             [AccountManager submitCompletedAchievement:kAchievementMaxLevelMachineGun];

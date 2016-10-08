@@ -8,7 +8,6 @@
 
 #import "MainMenuViewController.h"
 #import <SpriteKit/SpriteKit.h>
-#import "MenuBackgroundScene.h"
 #import "SelectShipViewController.h"
 #import "UpgradesViewController.h"
 #import "SAAlertView.h"
@@ -17,37 +16,79 @@
 #import "SettingsViewController.h"
 #import "SpriteAppDelegate.h"
 
-
 @implementation MainMenuViewController
 
 - (void) viewDidLoad
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(achievementsLoaded) name:@"achievementsLoaded" object:nil];
+    
+    if ( [_AppDelegate hasCustomMainMenuBackground] )
+        self.spaceAttackLabel.text = @"";
+    else
+    {
+        self.spaceAttackLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.spaceAttackLabel.font.pointSize];
+        [_AppDelegate addGlowToLayer:self.spaceAttackLabel.layer withColor:self.spaceAttackLabel.textColor.CGColor];
+    }
+    
+    self.playButton.titleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.playButton.titleLabel.font.pointSize];
+    self.highScoresAchievementsButton.titleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.highScoresAchievementsButton.titleLabel.font.pointSize];
+    self.upgradesButton.titleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.upgradesButton.titleLabel.font.pointSize];
+    
+    self.playButton.titleLabel.numberOfLines = 1;
+    self.playButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    self.playButton.titleLabel.lineBreakMode = NSLineBreakByClipping;
+    
+    self.highScoresAchievementsButton.titleLabel.numberOfLines = 1;
+    self.highScoresAchievementsButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    self.highScoresAchievementsButton.titleLabel.lineBreakMode = NSLineBreakByClipping;
+    
+    self.upgradesButton.titleLabel.numberOfLines = 1;
+    self.upgradesButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    self.upgradesButton.titleLabel.lineBreakMode = NSLineBreakByClipping;
+    
     [self adjustForDeviceSize];
-    [_AppDelegate addGlowToLayer:self.spaceAttackLabel.layer withColor:self.spaceAttackLabel.textColor.CGColor];
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    self.playButton.alpha = 0;
-    self.upgradesButton.alpha = 0;
-    self.highScoresAchievementsButton.alpha = 0;
-    self.settingsButton.alpha = 0;
-    [UIView animateWithDuration:.5 animations:^
+    for ( UIView * subview in [self.view subviews] )
     {
-        self.playButton.alpha = 1;
-        self.upgradesButton.alpha = 1;
-        self.highScoresAchievementsButton.alpha = 1;
-        self.settingsButton.alpha = 1;
-    }];
+        subview.alpha = 0;
+    }
+
     
-    if ( ! [[GKLocalPlayer localPlayer] isAuthenticated] )
-        [self.highScoresAchievementsButton setTitleColor:[UIColor colorWithWhite:.5 alpha:1] forState:UIControlStateNormal];
+    if ( [AccountManager firstLaunch] )
+    {
+        NSLog(@"main menu first launch");
         
-    SKView * spriteView = (SKView *)self.view;
-    spriteView.ignoresSiblingOrder = YES; // improves performance
-    MenuBackgroundScene * backgroundScene = [MenuBackgroundScene sharedInstance];
-    [spriteView presentScene:backgroundScene];
+        UIImageView * background = [self.view viewWithTag:10];
+        [UIView animateWithDuration:3 animations:^
+        {
+            background.alpha = 1;
+        }
+        completion:^(BOOL finished)
+        {
+            [UIView animateWithDuration:2 animations:^
+             {
+                 for ( UIView * subview in [self.view subviews] )
+                 {
+                     if ( subview != self.playBadge && subview != self.upgradesBadge )
+                         subview.alpha = 1;
+                 }
+             }];
+        }];
+    }
+    else
+    {
+        [UIView animateWithDuration:.2 animations:^
+        {
+            for ( UIView * subview in [self.view subviews] )
+            {
+                if ( subview != self.playBadge && subview != self.upgradesBadge )
+                    subview.alpha = 1;
+            }
+        }];
+    }
     
     [self authenticateLocalPlayer];
     [self updateButtonColorStatus];
@@ -55,20 +96,14 @@
     self.playButton.layer.cornerRadius = 20;
     self.playButton.layer.borderColor = [self.playButton.currentTitleColor CGColor];
     self.playButton.layer.borderWidth = 2;
-    //[_AppDelegate addGlowToLayer:self.playButton.layer withColor:[self.playButton.currentTitleColor CGColor]];
-    //[_AppDelegate addGlowToLayer:self.playButton.titleLabel.layer withColor:[self.playButton.currentTitleColor CGColor]];
     
     self.highScoresAchievementsButton.layer.cornerRadius = 10;
     self.highScoresAchievementsButton.layer.borderColor = [self.highScoresAchievementsButton.currentTitleColor CGColor];
     self.highScoresAchievementsButton.layer.borderWidth = 2;
-//    [_AppDelegate addGlowToLayer:self.highScoresAchievementsButton.layer withColor:[self.highScoresAchievementsButton.currentTitleColor CGColor]];
-//    [_AppDelegate addGlowToLayer:self.highScoresAchievementsButton.titleLabel.layer withColor:[self.highScoresAchievementsButton.currentTitleColor CGColor]];
     
     self.upgradesButton.layer.cornerRadius = 10;
     self.upgradesButton.layer.borderColor = [self.upgradesButton.currentTitleColor CGColor];
     self.upgradesButton.layer.borderWidth = 2;
-//    [_AppDelegate addGlowToLayer:self.upgradesButton.layer withColor:[self.upgradesButton.currentTitleColor CGColor]];
-//    [_AppDelegate addGlowToLayer:self.upgradesButton.titleLabel.layer withColor:[self.upgradesButton.currentTitleColor CGColor]];
     
     [_AppDelegate addGlowToLayer:self.zinStudioButton.layer withColor:self.zinStudioButton.currentTitleColor.CGColor];
     
@@ -83,12 +118,6 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    SKView * spriteView = (SKView *)self.view;
-    [spriteView presentScene:nil];
-}
-
 - (BOOL) prefersStatusBarHidden
 {
     return YES;
@@ -96,20 +125,15 @@
 
 - (void) updateButtonColorStatus
 {
-//    if ( [AccountManager enoughGamePointsToUnlockAShip] )
-//        //[self.playButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-//        self.playBadge.alpha = 1;
-//    else
-//        self.playBadge.alpha = 0;
-//        //[self.playButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    
+    if ( [AccountManager enoughGamePointsToUnlockAShip] )
+        self.playBadge.alpha = 1;
+    else
+        self.playBadge.alpha = 0;
     
     if ( [AccountManager enoughGamePointsToUnlockAnUpgrade] )
         self.upgradesBadge.alpha = 1;
-        //[self.upgradesButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
     else
         self.upgradesBadge.alpha = 0;
-        //[self.upgradesButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 }
 
 - (void) adjustForDeviceSize
@@ -125,21 +149,16 @@
     self.constraintLeadingSettings.constant = width*.872;
     self.constraintTrailingZinStudio.constant = width*.666;
     
-    self.constraintLeadingPlanet1.constant = width*.359;
-    self.constraintTopPlanet1.constant = width*.025;
-    self.constraintTrailingPlanet1.constant = width*.484;
-    
-    self.constraintLeadingPlanet2.constant = width*.625;
-    self.constraintTopPlanet2.constant = width*.191;
-    self.constraintTrailingPlanet2.constant = width*.063;
-    
-    self.constraintLeadingPlanet3.constant = width*.091;
-    self.constraintTopPlanet3.constant = width*.456;
-    self.constraintTrailingPlanet3.constant = width*.284;
-    
     self.constraintLeadingBadge.constant = width*.691;
     self.constraintTopBadge.constant = width*-.05;
     self.constraintTrailingBadge.constant = width*.216;
+    
+    self.constraintLeadingBadgeStart.constant = width*0.7125;
+    self.constraintTopBadgeStart.constant = width*-0.046875;
+    self.constraintTrailingBadgeStart.constant = width*0.19375;
+    
+    self.constraintLeadingPlay.constant = width*0.128125;
+    self.constraintTrailingPlay.constant = width*0.128125;
 }
 
 #pragma mark - game center
@@ -181,19 +200,21 @@
         else if (weaklocalPlayer.isAuthenticated)
         {
             NSLog(@"game center authenticated");
-            [self.highScoresAchievementsButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            self.highScoresAchievementsButton.layer.borderColor = [self.highScoresAchievementsButton.currentTitleColor CGColor];
-//            [_AppDelegate addGlowToLayer:self.highScoresAchievementsButton.layer withColor:[self.highScoresAchievementsButton.currentTitleColor CGColor]];
-//            [_AppDelegate addGlowToLayer:self.highScoresAchievementsButton.titleLabel.layer withColor:[self.highScoresAchievementsButton.currentTitleColor CGColor]];
+            if ( ! [weaklocalPlayer.playerID isEqualToString:[AccountManager lastPlayerLoggedIn]] )
+            {
+                NSLog(@"   last player id : %@", [AccountManager lastPlayerLoggedIn]);
+                NSLog(@"current player id : %@", weaklocalPlayer.playerID);
+                NSLog(@"new player - clearing player progress");
+                [AccountManager clearPlayerProgress];
+            }
             
-#warning uncomment for release builds
-//            [AccountManager loadAchievements];
+            [AccountManager setLastPlayerLoggedIn:weaklocalPlayer.playerID];
+            
+//#warning uncomment for release builds
+            [AccountManager loadAchievements];
         }
         else
-        {
             NSLog(@"game center authentication process failed");
-            //[self disableGameCenter];
-        }
     };
 }
 
@@ -212,13 +233,9 @@
     SelectShipViewController * ssvc = [storyboard instantiateViewControllerWithIdentifier:@"selectShipViewController"];
     [UIView animateWithDuration:.2 animations:^
     {
-        self.view.alpha = 0;
-        [self presentViewController:ssvc animated:NO completion:^
-        {
-            self.view.alpha = 1;
-            SKView * spriteView = (SKView *)self.view;
-            [spriteView presentScene:nil];
-        }];
+        for ( UIView * subview in [self.view subviews] )
+            subview.alpha = 0;
+        [self presentViewController:ssvc animated:NO completion:nil];
     }];
 }
 
@@ -227,53 +244,32 @@
     [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuUpgrade];
     UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UpgradesViewController * upgradesVC = [storyboard instantiateViewControllerWithIdentifier:@"upgradesViewController"];
+    [upgradesVC view]; //preloads the view
     [UIView animateWithDuration:.2 animations:^
     {
-        self.view.alpha = 0;
-        [self presentViewController:upgradesVC animated:NO completion:^
-        {
-            self.view.alpha = 1;
-            SKView * spriteView = (SKView *)self.view;
-            [spriteView presentScene:nil];
-        }];
+        for ( UIView * subview in [self.view subviews] )
+            subview.alpha = 0;
+    }
+    completion:^(BOOL finished)
+    {
+        [self presentViewController:upgradesVC animated:NO completion:nil];
     }];
 }
 
 - (IBAction)highScoresAchievementsAction:(id)sender
 {
     [[AudioManager sharedInstance] playSoundEffect:kSoundEffectMenuHighScoreAchievements];
-    if ( ! [[GKLocalPlayer localPlayer] isAuthenticated] )
+    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UpgradesViewController * upgradesVC = [storyboard instantiateViewControllerWithIdentifier:@"gameCenterPageVC"];
+    [UIView animateWithDuration:.2 animations:^
     {
-        SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:@"Scores Unavailable" message:@"You are not signed into\nGame Center" cancelButtonTitle:@"Got It" otherButtonTitle:nil];
-        unlockAlert.appearTime = .2;
-        unlockAlert.disappearTime = .2;
-        [unlockAlert show];
-        return;
+        for ( UIView * subview in [self.view subviews] )
+            subview.alpha = 0;
     }
-    
-    GKGameCenterViewController *gameCenterController = [[GKGameCenterViewController alloc] init];
-    if (gameCenterController != nil)
+    completion:^(BOOL finished)
     {
-        gameCenterController.gameCenterDelegate = self;
-        gameCenterController.viewState = GKGameCenterViewControllerStateAchievements;
-        gameCenterController.leaderboardIdentifier = @"SingleFlightPoints";
-        gameCenterController.view.alpha = 0;
-        [UIView animateWithDuration:.2 animations:^
-         {
-             self.view.alpha = 0;
-             [self presentViewController:gameCenterController animated:NO completion:^
-              {
-                  [UIView animateWithDuration:.7 animations:^
-                   {
-                       gameCenterController.view.alpha = 1;
-                   }
-                                   completion:^(BOOL finished)
-                   {
-                       self.view.alpha = 1;
-                   }];
-              }];
-         }];
-    }
+        [self presentViewController:upgradesVC animated:NO completion:nil];
+    }];
 }
 
 - (IBAction)settingsAction:(id)sender
@@ -283,16 +279,12 @@
     SettingsViewController * settingsVC = [storyboard instantiateViewControllerWithIdentifier:@"settingsViewController"];
     [UIView animateWithDuration:.2 animations:^
     {
-        self.view.alpha = 0;
+        for ( UIView * subview in [self.view subviews] )
+            subview.alpha = 0;
     }
     completion:^(BOOL finished)
     {
-        [self presentViewController:settingsVC animated:NO completion:^
-        {
-            self.view.alpha = 1;
-            SKView * spriteView = (SKView *)self.view;
-            [spriteView presentScene:nil];
-        }];
+        [self presentViewController:settingsVC animated:NO completion:nil];
     }];
 }
 

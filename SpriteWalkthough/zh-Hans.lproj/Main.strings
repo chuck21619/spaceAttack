@@ -1,4 +1,65 @@
 
+//---main menu
+//space attack
+"2E9-FI-wPc.text" = "太空攻击";
+//start
+"HGt-bC-Frb.normalTitle" = "开始";
+//achievements
+"1d1-lJ-Rw0.normalTitle" = "成就";
+//upgrades
+"dEh-7H-kc8.normalTitle" = "升级";
+
+//---select ship
+//back
+"vTv-73-QrP.normalTitle" = "< 后退";
+//select
+"uYw-2i-Iw7.text" = "选择";
+
+//---achievements
+//back
+"zPW-T1-bTy.normalTitle" = "< 后退";
+//achievments
+"gQS-86-JNa.text" = "成就";
+
+//---high scores
+//back
+"gI9-Fx-eN6..normalTitle" = "< 后退";
+//high scores
+"256-eI-0fL.text" = "高分";
+//me
+"9pa-jf-Z5B.text" = "我";
+
+//---upgrades
+//back
+"Qqh-sQ-Qqa.normalTitle" = "< 后退";
+//upgrades
+"Vk6-dJ-1Dg.text" = "升级";
+
+//---settings
+//back
+"6K5-5I-WsQ.normalTitle" = "< 后退";
+//settings
+"tnT-uA-cOo.text" = "设置";
+//controls
+"H2D-hB-Sdw.text" = "控制";
+//help
+"wMI-5d-o5G.normalTitle" = "帮帮我";
+//reset tutorial
+"Lc4-J5-7kD.normalTitle" = "复位教程";
+
+//---end game screen
+//restart
+"HHP-NJ-R62" = "重新开始";
+//select ship
+"guR-xG-mbT" = "改变船";
+//upgrades
+"Nun-yr-B4d" = "升级";
+//home
+"QFI-At-1xJ" = "主菜单";
+
+
+
+
 /* Class = "UIButton"; normalTitle = "Engage"; ObjectID = "1FT-Qe-tOr"; */
 "1FT-Qe-tOr.normalTitle" = "开始游戏";
 

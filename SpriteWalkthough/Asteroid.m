@@ -36,8 +36,15 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
         self.pointValue = 1;
         self.photonsTargetingMe = [NSPointerArray weakObjectsPointerArray];
         self.isBeingElectrocuted = NO;
-        int asteroidSize = skRand(20, 40);
-        self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:asteroidSize/2];
+        
+        float resizeFactor = ([[UIScreen mainScreen] bounds].size.width/320.0)*.7;
+        int asteroidSize = skRand(20*resizeFactor, 40*resizeFactor);
+        self.size = CGSizeMake(asteroidSize, asteroidSize);
+        
+        float physicsBodyRadius = (self.size.width*.8)/2;
+        self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:physicsBodyRadius];
+        //[self attachDebugCircleWithSize:physicsBodyRadius*2];
+        
         self.physicsBody.dynamic = YES;
         self.physicsBody.categoryBitMask = [CategoryBitMasks asteroidCategory];
         self.physicsBody.collisionBitMask = 0;//[CategoryBitMasks asteroidCategory];
@@ -45,6 +52,8 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
         [self setSize:CGSizeMake(asteroidSize, asteroidSize)];
         self.physicsBody.restitution = .6;
         self.physicsBody.linearDamping = 0;
+        
+        self.blendMode = SKBlendModeScreen;
     }
     return self;
 }
@@ -55,7 +64,7 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     SKEmitterNode * crumble = [NSKeyedUnarchiver unarchiveObjectWithFile:crumblePath];
     crumble.numParticlesToEmit = self.size.width / 5;
     crumble.name = @"crumble";
-    crumble.particleSpeed = (self.physicsBody.velocity.dx + self.physicsBody.velocity.dy) * .4;
+    crumble.particleSpeed = (self.physicsBody.velocity.dx + self.physicsBody.velocity.dy) * .01 * crumble.particleSpeed;
     crumble.position = self.position;
     
     [[self scene] addChild:crumble];
@@ -82,19 +91,20 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     }
 }
 
-//- (void)attachDebugCircleWithSize:(int)s {
-//    CGPathRef bodyPath = CGPathCreateWithEllipseInRect(CGRectMake(-s/2, -s/2, s, s), nil);
-//    CGPathRelease(bodyPath);
-//}
-//
-//- (void)attachDebugFrameFromPath:(CGPathRef)bodyPath {
-//    //if (kDebugDraw==NO) return;
-//    SKShapeNode *shape = [SKShapeNode node];
-//    shape.path = bodyPath;
-//    shape.strokeColor = [SKColor colorWithRed:1.0 green:1 blue:1 alpha:1];
-//    shape.lineWidth = 1.0;
-//    [self addChild:shape];
-//}
+- (void)attachDebugCircleWithSize:(int)s
+{
+    CGPathRef bodyPath = CGPathCreateWithEllipseInRect(CGRectMake(-s/2, -s/2, s, s), nil);
+    [self attachDebugFrameFromPath:bodyPath];
+}
 
+- (void)attachDebugFrameFromPath:(CGPathRef)bodyPath {
+    //if (kDebugDraw==NO) return;
+    SKShapeNode *shape = [SKShapeNode node];
+    shape.zPosition = 100;
+    shape.path = bodyPath;
+    shape.strokeColor = [SKColor colorWithRed:1.0 green:1 blue:1 alpha:1];
+    shape.lineWidth = 1.0;
+    [self addChild:shape];
+}
 
 @end

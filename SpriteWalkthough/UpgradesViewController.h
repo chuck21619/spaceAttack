@@ -8,20 +8,31 @@
 
 #import "DGActivityIndicatorView.h"
 #import "Upgrade.h"
+#import "UpgradeCell.h"
 #import <UIKit/UIKit.h>
+#import "FLAnimatedImageView.h"
 @import StoreKit;
 
 
-@interface UpgradesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, SKProductsRequestDelegate>
+@interface UpgradesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, SKProductsRequestDelegate, UpgradeCellDelegate>
 
 @property NSArray * upgrades;
 @property Upgrade * activeUpgrade;
 
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+
 @property (weak, nonatomic) IBOutlet UITableView *myTable;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTopMyTable;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintLeadingMyTable;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTrailingMyTable;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintBottomMyTable;
 
 @property (weak, nonatomic) IBOutlet UILabel *upgradeTitleLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTopTitleLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintHeightTitleLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *availablePointsLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintHeightAvailablePoints;
 
 @property (nonatomic) SKProductsRequest * productsRequest;
 @property (nonatomic) NSArray * products;
@@ -29,6 +40,10 @@
 @property (nonatomic) UIView * activityIndicatorBackground;
 
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTrailingBackButton;
 - (IBAction)backAction:(id)sender;
+
+@property (weak, nonatomic) IBOutlet FLAnimatedImageView *demoPreviewImageView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintBottomDemoPreviewImageView;
 
 @end
