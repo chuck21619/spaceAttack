@@ -50,5 +50,6 @@
 - (void) setExhaustTargetNode:(SKNode *)node;
 - (void) setNumberOfWeaponSlots:(int)numberOfWeaponSlots;
 - (void) increaseExhaustSpeed;
+- (float) healthPercentage;
 
 @end

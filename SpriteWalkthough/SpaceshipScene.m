@@ -16,6 +16,7 @@
 #import "AudioManager.h"
 #import <Crashlytics/Crashlytics.h>
 #import "SpriteAppDelegate.h"
+#import "HealthBar.h"
 
 @implementation SpaceshipScene
 {
@@ -29,6 +30,8 @@
     NSMutableArray * _cachedElectricity;
     NSMutableArray * _cachedPowerUps;
     NSMutableArray * _cachedSpaceBackgrounds;
+    
+    HealthBar * _healthBar;
 }
 
 - (void) didMoveToView:(SKView *)view
@@ -59,6 +62,10 @@
         self.powerUpsCollected = 0;
         
         [Answers logLevelStart:nil customAttributes:@{}];
+        
+        float healthBarHeight = self.size.width*0.0075;
+        _healthBar = [[HealthBar alloc] initWithFrame:CGRectMake(0, self.size.height-healthBarHeight, self.size.width, healthBarHeight)];
+        [self.view addSubview:_healthBar];
         
         [UIView animateWithDuration:1 animations:^{
             self.backgroundColor = [UIColor clearColor];
@@ -1033,6 +1040,8 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
 
 - (void) spaceshipTookDamage:(Spaceship *)spaceship
 {
+    [_healthBar setProgress:[spaceship healthPercentage] animated:YES];
+    
     //NSLog(@"spaceshipTookDamage");
     self.enemiesDestroyedWithoutTakingDamage = 0;
     

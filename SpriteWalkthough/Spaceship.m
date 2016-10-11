@@ -246,6 +246,11 @@
     }];
 }
 
+- (float) healthPercentage
+{
+    return 1;
+}
+
 #pragma mark - equip weapon
 - (void) equipWeapon:(PowerUpType)weaponType
 {

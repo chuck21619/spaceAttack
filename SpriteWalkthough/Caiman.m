@@ -64,6 +64,11 @@
     return self;
 }
 
+- (float) healthPercentage
+{
+    return self.armor/4.0;
+}
+
 - (void)attachDebugFrameFromPath:(CGPathRef)bodyPath {
     //if (kDebugDraw==NO) return;
     SKShapeNode *shape = [SKShapeNode node];
