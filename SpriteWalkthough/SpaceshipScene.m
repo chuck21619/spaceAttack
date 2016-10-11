@@ -493,9 +493,21 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     if ( [self.view isPaused] )
         return;
     
+    acceleration.x *= 3;
+    if ( acceleration.x > 1 )
+        acceleration.x = 1;
+    else if ( acceleration.x < -1 )
+        acceleration.x = -1;
+    
+    acceleration.y *= 3;
+    if ( acceleration.y > 1 )
+        acceleration.y = 1;
+    else if ( acceleration.y < -1 )
+        acceleration.y = -1;
+        
     int xCoord = self.size.width/2 + (acceleration.x * self.size.width/2);
     int yCoord = self.size.height/2 + (acceleration.y * self.size.height/2);
-    SKAction * moveSpaceship = [SKAction moveTo:CGPointMake(xCoord, yCoord) duration:5.0/self.mySpaceship.mySpeed];
+    SKAction * moveSpaceship = [SKAction moveTo:CGPointMake(xCoord, yCoord) duration:15.0/(self.mySpaceship.mySpeed*2)];
     
     //float degreeDifference = (360 - self.sharedGameplayControls.initialHeading) - (360 - heading.magneticHeading);
     //float newAngle = -DEGREES_TO_RADIANS(degreeDifference);
@@ -517,7 +529,7 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     
     UITouch * touch = [touches anyObject];
     CGPoint touchLocation = [touch locationInView:self.view];
-    SKAction * moveSpaceship = [SKAction moveTo:CGPointMake(touchLocation.x, (self.size.height-touchLocation.y)+(self.size.width*.1))  duration:10.0/self.mySpaceship.mySpeed];
+    SKAction * moveSpaceship = [SKAction moveTo:CGPointMake(touchLocation.x, (self.size.height-touchLocation.y)+(self.size.width*.1))  duration:10.0/(self.mySpaceship.mySpeed*2)];
     [self.mySpaceship runAction:moveSpaceship];
 }
 
