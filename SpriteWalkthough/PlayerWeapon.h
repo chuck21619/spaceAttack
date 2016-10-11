@@ -24,4 +24,8 @@
 - (void) startFiring;
 - (void) stopFiring;
 
+//ramp up dot
+- (void) rampUpWithDuration:(float)duration;
+- (UIColor*) rampUpColor;
+
 @end

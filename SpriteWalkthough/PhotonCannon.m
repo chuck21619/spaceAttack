@@ -13,7 +13,10 @@
 #import "SpaceshipScene.h"
 
 @implementation PhotonCannon
-
+{
+    float _waitDuration;
+    float _waitRange;
+}
 
 - (id)init
 {
@@ -37,21 +40,21 @@
 - (void) startFiring
 {
     [self stopFiring];
-    SKAction * wait = [SKAction waitForDuration:-1];
+    _waitDuration = -1;
     
     if ( self.level == 1 )
-        wait = [SKAction waitForDuration:3];
+        _waitDuration = 3;
     else if ( self.level == 2 )
-        wait = [SKAction waitForDuration:1.75];
+        _waitDuration = 1.75;
     else if ( self.level == 3 )
-        wait = [SKAction waitForDuration:1];
+        _waitDuration = 1;
     else //if ( self.level == 4 )
-        wait = [SKAction waitForDuration:.5];
+        _waitDuration = .5;
+    
+    _waitRange = 0;
     
     SKAction * performSelector = [SKAction performSelector:@selector(fire) onTarget:self];
-    SKAction * fireSequence = [SKAction sequence:@[performSelector, wait]];
-    SKAction * fireForever = [SKAction repeatActionForever:fireSequence];
-    [self runAction:fireForever withKey:@"firing"];
+    [self runAction:performSelector withKey:@"firing"];
 }
 
 - (void) fire
@@ -76,6 +79,22 @@
     tmpPhoton.delegate = (SpaceshipScene *)[self scene];
     [[self scene] addChild:tmpPhoton];
     [[AudioManager sharedInstance] playSoundEffect:kSoundEffectPhoton];
+    
+    SKAction * performSelector = [SKAction performSelector:@selector(fire) onTarget:self];
+    double currentWaitDuration = ((double)arc4random() / 0x100000000) * ((_waitDuration+_waitRange) - (_waitDuration-_waitRange)) + (_waitDuration-_waitRange);
+    [self rampUpWithDuration:currentWaitDuration];
+    SKAction * myAction = [SKAction waitForDuration:currentWaitDuration];
+    SKAction * myCompletion = [SKAction runBlock:^
+    {
+        [self runAction:performSelector withKey:@"firing"];
+    }];
+    SKAction * mySequence = [SKAction sequence:@[myAction, myCompletion]];
+    [self runAction:mySequence withKey:@"firing"];
+}
+
+- (UIColor *) rampUpColor
+{
+    return [UIColor colorWithRed:.1 green:.2 blue:.85 alpha:.5];
 }
 
 @end
