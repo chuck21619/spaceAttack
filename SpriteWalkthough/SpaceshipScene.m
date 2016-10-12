@@ -63,9 +63,14 @@
         
         [Answers logLevelStart:nil customAttributes:@{}];
         
-        float healthBarHeight = self.size.width*0.0075;
-        _healthBar = [[HealthBar alloc] initWithFrame:CGRectMake(0, self.size.height-healthBarHeight, self.size.width, healthBarHeight)];
-        [self.view addSubview:_healthBar];
+        if ( !_healthBar )
+        {
+            float healthBarHeight = self.size.width*0.0075;
+            _healthBar = [[HealthBar alloc] initWithFrame:CGRectMake(0, self.size.height-healthBarHeight, self.size.width, healthBarHeight)];
+            [self.view addSubview:_healthBar];
+        }
+        else
+            [_healthBar setProgress:1];
         
         [UIView animateWithDuration:1 animations:^{
             self.backgroundColor = [UIColor clearColor];
