@@ -50,6 +50,8 @@
 + (int) availablePoints;
 + (void) addPoints:(int)points;
 + (void) subtractPoints:(int)points;
++ (int) personalBest;
++ (void) setPersonalBest:(int)personalBest;
 
 #pragma mark tooltips
 + (BOOL) shouldShowTooltip:(TooltipType)tooltipType;

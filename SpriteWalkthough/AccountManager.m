@@ -305,6 +305,23 @@ static AccountManager * sharedAccountManager = nil;
     [sharedAccountManager.userDefaults setInteger:availablePoints forKey:@"availablePoints"];
 }
 
++ (int) personalBest
+{
+    int personalBest = (int)[sharedAccountManager.userDefaults integerForKey:@"personalBest"];
+    if ( ! personalBest )
+    {
+        personalBest = 0;
+        [sharedAccountManager.userDefaults setInteger:personalBest forKey:@"personalBest"];
+    }
+    
+    return personalBest;
+}
+
++ (void) setPersonalBest:(int)personalBest
+{
+    [sharedAccountManager.userDefaults setInteger:personalBest forKey:@"personalBest"];
+}
+
 #pragma mark - ships
 + (NSArray *)unlockedShips
 {

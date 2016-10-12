@@ -511,7 +511,8 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     else if ( acceleration.x < -1 )
         acceleration.x = -1;
     
-    acceleration.y *= 3;
+    acceleration.y *= 2;
+    acceleration.y += .35;
     if ( acceleration.y > 1 )
         acceleration.y = 1;
     else if ( acceleration.y < -1 )

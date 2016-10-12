@@ -732,6 +732,15 @@ Over</string>
                                 <color key="textColor" red="1" green="0.44439655169999998" blue="0.87338362069999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Personal Best!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfv-cM-BxY">
+                                <rect key="frame" x="20" y="157" width="280" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="OOM-tB-hvg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="1" green="0.44439655169999998" blue="0.87338362069999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Points 496,373" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JVM-ek-Jer">
                                 <rect key="frame" x="20" y="165" width="280" height="48"/>
                                 <constraints>
@@ -781,6 +790,7 @@ Firead 100 Bullets + 100 points</string>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="mfv-cM-BxY" firstAttribute="trailing" secondItem="JVM-ek-Jer" secondAttribute="trailing" id="1ay-fz-dlQ"/>
                             <constraint firstItem="QFI-At-1xJ" firstAttribute="trailing" secondItem="Nun-yr-B4d" secondAttribute="trailing" id="6yF-6U-1uV"/>
                             <constraint firstItem="Nun-yr-B4d" firstAttribute="leading" secondItem="Z4H-lk-5MB" secondAttribute="leading" constant="60" id="75A-Fr-A5z"/>
                             <constraint firstItem="ZPa-7R-INz" firstAttribute="top" secondItem="JVM-ek-Jer" secondAttribute="bottom" constant="-22" id="8r4-4t-u3J"/>
@@ -798,6 +808,7 @@ Firead 100 Bullets + 100 points</string>
                             <constraint firstAttribute="trailing" secondItem="JVM-ek-Jer" secondAttribute="trailing" constant="20" id="QTq-0s-NUe"/>
                             <constraint firstAttribute="bottom" secondItem="Nun-yr-B4d" secondAttribute="bottom" constant="240" id="Stt-ax-3Fz"/>
                             <constraint firstItem="JVM-ek-Jer" firstAttribute="leading" secondItem="Z4H-lk-5MB" secondAttribute="leading" constant="20" id="U2X-R2-Qhq"/>
+                            <constraint firstItem="mfv-cM-BxY" firstAttribute="leading" secondItem="JVM-ek-Jer" secondAttribute="leading" id="USE-A7-ueH"/>
                             <constraint firstItem="gyv-rw-FnK" firstAttribute="leading" secondItem="Z4H-lk-5MB" secondAttribute="leading" constant="201" id="UiP-BA-X2f"/>
                             <constraint firstItem="mA2-Z7-JDF" firstAttribute="leading" secondItem="Z4H-lk-5MB" secondAttribute="leading" id="VR1-oe-JHV"/>
                             <constraint firstItem="HHP-NJ-R62" firstAttribute="trailing" secondItem="guR-xG-mbT" secondAttribute="trailing" id="Vdr-tU-fOL"/>
@@ -815,6 +826,7 @@ Firead 100 Bullets + 100 points</string>
                             <constraint firstItem="ZPa-7R-INz" firstAttribute="leading" secondItem="Z4H-lk-5MB" secondAttribute="leading" constant="20" id="p1W-vM-CsA"/>
                             <constraint firstItem="F0Q-cG-Mq0" firstAttribute="leading" secondItem="Z4H-lk-5MB" secondAttribute="leading" id="ro9-sF-74r"/>
                             <constraint firstAttribute="trailing" secondItem="gyv-rw-FnK" secondAttribute="trailing" constant="99" id="uRT-ll-rj6"/>
+                            <constraint firstItem="JVM-ek-Jer" firstAttribute="top" secondItem="mfv-cM-BxY" secondAttribute="bottom" constant="-17" id="voP-jw-KPm"/>
                             <constraint firstAttribute="bottom" secondItem="F0Q-cG-Mq0" secondAttribute="bottom" id="wLF-qt-BR6"/>
                         </constraints>
                         <variation key="default">
@@ -836,6 +848,7 @@ Firead 100 Bullets + 100 points</string>
                         <outlet property="constraintBottomSelectShip" destination="gkf-DU-WcT" id="rlX-8d-Nz0"/>
                         <outlet property="constraintBottomUpgrades" destination="Stt-ax-3Fz" id="5z3-JN-dkD"/>
                         <outlet property="constraintHeightGameOver" destination="TbM-Ii-L0n" id="BTa-g5-w62"/>
+                        <outlet property="constraintHeightPersonalBest" destination="OOM-tB-hvg" id="9Ph-ac-1Lq"/>
                         <outlet property="constraintHeightPoints" destination="abS-ob-YyS" id="kTa-dQ-ovP"/>
                         <outlet property="constraintLeadingBadgeShip" destination="exw-nk-BX3" id="rrc-O2-taT"/>
                         <outlet property="constraintLeadingBadgeUpgrades" destination="UiP-BA-X2f" id="L8Y-Gp-R1H"/>
@@ -843,6 +856,7 @@ Firead 100 Bullets + 100 points</string>
                         <outlet property="constraintTopBadgeShip" destination="9Rq-8C-iPn" id="Rc4-X9-eei"/>
                         <outlet property="constraintTopBadgeUpgrades" destination="CWM-9U-oBK" id="321-qJ-y2q"/>
                         <outlet property="constraintTopHome" destination="9yX-NE-Jw5" id="yoS-pd-sqd"/>
+                        <outlet property="constraintTopPersonalBest" destination="voP-jw-KPm" id="m3z-fI-e5K"/>
                         <outlet property="constraintTrailingBadgeShip" destination="jB9-xy-L4m" id="E8d-gd-JCO"/>
                         <outlet property="constraintTrailingBadgeUpgrades" destination="uRT-ll-rj6" id="fc0-E5-3xh"/>
                         <outlet property="constraintTrailingUpgrades" destination="FYN-qE-hkn" id="JVp-JU-wFG"/>
@@ -851,6 +865,7 @@ Firead 100 Bullets + 100 points</string>
                         <outlet property="mySKView" destination="F0Q-cG-Mq0" id="ZmC-XA-k4b"/>
                         <outlet property="mySKViewBottomConstraint" destination="wLF-qt-BR6" id="FtA-68-Pir"/>
                         <outlet property="mySKViewTopConstraint" destination="bMe-fI-ztD" id="TtO-sY-P1T"/>
+                        <outlet property="personalBestLabel" destination="mfv-cM-BxY" id="PKz-3K-dPR"/>
                         <outlet property="pointsLabel" destination="JVM-ek-Jer" id="4Fb-f6-rKh"/>
                         <outlet property="restartButton" destination="HHP-NJ-R62" id="srv-rm-B6g"/>
                         <outlet property="selectShipBadge" destination="Bcl-QF-Cpi" id="Hcp-KC-rTb"/>

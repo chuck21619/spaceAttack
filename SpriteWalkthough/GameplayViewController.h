@@ -32,6 +32,7 @@
 @property (nonatomic) BOOL displayGoMessage;
 
 @property (weak, nonatomic) IBOutlet UILabel *gameOverLabel;
+@property (weak, nonatomic) IBOutlet UILabel *personalBestLabel;
 @property (weak, nonatomic) IBOutlet UILabel *pointsLabel;
 @property (weak, nonatomic) IBOutlet UITextView *bonusPointsTextView;
 @property (weak, nonatomic) IBOutlet GlowingButton *restartButton;
@@ -80,6 +81,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintLeadingBadgeUpgrades;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTrailingBadgeUpgrades;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintTopPersonalBest;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintHeightPersonalBest;
 
 
 

@@ -13,6 +13,7 @@
 #import "HighScoreCell.h"
 #import "SAAlertView.h"
 #import "AudioManager.h"
+#import "AccountManager.h"
 
 @implementation HighScoresViewController
 {
@@ -205,6 +206,9 @@
     [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
     self.userRankLabel.text = [numberFormatter stringFromNumber:@((int)_localPlayerScore.rank)];
     self.userScoreLabel.text = [numberFormatter stringFromNumber:@((int)_localPlayerScore.value)];
+    
+    if ( (int)_localPlayerScore.value > [AccountManager personalBest] )
+        [AccountManager setPersonalBest:(int)_localPlayerScore.value];
     
     [UIView animateWithDuration:.3 animations:^
     {
