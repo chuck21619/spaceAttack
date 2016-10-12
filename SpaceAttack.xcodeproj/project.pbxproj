@@ -80,6 +80,8 @@
 		9C6FFE7E1D74CBFB001AD117 /* SliderMin.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C6FFE7C1D74CBFB001AD117 /* SliderMin.png */; };
 		9C6FFE8B1D74E3A0001AD117 /* SASlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6FFE8A1D74E3A0001AD117 /* SASlider.m */; };
 		9C8176981DAC70E400BC3F98 /* HealthBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8176971DAC70E400BC3F98 /* HealthBar.m */; };
+		9C81772E1DAEAD6B00BC3F98 /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C81772C1DAEAD6B00BC3F98 /* iRate.m */; };
+		9C81772F1DAEAD6B00BC3F98 /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9C81772D1DAEAD6B00BC3F98 /* iRate.bundle */; };
 		9CA06B251D77A7F50074687B /* FLAnimatedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA06B221D77A7F50074687B /* FLAnimatedImage.m */; };
 		9CA06B261D77A7F50074687B /* FLAnimatedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA06B241D77A7F50074687B /* FLAnimatedImageView.m */; };
 		9CABE7CA1D9EDCD700F714B4 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CABE7C81D9EDCD700F714B4 /* Icon-72@2x.png */; };
@@ -690,6 +692,9 @@
 		9C6FFE8A1D74E3A0001AD117 /* SASlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlider.m; sourceTree = "<group>"; };
 		9C8176961DAC70E400BC3F98 /* HealthBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthBar.h; sourceTree = "<group>"; };
 		9C8176971DAC70E400BC3F98 /* HealthBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthBar.m; sourceTree = "<group>"; };
+		9C81772B1DAEAD6B00BC3F98 /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iRate.h; sourceTree = "<group>"; };
+		9C81772C1DAEAD6B00BC3F98 /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iRate.m; sourceTree = "<group>"; };
+		9C81772D1DAEAD6B00BC3F98 /* iRate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iRate.bundle; sourceTree = "<group>"; };
 		9CA06B211D77A7F50074687B /* FLAnimatedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnimatedImage.h; sourceTree = "<group>"; };
 		9CA06B221D77A7F50074687B /* FLAnimatedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnimatedImage.m; sourceTree = "<group>"; };
 		9CA06B231D77A7F50074687B /* FLAnimatedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnimatedImageView.h; sourceTree = "<group>"; };
@@ -1790,6 +1795,7 @@
 		6E5D38111AB6922F0002F22F /* 3rd Party */ = {
 			isa = PBXGroup;
 			children = (
+				9C81772A1DAEAD4500BC3F98 /* App Review Reminder */,
 				9CABE8031D9F1A4000F714B4 /* customBannerNotification */,
 				A3B17F791D73C1030047BDCA /* Fabric.framework */,
 				A3B17F7A1D73C1030047BDCA /* Crashlytics.framework */,
@@ -1842,6 +1848,16 @@
 				9C8176971DAC70E400BC3F98 /* HealthBar.m */,
 			);
 			name = gameplay;
+			sourceTree = "<group>";
+		};
+		9C81772A1DAEAD4500BC3F98 /* App Review Reminder */ = {
+			isa = PBXGroup;
+			children = (
+				9C81772B1DAEAD6B00BC3F98 /* iRate.h */,
+				9C81772C1DAEAD6B00BC3F98 /* iRate.m */,
+				9C81772D1DAEAD6B00BC3F98 /* iRate.bundle */,
+			);
+			name = "App Review Reminder";
 			sourceTree = "<group>";
 		};
 		9CA06B201D77A7CD0074687B /* FLAnimatedImage */ = {
@@ -2980,6 +2996,7 @@
 				A3667C231D8679AE00CAFAF4 /* Red.png in Resources */,
 				A39ABA3B1C4E1A8E00AF1455 /* tooltipArrowUp.png in Resources */,
 				A3483FC81D68F98000E9D1F9 /* Habsburg.png in Resources */,
+				9C81772F1DAEAD6B00BC3F98 /* iRate.bundle in Resources */,
 				A39D0F991D3300D200D86AC8 /* machineGunLevel3.wav in Resources */,
 				A35B3B561D2A648B006DB8C3 /* enemyDamage3.wav in Resources */,
 				A33B13AA1D987FE1003EDAF5 /* rightPageControl.png in Resources */,
@@ -3420,6 +3437,7 @@
 				A3167F471C7A8538007A6796 /* EnemyBig.m in Sources */,
 				A331D67B1C72DCB20054124F /* DGActivityIndicatorCookieTerminatorAnimation.m in Sources */,
 				A3328B4B1C6FA57B00E18FF4 /* UpgradesViewController.m in Sources */,
+				9C81772E1DAEAD6B00BC3F98 /* iRate.m in Sources */,
 				A39CEF511D317D7E00C01870 /* OALActionManager.m in Sources */,
 				13915100190EDE21009751D5 /* Bullet.m in Sources */,
 				6E49CEDF1A91C6F500FC48CC /* Edinburgh.m in Sources */,
