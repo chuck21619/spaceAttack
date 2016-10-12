@@ -78,7 +78,7 @@ static AccountManager * sharedAccountManager = nil;
     if ( !touchControlsExistsValue )
     {
         touchControls = NO;
-        [AccountManager setVibrate:touchControls];
+        [sharedAccountManager setTouchControls:touchControls];
     }
     return touchControls;
 }
@@ -1370,8 +1370,8 @@ static AccountManager * sharedAccountManager = nil;
 #pragma mark vibrate
 + (BOOL) isVibrateOn
 {
-    BOOL vibrate = [sharedAccountManager.userDefaults boolForKey:@"vibrate"];
     NSNumber * vibrateExistsValue = [sharedAccountManager.userDefaults valueForKey:@"vibrate"];
+    BOOL vibrate = [sharedAccountManager.userDefaults boolForKey:@"vibrate"];
     //vibrateExistsValue is used becuase i cant check if a BOOL is null
     if ( !vibrateExistsValue )
     {
