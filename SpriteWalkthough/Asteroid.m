@@ -53,7 +53,7 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
         self.physicsBody.restitution = .6;
         self.physicsBody.linearDamping = 0;
         
-        self.blendMode = SKBlendModeScreen;
+        //self.blendMode = SKBlendModeScreen;
     }
     return self;
 }

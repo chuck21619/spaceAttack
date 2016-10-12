@@ -28,7 +28,7 @@ static FullScreenAdSingleton * sharedFullScreenAdSingleton = nil;
 {
     self.fullScreenAd = [[GADInterstitial alloc] initWithAdUnitID:@"ca-app-pub-6557493854751989/7290189956"];
     GADRequest * request = [GADRequest request];
-    request.testDevices = @[kGADSimulatorID, @"07a7fa85e22c195388c46d2c2f90b457"];
+    request.testDevices = @[kGADSimulatorID, @"07a7fa85e22c195388c46d2c2f90b457", @"19718bc5ab4982560b895c79994e3bd9"];
     [self.fullScreenAd loadRequest:request];
 }
 
