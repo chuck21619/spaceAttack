@@ -949,6 +949,9 @@ static AccountManager * sharedAccountManager = nil;
 
 + (void) submitAchievementsProgress:(NSDictionary *)achievements
 {
+    if ( ![[GKLocalPlayer localPlayer] isAuthenticated] )
+        return;
+    
     NSMutableArray * alreadyCompletedAchievements = [NSMutableArray new];
     NSMutableArray * achievementsToSubmit = [NSMutableArray new];
     for ( NSString * key in [achievements allKeys] )
