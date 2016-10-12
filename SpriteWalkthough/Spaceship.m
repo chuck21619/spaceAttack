@@ -141,7 +141,7 @@
                  (tmpWeapon.weaponType == kPowerUpTypeLaserCannon && powerUp == kPowerUpTypeLaserCannon) )
             {
                 if ( tmpWeapon.level == 4 )
-                    continue;
+                    return;
                 
                 [tmpWeapon upgrade];
                 matchesExistingWeapon = YES;
