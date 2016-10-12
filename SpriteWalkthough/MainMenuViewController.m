@@ -17,10 +17,14 @@
 #import "SpriteAppDelegate.h"
 
 @implementation MainMenuViewController
+{
+    BOOL _skipNextViewWillAppear;
+}
 
 - (void) viewDidLoad
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(achievementsLoaded) name:@"achievementsLoaded" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(skipNextViewWillAppear) name:@"skipNextViewWillAppear" object:nil];
     
     if ( [_AppDelegate hasCustomMainMenuBackground] )
         self.spaceAttackLabel.text = @"";
@@ -47,6 +51,8 @@
     self.upgradesButton.titleLabel.lineBreakMode = NSLineBreakByClipping;
     
     [self adjustForDeviceSize];
+    
+    _skipNextViewWillAppear = NO;
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -54,6 +60,12 @@
     for ( UIView * subview in [self.view subviews] )
     {
         subview.alpha = 0;
+    }
+    
+    if ( _skipNextViewWillAppear )
+    {
+        _skipNextViewWillAppear = NO;
+        return;
     }
 
     
@@ -159,6 +171,11 @@
     
     self.constraintLeadingPlay.constant = width*0.128125;
     self.constraintTrailingPlay.constant = width*0.128125;
+}
+
+- (void) skipNextViewWillAppear
+{
+    _skipNextViewWillAppear = YES;
 }
 
 #pragma mark - game center

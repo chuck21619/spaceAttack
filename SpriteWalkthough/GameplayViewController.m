@@ -450,6 +450,8 @@
 
 - (IBAction)selectShipAction:(id)sender
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"skipNextViewWillAppear" object:nil];
+    
     [UIView animateWithDuration:.5 animations:^
     {
         [self hideUIViews];
@@ -465,6 +467,8 @@
 
 - (IBAction)upgradesAction:(id)sender
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"skipNextViewWillAppear" object:nil];
+    
     [UIView animateWithDuration:.5 animations:^
     {
         [self hideUIViews];
