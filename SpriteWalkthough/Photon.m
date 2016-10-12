@@ -11,6 +11,7 @@
 #import "SpaceshipScene.h"
 #import "CategoryBitMasks.h"
 #import "AudioManager.h"
+#import "AccountManager.h"
 
 @implementation Photon
 
@@ -23,10 +24,10 @@
         self.maxVelocity = 400;
         self.position = CGPointMake(0, 0);
         //self.physicsBody.velocity = CGVectorMake(0, self.maxVelocity);
-        //self.physicsBody.linearDamping = .5;
-        self.acceleration = 35;
+        self.physicsBody.linearDamping = .5;
+        self.acceleration = 25;
         self.target = nil;
-        self.targetingFrequency = .5;
+        self.targetingFrequency = .3;
         self.timeSinceLastAttemptedTargeting = -1;
         self.hasTargeted = NO;
         self.isSmart = NO;
@@ -87,6 +88,9 @@
 
 + (int) baseDamage
 {
+    if ( [AccountManager smartPhotonsUnlocked] )
+        return 20;
+    
     return 10;
 }
 

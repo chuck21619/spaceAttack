@@ -62,7 +62,7 @@
     Photon * tmpPhoton = [[Photon alloc] initWithTexture:self.projectileTexture];
     tmpPhoton.isSmart = self.smartPhotons;
     if ( tmpPhoton.isSmart )
-        tmpPhoton.physicsBody.linearDamping = .5;
+        tmpPhoton.acceleration *= 3;
     tmpPhoton.position = [[self scene] convertPoint:self.position fromNode:self.parent];
     tmpPhoton.zPosition = self.zPosition;
     
