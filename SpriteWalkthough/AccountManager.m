@@ -50,6 +50,8 @@ static AccountManager * sharedAccountManager = nil;
                                             [Habsburg new]];
         
         sharedAccountManager.touchControls = [sharedAccountManager savedTouchControls];
+        
+        sharedAccountManager.fullScreenAdInterval = 120;
     }
     
     return sharedAccountManager;
@@ -1285,8 +1287,9 @@ static AccountManager * sharedAccountManager = nil;
     //NSLog(@"account manager - startFullScreenAdTimer");
     sharedAccountManager.fullScreenAdIteration = NO;
     [sharedAccountManager.fullScreenAdTimer invalidate];
-    sharedAccountManager.fullScreenAdTimer = [[NSTimer alloc] initWithFireDate:[[NSDate date] dateByAddingTimeInterval:120] interval:0 target:sharedAccountManager selector:@selector(fullScreenAdTimerFired:) userInfo:nil repeats:NO];
+    sharedAccountManager.fullScreenAdTimer = [[NSTimer alloc] initWithFireDate:[[NSDate date] dateByAddingTimeInterval:sharedAccountManager.fullScreenAdInterval] interval:0 target:sharedAccountManager selector:@selector(fullScreenAdTimerFired:) userInfo:nil repeats:NO];
     [[NSRunLoop currentRunLoop] addTimer:sharedAccountManager.fullScreenAdTimer forMode:NSDefaultRunLoopMode];
+    sharedAccountManager.fullScreenAdInterval += 30;
 }
 
 - (void) fullScreenAdTimerFired:(NSTimer *)timer

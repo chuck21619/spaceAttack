@@ -22,6 +22,8 @@
 @property (nonatomic) NSArray * upgrades;
 @property (nonatomic) NSArray * spaceships;
 @property (nonatomic) BOOL touchControls;
+@property (nonatomic) int fullScreenAdInterval;
+
 + (BOOL) firstLaunch;
 
 #pragma mark ships
