@@ -237,6 +237,7 @@
                 //NSLog(@"identifier matched to spaceship : %@", product.productIdentifier);
                 spaceship.storeKitProduct = product;
                 spaceship.isValidForMoneyPurchase = YES;
+                spaceship.price = product.price;
                 spaceship.priceString = [numberFormatter stringFromNumber:product.price];
             }
         }
@@ -263,9 +264,7 @@
     [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
     NSString * currency = [formatter currencyCode];
     
-    NSString * trimmedString = [[_activeSpaceship.priceString componentsSeparatedByCharactersInSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]]componentsJoinedByString:@""];
-    
-    [Answers logPurchaseWithPrice:[[NSDecimalNumber alloc] initWithFloat:[trimmedString floatValue]]
+    [Answers logPurchaseWithPrice:[[NSDecimalNumber alloc] initWithFloat:[_activeSpaceship.price floatValue]]
                          currency:currency
                           success:@YES
                          itemName:NSStringFromClass([_activeSpaceship class])
@@ -289,9 +288,7 @@
     [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
     NSString * currency = [formatter currencyCode];
     
-    NSString * trimmedString = [[_activeSpaceship.priceString componentsSeparatedByCharactersInSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]]componentsJoinedByString:@""];
-    
-    [Answers logPurchaseWithPrice:[[NSDecimalNumber alloc] initWithFloat:[trimmedString floatValue]]
+    [Answers logPurchaseWithPrice:[[NSDecimalNumber alloc] initWithFloat:[_activeSpaceship.price floatValue]]
                          currency:currency
                           success:@NO
                          itemName:NSStringFromClass([_activeSpaceship class])

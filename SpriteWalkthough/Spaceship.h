@@ -28,6 +28,7 @@
 @property (nonatomic) NSString * storeKitIdentifier;
 @property (nonatomic) SKProduct * storeKitProduct;
 @property (nonatomic) BOOL isValidForMoneyPurchase;
+@property (nonatomic) NSDecimalNumber * price;
 @property (nonatomic) NSString * priceString;
 
 @property (nonatomic) int defaultDamage;

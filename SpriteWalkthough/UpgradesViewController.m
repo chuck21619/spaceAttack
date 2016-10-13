@@ -518,6 +518,7 @@
             {
                 //NSLog(@"identifier matched to upgrade : %@", product.productIdentifier);
                 upgrade.isValidForMoneyPurchase = YES;
+                upgrade.price = product.price;
                 upgrade.priceString = [numberFormatter stringFromNumber:product.price];
             }
         }
@@ -543,9 +544,7 @@
     [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
     NSString * currency = [formatter currencyCode];
     
-    NSString * trimmedString = [[self.activeUpgrade.priceString componentsSeparatedByCharactersInSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]]componentsJoinedByString:@""];
-    
-    [Answers logPurchaseWithPrice:[[NSDecimalNumber alloc] initWithFloat:[trimmedString floatValue]]
+    [Answers logPurchaseWithPrice:[[NSDecimalNumber alloc] initWithFloat:[self.activeUpgrade.price floatValue]]
                          currency:currency
                           success:@YES
                          itemName:self.activeUpgrade.title
@@ -572,9 +571,7 @@
     [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
     NSString * currency = [formatter currencyCode];
     
-    NSString * trimmedString = [[self.activeUpgrade.priceString componentsSeparatedByCharactersInSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]]componentsJoinedByString:@""];
-    
-    [Answers logPurchaseWithPrice:[[NSDecimalNumber alloc] initWithFloat:[trimmedString floatValue]]
+    [Answers logPurchaseWithPrice:[[NSDecimalNumber alloc] initWithFloat:[self.activeUpgrade.price floatValue]]
                          currency:currency
                           success:@NO
                          itemName:self.activeUpgrade.title
