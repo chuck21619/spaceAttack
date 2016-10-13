@@ -115,26 +115,26 @@ static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
     
     if ( xCoord < 0 )
     {
-        float xCoordDifference = 0.0;
+        //float xCoordDifference = 0.0;
         float yCoordDifference = 0.0;
     
         float xOffset = -xCoord;
         float otherAngle = 90-angle;
         yCoordDifference = tanf(GLKMathDegreesToRadians(otherAngle))*xOffset;
-        xCoordDifference = xOffset;
+        //xCoordDifference = xOffset;
         
         xCoord = -newAsteroid.size.width;
         yCoord -= (yCoordDifference - newAsteroid.size.height);
     }
     else if ( xCoord > 320 )
     {
-        float xCoordDifference = 0.0;
+        //float xCoordDifference = 0.0;
         float yCoordDifference = 0.0;
         
         float xOffset = xCoord - self.scene.size.width;
         float otherAngle = 90+angle;
         yCoordDifference = tanf(GLKMathDegreesToRadians(otherAngle))*xOffset;
-        xCoordDifference = xOffset;
+        //xCoordDifference = xOffset;
         
         xCoord = self.scene.size.width + newAsteroid.size.width;
         yCoord -= (yCoordDifference - newAsteroid.size.height);

@@ -50,6 +50,8 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     for ( UIView * subview in [self.view subviews] )
         subview.alpha = 0;
     [UIView animateWithDuration:.2 animations:^
@@ -80,7 +82,6 @@
         [self updateControlsButton];
         [self.controlsButton layoutIfNeeded];
     }];
-    
 }
 
 #pragma mark - sliders

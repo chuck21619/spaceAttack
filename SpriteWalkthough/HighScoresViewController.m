@@ -100,6 +100,8 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     if ( !_alreadyAppeared )
     {
         for ( UIView * subview in [self.view subviews] )

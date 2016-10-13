@@ -891,13 +891,12 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     int amountOfEnemies = skRand(1, self.rangeOfEnemiesToAdd);
     //NSLog(@"amountOfEnemies : %i", amountOfEnemies);
     
-    NSArray * enemies;
     if ( randomEnemyType == kEnemyTypeBasic )
-        enemies = [self.enemyKit addEnemiesBasic:amountOfEnemies toScene:self withSpeed:self.enemySpeedCoefficient];
+        [self.enemyKit addEnemiesBasic:amountOfEnemies toScene:self withSpeed:self.enemySpeedCoefficient];
     else if ( randomEnemyType == kEnemyTypeFast )
-        enemies = [self.enemyKit addEnemiesFast:amountOfEnemies toScene:self withSpeed:self.enemySpeedCoefficient];
+        [self.enemyKit addEnemiesFast:amountOfEnemies toScene:self withSpeed:self.enemySpeedCoefficient];
     else if ( randomEnemyType == kEnemyTypeBig )
-        enemies = [self.enemyKit addEnemiesBig:1 toScene:self withSpeed:self.enemySpeedCoefficient];
+        [self.enemyKit addEnemiesBig:1 toScene:self withSpeed:self.enemySpeedCoefficient];
 }
 
 - (void) moreEnemies

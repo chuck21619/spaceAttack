@@ -23,6 +23,7 @@
 
 - (void) viewDidLoad
 {
+    [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(achievementsLoaded) name:@"achievementsLoaded" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(skipNextViewWillAppear) name:@"skipNextViewWillAppear" object:nil];
     
@@ -57,6 +58,7 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     for ( UIView * subview in [self.view subviews] )
     {
         subview.alpha = 0;

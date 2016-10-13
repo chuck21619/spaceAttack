@@ -78,6 +78,8 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     for ( UIView * subview in [self.view subviews] )
     {
         subview.alpha = 0;

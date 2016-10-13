@@ -146,6 +146,8 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     self.view.alpha = 0;
     [UIView animateWithDuration:.2 animations:^
     {
@@ -155,6 +157,8 @@
 
 - (void) viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+    
     if ( self.firstViewWillAppear )
     {
         self.firstViewWillAppear = NO;

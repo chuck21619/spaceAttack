@@ -49,6 +49,7 @@
         
         CGPathCloseSubpath(path);
         self.physicsBody = [SKPhysicsBody bodyWithPolygonFromPath:path];
+        CFRelease(path);
         //[self attachDebugFrameFromPath:path];
         
         self.physicsBody.dynamic = NO;

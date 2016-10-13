@@ -445,12 +445,6 @@
 #pragma mark
 - (void) showMinimizedContent:(BOOL)show animated:(BOOL)animated completion:(void (^)())completion
 {
-    float alpha;
-    if ( show )
-        alpha = 1;
-    else
-        alpha = 0;
-    
     if ( animated )
     {
         [UIView animateWithDuration:.3 animations:^

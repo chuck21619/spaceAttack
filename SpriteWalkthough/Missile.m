@@ -28,6 +28,7 @@
         CGPathAddLineToPoint(path, NULL, 18 - offsetX, 14 - offsetY);
         CGPathCloseSubpath(path);
         self.physicsBody = [SKPhysicsBody bodyWithPolygonFromPath:path];
+        CFRelease(path);
         self.physicsBody.dynamic = NO;
         
         self.physicsBody.categoryBitMask = [CategoryBitMasks missileCategory];

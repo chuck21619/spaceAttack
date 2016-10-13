@@ -93,6 +93,7 @@
 {
     CGPathRef bodyPath = CGPathCreateWithEllipseInRect(CGRectMake(-s/2, -s/2, s, s), nil);
     [self attachDebugFrameFromPath:bodyPath];
+    CFRelease(bodyPath);
 }
 
 - (void)attachDebugFrameFromPath:(CGPathRef)bodyPath {

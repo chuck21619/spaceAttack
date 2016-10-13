@@ -164,6 +164,7 @@ static EnemyKit * sharedEnemyKit = nil;
         [selectedPath applyTransform:translate];
         CGPathRef tmpPath = CGPathCreateCopy(selectedPath.CGPath);
         SKAction * tmpFollowLine = [SKAction followPath:tmpPath asOffset:NO orientToPath:YES duration:12*enemySpeedCoefficient];
+        CFRelease(tmpPath);
         
         EnemyFast * tmpEnemyFast = [[EnemyFast alloc] initWithTexture:self.enemyTextureFast];
         [allEnemies addObject:tmpEnemyFast];
@@ -183,6 +184,9 @@ static EnemyKit * sharedEnemyKit = nil;
         SKAction * sequence = [SKAction sequence:@[wait, tmpFollowLine]];
         [tmpEnemyFast runAction:sequence];
     }
+    
+    CFRelease(path);
+    CFRelease(flippedPath);
     
     return allEnemies;
 }
