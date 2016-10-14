@@ -251,7 +251,9 @@ SYNTHESIZE_DELEGATE_PROPERTY(reverbObstruction, ReverbObstruction, float);
 		// Try to find a free source for playback.
 		// If this channel is not interruptible, it will not attempt to interrupt its contained sources.
 		id<ALSoundSource> soundSource = [sourcePool getFreeSource:interruptible];
-		return [soundSource play:buffer loop:loop];
+        if ( soundSource )
+            return [soundSource play:buffer loop:loop];
+        return nil;
 	}
 }
 

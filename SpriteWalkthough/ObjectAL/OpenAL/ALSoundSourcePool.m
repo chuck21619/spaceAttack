@@ -120,15 +120,23 @@
 	OPTIONALLY_SYNCHRONIZED(self)
 	{
 		// Try to find any free source.
-		for(id<ALSoundSource> source in sources)
-		{
-			if(!source.playing)
-			{
-				[self moveToHead:index];
-				return source;
-			}
-			index++;
-		}
+        @try
+        {
+            for(id<ALSoundSource> source in sources)
+            {
+                if(!source.playing)
+                {
+                    [self moveToHead:index];
+                    return source;
+                }
+                index++;
+            }
+        }
+        @catch (NSException *exception)
+        {
+            NSLog(@"getFreeSource exception: %@", exception);
+            return nil;
+        }
 		
 		if(attemptToInterrupt)
 		{
