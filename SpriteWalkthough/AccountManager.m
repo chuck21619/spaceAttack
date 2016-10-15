@@ -971,7 +971,6 @@ static AccountManager * sharedAccountManager = nil;
     if ( ![[GKLocalPlayer localPlayer] isAuthenticated] )
         return;
     
-    NSMutableArray * alreadyCompletedAchievements = [NSMutableArray new];
     NSMutableArray * achievementsToSubmit = [NSMutableArray new];
     for ( NSString * key in [achievements allKeys] )
     {
@@ -980,9 +979,7 @@ static AccountManager * sharedAccountManager = nil;
         if ( ! tmpAchievement )
             continue;
         
-        if ( tmpAchievement.percentComplete == 100.0 )
-            [alreadyCompletedAchievements addObject:tmpAchievement];
-        else
+        if ( tmpAchievement.percentComplete < 100.0 )
         {
             tmpAchievement.showsCompletionBanner = NO;
             [achievementsToSubmit addObject:tmpAchievement];
@@ -992,7 +989,10 @@ static AccountManager * sharedAccountManager = nil;
         tmpAchievement.percentComplete = [AccountManager calculatePercentCompleteForAchievement:achievement withIncrease:increase];
     }
     
-    NSArray * allAchievements = [alreadyCompletedAchievements arrayByAddingObjectsFromArray:achievementsToSubmit];
+    NSMutableArray * allAchievements = [[AccountManager achievements] mutableCopy];
+    for ( GKAchievement * achievement in allAchievements )
+        [AccountManager updateAchievement:achievement inAchievements:allAchievements];
+    
     NSData * encodedAchievements = [NSKeyedArchiver archivedDataWithRootObject:allAchievements];
     [sharedAccountManager.userDefaults setValue:encodedAchievements forKey:@"achievements"];
     
