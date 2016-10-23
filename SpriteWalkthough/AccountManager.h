@@ -70,6 +70,10 @@
 + (NSString *) lastPlayerLoggedIn;
 + (void) setLastPlayerLoggedIn:(NSString *)player;
 + (void) clearPlayerProgress;
++ (NSArray *) cachedHighScores;
++ (void) setCachedHighScores:(NSArray *)highScores;
++ (GKScore *) cachedLocalPlayerScore;
++ (void) setCachedLocalPlayerScore:(GKScore *)score;
 
 #pragma mark achievements
 @property (nonatomic) NSArray * cachedAchievements;

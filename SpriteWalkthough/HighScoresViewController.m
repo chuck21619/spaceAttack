@@ -177,7 +177,10 @@
          {
              NSLog(@"error 1 : %@", error);
              [self showProgressHud:NO];
-             [self displayError:error];
+             _localPlayerScore = [AccountManager cachedLocalPlayerScore];
+             _scores = [AccountManager cachedHighScores];
+             [self refreshLeaderboardView];
+             //[self displayError:error];
              return;
          }
          
@@ -188,12 +191,17 @@
               {
                   NSLog(@"error 2 : %@", error);
                   [self showProgressHud:NO];
-                  [self displayError:error2];
+                  _localPlayerScore = [AccountManager cachedLocalPlayerScore];
+                  _scores = [AccountManager cachedHighScores];
+                  [self refreshLeaderboardView];
+                  //[self displayError:error2];
                   return;
               }
               
               _localPlayerScore = [leaderboard localPlayerScore];
               _scores = scores;
+              [AccountManager setCachedLocalPlayerScore:_localPlayerScore];
+              [AccountManager setCachedHighScores:_scores];
               [self refreshLeaderboardView];
               [self showProgressHud:NO];
           }];

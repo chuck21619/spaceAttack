@@ -26,8 +26,6 @@
         self.name = @"photonCannon";
         self.smartPhotons = [AccountManager smartPhotonsUnlocked];
         self.projectileTexture = [[PlayerWeaponsKit sharedInstance] photonTexture];
-        
-        [self startFiring];
 	}
     return self;
 }

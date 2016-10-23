@@ -40,22 +40,24 @@
 
 - (void) setNumberOfWeaponSlots:(int)numberOfWeaponSlots
 {
+    // example //    @{ @"weaponSlotNumber" : @[weaponSlotCoord, zPosition, slotLevel]};
+    
     switch ( numberOfWeaponSlots )
     {
         case 1:
-            self.weaponSlotPositions = @{ @"weaponSlot1" : @[[NSValue valueWithCGPoint:CGPointMake(0, self.size.height/2)], [NSNumber numberWithInt:-1]]};
+            self.weaponSlotPositions = @{ @"weaponSlot1" : [NSMutableArray arrayWithArray:@[[NSValue valueWithCGPoint:CGPointMake(0, self.size.height/2)], [NSNumber numberWithInt:-1], [NSNumber numberWithInteger:1]]]};
             break;
             
         case 2:
-            self.weaponSlotPositions = @{ @"weaponSlot1" : @[[NSValue valueWithCGPoint:CGPointMake(0, self.size.height/2)], [NSNumber numberWithInt:-1]],
-                                          @"weaponSlot2" : @[[NSValue valueWithCGPoint:CGPointMake(0, self.size.height/2)], [NSNumber numberWithInt:2]]};
+            self.weaponSlotPositions = @{ @"weaponSlot1" : [NSMutableArray arrayWithArray:@[[NSValue valueWithCGPoint:CGPointMake(0, self.size.height/2)], [NSNumber numberWithInt:-1], [NSNumber numberWithInteger:1]]],
+                                          @"weaponSlot2" : [NSMutableArray arrayWithArray:@[[NSValue valueWithCGPoint:CGPointMake(0, self.size.height/2)], [NSNumber numberWithInt:2], [NSNumber numberWithInteger:1]]]};
             break;
             
         case 4:
-            self.weaponSlotPositions = @{ @"weaponSlot1" : @[[NSValue valueWithCGPoint:CGPointMake(0, self.size.height/2)], [NSNumber numberWithInt:-1]],
-                                          @"weaponSlot2" : @[[NSValue valueWithCGPoint:CGPointMake(0, self.size.height/2)], [NSNumber numberWithInt:2]],
-                                          @"weaponSlot3" : @[[NSValue valueWithCGPoint:CGPointMake(0, self.size.height/2)], [NSNumber numberWithInt:-1]],
-                                          @"weaponSlot4" : @[[NSValue valueWithCGPoint:CGPointMake(0, self.size.height/2)], [NSNumber numberWithInt:-1]]};
+            self.weaponSlotPositions = @{ @"weaponSlot1" : [NSMutableArray arrayWithArray:@[[NSValue valueWithCGPoint:CGPointMake(0, self.size.height/2)], [NSNumber numberWithInt:-1], [NSNumber numberWithInteger:1]]],
+                                          @"weaponSlot2" : [NSMutableArray arrayWithArray:@[[NSValue valueWithCGPoint:CGPointMake(0, self.size.height/2)], [NSNumber numberWithInt:2], [NSNumber numberWithInteger:1]]],
+                                          @"weaponSlot3" : [NSMutableArray arrayWithArray:@[[NSValue valueWithCGPoint:CGPointMake(0, self.size.height/2)], [NSNumber numberWithInt:-1], [NSNumber numberWithInteger:1]]],
+                                          @"weaponSlot4" : [NSMutableArray arrayWithArray:@[[NSValue valueWithCGPoint:CGPointMake(0, self.size.height/2)], [NSNumber numberWithInt:-1], [NSNumber numberWithInteger:1]]]};
             break;
             
         default:
@@ -144,6 +146,8 @@
                     return;
                 
                 [tmpWeapon upgrade];
+                int weaponSlotLevel = [[[self.weaponSlotPositions valueForKey:tmpWeaponKey] objectAtIndex:2] intValue];
+                [[self.weaponSlotPositions valueForKey:tmpWeaponKey] replaceObjectAtIndex:2 withObject:[NSNumber numberWithInt:++weaponSlotLevel]];
                 matchesExistingWeapon = YES;
                 break;
             }
@@ -287,8 +291,16 @@
     newWeapon.zPosition = [[[self.weaponSlotPositions valueForKey:weaponSlotKey] objectAtIndex:1] intValue];
     [self.equippedWeapons setValue:newWeapon forKey:weaponSlotKey];
     newWeapon.position = [[[self.weaponSlotPositions valueForKey:weaponSlotKey] firstObject] CGPointValue];
+    
+    int weaponSlotLevel = [[[self.weaponSlotPositions valueForKey:weaponSlotKey] objectAtIndex:2] intValue];
+    if ( newWeapon.level > weaponSlotLevel ) //this is when the machine gun is higher level from the upgrade
+        [[self.weaponSlotPositions valueForKey:weaponSlotKey] replaceObjectAtIndex:2 withObject:[NSNumber numberWithInt:newWeapon.level]];
+    else
+        newWeapon.level = weaponSlotLevel;
+    
     newWeapon.alpha = 0;
     [self addChild:newWeapon];
+    [newWeapon startFiring];
     newWeapon.delegate = (SpaceshipScene *)[self scene];
     [newWeapon runAction:[SKAction fadeInWithDuration:.2] completion:^
     {

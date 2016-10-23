@@ -534,6 +534,48 @@ static AccountManager * sharedAccountManager = nil;
     [sharedAccountManager.userDefaults removePersistentDomainForName:@"ZinStudio"]; //clears all defaults
 }
 
++ (NSArray *) cachedHighScores
+{
+    NSData * encodedHighScores = [sharedAccountManager.userDefaults valueForKey:@"highScores"];
+    NSArray * highScores = [NSKeyedUnarchiver unarchiveObjectWithData:encodedHighScores];
+    
+    if ( !highScores )
+    {
+        highScores = @[];
+        [AccountManager setCachedHighScores:highScores];
+    }
+    
+    return highScores;
+}
+
++ (void) setCachedHighScores:(NSArray *)highScores
+{
+    NSData * encodedHighScores = [NSKeyedArchiver archivedDataWithRootObject:highScores];
+    [sharedAccountManager.userDefaults setValue:encodedHighScores forKey:@"highScores"];
+}
+
++ (GKScore *) cachedLocalPlayerScore
+{
+    NSData * encodedLocalPlayerScore = [sharedAccountManager.userDefaults valueForKey:@"localPlayerScore"];
+    GKScore * localPlayerScore = [NSKeyedUnarchiver unarchiveObjectWithData:encodedLocalPlayerScore];
+    
+    if ( !localPlayerScore )
+    {
+        localPlayerScore = [GKScore new];
+        localPlayerScore.value = 0;
+        //localPlayerScore.rank = 0; //rank is read-only
+        [AccountManager setCachedLocalPlayerScore:localPlayerScore];
+    }
+    
+    return localPlayerScore;
+}
+
++ (void) setCachedLocalPlayerScore:(GKScore *)score
+{
+    NSData * encodedScore = [NSKeyedArchiver archivedDataWithRootObject:score];
+    [sharedAccountManager.userDefaults setValue:encodedScore forKey:@"localPlayerScore"];
+}
+
 #pragma mark achievements
 + (NSArray *) achievementsCompleted
 {

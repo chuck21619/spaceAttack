@@ -29,8 +29,6 @@
         self.electricityChainUnlocked = [AccountManager electricityChainUnlocked];
         
         self.electricityFrames = [[PlayerWeaponsKit sharedInstance] electricityFrames];
-        
-        [self startFiring];
 	}
     return self;
 }
