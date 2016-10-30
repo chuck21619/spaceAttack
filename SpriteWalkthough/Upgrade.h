@@ -23,6 +23,7 @@
 @property (nonatomic) FLAnimatedImage * animatedImage;
 @property (nonatomic) BOOL isUnlocked;
 @property (nonatomic) NSString * priceString;
+@property (nonatomic) NSDecimalNumber * price;
 @property (nonatomic) BOOL isValidForMoneyPurchase;
 
 //menu

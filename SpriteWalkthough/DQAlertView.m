@@ -59,32 +59,6 @@
     return self;
 }
 
-// Init method
-- (instancetype)initWithTitle:(NSString *)title message:(NSString *)message delegate:(id /*<DQAlertViewDelegate>*/)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ...
-{
-    NSString *firstOtherButtonTitle;
-    
-    va_list args;
-    va_start(args, otherButtonTitles);
-    for (NSString *arg = otherButtonTitles; arg != nil; arg = va_arg(args, NSString*))
-    {
-        //do something with nsstring
-        if (!firstOtherButtonTitle) {
-            firstOtherButtonTitle = arg;
-            break;
-        }
-    }
-    va_end(args);
-    
-    if ([self initWithTitle:title message:message cancelButtonTitle:cancelButtonTitle otherButtonTitle:otherButtonTitles]) {
-        self.delegate = delegate;
-        
-        return self;
-    }
-    
-    return nil;
-}
-
 // Init method shorter version
 - (instancetype)initWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitle:(NSString *)otherButtonTitle
 {

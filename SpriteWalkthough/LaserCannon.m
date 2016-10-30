@@ -13,6 +13,10 @@
 #import "SpaceshipScene.h"
 
 @implementation LaserCannon
+{
+    float _waitDuration;
+    float _waitRange;
+}
 
 - (id)init
 {
@@ -21,7 +25,6 @@
         self.weaponType = kPowerUpTypeLaserCannon;
         self.name = @"laserCannon";
         self.laserFrames = [[PlayerWeaponsKit sharedInstance] currentLaserFrames];
-        [self startFiring];
 	}
     return self;
 }
@@ -29,34 +32,37 @@
 - (void) startFiring
 {
     [self stopFiring];
-    float waitDuration = 4.0;
-    float waitRange = 2.0;
+    _waitDuration = 4.0;
+    _waitRange = 2.0;
     
     if ( self.level == 1 )
     {
-        waitDuration = 4.0;
-        waitRange = 1.0;
+        _waitDuration = 4.0;
+        _waitRange = 1.0;
     }
     else if ( self.level == 2 )
     {
-        waitDuration = 3.0;
-        waitRange = .5;
+        _waitDuration = 3.0;
+        _waitRange = .5;
     }
     else if ( self.level == 3 )
     {
-        waitDuration = 2.0;
-        waitRange = .25;
+        _waitDuration = 2.0;
+        _waitRange = .25;
     }
     else //if ( self.level == 4 )
     {
-        waitDuration = 1.0;
-        waitRange = .125;
+        _waitDuration = 1.0;
+        _waitRange = .125;
     }
     
     SKAction * performSelector = [SKAction performSelector:@selector(fire) onTarget:self];
-    SKAction * fireSequence = [SKAction sequence:@[performSelector, [SKAction waitForDuration:waitDuration withRange:waitRange]]];
-    SKAction * fireForever = [SKAction repeatActionForever:fireSequence];
-    [self runAction:fireForever withKey:@"firing"];
+    [self runAction:performSelector withKey:@"firing"];
+}
+
+- (UIColor *) rampUpColor
+{
+    return [UIColor colorWithRed:.85 green:.2 blue:.1 alpha:.5];
 }
 
 - (void) fire
@@ -68,6 +74,17 @@
     [self addChild:tmpLaser];
     [self.delegate didAddProjectile:tmpLaser forWeapon:self];
     [[AudioManager sharedInstance] playSoundEffect:kSoundEffectLaser];
+    
+    SKAction * performSelector = [SKAction performSelector:@selector(fire) onTarget:self];
+    double currentWaitDuration = ((double)arc4random() / 0x100000000) * ((_waitDuration+_waitRange) - (_waitDuration-_waitRange)) + (_waitDuration-_waitRange);
+    [self rampUpWithDuration:currentWaitDuration];
+    SKAction * myAction = [SKAction waitForDuration:currentWaitDuration];
+    SKAction * myCompletion = [SKAction runBlock:^
+    {
+        [self runAction:performSelector withKey:@"firing"];
+    }];
+    SKAction * mySequence = [SKAction sequence:@[myAction, myCompletion]];
+    [self runAction:mySequence withKey:@"firing"];
 }
 
 - (void) removeFromParent

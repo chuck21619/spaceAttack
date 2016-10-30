@@ -50,6 +50,8 @@ static AccountManager * sharedAccountManager = nil;
                                             [Habsburg new]];
         
         sharedAccountManager.touchControls = [sharedAccountManager savedTouchControls];
+        
+        sharedAccountManager.fullScreenAdInterval = 120;
     }
     
     return sharedAccountManager;
@@ -78,7 +80,7 @@ static AccountManager * sharedAccountManager = nil;
     if ( !touchControlsExistsValue )
     {
         touchControls = NO;
-        [AccountManager setVibrate:touchControls];
+        [sharedAccountManager setTouchControls:touchControls];
     }
     return touchControls;
 }
@@ -303,6 +305,23 @@ static AccountManager * sharedAccountManager = nil;
     [sharedAccountManager.userDefaults setInteger:availablePoints forKey:@"availablePoints"];
 }
 
++ (int) personalBest
+{
+    int personalBest = (int)[sharedAccountManager.userDefaults integerForKey:@"personalBest"];
+    if ( ! personalBest )
+    {
+        personalBest = 0;
+        [sharedAccountManager.userDefaults setInteger:personalBest forKey:@"personalBest"];
+    }
+    
+    return personalBest;
+}
+
++ (void) setPersonalBest:(int)personalBest
+{
+    [sharedAccountManager.userDefaults setInteger:personalBest forKey:@"personalBest"];
+}
+
 #pragma mark - ships
 + (NSArray *)unlockedShips
 {
@@ -513,6 +532,48 @@ static AccountManager * sharedAccountManager = nil;
 + (void) clearPlayerProgress
 {
     [sharedAccountManager.userDefaults removePersistentDomainForName:@"ZinStudio"]; //clears all defaults
+}
+
++ (NSArray *) cachedHighScores
+{
+    NSData * encodedHighScores = [sharedAccountManager.userDefaults valueForKey:@"highScores"];
+    NSArray * highScores = [NSKeyedUnarchiver unarchiveObjectWithData:encodedHighScores];
+    
+    if ( !highScores )
+    {
+        highScores = @[];
+        [AccountManager setCachedHighScores:highScores];
+    }
+    
+    return highScores;
+}
+
++ (void) setCachedHighScores:(NSArray *)highScores
+{
+    NSData * encodedHighScores = [NSKeyedArchiver archivedDataWithRootObject:highScores];
+    [sharedAccountManager.userDefaults setValue:encodedHighScores forKey:@"highScores"];
+}
+
++ (GKScore *) cachedLocalPlayerScore
+{
+    NSData * encodedLocalPlayerScore = [sharedAccountManager.userDefaults valueForKey:@"localPlayerScore"];
+    GKScore * localPlayerScore = [NSKeyedUnarchiver unarchiveObjectWithData:encodedLocalPlayerScore];
+    
+    if ( !localPlayerScore )
+    {
+        localPlayerScore = [GKScore new];
+        localPlayerScore.value = 0;
+        //localPlayerScore.rank = 0; //rank is read-only
+        [AccountManager setCachedLocalPlayerScore:localPlayerScore];
+    }
+    
+    return localPlayerScore;
+}
+
++ (void) setCachedLocalPlayerScore:(GKScore *)score
+{
+    NSData * encodedScore = [NSKeyedArchiver archivedDataWithRootObject:score];
+    [sharedAccountManager.userDefaults setValue:encodedScore forKey:@"localPlayerScore"];
 }
 
 #pragma mark achievements
@@ -949,7 +1010,9 @@ static AccountManager * sharedAccountManager = nil;
 
 + (void) submitAchievementsProgress:(NSDictionary *)achievements
 {
-    NSMutableArray * alreadyCompletedAchievements = [NSMutableArray new];
+    if ( ![[GKLocalPlayer localPlayer] isAuthenticated] )
+        return;
+    
     NSMutableArray * achievementsToSubmit = [NSMutableArray new];
     for ( NSString * key in [achievements allKeys] )
     {
@@ -958,9 +1021,7 @@ static AccountManager * sharedAccountManager = nil;
         if ( ! tmpAchievement )
             continue;
         
-        if ( tmpAchievement.percentComplete == 100.0 )
-            [alreadyCompletedAchievements addObject:tmpAchievement];
-        else
+        if ( tmpAchievement.percentComplete < 100.0 )
         {
             tmpAchievement.showsCompletionBanner = NO;
             [achievementsToSubmit addObject:tmpAchievement];
@@ -970,7 +1031,10 @@ static AccountManager * sharedAccountManager = nil;
         tmpAchievement.percentComplete = [AccountManager calculatePercentCompleteForAchievement:achievement withIncrease:increase];
     }
     
-    NSArray * allAchievements = [alreadyCompletedAchievements arrayByAddingObjectsFromArray:achievementsToSubmit];
+    NSMutableArray * allAchievements = [[AccountManager achievements] mutableCopy];
+    for ( GKAchievement * achievement in allAchievements )
+        [AccountManager updateAchievement:achievement inAchievements:allAchievements];
+    
     NSData * encodedAchievements = [NSKeyedArchiver archivedDataWithRootObject:allAchievements];
     [sharedAccountManager.userDefaults setValue:encodedAchievements forKey:@"achievements"];
     
@@ -1282,8 +1346,9 @@ static AccountManager * sharedAccountManager = nil;
     //NSLog(@"account manager - startFullScreenAdTimer");
     sharedAccountManager.fullScreenAdIteration = NO;
     [sharedAccountManager.fullScreenAdTimer invalidate];
-    sharedAccountManager.fullScreenAdTimer = [[NSTimer alloc] initWithFireDate:[[NSDate date] dateByAddingTimeInterval:120] interval:0 target:sharedAccountManager selector:@selector(fullScreenAdTimerFired:) userInfo:nil repeats:NO];
+    sharedAccountManager.fullScreenAdTimer = [[NSTimer alloc] initWithFireDate:[[NSDate date] dateByAddingTimeInterval:sharedAccountManager.fullScreenAdInterval] interval:0 target:sharedAccountManager selector:@selector(fullScreenAdTimerFired:) userInfo:nil repeats:NO];
     [[NSRunLoop currentRunLoop] addTimer:sharedAccountManager.fullScreenAdTimer forMode:NSDefaultRunLoopMode];
+    sharedAccountManager.fullScreenAdInterval += 30;
 }
 
 - (void) fullScreenAdTimerFired:(NSTimer *)timer
@@ -1367,8 +1432,8 @@ static AccountManager * sharedAccountManager = nil;
 #pragma mark vibrate
 + (BOOL) isVibrateOn
 {
-    BOOL vibrate = [sharedAccountManager.userDefaults boolForKey:@"vibrate"];
     NSNumber * vibrateExistsValue = [sharedAccountManager.userDefaults valueForKey:@"vibrate"];
+    BOOL vibrate = [sharedAccountManager.userDefaults boolForKey:@"vibrate"];
     //vibrateExistsValue is used becuase i cant check if a BOOL is null
     if ( !vibrateExistsValue )
     {

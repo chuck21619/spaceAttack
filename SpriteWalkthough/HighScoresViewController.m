@@ -13,6 +13,7 @@
 #import "HighScoreCell.h"
 #import "SAAlertView.h"
 #import "AudioManager.h"
+#import "AccountManager.h"
 
 @implementation HighScoresViewController
 {
@@ -99,6 +100,8 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     if ( !_alreadyAppeared )
     {
         for ( UIView * subview in [self.view subviews] )
@@ -174,7 +177,10 @@
          {
              NSLog(@"error 1 : %@", error);
              [self showProgressHud:NO];
-             [self displayError:error];
+             _localPlayerScore = [AccountManager cachedLocalPlayerScore];
+             _scores = [AccountManager cachedHighScores];
+             [self refreshLeaderboardView];
+             //[self displayError:error];
              return;
          }
          
@@ -185,12 +191,17 @@
               {
                   NSLog(@"error 2 : %@", error);
                   [self showProgressHud:NO];
-                  [self displayError:error2];
+                  _localPlayerScore = [AccountManager cachedLocalPlayerScore];
+                  _scores = [AccountManager cachedHighScores];
+                  [self refreshLeaderboardView];
+                  //[self displayError:error2];
                   return;
               }
               
               _localPlayerScore = [leaderboard localPlayerScore];
               _scores = scores;
+              [AccountManager setCachedLocalPlayerScore:_localPlayerScore];
+              [AccountManager setCachedHighScores:_scores];
               [self refreshLeaderboardView];
               [self showProgressHud:NO];
           }];
@@ -205,6 +216,9 @@
     [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
     self.userRankLabel.text = [numberFormatter stringFromNumber:@((int)_localPlayerScore.rank)];
     self.userScoreLabel.text = [numberFormatter stringFromNumber:@((int)_localPlayerScore.value)];
+    
+    if ( (int)_localPlayerScore.value > [AccountManager personalBest] )
+        [AccountManager setPersonalBest:(int)_localPlayerScore.value];
     
     [UIView animateWithDuration:.3 animations:^
     {

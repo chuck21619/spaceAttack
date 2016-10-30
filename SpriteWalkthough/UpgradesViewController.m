@@ -31,6 +31,8 @@
 
 - (void) viewDidLoad
 {
+    [super viewDidLoad];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(paymentPurchased) name:@"SKPaymentTransactionStatePurchased" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(paymentFailed) name:@"SKPaymentTransactionStateFailed" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(achievementsLoaded) name:@"achievementsLoaded" object:nil];
@@ -67,6 +69,8 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
     NSString *numberString = [numberFormatter stringFromNumber:@([AccountManager availablePoints])];
@@ -214,11 +218,14 @@
         CALayer *maskLayer = [CALayer layer];
         maskLayer.frame = CGRectMake(0, 0, self.demoPreviewImageView.frame.size.width, self.demoPreviewImageView.frame.size.height);
         maskLayer.shadowRadius = 5;
-        maskLayer.shadowPath = CGPathCreateWithRoundedRect(CGRectInset(maskLayer.frame, 10, 10), 10, 10, nil);
+        CGPathRef shadowPath = CGPathCreateWithRoundedRect(CGRectInset(maskLayer.frame, 10, 10), 10, 10, nil);
+        maskLayer.shadowPath = shadowPath;
         maskLayer.shadowOpacity = 1;
         maskLayer.shadowOffset = CGSizeZero;
         maskLayer.shadowColor = [UIColor whiteColor].CGColor;
         self.demoPreviewImageView.layer.mask = maskLayer;
+        
+        CFRelease(shadowPath);
         
         _demoMaskApplied = YES;
     }
@@ -511,6 +518,7 @@
             {
                 //NSLog(@"identifier matched to upgrade : %@", product.productIdentifier);
                 upgrade.isValidForMoneyPurchase = YES;
+                upgrade.price = product.price;
                 upgrade.priceString = [numberFormatter stringFromNumber:product.price];
             }
         }
@@ -536,9 +544,7 @@
     [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
     NSString * currency = [formatter currencyCode];
     
-    NSString * trimmedString = [[self.activeUpgrade.priceString componentsSeparatedByCharactersInSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]]componentsJoinedByString:@""];
-    
-    [Answers logPurchaseWithPrice:[[NSDecimalNumber alloc] initWithFloat:[trimmedString floatValue]]
+    [Answers logPurchaseWithPrice:[[NSDecimalNumber alloc] initWithFloat:[self.activeUpgrade.price floatValue]]
                          currency:currency
                           success:@YES
                          itemName:self.activeUpgrade.title
@@ -565,9 +571,7 @@
     [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
     NSString * currency = [formatter currencyCode];
     
-    NSString * trimmedString = [[self.activeUpgrade.priceString componentsSeparatedByCharactersInSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]]componentsJoinedByString:@""];
-    
-    [Answers logPurchaseWithPrice:[[NSDecimalNumber alloc] initWithFloat:[trimmedString floatValue]]
+    [Answers logPurchaseWithPrice:[[NSDecimalNumber alloc] initWithFloat:[self.activeUpgrade.price floatValue]]
                          currency:currency
                           success:@NO
                          itemName:self.activeUpgrade.title

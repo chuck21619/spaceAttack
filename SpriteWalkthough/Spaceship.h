@@ -28,6 +28,7 @@
 @property (nonatomic) NSString * storeKitIdentifier;
 @property (nonatomic) SKProduct * storeKitProduct;
 @property (nonatomic) BOOL isValidForMoneyPurchase;
+@property (nonatomic) NSDecimalNumber * price;
 @property (nonatomic) NSString * priceString;
 
 @property (nonatomic) int defaultDamage;
@@ -50,5 +51,6 @@
 - (void) setExhaustTargetNode:(SKNode *)node;
 - (void) setNumberOfWeaponSlots:(int)numberOfWeaponSlots;
 - (void) increaseExhaustSpeed;
+- (float) healthPercentage;
 
 @end

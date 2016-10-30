@@ -22,9 +22,9 @@
         //self.zPosition = -1;
         //self.position = CGPointMake(0, 60);
         self.fireRateUpgraded = [AccountManager machineGunFireRateUpgraded];
+        if ( self.fireRateUpgraded )
+            self.level = 3;
         self.projectileTexture = [[PlayerWeaponsKit sharedInstance] bulletTexture];
-        
-        [self startFiring];
 	}
     return self;
 }

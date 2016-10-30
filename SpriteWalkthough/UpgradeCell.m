@@ -429,13 +429,10 @@
     SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"%@ %@\n%@ %@ %@?", NSLocalizedString(@"Unlock", nil), self.myUpgrade.title, NSLocalizedString(@"for", nil), formattedPoints, NSLocalizedString(@"points", nil)] cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitle:NSLocalizedString(@"Unlock", nil)];
     unlockAlert.otherButtonAction = ^
     {
-        [Answers logPurchaseWithPrice:[[NSDecimalNumber alloc] initWithFloat:self.myUpgrade.pointsToUnlock]
-                             currency:@"game points"
-                              success:@YES
-                             itemName:self.myUpgrade.title
-                             itemType:@"Upgrade"
-                               itemId:nil
-                     customAttributes:@{}];
+        
+        [Answers logCustomEventWithName:@"Purchase Game Points" customAttributes:@{@"price" : @(self.myUpgrade.pointsToUnlock),
+                                                                                    @"name" : self.myUpgrade.title,
+                                                                                    @"type" : @"Upgrade"}];
         [AccountManager subtractPoints:self.myUpgrade.pointsToUnlock];
         [AccountManager unlockUpgrade:self.myUpgrade.upgradeType];
         [self showPurchasedLabelAnimated:YES];
@@ -448,12 +445,6 @@
 #pragma mark
 - (void) showMinimizedContent:(BOOL)show animated:(BOOL)animated completion:(void (^)())completion
 {
-    float alpha;
-    if ( show )
-        alpha = 1;
-    else
-        alpha = 0;
-    
     if ( animated )
     {
         [UIView animateWithDuration:.3 animations:^

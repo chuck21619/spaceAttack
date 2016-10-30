@@ -29,6 +29,7 @@
     
     
     self.gameOverLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.gameOverLabel.font.pointSize];
+    self.personalBestLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.personalBestLabel.font.pointSize];
     self.pointsLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.pointsLabel.font.pointSize];
     
     self.restartButton.titleLabel.font = [UIFont fontWithName:NSLocalizedString(@"font1", nil) size:self.restartButton.titleLabel.font.pointSize];
@@ -87,6 +88,7 @@
     self.homeButton.layer.cornerRadius = self.homeButton.frame.size.height/3;
     
     [_AppDelegate addGlowToLayer:self.gameOverLabel.layer withColor:self.gameOverLabel.textColor.CGColor];
+    [_AppDelegate addGlowToLayer:self.personalBestLabel.layer withColor:self.personalBestLabel.textColor.CGColor];
     [_AppDelegate addGlowToLayer:self.pointsLabel.layer withColor:self.pointsLabel.textColor.CGColor];
     [_AppDelegate addGlowToLayer:self.bonusPointsTextView.layer withColor:self.bonusPointsTextView.textColor.CGColor];
     [_AppDelegate addGlowToLayer:self.restartButton.layer withColor:self.restartButton.currentTitleColor.CGColor];
@@ -102,6 +104,7 @@
     float width = self.view.frame.size.width;
     
     [self.gameOverLabel setFont:[self.gameOverLabel.font fontWithSize:width*.156]];
+    [self.personalBestLabel setFont:[self.personalBestLabel.font fontWithSize:width*.034]];
     [self.pointsLabel setFont:[self.pointsLabel.font fontWithSize:width*.069]];
     [self.bonusPointsTextView setFont:[self.bonusPointsTextView.font fontWithSize:width*.034]];
     [self.restartButton.titleLabel setFont:[self.restartButton.titleLabel.font fontWithSize:width*.056]];
@@ -136,10 +139,15 @@
     self.constraintTopBadgeUpgrades.constant = width*-.019;
     self.constraintLeadingBadgeUpgrades.constant = width*.628;
     self.constraintTrailingBadgeUpgrades.constant = width*.309;
+    
+    self.constraintTopPersonalBest.constant = width*-0.053125;
+    self.constraintHeightPersonalBest.constant = width*0.078125;
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     self.view.alpha = 0;
     [UIView animateWithDuration:.2 animations:^
     {
@@ -149,6 +157,8 @@
 
 - (void) viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+    
     if ( self.firstViewWillAppear )
     {
         self.firstViewWillAppear = NO;
@@ -288,6 +298,7 @@
 {
     self.mySKView.alpha = 0;
     self.gameOverLabel.alpha = 0;
+    self.personalBestLabel.alpha = 0;
     self.pointsLabel.alpha = 0;
     self.restartButton.alpha = 0;
     self.upgradesButton.alpha = 0;
@@ -316,6 +327,11 @@
      {
          self.gameOverLabel.alpha = 1;
          self.pointsLabel.alpha = 1;
+         if ( pointsScored > [AccountManager personalBest] )
+         {
+             self.personalBestLabel.alpha = 1;
+             [AccountManager setPersonalBest:pointsScored];
+         }
      }
      completion:^(BOOL finished)
      {
@@ -450,6 +466,8 @@
 
 - (IBAction)selectShipAction:(id)sender
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"skipNextViewWillAppear" object:nil];
+    
     [UIView animateWithDuration:.5 animations:^
     {
         [self hideUIViews];
@@ -465,6 +483,8 @@
 
 - (IBAction)upgradesAction:(id)sender
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"skipNextViewWillAppear" object:nil];
+    
     [UIView animateWithDuration:.5 animations:^
     {
         [self hideUIViews];

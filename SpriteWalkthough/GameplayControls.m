@@ -75,6 +75,10 @@ static GameplayControls * sharedGameplayControls = nil;
     //[self.myLocationManager stopUpdatingHeading];
     
     CMAcceleration averages;
+    averages.x = 0;
+    averages.y = 0;
+    averages.z = 0;
+    
     for ( CMAccelerometerData * tmpCMAccelerometerData in accelerometerUpdates )
     {
         averages.x += tmpCMAccelerometerData.acceleration.x;

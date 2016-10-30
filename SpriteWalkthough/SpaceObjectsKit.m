@@ -13,7 +13,8 @@
 {
     NSDictionary * _spaceBackgroundTextures;
     SKTexture * _nextBackground;
-    
+    NSArray * _redBackgroundKeys;
+    BOOL _redBackground;
 }
 
 static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
@@ -74,6 +75,9 @@ static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
                                      @"Twin Suns" : [SKTexture textureWithImageNamed:@"Twin Suns.png"],
                                      @"Verdant" : [SKTexture textureWithImageNamed:@"Verdant.png"],
                                      @"Void" : [SKTexture textureWithImageNamed:@"Void.png"]};
+        
+        _redBackgroundKeys = @[@"Red", @"Twin Suns", @"Ring", @"Broken", @"Serebus"];
+        _redBackground = NO;
     }
     return self;
 }
@@ -111,29 +115,35 @@ static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
     
     if ( xCoord < 0 )
     {
-        float xCoordDifference = 0.0;
+        //float xCoordDifference = 0.0;
         float yCoordDifference = 0.0;
     
         float xOffset = -xCoord;
         float otherAngle = 90-angle;
         yCoordDifference = tanf(GLKMathDegreesToRadians(otherAngle))*xOffset;
-        xCoordDifference = xOffset;
+        //xCoordDifference = xOffset;
         
         xCoord = -newAsteroid.size.width;
         yCoord -= (yCoordDifference - newAsteroid.size.height);
     }
     else if ( xCoord > 320 )
     {
-        float xCoordDifference = 0.0;
+        //float xCoordDifference = 0.0;
         float yCoordDifference = 0.0;
         
         float xOffset = xCoord - self.scene.size.width;
         float otherAngle = 90+angle;
         yCoordDifference = tanf(GLKMathDegreesToRadians(otherAngle))*xOffset;
-        xCoordDifference = xOffset;
+        //xCoordDifference = xOffset;
         
         xCoord = self.scene.size.width + newAsteroid.size.width;
         yCoord -= (yCoordDifference - newAsteroid.size.height);
+    }
+    
+    if ( _redBackground )
+    {
+        newAsteroid.color = [UIColor blackColor];
+        newAsteroid.colorBlendFactor = .8;
     }
     
     newAsteroid.position = CGPointMake(xCoord, yCoord);
@@ -186,6 +196,21 @@ static SpaceObjectsKit * sharedSpaceObjectsKit = nil;
     SKTexture * randomSpaceBackground = _nextBackground;
     float resizeFactor = self.scene.size.width / randomSpaceBackground.size.width;
     spaceBackground = [SpaceBackground spriteNodeWithTexture:randomSpaceBackground size:CGSizeMake(randomSpaceBackground.size.width*resizeFactor, randomSpaceBackground.size.height*resizeFactor)];
+    
+    NSString * spaceBackgroundKey = [[_spaceBackgroundTextures allKeysForObject:_nextBackground] firstObject];
+    NSLog(@"spacebackground - %@", spaceBackgroundKey);
+    if ( [_redBackgroundKeys containsObject:spaceBackgroundKey] )
+    {
+        NSLog(@"red background");
+        _redBackground = YES;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"redBackground" object:nil];
+    }
+    else
+    {
+        NSLog(@"non-red background");
+        _redBackground = NO;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"nonRedBackground" object:nil];
+    }
     
     //debug border
 //        SKShapeNode *shape = [SKShapeNode node];

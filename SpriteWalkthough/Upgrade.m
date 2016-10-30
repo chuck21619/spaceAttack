@@ -24,7 +24,7 @@
                 self.upgradeDescription = NSLocalizedString(@"Your spaceships will be able to equip two different weapons!", nil);
                 self.icon = [UIImage imageNamed:@"Double Weapon.png"];
                 self.animatedImage = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"DoubleWeaponUpgrade.gif" ofType:nil]]]];
-                self.pointsToUnlock = 150000;
+                self.pointsToUnlock = 75000;
                 if ( [AccountManager numberOfWeaponSlotsUnlocked] >= 2)
                     self.isUnlocked = YES;
                 else

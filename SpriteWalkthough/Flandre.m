@@ -69,6 +69,7 @@
         
         CGPathCloseSubpath(path);
         self.physicsBody = [SKPhysicsBody bodyWithPolygonFromPath:path];
+        CFRelease(path);
         //[self attachDebugFrameFromPath:path];
         
         self.physicsBody.dynamic = NO;
@@ -79,6 +80,11 @@
     }
     
     return self;
+}
+
+- (float) healthPercentage
+{
+    return self.armor/15.0;
 }
 
 - (void)attachDebugFrameFromPath:(CGPathRef)bodyPath {

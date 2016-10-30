@@ -22,6 +22,8 @@
 @property (nonatomic) NSArray * upgrades;
 @property (nonatomic) NSArray * spaceships;
 @property (nonatomic) BOOL touchControls;
+@property (nonatomic) int fullScreenAdInterval;
+
 + (BOOL) firstLaunch;
 
 #pragma mark ships
@@ -48,6 +50,8 @@
 + (int) availablePoints;
 + (void) addPoints:(int)points;
 + (void) subtractPoints:(int)points;
++ (int) personalBest;
++ (void) setPersonalBest:(int)personalBest;
 
 #pragma mark tooltips
 + (BOOL) shouldShowTooltip:(TooltipType)tooltipType;
@@ -66,6 +70,10 @@
 + (NSString *) lastPlayerLoggedIn;
 + (void) setLastPlayerLoggedIn:(NSString *)player;
 + (void) clearPlayerProgress;
++ (NSArray *) cachedHighScores;
++ (void) setCachedHighScores:(NSArray *)highScores;
++ (GKScore *) cachedLocalPlayerScore;
++ (void) setCachedLocalPlayerScore:(GKScore *)score;
 
 #pragma mark achievements
 @property (nonatomic) NSArray * cachedAchievements;

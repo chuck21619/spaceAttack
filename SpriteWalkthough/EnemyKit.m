@@ -10,6 +10,10 @@
 #import "SpaceshipScene.h"
 
 @implementation EnemyKit
+{
+    BOOL _backgroundColorRed;
+    UIColor * _colorForRedBackground;
+}
 
 static EnemyKit * sharedEnemyKit = nil;
 + (EnemyKit *)sharedInstanceWithScene:(SKScene *)scene
@@ -29,6 +33,9 @@ static EnemyKit * sharedEnemyKit = nil;
 {
     if ( self = [super init] )
     {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backgroundColorRed) name:@"redBackground" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backgroundColorNonRed) name:@"nonRedBackground" object:nil];
+        
         self.enemyTextureBasic = [SKTexture textureWithImageNamed:@"enemyBasic.png"];
         self.enemyTextureFast = [SKTexture textureWithImageNamed:@"enemyFast.png"];
         self.enemyTextureBig = [SKTexture textureWithImageNamed:@"enemyBig.png"];
@@ -45,8 +52,16 @@ static EnemyKit * sharedEnemyKit = nil;
                                  [SKTexture textureWithImageNamed:@"EnemyExplosion10.png"],
                                  [SKTexture textureWithImageNamed:@"EnemyExplosion11.png"],
                                  [SKTexture textureWithImageNamed:@"EnemyExplosion12.png"]];
+        
+        _backgroundColorRed = NO;
+        _colorForRedBackground = [UIColor blackColor];
     }
     return self;
+}
+
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (NSArray *) texturesForPreloading
@@ -97,6 +112,12 @@ static EnemyKit * sharedEnemyKit = nil;
         
         SKAction * wait = [SKAction waitForDuration:skRand(0, .5)];
         
+        if ( _backgroundColorRed )
+        {
+            tmpEnemyBasic.color = _colorForRedBackground;
+            tmpEnemyBasic.colorBlendFactor = .8;
+        }
+        
         [scene addChild:tmpEnemyBasic];
         [tmpEnemyBasic runAction:[SKAction sequence:@[wait, [SKAction group:@[wait, moveDown, hover]]]]];
     }
@@ -143,18 +164,29 @@ static EnemyKit * sharedEnemyKit = nil;
         [selectedPath applyTransform:translate];
         CGPathRef tmpPath = CGPathCreateCopy(selectedPath.CGPath);
         SKAction * tmpFollowLine = [SKAction followPath:tmpPath asOffset:NO orientToPath:YES duration:12*enemySpeedCoefficient];
+        CFRelease(tmpPath);
         
         EnemyFast * tmpEnemyFast = [[EnemyFast alloc] initWithTexture:self.enemyTextureFast];
         [allEnemies addObject:tmpEnemyFast];
         tmpEnemyFast.delegate = (id<EnemyDelegate>)scene; //should be either UpgradeScene or SpaceshipScene
         //initialize it off screen until animation starts
         [tmpEnemyFast setPosition:CGPointMake(0, scene.size.height + tmpEnemyFast.size.height)];
+        
+        if ( _backgroundColorRed )
+        {
+            tmpEnemyFast.color = _colorForRedBackground;
+            tmpEnemyFast.colorBlendFactor = .8;
+        }
+        
         [scene addChild:tmpEnemyFast];
         
         SKAction * wait = [SKAction waitForDuration:i*((float)arcRadius/150)];
         SKAction * sequence = [SKAction sequence:@[wait, tmpFollowLine]];
         [tmpEnemyFast runAction:sequence];
     }
+    
+    CFRelease(path);
+    CFRelease(flippedPath);
     
     return allEnemies;
 }
@@ -169,6 +201,12 @@ static EnemyKit * sharedEnemyKit = nil;
         [allEnemies addObject:tmpEnemyBig];
         tmpEnemyBig.delegate = (id<EnemyDelegate>)scene; //should be either UpgradeScene or SpaceshipScene
         [tmpEnemyBig setPosition:CGPointMake(skRand(tmpEnemyBig.size.width/2, scene.size.width - tmpEnemyBig.size.width/2), scene.size.height + tmpEnemyBig.size.height)];
+        
+        if ( _backgroundColorRed )
+        {
+            tmpEnemyBig.color = _colorForRedBackground;
+            tmpEnemyBig.colorBlendFactor = .8;
+        }
         
         [scene addChild:tmpEnemyBig];
         
@@ -189,6 +227,16 @@ static EnemyKit * sharedEnemyKit = nil;
     [scene addChild:tmpBoss];
     [tmpBoss startFighting];
 }*/
+
+- (void) backgroundColorRed
+{
+    _backgroundColorRed = YES;
+}
+
+- (void) backgroundColorNonRed
+{
+    _backgroundColorRed = NO;
+}
 
 
 static inline CGFloat skRandf()

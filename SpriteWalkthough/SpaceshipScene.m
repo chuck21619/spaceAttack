@@ -16,6 +16,7 @@
 #import "AudioManager.h"
 #import <Crashlytics/Crashlytics.h>
 #import "SpriteAppDelegate.h"
+#import "HealthBar.h"
 
 @implementation SpaceshipScene
 {
@@ -29,6 +30,8 @@
     NSMutableArray * _cachedElectricity;
     NSMutableArray * _cachedPowerUps;
     NSMutableArray * _cachedSpaceBackgrounds;
+    
+    HealthBar * _healthBar;
 }
 
 - (void) didMoveToView:(SKView *)view
@@ -59,6 +62,15 @@
         self.powerUpsCollected = 0;
         
         [Answers logLevelStart:nil customAttributes:@{}];
+        
+        if ( !_healthBar )
+        {
+            float healthBarHeight = self.size.width*0.0075;
+            _healthBar = [[HealthBar alloc] initWithFrame:CGRectMake(0, self.size.height-healthBarHeight, self.size.width, healthBarHeight)];
+            [self.view addSubview:_healthBar];
+        }
+        else
+            [_healthBar setProgress:1];
         
         [UIView animateWithDuration:1 animations:^{
             self.backgroundColor = [UIColor clearColor];
@@ -493,9 +505,22 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     if ( [self.view isPaused] )
         return;
     
+    acceleration.x *= 3;
+    if ( acceleration.x > 1 )
+        acceleration.x = 1;
+    else if ( acceleration.x < -1 )
+        acceleration.x = -1;
+    
+    acceleration.y *= 2;
+    acceleration.y += .35;
+    if ( acceleration.y > 1 )
+        acceleration.y = 1;
+    else if ( acceleration.y < -1 )
+        acceleration.y = -1;
+        
     int xCoord = self.size.width/2 + (acceleration.x * self.size.width/2);
     int yCoord = self.size.height/2 + (acceleration.y * self.size.height/2);
-    SKAction * moveSpaceship = [SKAction moveTo:CGPointMake(xCoord, yCoord) duration:5.0/self.mySpaceship.mySpeed];
+    SKAction * moveSpaceship = [SKAction moveTo:CGPointMake(xCoord, yCoord) duration:15.0/(self.mySpaceship.mySpeed*2)];
     
     //float degreeDifference = (360 - self.sharedGameplayControls.initialHeading) - (360 - heading.magneticHeading);
     //float newAngle = -DEGREES_TO_RADIANS(degreeDifference);
@@ -517,7 +542,7 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     
     UITouch * touch = [touches anyObject];
     CGPoint touchLocation = [touch locationInView:self.view];
-    SKAction * moveSpaceship = [SKAction moveTo:CGPointMake(touchLocation.x, (self.size.height-touchLocation.y)+(self.size.width*.1))  duration:10.0/self.mySpaceship.mySpeed];
+    SKAction * moveSpaceship = [SKAction moveTo:CGPointMake(touchLocation.x, (self.size.height-touchLocation.y)+(self.size.width*.1))  duration:10.0/(self.mySpaceship.mySpeed*2)];
     [self.mySpaceship runAction:moveSpaceship];
 }
 
@@ -866,13 +891,12 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
     int amountOfEnemies = skRand(1, self.rangeOfEnemiesToAdd);
     //NSLog(@"amountOfEnemies : %i", amountOfEnemies);
     
-    NSArray * enemies;
     if ( randomEnemyType == kEnemyTypeBasic )
-        enemies = [self.enemyKit addEnemiesBasic:amountOfEnemies toScene:self withSpeed:self.enemySpeedCoefficient];
+        [self.enemyKit addEnemiesBasic:amountOfEnemies toScene:self withSpeed:self.enemySpeedCoefficient];
     else if ( randomEnemyType == kEnemyTypeFast )
-        enemies = [self.enemyKit addEnemiesFast:amountOfEnemies toScene:self withSpeed:self.enemySpeedCoefficient];
+        [self.enemyKit addEnemiesFast:amountOfEnemies toScene:self withSpeed:self.enemySpeedCoefficient];
     else if ( randomEnemyType == kEnemyTypeBig )
-        enemies = [self.enemyKit addEnemiesBig:1 toScene:self withSpeed:self.enemySpeedCoefficient];
+        [self.enemyKit addEnemiesBig:1 toScene:self withSpeed:self.enemySpeedCoefficient];
 }
 
 - (void) moreEnemies
@@ -1021,6 +1045,8 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
 
 - (void) spaceshipTookDamage:(Spaceship *)spaceship
 {
+    [_healthBar setProgress:[spaceship healthPercentage] animated:YES];
+    
     //NSLog(@"spaceshipTookDamage");
     self.enemiesDestroyedWithoutTakingDamage = 0;
     
