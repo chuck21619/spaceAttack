@@ -11,10 +11,10 @@ This project provided an environment to educate myself in the following:
 - GameKit
 - internationalization (includes spanish/chinese/japanese/german)
 - in-app purchases
+- dynamic ad insertion
 - working with lower-level sound library ObjectAL
 - process for releasing applications on the App Store
 - process for starting my own company and working directly with consultants
-- dynamic ad insertion
 
 
 P.S.
