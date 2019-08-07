@@ -7,14 +7,14 @@ To see gameplay go here: http://zin.studio/
 
 
 This project provided an environment for self-education:
-<br />-SpriteKit
-<br />-GameKit
-<br />-internationalization (includes spanish/chinese/japanese/german)
-<br />-in-app purchases
-<br />-working with lower-level sound library ObjectAL
-<br />-process for releasing applications on the App Store
-<br />-process for starting my own company and working directly with consultants
-<br />-dynamic ad insertion
+- SpriteKit
+- GameKit
+- internationalization (includes spanish/chinese/japanese/german)
+- in-app purchases
+- working with lower-level sound library ObjectAL
+- process for releasing applications on the App Store
+- process for starting my own company and working directly with consultants
+- dynamic ad insertion
 
 
 P.S.
