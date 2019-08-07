@@ -4,9 +4,9 @@ An iOS top-down spaceship shooter designed using the SpriteKit framework. Starte
 
 App Store link: https://apps.apple.com/us/app/space-attack-stop-alien-invasion/id1146284157?ls=1<br />
 To see gameplay go here: http://zin.studio/
+<br />
 
-
-This project provided an environment for self-education:
+This project provided an environment to educate myself in the following:
 - SpriteKit
 - GameKit
 - internationalization (includes spanish/chinese/japanese/german)
