@@ -16,6 +16,7 @@ This project provided an environment for self-education:
 -working with lower-level sound library ObjectAL
 -process for releasing applications on the App Store
 -process for starting my own company and working directly with consultants
+-dynamic ad insertion
 
 
 P.S.
