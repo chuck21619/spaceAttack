@@ -20,14 +20,6 @@ static AudioManager * sharedAudioManager = nil;
         sharedAudioManager->_musicVolume = [AccountManager musicVolume]; //setter is overridden
         sharedAudioManager->_soundEffectsVolume = [AccountManager soundEffectsVolume]; //setter is overridden
         
-        sharedAudioManager.device = [ALDevice deviceWithDeviceSpecifier:nil];
-        sharedAudioManager.context = [ALContext contextOnDevice:sharedAudioManager.device attributes:nil];
-        [OpenALManager sharedInstance].currentContext = sharedAudioManager.context;
-        [OALAudioSession sharedInstance].handleInterruptions = YES;
-        [OALAudioSession sharedInstance].allowIpod = NO;
-        [OALAudioSession sharedInstance].honorSilentSwitch = YES;
-        sharedAudioManager.channel = [ALChannelSource channelWithSources:16];
-        sharedAudioManager.channel.gain = sharedAudioManager.soundEffectsVolume;
         sharedAudioManager.timeSinceLastSoundEffect = [[NSDate date] timeIntervalSince1970];
         sharedAudioManager.currentSounds = [NSMutableArray new];
         
@@ -44,14 +36,8 @@ static AudioManager * sharedAudioManager = nil;
         
         //sound effects
         //tooltip
-        sharedAudioManager.tooltip = [[sharedAudioManager createAudioBuffers:@[@"tooltip"]] firstObject];
-        
         //machine gun
         sharedAudioManager.machineGunSources = [NSMutableDictionary new];
-        sharedAudioManager.machineGunLevel3Buffer = [[sharedAudioManager createAudioBuffers:@[@"machineGunLevel3"]] firstObject];
-        sharedAudioManager.machineGunLevel4Buffer = [[sharedAudioManager createAudioBuffers:@[@"machineGunLevel4"]] firstObject];
-        sharedAudioManager.machineGunLevel3UpgradedBuffer = [[sharedAudioManager createAudioBuffers:@[@"machineGunLevel3Upgraded"]] firstObject];
-        sharedAudioManager.machineGunLevel4UpgradedBuffer = [[sharedAudioManager createAudioBuffers:@[@"machineGunLevel4Upgraded"]] firstObject];
 
         //weapons
         NSArray * bulletFileNames = @[@"bullet1", @"bullet2", @"bullet3", @"bullet4"];
@@ -72,7 +58,6 @@ static AudioManager * sharedAudioManager = nil;
                                             @"laserSounds" : laserPlayers};
         
         //photon explosion
-        sharedAudioManager.photonExplosion = [[sharedAudioManager createAudioBuffers:@[@"photonExplosion"]] firstObject];
         
         //enemy explosions
         NSArray * basicExplosionPlayers = [sharedAudioManager createAudioBuffers:@[@"basic"]];
@@ -84,7 +69,6 @@ static AudioManager * sharedAudioManager = nil;
                                                     @"big" : bigExplosionPlayers};
         
         //spaceship explosion
-        sharedAudioManager.spaceshipExplosionSound = [[sharedAudioManager createAudioBuffers:@[@"spaceshipExplosion"]] firstObject];
         
         //asteroid crumbling
         NSArray * asteroidCrumblingFileNames = @[@"asteroid1", @"asteroid2", @"asteroid3", @"asteroid4", @"asteroid5"];
@@ -97,17 +81,7 @@ static AudioManager * sharedAudioManager = nil;
         NSArray * shieldExplosionFileNames = @[@"shieldDestroy1", @"shieldDestroy2", @"shieldDestroy3"];
         sharedAudioManager.shieldExplosions = [sharedAudioManager createAudioBuffers:shieldExplosionFileNames];
         
-        sharedAudioManager.shieldEquip = [[sharedAudioManager createAudioBuffers:@[@"shieldEquip"]] firstObject];
-        
-        //energy booster
-        sharedAudioManager.energyBoosterStart = [[sharedAudioManager createAudioBuffers:@[@"energyBoosterStart"]] firstObject];
-        sharedAudioManager.energyBoosterEnd = [[sharedAudioManager createAudioBuffers:@[@"energyBoosterEnd"]] firstObject];
-        
         //equip weapons
-        sharedAudioManager.equipMachineGun = [[sharedAudioManager createAudioBuffers:@[@"machineGunEquip"]] firstObject];
-        sharedAudioManager.equipLaserCannon = [[sharedAudioManager createAudioBuffers:@[@"laserCannonEquip"]] firstObject];
-        sharedAudioManager.equipElectricalGenerator = [[sharedAudioManager createAudioBuffers:@[@"electricalGeneratorEquip"]] firstObject];
-        sharedAudioManager.equipPhotonCannon = [[sharedAudioManager createAudioBuffers:@[@"photonCannonEquip"]] firstObject];
         
         //enemy damage
         NSArray * enemyDamageFileNames = @[@"enemyDamage1", @"enemyDamage2", @"enemyDamage3", @"enemyDamage4", @"enemyDamage5"];
@@ -118,23 +92,8 @@ static AudioManager * sharedAudioManager = nil;
         sharedAudioManager.spaceshipDamage = [sharedAudioManager createAudioBuffers:spaceshipDamageFileNames];
         
         //multiplier lost
-        sharedAudioManager.multiplierLost = [[sharedAudioManager createAudioBuffers:@[@"lostMultiplier"]] firstObject];
-        sharedAudioManager.multiplierIncrease = [[sharedAudioManager createAudioBuffers:@[@"increaseMultiplier"]] firstObject];
         
-        //menu
-        sharedAudioManager.unlock = [[sharedAudioManager createAudioBuffers:@[@"unlock"]] firstObject];
-        sharedAudioManager.settings = [[sharedAudioManager createAudioBuffers:@[@"settings"]] firstObject];
-        sharedAudioManager.upgradeMinimize = [[sharedAudioManager createAudioBuffers:@[@"upgradeMinimize"]] firstObject];
-        sharedAudioManager.upgradeMaximize = [[sharedAudioManager createAudioBuffers:@[@"upgradeMaximize"]] firstObject];
-        sharedAudioManager.backButton = [[sharedAudioManager createAudioBuffers:@[@"backButton"]] firstObject];
-        sharedAudioManager.highScoreAchievements = [[sharedAudioManager createAudioBuffers:@[@"highScoreAchievements"]] firstObject];
-        sharedAudioManager.upgrade = [[sharedAudioManager createAudioBuffers:@[@"upgrade"]] firstObject];
-        sharedAudioManager.engage = [[sharedAudioManager createAudioBuffers:@[@"engage"]] firstObject];
-        sharedAudioManager.didUnlock = [[sharedAudioManager createAudioBuffers:@[@"didUnlock"]] firstObject];
-        sharedAudioManager.selectShip = [[sharedAudioManager createAudioBuffers:@[@"selectShip"]] firstObject];
-        sharedAudioManager.minimizeCell = [[sharedAudioManager createAudioBuffers:@[@"minimizeCell"]] firstObject];
-        sharedAudioManager.maximizeCell = [[sharedAudioManager createAudioBuffers:@[@"maximizeCell"]] firstObject];
-        sharedAudioManager.pageTurn = [[sharedAudioManager createAudioBuffers:@[@"pageTurn"]] firstObject];
+        
     }
     
     return sharedAudioManager;
@@ -160,7 +119,6 @@ static AudioManager * sharedAudioManager = nil;
 {
     [AccountManager setSoundEffectsVolume:volume];
     _soundEffectsVolume = volume;
-    self.channel.volume = volume;
 }
 
 #pragma mark - music
@@ -228,8 +186,6 @@ static AudioManager * sharedAudioManager = nil;
     for ( NSString * fileName in fileNames )
     {
         NSString * audioPath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"wav"];
-        ALBuffer * audioBuffer = [[OpenALManager sharedInstance] bufferFromFile:audioPath];
-        [audioBuffers addObject:audioBuffer];
     }
     return audioBuffers;
 }
@@ -247,7 +203,6 @@ static AudioManager * sharedAudioManager = nil;
     if ( self.currentSounds.count > 10 )
         return;
     
-    ALBuffer * audioBuffer = nil;
     
     switch (soundEffect)
     {
@@ -255,206 +210,163 @@ static AudioManager * sharedAudioManager = nil;
         case kSoundEffectElectricity:
         {
             NSArray * electricitySounds = [self.weaponSounds objectForKey:@"electricitySounds"];
-            audioBuffer = [electricitySounds objectAtIndex:arc4random_uniform((int)electricitySounds.count)];
             break;
         }
             
         case kSoundEffectBullet:
         {
             NSMutableArray * bulletSounds = [self.weaponSounds objectForKey:@"bulletSounds"];
-            audioBuffer = [bulletSounds objectAtIndex:arc4random_uniform((int)bulletSounds.count)];
             break;
         }
             
         case kSoundEffectLaser:
         {
             NSArray * laserSounds = [self.weaponSounds objectForKey:@"laserSounds"];
-            audioBuffer = [laserSounds objectAtIndex:arc4random_uniform((int)laserSounds.count)];
             break;
         }
             
         case kSoundEffectPhoton:
         {
             NSArray * photonSounds = [self.weaponSounds objectForKey:@"photonSounds"];
-            audioBuffer = [photonSounds objectAtIndex:arc4random_uniform((int)photonSounds.count)];
             break;
         }
             
         case kSoundEffectExplosionEnemyBasic:
         {
             NSArray * basicExplosionSounds = [self.enemyExplosionSounds objectForKey:@"basic"];
-            audioBuffer = [basicExplosionSounds objectAtIndex:arc4random_uniform((int)basicExplosionSounds.count)];
             break;
         }
             
         case kSoundEffectExplosionEnemyFast:
         {
             NSArray * fastExplosionSounds = [self.enemyExplosionSounds objectForKey:@"fast"];
-            audioBuffer = [fastExplosionSounds objectAtIndex:arc4random_uniform((int)fastExplosionSounds.count)];
             break;
         }
             
         case kSoundEffectExplosionEnemyBig:
         {
             NSArray * bigExplosionSounds = [self.enemyExplosionSounds objectForKey:@"big"];
-            audioBuffer = [bigExplosionSounds objectAtIndex:arc4random_uniform((int)bigExplosionSounds.count)];
             break;
         }
             
         case kSoundEffectExplosionSpaceship:
-            audioBuffer = self.spaceshipExplosionSound;
             break;
             
         case kSoundEffectAsteroidCrumble:
         {
             NSArray * crumbleSounds = self.asteroidCrumblingSounds;
-            audioBuffer = [crumbleSounds objectAtIndex:arc4random_uniform((int)crumbleSounds.count)];
             break;
         }
             
         case kSoundEffectShieldDestroy:
         {
             NSArray * shieldExplosions = self.shieldExplosions;
-            audioBuffer = [shieldExplosions objectAtIndex:arc4random_uniform((int)shieldExplosions.count)];
             break;
         }
             
         case kSoundEffectShieldEquip:
-            audioBuffer = self.shieldEquip;
             break;
             
         case kSoundEffectEnergyBoosterStart:
-            audioBuffer = self.energyBoosterStart;
             break;
             
         case kSoundEffectEnergyBoosterEnd:
-            audioBuffer = self.energyBoosterEnd;
             break;
             
         case kSoundEffectEquipMachineGun:
-            audioBuffer = self.equipMachineGun;
             break;
             
         case kSoundEffectEquipLaserCannon:
-            audioBuffer = self.equipLaserCannon;
             break;
             
         case kSoundEffectEquipPhotonCannon:
-            audioBuffer = self.equipPhotonCannon;
             break;
             
         case kSoundEffectEquipElectricalGenerator:
-            audioBuffer = self.equipElectricalGenerator;
             break;
             
         case kSoundEffectEnemyDamage:
         {
             NSArray * enemyDamageSouns = self.enemyDamageSounds;
-            audioBuffer = [enemyDamageSouns objectAtIndex:arc4random_uniform((int)enemyDamageSouns.count)];
             break;
         }
             
         case kSoundEffectSpaceshipDamage:
         {
             NSArray * spaceshipDamageSounds = self.spaceshipDamage;
-            audioBuffer = [spaceshipDamageSounds objectAtIndex:arc4random_uniform((int)spaceshipDamageSounds.count)];
             break;
         }
             
         case kSoundEffectShieldDamage:
         {
             NSArray * shieldDamageSounds = self.shieldDamage;
-            audioBuffer = [shieldDamageSounds objectAtIndex:arc4random_uniform((int)shieldDamageSounds.count)];
             break;
         }
             
         case kSoundEffectMultiplierIncrease:
-            audioBuffer = self.multiplierIncrease;
             break;
             
         case kSoundEffectMultiplierLost:
-            audioBuffer = self.multiplierLost;
             break;
             
         case kSoundEffectToolTip:
-            audioBuffer = self.tooltip;
             break;
             
         case kSoundEffectPhotonExplosion:
-            audioBuffer = self.photonExplosion;
             break;
             
             //--menu
         case kSoundEffectMenuUnlock:
-            audioBuffer = self.unlock;
             break;
             
         case kSoundEffectMenuSettings:
-            audioBuffer = self.settings;
             break;
             
         case kSoundEffectMenuUpgradeMinimize:
-            audioBuffer = self.upgradeMinimize;
             break;
             
         case kSoundEffectMenuUpgradeMaximize:
-            audioBuffer = self.upgradeMaximize;
             break;
             
         case kSoundEffectMenuBackButton:
-            audioBuffer = self.backButton;
             break;
             
         case kSoundEffectMenuHighScoreAchievements:
-            audioBuffer = self.highScoreAchievements;
             break;
             
         case kSoundEffectMenuUpgrade:
-            audioBuffer = self.upgrade;
             break;
             
         case kSoundEffectMenuEngage:
-            audioBuffer = self.engage;
             break;
             
         case kSoundEffectMenuDidUnlock:
-            audioBuffer = self.didUnlock;
             break;
             
         case kSoundEffectMenuSelectShip:
-            audioBuffer = self.selectShip;
             break;
         
         case kSoundEffectMinimizeCell:
-            audioBuffer = self.minimizeCell;
             break;
             
         case kSoundEffectMaximizeCell:
-            audioBuffer = self.maximizeCell;
             break;
             
         case kSoundEffectMenuPageTurn:
-            audioBuffer = self.pageTurn;
             break;
             
         default:
             return;
     }
     
-    if ( audioBuffer )
+    if ( false )
     {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
         {
-            ALSource * soundSource = (ALSource *)[self.channel play:audioBuffer];
-            if ( soundSource ) // STR - play game, hold down the home button, press home button again
+            if ( false ) // STR - play game, hold down the home button, press home button again
             {
-                [self.currentSounds addObject:soundSource];
                 //[self.currentSounds performSelector:@selector(removeObject:) withObject:soundSource afterDelay:audioBuffer.duration];
                 
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, audioBuffer.duration * NSEC_PER_SEC), dispatch_get_main_queue(), ^
-                {
-                    [self.currentSounds removeObject:soundSource];
-                });
             }
             
         });
@@ -474,37 +386,30 @@ static AudioManager * sharedAudioManager = nil;
     if ( machineGun.level == 1 || machineGun.level == 2 )
         return;
     
-    ALBuffer * audioBuffer;
     
-    ALSource * machineGunSource = [self.machineGunSources objectForKey:[self dictionaryKeyForMachineGun:machineGun]];
-    if ( ! machineGunSource )
+    if ( false )
     {
         if ( machineGun.level == 3 )
         {
             if ( machineGun.fireRateUpgraded )
-                audioBuffer = self.machineGunLevel3UpgradedBuffer;
+                ;
             else
-                audioBuffer = self.machineGunLevel3Buffer;
+                ;
             
-            machineGunSource = [[ALSource alloc] initOnContext:self.context];
-            machineGunSource.volume = self.soundEffectsVolume;
-            [machineGunSource play:audioBuffer loop:YES];
-            [self.machineGunSources setObject:machineGunSource forKey:[self dictionaryKeyForMachineGun:machineGun]];
         }
         else
             NSLog(@"machineGunLevelChanged - something went wrong");
     }
     else
     {
-        [machineGunSource stop];
         
         if ( machineGun.fireRateUpgraded )
-            audioBuffer = self.machineGunLevel4UpgradedBuffer;
+            ;
         else
-            audioBuffer = self.machineGunLevel4Buffer;
+            ;
         
         if ( machineGun.level == 4 )
-            [machineGunSource play:audioBuffer loop:YES];
+            ;
         else
             NSLog(@"machineGunLevelChanged - something went wrong");
     }
@@ -514,18 +419,15 @@ static AudioManager * sharedAudioManager = nil;
 {
     for ( NSValue * key in [self.machineGunSources allKeys] )
     {
-        ALSource * machineGunSource = [self.machineGunSources objectForKey:key];
         if ( pause )
-            machineGunSource.paused = YES;
+            ;
         else
-            machineGunSource.paused = NO;
+            ;
     }
 }
 
 - (void) removeMachineGun:(MachineGun *)machineGun
 {
-    ALSource * machineGunSource = [self.machineGunSources objectForKey:[self dictionaryKeyForMachineGun:machineGun]];
-    [machineGunSource stop];
 }
 
 @end

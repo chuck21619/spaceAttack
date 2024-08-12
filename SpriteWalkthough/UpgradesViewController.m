@@ -10,7 +10,6 @@
 #import "DQAlertView.h"
 #import "AccountManager.h"
 #import "AudioManager.h"
-#import <Crashlytics/Crashlytics.h>
 #import "SpriteAppDelegate.h"
 #import "UIView+Shake.h"
 
@@ -544,13 +543,6 @@
     [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
     NSString * currency = [formatter currencyCode];
     
-    [Answers logPurchaseWithPrice:[[NSDecimalNumber alloc] initWithFloat:[self.activeUpgrade.price floatValue]]
-                         currency:currency
-                          success:@YES
-                         itemName:self.activeUpgrade.title
-                         itemType:@"Upgrade"
-                           itemId:nil
-                 customAttributes:@{}];
     NSLog(@"Payment Purchased Notification - upgrades");
     
     for ( UpgradeCell * cell in [self.myTable visibleCells] )
@@ -571,13 +563,6 @@
     [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
     NSString * currency = [formatter currencyCode];
     
-    [Answers logPurchaseWithPrice:[[NSDecimalNumber alloc] initWithFloat:[self.activeUpgrade.price floatValue]]
-                         currency:currency
-                          success:@NO
-                         itemName:self.activeUpgrade.title
-                         itemType:@"Upgrade"
-                           itemId:nil
-                 customAttributes:@{}];
     NSLog(@"Payment Failed Notification - upgrades");
     [self hideProgressHud];
     [self refreshUpgradeViews];

@@ -11,7 +11,6 @@
 #import "Upgrade.h"
 #import "AudioManager.h"
 #import <GameKit/GameKit.h>
-#import <Crashlytics/Crashlytics.h>
 
 @implementation AccountManager
 
@@ -1053,7 +1052,6 @@ static AccountManager * sharedAccountManager = nil;
                      NSLog(@"achievement completed - banner should be displayed : %@", achievo.identifier);
                      [AccountManager showCompletionBannerForAchievement:achievo];
                      [[NSNotificationCenter defaultCenter] postNotificationName:@"achievementCompleted" object:achievo];
-                     [Answers logCustomEventWithName:@"Gameplay Achievement" customAttributes:@{@"achievement type" : achievo.identifier}];
                      checkAllAchievementsAchivement = YES;
                  }
              }

@@ -13,7 +13,6 @@
 #import "AudioManager.h"
 #import "SAAlertView.h"
 #import "DGActivityIndicatorView.h"
-#import <Crashlytics/Crashlytics.h>
 
 @implementation UpgradeCell
 {
@@ -430,9 +429,6 @@
     unlockAlert.otherButtonAction = ^
     {
         
-        [Answers logCustomEventWithName:@"Purchase Game Points" customAttributes:@{@"price" : @(self.myUpgrade.pointsToUnlock),
-                                                                                    @"name" : self.myUpgrade.title,
-                                                                                    @"type" : @"Upgrade"}];
         [AccountManager subtractPoints:self.myUpgrade.pointsToUnlock];
         [AccountManager unlockUpgrade:self.myUpgrade.upgradeType];
         [self showPurchasedLabelAnimated:YES];

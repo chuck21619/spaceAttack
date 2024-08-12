@@ -14,7 +14,6 @@
 #import "AccountManager.h"
 #import "SAAlertView.h"
 #import "AudioManager.h"
-#import <Crashlytics/Crashlytics.h>
 #import "SpriteAppDelegate.h"
 
 @implementation SelectShipViewController
@@ -264,13 +263,6 @@
     [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
     NSString * currency = [formatter currencyCode];
     
-    [Answers logPurchaseWithPrice:[[NSDecimalNumber alloc] initWithFloat:[_activeSpaceship.price floatValue]]
-                         currency:currency
-                          success:@YES
-                         itemName:NSStringFromClass([_activeSpaceship class])
-                         itemType:@"Spaceship"
-                           itemId:nil
-                 customAttributes:@{}];
     [AccountManager unlockShip:_activeSpaceship];
     NSLog(@"Payment Purchased Notification - spaceship");
     
@@ -288,13 +280,6 @@
     [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
     NSString * currency = [formatter currencyCode];
     
-    [Answers logPurchaseWithPrice:[[NSDecimalNumber alloc] initWithFloat:[_activeSpaceship.price floatValue]]
-                         currency:currency
-                          success:@NO
-                         itemName:NSStringFromClass([_activeSpaceship class])
-                         itemType:@"Spaceship"
-                           itemId:nil
-                 customAttributes:@{}];
     NSLog(@"Payment Failed Notification - spaceships");
     [self hideProgressHud];
 }

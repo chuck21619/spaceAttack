@@ -12,7 +12,6 @@
 #import "AccountManager.h"
 #import "AudioManager.h"
 #import "SAAlertView.h"
-#import <Crashlytics/Crashlytics.h>
 
 @implementation PurchaseShipView
 {
@@ -211,9 +210,6 @@
     SAAlertView * unlockAlert = [[SAAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"%@ %@\n%@ %@ %@?", NSLocalizedString(@"Unlock", nil), NSLocalizedString(NSStringFromClass([_mySpaceship class]), nil), NSLocalizedString(@"for", nil),numberString, NSLocalizedString(@"points", nil)] cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitle:NSLocalizedString(@"Unlock", nil)];
     unlockAlert.otherButtonAction = ^
     {
-        [Answers logCustomEventWithName:@"Purchase Game Points" customAttributes:@{@"price" : @(_mySpaceship.pointsToUnlock),
-                                                                                    @"name" : NSStringFromClass([_mySpaceship class]),
-                                                                                    @"type" : @"Spaceship"}];
         [AccountManager unlockShip:_mySpaceship];
         [AccountManager subtractPoints:_mySpaceship.pointsToUnlock];
         [self showPurchasedLabelAnimated:YES];

@@ -10,7 +10,6 @@
 #import <AVFoundation/AVFoundation.h>
 #import "EnumTypes.h"
 #import <SpriteKit/SpriteKit.h>
-#import "ObjectAL.h"
 #import "MachineGun.h"
 
 @interface AudioManager : NSObject <AVAudioPlayerDelegate>
@@ -40,63 +39,28 @@
 @property (nonatomic) NSTimeInterval timeSinceLastSoundEffect;
 @property (nonatomic) NSMutableArray * currentSounds;
 
-@property (nonatomic) ALDevice * device;
-@property (nonatomic) ALContext * context;
-@property (nonatomic) ALChannelSource * channel;
 
 // buffers (sounds)
-@property (nonatomic) ALBuffer * tooltip;
 
 @property (nonatomic) NSDictionary * weaponSounds;
 
-@property (nonatomic) ALBuffer * photonExplosion;
 
 @property (nonatomic) NSArray * enemyDamageSounds;
 @property (nonatomic) NSDictionary * enemyExplosionSounds;
 
 @property (nonatomic) NSArray * spaceshipDamage;
-@property (nonatomic) ALBuffer * spaceshipExplosionSound;
 
 @property (nonatomic) NSArray * asteroidCrumblingSounds;
 
 @property (nonatomic) NSArray * shieldExplosions;
 @property (nonatomic) NSArray * shieldDamage;
-@property (nonatomic) ALBuffer * shieldEquip;
 
-@property (nonatomic) ALBuffer * energyBoosterStart;
-@property (nonatomic) ALBuffer * energyBoosterEnd;
-
-@property (nonatomic) ALBuffer * equipPhotonCannon;
-@property (nonatomic) ALBuffer * equipLaserCannon;
-@property (nonatomic) ALBuffer * equipElectricalGenerator;
-@property (nonatomic) ALBuffer * equipMachineGun;
-
-@property (nonatomic) ALBuffer * multiplierLost;
-@property (nonatomic) ALBuffer * multiplierIncrease;
 
 //machine gun
 - (void) machineGunLevelChanged:(MachineGun *)machineGun;
 - (void) pauseMachineGuns:(BOOL)pause;
 - (void) removeMachineGun:(MachineGun *)machineGun;
 @property (nonatomic) NSMutableDictionary * machineGunSources;
-@property (nonatomic) ALBuffer * machineGunLevel3Buffer;
-@property (nonatomic) ALBuffer * machineGunLevel4Buffer;
-@property (nonatomic) ALBuffer * machineGunLevel3UpgradedBuffer;
-@property (nonatomic) ALBuffer * machineGunLevel4UpgradedBuffer;
 
 //menu
-@property (nonatomic) ALBuffer * unlock;
-@property (nonatomic) ALBuffer * settings;
-@property (nonatomic) ALBuffer * upgradeMinimize;
-@property (nonatomic) ALBuffer * upgradeMaximize;
-@property (nonatomic) ALBuffer * backButton;
-@property (nonatomic) ALBuffer * highScoreAchievements;
-@property (nonatomic) ALBuffer * upgrade;
-@property (nonatomic) ALBuffer * engage;
-@property (nonatomic) ALBuffer * didUnlock;
-@property (nonatomic) ALBuffer * selectShip;
-@property (nonatomic) ALBuffer * minimizeCell;
-@property (nonatomic) ALBuffer * maximizeCell;
-@property (nonatomic) ALBuffer * pageTurn;
-
 @end

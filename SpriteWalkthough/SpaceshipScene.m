@@ -14,7 +14,6 @@
 #import "SAAlertView.h"
 #import <GameKit/GameKit.h>
 #import "AudioManager.h"
-#import <Crashlytics/Crashlytics.h>
 #import "SpriteAppDelegate.h"
 #import "HealthBar.h"
 
@@ -61,7 +60,6 @@
         self.enemiesDestroyed = 0;
         self.powerUpsCollected = 0;
         
-        [Answers logLevelStart:nil customAttributes:@{}];
         
         if ( !_healthBar )
         {
@@ -401,10 +399,6 @@ static inline CGFloat skRand(CGFloat low, CGFloat high)
 - (void) showEndGameScreen
 {
     [AccountManager incrementNumberOfTimesPlayed];
-    [Answers logLevelEnd:nil
-                   score:[NSNumber numberWithInt:self.pointsScored]
-                 success:nil
-        customAttributes:@{@"Flight Number" : [NSNumber numberWithInt:[AccountManager numberOfTimesPlayed]]}];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
     {

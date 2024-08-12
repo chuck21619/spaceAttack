@@ -7,8 +7,6 @@
 //
 
 #import "SpriteAppDelegate.h"
-#import <Fabric/Fabric.h>
-#import <Crashlytics/Crashlytics.h>
 #import "FullScreenAdSingleton.h"
 #import "AccountManager.h"
 #import "AudioManager.h"
@@ -19,7 +17,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //crashlytics
-    [Fabric with:@[[Crashlytics class]]];
     
     //ads
     [[FullScreenAdSingleton sharedInstance] createAndLoadFullScreenAd];
