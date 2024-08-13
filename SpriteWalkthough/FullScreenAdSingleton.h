@@ -7,14 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-@import GoogleMobileAds;
 
 
 @interface FullScreenAdSingleton : NSObject
 
 + (FullScreenAdSingleton *) sharedInstance;
 
-@property (nonatomic) GADInterstitial * fullScreenAd;
 - (void) createAndLoadFullScreenAd;
 
 @end

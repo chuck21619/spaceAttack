@@ -12,11 +12,9 @@
 #import "SpaceshipScene.h"
 #import "DGActivityIndicatorView.h"
 #import "GlowingButton.h"
-@import GoogleMobileAds;
 
-@interface GameplayViewController : UIViewController <GADBannerViewDelegate, GADInterstitialDelegate, SpaceshipSceneDelegate>
+@interface GameplayViewController : UIViewController <SpaceshipSceneDelegate>
 
-@property (weak, nonatomic) IBOutlet GADBannerView *bannerView;
 
 @property (weak, nonatomic) IBOutlet SKView *mySKView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *mySKViewTopConstraint;
@@ -26,7 +24,6 @@
 @property (nonatomic) GameplayControls * sharedGameplayControls;
 @property (nonatomic) UIView * blackTransitionScreen;
 @property (nonatomic) Spaceship * spaceshipForScene;
-@property (nonatomic) GADRequest * bannerAdRequest;
 @property (nonatomic) BOOL fullScreenAdShown;
 @property (nonatomic) BOOL firstViewWillAppear;
 @property (nonatomic) BOOL displayGoMessage;

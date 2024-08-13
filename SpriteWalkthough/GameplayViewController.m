@@ -66,11 +66,6 @@
     [self.blackTransitionScreen setBackgroundColor:[UIColor blackColor]];
     [self.view addSubview:self.blackTransitionScreen];
     
-    self.bannerView.adSize = kGADAdSizeSmartBannerPortrait;
-    self.bannerView.adUnitID = @"ca-app-pub-6557493854751989/2360462752";
-    self.bannerView.rootViewController = self;
-    self.bannerAdRequest = nil;
-    
     self.restartButton.layer.borderColor = [UIColor whiteColor].CGColor;
     self.restartButton.layer.borderWidth = 2;
     self.restartButton.layer.cornerRadius = self.restartButton.frame.size.height/3;
@@ -162,8 +157,7 @@
     if ( self.firstViewWillAppear )
     {
         self.firstViewWillAppear = NO;
-        if ( ! [self showFullScreenAdIfApplicable] )
-            [self showProgressHud];
+        [self showProgressHud];
     }
 }
 
@@ -435,7 +429,6 @@
     {
         self.bonusPointsTextViewHeight.constant = self.bonusPointsTextViewHeightDefault;
         self.blackTransitionScreen.alpha = 1;
-        [self.view insertSubview:self.blackTransitionScreen belowSubview:self.bannerView];
         //self.view addsubview underneath the banner ad
         [self.mySKView presentScene:nil];
         self.spaceshipScene = [[SpaceshipScene alloc] initWithSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
@@ -448,19 +441,11 @@
         
         if ( [AccountManager shouldShowFullscreenAd] )//! [AccountManager shouldShowBannerAds] )
         {
-            self.bannerView.delegate = nil;
-            self.bannerAdRequest = nil;
-            [self.bannerView loadRequest:self.bannerAdRequest];
             [self hideBannerView];
         }
         
-        if ( [self showFullScreenAdIfApplicable] )
-            return;
-        else
-        {
-            self.displayGoMessage = NO;
-            [self showSpaceshipScene];
-        }
+        self.displayGoMessage = NO;
+        [self showSpaceshipScene];
     }];
 }
 
@@ -513,64 +498,8 @@
 
 #pragma mark - ads
 #pragma mark full screen ads
-- (void) interstitialWillPresentScreen:(GADInterstitial *)ad
-{
-    self.fullScreenAdShown = YES;
-}
-
-- (void) interstitialWillDismissScreen:(GADInterstitial *)ad
-{
-    self.fullScreenAdShown = NO;
-}
-
-- (void) interstitialDidDismissScreen:(GADInterstitial *)ad
-{
-    if ( self.sharedGameplayControls.isCalibrated )
-    {
-        self.displayGoMessage = NO;
-        [self showSpaceshipScene];
-    }
-    else
-        [self showProgressHud];
-    
-    [[FullScreenAdSingleton sharedInstance] createAndLoadFullScreenAd];
-}
-
-- (BOOL) showFullScreenAdIfApplicable
-{
-    GADInterstitial * fullScreenAd = [FullScreenAdSingleton sharedInstance].fullScreenAd;
-    
-    if ( [AccountManager shouldShowFullscreenAd] && [fullScreenAd isReady] )
-    {
-        fullScreenAd.delegate = self;
-        [fullScreenAd presentFromRootViewController:self];
-        return YES;
-    }
-    else
-        return NO;
-}
 
 #pragma mark banner ads
-- (void) adViewDidReceiveAd:(GADBannerView *)bannerView
-{
-    bannerView.delegate = self;
-    self.mySKViewTopConstraint.constant = -bannerView.frame.size.height;
-    self.mySKViewBottomConstraint.constant = bannerView.frame.size.height;
-    
-    [UIView animateWithDuration:.25 animations:^
-    {
-        self.bannerView.alpha = 1;
-    }];
-    [UIView animateWithDuration:.4 animations:^
-    {
-        [self.view layoutIfNeeded];
-    }];
-}
-
-- (void) adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error
-{
-    [self hideBannerView];
-}
 
 - (void) hideBannerView
 {
@@ -579,22 +508,12 @@
     
     [UIView animateWithDuration:.25 animations:^
      {
-         self.bannerView.alpha = 0;
+         
      }];
     [UIView animateWithDuration:.4 animations:^
      {
          [self.view layoutIfNeeded];
      }];
-}
-
-- (void) adViewWillPresentScreen:(GADBannerView *)bannerView
-{
-    [self.spaceshipScene pauseGame];
-}
-
-- (void) adViewDidDismissScreen:(GADBannerView *)bannerView
-{
-    [self.spaceshipScene resumeGame];
 }
 
 @end
