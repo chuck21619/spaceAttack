@@ -4,11 +4,11 @@ An iOS top-down spaceship shooter designed using the SpriteKit framework. Starte
 
 I have discontinued support for this application and removed it from the app store.
 
-![0x0ss](https://github.com/user-attachments/assets/b5a8ddf1-613c-4540-9657-daf1dce37aec)
-![0x0ss (1)](https://github.com/user-attachments/assets/c12f2d84-c7e7-4de7-a84c-a545da5810a8)
-![0x0ss (2)](https://github.com/user-attachments/assets/94ce74f8-08e7-4675-938b-38c2057e3461)
-![0x0ss (3)](https://github.com/user-attachments/assets/73d8ae14-0e2f-4808-8422-c8c191b5ef64)
-![0x0ss (4)](https://github.com/user-attachments/assets/522739c3-73b0-4331-ae39-91615751077c)
+<img src="https://github.com/user-attachments/assets/b5a8ddf1-613c-4540-9657-daf1dce37aec" width="240" height="440">
+<img src="https://github.com/user-attachments/assets/c12f2d84-c7e7-4de7-a84c-a545da5810a8" width="240" height="440">
+<img src="https://github.com/user-attachments/assets/94ce74f8-08e7-4675-938b-38c2057e3461" width="240" height="440">
+<img src="https://github.com/user-attachments/assets/73d8ae14-0e2f-4808-8422-c8c191b5ef64" width="240" height="440">
+<img src="https://github.com/user-attachments/assets/522739c3-73b0-4331-ae39-91615751077c" width="240" height="440">
 
 This project provided an environment to educate myself in the following:
 - SpriteKit
