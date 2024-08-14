@@ -1,6 +1,6 @@
-# Space Attack - Stop the Alien Invasion!
-
+<h1><img src="https://github.com/user-attachments/assets/8f6f0841-a88f-43e4-bd56-8ba61c9ee857" width="30" height="30" /> Space Attack - Stop the Alien Invasion! </h1>
 An iOS top-down spaceship shooter designed using the SpriteKit framework. Started as a learning project in order to educate myself with the SpriteKit framework. I eventually decided to take several more steps and release the project under my own LLC.
+
 
 I have discontinued support for this application and removed it from the app store.
 
